@@ -165,7 +165,7 @@ A {
 	.slide ARTICLE PRE CODE {
 		display:block;
 		white-space:pre;
-		font-family:Consolas, monospace;
+		font-family:'DejaVu Sans Mono', monospace;
 		}
 	.slide ARTICLE PRE CODE:before {
 		position:absolute;
