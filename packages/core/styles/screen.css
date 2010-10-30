@@ -1,0 +1,11 @@
+@import url(reset.css);
+@import url(fonts.css);
+
+BODY {
+	background:#EEE;
+	color:#000;
+	font:13px 'PTSans', sans-serif;
+	}
+A {
+	text-decoration:none;
+	}
