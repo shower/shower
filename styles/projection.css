@@ -4,7 +4,7 @@
 BODY {
 	background:#000;
 	color:#FFF;
-	font:1em 'PTSans', sans-serif;
+	font:1em 'PT Sans', sans-serif;
 	counter-reset:paging;
 	}
 A {
@@ -81,7 +81,7 @@ A {
 .slide ARTICLE H2 {
 	margin:0 0 1.2em;
 	color:#666;
-	font:bold 1em/1.2 'PTSans Narrow', sans-serif;
+	font:bold 1em/1.2 'PT Sans Narrow', sans-serif;
 	}
 .slide ARTICLE P {
 	margin:0 0 1.7em;
