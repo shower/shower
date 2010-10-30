@@ -4,12 +4,26 @@
 BODY {
 	background:#000;
 	color:#FFF;
-	font:75px 'PTSans', sans-serif;
+	font:1em 'PTSans', sans-serif;
 	counter-reset:paging;
 	}
 A {
 	text-decoration:none;
 	}
+
+/* Basic Font-Size
+---------------------------------------- */
+
+@media all and ( min-device-height:240px  ), ( min-height:240px  ) { BODY { font-size:15px } }
+@media all and ( min-device-height:480px  ), ( min-height:480px  ) { BODY { font-size:30px } }
+@media all and ( min-device-height:600px  ), ( min-height:600px  ) { BODY { font-size:38px } }
+@media all and ( min-device-height:768px  ), ( min-height:768px  ) { BODY { font-size:48px } }
+@media all and ( min-device-height:800px  ), ( min-height:800px  ) { BODY { font-size:50px } }
+@media all and ( min-device-height:900px  ), ( min-height:900px  ) { BODY { font-size:56px } }
+@media all and ( min-device-height:1024px ), ( min-height:1024px ) { BODY { font-size:64px } }
+@media all and ( min-device-height:1200px ), ( min-height:1200px ) { BODY { font-size:75px } }
+
+/* H ÷ 16 ≈ Font-Size */
 
 /* Slide
 ---------------------------------------- */
