@@ -1,0 +1,61 @@
+/* PTSans */
+@font-face {
+	font-family:'PTSans';
+	src:local('PTSans'), url(../fonts/PTSans.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'PTSans';
+	font-weight:bold;
+	src:local('PTSans'), url(../fonts/PTSans.Bold.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'PTSans';
+	font-style:italic;
+	src:local('PTSans'), url(../fonts/PTSans.Italic.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'PTSans';
+	font-weight:bold;
+	font-style:italic;
+	src:local('PTSans'), url(../fonts/PTSans.Bold.Italic.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'PTSans Caption';
+	src:local('PTSans'), url(../fonts/PTSans.Caption.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'PTSans Caption';
+	font-weight:bold;
+	src:local('PTSans Caption'), url(../fonts/PTSans.Caption.Bold.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'PTSans Narrow';
+	src:local('PTSans Narrow'), url(../fonts/PTSans.Narrow.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'PTSans Narrow';
+	font-weight:bold;
+	src:local('PTSans Narrow'), url(../fonts/PTSans.Narrow.Bold.ttf) format('truetype');
+	}
+
+/* Consolas */
+@font-face {
+	font-family:'Consolas';
+	src:local('Consolas'), url(../fonts/Consolas.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'Consolas';
+	font-weight:bold;
+	src:local('Consolas'), url(../fonts/Consolas.Bold.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'Consolas';
+	font-style:italic;
+	src:local('Consolas'), url(../fonts/Consolas.Italic.ttf) format('truetype');
+	}
+@font-face {
+	font-family:'Consolas';
+	font-weight:bold;
+	font-style:italic;
+	src:local('Consolas'), url(../fonts/Consolas.Bold.Italic.ttf) format('truetype');
+	}
