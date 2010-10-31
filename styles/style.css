@@ -43,6 +43,9 @@ body {
 a {
 	text-decoration:none;
 }
+.key, kbd {
+    padding: 0.1em 0.25em;
+}
 
 /* Basic Font-Size
 ---------------------------------------- */
@@ -55,8 +58,6 @@ a {
 @media all and (min-device-height:900px ), (min-height:900px ) { body { font-size:48px } }
 @media all and (min-device-height:1024px), (min-height:1024px) { body { font-size:58px } }
 @media all and (min-device-height:1200px), (min-height:1200px) { body { font-size:68px } }
-
-/* H ÷ 16 ≈ Font-Size */
 
 /* Shower
 ---------------------------------------- */
@@ -259,6 +260,13 @@ a {
 	height:100%;
 	background:#000;
 	content:'';
+}
+.slide.cover p {
+    background: rgba(220, 220, 200, 0.8);
+    padding: 0.8em;
+    border-radius: 2.25em;
+    -webkit-border-radius: 1.2em;
+    -moz-border-radius: 1.2em;
 }
 
 /* Back
