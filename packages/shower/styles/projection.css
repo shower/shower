@@ -113,7 +113,7 @@ A {
 	color:#888;
 	}
 .slide ARTICLE A {
-	border-bottom:0.07em solid;
+	border-bottom:0.1em solid;
 	color:#0174A7;
 	}
 .slide ARTICLE B,
@@ -291,6 +291,9 @@ A {
 .slide.frame {
 	background:#FFF;
 	}
+	.slide.frame ARTICLE {
+		position:static;
+		}
 	.slide.frame IFRAME {
 		position:absolute;
 		top:0;
