@@ -32,7 +32,7 @@ $(function() {
 				return;
 		}
 		e.preventDefault();
-		if( !target.length ) return;		
+		if( !target.length ) return;
 		else document.location.hash = '#' + target.attr( 'id' );
 	}
 
