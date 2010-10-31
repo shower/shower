@@ -26,7 +26,7 @@ $(function() {
 				var target = current.next( slides );
 				break;
 			case 32 : // Space
-				var target = current[e.shiftKey ? "prev" : "next"]( slides );
+				var target = current[ e.shiftKey ? 'prev' : 'next' ]( slides );
 				break;
 			default:
 				return;
