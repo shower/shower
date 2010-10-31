@@ -47,17 +47,17 @@ a {
     padding: 0.1em 0.25em;
 }
 
-/* Basic Font-Size
+/* Basic Font-Size: height/24
 ---------------------------------------- */
 
-@media all and (min-device-height:240px ), (min-height:240px ) { body { font-size:12px } }
-@media all and (min-device-height:480px ), (min-height:480px ) { body { font-size:24px } }
-@media all and (min-device-height:600px ), (min-height:600px ) { body { font-size:30px } }
-@media all and (min-device-height:768px ), (min-height:768px ) { body { font-size:40px } }
-@media all and (min-device-height:800px ), (min-height:800px ) { body { font-size:44px } }
-@media all and (min-device-height:900px ), (min-height:900px ) { body { font-size:48px } }
-@media all and (min-device-height:1024px), (min-height:1024px) { body { font-size:58px } }
-@media all and (min-device-height:1200px), (min-height:1200px) { body { font-size:68px } }
+@media all and (min-device-height:240px ), (min-height:240px ) { body { font-size:10px } }
+@media all and (min-device-height:480px ), (min-height:480px ) { body { font-size:20px } }
+@media all and (min-device-height:600px ), (min-height:600px ) { body { font-size:25px } }
+@media all and (min-device-height:768px ), (min-height:768px ) { body { font-size:32px } }
+@media all and (min-device-height:800px ), (min-height:800px ) { body { font-size:33px } }
+@media all and (min-device-height:900px ), (min-height:900px ) { body { font-size:38px } }
+@media all and (min-device-height:1024px), (min-height:1024px) { body { font-size:43px } }
+@media all and (min-device-height:1200px), (min-height:1200px) { body { font-size:50px } }
 
 /* Shower
 ---------------------------------------- */
