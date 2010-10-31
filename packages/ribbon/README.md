@@ -1,22 +1,21 @@
-Shower
+# Shower
+## Сross-browser presentation template
 
-    Сross-browser presentation template
+Test it here: [pepelsbey.github.com/shower](http://pepelsbey.github.com/shower/)
 
-Supported Browsers
+## Supported Browsers
 
-    • Opera
-    • Firefox
-    • Chrome
-    
-    Presentation is backward compatible, but the best experience available
-    in the latest stable versions of mentioned browsers.
+* Opera
+* Firefox
+* Chrome
 
-Planned Support
+Presentation is backward compatible, but the best experience available
+in the latest stable versions of mentioned browsers.
 
-    • Safari
-    • Internet Explorer
-    • …
+## Planned Support
 
-All bug reports should be addressed to Issues
+* Safari
+* IE9
+* …
 
-    http://github.com/pepelsbey/shower/issues
+All bug reports should be addressed to [Issues](http://github.com/pepelsbey/shower/issues)
