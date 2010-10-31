@@ -5,7 +5,7 @@ BODY {
 	background:#DDD;
 	color:#000;
 	counter-reset:paging;
-	font:13px 'PT Sans', sans-serif;
+	font:15px 'PT Sans', sans-serif;
 	}
 A {
 	text-decoration:none;
@@ -119,7 +119,7 @@ A {
 		text-align:right;
 		}
 	.slide ARTICLE UL LI:before {
-		margin-left:-50px;
+		margin:2px 0 0 -50px;
 		line-height:1;
 		font-size:20px;
 		content:'\2022';
@@ -208,7 +208,10 @@ A {
 ---------------------------------------- */
 .slide.shout {
 	}
-	.slide.shout ARTICLE H2 {
-		text-align:center;
-		font-size:52px;
+	.slide.shout ARTICLE:after {
+		display:none;
 		}
+		.slide.shout ARTICLE H2 {
+			text-align:center;
+			font-size:52px;
+			}
