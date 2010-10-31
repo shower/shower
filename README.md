@@ -20,4 +20,4 @@ in the latest stable versions of mentioned browsers.
 * IE9
 * …
 
-All bug reports should be addressed to [Issues](http://github.com/pepelsbey/shower/issues)
+Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey/shower/issues)
