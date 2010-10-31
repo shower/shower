@@ -31,6 +31,6 @@
 
 /* DejaVu Sans Mono */
 @font-face {
-	font-family:'DejaVu Sans Mono';
-	src:local('DejaVu Sans Mono'), url(../fonts/DejaVuSansMono.ttf) format('truetype');
+	font-family:'Droid Sans Mono';
+	src:local('Droid Sans Mono'), url(../fonts/DroidSansMono.ttf) format('truetype');
 	}
