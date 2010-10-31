@@ -2,6 +2,7 @@
 @import url(fonts.css);
 
 BODY {
+	overflow:hidden;
 	background:#000;
 	color:#FFF;
 	font:1em 'PT Sans', sans-serif;
@@ -25,6 +26,30 @@ A {
 
 /* H ÷ 16 ≈ Font-Size */
 
+/* Shower
+---------------------------------------- */
+.shower {
+	position:fixed;
+	top:0;
+	right:0;
+	bottom:0;
+	left:0;
+	}
+.shower:after {
+	position:absolute;
+	top:-1em;
+	bottom:-1em;
+	right:-1em;
+	z-index:10;
+	width:1.5em;
+	border:1em solid #000;
+	border-left-width:0;
+	-webkit-border-radius:0 2.5em 2.5em 0;
+	-moz-border-radius:0 2.5em 2.5em 0;
+	border-radius:0 2.5em 2.5em 0;
+	content:'';
+	}
+
 /* Slide
 ---------------------------------------- */
 .slide {
@@ -35,9 +60,6 @@ A {
 	left:0;
 	margin-left:100%;
 	overflow:hidden;
-	-webkit-border-radius:0 2em 2em 0;
-	-moz-border-radius:0 2em 2em 0;
-	border-radius:0 2em 2em 0;
 	background:#FFF;
 	color:#000;
 	}
@@ -193,6 +215,19 @@ A {
 		color:#FFF;
 		font-weight:normal;
 		}
+
+/* Cover
+---------------------------------------- */
+.slide.cover:before {
+	position:absolute;
+	top:0;
+	right:3em;
+	z-index:2;
+	width:1em;
+	height:100%;
+	background:#000;
+	content:'';
+	}
 
 /* Back
 ---------------------------------------- */
