@@ -47,14 +47,14 @@ a {
 /* Basic Font-Size
 ---------------------------------------- */
 
-@media all and ( min-device-height:240px  ), ( min-height:240px  ) { BODY { font-size:15px } }
-@media all and ( min-device-height:480px  ), ( min-height:480px  ) { BODY { font-size:30px } }
-@media all and ( min-device-height:600px  ), ( min-height:600px  ) { BODY { font-size:38px } }
-@media all and ( min-device-height:768px  ), ( min-height:768px  ) { BODY { font-size:48px } }
-@media all and ( min-device-height:800px  ), ( min-height:800px  ) { BODY { font-size:50px } }
-@media all and ( min-device-height:900px  ), ( min-height:900px  ) { BODY { font-size:56px } }
-@media all and ( min-device-height:1024px ), ( min-height:1024px ) { BODY { font-size:64px } }
-@media all and ( min-device-height:1200px ), ( min-height:1200px ) { BODY { font-size:75px } }
+@media all and (min-device-height:240px ), (min-height:240px ) { body { font-size:12px } }
+@media all and (min-device-height:480px ), (min-height:480px ) { body { font-size:24px } }
+@media all and (min-device-height:600px ), (min-height:600px ) { body { font-size:30px } }
+@media all and (min-device-height:768px ), (min-height:768px ) { body { font-size:40px } }
+@media all and (min-device-height:800px ), (min-height:800px ) { body { font-size:44px } }
+@media all and (min-device-height:900px ), (min-height:900px ) { body { font-size:48px } }
+@media all and (min-device-height:1024px), (min-height:1024px) { body { font-size:58px } }
+@media all and (min-device-height:1200px), (min-height:1200px) { body { font-size:68px } }
 
 /* H ÷ 16 ≈ Font-Size */
 
@@ -112,8 +112,8 @@ a {
 }
 .slide:after {
 	position:absolute;
-	bottom:4em;
-	left:6em;
+	bottom:1em;
+	left:1em;
 	color:#AAA;
 	font-size:0.5em;
 	counter-increment:paging;
@@ -123,9 +123,9 @@ a {
 /* Article */
 .slide article {
 	position:absolute;
-	top:2em;
-	right:3em;
-	bottom:3em;
+	top:1em;
+	right:2em;
+	bottom:2em;
 	left:3em;
 	line-height:1.7;
 }

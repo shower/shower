@@ -2,21 +2,20 @@
 Сross-browser presentation template
 
 * Open [pepelsbey.github.com/shower](http://pepelsbey.github.com/shower/)
-* Switch your browser to fullscreen mode
-* Press → to navigate
+* Navigate with your keyboard
 
 ## Supported Browsers
 
 * Opera
 * Firefox
 * Chrome
+* Safari
 
-Presentation is backward compatible, but the best experience available
+Presentation is backwards compatible, but the best experience is available
 in the latest stable versions of mentioned browsers.
 
 ## Planned Support
 
-* Safari
 * IE9
 * …
 
