@@ -59,6 +59,31 @@ a {
 @media all and (min-device-height:1024px), (min-height:1024px) { body { font-size:43px } }
 @media all and (min-device-height:1200px), (min-height:1200px) { body { font-size:50px } }
 
+/* iPhone/iPad
+---------------------------------------- */
+.touch { display: none; }
+@media only screen and (max-device-width: 1024px) {
+    .nontouch { display: none; }
+    .touch { display: block; }
+    body { font-size: 32px; }
+    .slide article {
+	    top: 1em !important;
+	    right: 1.4em !important;
+	    bottom: 1em !important;
+	    left: 1.4em !important;
+	    line-height: 1.4 !important;
+    }
+}
+@media only screen and (max-device-width: 480px) {
+    body { font-size: 20px; }
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  white-space: pre-line;
+  word-wrap: break-word;
+}
+
 /* Shower
 ---------------------------------------- */
 .shower {

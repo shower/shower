@@ -10,6 +10,8 @@
 * Firefox
 * Chrome
 * Safari
+* Mobile Safari (iPhone/iPod touch/iPad)
+* Android (not tested)
 
 Presentation is backwards compatible, but the best experience is available
 in the latest stable versions of mentioned browsers.
