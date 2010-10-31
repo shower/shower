@@ -5,8 +5,8 @@ BODY {
 	overflow:hidden;
 	background:#000;
 	color:#FFF;
-	font:1em 'PT Sans', sans-serif;
 	counter-reset:paging;
+	font:1em 'PT Sans', sans-serif;
 	}
 A {
 	text-decoration:none;
@@ -136,8 +136,6 @@ A {
 .slide ARTICLE BLOCKQUOTE:before {
 	position:absolute;
 	margin:-0.1em 0 0 -0.44em;
-	width:2.5em;
-	height:5em;
 	color:#BBB;
 	line-height:1;
 	font-size:8em;
@@ -291,7 +289,7 @@ A {
 /* Frame
 ---------------------------------------- */
 .slide.frame {
-	background:#000;
+	background:#FFF;
 	}
 	.slide.frame IFRAME {
 		position:absolute;
