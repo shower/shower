@@ -20,11 +20,13 @@ $(function() {
 			case 37 : // Left
 				var target = current.prev( slides );
 				break;
-			case 32 : // Space
 			case 34 : // PgDown
 			case 40 : // Down
 			case 39 : // Right
 				var target = current.next( slides );
+				break;
+			case 32 : // Space
+				var target = current[e.shiftKey ? "prev" : "next"]( slides );
 				break;
 			default:
 				return;
