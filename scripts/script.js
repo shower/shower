@@ -26,5 +26,5 @@ $dom.onready(function() {
 	}
 
 	document.onkeyup = turnSlide;
-    document.location.hash = '#' + slides[0].id;
+    if (!document.location.hash) document.location.hash = '#' + slides[0].id;
 });
