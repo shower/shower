@@ -20,15 +20,6 @@
 	src:local('PT Sans Bold Italic'), url(../fonts/PTSans.Bold.Italic.ttf) format('truetype');
 	}
 @font-face {
-	font-family:'PT Sans Caption';
-	src:local('PT Sans Caption'), url(../fonts/PTSans.Caption.ttf) format('truetype');
-	}
-@font-face {
-	font-family:'PT Sans Caption';
-	font-weight:bold;
-	src:local('PT Sans Caption Bold'), url(../fonts/PTSans.Caption.Bold.ttf) format('truetype');
-	}
-@font-face {
 	font-family:'PT Sans Narrow';
 	src:local('PT Sans Narrow'), url(../fonts/PTSans.Narrow.ttf) format('truetype');
 	}
@@ -42,20 +33,4 @@
 @font-face {
 	font-family:'DejaVu Sans Mono';
 	src:local('DejaVu Sans Mono'), url(../fonts/DejaVuSansMono.ttf) format('truetype');
-	}
-@font-face {
-	font-family:'DejaVu Sans Mono';
-	font-weight:bold;
-	src:local('DejaVu Sans Mono Bold'), url(../fonts/DejaVuSansMono.Bold.ttf) format('truetype');
-	}
-@font-face {
-	font-family:'DejaVu Sans Mono';
-	font-style:italic;
-	src:local('DejaVu Sans Mono Oblique'), url(../fonts/DejaVuSansMono.Italic.ttf) format('truetype');
-	}
-@font-face {
-	font-family:'DejaVu Sans Mono';
-	font-weight:bold;
-	font-style:italic;
-	src:local('DejaVu Sans Mono Bold Oblique'), url(../fonts/DejaVuSansMono.Bold.Italic.ttf) format('truetype');
 	}
