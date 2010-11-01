@@ -11,7 +11,7 @@
 * Firefox
 * Chrome
 
-Presentation is backward compatible, but the best experience available
+Presentation is backwards compatible, but the best experience is available
 in the latest stable versions of mentioned browsers.
 
 ## Planned Support
