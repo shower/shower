@@ -292,9 +292,6 @@ A {
 .slide.frame {
 	background:#FFF;
 	}
-	.slide.frame ARTICLE {
-		position:static;
-		}
 	.slide.frame IFRAME {
 		position:absolute;
 		top:0;
