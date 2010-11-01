@@ -22,6 +22,7 @@ A {
 @media all and ( min-device-height:800px  ), ( min-height:800px  ) { BODY { font-size:50px } }
 @media all and ( min-device-height:900px  ), ( min-height:900px  ) { BODY { font-size:56px } }
 @media all and ( min-device-height:1024px ), ( min-height:1024px ) { BODY { font-size:64px } }
+@media all and ( min-device-height:1050px ), ( min-height:1050px ) { BODY { font-size:66px } }
 @media all and ( min-device-height:1200px ), ( min-height:1200px ) { BODY { font-size:75px } }
 
 /* H ÷ 16 ≈ Font-Size */
