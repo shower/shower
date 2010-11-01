@@ -1,36 +1,36 @@
 /* PTSans */
 @font-face {
 	font-family:'PT Sans';
-	src:local('PT Sans'), url(../fonts/PTSans.ttf) format('truetype');
+	src:local('PT Sans'), url(../fonts/PTSans.ttf) format('truetype'), url(../fonts/PTSans.svg#webfont5rms7323) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans';
 	font-weight:bold;
-	src:local('PT Sans Bold'), url(../fonts/PTSans.Bold.ttf) format('truetype');
+	src:local('PT Sans Bold'), url(../fonts/PTSans.Bold.ttf) format('truetype'), url(../fonts/PTSans.Bold.svg#webfontlsESl8OY) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans';
 	font-style:italic;
-	src:local('PT Sans Italic'), url(../fonts/PTSans.Italic.ttf) format('truetype');
+	src:local('PT Sans Italic'), url(../fonts/PTSans.Italic.ttf) format('truetype'), url(../fonts/PTSans.Italic.svg#webfontHL33ZezK) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans';
 	font-weight:bold;
 	font-style:italic;
-	src:local('PT Sans Bold Italic'), url(../fonts/PTSans.Bold.Italic.ttf) format('truetype');
+	src:local('PT Sans Bold Italic'), url(../fonts/PTSans.Bold.Italic.ttf) format('truetype'), url(../fonts/PTSans.Bold.Italic.svg#webfontzp8gytBr) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans Narrow';
-	src:local('PT Sans Narrow'), url(../fonts/PTSans.Narrow.ttf) format('truetype');
+	src:local('PT Sans Narrow'), url(../fonts/PTSans.Narrow.ttf) format('truetype'), url(../fonts/PTSans.Narrow.svg#webfontZSvGOKVa) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans Narrow';
 	font-weight:bold;
-	src:local('PT Sans Narrow Bold'), url(../fonts/PTSans.Narrow.Bold.ttf) format('truetype');
+	src:local('PT Sans Narrow Bold'), url(../fonts/PTSans.Narrow.Bold.ttf) format('truetype'), url(../fonts/PTSans.Narrow.Bold.svg#webfontetWqyXVR) format('svg');
 	}
 
 /* DejaVu Sans Mono */
 @font-face {
 	font-family:'Droid Sans Mono';
-	src:local('Droid Sans Mono'), url(../fonts/DroidSansMono.ttf) format('truetype');
+	src:local('Droid Sans Mono'), url(../fonts/DroidSansMono.ttf) format('truetype'), url(../fonts/DroidSansMono.svg#webfontTygDyJKg) format('svg');
 	}
