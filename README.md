@@ -11,18 +11,17 @@
 
 Desktop platforms:
 
-* Opera
-* Firefox
 * Chrome
+* Firefox
+* Opera
+* Safari
 
-Presentation is backwards compatible, but the best experience is available
-in the latest stable versions of mentioned browsers.
+Presentation is backwards compatible, but the best experience is available in the latest stable versions of mentioned browsers.
 
 ## Planned Support
 
 Desktop platforms:
 
-* Safari
 * IE9
 * …
 
