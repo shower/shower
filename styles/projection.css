@@ -15,15 +15,15 @@ A {
 /* Basic Font-Size
 ---------------------------------------- */
 
-@media all and ( min-device-height:240px  ) { BODY { font-size:15px } }
-@media all and ( min-device-height:480px  ) { BODY { font-size:30px } }
-@media all and ( min-device-height:600px  ) { BODY { font-size:38px } }
-@media all and ( min-device-height:768px  ) { BODY { font-size:48px } }
-@media all and ( min-device-height:800px  ) { BODY { font-size:50px } }
-@media all and ( min-device-height:900px  ) { BODY { font-size:56px } }
-@media all and ( min-device-height:1024px ) { BODY { font-size:64px } }
-@media all and ( min-device-height:1050px ) { BODY { font-size:66px } }
-@media all and ( min-device-height:1200px ) { BODY { font-size:75px } }
+@media ( min-height:240px  ) { BODY { font-size:15px } }
+@media ( min-height:480px  ) { BODY { font-size:30px } }
+@media ( min-height:600px  ) { BODY { font-size:38px } }
+@media ( min-height:768px  ) { BODY { font-size:48px } }
+@media ( min-height:800px  ) { BODY { font-size:50px } }
+@media ( min-height:900px  ) { BODY { font-size:56px } }
+@media ( min-height:1024px ) { BODY { font-size:64px } }
+@media ( min-height:1050px ) { BODY { font-size:66px } }
+@media ( min-height:1200px ) { BODY { font-size:75px } }
 
 /* H ÷ 16 ≈ Font-Size */
 

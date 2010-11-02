@@ -1,9 +1,9 @@
-var domSlides = document.querySelectorAll('section.slide'),
-	url = document.location,
-	slides = [],
-	backhash = {},
+var url = document.location,
+	domSlides = document.querySelectorAll('section.slide'),
+	slides = [], backhash = {},
 	linkScreen = document.querySelector('link[title=screen]'),
-	linkProjection = document.querySelector('link[title=projection]');
+	linkProjection = document.querySelector('link[title=projection]'),
+	fullscreen = false;
 
 for(var i = 0, len = domSlides.length; i < len; i++) {
 	var id = domSlides[i].id;
@@ -11,15 +11,20 @@ for(var i = 0, len = domSlides.length; i < len; i++) {
 	backhash['#' + id] = i;
 }
 
-function fullScreen() {
-	return window.screenX == 0 &&
-		window.screenY == 0 &&
-		screen.width == window.outerWidth &&
-		screen.height == window.outerHeight;
+function enterFull() {
+	fullscreen = true;
+	updateView();
+}
+
+function exitFull(e) {
+	if(e.which == 27) {
+		fullscreen = false;
+		updateView();
+	}
 }
 
 function turnSlide(e) {
-	if(!fullScreen()) return;
+	if(!fullscreen) return;
 	var current = backhash[url.hash],
 		target,
 		command;
@@ -46,12 +51,11 @@ function turnSlide(e) {
 }
 
 function updateView() {
-	var fullscreen = fullScreen();
 	linkScreen.disabled = fullscreen;
 	linkProjection.disabled = !fullscreen;
 	if(fullscreen && !backhash[url.hash]) url.hash = slides[0];
 }
 
-window.addEventListener('DOMContentLoaded', updateView, false);
-window.addEventListener('resize', updateView, false);
 document.addEventListener('keyup', turnSlide, false);
+domSlides[0].addEventListener('click', enterFull, false);
+document.addEventListener('keyup', exitFull, false);
