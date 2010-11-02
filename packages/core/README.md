@@ -2,7 +2,7 @@
 Сross-browser presentation template
 
 * Open [pepelsbey.github.com/shower](http://pepelsbey.github.com/shower/)
-* Switch your browser to fullscreen mode
+* Press play button and switch browser to fullscreen mode for better experience
 * Press → to navigate
 
 ## Supported Browsers
