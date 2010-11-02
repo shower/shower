@@ -3,7 +3,8 @@
 
 * Open [pepelsbey.github.com/shower](http://pepelsbey.github.com/shower/)
 * Press play button and switch browser to fullscreen mode for better experience
-* Press → to navigate
+* Press `→` to navigate
+* Press `Esc` to exit presentation mode
 
 ## Supported Browsers
 
