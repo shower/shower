@@ -29,8 +29,8 @@
 	src:local('PT Sans Narrow Bold'), url(../fonts/PTSans.Narrow.Bold.ttf) format('truetype'), url(../fonts/PTSans.Narrow.Bold.svg#webfontetWqyXVR) format('svg');
 	}
 
-/* DejaVu Sans Mono */
+/* Droid Sans Mono */
 @font-face {
 	font-family:'Droid Sans Mono';
-	src:local('Droid Sans Mono'), url(../fonts/DroidSansMono.ttf) format('truetype'), url(../fonts/DroidSansMono.svg#webfontTygDyJKg) format('svg');
+	src:local('Droid Sans Mono'), url('../fonts/DroidSansMono.ttf') format('truetype'), url('../fonts/DroidSansMono.svg#webfontVXUGvWaD') format('svg');
 	}
