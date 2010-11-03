@@ -237,11 +237,3 @@ A {
 			text-align:center;
 			font-size:60px;
 			}
-
-/* Frame
----------------------------------------- */
-.slide.frame {
-	}
-	.slide.frame IFRAME {
-		display:none;
-		}
