@@ -165,7 +165,7 @@ A {
 		text-align:right;
 		}
 	.slide ARTICLE UL LI:before {
-		margin-left:-2.6em;
+		margin-left:-2.58em;
 		line-height:1;
 		font-size:1.6em;
 		content:'\2022';
@@ -190,7 +190,7 @@ A {
 		}
 	.slide ARTICLE PRE CODE:before {
 		position:absolute;
-		margin:0 0 0 -2.7em;
+		margin:0 0 0 -2.8em;
 		width:2em;
 		color:#BBB;
 		text-align:right;
