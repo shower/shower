@@ -3,19 +3,12 @@ var url = document.location,
 	slides = [], backhash = {},
 	linkScreen = document.querySelector('link[title=screen]'),
 	linkProjection = document.querySelector('link[title=projection]'),
-	iframes = window.frames,
 	fullscreen = false;
 
 for(var i = 0, iLength = domSlides.length; i < iLength; i++) {
 	var id = domSlides[i].id;
 	slides[i] = '#' + id;
 	backhash['#' + id] = i;
-}
-
-for( var j = 0, jLength = iframes.length; j < jLength; j++ ) {
-	iframes[j].onfocus = function() {
-		window.top.focus();
-	}
 }
 
 function enterFull() {
