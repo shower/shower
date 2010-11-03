@@ -16,10 +16,18 @@ function enterFull() {
 	updateView();
 }
 
-function exitFull(e) {
-	if(e.which == 27) {
-		fullscreen = false;
-		updateView();
+function exitFull() {
+	fullscreen = false;
+	updateView();
+}
+
+function toggleFull() {
+	if(	window.fullScreen || // Firefox
+		document.webkitFullScreen || // Webkit
+		screen.width == window.outerWidth && screen.height == window.outerHeight ) {
+		enterFull();
+	} else {
+		exitFull();
 	}
 }
 
@@ -56,6 +64,12 @@ function updateView() {
 	if(fullscreen && !backhash[url.hash]) url.hash = slides[0];
 }
 
-document.addEventListener('keyup', turnSlide, false);
 domSlides[0].addEventListener('click', enterFull, false);
-document.addEventListener('keyup', exitFull, false);
+
+window.addEventListener('DOMContentLoaded', toggleFull, false);
+window.addEventListener('resize', toggleFull, false);
+
+document.addEventListener('keyup', turnSlide, false);
+document.addEventListener('keyup', function(e) {
+	if(e.which == 27) exitFull();
+}, false);
