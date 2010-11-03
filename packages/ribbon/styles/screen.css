@@ -5,7 +5,7 @@ BODY {
 	background:#DDD;
 	color:#000;
 	counter-reset:paging;
-	font:15px 'PT Sans', sans-serif;
+	font:15px 'Helvetica Neue', Helvetica, Arial, sans-serif;;
 	}
 A {
 	text-decoration:none;
