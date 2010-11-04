@@ -237,6 +237,9 @@ A {
 	background:#000;
 	content:'';
 	}
+.slide.cover:after {
+	display:none;
+	}
 
 /* Back
 ---------------------------------------- */
