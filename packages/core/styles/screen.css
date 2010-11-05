@@ -111,6 +111,15 @@ A {
 .slide ARTICLE EM {
 	font-style:italic;
 	}
+.slide ARTICLE KBD,
+.slide ARTICLE CODE {
+	padding:1px 4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	border-radius:4px;
+	background:#EEE;
+	font-family:Consolas, 'Droid Sans Mono', monospace;
+	}
 
 /* Quote */
 .slide ARTICLE BLOCKQUOTE {
@@ -165,8 +174,9 @@ A {
 	}
 	.slide ARTICLE PRE CODE {
 		display:block;
+		padding:0;
+		background:none;
 		white-space:pre;
-		font-family:Consolas, 'Droid Sans Mono', monospace;
 		}
 	.slide ARTICLE PRE CODE:before {
 		position:absolute;
