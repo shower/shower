@@ -97,6 +97,12 @@ A {
 	border-bottom:0.07em solid;
 	color:#0174A7;
 	}
+.slide ARTICLE A[target=_blank]:after {
+	position:absolute;
+	margin:0.1em 0 0 0.3em;
+	font-family:'Target Blank';
+	content:'\005E';
+	}
 .slide ARTICLE B,
 .slide ARTICLE STRONG {
 	font-weight:bold;
@@ -242,4 +248,7 @@ A {
 			padding:30px 0;
 			text-align:center;
 			font-size:60px;
+			}
+		.slide.shout ARTICLE A:after {
+			content:'';
 			}
