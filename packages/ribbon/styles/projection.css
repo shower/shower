@@ -117,6 +117,12 @@ A {
 	border-bottom:0.1em solid;
 	color:#0174A7;
 	}
+.slide ARTICLE A[target=_blank]:after {
+	position:absolute;
+	margin:0.1em 0 0 0.3em;
+	font-family:'Target Blank';
+	content:'\005E';
+	}
 .slide ARTICLE B,
 .slide ARTICLE STRONG {
 	font-weight:bold;
@@ -286,6 +292,9 @@ A {
 		-ms-transition:all 0.8s ease-out;
 		-o-transform:scale(0.1) translate(0, 2em);
 		-o-transition:all 0.8s ease-out;
+		}
+	.slide.shout ARTICLE A:after {
+		content:'';
 		}
 	.slide.shout:target ARTICLE H2 {
 		opacity:1;
