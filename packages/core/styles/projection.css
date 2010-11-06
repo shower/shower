@@ -117,6 +117,9 @@ A {
 	border-bottom:0.1em solid;
 	color:#0174A7;
 	}
+.slide ARTICLE A[target=_blank] {
+	margin-right:0.9em;
+	}
 .slide ARTICLE A[target=_blank]:after {
 	position:absolute;
 	margin:0.1em 0 0 0.3em;
@@ -292,6 +295,9 @@ A {
 		-ms-transition:all 0.8s ease-out;
 		-o-transform:scale(0.1) translate(0, 2em);
 		-o-transition:all 0.8s ease-out;
+		}
+	.slide.shout ARTICLE A {
+		margin:0;
 		}
 	.slide.shout ARTICLE A:after {
 		content:'';
