@@ -97,9 +97,12 @@ A {
 	border-bottom:0.07em solid;
 	color:#0174A7;
 	}
+.slide ARTICLE A[target=_blank] {
+	margin-right:0.9em;
+	}
 .slide ARTICLE A[target=_blank]:after {
 	position:absolute;
-	margin:0.1em 0 0 0.3em;
+	margin-left:0.3em;
 	font-family:'Target Blank';
 	content:'\005E';
 	}
@@ -229,14 +232,12 @@ A {
 .slide.back {
 	}
 	.slide.back ARTICLE {
-		padding:0;
+		position:absolute;
+		top:0;
+		right:;
+		bottom:0;
+		left:0;
 		}
-		.slide.back ARTICLE H1,
-		.slide.back ARTICLE H2 {
-			position:absolute;
-			top:30px;
-			left:60px;
-			}
 	.slide.back ARTICLE:after {
 		position:absolute;
 		bottom:15px;
@@ -258,6 +259,9 @@ A {
 			padding:30px 0;
 			text-align:center;
 			font-size:60px;
+			}
+		.slide.shout ARTICLE A {
+			margin:0;
 			}
 		.slide.shout ARTICLE A:after {
 			content:'';
