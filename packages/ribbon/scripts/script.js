@@ -14,7 +14,7 @@
 	}
 
 	function toggleFull(force) {
-		fullscreen = (force != null) ? !!force : (
+		fullscreen = (typeof force == 'boolean') ? force : (
 			window.fullScreen || // Firefox
 			document.webkitFullScreen || // Webkit
 			screen.width == window.outerWidth && screen.height == window.outerHeight
