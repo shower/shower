@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<title>Shower</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="styles/reset.css">
+	<style>
+		BODY {
+			overflow:hidden;
+			padding:40px 50px;
+			background:#666;
+			color:#FFF;
+			font:15px 'Helvetica Neue', Helvetica, Arial, sans-serif;;
+			}
+		UL {
+			overflow:hidden;
+			}
+			UL LI {
+				float:left;
+				padding:8px 10px 3px;
+				-webkit-border-radius:5px 5px 0 0;
+				-moz-border-radius:5px 5px 0 0;
+				border-radius:5px 5px 0 0;
+				cursor:pointer;
+				}
+			UL LI:target {
+				background:#000;
+				}
+		IFRAME {
+			width:640px;
+			height:480px;
+			border:10px solid #000;
+			border-radius:0 10px 10px 10px;
+			}
+	</style>
+	<script>
+		function update() {
+			var url = document.location.hash.substr(1).split('x'),
+				frame = document.querySelector('iframe');
+			if(url.length == 2) {
+				frame.style.width = url[0] + 'px';
+				frame.style.height = url[1] + 'px';
+			}
+		}
+		function init() {
+			var links = document.querySelectorAll('ul li');
+			for(var i = 0, linksLength = links.length; i < linksLength; i++) {
+				links[i].onclick = function() {
+					document.location.hash = this.id;
+					update();
+				}
+			}
+			update();
+		}
+		window.onload = init;
+	</script>
+</head>
+<body>
+	<ul>
+		<li id="640x480">640 × 480</li>
+		<li id="800x600">800 × 600</li>
+		<li id="1024x768">1024 × 768</li>
+		<li id="1280x1024">1280 × 1024</li>
+	</ul>
+	<iframe src="index.htm" frameborder="0"></iframe>
+</body>
+</html>
