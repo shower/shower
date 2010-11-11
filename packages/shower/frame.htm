@@ -35,11 +35,14 @@
 	</style>
 	<script>
 		function update() {
-			var url = document.location.hash.substr(1).split('x'),
+			var url = document.location,
+				hash = url.hash.substr(1).split('x');
 				frame = document.querySelector('iframe');
-			if(url.length == 2) {
-				frame.style.width = url[0] + 'px';
-				frame.style.height = url[1] + 'px';
+			if(hash.length == 2) {
+				frame.style.width = hash[0] + 'px';
+				frame.style.height = hash[1] + 'px';
+			} else {
+				url.hash = '640x480';
 			}
 		}
 		function init() {
