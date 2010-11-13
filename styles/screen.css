@@ -216,6 +216,7 @@ A {
 /* Cover
 ---------------------------------------- */
 .slide.cover {
+	min-height:34em;
 	}
 .slide.cover:before {
 	position:absolute;
