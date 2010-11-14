@@ -18,15 +18,15 @@ A {
 /* Shower
 ---------------------------------------- */
 .shower {
-	margin:3em auto;
-	width:55em;
+	margin:3em 0 0;
 	}
 
 /* Slide
 ---------------------------------------- */
 .slide {
 	position:relative;
-	margin:0 0 3em;
+	margin:0 auto 3em;
+	width:55em;
 	background:#FFF;
 	border:0.8em solid #CCC;
 	-webkit-border-radius:0.8em;
