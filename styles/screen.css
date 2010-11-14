@@ -5,15 +5,14 @@ BODY {
 	background:#DDD;
 	color:#000;
 	counter-reset:paging;
-	font-family:'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font:15px 'PT Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	}
 A {
 	text-decoration:none;
 	}
 
-@media ( max-width:1024px ) { BODY { font-size:15px; } }
-@media ( max-width:800px  ) { BODY { font-size:12px; } }
-@media ( max-width:640px  ) { BODY { font-size:10px; } }
+@media ( max-width:960px  ) { BODY { font-size:12px; } }
+@media ( max-width:760px  ) { BODY { font-size:10px; } }
 
 /* Shower
 ---------------------------------------- */
