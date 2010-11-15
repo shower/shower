@@ -1,10 +1,11 @@
-(function () {
+(function() {
 	var url = document.location,
 		linkScreen = document.querySelector('link[title=screen]'),
 		linkProjection = document.querySelector('link[title=projection]'),
 		shower = document.querySelector('div.shower'),
 		slides = document.querySelectorAll('section.slide'),
 		slideList = [], hashList = {},
+		progress = document.querySelector('div.progress div'),
 		fullscreen = false;
 
 	for(var i = 0, slidesLength = slides.length; i < slidesLength; i++) {
@@ -20,6 +21,7 @@
 			screen.width == window.outerWidth && screen.height == window.outerHeight
 		);
 		updateView();
+		updateProgress();
 	}
 
 	function turnSlide(e) {
@@ -43,8 +45,6 @@
 				case 32 : // Space
 					current += e.shiftKey ? -1 : 1;
 					break;
-				default:
-					return;
 			}
 			target = slideList[current];
 			e.preventDefault();
@@ -52,12 +52,17 @@
 			target = slideList[+e || 0];
 		}
 		if(target) url.hash = target;
+		updateProgress();
 	}
 
 	function updateView() {
 		linkScreen.disabled = fullscreen;
 		linkProjection.disabled = !fullscreen;
 		if(!hashList[url.hash]) turnSlide(0);
+	}
+	
+	function updateProgress() {
+		progress.style.width = (100/(slideList.length-1) * hashList[url.hash]).toFixed(2) + '%';
 	}
 
 	slides[0].addEventListener('click', function(){
