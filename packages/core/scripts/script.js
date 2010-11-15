@@ -62,6 +62,7 @@
 	}
 	
 	function updateProgress() {
+		if(!progress) return;
 		progress.style.width = (100/(slideList.length-1) * hashList[url.hash]).toFixed(2) + '%';
 	}
 
