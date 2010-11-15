@@ -41,7 +41,7 @@ A {
 	top:-1em;
 	bottom:-1em;
 	right:-1em;
-	z-index:10;
+	z-index:3;
 	width:1.5em;
 	border:1em solid #000;
 	border-left-width:0;
@@ -240,7 +240,6 @@ A {
 	position:absolute;
 	top:0;
 	right:3em;
-	z-index:2;
 	width:1em;
 	height:100%;
 	background:#000;
@@ -256,13 +255,13 @@ A {
 	background:#000;
 	}
 	.slide.back ARTICLE {
-		z-index:2;
+		z-index:3;
 		}
 	.slide.back IMG {
 		position:absolute;
 		top:0;
 		left:50%;
-		z-index:1;
+		z-index:2;
 		height:100%;
 		-webkit-transform-origin:50% 0;
 		-webkit-transform:translate(-50%, 0);
@@ -314,3 +313,24 @@ A {
 .slide.shout:after {
 	content:'';
 	}
+
+/* Progress
+---------------------------------------- */
+.progress {
+	position:absolute;
+	right:3em;
+	bottom:0;
+	left:3em;
+	z-index:1;
+	float:left;
+	height:0.2em;
+	background:#CCC;
+	}
+	.progress DIV {
+		width:0;
+		height:100%;
+		background:#0174A7;
+		-webkit-transition:width 0.2s linear;
+		-moz-transition:width 0.2s linear;
+		-o-transition:width 0.2s linear;
+		}
