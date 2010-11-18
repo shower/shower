@@ -236,6 +236,9 @@ A {
 
 /* Cover
 ---------------------------------------- */
+.slide.cover {
+	z-index:3;
+	}
 .slide.cover:before {
 	position:absolute;
 	top:0;
@@ -319,17 +322,21 @@ A {
 .progress {
 	position:absolute;
 	right:3em;
-	bottom:0;
+	bottom:1em;
 	left:3em;
-	z-index:1;
-	float:left;
+	z-index:2;
 	height:0.2em;
-	background:#EEE;
+	border:0.03em solid rgba(255, 255, 255, 0.4);
+	border-radius:0.2em;
 	}
 	.progress DIV {
+		position:absolute;
+		top:0;
+		left:0;
 		width:0;
 		height:100%;
-		background:#0174A7;
+		border-radius:0.2em;
+		background:rgba(128, 128, 128, 0.5);
 		-webkit-transition:width 0.2s linear;
 		-moz-transition:width 0.2s linear;
 		-o-transition:width 0.2s linear;
