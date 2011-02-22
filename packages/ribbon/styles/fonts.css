@@ -1,32 +1,32 @@
 /* PTSans */
 @font-face {
 	font-family:'PT Sans';
-	src:local('PT Sans'), url(../fonts/PTSans.ttf) format('truetype'), url(../fonts/PTSans.svg#PTSans-Regular) format('svg');
+	src:local('PT Sans'), url(../fonts/PTSans.woff) format('woff'), url(../fonts/PTSans.ttf) format('truetype'), url(../fonts/PTSans.svg#PTSans-Regular) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans';
 	font-weight:bold;
-	src:local('PT Sans Bold'), url(../fonts/PTSans.Bold.ttf) format('truetype'), url(../fonts/PTSans.Bold.svg#PTSans-Bold) format('svg');
+	src:local('PT Sans Bold'), url(../fonts/PTSans.Bold.woff) format('woff'), url(../fonts/PTSans.Bold.ttf) format('truetype'), url(../fonts/PTSans.Bold.svg#PTSans-Bold) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans';
 	font-style:italic;
-	src:local('PT Sans Italic'), url(../fonts/PTSans.Italic.ttf) format('truetype'), url(../fonts/PTSans.Italic.svg#PTSans-Italic) format('svg');
+	src:local('PT Sans Italic'), url(../fonts/PTSans.Italic.ttf) format('woff'), url(../fonts/PTSans.Italic.ttf) format('truetype'), url(../fonts/PTSans.Italic.svg#PTSans-Italic) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans';
 	font-weight:bold;
 	font-style:italic;
-	src:local('PT Sans Bold Italic'), url(../fonts/PTSans.Bold.Italic.ttf) format('truetype'), url(../fonts/PTSans.Bold.Italic.svg#PTSans-BoldItalic) format('svg');
+	src:local('PT Sans Bold Italic'), url(../fonts/PTSans.Bold.Italic.woff) format('woff'), url(../fonts/PTSans.Bold.Italic.ttf) format('truetype'), url(../fonts/PTSans.Bold.Italic.svg#PTSans-BoldItalic) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans Narrow';
-	src:local('PT Sans Narrow'), url(../fonts/PTSans.Narrow.ttf) format('truetype'), url(../fonts/PTSans.Narrow.svg#PTSans-Narrow) format('svg');
+	src:local('PT Sans Narrow'), url(../fonts/PTSans.Narrow.woff) format('woff'), url(../fonts/PTSans.Narrow.ttf) format('truetype'), url(../fonts/PTSans.Narrow.svg#PTSans-Narrow) format('svg');
 	}
 @font-face {
 	font-family:'PT Sans Narrow';
 	font-weight:bold;
-	src:local('PT Sans Narrow Bold'), url(../fonts/PTSans.Narrow.Bold.ttf) format('truetype'), url(../fonts/PTSans.Narrow.Bold.svg#PTSans-NarrowBold) format('svg');
+	src:local('PT Sans Narrow Bold'), url(../fonts/PTSans.Narrow.Bold.woff) format('woff'), url(../fonts/PTSans.Narrow.Bold.ttf) format('truetype'), url(../fonts/PTSans.Narrow.Bold.svg#PTSans-NarrowBold) format('svg');
 	}
 
 /* Droid Sans Mono */
