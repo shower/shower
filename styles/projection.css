@@ -15,7 +15,6 @@ A {
 /* Basic Font-Size
 ---------------------------------------- */
 
-@media ( min-height:240px  ) { BODY { font-size:15px } }
 @media ( min-height:480px  ) { BODY { font-size:30px } }
 @media ( min-height:600px  ) { BODY { font-size:38px } }
 @media ( min-height:768px  ) { BODY { font-size:48px } }
