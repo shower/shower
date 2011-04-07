@@ -334,6 +334,8 @@ A {
 	z-index:2;
 	height:0.2em;
 	border:0.03em solid rgba(255, 255, 255, 0.4);
+	-webkit-border-radius:0.2em;
+	-moz-border-radius:0.2em;
 	border-radius:0.2em;
 	}
 	.progress DIV {
@@ -342,6 +344,8 @@ A {
 		left:0;
 		width:0;
 		height:100%;
+		-webkit-border-radius:0.2em;
+		-moz-border-radius:0.2em;
 		border-radius:0.2em;
 		background:rgba(177, 177, 177, 0.5);
 		-webkit-transition:width 0.2s linear;
