@@ -42,6 +42,12 @@
 				case 39 : // Right
 					current++;
 					break;
+				case 36 : // Home
+					current = 0;
+					break;
+				case 35 : // End
+					current = slideList.length-1;
+					break;
 				case 32 : // Space
 					current += e.shiftKey ? -1 : 1;
 					break;
