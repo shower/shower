@@ -139,7 +139,7 @@ A {
 	-webkit-border-radius:0.3em;
 	-moz-border-radius:0.3em;
 	border-radius:0.3em;
-	background:#EEE;
+	background:#FAFAA2;
 	font-family:Consolas, 'Droid Sans Mono', monospace;
 	}
 
@@ -353,3 +353,6 @@ A {
 		-o-transition:width 0.2s linear;
 		transition:width 0.2s linear;
 		}
+.progress-off:target ~ .progress {
+	display:none;
+	}
