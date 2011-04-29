@@ -1,9 +1,6 @@
 @import url(reset.css);
 @import url(fonts.css);
 
-/* Fix for +/~ selectors in webkit */
-@-webkit-keyframes bugfix { from { padding:0; } to { padding:0; } }
-
 BODY {
 	overflow:hidden;
 	background:#000;
@@ -340,7 +337,6 @@ A {
 	-webkit-border-radius:0.2em;
 	-moz-border-radius:0.2em;
 	border-radius:0.2em;
-	-webkit-animation:bugfix infinite 1s;
 	}
 	.progress DIV {
 		position:absolute;
@@ -358,5 +354,5 @@ A {
 		transition:width 0.2s linear;
 		}
 .progress-off:target ~ .progress {
-	visibility:hidden;
+	display:none;
 	}
