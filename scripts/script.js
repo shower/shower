@@ -64,6 +64,13 @@
 	function updateView() {
 		linkScreen.disabled = fullscreen;
 		linkProjection.disabled = !fullscreen;
+		if (fullscreen) {
+			linkScreen.setAttribute('disabled', 'disabled');
+			linkProjection.removeAttribute('disabled');
+		} else {
+			linkScreen.removeAttribute('disabled');
+			linkProjection.setAttribute('disabled', 'disabled');
+		}
 		if(!hashList[url.hash]) turnSlide(0);
 	}
 	
