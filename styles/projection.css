@@ -174,6 +174,20 @@ A {
 	counter-reset:list;
 	font-size:0.65em;
 	}
+	.slide ARTICLE UL UL,
+	.slide ARTICLE UL OL,
+	.slide ARTICLE OL OL,
+	.slide ARTICLE OL UL {
+		font-size:1em;
+		}
+	.slide ARTICLE UL UL,
+	.slide ARTICLE OL UL {
+		margin:0 0 0 1.5em;
+		}
+	.slide ARTICLE OL OL,
+	.slide ARTICLE UL OL {
+		margin:0 0 0 1.8em;
+		}
 	.slide ARTICLE OL LI:before,
 	.slide ARTICLE UL LI:before {
 		position:absolute;

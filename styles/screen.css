@@ -153,6 +153,14 @@ A {
 	margin:0 0 1em;
 	counter-reset:list;
 	}
+	.slide ARTICLE UL UL,
+	.slide ARTICLE OL UL {
+		margin:0 0 0 1.7em;
+		}
+	.slide ARTICLE OL OL,
+	.slide ARTICLE UL OL {
+		margin:0 0 0 1.8em;
+		}
 	.slide ARTICLE OL LI:before,
 	.slide ARTICLE UL LI:before {
 		position:absolute;
