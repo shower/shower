@@ -6,6 +6,8 @@
 * Press `→` to navigate
 * Press `Esc` to exit presentation mode
 
+If you want to test your presentation in different resolutions open [frame.htm](http://pepelsbey.github.com/shower/frame.htm) and switch between tabs.
+
 Follow [shower_me](http://twitter.com/shower_me/) on Twitter for updates.
 
 ## Supported Browsers
@@ -28,7 +30,6 @@ Desktop platforms:
 
 Mobile platforms:
 
-* Opera Mobile
-* Mobile Safari
+* Mobile Safari on iOS Devices
 
 Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey/shower/issues)
