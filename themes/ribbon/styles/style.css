@@ -1,0 +1,250 @@
+@import url(fonts.css);
+
+BODY {
+	font:25px/1.8 'PT Sans', sans-serif;
+	}
+
+/* Slide
+---------------------------------------- */
+.slide {
+	padding:80px 120px 0;
+	width:784px;
+	height:560px;
+	background:#FFF;
+	}
+	.slide:before {
+		position:absolute;
+		top:0;
+		right:120px;
+		width:40px;
+		height:120px;
+		background:url(../images/ribbon.svg) no-repeat;
+		content:'';
+		}
+	.slide:after {
+		position:absolute;
+		bottom:85px;
+		left:120px;
+		color:#BBB;
+		counter-increment:single-paging;
+		content:counter(single-paging, decimal-leading-zero);
+		line-height:1;
+		}
+
+/* Header */
+.slide HEADER {
+	margin:0 0 58px;
+	color:#666;
+	font:bold 40px/1.13 'PT Sans Narrow', sans-serif;
+	}
+
+/* Elements */
+.slide P {
+	margin:0 0 45px;
+	}
+.slide A {
+	border-bottom:0.1em solid;
+	color:#0174A7;
+	text-decoration:none;
+	}
+.slide A[target=_blank] {
+	margin-right:22px;
+	}
+.slide A[target=_blank]:after {
+	position:absolute;
+	margin-left:7px;
+	font-family:'Target Blank';
+	content:'\005E';
+	}
+.slide B,
+.slide STRONG {
+	font-weight:bold;
+	}
+.slide I,
+.slide EM {
+	font-style:italic;
+	}
+.slide KBD,
+.slide CODE {
+	padding:3px 8px;
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	border-radius:8px;
+	background:#FAFAA2;
+	-webkit-tab-size:4;
+	-moz-tab-size:4;
+	-o-tab-size:4;
+	tab-size:4;
+	font-family:Consolas, 'Droid Sans Mono', monospace;
+	}
+
+/* Quote */
+.slide BLOCKQUOTE {
+	font-style:italic;
+	}
+.slide BLOCKQUOTE:before {
+	position:absolute;
+	margin:-15px 0 0 -80px;
+	color:#CCC;
+	font:200px/1 'PT Sans', sans-serif;
+	content:'\201C'; /* ldquo */
+	}
+.slide BLOCKQUOTE:after {
+	margin:-45px 0 45px;
+	display:block;
+	color:#444;
+	font-weight:bold;
+	content:attr(cite);
+	}
+
+/* Lists */
+.slide OL,
+.slide UL {
+	margin:0 0 45px;
+	counter-reset:list;
+	}
+	.slide UL UL,
+	.slide OL UL,
+	.slide OL OL,
+	.slide UL OL {
+		margin:0 0 0 38px;
+		}
+	.slide OL LI:before,
+	.slide UL LI:before {
+		position:absolute;
+		margin-left:-120px;
+		width:100px;
+		color:#BBB;
+		text-align:right;
+		}
+	.slide UL LI:before {
+		content:'\2022'; /* bull */
+		line-height:1.1;
+		font-size:40px;
+		}
+	.slide OL LI:before {
+		counter-increment:list;
+		content:counter(list)'.';
+		}
+
+/* Code */
+.slide PRE {
+	margin:0 0 45px;
+	counter-reset:code;
+	white-space:normal;
+	}
+	.slide PRE CODE {
+		display:block;
+		padding:0;
+		background:none;
+		white-space:pre;
+		}
+	.slide PRE CODE:before {
+		position:absolute;
+		margin:0 0 0 -120px;
+		width:110px;
+		color:#BBB;
+		text-align:right;
+		counter-increment:code;
+		content:counter(code, decimal-leading-zero)'.';
+		}
+	.slide PRE EM,
+	.slide PRE STRONG {
+		padding:3px 8px;
+		-webkit-border-radius:8px;
+		-moz-border-radius:8px;
+		border-radius:8px;
+		}
+	.slide PRE EM {
+		background:#FAFAA2;
+		color:#000;
+		font-style:normal;
+		}
+	.slide PRE STRONG {
+		background:#C00;
+		color:#FFF;
+		font-weight:normal;
+		}
+
+/* Background
+---------------------------------------- */
+.slide.bg {
+	background:transparent;
+	}
+	.slide.bg:before {
+		display:none;
+		}
+	.slide.bg:after {
+		content:'';
+		}
+	.slide.bg IMG {
+		position:absolute;
+		top:0;
+		left:0;
+		z-index:-1;
+		}
+
+/* Shout
+---------------------------------------- */
+.slide.shout {
+	z-index:1;
+	}
+	.slide.shout:before {
+		display:none;
+		}
+	.slide.shout:after {
+		content:'';
+		}
+	.slide.shout H2 {
+		position:absolute;
+		top:50%;
+		left:0;
+		margin:-70px 0 0;
+		width:100%;
+		text-align:center;
+		line-height:1;
+		font-size:150px;
+		}
+		.slide.shout H2 A {
+			margin:0;
+			}
+			.slide.shout H2 A:after {
+				content:'';
+				}
+
+/* Multiple
+---------------------------------------- */
+.multiple .slide:after {
+	display:none;
+	}
+
+/* Single
+---------------------------------------- */
+.single {
+	counter-reset:single-paging;
+	}
+	.single .slide {
+		overflow:hidden;
+		}
+	.single .progress {
+		position:absolute;
+		right:118px;
+		bottom:49px;
+		left:118px;
+		border-radius:7px;
+		border:2px solid rgba(255, 255, 255, 0.2);
+		}
+		.single .progress DIV {
+			width:0;
+			height:10px;
+			border-radius:5px;
+			background:rgba(177, 177, 177, 0.4);
+			-webkit-transition:width 0.2s linear;
+			-moz-transition:width 0.2s linear;
+			-ms-transition:width 0.2s linear;
+			-o-transition:width 0.2s linear;
+			transition:width 0.2s linear;
+			}
+	.single .progress-off {
+		z-index:1;
+		}

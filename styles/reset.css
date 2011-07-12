@@ -7,36 +7,36 @@ B, U, I, CENTER,
 DL, DT, DD, OL, UL, LI,
 FIELDSET, FORM, LABEL, LEGEND,
 TABLE, CAPTION, TBODY, TFOOT, THEAD, TR, TH, TD,
-ARTICLE, ASIDE, CANVAS, DETAILS, EMBED, 
-FIGURE, FIGCAPTION, FOOTER, HEADER, HGROUP, 
+ARTICLE, ASIDE, CANVAS, DETAILS, EMBED,
+FIGURE, FIGCAPTION, FOOTER, HEADER, HGROUP,
 MENU, NAV, OUTPUT, RUBY, SECTION, SUMMARY,
 TIME, MARK, AUDIO, VIDEO {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	font:inherit;
+	vertical-align:baseline;
 	}
 ARTICLE, ASIDE, DETAILS, FIGCAPTION, FIGURE,
 FOOTER, HEADER, HGROUP, MENU, NAV, SECTION {
-	display: block;
+	display:block;
 	}
 BODY {
-	line-height: 1;
+	line-height:1;
 	}
 OL, UL {
-	list-style: none;
+	list-style:none;
 	}
 BLOCKQUOTE, Q {
-	quotes: none;
+	quotes:none;
 	}
 BLOCKQUOTE:before, BLOCKQUOTE:after,
 Q:before, Q:after {
-	content: '';
-	content: none;
+	content:'';
+	content:none;
 	}
 TABLE {
-	border-collapse: collapse;
-	border-spacing: 0;
+	border-collapse:collapse;
+	border-spacing:0;
 	}
