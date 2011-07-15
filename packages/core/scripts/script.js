@@ -1,8 +1,8 @@
 (function() {
 
-	var url = document.location,
+	var url = window.location,
 		body = document.body;
-		slides = document.querySelectorAll('section.slide'),
+		slides = document.querySelectorAll('div.slide'),
 		slideList = [], hashList = {},
 		progress = document.querySelector('div.progress div'),
 		fullscreen = false;
@@ -40,11 +40,15 @@
 				case 33 : // PgUp
 				case 38 : // Up
 				case 37 : // Left
+				case 72 : // h
+				case 75 : // k
 					current--;
 					break;
 				case 34 : // PgDown
 				case 40 : // Down
 				case 39 : // Right
+				case 76 : // l
+				case 74 : // j
 					current++;
 					break;
 				case 36 : // Home
@@ -67,7 +71,7 @@
 	}
 
 	function enterSingle() {
-		body.className = 'single';
+		body.className = 'full';
 		resizeBody();
 		updateProgress();
 		window.addEventListener('resize', resizeBody, false);
@@ -76,7 +80,7 @@
 	}
 
 	function exitSingle() {
-		body.className = 'multiple';
+		body.className = 'list';
 		resizeBody(true);
 		window.removeEventListener('resize', resizeBody, false);
 		window.removeEventListener('keyup', turnSlide, false);
@@ -90,6 +94,7 @@
 	}
 
 	function checkHash() {
+		// if(!window.location.search.length) history.pushState(null, null, window.location.href + '?list');
 		if(typeof hashList[url.hash] != 'undefined') {
 			enterSingle();
 		}
