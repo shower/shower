@@ -6,6 +6,12 @@
 * Press arrow keys to navigate
 * Press `Esc` to exit presentation mode
 
+Or use just a keyboard to navigate:
+
+* Press right arrow key to select first slide
+* Press Enter to enter presentation mode
+* Press `Esc` to exit presentation mode
+
 Follow [shower_me](http://twitter.com/shower_me/) on Twitter for updates.
 
 ## Supported Browsers
@@ -17,13 +23,13 @@ Desktop platforms:
 * Opera
 * Safari
 
-Presentation is backwards compatible, but the best experience is available in the latest stable versions of mentioned browsers.
+Only latest stable versions of mentioned browsers are supported.
 
 ## Planned Support
 
 Desktop platforms:
 
-* IE9-10
+* IE10
 
 Mobile platforms:
 
