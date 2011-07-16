@@ -62,7 +62,7 @@
 				if(prevent) e.preventDefault();
 			}
 			if(e.type == 'click') {
-				current = slideList.indexOf(e.target.parentNode.id);
+				current = slideList.indexOf(e.target.parentNode.parentNode.id);
 			}
 		} else {
 			current = (current+1) ? current : 0;
