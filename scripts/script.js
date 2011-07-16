@@ -79,7 +79,7 @@
 		updateProgress();
 		if(!isFull()) history.pushState(null, null, url.pathname + '?full' + url.hash);
 		window.addEventListener('resize', resizeFull, false);
-		document.addEventListener('keyup', exitFullEsc, false);
+		document.addEventListener('keydown', exitFullEsc, false);
 	}
 
 	function exitFull() {
@@ -89,7 +89,7 @@
 		history.pushState(null, null, url.pathname.replace('?full', ''));		
 		url.hash = hash;
 		window.removeEventListener('resize', resizeFull, false);
-		document.removeEventListener('keyup', exitFullEsc, false);
+		document.removeEventListener('keydown', exitFullEsc, false);
 	}
 
 	function exitFullEsc(e) {
