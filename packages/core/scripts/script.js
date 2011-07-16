@@ -1,29 +1,23 @@
 (function() {
 
 	var url = window.location,
-		body = document.body;
+		body = document.body,
 		slides = document.querySelectorAll('div.slide'),
-		slideList = [], hashList = {},
 		progress = document.querySelector('div.progress div'),
-		fullscreen = false;
+		slideList = [];
 
 	for(var i = 0, slidesLength = slides.length; i < slidesLength; i++) {
-		var id = slides[i].id;
-		slideList[i] = '#' + id;
-		hashList['#' + id] = i;
-		slides[i].addEventListener('click', function(){
-			enterSingle();
-			turnSlide(hashList['#' + this.id]);
-		}, false);
+		slides[i].addEventListener('click', enterFull, false);
+		slideList[i] = slides[i].id;
 	}
-
-	function resizeBody(p) {
-		if(typeof p == 'boolean' && p) {
-			var transform = 'none';
-		} else {
+	
+	function resizeFull(p) {
+		if(p) {
 			var sx = body.clientWidth / window.innerWidth,
 				sy = body.clientHeight / window.innerHeight,
 				transform = 'scale(' + (1/Math.max(sx, sy)) + ')';
+		} else {
+			var transform = 'none';
 		}
 		body.style.MozTransform = transform;
 		body.style.WebkitTransform = transform;
@@ -33,78 +27,75 @@
 	}
 
 	function turnSlide(e) {
-		var current = hashList[url.hash],
-			target;
-		if(e.type == 'keyup') { // Key-Based
-			switch(e.which) {
-				case 33 : // PgUp
-				case 38 : // Up
-				case 37 : // Left
-				case 72 : // h
-				case 75 : // k
-					current--;
-					break;
-				case 34 : // PgDown
-				case 40 : // Down
-				case 39 : // Right
-				case 76 : // l
-				case 74 : // j
-					current++;
-					break;
-				case 36 : // Home
-					current = 0;
-					break;
-				case 35 : // End
-					current = slideList.length-1;
-					break;
-				case 32 : // Space
-					current += e.shiftKey ? -1 : 1;
-					break;
+		var current = slideList.indexOf(url.hash.substr(1));
+		if(e) {
+			if(e.type == 'keydown') {
+				switch(e.which) {
+					case 33 : // PgUp
+					case 38 : // Up
+					case 37 : // Left
+					case 75 : // k
+						current--;
+						e.preventDefault();
+						break;
+					case 34 : // PgDown
+					case 40 : // Down
+					case 39 : // Right
+					case 74 : // j
+						current++;
+						e.preventDefault();
+						break;
+					case 36 : // Home
+						current = 0;
+						e.preventDefault();
+						break;
+					case 35 : // End
+						current = slideList.length-1;
+						e.preventDefault();
+						break;
+					case 32 : // Space
+						current += e.shiftKey ? -1 : 1;
+						e.preventDefault();
+						break;
+				}
 			}
-			e.preventDefault();
+			if(e.type == 'click') {
+				current = slideList.indexOf(e.target.parentNode.id);
+			}
 		} else {
-			current = e || 0;
+			current = (current+1) ? current : 0;
 		}
 		target = slideList[current];
 		if(target) url.hash = target;
-		updateProgress();
 	}
 
-	function enterSingle() {
+	function enterFull(e) {
 		body.className = 'full';
-		resizeBody();
-		updateProgress();
-		window.addEventListener('resize', resizeBody, false);
-		document.addEventListener('keyup', turnSlide, false);
-		document.addEventListener('keyup', exitSingleEsc, false);
+		resizeFull(1);
+		turnSlide(e);
+		if(!isFull()) history.pushState(null, null, url.pathname + '?full' + url.hash);
+		document.addEventListener('keyup', exitFullEsc, false);
 	}
 
-	function exitSingle() {
+	function exitFull() {
 		body.className = 'list';
-		resizeBody(true);
-		window.removeEventListener('resize', resizeBody, false);
-		window.removeEventListener('keyup', turnSlide, false);
-		document.removeEventListener('keyup', exitSingleEsc, false);
+		resizeFull(0);
+		history.pushState(null, null, url.href.replace('?full', ''));
+		document.removeEventListener('keyup', exitFullEsc, false);
 	}
-
-	function exitSingleEsc(e) {
+	
+	function exitFullEsc(e) {
 		if(e.which != 27) return;
-		exitSingle();
-		url.hash = '';
+		exitFull();
 	}
 
-	function checkHash() {
-		// if(!window.location.search.length) history.pushState(null, null, window.location.href + '?list');
-		if(typeof hashList[url.hash] != 'undefined') {
-			enterSingle();
-		}
+	function isFull() {
+		return url.search.substr(1) == 'full';
 	}
 
-	function updateProgress() {
-		if(!progress) return;
-		progress.style.width = (100/(slideList.length-1) * hashList[url.hash]).toFixed(2) + '%';
-	}
-
-	window.addEventListener('DOMContentLoaded', checkHash, false);
+	window.addEventListener('DOMContentLoaded', function() {
+		if(isFull()) enterFull();
+	}, false);
+	document.addEventListener('keydown', turnSlide, false);
 
 })();
