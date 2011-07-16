@@ -233,18 +233,20 @@ BODY {
 	margin:0 50px 80px 0;
 	width:512px;
 	height:320px;
-	box-shadow:0 0 50px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 50px #3C3D40;
 	border-radius:1px;
 	background:#FFF;
 	}
-.list .slide:hover,
-.list .slide:focus,
+.list .slide:hover {
+	box-shadow:
+		0 0 0 10px rgba(60, 61, 64, 0.6),
+		0 0 50px #3C3D40;
+	}
 .list .slide:target {
 	box-shadow:
 		0 0 0 1px #305F8D,
 		0 0 0 10px #3C7CBD,
-		0 0 50px rgba(0, 0, 0, 0.5);
-	outline:none;
+		0 0 50px #3C3D40;
 	}
 	.list .slide:after {
 		position:absolute;
