@@ -249,6 +249,7 @@ BODY {
 		height:320px;
 		box-shadow:0 0 50px #3C3D40;
 		border-radius:1px;
+		background:rgba(0, 0, 0, 0.3);
 		}
 	.list .slide:hover > DIV {
 		box-shadow:
