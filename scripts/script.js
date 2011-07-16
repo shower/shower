@@ -30,34 +30,36 @@
 		var current = slideList.indexOf(url.hash.substr(1));
 		if(e) {
 			if(e.type == 'keydown') {
+				var prevent = true;
 				switch(e.which) {
 					case 33 : // PgUp
 					case 38 : // Up
 					case 37 : // Left
 					case 75 : // k
 						current--;
-						e.preventDefault();
 						break;
 					case 34 : // PgDown
 					case 40 : // Down
 					case 39 : // Right
 					case 74 : // j
 						current++;
-						e.preventDefault();
 						break;
 					case 36 : // Home
 						current = 0;
-						e.preventDefault();
 						break;
 					case 35 : // End
 						current = slideList.length-1;
-						e.preventDefault();
 						break;
 					case 32 : // Space
 						current += e.shiftKey ? -1 : 1;
-						e.preventDefault();
 						break;
+					case 13 : // Enter
+						if(!current+1) enterFull();
+						break;
+					default:
+						prevent = false;
 				}
+				if(prevent) e.preventDefault();
 			}
 			if(e.type == 'click') {
 				current = slideList.indexOf(e.target.parentNode.id);
@@ -67,12 +69,14 @@
 		}
 		target = slideList[current];
 		if(target) url.hash = target;
+		updateProgress();
 	}
 
 	function enterFull(e) {
 		body.className = 'full';
 		resizeFull(true);
 		turnSlide(e);
+		updateProgress();
 		if(!isFull()) history.pushState(null, null, url.pathname + '?full' + url.hash);
 		window.addEventListener('resize', resizeFull, false);
 		document.addEventListener('keyup', exitFullEsc, false);
@@ -81,7 +85,9 @@
 	function exitFull() {
 		body.className = 'list';
 		resizeFull(false);
-		history.pushState(null, null, url.href.replace('?full', ''));
+		var hash = url.hash;
+		history.pushState(null, null, url.pathname.replace('?full', ''));		
+		url.hash = hash;
 		window.removeEventListener('resize', resizeFull, false);
 		document.removeEventListener('keyup', exitFullEsc, false);
 	}
@@ -93,6 +99,11 @@
 
 	function isFull() {
 		return url.search.substr(1) == 'full';
+	}
+
+	function updateProgress() {
+		if(!progress) return;
+		progress.style.width = (100/(slideList.length-1) * slideList.indexOf(url.hash.substr(1))).toFixed(2) + '%';
 	}
 
 	window.addEventListener('DOMContentLoaded', function() {
