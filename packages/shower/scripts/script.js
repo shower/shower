@@ -10,14 +10,14 @@
 		slides[i].addEventListener('click', enterFull, false);
 		slideList[i] = slides[i].id;
 	}
-	
+
 	function resizeFull(p) {
-		if(p) {
+		if(typeof p == 'boolean' && !p) {
+			var transform = 'none';
+		} else {
 			var sx = body.clientWidth / window.innerWidth,
 				sy = body.clientHeight / window.innerHeight,
 				transform = 'scale(' + (1/Math.max(sx, sy)) + ')';
-		} else {
-			var transform = 'none';
 		}
 		body.style.MozTransform = transform;
 		body.style.WebkitTransform = transform;
@@ -71,19 +71,21 @@
 
 	function enterFull(e) {
 		body.className = 'full';
-		resizeFull(1);
+		resizeFull(true);
 		turnSlide(e);
 		if(!isFull()) history.pushState(null, null, url.pathname + '?full' + url.hash);
+		window.addEventListener('resize', resizeFull, false);
 		document.addEventListener('keyup', exitFullEsc, false);
 	}
 
 	function exitFull() {
 		body.className = 'list';
-		resizeFull(0);
+		resizeFull(false);
 		history.pushState(null, null, url.href.replace('?full', ''));
+		window.removeEventListener('resize', resizeFull, false);
 		document.removeEventListener('keyup', exitFullEsc, false);
 	}
-	
+
 	function exitFullEsc(e) {
 		if(e.which != 27) return;
 		exitFull();
