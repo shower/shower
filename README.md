@@ -14,6 +14,8 @@ Or use just a keyboard to navigate:
 
 Follow [shower_me](http://twitter.com/shower_me/) on Twitter for updates.
 
+Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [License](https://github.com/pepelsbey/shower/wiki/License) wiki page.
+
 ## Supported Browsers
 
 Desktop platforms:
