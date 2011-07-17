@@ -27,7 +27,7 @@
 	}
 
 	function turnSlide(e) {
-		var current = slideList.indexOf(url.hash.substr(1));
+		var current = slideList.indexOf(url.hash.substr(1)), target;
 		if(e) {
 			if(e.type == 'keydown') {
 				var prevent = true;
