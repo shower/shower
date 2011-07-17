@@ -299,10 +299,12 @@ BODY {
 		}
 	.full .slide {
 		position:absolute;
-		margin-left:200%;
+		top:-100%;
+		left:-100%;
 		}
 	.full .slide:target {
-		margin-left:0;
+		top:0;
+		left:0;
 		}
 		.full .slide:after {
 			position:absolute;
