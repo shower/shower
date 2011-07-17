@@ -299,8 +299,8 @@ BODY {
 		}
 	.full .slide {
 		position:absolute;
-		top:-100%;
-		left:-100%;
+		top:-150%;
+		left:-150%;
 		}
 	.full .slide:target {
 		top:0;
