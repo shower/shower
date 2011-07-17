@@ -148,19 +148,18 @@ BODY {
 		counter-increment:code;
 		content:counter(code, decimal-leading-zero)'.';
 		}
-	.slide PRE EM,
-	.slide PRE STRONG {
+	.slide PRE MARK {
 		padding:3px 8px;
 		-webkit-border-radius:8px;
 		-moz-border-radius:8px;
 		border-radius:8px;
 		}
-	.slide PRE EM {
+	.slide PRE MARK {
 		background:#FAFAA2;
 		color:#000;
 		font-style:normal;
 		}
-	.slide PRE STRONG {
+	.slide PRE MARK.important {
 		background:#C00;
 		color:#FFF;
 		font-weight:normal;
