@@ -27,7 +27,7 @@
 	}
 
 	function turnSlide(e) {
-		var current = slideList.indexOf(url.hash.substr(1)), target;
+		var current = currentSlide(), target;
 		if(e) {
 			if(e.type == 'keydown') {
 				var prevent = true;
@@ -104,18 +104,21 @@
 	function isFull() {
 		return url.search.substr(1) == 'full';
 	}
+	
+	function currentSlide() {
+		return slideList.indexOf(url.hash.substr(1));
+	}
 
 	function updateProgress() {
 		if(!progress) return;
-		progress.style.width = (100/(slideList.length-1) * slideList.indexOf(url.hash.substr(1))).toFixed(2) + '%';
+		progress.style.width = (100/(slideList.length-1) * currentSlide()).toFixed(2) + '%';
 	}
 
 	window.addEventListener('DOMContentLoaded', function() {
 		if(isFull()) enterFull();
 	}, false);
-	window.addEventListener("popstate", function() {
-		var current_slide_number = slideList.indexOf(url.hash.substr(1));
-		if (-1 === current_slide_number) { exitFull(); }
+	window.addEventListener('popstate', function() {
+		if(-1 === currentSlide()) exitFull();
 	}, false);
 
 	document.addEventListener('keydown', turnSlide, false);
