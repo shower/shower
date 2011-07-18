@@ -7,7 +7,7 @@
 		slideList = [];
 
 	for(var i = 0, slidesLength = slides.length; i < slidesLength; i++) {
-		slides[i].addEventListener('click', enterFull, false);
+		slides[i].firstChild.addEventListener('click', enterFull, false);
 		slideList[i] = slides[i].id;
 	}
 
