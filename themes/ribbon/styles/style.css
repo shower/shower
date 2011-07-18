@@ -247,7 +247,7 @@ BODY {
 		border-radius:1px;
 		background:rgba(0, 0, 0, 0.3);
 		}
-	.list .slide:hover > DIV {
+	.list .slide > DIV:hover {
 		box-shadow:
 			0 0 0 10px rgba(60, 61, 64, 0.6),
 			0 0 50px #3C3D40;
