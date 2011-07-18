@@ -53,9 +53,6 @@
 					case 32 : // Space
 						current += e.shiftKey ? -1 : 1;
 						break;
-					case 13 : // Enter
-						if(!current+1) enterFull();
-						break;
 					default:
 						prevent = false;
 				}
@@ -79,7 +76,13 @@
 		updateProgress();
 		if(!isFull()) history.pushState(null, null, url.pathname + '?full' + url.hash);
 		window.addEventListener('resize', resizeFull, false);
-		document.addEventListener('keydown', exitFullEsc, false);
+		document.addEventListener('keyup', exitFullKey, false);
+		document.removeEventListener('keydown', enterFullKey, false);
+	}
+	
+	function enterFullKey(e) {
+		if(e.which != 13) return;
+		enterFull();
 	}
 
 	function exitFull() {
@@ -89,10 +92,11 @@
 		history.pushState(null, null, url.pathname.replace('?full', ''));		
 		url.hash = hash;
 		window.removeEventListener('resize', resizeFull, false);
-		document.removeEventListener('keydown', exitFullEsc, false);
+		document.removeEventListener('keyup', exitFullKey, false);
+		document.addEventListener('keydown', enterFullKey, false);
 	}
 
-	function exitFullEsc(e) {
+	function exitFullKey(e) {
 		if(e.which != 27) return;
 		exitFull();
 	}
@@ -110,5 +114,6 @@
 		if(isFull()) enterFull();
 	}, false);
 	document.addEventListener('keydown', turnSlide, false);
+	document.addEventListener('keydown', enterFullKey, false);
 
 })();
