@@ -113,6 +113,11 @@
 	window.addEventListener('DOMContentLoaded', function() {
 		if(isFull()) enterFull();
 	}, false);
+	window.addEventListener("popstate", function() {
+		var current_slide_number = slideList.indexOf(url.hash.substr(1));
+		if (-1 === current_slide_number) { exitFull(); }
+	}, false);
+
 	document.addEventListener('keydown', turnSlide, false);
 	document.addEventListener('keydown', enterFullKey, false);
 
