@@ -312,10 +312,6 @@ BODY {
 			color:#BBB;
 			line-height:1;
 			}
-		.full .slide.bg:after,
-		.full .slide.shout:after {
-			content:'';
-			}
 		.full .slide SECTION {
 			-webkit-transform:scale(1);
 			-moz-transform:scale(1);
@@ -323,6 +319,13 @@ BODY {
 			-o-transform:scale(1);
 			transform:scale(1);
 			}
+		.full .slide.bg {
+			z-index:1;
+			}
+			.full .slide.bg:after,
+			.full .slide.shout:after {
+				content:'';
+				}
 
 /* Progress */
 .full .progress {
