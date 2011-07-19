@@ -299,7 +299,7 @@ BODY {
 		display:none;
 		}
 	.full .slide {
-		position:relative;
+		position:absolute;
 		visibility:hidden;
 		}
 		.full .slide:target {
