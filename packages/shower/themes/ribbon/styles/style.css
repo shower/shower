@@ -42,6 +42,9 @@ BODY {
 .slide P {
 	margin:0 0 45px;
 	}
+.slide P.note {
+	color:#888;
+	}
 .slide A {
 	border-bottom:0.1em solid;
 	color:#0174A7;
@@ -177,6 +180,7 @@ BODY {
 	top:0;
 	left:0;
 	z-index:-1;
+	width:100%;
 	}
 
 /* Shout */
@@ -295,12 +299,12 @@ BODY {
 		display:none;
 		}
 	.full .slide {
-		position:absolute;
+		position:relative;
 		visibility:hidden;
 		}
-	.full .slide:target {
-		visibility:visible;
-		}
+		.full .slide:target {
+			visibility:visible;
+			}
 		.full .slide:after {
 			position:absolute;
 			bottom:85px;
@@ -311,6 +315,13 @@ BODY {
 		.full .slide.bg:after,
 		.full .slide.shout:after {
 			content:'';
+			}
+		.full .slide SECTION {
+			-webkit-transform:scale(1);
+			-moz-transform:scale(1);
+			-ms-transform:scale(1);
+			-o-transform:scale(1);
+			transform:scale(1);
 			}
 
 /* Progress */
