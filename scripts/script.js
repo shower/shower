@@ -1,24 +1,26 @@
-(function() {
-
+(function () {
 	var url = window.location,
 		body = document.body,
 		slides = document.querySelectorAll('div.slide'),
 		progress = document.querySelector('div.progress div'),
-		slideList = [];
+		slideList = [],
+		l = slides.length,
+		i;
 
-	for(var i = 0, slidesLength = slides.length; i < slidesLength; i++) {
-		slides[i].firstChild.addEventListener('click', enterFull, false);
-		slideList[i] = slides[i].id;
+	for (i = 0; i < l; i++) {
+		slideList.push(slides[i].id);
 	}
 
-	function resizeFull(p) {
-		if(typeof p == 'boolean' && !p) {
-			var transform = 'none';
-		} else {
-			var sx = body.clientWidth / window.innerWidth,
-				sy = body.clientHeight / window.innerHeight,
-				transform = 'scale(' + (1/Math.max(sx, sy)) + ')';
-		}
+	function getTransform() {
+		var denominator = Math.max(
+			body.clientWidth / window.innerWidth,
+			body.clientHeight / window.innerHeight
+		);
+
+		return 'scale(' + (1 / denominator) + ')';
+	}
+
+	function applyTransform(transform) {
 		body.style.MozTransform = transform;
 		body.style.WebkitTransform = transform;
 		body.style.OTransform = transform;
@@ -26,102 +28,175 @@
 		body.style.transform = transform;
 	}
 
-	function turnSlide(e) {
-		var current = currentSlide(), target;
-		if(e) {
-			if(e.type == 'keydown') {
-				var prevent = true;
-				switch(e.which) {
-					case 33 : // PgUp
-					case 38 : // Up
-					case 37 : // Left
-					case 75 : // k
-						current--;
-						break;
-					case 34 : // PgDown
-					case 40 : // Down
-					case 39 : // Right
-					case 74 : // j
-						current++;
-						break;
-					case 36 : // Home
-						current = 0;
-						break;
-					case 35 : // End
-						current = slideList.length-1;
-						break;
-					case 32 : // Space
-						current += e.shiftKey ? -1 : 1;
-						break;
-					default:
-						prevent = false;
-				}
-				if(prevent) e.preventDefault();
-			}
-			if(e.type == 'click') {
-				current = slideList.indexOf(e.target.parentNode.parentNode.id);
-			}
-		} else {
-			current = (current+1) ? current : 0;
-		}
-		target = slideList[current];
-		if(target) url.hash = target;
-		updateProgress();
-	}
-
-	function enterFull(e) {
+	function enterSingleSlideMode() {
 		body.className = 'full';
-		resizeFull(true);
-		turnSlide(e);
-		updateProgress();
-		if(!isFull()) history.pushState(null, null, url.pathname + '?full' + url.hash);
-		window.addEventListener('resize', resizeFull, false);
-		document.addEventListener('keyup', exitFullKey, false);
-		document.removeEventListener('keydown', enterFullKey, false);
-	}
-	
-	function enterFullKey(e) {
-		if(e.which != 13) return;
-		enterFull();
+		applyTransform(getTransform());
 	}
 
-	function exitFull() {
+	function enterSlideListMode() {
 		body.className = 'list';
-		resizeFull(false);
-		var hash = url.hash;
-		history.pushState(null, null, url.pathname.replace('?full', ''));		
-		url.hash = hash;
-		window.removeEventListener('resize', resizeFull, false);
-		document.removeEventListener('keyup', exitFullKey, false);
-		document.addEventListener('keydown', enterFullKey, false);
+		applyTransform('none');
 	}
 
-	function exitFullKey(e) {
-		if(e.which != 27) return;
-		exitFull();
-	}
-
-	function isFull() {
-		return url.search.substr(1) == 'full';
-	}
-	
-	function currentSlide() {
+	function getCurrentSlideNumber() {
 		return slideList.indexOf(url.hash.substr(1));
 	}
 
-	function updateProgress() {
-		if(!progress) return;
-		progress.style.width = (100/(slideList.length-1) * currentSlide()).toFixed(2) + '%';
+	function scrollToCurrentSlide() {
+		var current_slide = document.getElementById(slideList[getCurrentSlideNumber()]);
+
+		if (null != current_slide) {
+			window.scrollTo(0, current_slide.offsetTop);
+		}
 	}
 
-	window.addEventListener('DOMContentLoaded', function() {
-		if(isFull()) enterFull();
-	}, false);
-	window.addEventListener('popstate', function() {
-		if(-1 === currentSlide()) exitFull();
+	function isSlideListMode() {
+		return 'full' !== url.search.substr(1);
+	}
+
+	function normalizeSlideNumber(slide_number) {
+		if (0 > slide_number) {
+			return slideList.length - 1;
+		} else if (slideList.length <= slide_number) {
+			return 0;
+		} else {
+			return slide_number;
+		}
+	}
+
+	function updateProgress(slide_number) {
+		progress.style.width = (100 / (slideList.length - 1) * normalizeSlideNumber(slide_number)).toFixed(2) + '%';
+	}
+
+	function getSlideHashByNumber(slide_number) {
+		return '#' + slideList[normalizeSlideNumber(slide_number)];
+	}
+
+	function goToSlide(slide_number) {
+		url.hash = getSlideHashByNumber(slide_number);
+
+		if (!isSlideListMode()) {
+			updateProgress(slide_number);
+		}
+	}
+
+	window.addEventListener('DOMContentLoaded', function () {
+		if (!isSlideListMode()) {
+			updateProgress(getCurrentSlideNumber());
+			enterSingleSlideMode();
+		}
 	}, false);
 
-	document.addEventListener('keydown', turnSlide, false);
-	document.addEventListener('keydown', enterFullKey, false);
+	window.addEventListener('popstate', function (e) {
+		if (isSlideListMode()) {
+			enterSlideListMode();
+			scrollToCurrentSlide();
+		} else {
+			enterSingleSlideMode();
+		}
+	}, false);
 
-})();
+	window.addEventListener('resize', function (e) {
+		if (!isSlideListMode()) {
+			applyTransform(getTransform());
+		}
+	}, false);
+
+	document.addEventListener('keydown', function (e) {
+		var current_slide_number = getCurrentSlideNumber();
+
+		switch (e.which) {
+			case 9: // Tab = +1; Shift + Tab = -1
+				if (isSlideListMode()) {
+					e.preventDefault();
+
+					current_slide_number += e.shiftKey ? -1 : 1;
+					url.hash = getSlideHashByNumber(current_slide_number);
+				}
+			break;
+
+			case 13: // Enter
+				if (isSlideListMode()) {
+					e.preventDefault();
+
+					history.pushState(null, null, url.pathname + '?full' + getSlideHashByNumber(current_slide_number));
+					enterSingleSlideMode();
+
+					updateProgress(current_slide_number);
+				}
+			break;
+
+			case 27: // Esc
+				if (!isSlideListMode()) {
+					e.preventDefault();
+
+					history.pushState(null, null, url.pathname + getSlideHashByNumber(current_slide_number));
+					enterSlideListMode();
+					scrollToCurrentSlide();
+				}
+			break;
+
+			case 33: // PgUp
+			case 38: // Up
+			case 37: // Left
+			case 75: // k
+				e.preventDefault();
+
+				current_slide_number--;
+				goToSlide(current_slide_number);
+			break;
+
+			case 34: // PgDown
+			case 40: // Down
+			case 39: // Right
+			case 74: // j
+				e.preventDefault();
+
+				current_slide_number++;
+				goToSlide(current_slide_number);
+			break;
+
+			case 36: // Home
+				e.preventDefault();
+
+				current_slide_number = 0;
+				goToSlide(current_slide_number);
+			break;
+
+			case 35: // End
+				e.preventDefault();
+
+				current_slide_number = slideList.length - 1;
+				goToSlide(current_slide_number);
+			break;
+
+			case 32: // Space = +1; Shift + Space = -1
+				e.preventDefault();
+
+				current_slide_number += e.shiftKey ? -1 : 1;
+				goToSlide(current_slide_number);
+			break;
+
+			default:
+				// Behave as usual
+		}
+	}, false);
+
+	document.addEventListener('click', function (e) {
+		if (
+			'SECTION' === e.target.nodeName &&
+			-1 !== e.target.parentNode.parentNode.className.indexOf('slide') &&
+			isSlideListMode()
+		) {
+			e.preventDefault();
+
+			// NOTE: we should update hash to get things work properly
+			url.hash = '#' + e.target.parentNode.parentNode.id;
+			history.replaceState(null, null, url.pathname + '?full#' + e.target.parentNode.parentNode.id);
+			enterSingleSlideMode();
+
+			updateProgress(getCurrentSlideNumber());
+		}
+	}, false);
+
+}());
