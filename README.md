@@ -39,3 +39,11 @@ Mobile platforms:
 * Opera Mobile
 
 Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey/shower/issues)
+
+## Usage examples
+
+* [CSS Management](http://pepelsbey.net/pres/css-management/)
+* [Dynamic Graphics](http://pepelsbey.net/pres/dynamic-graphics/)
+* [Sense Coding](http://pepelsbey.net/pres/sense-coding/)
+* [Special Effects Tea](http://pepelsbey.net/pres/special-effects-tea/)
+* [Web In Curves](http://pepelsbey.net/pres/web-in-curves/)
