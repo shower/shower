@@ -65,6 +65,7 @@
 	}
 
 	function updateProgress(slide_number) {
+		if (!progress) return;
 		progress.style.width = (100 / (slideList.length - 1) * normalizeSlideNumber(slide_number)).toFixed(2) + '%';
 	}
 
