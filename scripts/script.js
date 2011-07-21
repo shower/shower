@@ -82,8 +82,14 @@
 
 	window.addEventListener('DOMContentLoaded', function () {
 		if (!isSlideListMode()) {
-			updateProgress(getCurrentSlideNumber());
+			// "?full" is present without slide hash so we should display first
+			// slide
+			if ( -1 === getCurrentSlideNumber() ) {
+				history.replaceState(null, null, url.pathname + '?full' + getSlideHashByNumber( 0 ) );
+			}
+
 			enterSingleSlideMode();
+			updateProgress(getCurrentSlideNumber());
 		}
 	}, false);
 
