@@ -8,28 +8,26 @@ BODY {
 
 /* Slide
 ---------------------------------------- */
-.slide {
+.slide:after {
+	counter-increment:paging;
+	content:counter(paging, decimal-leading-zero);
 	}
-	.slide:after {
-		counter-increment:paging;
-		content:counter(paging, decimal-leading-zero);
+.slide SECTION {
+	padding:80px 120px 0;
+	width:784px;
+	height:560px;
+	background:#FFF;
+	color:#000;
+	}
+	.slide SECTION:before {
+		position:absolute;
+		top:0;
+		right:120px;
+		width:40px;
+		height:120px;
+		background:url(../images/ribbon.svg) no-repeat;
+		content:'';
 		}
-	.slide SECTION {
-		padding:80px 120px 0;
-		width:784px;
-		height:560px;
-		background:#FFF;
-		color:#000;
-		}
-		.slide SECTION:before {
-			position:absolute;
-			top:0;
-			right:120px;
-			width:40px;
-			height:120px;
-			background:url(../images/ribbon.svg) no-repeat;
-			content:'';
-			}
 
 /* Header */
 .slide HEADER {
@@ -326,6 +324,19 @@ BODY {
 			.full .slide.shout:after {
 				content:'';
 				}
+
+/* Inner Navigation */
+.inner > * {
+	opacity:0;
+	-webkit-transition:opacity 0.5s linear;
+	-moz-transition:opacity 0.5s linear;
+	-ms-transition:opacity 0.5s linear;
+	-o-transition:opacity 0.5s linear;
+	transition:opacity 0.5s linear;
+	}
+.inner > .active {
+	opacity:1;
+	}
 
 /* Progress */
 .full .progress {
