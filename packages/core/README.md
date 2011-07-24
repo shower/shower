@@ -25,7 +25,7 @@ Only latest stable versions of mentioned browsers are supported.
 * Desktop platforms: IE10
 * Mobile platforms: Mobile Safari, Opera Mobile
 
-Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey/shower/issues)
+Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey/shower/issues).
 
 ## Usage examples
 
@@ -66,7 +66,7 @@ Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [lic
 * Десктопные: IE10
 * Мобильные: Mobile Safari, Opera Mobile
 
-Сообщения об ошибках и пожелания оставляйте в разделе [Issues](http://github.com/pepelsbey/shower/issues)
+Сообщения об ошибках и пожелания оставляйте в разделе [Issues](http://github.com/pepelsbey/shower/issues).
 
 ## Примеры использования
 
