@@ -37,8 +37,6 @@ Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey
 
 Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](https://github.com/pepelsbey/shower/wiki/License) for details.
 
----
-
 # Shower
 Кроссбраузерный шаблон для презентаций
 
