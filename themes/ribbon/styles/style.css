@@ -1,3 +1,9 @@
+/*
+	Ribbon theme for Shower presentation template: http://github.com/pepelsbey/shower
+	Copyright © 2010–2011 Vadim Makeev, http://pepelsbey.net/
+	Licensed under MIT license: https://github.com/pepelsbey/shower/wiki/License
+*/
+
 @import url(fonts.css);
 @import url(reset.css);
 
@@ -326,7 +332,7 @@ BODY {
 				}
 
 /* Inner Navigation */
-.inner > * {
+.full .inner > * {
 	opacity:0;
 	-webkit-transition:opacity 0.5s linear;
 	-moz-transition:opacity 0.5s linear;
@@ -334,7 +340,7 @@ BODY {
 	-o-transition:opacity 0.5s linear;
 	transition:opacity 0.5s linear;
 	}
-.inner > .active {
+.full .inner > .active {
 	opacity:1;
 	}
 
