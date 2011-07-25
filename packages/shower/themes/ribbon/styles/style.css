@@ -116,20 +116,20 @@ BODY {
 	.slide UL OL {
 		margin:0 0 0 38px;
 		}
-	.slide OL LI:before,
-	.slide UL LI:before {
+	.slide OL > LI:before,
+	.slide UL > LI:before {
 		position:absolute;
 		margin-left:-120px;
 		width:100px;
 		color:#BBB;
 		text-align:right;
 		}
-	.slide UL LI:before {
+	.slide UL > LI:before {
 		content:'\2022'; /* bull */
 		line-height:1.1;
 		font-size:40px;
 		}
-	.slide OL LI:before {
+	.slide OL > LI:before {
 		counter-increment:list;
 		content:counter(list)'.';
 		}
