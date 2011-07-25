@@ -31,7 +31,7 @@
 			<header>
 				<h2>Header</h2>
 			</header>
-			<p>This <code>&lt;tool&gt;</code> is provided <strong>without</strong> warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash <em>your</em> browser…</p>
+			<p>This <code>&lt;tool&gt;</code> is provided <strong>without</strong> warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash <em>your</em> browser.</p>
 			<p><a href="examples/index.htm" target="_blank">This link will be opened in the new tab</a></p>
 		</section>
 	</div></div>
@@ -40,7 +40,7 @@
 			<header>
 				<h2>Two rows.<br>Mighty heading</h2>
 			</header>
-			<p>This <code>&lt;tool&gt;</code> is provided <strong>without</strong> warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash <em>your</em> browser…</p>
+			<p>This <code>&lt;tool&gt;</code> is provided <strong>without</strong> warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash <em>your</em> browser.</p>
 		</section>
 	</div></div>
 	<div class="slide" id="UnorderedList"><div>
@@ -52,13 +52,13 @@
 				<li>This tool is provided</li>
 				<li>Without warranty, guarantee</li>
 				<li>Or much in the way of explanation
-					<ul>
+					<ol>
 						<li>Note that use of this tool</li>
 						<li>May or may not crash your browser</li>
 						<li>Lock up your machine</li>
-					</ul>
+					</ol>
 				</li>
-				<li>Erase your hard drive…</li>
+				<li>Erase your hard drive.</li>
 			</ul>
 		</section>
 	</div></div>
@@ -68,16 +68,16 @@
 				<h2>Ordered List</h2>
 			</header>
 			<ol>
-				<li>This tool is provided</li>
-				<li>Without warranty, guarantee</li>
-				<li>Or much in the way of explanation
-					<ol>
-						<li>Note that use of this tool</li>
-						<li>May or may not crash your browser</li>
-						<li>Lock up your machine</li>
-					</ol>
+				<li>Note that use of this tool</li>
+				<li>Erase your hard drive.</li>
+				<li>May or may not crash your browser
+					<ul>
+						<li>This tool is provided</li>
+						<li>Or much in the way of explanation</li>
+						<li>Without warranty, guarantee</li>
+					</ul>
 				</li>
-				<li>Erase your hard drive…</li>
+				<li>Lock up your machine</li>
 			</ol>
 		</section>
 	</div></div>
@@ -140,40 +140,42 @@
 				<h2>Block Quote</h2>
 			</header>
 			<blockquote cite="Anonymous">
-				<p>This tool is provided without warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash your browser, lock up your machine, erase your hard drive…</p>
+				<p>This tool is provided without warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash your browser, lock up your machine, erase your hard drive.</p>
 			</blockquote>
 		</section>
 	</div></div>
+	<!--
+		This feature is under development!
+		
+		Add class “inner” to any parent element
+		to start inner navigation section. Pressing
+		next button will add class “active” to every
+		next sibling child starting from the first one.
+
+		Actual behavior depends on styles of the current
+		theme: on active state you could show previously
+		hidden items or emphasize it for example by
+		color or bold font weight.
+
+		To start slide with the first active alement
+		add class “active” manually.
+
+		After activation of the last child pressing next
+		button will turn next slide.
+
 	<div class="slide" id="InnerNavigation"><div>
 		<section>
 			<header>
 				<h2>Inner Navigation</h2>
 			</header>
-			<!--
-				Add class “inner” to any parent element
-				to start inner navigation section. Pressing
-				next button will add class “active” to every
-				next sibling child starting from the first one.
-
-				Actual behavior depends on styles of the current
-				theme: on active state you could show previously
-				hidden items or emphasize it for example by
-				color or font-weight:bold.
-
-				To start slide with the first active alement
-				add class “active” manually.
-
-				After activation of the last child pressing next
-				button will turn next slide.
-				-->
 			<ol class="inner">
 				<li class="active">This tool is provided</li>
 				<li>Without warranty, guarantee</li>
 				<li>Or much in the way of explanation
-				<li>Erase your hard drive…</li>
+				<li>Erase your hard drive.</li>
 			</ol>
 		</section>
-	</div></div>
+	</div></div> -->
 	<div class="slide" id="ThankYou"><div>
 		<section>
 			<header>
