@@ -110,6 +110,8 @@
 	}, false);
 
 	document.addEventListener('keydown', function (e) {
+		if (e.altKey || e.ctrlKey || e.metaKey) return;
+		
 		var current_slide_number = getCurrentSlideNumber();
 
 		switch (e.which) {
@@ -146,6 +148,7 @@
 			case 33: // PgUp
 			case 38: // Up
 			case 37: // Left
+			case 72: // h
 			case 75: // k
 				e.preventDefault();
 
@@ -156,6 +159,7 @@
 			case 34: // PgDown
 			case 40: // Down
 			case 39: // Right
+			case 76: // l
 			case 74: // j
 				e.preventDefault();
 
