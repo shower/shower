@@ -18,7 +18,7 @@
 	font-style:italic;
 	font-family:'PT Sans';
 	src:local('PT Sans Italic'),
-		url(../fonts/PTSans.Italic.ttf) format('woff'),
+		url(../fonts/PTSans.Italic.woff) format('woff'),
 		url(../fonts/PTSans.Italic.ttf) format('truetype'),
 		url(../fonts/PTSans.Italic.svg#PTSans-Italic) format('svg');
 	}
