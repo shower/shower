@@ -205,10 +205,10 @@ BODY {
 	-o-transform:translateY(-50%);
 	transform:translateY(-50%);
 	}
-	.slide.shout H2 A {
+	.slide.shout H2 A[target=_blank] {
 		margin:0;
 		}
-		.slide.shout H2 A:after {
+		.slide.shout H2 A[target=_blank]:after {
 			content:'';
 			}
 
