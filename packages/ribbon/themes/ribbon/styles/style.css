@@ -195,11 +195,15 @@ BODY {
 	position:absolute;
 	top:50%;
 	left:0;
-	margin:-80px 0 0;
 	width:100%;
 	text-align:center;
 	line-height:1;
 	font-size:150px;
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	-ms-transform:translateY(-50%);
+	-o-transform:translateY(-50%);
+	transform:translateY(-50%);
 	}
 	.slide.shout H2 A {
 		margin:0;
@@ -207,6 +211,18 @@ BODY {
 		.slide.shout H2 A:after {
 			content:'';
 			}
+
+/* Middle */
+.middle {
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%, -50%);
+	-moz-transform:translate(-50%, -50%);
+	-ms-transform:translate(-50%, -50%);
+	-o-transform:translate(-50%, -50%);
+	transform:translate(-50%, -50%);
+	}
 
 /* List
 ---------------------------------------- */
