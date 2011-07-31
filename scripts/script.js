@@ -80,6 +80,23 @@
 			updateProgress(slide_number);
 		}
 	}
+	
+	function dispatchSingleSlideMode(e) {
+		if (
+			'SECTION' === e.target.nodeName &&
+			-1 !== e.target.parentNode.parentNode.className.indexOf('slide') &&
+			isSlideListMode()
+		) {
+			e.preventDefault();
+			
+			// NOTE: we should update hash to get things work properly
+			url.hash = '#' + e.target.parentNode.parentNode.id;
+			history.replaceState(null, null, url.pathname + '?full#' + e.target.parentNode.parentNode.id);
+			enterSingleSlideMode();
+			
+			updateProgress(getCurrentSlideNumber());
+		}
+	}
 
 	window.addEventListener('DOMContentLoaded', function () {
 		if (!isSlideListMode()) {
@@ -193,20 +210,25 @@
 		}
 	}, false);
 
-	document.addEventListener('click', function (e) {
-		if (
-			'SECTION' === e.target.nodeName &&
-			-1 !== e.target.parentNode.parentNode.className.indexOf('slide') &&
-			isSlideListMode()
-		) {
+	document.addEventListener('click', dispatchSingleSlideMode, false);
+	document.addEventListener('touchend', dispatchSingleSlideMode, false);
+
+	document.addEventListener('touchstart', function (e) {
+		if(!isSlideListMode()) {
+			var current_slide_number = getCurrentSlideNumber(),
+				x = e.touches[0].pageX;
+			if (x > window.innerWidth/2) {
+				current_slide_number++;
+			} else {
+				current_slide_number--;
+			}
+			goToSlide(current_slide_number);
+		}
+	}, false);
+
+	document.addEventListener('touchmove', function (e) {
+		if(!isSlideListMode()) {
 			e.preventDefault();
-
-			// NOTE: we should update hash to get things work properly
-			url.hash = '#' + e.target.parentNode.parentNode.id;
-			history.replaceState(null, null, url.pathname + '?full#' + e.target.parentNode.parentNode.id);
-			enterSingleSlideMode();
-
-			updateProgress(getCurrentSlideNumber());
 		}
 	}, false);
 
