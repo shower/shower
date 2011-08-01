@@ -80,18 +80,29 @@
 			updateProgress(slide_number);
 		}
 	}
+
+	function getContainingSlideId(el) {
+		var node = el;
+		while ('BODY' !== node.nodeName) {
+			if (-1 !== node.className.indexOf('slide')) {
+				return node.id;
+			} else {
+				node = node.parentNode;
+			}
+		}
+
+		return '';
+	}
 	
 	function dispatchSingleSlideMode(e) {
-		if (
-			'SECTION' === e.target.nodeName &&
-			-1 !== e.target.parentNode.parentNode.className.indexOf('slide') &&
-			isSlideListMode()
-		) {
+		var slideId = getContainingSlideId(e.target);
+
+		if ('' !== slideId && isSlideListMode()) {
 			e.preventDefault();
 			
 			// NOTE: we should update hash to get things work properly
-			url.hash = '#' + e.target.parentNode.parentNode.id;
-			history.replaceState(null, null, url.pathname + '?full#' + e.target.parentNode.parentNode.id);
+			url.hash = '#' + slideId;
+			history.replaceState(null, null, url.pathname + '?full#' + slideId);
 			enterSingleSlideMode();
 			
 			updateProgress(getCurrentSlideNumber());
