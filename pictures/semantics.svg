@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 256.155 256.155">
-  <title>HTML5 Semantics Logo</title>
-  <polygon id="chevron" fill="#0174A7" points="128.106,0 0,64.744 0,107.32 128.106,42.577 256.155,107.32 256.155,64.744"/>
-  <use xlink:href="#chevron" y="74.316" />
-  <use xlink:href="#chevron" y="148.653" />
-</svg>
