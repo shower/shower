@@ -122,8 +122,7 @@
 		}
 	}
 
-	// Increases inner navigation by adding 'active' class to next inactive
-	// inner navigation item.
+	// Increases inner navigation by adding 'active' class to next inactive inner navigation item
 	function increaseInnerNavigation(slideNumber) {
 		// Shortcut for slides without inner navigation
 		if (true !== slideList[slideNumber].hasInnerNavigation) { return -1; }
@@ -134,30 +133,9 @@
 
 		if (null !== node) {
 			node.classList.add('active');
-			// NOTE: 'auto-added' class is used in resetInnerNavigation - to
-			// overcome problems with manually added 'active' class.
-			node.classList.add('auto-added');
-
 			return activeNodes.length + 1;
 		} else {
 			return -1;
-		}
-	}
-
-	// Resets inner navigation by removing 'active' class from all previously
-	// activated elements.
-	function resetInnerNavigation(slideNumber) {
-		// Shortcut for slides without inner navigation
-		if (true !== slideList[slideNumber].hasInnerNavigation) { return; }
-
-		var activeNodes = document.querySelectorAll(
-				getSlideHash(slideNumber) + ' .active.auto-added'
-			),
-			i = 0, l;
-
-		for (l = activeNodes.length; i < l; i++) {
-			activeNodes[i].classList.remove('active');
-			activeNodes[i].classList.remove('auto-added');
 		}
 	}
 
@@ -165,8 +143,7 @@
 
 	window.addEventListener('DOMContentLoaded', function () {
 		if (!isListMode()) {
-			// "?full" is present without slide hash, so we should display first
-			// slide
+			// "?full" is present without slide hash, so we should display first slide
 			if (-1 === getCurrentSlideNumber()) {
 				history.replaceState(null, null, url.pathname + '?full' + getSlideHash(0));
 			}
@@ -226,7 +203,6 @@
 			case 75: // k
 				e.preventDefault();
 
-				resetInnerNavigation(currentSlideNumber);
 				currentSlideNumber--;
 				goToSlide(currentSlideNumber);
 			break;
@@ -244,7 +220,6 @@
 					!slideList[currentSlideNumber].hasInnerNavigation ||
 					-1 === increaseInnerNavigation(currentSlideNumber)
 				) {
-					resetInnerNavigation(currentSlideNumber);
 					currentSlideNumber++;
 					goToSlide(currentSlideNumber);
 				}
@@ -253,7 +228,6 @@
 			case 36: // Home
 				e.preventDefault();
 
-				resetInnerNavigation(currentSlideNumber);
 				currentSlideNumber = 0;
 				goToSlide(currentSlideNumber);
 			break;
@@ -261,7 +235,6 @@
 			case 35: // End
 				e.preventDefault();
 
-				resetInnerNavigation(currentSlideNumber);
 				currentSlideNumber = slideList.length - 1;
 				goToSlide(currentSlideNumber);
 			break;
@@ -270,7 +243,6 @@
 			case 32: // Space = +1; Shift + Space = -1
 				e.preventDefault();
 
-				resetInnerNavigation(currentSlideNumber);
 				currentSlideNumber += e.shiftKey ? -1 : 1;
 				goToSlide(currentSlideNumber);
 			break;
