@@ -31,8 +31,7 @@ BODY {
 		right:120px;
 		width:40px;
 		height:120px;
-		background:url(../images/ribbon.svg) no-repeat;
-		content:'';
+		content:url(../images/ribbon.svg);
 		}
 
 /* Header */
@@ -177,7 +176,7 @@ BODY {
 	background:transparent;
 	}
 	.slide.bg SECTION:before {
-		display:none;
+		content:normal;
 		}
 .slide.bg IMG {
 	position:absolute;
