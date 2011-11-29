@@ -31,7 +31,8 @@ BODY {
 		right:120px;
 		width:40px;
 		height:120px;
-		content:url(../images/ribbon.svg);
+		background:url(../images/ribbon.svg) no-repeat;
+		content:'';
 		}
 
 /* Header */
@@ -176,7 +177,7 @@ BODY {
 	background:transparent;
 	}
 	.slide.bg SECTION:before {
-		content:normal;
+		display:none;
 		}
 .slide.bg IMG {
 	position:absolute;
@@ -238,6 +239,14 @@ BODY {
 	}
 	.list .caption H1 {
 		font:bold 50px/1 'PT Sans Narrow', sans-serif;
+		}
+	.list .caption A {
+		color:#4B86C2;
+		text-shadow:0 -1px 1px #1F3F60;
+		text-decoration:none;
+		}
+	.list .caption A:hover {
+		color:#5ca4ed;
 		}
 
 /* Slide */
