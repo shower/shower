@@ -7,6 +7,7 @@
 @media only print {
 	
 	@page {
+		margin:0;
 		size: A4 portrait;
 	}
 	
@@ -148,7 +149,7 @@
 	 * @css-for  (Specifying page breaks for printing)
 	 * @note     auto, always, avoid
 	 */
-	div.slide {
+	div.slide, .page-break {
 		display: block;
 		page-break-after: always;
 	}
