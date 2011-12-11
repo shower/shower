@@ -6,6 +6,10 @@
 
 @media only print {
 	
+	@page {
+		size: A4 portrait;
+	}
+	
 	/**
 	 * @section Layout
 	 * @css-for (print basics)
@@ -144,9 +148,9 @@
 	 * @css-for  (Specifying page breaks for printing)
 	 * @note     auto, always, avoid
 	 */
-	.slide {
-		page-break-before: auto;
-		border-bottom: 1px solid #ccc;
+	div.slide {
+		display: block;
+		page-break-after: always;
 	}
 	
 } /* end @media print */
