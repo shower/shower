@@ -23,10 +23,10 @@
 	}
 
 	function applyTransform(transform) {
-		body.style.MozTransform = transform;
 		body.style.WebkitTransform = transform;
-		body.style.OTransform = transform;
+		body.style.MozTransform = transform;
 		body.style.msTransform = transform;
+		body.style.OTransform = transform;
 		body.style.transform = transform;
 	}
 
