@@ -2,8 +2,8 @@
 Сross-browser presentation template.
 
 * Open [pepelsbey.github.com/shower/en.htm](http://pepelsbey.github.com/shower/en.htm)
-* Press any slide to enter presentation mode
-* Press arrow keys to navigate
+* Click any slide to enter presentation mode
+* Use arrow keys to navigate
 * Press `Esc` to exit presentation mode
 
 Or use just a keyboard to navigate:
