@@ -1,0 +1,157 @@
+/*
+ * Print Layout for Shower presentation template: http://github.com/pepelsbey/shower
+ * Copyright © 2011 Frank Bültge, http://bueltge.de
+ * Licensed under MIT license: https://github.com/pepelsbey/shower/wiki/License
+ */
+
+@media only print {
+	
+	@page {
+		margin:0;
+		size: A4 portrait;
+	}
+	
+	/**
+	 * @section Layout
+	 * @css-for (print basics)
+	 */
+	body {
+		width: 100%;
+		text-align: left;
+		margin: 0;
+		padding: 0;
+		font: 12pt Garamond, Palatino, "Times New Roman", Times, serif;
+		color: #000;
+		background: #fff url(none);
+	}
+	
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 700;
+		margin: .75em 0 .5em .5em;
+		text-align: left;
+		page-break-after: avoid;
+	}
+
+	h1 {
+		text-align: center;
+		padding: 0 0 .5em;
+		border-bottom: 1px solid #ccc;
+	}
+
+	p {
+		margin: .5em;
+		font-stretch: expanded;
+	}
+	
+	/**
+	 * @section  Images, Objects
+	 * @css-for  Hide images and objects for print -- decide
+	 */
+	img, object {
+		display: none;
+	}
+	
+	/**
+	 * @section links
+	 * @css-for (Optimize links for print)
+	 */
+	a, a:visited, a:hover, a:visited:hover {
+		color: #000;
+		background: transparent;
+		text-decoration: none;
+	}
+	
+	a[href]:after {
+		content: " <"attr(href)"> ";
+		background-color: inherit;
+		font-style: italic;
+		font-size: 9pt;
+	} 
+	
+	*[name]:after {
+		content:" [#"attr(name)"]";
+		background-color: inherit;
+		font-style: italic;
+		font-size: .7em;
+	} 
+	
+	*[title]:after {
+		content:" ("attr(title)") ";
+		background-color: inherit;
+		font-style:italic;
+		font-size: .7em;
+	} 
+	
+	/**
+	 * @section Acronyme
+	 * @css-for (optimizing Acronyme for print)
+	 */
+	*[acronym]:after {
+		content:" ("attr(acronym)") ";
+		background-color: inherit;
+		font-style: italic;
+		font-size: .7em;
+	}
+	
+	/**
+	 * @section Abbrevations
+	 * @css-for (optimizing Abbrevations for print)
+	 */
+	*[abbr]:after {
+		content:" ("attr(abbr)") ";
+		background-color: inherit;
+		font-style: italic;
+		font-size: .7em;
+	}
+	
+	/**
+	 * @section Blockquote and Cite
+	 * @css-for (More informations from cite)
+	 */
+	* {
+		quotes: "\201E" "\201C" "\201A" "\2018";
+	} 
+	
+	q p:before, blockquote p:before {
+		content: open-quote;
+	} 
+	
+	q p:after, blockquote p:after {
+		content: close-quote;
+	}
+	
+	blockquote, q, cite {
+		padding: 0 .1em 1em .1em;
+	}
+	
+	*[cite]:after {
+		content: close-quote "(Source: "attr(cite)")";
+		font-size: .75em;
+		float: right;
+		padding: 0 3em;
+	} 
+	
+	/**
+	 * @section Code
+	 * @css-for (optimizing code for print)
+	 */
+	.code, pre {
+		font: .8em "Courier New", Courier, Fixed;
+		padding-left: 1em;
+	}
+	
+	.code a[href]:after {
+		content: "";
+	}
+	
+	/**
+	 * @section  Page breaking
+	 * @css-for  (Specifying page breaks for printing)
+	 * @note     auto, always, avoid
+	 */
+	div.slide, .page-break {
+		display: block;
+		page-break-after: always;
+	}
+	
+} /* end @media print */
