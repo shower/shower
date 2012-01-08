@@ -259,7 +259,7 @@ BODY {
 	.list .slide:after {
 		position:absolute;
 		bottom:-45px;
-		left:57px;
+		left:60px;
 		color:#3C3D40;
 		text-shadow:0 1px 1px #8D8E90;
 		line-height:1;
@@ -310,6 +310,24 @@ BODY {
 			left:0;
 			content:'';
 			}
+
+/* Small */
+@media all and (max-width:1274px) {
+	.list .slide:after {
+		left:30px;
+		}
+	.list .slide > DIV {
+		width:256px;
+		height:160px;
+		}
+	.list .slide SECTION {
+		-webkit-transform:scale(0.25);
+		-moz-transform:scale(0.25);
+		-ms-transform:scale(0.25);
+		-o-transform:scale(0.25);
+		transform:scale(0.25);
+		}
+	}
 
 /* Full
 ---------------------------------------- */
