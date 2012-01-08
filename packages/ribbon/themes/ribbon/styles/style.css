@@ -376,14 +376,14 @@ BODY {
 /* Inner Navigation */
 .full .inner > * {
 	opacity:0;
+	}
+.full .inner > .active {
+	opacity:1;
 	-webkit-transition:opacity 0.5s linear;
 	-moz-transition:opacity 0.5s linear;
 	-ms-transition:opacity 0.5s linear;
 	-o-transition:opacity 0.5s linear;
 	transition:opacity 0.5s linear;
-	}
-.full .inner > .active {
-	opacity:1;
 	}
 
 /* Progress */
