@@ -175,6 +175,7 @@
 		var currentSlideNumber = getCurrentSlideNumber();
 
 		switch (e.which) {
+			case 116: // F5
 			case 13: // Enter
 				if (isListMode()) {
 					e.preventDefault();
