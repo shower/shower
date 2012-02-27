@@ -167,10 +167,15 @@ BODY {
 		color:#000;
 		font-style:normal;
 		}
-	.slide PRE MARK.important {
+	.slide PRE .important {
 		background:#C00;
 		color:#FFF;
 		font-weight:normal;
+		}
+	.slide PRE .comment {
+		padding:0;
+		background:none;
+		color:#888;
 		}
 
 /* Background */
@@ -180,12 +185,16 @@ BODY {
 	.slide.bg SECTION:before {
 		display:none;
 		}
-.slide.bg IMG {
+.slide.bg IMG,
+.slide.bg SVG,
+.slide.bg VIDEO,
+.slide.bg OBJECT {
 	position:absolute;
 	top:0;
 	left:0;
 	z-index:-1;
 	width:100%;
+	background:#FFF;
 	}
 
 /* Shout */
