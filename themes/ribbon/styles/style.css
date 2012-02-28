@@ -97,13 +97,6 @@ BODY {
 	font:200px/1 'PT Sans', sans-serif;
 	content:'\201C'; /* ldquo */
 	}
-.slide blockquote:after {
-	margin:-45px 0 45px;
-	display:block;
-	color:#444;
-	font-weight:bold;
-	content:attr(cite);
-	}
 
 /* Lists */
 .slide ol,
