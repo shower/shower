@@ -37,7 +37,9 @@ Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey
 * [Play Framework](http://spinscale.github.com/play-advanced-concepts.html)
 * [Flash -> HTML5](http://batsuev.com/bif2011/)
 
-Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](https://github.com/pepelsbey/shower/wiki/License) for details.
+Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](wiki/Quick-Start-En) for details.
+
+---
 
 # Shower
 Кроссбраузерный шаблон для презентаций
@@ -78,4 +80,4 @@ Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [lic
 * [Play Framework](http://spinscale.github.com/play-advanced-concepts.html)
 * [Flash -> HTML5](http://batsuev.com/bif2011/)
 
-Лицензировано под [лицензией MIT](http://ru.wikipedia.org/wiki/Лицензия_MIT), читайте подробнее [на странице лицензии](https://github.com/pepelsbey/shower/wiki/Лицензия).
+Лицензировано под [лицензией MIT](http://ru.wikipedia.org/wiki/Лицензия_MIT), читайте подробнее [на странице лицензии](wiki/Quick-Start-Ru).
