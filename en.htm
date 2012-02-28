@@ -10,10 +10,15 @@
 		use slide ID to get needed elements
 		-->
 	<style>
-		#Cover H2 {
+		#Cover h2 {
 			color:#FFF;
 			text-align:center;
 			font-size:70px;
+			}
+		#FitToWidth h2,
+		#FitToHeight h2 {
+			color:#FFF;
+			text-align:center;
 			}
 	</style>
 </head>
@@ -22,13 +27,12 @@
 		<h1>Shower Presentation Template</h1>
 		<p>Vadim Makeev, Opera Software</p>
 	</header>
-	<div class="slide bg" id="Cover"><div>
+	<div class="slide cover" id="Cover"><div>
 		<section>
 			<header>
 				<h2>Shower Presentation Template</h2>
 			</header>
 			<img src="pictures/cover.jpg" alt="">
-			<!-- © John Carey, http://fiftyfootshadows.net/ -->
 		</section>
 	</div></div>
 	<div class="slide" id="Header"><div>
@@ -96,13 +100,20 @@
 			</svg>
 		</section>
 	</div></div>
-	<div class="slide bg" id="Picture"><div>
+	<div class="slide cover" id="FitToHeight"><div>
 		<section>
 			<header>
-				<h2>Picture</h2>
+				<h2>Fit to height</h2>
 			</header>
 			<img src="pictures/picture.jpg" alt="">
-			<!-- © Patrick H. Lauke, http://www.flickr.com/photos/redux/ -->
+		</section>
+	</div></div>
+	<div class="slide cover w" id="FitToWidth"><div>
+		<section>
+			<header>
+				<h2>Fit to width</h2>
+			</header>
+			<img src="pictures/picture.jpg" alt="">
 		</section>
 	</div></div>
 	<div class="slide" id="CodeSample"><div>
@@ -193,6 +204,7 @@
 		-->
 	<div class="progress"><div></div></div>
 	<script src="scripts/script.js"></script>
-	<!-- Copyright © 2010–2012 Vadim Makeev, http://pepelsbey.net/ -->
+	<!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+	<!-- Photos by John Carey — fiftyfootshadows.net -->
 </body>
 </html>
