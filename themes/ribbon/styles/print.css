@@ -33,13 +33,13 @@
 		height:640px;
 		background:none;
 		}
-	.list .slide > DIV,
-	.list .slide > DIV:hover {
+	.list .slide > div,
+	.list .slide > div:hover {
 		-webkit-box-shadow:none;
 		-moz-box-shadow:none;
 		box-shadow:none;
 		}
-	.list .slide SECTION {
+	.list .slide section {
 		-webkit-transform:none;
 		-moz-transform:none;
 		-ms-transform:none;
