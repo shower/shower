@@ -97,7 +97,7 @@
 	function getContainingSlideId(el) {
 		var node = el;
 		while ('BODY' !== node.nodeName && 'HTML' !== node.nodeName) {
-			if (-1 !== node.className.indexOf('slide')) {
+			if (node.classList.contains('slide')) {
 				return node.id;
 			} else {
 				node = node.parentNode;
