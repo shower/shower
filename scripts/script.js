@@ -223,7 +223,8 @@
 		// Shortcut for alt, shift and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
-		var currentSlideNumber = getCurrentSlideNumber();
+		var currentSlideNumber = getCurrentSlideNumber(),
+			innerNavigationCompleted = true;
 
 		switch (e.which) {
 			case 116: // F5
@@ -268,16 +269,23 @@
 			case 74: // j
 				e.preventDefault();
 
-				// Only go to next slide if current slide have no inner
-				// navigation or inner navigation is fully shown
-				// NOTE: But first of all check if there is no current slide
+				if (!isListMode() ) {
+					// Inner navigation is "completed" if current slide have
+					// no inner navigation or inner navigation is fully shown
+					innerNavigationCompleted = !slideList[currentSlideNumber].hasInnerNavigation ||
+						-1 === increaseInnerNavigation(currentSlideNumber);
+				} else {
+					// Also inner navigation is always "completed" if we are in
+					// list mode
+					innerNavigationCompleted = true;
+				}
+				// NOTE: First of all check if there is no current slide
 				if (
-					-1 === currentSlideNumber ||
-					!slideList[currentSlideNumber].hasInnerNavigation ||
-					-1 === increaseInnerNavigation(currentSlideNumber)
+					-1 === currentSlideNumber || innerNavigationCompleted
 				) {
 					currentSlideNumber++;
 					goToSlide(currentSlideNumber);
+					// We must run slideshow only in full mode
 					if (!isListMode()) {
 						runSlideshowIfPresented(currentSlideNumber);
 					}
