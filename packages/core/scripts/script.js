@@ -53,10 +53,10 @@
 		return -1;
 	}
 
-	function scrollToCurrentSlide() {
-		var currentSlide = document.getElementById(
-			slideList[getCurrentSlideNumber()].id
-		);
+	function scrollToSlide(slideNumber) {
+		if (-1 === slideNumber ) { return; }
+
+		var currentSlide = document.getElementById(slideList[slideNumber].id);
 
 		if (null != currentSlide) {
 			window.scrollTo(0, currentSlide.offsetTop);
@@ -156,7 +156,7 @@
 	window.addEventListener('popstate', function (e) {
 		if (isListMode()) {
 			enterListMode();
-			scrollToCurrentSlide();
+			scrollToSlide(getCurrentSlideNumber());
 		} else {
 			enterSlideMode();
 		}
@@ -177,7 +177,7 @@
 		switch (e.which) {
 			case 116: // F5
 			case 13: // Enter
-				if (isListMode()) {
+				if (isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
 
 					history.pushState(null, null, url.pathname + '?full' + getSlideHash(currentSlideNumber));
@@ -193,7 +193,7 @@
 
 					history.pushState(null, null, url.pathname + getSlideHash(currentSlideNumber));
 					enterListMode();
-					scrollToCurrentSlide();
+					scrollToSlide(currentSlideNumber);
 				}
 			break;
 
@@ -217,7 +217,9 @@
 
 				// Only go to next slide if current slide have no inner
 				// navigation or inner navigation is fully shown
+				// NOTE: But first of all check if there is no current slide
 				if (
+					-1 === currentSlideNumber ||
 					!slideList[currentSlideNumber].hasInnerNavigation ||
 					-1 === increaseInnerNavigation(currentSlideNumber)
 				) {
