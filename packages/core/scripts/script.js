@@ -9,7 +9,7 @@
 	for (i = 0; i < l; i++) {
 		slideList.push({
 			id: slides[i].id,
-			hasInnerNavigation: null !== slides[i].querySelector('.inner')
+			hasInnerNavigation: null !== slides[i].querySelector('.next')
 		});
 	}
 
@@ -127,13 +127,13 @@
 		// Shortcut for slides without inner navigation
 		if (true !== slideList[slideNumber].hasInnerNavigation) { return -1; }
 
-		var activeNodes = document.querySelectorAll(getSlideHash(slideNumber) + ' .active'),
-			// NOTE: we assume there is no other elements in inner navigation
-			node = activeNodes[activeNodes.length - 1].nextElementSibling;
+		var nextNodes = document.querySelectorAll(getSlideHash(slideNumber) + ' .next:not(.active)'),
+			node;
 
-		if (null !== node) {
+		if (0 !== nextNodes.length) {
+			node = nextNodes[0];
 			node.classList.add('active');
-			return activeNodes.length + 1;
+			return nextNodes.length - 1;
 		} else {
 			return -1;
 		}
