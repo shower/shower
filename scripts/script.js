@@ -4,6 +4,7 @@
 		slides = document.querySelectorAll('div.slide'),
 		progress = document.querySelector('div.progress div'),
 		slideList = [],
+		timer,
 		l = slides.length, i;
 
 	for (i = 0; i < l; i++) {
@@ -15,7 +16,8 @@
 
 		slideList.push({
 			id: slides[i].id,
-			hasInnerNavigation: null !== slides[i].querySelector('.next')
+			hasInnerNavigation: null !== slides[i].querySelector('.next'),
+			hasTiming: null != slides[i].dataset.timing
 		});
 	}
 
@@ -147,6 +149,25 @@
 
 			updateProgress(getCurrentSlideNumber());
 			updateCurrentAndPassedSlides(getCurrentSlideNumber());
+			runSlideshowIfPresented(getCurrentSlideNumber());
+		}
+	}
+
+	function runSlideshowIfPresented(slideNumber) {
+		slideNumber = normalizeSlideNumber(slideNumber);
+
+		clearTimeout(timer);
+
+		if (slideList[slideNumber].hasTiming) {
+			// Compute number of milliseconds from format "X:Y", where X is
+			// number of minutes, and Y is number of seconds
+			var timing = document.getElementById(slideList[slideNumber].id).dataset.timing.split(':');
+			timing = parseInt(timing[0]) * 60 * 1000 + parseInt(timing[1]) * 1000;
+
+			timer = setTimeout( function () {
+				goToSlide(slideNumber + 1);
+				runSlideshowIfPresented(slideNumber + 1);
+			}, timing );
 		}
 	}
 
@@ -179,6 +200,7 @@
 			enterSlideMode();
 			updateProgress(getCurrentSlideNumber());
 			updateCurrentAndPassedSlides(getCurrentSlideNumber());
+			runSlideshowIfPresented(getCurrentSlideNumber())
 		}
 	}, false);
 
@@ -214,6 +236,7 @@
 
 					updateProgress(currentSlideNumber);
 					updateCurrentAndPassedSlides(currentSlideNumber);
+					runSlideshowIfPresented(currentSlideNumber);
 				}
 			break;
 
@@ -255,6 +278,9 @@
 				) {
 					currentSlideNumber++;
 					goToSlide(currentSlideNumber);
+					if (!isListMode()) {
+						runSlideshowIfPresented(currentSlideNumber);
+					}
 				}
 			break;
 
