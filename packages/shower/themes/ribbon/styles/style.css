@@ -394,10 +394,10 @@ BODY {
 				}
 
 /* Inner Navigation */
-.full .next {
+.full .inner > * {
 	opacity:0;
 	}
-.full .next.active {
+.full .inner > .active {
 	opacity:1;
 	-webkit-transition:opacity 0.5s linear;
 	-moz-transition:opacity 0.5s linear;
