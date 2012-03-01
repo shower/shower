@@ -146,6 +146,7 @@
 			enterSlideMode();
 
 			updateProgress(getCurrentSlideNumber());
+			updateCurrentAndPassedSlides(getCurrentSlideNumber());
 		}
 	}
 
@@ -177,6 +178,7 @@
 
 			enterSlideMode();
 			updateProgress(getCurrentSlideNumber());
+			updateCurrentAndPassedSlides(getCurrentSlideNumber());
 		}
 	}, false);
 
@@ -211,6 +213,7 @@
 					enterSlideMode();
 
 					updateProgress(currentSlideNumber);
+					updateCurrentAndPassedSlides(currentSlideNumber);
 				}
 			break;
 
