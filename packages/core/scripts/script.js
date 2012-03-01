@@ -88,6 +88,26 @@
 		progress.style.width = (100 / (slideList.length - 1) * normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
 	}
 
+	function updateCurrentAndPassedSlides(slideNumber) {
+		var i, l = slideList.length, slide;
+		slideNumber = normalizeSlideNumber(slideNumber);
+
+		for ( i = 0; i < l; ++i ) {
+			slide = document.getElementById(slideList[i].id);
+
+			if ( i < slideNumber ) {
+				slide.classList.remove('current');
+				slide.classList.add('passed');
+			} else if ( i > slideNumber ) {
+				slide.classList.remove('passed');
+				slide.classList.remove('current');
+			} else {
+				slide.classList.remove('passed');
+				slide.classList.add('current');
+			}
+		}
+	}
+
 	function getSlideHash(slideNumber) {
 		return '#' + slideList[normalizeSlideNumber(slideNumber)].id;
 	}
@@ -97,6 +117,7 @@
 
 		if (!isListMode()) {
 			updateProgress(slideNumber);
+			updateCurrentAndPassedSlides(slideNumber);
 		}
 	}
 
