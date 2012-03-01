@@ -7,6 +7,12 @@
 		l = slides.length, i;
 
 	for (i = 0; i < l; i++) {
+		// Slide ID's are optional. In case of missing ID we set it to the
+		// slide number
+		if (!slides[i].id) {
+			slides[i].id = i + 1;
+		}
+
 		slideList.push({
 			id: slides[i].id,
 			hasInnerNavigation: null !== slides[i].querySelector('.next')
