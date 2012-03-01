@@ -176,7 +176,7 @@
 		// Shortcut for slides without inner navigation
 		if (true !== slideList[slideNumber].hasInnerNavigation) { return -1; }
 
-		var nextNodes = document.querySelectorAll(getSlideHash(slideNumber) + ' .next:not(.active)'),
+		var nextNodes = document.getElementById(slideList[slideNumber].id).querySelectorAll('.next:not(.active)'),
 			node;
 
 		if (0 !== nextNodes.length) {
