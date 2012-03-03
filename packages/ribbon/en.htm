@@ -25,9 +25,9 @@
 <body class="list">
 	<header class="caption">
 		<h1>Shower Presentation Template</h1>
-		<p>Vadim Makeev, Opera Software</p>
+		<p><a href="http://pepelsbey.net/">Vadim Makeev</a>, <a href="http://opera.com">Opera Software</a></p>
 	</header>
-	<div class="slide cover" data-timing="00:05" id="Cover"><div>
+	<div class="slide cover" id="Cover"><div>
 		<section>
 			<header>
 				<h2>Shower Presentation Template</h2>
@@ -38,92 +38,67 @@
 	<div class="slide" data-timing="00:05"><div>
 		<section>
 			<header>
-				<h2>Header</h2>
+				<h2>Slide with timer</h2>
 			</header>
-			<p>This <code>&lt;tool&gt;</code> is provided <strong>without</strong> warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash <em>your</em> browser.</p>
-			<p><a href="examples/index.htm" target="_blank">This link will be opened in the new tab</a></p>
+			<p>It will change right in five seconds</p>
 		</section>
 	</div></div>
 	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Two rows.<br>Mighty heading</h2>
+				<h2>Heading</h2>
 			</header>
-			<p>This <code>&lt;tool&gt;</code> is provided <strong>without</strong> warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash <em>your</em> browser.</p>
+			<p>In your slides text you can use <a href="http://google.com/">links</a> and various inline elements for <em>emotional</em> and <strong>strong</strong> emphasis or just for <i>italic</i> or <b>bold</b> decoration. <code>&lt;code&gt;</code> is used for inline code samples.</p>
+			<p><a href="examples/index.htm" target="_blank">This link will be opened in a new tab</a></p>
 		</section>
 	</div></div>
 	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Unordered List</h2>
+				<h2>Two rows.<br> Mighty heading</h2>
+			</header>
+			<p>You can use two lines header but it would reduce space on a slide. The “Ribbon” theme is designed for seven lines of code after one-line header by default.</p>
+			<p class="note">This paragraph could be used as a footnote</p>
+		</section>
+	</div></div>
+	<div class="slide"><div>
+		<section>
+			<header>
+				<h2>Various lists</h2>
 			</header>
 			<ul>
-				<li>This tool is provided</li>
-				<li>Without warranty, guarantee</li>
-				<li>Or much in the way of explanation
+				<li>Simple lists are marked with bullets.</li>
+				<li>Ordered lists begin with a number.</li>
+				<li>You can even nest lists one inside another.
 					<ol>
-						<li>Note that use of this tool</li>
-						<li>May or may not crash your browser</li>
-						<li>Lock up your machine</li>
+						<li>Or mix their types.</li>
+						<li>But do not go too far.</li>
+						<li>Otherwise audience will be bored.</li>
 					</ol>
 				</li>
-				<li>Erase your hard drive.</li>
+				<li>Look, seven rows exactly!</li>
 			</ul>
 		</section>
 	</div></div>
 	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Ordered List</h2>
+				<h2>Serious citation</h2>
 			</header>
-			<ol>
-				<li>Note that use of this tool</li>
-				<li>Erase your hard drive.</li>
-				<li>May or may not crash your browser
-					<ul>
-						<li>This tool is provided</li>
-						<li>Or much in the way of explanation</li>
-						<li>Without warranty, guarantee</li>
-					</ul>
-				</li>
-				<li>Lock up your machine</li>
-			</ol>
+			<blockquote>
+				<p>You can wrap one or more paragraphs into citation, which will make text italic and add a nice quote on the left. Giving the citation source would make it even more serious.</p>
+				<p><b>Vadim Makeev</b></p>
+			</blockquote>
 		</section>
 	</div></div>
 	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>In the Middle</h2>
-			</header>
-			<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512" class="middle">
-				<path fill="#0174A7" d="m315 259l18-18 179 179v-36l-161-161 18-18 143 143v-36l-125-125 18-18 107 107v-225c0-28-23-51-51-51h-410c-28 0-51 23-51 51v410c0 28 23 51 51 51h191c17-25 14-59-8-81l-63-63-63-63c-55-55-55-145-0-199 55-55 144-55 199 0l9 7h109l-163 163v-107l-9-9c-25-25-66-25-91-0-25 25-25 66 0 91l63 63 63 63c37 37 49 89 37 135h136c28 0 51-23 51-51v-5l-197-197z"/>
-			</svg>
-		</section>
-	</div></div>
-	<div class="slide cover" id="FitToHeight"><div>
-		<section>
-			<header>
-				<h2>Fit to height</h2>
-			</header>
-			<img src="pictures/picture.jpg" alt="">
-		</section>
-	</div></div>
-	<div class="slide cover w" id="FitToWidth"><div>
-		<section>
-			<header>
-				<h2>Fit to width</h2>
-			</header>
-			<img src="pictures/picture.jpg" alt="">
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Code Sample</h2>
+				<h2>When you have a lot of code</h2>
 			</header>
 			<pre>
 				<code>&lt;html lang="en-US"&gt;</code>
-				<code><mark>&lt;head&gt;</mark></code>
+				<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
 				<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
 				<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
 				<code>    &lt;link rel="stylesheet" href="s/screen.css"&gt;</code>
@@ -135,53 +110,63 @@
 	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Code Notes</h2>
+				<h2>Code in separate blocks</h2>
 			</header>
 			<pre>
-				<code><mark>&lt;html</mark> lang="en-US"&gt;</code>
+				<code><mark>&lt;html</mark> lang="ru-RU"&gt;</code>
 			</pre>
-			<p class="note">May or may not crash your browser</p>
+			<p class="note">Now you can add a note for each block</p>
 			<pre>
 				<code><mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;</code>
 			</pre>
-			<p class="note">Lock up your machine</p>
+			<p class="note">And explain what is interesting about it</p>
 		</section>
 	</div></div>
 	<div class="slide shout"><div>
 		<section>
 			<header>
-				<h2>Warning<br>Message</h2>
-			</header>
-		</section>
-	</div></div>
-	<div class="slide shout"><div>
-		<section>
-			<header>
-				<h2><a href="examples/index.htm" target="_blank">Demo</a></h2>
+				<h2>You can shout<br>this way</h2>
 			</header>
 		</section>
 	</div></div>
 	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Block Quote</h2>
+				<h2>And you can place any object in the middle</h2>
 			</header>
-			<blockquote>
-				<p>This tool is provided without warranty, guarantee, or much in the way of explanation. Note that use of this tool may or may not crash your browser, lock up your machine, erase your hard drive.</p>
-			</blockquote>
+			<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 512 512" class="middle">
+				<path fill="#0174A7" d="m315 259l18-18 179 179v-36l-161-161 18-18 143 143v-36l-125-125 18-18 107 107v-225c0-28-23-51-51-51h-410c-28 0-51 23-51 51v410c0 28 23 51 51 51h191c17-25 14-59-8-81l-63-63-63-63c-55-55-55-145-0-199 55-55 144-55 199 0l9 7h109l-163 163v-107l-9-9c-25-25-66-25-91-0-25 25-25 66 0 91l63 63 63 63c37 37 49 89 37 135h136c28 0 51-23 51-51v-5l-197-197z"/>
+			</svg>
+		</section>
+	</div></div>
+	<div class="slide cover" id="FitToHeight"><div>
+		<section>
+			<header>
+				<h2>Picture fits to its height</h2>
+			</header>
+			<img src="pictures/picture.jpg" alt="">
+		</section>
+	</div></div>
+	<div class="slide cover w" id="FitToWidth"><div>
+		<section>
+			<header>
+				<h2>Or to its width</h2>
+			</header>
+			<img src="pictures/picture.jpg" alt="">
 		</section>
 	</div></div>
 	<div class="slide"><div>
 		<section>
 			<header>
-				<h2>Inner Navigation</h2>
+				<h2>Inner navigation</h2>
 			</header>
 			<ol>
-				<li>This tool is provided</li>
-				<li class="next">Without warranty, guarantee</li>
-				<li class="next">Or much in the way of explanation
-				<li class="next">Erase your hard drive.</li>
+				<li>Lets you change objects one by one</li>
+				<li class="next">For example, show list items</li>
+				<li class="next">Or switch pictures</li>
+				<li class="next">And much more</li>
 			</ol>
+			<p class="next">But it will work only once</p>
 		</section>
 	</div></div>
 	<div class="slide"><div>
