@@ -7,9 +7,9 @@
 @import url(fonts.css);
 @import url(reset.css);
 
-BODY {
-	font:25px/1.8 'PT Sans', sans-serif;
+body {
 	counter-reset:paging;
+	font:25px/2 'PT Sans', sans-serif;
 	}
 
 /* Slide
@@ -19,9 +19,9 @@ BODY {
 	content:counter(paging, decimal-leading-zero);
 	}
 .slide section {
-	padding:80px 120px 0;
+	padding:71px 120px 0;
 	width:784px;
-	height:560px;
+	height:569px;
 	background:#FFF;
 	color:#000;
 	}
@@ -37,17 +37,17 @@ BODY {
 
 /* Header */
 .slide header {
-	margin:0 0 58px;
+	margin:0 0 37px;
 	color:#666;
-	font:bold 40px/1.13 'PT Sans Narrow', sans-serif;
+	font:bold 50px/50px 'PT Sans Narrow', sans-serif;
 	}
 
-/* Elements */
+/* Text */
 .slide p {
-	margin:0 0 45px;
+	margin:0 0 50px;
 	}
 .slide p.note {
-	color:#888;
+	color:#999;
 	}
 .slide a {
 	border-bottom:0.1em solid;
@@ -57,12 +57,12 @@ BODY {
 .slide a[target=_blank] {
 	margin-right:22px;
 	}
-.slide a[target=_blank]:after {
-	position:absolute;
-	margin-left:7px;
-	font-family:'Target Blank';
-	content:'\005E';
-	}
+	.slide a[target=_blank]:after {
+		position:absolute;
+		margin-left:7px;
+		font-family:'Target Blank';
+		content:'\005E';
+		}
 .slide b,
 .slide strong {
 	font-weight:bold;
@@ -83,6 +83,7 @@ BODY {
 	-moz-tab-size:4;
 	-o-tab-size:4;
 	tab-size:4;
+	line-height:1;
 	font-family:'PT Mono', monospace;
 	}
 
@@ -90,37 +91,37 @@ BODY {
 .slide blockquote {
 	font-style:italic;
 	}
-.slide blockquote:before {
-	position:absolute;
-	margin:-15px 0 0 -80px;
-	color:#CCC;
-	font:200px/1 'PT Sans', sans-serif;
-	content:'\201C'; /* ldquo */
-	}
+	.slide blockquote:before {
+		position:absolute;
+		margin:-16px 0 0 -80px;
+		color:#CCC;
+		font:200px/1 'PT Sans', sans-serif;
+		content:'\201C'; /* ldquo */
+		}
 
 /* Lists */
 .slide ol,
 .slide ul {
-	margin:0 0 45px;
+	margin:0 0 50px;
 	counter-reset:list;
 	}
 	.slide ul ul,
 	.slide ol ul,
 	.slide ol ol,
 	.slide ul ol {
-		margin:0 0 0 38px;
+		margin:0 0 0 36px;
 		}
 	.slide ol > li:before,
 	.slide ul > li:before {
 		position:absolute;
-		margin-left:-120px;
+		margin-left:-117px;
 		width:100px;
 		color:#BBB;
 		text-align:right;
 		}
 	.slide ul > li:before {
 		content:'\2022'; /* bull */
-		line-height:1.1;
+		line-height:48px;
 		font-size:40px;
 		}
 	.slide ol > li:before {
@@ -130,7 +131,7 @@ BODY {
 
 /* Code */
 .slide pre {
-	margin:0 0 45px;
+	margin:0 0 50px;
 	counter-reset:code;
 	white-space:normal;
 	}
@@ -139,20 +140,19 @@ BODY {
 		padding:0;
 		background:none;
 		white-space:pre;
+		line-height:50px;
 		}
-	.slide pre code:before {
-		position:absolute;
-		margin:0 0 0 -120px;
-		width:110px;
-		color:#BBB;
-		text-align:right;
-		counter-increment:code;
-		content:counter(code, decimal-leading-zero)'.';
-		}
+		.slide pre code:before {
+			position:absolute;
+			margin:0 0 0 -110px;
+			width:100px;
+			color:#BBB;
+			text-align:right;
+			counter-increment:code;
+			content:counter(code, decimal-leading-zero)'.';
+			}
 	.slide pre mark {
 		padding:3px 8px;
-		-webkit-border-radius:8px;
-		-moz-border-radius:8px;
 		border-radius:8px;
 		background:#FAFAA2;
 		color:#000;
@@ -166,7 +166,7 @@ BODY {
 	.slide pre .comment {
 		padding:0;
 		background:none;
-		color:#888;
+		color:#999;
 		}
 
 /* Cover */
@@ -215,6 +215,7 @@ BODY {
 	position:absolute;
 	top:50%;
 	left:0;
+	margin-top:-0.1em;
 	width:100%;
 	text-align:center;
 	line-height:1;
@@ -410,10 +411,8 @@ BODY {
 .full .progress {
 	position:absolute;
 	right:118px;
-	bottom:49px;
+	bottom:40px;
 	left:118px;
-	border-radius:7px;
-	border:2px solid rgba(255, 255, 255, 0.2);
 	}
 	.full .progress DIV {
 		width:0;
@@ -426,6 +425,3 @@ BODY {
 		-o-transition:width 0.2s linear;
 		transition:width 0.2s linear;
 		}
-.full .progress-off {
-	z-index:1;
-	}
