@@ -4,7 +4,7 @@
 	<title>Шаблон презентаций Shower</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
-	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
+	<link rel="stylesheet" href="themes/ribbon/styles/screen.css">
 	<!--
 		Для оформления отдельный слайдов, задайте
 		ID слайда для доступа к необходимым элементам
@@ -16,10 +16,8 @@
 			text-align:center;
 			font-size:70px;
 			}
-		#FitToWidth h2,
-		#FitToHeight h2 {
+		#Picture h2 {
 			color:#FFF;
-			text-align:center;
 			}
 	</style>
 </head>
@@ -28,152 +26,95 @@
 		<h1>Шаблон презентаций Shower</h1>
 		<p><a href="http://pepelsbey.net/">Вадим Макеев</a>, <a href="http://opera.com">Opera Software</a></p>
 	</header>
-	<div class="slide cover" id="Cover"><div>
-		<section>
-			<header>
-				<h2>Шаблон презентации Shower</h2>
-			</header>
-			<img src="pictures/cover.jpg" alt="">
-		</section>
-	</div></div>
-	<div class="slide" data-timing="00:05"><div>
-		<section>
-			<header>
-				<h2>Слайд с таймером</h2>
-			</header>
-			<p>Он сменится ровно через пять секунд</p>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Заголовок</h2>
-			</header>
-			<p>В тексте слайда можно использовать <a href="http://ya.ru/">ссылки</a> и различные строчные элементы для <em>эмоционального</em> выделения и подчёркивания <strong>важности</strong> или просто для <i>курсивного</i> и <b>полужирного</b> начертания. Для строчных примеров кода используется <code>&lt;code&gt;</code>.</p>
-			<p><a href="examples/index.htm" target="_blank">Эта ссылка откроется в новой вкладке</a></p>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Две строки.<br> Мощный заголовок</h2>
-			</header>
-			<p>Заголовок можно пустить в две строки, но это уменьшит количество места на слайде. Тема «Ribbon» по умолчанию рассчитана на семь строк текста после однострочного заголовка.</p>
-			<p class="note">Такой абзац может использоваться как примечание</p>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Разные списки</h2>
-			</header>
-			<ul>
-				<li>Обычные списки обозначаются маркерами.</li>
-				<li>Упорядоченные списки начинаются с цифры.</li>
-				<li>Вы даже можете вкладывать списки друг в друга.
-					<ol>
-						<li>Или смешивать их типы.</li>
-						<li>Но не увлекайтесь слишком.</li>
-						<li>Иначе зрителям станет скучно.</li>
-					</ol>
-				</li>
-				<li>Смотрите, ровно семь строк!</li>
-			</ul>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Серьёзная цитата</h2>
-			</header>
-			<blockquote>
-				<p>В цитату можно обернуть один или несколько абзацев текста, который приобретёт курсивное начертание и красивую кавычку слева. Серьёзности добавит указание источника.</p>
-				<p><b>Вадим Макеев</b></p>
-			</blockquote>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Когда у вас много кода</h2>
-			</header>
-			<pre>
-				<code>&lt;html lang="ru"&gt;</code>
-				<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Комментарий--&gt;</mark></code>
-				<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-				<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-				<code>    &lt;link rel="stylesheet" href="s/screen.css"&gt;</code>
-				<code>    &lt;script src="j/jquery.js"&gt;&lt;/script&gt;</code>
-				<code><mark>&lt;/head&gt;</mark></code>
-			</pre>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Код в отдельных блоках</h2>
-			</header>
-			<pre>
-				<code><mark>&lt;html</mark> lang="ru"&gt;</code>
-			</pre>
-			<p class="note">Каждый блок теперь можно подписать</p>
-			<pre>
-				<code><mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;</code>
-			</pre>
-			<p class="note">И объяснить, что же в нём такого интересного</p>
-		</section>
-	</div></div>
-	<div class="slide shout"><div>
-		<section>
-			<header>
-				<h2>Так можно<br> крикнуть</h2>
-			</header>
-		</section>
-	</div></div>
-	<div class="slide cover" id="FitToHeight"><div>
-		<section>
-			<header>
-				<h2>Фото вписывается по высоте</h2>
-			</header>
-			<img src="pictures/picture.jpg" alt="">
-		</section>
-	</div></div>
-	<div class="slide cover w" id="FitToWidth"><div>
-		<section>
-			<header>
-				<h2>Или по ширине</h2>
-			</header>
-			<img src="pictures/picture.jpg" alt="">
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Внутренняя навигация</h2>
-			</header>
-			<ol>
-				<li>Позволяет изменять объекты по очереди</li>
-				<li class="next">Например, показывать пункты списка</li>
-				<li class="next">Или переключать картинки</li>
-				<li class="next">И многое другое</li>
-			</ol>
-			<p class="next">Но такая навигация срабатывает всего один раз</p>
-		</section>
-	</div></div>
-	<div class="slide"><div>
-		<section>
-			<header>
-				<h2>Шаблон презентаций Shower</h2>
-			</header>
-			<p>Вадим Макеев, Opera Software</p>
-			<ul>
-				<li><a href="http://pepelsbey.net">pepelsbey.net</a></li>
-				<li><a href="http://twitter.com/pepelsbey">twitter.com/pepelsbey</a></li>
-				<li><a href="mailto:pepelsbey@gmail.com">pepelsbey@gmail.com</a></li>
-			</ul>
-			<p>Shower: <a href="http://github.com/pepelsbey/shower">github.com/pepelsbey/shower</a></p>
-		</section>
-	</div></div>
+	<section class="slide cover" id="Cover">
+		<h2>Шаблон презентации Shower</h2>
+		<img src="pictures/cover.jpg" alt="">
+	</section>
+	<section class="slide" data-timing="00:05">
+		<h2>Слайд с таймером</h2>
+		<p>Он сменится ровно через пять секунд</p>
+	</section>
+	<section class="slide">
+		<h2>Заголовок</h2>
+		<p>В тексте слайда можно использовать <a href="http://yandex.ru/">ссылки</a> и различные строчные элементы для <em>эмоционального</em> выделения и подчёркивания <strong>важности</strong> или просто для <i>курсивного</i> и <b>полужирного</b> начертания. Для строчных примеров кода используется <code>&lt;code&gt;</code>.</p>
+	</section>
+	<section class="slide">
+		<h2>Две строки.<br> Мощный заголовок</h2>
+		<p>Заголовок можно пустить в две строки, но это уменьшит количество места на слайде. Тема «Ribbon» по умолчанию рассчитана на семь строк текста после однострочного заголовка.</p>
+		<p class="note">Такой абзац может использоваться как примечание</p>
+	</section>
+	<section class="slide">
+		<h2>Разные списки</h2>
+		<ul>
+			<li>Обычные списки обозначаются маркерами.</li>
+			<li>Упорядоченные списки начинаются с цифры.</li>
+			<li>Вы даже можете вкладывать списки друг в друга.
+				<ol>
+					<li>Или смешивать их типы.</li>
+					<li>Но не увлекайтесь слишком.</li>
+					<li>Иначе зрителям станет скучно.</li>
+				</ol>
+			</li>
+			<li>Смотрите, ровно семь строк!</li>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2>Серьёзная цитата</h2>
+		<blockquote>
+			<p>В цитату можно обернуть один или несколько абзацев текста, который приобретёт курсивное начертание и красивую кавычку слева. Серьёзности добавит указание источника.</p>
+			<p><b>Вадим Макеев</b></p>
+		</blockquote>
+	</section>
+	<section class="slide">
+		<h2>Когда у вас много кода</h2>
+		<pre>
+			<code>&lt;html lang="ru"&gt;</code>
+			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Комментарий--&gt;</mark></code>
+			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
+			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
+			<code>    &lt;link rel="stylesheet" href="s/screen.css"&gt;</code>
+			<code>    &lt;script src="j/jquery.js"&gt;&lt;/script&gt;</code>
+			<code><mark>&lt;/head&gt;</mark></code>
+		</pre>
+	</section>
+	<section class="slide">
+		<h2>Код в отдельных блоках</h2>
+		<pre>
+			<code><mark>&lt;html</mark> lang="ru"&gt;</code>
+		</pre>
+		<p class="note">Каждый блок теперь можно подписать</p>
+		<pre>
+			<code><mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;</code>
+		</pre>
+		<p class="note">И объяснить, что же в нём такого интересного</p>
+	</section>
+	<section class="slide shout">
+		<h2>Так можно<br> крикнуть</h2>
+	</section>
+	<section class="slide cover" id="Picture">
+		<h2>А так вставить картинку</h2>
+		<img src="pictures/picture.jpg" alt="">
+	</section>
+	<section class="slide">
+		<h2>Внутренняя навигация</h2>
+		<ol>
+			<li>Позволяет изменять объекты по очереди</li>
+			<li class="next">Например, показывать пункты списка</li>
+			<li class="next">Или переключать картинки</li>
+			<li class="next">И многое другое</li>
+		</ol>
+		<p>Но такая навигация срабатывает всего один раз</p>
+	</section>
+	<section class="slide">
+		<h2>Шаблон презентаций Shower</h2>
+		<p>Вадим Макеев, Opera Software</p>
+		<ul>
+			<li><a href="http://pepelsbey.net">pepelsbey.net</a></li>
+			<li><a href="http://twitter.com/pepelsbey">twitter.com/pepelsbey</a></li>
+			<li><a href="mailto:pepelsbey@gmail.com">pepelsbey@gmail.com</a></li>
+		</ul>
+		<p>Shower: <a href="http://github.com/pepelsbey/shower">github.com/pepelsbey/shower</a></p>
+	</section>
 	<!--
 		Для того, чтобы убрать индикатор прогресса
 		из презентации, просто удалите элемент «progress».

@@ -1,7 +1,7 @@
 (function () {
 	var url = window.location,
 		body = document.body,
-		slides = document.querySelectorAll('div.slide'),
+		slides = document.querySelectorAll('.slide'),
 		progress = document.querySelector('div.progress div'),
 		slideList = [],
 		timer,
