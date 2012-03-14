@@ -204,12 +204,8 @@ body {
 
 /* Shout */
 .slide.shout {
-	z-index:1;
 	background-image:none;
 	}
-	.slide.shout:after {
-		content:'';
-		}
 	.slide.shout h2 {
 		position:absolute;
 		top:50%;
@@ -529,6 +525,14 @@ body {
 	z-index:1;
 	}
 	.full .slide.cover:after {
+		content:'';
+		}
+
+/* Shout */
+.full .slide.shout {
+	z-index:1;
+	}
+	.full .slide.shout:after {
 		content:'';
 		}
 
