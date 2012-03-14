@@ -48,10 +48,3 @@
 		url(../fonts/PTMono.ttf) format('truetype'),
 		url(../fonts/PTMono.svg#PTMono) format('svg');
 	}
-
-/* Linker */
-@font-face {
-	font-family:'Target Blank';
-	src:url(../fonts/TargetBlank.otf) format('opentype'),
-		url(../fonts/TargetBlank.svg#TargetBlank) format('svg');
-	}
