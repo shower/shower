@@ -56,7 +56,8 @@ body {
 	font-style:italic;
 	}
 .slide kbd,
-.slide code {
+.slide code,
+.slide samp {
 	padding:3px 8px;
 	-webkit-border-radius:8px;
 	-moz-border-radius:8px;
