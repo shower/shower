@@ -83,6 +83,11 @@ body {
 		font:200px/1 'PT Sans', sans-serif;
 		content:'\201C'; /* ldquo */
 		}
+.slide blockquote + figcaption {
+	margin:-40px 0 40px;
+	font-style:italic;
+	font-weight:bold;
+	}
 
 /* Lists */
 .slide ol,
