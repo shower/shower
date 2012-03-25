@@ -345,7 +345,6 @@ body {
 		z-index:-1;
 		width:512px;
 		height:320px;
-		/* rgba(0, 0, 0, 0.005) part fixes webkit hover bug */
 		box-shadow:
 			0 0 30px rgba(0, 0, 0, 0.005),
 			0 20px 50px rgba(42, 43, 45, 0.6);
