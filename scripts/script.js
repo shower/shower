@@ -54,6 +54,10 @@
 	}
 
 	function scrollToCurrentSlide() {
+		if (-1 === getCurrentSlideNumber()) {
+			return;
+		}
+
 		var currentSlide = document.getElementById(
 			slideList[getCurrentSlideNumber()].id
 		);
