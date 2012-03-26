@@ -142,18 +142,21 @@ body {
 			content:counter(code, decimal-leading-zero)'.';
 			}
 	.slide pre mark {
+		margin:0 -8px;
 		padding:3px 8px;
 		border-radius:8px;
-		background:#FAFAA2;
+		background:rgba(236,249,0,.37);
 		color:#000;
 		font-style:normal;
 		}
 	.slide pre .important {
+		margin:0;
 		background:#C00;
 		color:#FFF;
 		font-weight:normal;
 		}
 	.slide pre .comment {
+		margin:0;
 		padding:0;
 		background:none;
 		color:#999;
