@@ -39,12 +39,14 @@
 	}
 
 	function enterSlideMode() {
-		body.className = 'full';
+		body.classList.remove('list');
+		body.classList.add('full');
 		applyTransform(getTransform());
 	}
 
 	function enterListMode() {
-		body.className = 'list';
+		body.classList.remove('full');
+		body.classList.add('list');
 		applyTransform('none');
 	}
 
