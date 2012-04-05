@@ -138,7 +138,17 @@
 		return '';
 	}
 
+	// FIXME: Renaming needed? Or just some handlers rewriting?
 	function dispatchSingleSlideMode(e) {
+		// Process links
+		// TODO: presentation links support
+		if ('A' === e.target.nodeName) {
+			e.preventDefault();
+
+			window.open(e.target.getAttribute('href'));
+			return;
+		}
+
 		var slideId = getContainingSlideId(e.target);
 
 		if ('' !== slideId && isListMode()) {
