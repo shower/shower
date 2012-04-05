@@ -79,9 +79,9 @@
 
 	function normalizeSlideNumber(slideNumber) {
 		if (0 > slideNumber) {
-			return slideList.length - 1;
-		} else if (slideList.length <= slideNumber) {
 			return 0;
+		} else if (slideList.length <= slideNumber) {
+			return slideList.length - 1;
 		} else {
 			return slideNumber;
 		}
