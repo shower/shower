@@ -88,10 +88,11 @@
 
 	function goToSlide(slideNumber) {
 		url.hash = getSlideHash(slideNumber);
-
+		lognotes(slideNumber);
 		if (!isListMode()) {
 			updateProgress(slideNumber);
 		}
+
 	}
 
 	function getContainingSlideId(el) {
@@ -136,6 +137,22 @@
 			return activeNodes.length + 1;
 		} else {
 			return -1;
+		}
+	}
+
+	function lognotes(slideNumber) {
+		if (window.console && slideList[slideNumber]) {
+			var notes = document.querySelector('#' +slideList[slideNumber].id + ' .notes');
+			if (notes) {
+				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'))
+			}
+			if (slideList[slideNumber+1]) {
+				var next = document.querySelector('#' +slideList[slideNumber + 1].id + ' header');
+				if (next) {
+					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
+					console.info('NEXT: ' + next);
+				}
+			}
 		}
 	}
 
