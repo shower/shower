@@ -27,6 +27,27 @@ Only latest stable versions of mentioned browsers are supported.
 
 Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey/shower/issues).
 
+## Slide Types
+
+In addition to the required "slide" class, a set of optional classes can be added for custom appearance:
+
+* `cover`: fit to height
+* `cover w`: fit to width
+* `shout`: large and centered
+
+## Content Elements
+
+The default theme comes with a set of classes to style content elements:
+
+* `middle`: center horizontally and vertically
+
+### Source Code
+
+Source code should be embedded in `PRE` blocks, for which special styling is available:
+
+* nested `CODE` elements are decorated with line numbers
+* nested `MARK` elements can be used to highlight code sections, optionally with the class `important` for increased emphasis
+
 ## Usage examples
 
 * [CSS Management](http://pepelsbey.net/pres/css-management/)
