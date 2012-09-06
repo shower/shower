@@ -35,7 +35,6 @@ Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey
 * [Special Effects Tea](http://pepelsbey.net/pres/special-effects-tea/)
 * [Web In Curves](http://pepelsbey.net/pres/web-in-curves/)
 * [Play Framework](http://spinscale.github.com/play-advanced-concepts.html)
-* [Flash -> HTML5](http://batsuev.com/bif2011/)
 
 Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](shower/wiki/License-En) for details.
 
@@ -78,6 +77,5 @@ Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [lic
 * [Чай со спецэффектами](http://pepelsbey.net/pres/special-effects-tea/)
 * [Веб в кривых](http://pepelsbey.net/pres/web-in-curves/)
 * [Play Framework](http://spinscale.github.com/play-advanced-concepts.html)
-* [Flash -> HTML5](http://batsuev.com/bif2011/)
 
 Лицензировано под [лицензией MIT](http://ru.wikipedia.org/wiki/Лицензия_MIT), читайте подробнее [на странице лицензии](shower/wiki/License-Ru).
