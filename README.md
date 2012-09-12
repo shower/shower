@@ -30,11 +30,12 @@ Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey
 ## Usage examples
 
 * [CSS Management](http://pepelsbey.net/pres/css-management/)
-* [Dynamic Graphics](http://pepelsbey.net/pres/dynamic-graphics/)
-* [Sense Coding](http://pepelsbey.net/pres/sense-coding/)
-* [Special Effects Tea](http://pepelsbey.net/pres/special-effects-tea/)
+* [Push it!](http://pepelsbey.net/pres/push-it/)
+* [Pre-fixes](http://pepelsbey.net/pres/pre-fixes/)
 * [Web In Curves](http://pepelsbey.net/pres/web-in-curves/)
-* [Play Framework](http://spinscale.github.com/play-advanced-concepts.html)
+* [Sense Coding](http://pepelsbey.net/pres/sense-coding/)
+* [Dynamic Graphics](http://pepelsbey.net/pres/dynamic-graphics/)
+
 
 Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](shower/wiki/License-En) for details.
 
@@ -72,10 +73,10 @@ Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [lic
 ## Примеры использования
 
 * [CSS-менеджмент](http://pepelsbey.net/pres/css-management/)
-* [Динамическая графика](http://pepelsbey.net/pres/dynamic-graphics/)
-* [Вёрстка со смыслом](http://pepelsbey.net/pres/sense-coding/)
-* [Чай со спецэффектами](http://pepelsbey.net/pres/special-effects-tea/)
+* [Жми сюда!](http://pepelsbey.net/pres/push-it/)
+* [Пре-фиксы](http://pepelsbey.net/pres/pre-fixes/)
 * [Веб в кривых](http://pepelsbey.net/pres/web-in-curves/)
-* [Play Framework](http://spinscale.github.com/play-advanced-concepts.html)
+* [Вёрстка со смыслом](http://pepelsbey.net/pres/sense-coding/)
+* [Динамическая графика](http://pepelsbey.net/pres/dynamic-graphics/)
 
 Лицензировано под [лицензией MIT](http://ru.wikipedia.org/wiki/Лицензия_MIT), читайте подробнее [на странице лицензии](shower/wiki/License-Ru).
