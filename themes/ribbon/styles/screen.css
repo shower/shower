@@ -89,7 +89,7 @@ body {
 		margin:-16px 0 0 -80px;
 		color:#CCC;
 		font:200px/1 'PT Sans', sans-serif;
-		content:'\201C'; /* ldquo */
+		content:'\201C';
 		}
 .slide blockquote + figcaption {
 	margin:-40px 0 40px;
@@ -107,24 +107,40 @@ body {
 	.slide ol ul,
 	.slide ol ol,
 	.slide ul ol {
-		margin:0 0 0 36px;
+		margin:0 0 0 39px;
+		}
+	.slide ol li,
+	.slide ul li {
+		text-indent:-13px;
 		}
 	.slide ol > li:before,
 	.slide ul > li:before {
-		position:absolute;
-		margin-left:-117px;
-		width:100px;
+		display:inline-block;
+		width:13px;
 		color:#BBB;
-		text-align:right;
 		}
 	.slide ul > li:before {
-		content:'\2022'; /* bull */
-		line-height:48px;
-		font-size:40px;
+		content:'\25CF\00A0\00A0';
 		}
 	.slide ol > li:before {
 		counter-increment:list;
-		content:counter(list)'.';
+		content:counter(list)'.\00A0';
+		}
+
+/* Double */
+.slide ol.double,
+.slide ul.double {
+	margin-left:-25px;
+	-webkit-columns:2;
+	-moz-columns:2;
+	columns:2;
+	-webkit-column-gap:0;
+	-moz-column-gap:0;
+	column-gap:0;
+	}
+	.slide ol.double li,
+	.slide ul.double li {
+		padding:0 30px 0 1em;
 		}
 
 /* Code */
