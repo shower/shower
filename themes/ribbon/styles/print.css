@@ -4,6 +4,13 @@
 	Licensed under MIT license: github.com/pepelsbey/shower/wiki/License-En
 */
 
+* { -webkit-print-color-adjust:exact }
+
+@page {
+	margin:0;
+	size:1024px 640px;
+	}
+
 /* List
 ------------------------------- */
 .list {
