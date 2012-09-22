@@ -261,7 +261,6 @@ body {
 .place.t,
 .place.m,
 .place.b {
-	position:absolute;
 	left:50%;
 	-webkit-transform:translateX(-50%);
 	-moz-transform:translateX(-50%);
@@ -278,7 +277,6 @@ body {
 .place.l,
 .place.m,
 .place.r {
-	position:absolute;
 	top:50%;
 	-webkit-transform:translateY(-50%);
 	-moz-transform:translateY(-50%);
