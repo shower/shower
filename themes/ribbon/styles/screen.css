@@ -92,7 +92,7 @@ body {
 		content:'\201C';
 		}
 .slide blockquote + figcaption {
-	margin:-40px 0 40px;
+	margin:-50px 0 40px;
 	font-style:italic;
 	font-weight:bold;
 	}
