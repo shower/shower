@@ -28,6 +28,14 @@ body {
 		line-height:1;
 		}
 
+/* Debug */
+.debug .slide {
+	background:
+		url(../images/ribbon.svg) 865px 0 no-repeat,
+		url(../images/grid.png) no-repeat,
+		#FFF;
+	}
+
 /* Header */
 .slide h2 {
 	margin:0 0 37px;
