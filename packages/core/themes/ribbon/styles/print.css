@@ -4,6 +4,8 @@
 	Licensed under MIT license: https://github.com/pepelsbey/shower/wiki/License
 */
 
+* { -webkit-print-color-adjust:exact }
+
 @page {
 	margin:0;
 	size:1024px 640px;
@@ -14,7 +16,7 @@
 .list {
 	float:none;
 	padding:0;
-	background:#888;
+	background:none;
 	}
 
 /* Caption */
@@ -28,29 +30,30 @@
 	margin:0;
 	padding:0;
 	}
-	.list .slide > DIV {
+	.list .slide:after {
+		position:absolute;
+		bottom:85px;
+		left:120px;
+		color:#BBB;
+		line-height:1;
+		text-shadow:none;
+		}
+	.list .slide > div {
 		width:1024px;
 		height:640px;
 		background:none;
 		}
 	.list .slide > div,
-	.list .slide > div:hover {
+	.list .slide > div:hover,
+	.list .slide:target > div {
 		-webkit-box-shadow:none;
 		-moz-box-shadow:none;
 		box-shadow:none;
 		}
 	.list .slide section {
-		-webkit-transform:none;
-		-moz-transform:none;
-		-ms-transform:none;
-		-o-transform:none;
-		transform:none;
+		-webkit-transform:scale(1);
+		-moz-transform:scale(1);
+		-ms-transform:scale(1);
+		-o-transform:scale(1);
+		transform:scale(1);
 		}
-		.list .slide:after {
-			position:absolute;
-			bottom:85px;
-			left:120px;
-			color:#BBB;
-			line-height:1;
-			text-shadow:none;
-			}
