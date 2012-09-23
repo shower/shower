@@ -12,7 +12,7 @@ Or use just a keyboard to navigate:
 * Press `Enter` to enter presentation mode
 * Press `Esc` to exit presentation mode
 
-Follow [shower_me](http://twitter.com/shower_me/) on Twitter for updates.
+Follow [@shower_me](http://twitter.com/shower_me/) on Twitter for support and updates.
 
 ## Supported Browsers
 
@@ -55,7 +55,7 @@ Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [lic
 * Нажмите `Enter` для входа в режим презентации
 * Нажмите `Esc` для выхода из режима презентации
 
-Читайте новости [shower_me](http://twitter.com/shower_me/) в Твиттере.
+Читайте новости и задавайте вопросы [@shower_me](http://twitter.com/shower_me/) в Твиттере.
 
 ## Поддерживаемые браузеры
 
