@@ -111,13 +111,14 @@ body {
 		}
 	.slide ol li,
 	.slide ul li {
-		text-indent:-13px;
+		text-indent:-2em;
 		}
 	.slide ol > li:before,
 	.slide ul > li:before {
 		display:inline-block;
-		width:13px;
+		width:2em;
 		color:#BBB;
+		text-align:right;
 		}
 	.slide ul > li:before {
 		content:'\2022\00A0\00A0';
@@ -128,22 +129,6 @@ body {
 	.slide ol > li:before {
 		counter-increment:list;
 		content:counter(list)'.\00A0';
-		}
-
-/* Double */
-.slide ol.double,
-.slide ul.double {
-	margin-left:-25px;
-	-webkit-columns:2;
-	-moz-columns:2;
-	columns:2;
-	-webkit-column-gap:0;
-	-moz-column-gap:0;
-	column-gap:0;
-	}
-	.slide ol.double li,
-	.slide ul.double li {
-		padding:0 30px 0 1em;
 		}
 
 /* Code */
