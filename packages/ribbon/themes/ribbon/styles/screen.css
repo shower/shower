@@ -120,7 +120,10 @@ body {
 		color:#BBB;
 		}
 	.slide ul > li:before {
-		content:'\25CF\00A0\00A0';
+		content:'\2022\00A0\00A0';
+		}
+	.slide ul > li:lang(ru):before {
+		content:'\2014\00A0\00A0';
 		}
 	.slide ol > li:before {
 		counter-increment:list;
