@@ -1,0 +1,427 @@
+// Ribbon theme for Shower HTML presentation template: github.com/pepelsbey/shower
+// Copyright © 2010–2012 Vadim Makeev, pepelsbey.net
+// Licensed under MIT license: github.com/pepelsbey/shower/wiki/License-En
+
+// Mixins
+// -------------------------------
+@mixin tab-size($n) {
+	-moz-tab-size:$n;
+	-o-tab-size:$n;
+	tab-size:$n;
+	}
+@mixin transform($n) {
+	-webkit-transform:$n;
+	-moz-transform:$n;
+	-ms-transform:$n;
+	-o-transform:$n;
+	transform:$n;
+	}
+@mixin transform-origin($n) {
+	-webkit-transform-origin:$n;
+	-moz-transform-origin:$n;
+	-ms-transform-origin:$n;
+	-o-transform-origin:$n;
+	transform-origin:$n;
+	}
+@mixin transition($n) {
+	-webkit-transition:$n;
+	-moz-transition:$n;
+	-ms-transition:$n;
+	-o-transition:$n;
+	transition:$n;
+	}
+
+@import 'fonts.scss';
+@import 'reset.scss';
+
+body {
+	counter-reset:paging;
+	font:25px/2 'PT Sans', sans-serif;
+	}
+
+// Slide
+// -------------------------------
+.slide {
+	padding:71px 120px 0;
+	width:784px;
+	height:569px;
+	background:#FFF url(../images/ribbon.svg) 865px 0 no-repeat;
+	color:#000;
+	&:after {
+		position:absolute;
+		counter-increment:paging;
+		content:counter(paging, decimal-leading-zero);
+		line-height:1;
+		}
+	.debug & {
+		background:
+			url(../images/ribbon.svg) 865px 0 no-repeat,
+			url(../images/grid.png) no-repeat,
+			#FFF;
+		}
+	}
+
+// Header
+.slide {
+	h2 {
+		margin:0 0 37px;
+		color:#666;
+		font:bold 50px/50px 'PT Sans Narrow', sans-serif;
+		}
+	// Text
+	p {
+		margin:0 0 50px;
+		}
+	p.note {
+		color:#999;
+		}
+	a {
+		border-bottom:0.1em solid;
+		color:#0174A7;
+		text-decoration:none;
+		}
+	b, strong {
+		font-weight:bold;
+		}
+	i, em {
+		font-style:italic;
+		}
+	kbd, code, samp {
+		padding:3px 8px;
+		border-radius:8px;
+		background:#FAFAA2;
+		color:#000;
+		@include tab-size(4);
+		line-height:1;
+		font-family:'PT Mono', monospace;
+		}
+	// Quote
+	blockquote {
+		font-style:italic;
+		&:before {
+			position:absolute;
+			margin:-16px 0 0 -80px;
+			color:#CCC;
+			font:200px/1 'PT Sans', sans-serif;
+			content:'\201C';
+			}
+		& + figcaption {
+			margin:-50px 0 40px;
+			font-style:italic;
+			font-weight:bold;
+			}
+		}
+	// Lists
+	ol, ul {
+		margin:0 0 50px;
+		counter-reset:list;
+		li {
+			text-indent:-2em;
+			&:before {
+				display:inline-block;
+				width:2em;
+				color:#BBB;
+				text-align:right;
+				}
+			}
+		ol,
+		ul {
+			margin:0 0 0 39px;
+			}
+		}
+	ul > li:before {
+		content:'\2022\00A0\00A0';
+		}
+	ul > li:lang(ru):before {
+		content:'\2014\00A0\00A0';
+		}
+	ol > li:before {
+		counter-increment:list;
+		content:counter(list)'.\00A0';
+		}
+	// Code
+	pre {
+		margin:0 0 50px;
+		counter-reset:code;
+		white-space:normal;
+		code {
+			display:block;
+			padding:0;
+			background:none;
+			white-space:pre;
+			line-height:50px;
+			&:before {
+				position:absolute;
+				margin:0 0 0 -110px;
+				width:100px;
+				color:#BBB;
+				text-align:right;
+				counter-increment:code;
+				content:counter(code, decimal-leading-zero)'.';
+				}
+			}
+		mark {
+			margin:0 -8px;
+			padding:3px 8px;
+			border-radius:8px;
+			background:rgba(236,249,0,.37);
+			color:#000;
+			font-style:normal;
+			&.important {
+				margin:0;
+				background:#C00;
+				color:#FFF;
+				font-weight:normal;
+				}
+			&.comment {
+				margin:0;
+				padding:0;
+				background:none;
+				color:#999;
+				}
+			}
+		}
+	// Cover
+	&.cover {
+		background:#000;
+		img, svg, video,
+		object, canvas {
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:-1;
+			clip:rect(0, 1024px, 640px, 0);
+			}
+		&.w {
+			img, svg, video,
+			object, canvas {
+				width:100%;
+				}
+			}
+		&.h {
+			img, svg, video,
+			object, canvas {
+				height:100%;
+				}
+			}
+		&.c {
+			img, svg, video,
+			object, canvas {
+				left:50%;
+				@include transform(translateX(-50%));
+				}
+			}
+		&.m {
+			img, svg, video,
+			object, canvas {
+				top:50%;
+				@include transform(translateY(-50%));
+				}
+			}
+		}
+
+	// Shout
+	&.shout {
+		background-image:none;
+		h2 {
+			position:absolute;
+			top:50%;
+			left:0;
+			width:100%;
+			text-align:center;
+			line-height:1;
+			font-size:150px;
+			@include transform(translateY(-50%));
+			}
+		}
+	// Place
+	.place {
+		position:absolute;
+		&.t, &.m, &.b {
+			left:50%;
+			@include transform(translateX(-50%));
+			}
+		&.t { top:0; }
+		&.b { bottom:0; }
+		&.l, &.m, &.r {
+			top:50%;
+			@include transform(translateY(-50%));
+			}
+		&.l { left:0; }
+		&.m { @include transform(translate(-50%, -50%)); }
+		&.r {
+			right:0;
+			left:auto;
+			}
+		&.t.l, &.t.r, &.b.r, &.b.l {
+			@include transform(none);
+			}
+		&.t.l, &.t.r { top:0; }
+		&.b.r, &.b.l { top:auto; }
+		}
+	}
+
+// List
+// -------------------------------
+.list {
+	padding:80px 0 40px 100px;
+	background:#585A5E url(../images/linen.png);
+	&:after {
+		clear:both;
+		display:block;
+		content:'';
+		}
+	// Caption
+	.caption {
+		margin:0 0 50px;
+		color:#3C3D40;
+		text-shadow:0 1px 1px #8D8E90;
+		h1 {
+			font:bold 50px/1 'PT Sans Narrow', sans-serif;
+			}
+		a {
+			color:#4B86C2;
+			text-shadow:0 -1px 1px #1F3F60;
+			text-decoration:none;
+			&:hover {
+				color:#5ca4ed;
+				}
+			}
+		}
+	// Slide
+	.slide {
+		position:relative;
+		float:left;
+		margin:0 -432px -220px 0;
+		@include transform-origin(0 0);
+		@include transform(scale(0.5));
+		@media (max-width:1304px) {
+			margin:0 -718px -400px 0;
+			@include transform(scale(0.25));
+			}
+		&:before {
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:-1;
+			width:512px;
+			height:320px;
+			box-shadow:
+				0 0 30px rgba(0, 0, 0, 0.005),
+				0 20px 50px rgba(42, 43, 45, 0.6);
+			border-radius:2px;
+			content:'';
+			@include transform-origin(0 0);
+			@include transform(scale(2));
+			@media (max-width:1304px) {
+				width:256px;
+				height:160px;
+				@include transform(scale(4));
+				}
+			}
+		&:after {
+			bottom:-100px;
+			left:120px;
+			color:#3C3D40;
+			text-shadow:0 2px 1px #8D8E90;
+			font-weight:bold;
+			font-size:50px;
+			@media (max-width:1304px) {
+				bottom:-180px;
+				text-shadow:0 4px 2px #8D8E90;
+				font-size:100px;
+				}
+			}
+		&:hover:before {
+			box-shadow:
+				0 0 0 10px rgba(42, 43, 45, 0.3),
+				0 20px 50px rgba(42, 43, 45, 0.6);
+			}
+		&:target {
+			&:before {
+				box-shadow:
+					0 0 0 1px #305F8D,
+					0 0 0 10px #3C7CBD,
+					0 20px 50px rgba(42, 43, 45, 0.6);
+				@media (max-width:1304px) {
+					box-shadow:
+						0 0 0 1px #305F8D,
+						0 0 0 10px #3C7CBD,
+						0 20px 50px rgba(42, 43, 45, 0.6);
+					}
+				}
+			&:after {
+				text-shadow:0 2px 1px rgba(42, 43, 45, 0.6);
+				color:#4B86C2;
+				@media (max-width:1304px) {
+					text-shadow:0 4px 2px rgba(42, 43, 45, 0.6);
+					}
+				}
+			}
+		}
+	}
+
+// Full
+// -------------------------------
+.full {
+	position:absolute;
+	top:50%;
+	left:50%;
+	overflow:hidden;
+	margin:-320px 0 0 -512px;
+	width:1024px;
+	height:640px;
+	background:#000;
+	.caption {
+		display:none;
+		}
+	.slide {
+		position:absolute;
+		top:0;
+		left:0;
+		visibility:hidden;
+		&:after {
+			position:absolute;
+			left:120px;
+			bottom:80px;
+			color:#CCC;
+			line-height:18px;
+			font-size:25px;
+			}
+		&:target {
+			visibility:visible;
+			}
+		// Cover
+		// Shout
+		&.cover,
+		&.shout {
+			z-index:1;
+			&:after {
+				content:'';
+				}
+			}
+		}
+	// Next Lists
+	li.next {
+		opacity:0;
+		&.active {
+			opacity:1;
+			@include transition(opacity 0.5s linear);
+			}
+		}
+	// Progress
+	.progress {
+		position:absolute;
+		right:118px;
+		bottom:40px;
+		left:118px;
+		div {
+			width:0;
+			height:10px;
+			box-shadow:0 0 0 1px rgba(255, 255, 255, 0.4);
+			border-radius:5px;
+			background:rgba(177, 177, 177, 0.4);
+			@include transition(width 0.2s linear);
+			}
+		}
+	}
