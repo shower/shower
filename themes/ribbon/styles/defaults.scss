@@ -1,0 +1,37 @@
+// Ribbon theme for Shower HTML presentation template: github.com/pepelsbey/shower
+// Copyright © 2010–2012 Vadim Makeev, pepelsbey.net
+// Licensed under MIT license: github.com/pepelsbey/shower/wiki/License-En
+
+// Variables
+$width:1024px;	// Slide width
+$height:768px;	// Slide height
+$top:71px;		// Top padding before slide content
+$sides:120px;	// Left and right paddings around slide content
+$break:1304px;	// Width for small thumbnails in the list mode
+
+// Mixins
+@mixin tab-size($n) {
+	-moz-tab-size:$n;
+	-o-tab-size:$n;
+	tab-size:$n;
+	}
+@mixin transform($n) {
+	-webkit-transform:$n;
+	-moz-transform:$n;
+	-ms-transform:$n;
+	-o-transform:$n;
+	transform:$n;
+	}
+@mixin transform-origin($n) {
+	-webkit-transform-origin:$n;
+	-moz-transform-origin:$n;
+	-ms-transform-origin:$n;
+	-o-transform-origin:$n;
+	transform-origin:$n;
+	}
+@mixin transition($n) {
+	-webkit-transition:$n;
+	-moz-transition:$n;
+	-o-transition:$n;
+	transition:$n;
+	}

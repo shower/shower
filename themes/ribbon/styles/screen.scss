@@ -2,35 +2,7 @@
 // Copyright © 2010–2012 Vadim Makeev, pepelsbey.net
 // Licensed under MIT license: github.com/pepelsbey/shower/wiki/License-En
 
-// Mixins
-// -------------------------------
-@mixin tab-size($n) {
-	-moz-tab-size:$n;
-	-o-tab-size:$n;
-	tab-size:$n;
-	}
-@mixin transform($n) {
-	-webkit-transform:$n;
-	-moz-transform:$n;
-	-ms-transform:$n;
-	-o-transform:$n;
-	transform:$n;
-	}
-@mixin transform-origin($n) {
-	-webkit-transform-origin:$n;
-	-moz-transform-origin:$n;
-	-ms-transform-origin:$n;
-	-o-transform-origin:$n;
-	transform-origin:$n;
-	}
-@mixin transition($n) {
-	-webkit-transition:$n;
-	-moz-transition:$n;
-	-ms-transition:$n;
-	-o-transition:$n;
-	transition:$n;
-	}
-
+@import 'defaults.scss';
 @import 'fonts.scss';
 @import 'reset.scss';
 
@@ -42,9 +14,9 @@ body {
 // Slide
 // -------------------------------
 .slide {
-	padding:71px 120px 0;
-	width:784px;
-	height:569px;
+	padding:$top $sides 0;
+	width:$width - $sides * 2;
+	height:$height - $top;
 	background:#FFF url(../images/ribbon.svg) 865px 0 no-repeat;
 	color:#000;
 	&:after {
@@ -56,7 +28,7 @@ body {
 	.debug & {
 		background:
 			url(../images/ribbon.svg) 865px 0 no-repeat,
-			url(../images/grid.png) no-repeat,
+			url(../images/grid-16x10.png) no-repeat,
 			#FFF;
 		}
 	}
@@ -190,7 +162,7 @@ body {
 			top:0;
 			left:0;
 			z-index:-1;
-			clip:rect(0, 1024px, 640px, 0);
+			clip:rect(0, $width, $height, 0);
 			}
 		&.w {
 			img, svg, video,
@@ -295,7 +267,7 @@ body {
 		margin:0 -432px -220px 0;
 		@include transform-origin(0 0);
 		@include transform(scale(0.5));
-		@media (max-width:1304px) {
+		@media (max-width:$break) {
 			margin:0 -718px -400px 0;
 			@include transform(scale(0.25));
 			}
@@ -304,8 +276,8 @@ body {
 			top:0;
 			left:0;
 			z-index:-1;
-			width:512px;
-			height:320px;
+			width:$width/2;
+			height:$height/2;
 			box-shadow:
 				0 0 30px rgba(0, 0, 0, 0.005),
 				0 20px 50px rgba(42, 43, 45, 0.6);
@@ -313,9 +285,9 @@ body {
 			content:'';
 			@include transform-origin(0 0);
 			@include transform(scale(2));
-			@media (max-width:1304px) {
-				width:256px;
-				height:160px;
+			@media (max-width:$break) {
+				width:$width/4;
+				height:$height/4;
 				@include transform(scale(4));
 				}
 			}
@@ -326,7 +298,7 @@ body {
 			text-shadow:0 2px 1px #8D8E90;
 			font-weight:bold;
 			font-size:50px;
-			@media (max-width:1304px) {
+			@media (max-width:$break) {
 				bottom:-180px;
 				text-shadow:0 4px 2px #8D8E90;
 				font-size:100px;
@@ -343,7 +315,7 @@ body {
 					0 0 0 1px #305F8D,
 					0 0 0 10px #3C7CBD,
 					0 20px 50px rgba(42, 43, 45, 0.6);
-				@media (max-width:1304px) {
+				@media (max-width:$break) {
 					box-shadow:
 						0 0 0 1px #305F8D,
 						0 0 0 10px #3C7CBD,
@@ -353,7 +325,7 @@ body {
 			&:after {
 				text-shadow:0 2px 1px rgba(42, 43, 45, 0.6);
 				color:#4B86C2;
-				@media (max-width:1304px) {
+				@media (max-width:$break) {
 					text-shadow:0 4px 2px rgba(42, 43, 45, 0.6);
 					}
 				}
@@ -368,9 +340,9 @@ body {
 	top:50%;
 	left:50%;
 	overflow:hidden;
-	margin:-320px 0 0 -512px;
-	width:1024px;
-	height:640px;
+	margin:(-$height/2) 0 0 (-$width/2);
+	width:$width;
+	height:$height;
 	background:#000;
 	.caption {
 		display:none;
@@ -391,8 +363,7 @@ body {
 		&:target {
 			visibility:visible;
 			}
-		// Cover
-		// Shout
+		// Cover Shout
 		&.cover,
 		&.shout {
 			z-index:1;
