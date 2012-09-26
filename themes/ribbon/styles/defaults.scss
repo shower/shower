@@ -3,11 +3,11 @@
 // Licensed under MIT license: github.com/pepelsbey/shower/wiki/License-En
 
 // Variables
-$width:1024px;	// Slide width
-$height:640px;	// Slide height
-$top:71px;		// Top padding before slide content
-$sides:120px;	// Left and right paddings around slide content
-$break:1304px;	// Width for small thumbnails in the list mode
+$width:1024px; // Slide width, permanent in most cases
+$height:640px; // Slide height, 640px for 16/10, 780px for 4/3
+$top:71px;     // Top padding above slide content
+$sides:120px;  // Left and right paddings around slide content
+$break:1304px; // Window width for small thumbnails to appear
 
 // Mixins
 @mixin tab-size($n) {
