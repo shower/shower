@@ -7,7 +7,7 @@ $width:1024px; // Slide width, permanent in most cases
 $height:640px; // Slide height, 640px for 16/10, 768px for 4/3
 $top:71px;     // Top padding above slide content
 $sides:120px;  // Left and right paddings around slide content
-$break:1304px; // Window width for small thumbnails to appear
+$break:1324px; // Window width for small thumbnails to appear
 
 // Mixins
 @mixin tab-size($n) {
