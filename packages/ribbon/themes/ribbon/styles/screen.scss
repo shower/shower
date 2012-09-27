@@ -380,12 +380,9 @@ body {
 		}
 	// Next Lists
 	li.next {
-		visibility:hidden;
-		color:#FFF;
+		display:none;
 		&.active {
-			visibility:visible;
-			color:#000;
-			@include transition(color 0.5s linear);
+			display:block;
 			}
 		}
 	// Progress
