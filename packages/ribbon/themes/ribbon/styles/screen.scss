@@ -380,10 +380,12 @@ body {
 		}
 	// Next Lists
 	li.next {
-		opacity:0;
+		visibility:hidden;
+		color:#FFF;
 		&.active {
-			opacity:1;
-			@include transition(opacity 0.5s linear);
+			visibility:visible;
+			color:#000;
+			@include transition(color 0.5s linear);
 			}
 		}
 	// Progress
