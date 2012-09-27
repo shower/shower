@@ -37,7 +37,7 @@ Please address bugs and your suggestions to [Issues](http://github.com/pepelsbey
 * [Dynamic Graphics](http://pepelsbey.net/pres/dynamic-graphics/)
 
 
-Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](shower/wiki/License-En) for details.
+Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](shower/wiki/The-MIT-License-(en)) for details.
 
 ---
 
@@ -79,4 +79,4 @@ Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [lic
 * [Вёрстка со смыслом](http://pepelsbey.net/pres/sense-coding/)
 * [Динамическая графика](http://pepelsbey.net/pres/dynamic-graphics/)
 
-Лицензировано под [лицензией MIT](http://ru.wikipedia.org/wiki/Лицензия_MIT), читайте подробнее [на странице лицензии](shower/wiki/License-Ru).
+Лицензировано под [лицензией MIT](http://ru.wikipedia.org/wiki/Лицензия_MIT), читайте подробнее [на странице лицензии](shower/wiki/The-MIT-License-(ru)).
