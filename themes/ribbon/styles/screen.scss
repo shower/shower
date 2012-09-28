@@ -175,29 +175,28 @@ body {
 			object, canvas {
 				width:100%;
 				}
+			&.c {
+				img, svg, video,
+				object, canvas {
+					top:50%;
+					@include transform(translateY(-50%));
+					}
+				}
 			}
 		&.h {
 			img, svg, video,
 			object, canvas {
 				height:100%;
 				}
-			}
-		&.c {
-			img, svg, video,
-			object, canvas {
-				left:50%;
-				@include transform(translateX(-50%));
-				}
-			}
-		&.m {
-			img, svg, video,
-			object, canvas {
-				top:50%;
-				@include transform(translateY(-50%));
+			&.c {
+				img, svg, video,
+				object, canvas {
+					left:50%;
+					@include transform(translateX(-50%));
+					}
 				}
 			}
 		}
-
 	// Shout
 	&.shout {
 		background-image:none;
