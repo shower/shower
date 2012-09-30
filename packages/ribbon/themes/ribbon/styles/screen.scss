@@ -2,9 +2,9 @@
 // Copyright © 2010–2012 Vadim Makeev, pepelsbey.net
 // Licensed under MIT license: github.com/pepelsbey/shower/wiki/License-En
 
-@import 'defaults.scss';
-@import 'fonts.scss';
-@import 'reset.scss';
+@import 'defaults';
+@import 'fonts';
+@import 'reset';
 
 body {
 	counter-reset:paging;
@@ -14,9 +14,8 @@ body {
 // Slide
 // -------------------------------
 .slide {
-	padding:$top $sides 0;
-	width:$width - $sides * 2;
-	height:$height - $top;
+	width:$width;
+	height:$height;
 	background:#FFF url(../images/ribbon.svg) 865px 0 no-repeat;
 	color:#000;
 	&:after {
@@ -36,6 +35,15 @@ body {
 			}
 		background:
 			url(../images/ribbon.svg) 865px 0 no-repeat, #{$grid} #FFF;
+		}
+	> div {
+		position:absolute;
+		top:0;
+		left:0;
+		overflow:hidden;
+		padding:$top $sides 0;
+		width:$width - $sides * 2;
+		height:$height - $top;
 		}
 	}
 
@@ -168,32 +176,21 @@ body {
 			top:0;
 			left:0;
 			z-index:-1;
-			clip:rect(0, $width, $height, 0);
 			}
 		&.w {
 			img, svg, video,
 			object, canvas {
+				top:50%;
 				width:100%;
-				}
-			&.c {
-				img, svg, video,
-				object, canvas {
-					top:50%;
-					@include transform(translateY(-50%));
-					}
+				@include transform(translateY(-50%));
 				}
 			}
 		&.h {
 			img, svg, video,
 			object, canvas {
+				left:50%;
 				height:100%;
-				}
-			&.c {
-				img, svg, video,
-				object, canvas {
-					left:50%;
-					@include transform(translateX(-50%));
-					}
+				@include transform(translateX(-50%));
 				}
 			}
 		}
