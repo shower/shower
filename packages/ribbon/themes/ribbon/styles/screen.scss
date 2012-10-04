@@ -33,8 +33,7 @@ body {
 				$grid:'url(../images/grid-4x3.png) no-repeat,'
 				}
 			}
-		background:
-			url(../images/ribbon.svg) 865px 0 no-repeat, #{$grid} #FFF;
+		background:url(../images/ribbon.svg) 865px 0 no-repeat, #{$grid} #FFF;
 		}
 	> div {
 		position:absolute;
