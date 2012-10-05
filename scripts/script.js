@@ -118,6 +118,9 @@ window.shower = (function () {
 		if (!_.isListMode()) {
 			_.updateProgress(slideNumber);
 		}
+
+		if (typeof _.onchange == 'function')
+			_.onchange(slideNumber);
 	}
 
 	function getContainingSlideId(el) {
