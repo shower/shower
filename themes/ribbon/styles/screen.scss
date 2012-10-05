@@ -192,6 +192,14 @@ body {
 				@include transform(translateX(-50%));
 				}
 			}
+		&.w.h {
+			img, svg, video,
+			object, canvas {
+				top:0;
+				left:0;
+				@include transform(none);
+				}
+			}
 		}
 	// Shout
 	&.shout {
