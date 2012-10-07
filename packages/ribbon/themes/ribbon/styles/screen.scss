@@ -363,7 +363,7 @@ body {
 		position:absolute;
 		top:0;
 		left:0;
-		visibility:hidden;
+		display:none;
 		&:after {
 			position:absolute;
 			left:120px;
@@ -373,7 +373,7 @@ body {
 			font-size:25px;
 			}
 		&:target {
-			visibility:visible;
+			display:block;
 			}
 		// Cover Shout
 		&.cover,
