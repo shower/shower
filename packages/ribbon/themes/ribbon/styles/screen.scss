@@ -144,6 +144,9 @@ body {
 				counter-increment:code;
 				content:counter(code, decimal-leading-zero)'.';
 				}
+			&:only-child:before {
+				content:'';
+				}
 			}
 		mark {
 			margin:0 -8px;
