@@ -22,22 +22,22 @@ window.shower = (function(window, document, undefined) {
 		});
 	}
 
-	function getTransform() {
+	shower._getTransform = function() {
 		var denominator = Math.max(
 			body.clientWidth / window.innerWidth,
 			body.clientHeight / window.innerHeight
 		);
 
 		return 'scale(' + (1 / denominator) + ')';
-	}
+	};
 
-	function applyTransform(transform) {
+	shower._applyTransform = function(transform) {
 		body.style.WebkitTransform = transform;
 		body.style.MozTransform = transform;
 		body.style.msTransform = transform;
 		body.style.OTransform = transform;
 		body.style.transform = transform;
-	}
+	};
 
 	shower.next = function () {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
@@ -70,13 +70,13 @@ window.shower = (function(window, document, undefined) {
 	shower.enterSlideMode = function() {
 		body.classList.remove('list');
 		body.classList.add('full');
-		applyTransform(getTransform());
+		shower._applyTransform(shower._getTransform());
 	};
 
 	shower.enterListMode = function() {
 		body.classList.remove('full');
 		body.classList.add('list');
-		applyTransform('none');
+		shower._applyTransform('none');
 	};
 
 	shower.getCurrentSlideNumber = function() {
@@ -265,7 +265,7 @@ window.shower = (function(window, document, undefined) {
 
 	window.addEventListener('resize', function (e) {
 		if (!shower.isListMode()) {
-			applyTransform(getTransform());
+			shower._applyTransform(shower._getTransform());
 		}
 	}, false);
 
