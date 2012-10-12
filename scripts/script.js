@@ -1,4 +1,4 @@
-(function () {
+(function(window, document, undefined) {
 	var url = window.location,
 		body = document.body,
 		slides = document.querySelectorAll('.slide'),
@@ -354,4 +354,4 @@
 		}
 	}, false);
 
-}());
+})(this, this.document);
