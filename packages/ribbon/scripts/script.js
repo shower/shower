@@ -22,6 +22,11 @@ window.shower = (function(window, document, undefined) {
 		});
 	}
 
+	/**
+	* Get slide scale value
+	* @private
+	* @returns {String}
+	*/
 	shower._getTransform = function() {
 		var denominator = Math.max(
 			body.clientWidth / window.innerWidth,
@@ -31,16 +36,30 @@ window.shower = (function(window, document, undefined) {
 		return 'scale(' + (1 / denominator) + ')';
 	};
 
+	/**
+	* Set CSS transform with prefixes to body
+	* @private
+	* @returns {true}
+	*/
 	shower._applyTransform = function(transform) {
 		body.style.WebkitTransform = transform;
 		body.style.MozTransform = transform;
 		body.style.msTransform = transform;
 		body.style.OTransform = transform;
 		body.style.transform = transform;
+
+		return true;
 	};
 
+
+	/**
+	* Show next slide. If slide is last returns false, otherwise return slide
+	* number which been shown.
+	* @returns {number|false}
+	*/
 	shower.next = function () {
-		var currentSlideNumber = shower.getCurrentSlideNumber();
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			ret;
 
 		// Only go to next slide if current slide have no inner
 		// navigation or inner navigation is fully shown
@@ -48,11 +67,16 @@ window.shower = (function(window, document, undefined) {
 		if (
 			-1 === currentSlideNumber ||
 			!slideList[currentSlideNumber].hasInnerNavigation ||
-			-1 === increaseInnerNavigation(currentSlideNumber)
+			-1 === shower.increaseInnerNavigation(currentSlideNumber)
 		) {
 			currentSlideNumber++;
 			shower.go(currentSlideNumber);
+			ret = currentSlideNumber + 1;
+		} else {
+			ret = false;
 		}
+
+		return ret;
 	};
 
 	shower.previous = function () {
