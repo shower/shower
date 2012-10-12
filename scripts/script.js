@@ -1,5 +1,6 @@
-(function(window, document, undefined) {
-	var url = window.location,
+window.shower = (function(window, document, undefined) {
+	var shower = {},
+		url = window.location,
 		body = document.body,
 		slides = document.querySelectorAll('.slide'),
 		progress = document.querySelector('div.progress div'),
@@ -38,32 +39,61 @@
 		body.style.transform = transform;
 	}
 
-	function enterSlideMode() {
+	shower.next = function () {
+		var currentSlideNumber = shower.getCurrentSlideNumber();
+
+		// Only go to next slide if current slide have no inner
+		// navigation or inner navigation is fully shown
+		// NOTE: But first of all check if there is no current slide
+		if (
+			-1 === currentSlideNumber ||
+			!slideList[currentSlideNumber].hasInnerNavigation ||
+			-1 === increaseInnerNavigation(currentSlideNumber)
+		) {
+			currentSlideNumber++;
+			shower.go(currentSlideNumber);
+		}
+	};
+
+	shower.previous = function () {
+		shower.go(shower.getCurrentSlideNumber() - 1);
+	};
+
+	shower.first = function() {
+		shower.go(0);
+	};
+
+	shower.last = function() {
+		shower.go(slideList.length - 1);
+	};
+
+	shower.enterSlideMode = function() {
 		body.classList.remove('list');
 		body.classList.add('full');
 		applyTransform(getTransform());
-	}
+	};
 
-	function enterListMode() {
+	shower.enterListMode = function() {
 		body.classList.remove('full');
 		body.classList.add('list');
 		applyTransform('none');
-	}
+	};
 
-	function getCurrentSlideNumber() {
-		var i, l = slideList.length,
+	shower.getCurrentSlideNumber = function() {
+		var i = 0,
+			l = slideList.length,
 			currentSlideId = url.hash.substr(1);
 
-		for (i = 0; i < l; ++i) {
+		for (; i < l; ++i) {
 			if (currentSlideId === slideList[i].id) {
 				return i;
 			}
 		}
 
 		return -1;
-	}
+	};
 
-	function scrollToSlide(slideNumber) {
+	shower.scrollToSlide = function(slideNumber) {
 		if (-1 === slideNumber ) { return; }
 
 		var currentSlide = document.getElementById(slideList[slideNumber].id);
@@ -71,11 +101,11 @@
 		if (null != currentSlide) {
 			window.scrollTo(0, currentSlide.offsetTop);
 		}
-	}
+	};
 
-	function isListMode() {
+	shower.isListMode = function() {
 		return 'full' !== url.search.substr(1);
-	}
+	};
 
 	function normalizeSlideNumber(slideNumber) {
 		if (0 > slideNumber) {
@@ -87,12 +117,12 @@
 		}
 	}
 
-	function updateProgress(slideNumber) {
+	shower.updateProgress = function (slideNumber) {
 		if (null === progress) { return; }
 		progress.style.width = (100 / (slideList.length - 1) * normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
-	}
+	};
 
-	function updateCurrentAndPassedSlides(slideNumber) {
+	shower.updateCurrentAndPassedSlides = function(slideNumber) {
 		var i, l = slideList.length, slide;
 		slideNumber = normalizeSlideNumber(slideNumber);
 
@@ -110,23 +140,24 @@
 				slide.classList.add('current');
 			}
 		}
-	}
+	};
 
-	function getSlideHash(slideNumber) {
+	shower.getSlideHash = function(slideNumber) {
 		return '#' + slideList[normalizeSlideNumber(slideNumber)].id;
-	}
+	};
 
-	function goToSlide(slideNumber) {
-		url.hash = getSlideHash(slideNumber);
+	shower.go = function(slideNumber) {
+		url.hash = shower.getSlideHash(slideNumber);
 
-		if (!isListMode()) {
-			updateProgress(slideNumber);
-			updateCurrentAndPassedSlides(slideNumber);
+		if (!shower.isListMode()) {
+			shower.updateProgress(slideNumber);
+			shower.updateCurrentAndPassedSlides(slideNumber);
 		}
-	}
+	};
 
-	function getContainingSlideId(el) {
+	shower.getContainingSlideId = function(el) {
 		var node = el;
+
 		while ('BODY' !== node.nodeName && 'HTML' !== node.nodeName) {
 			if (node.classList.contains('slide')) {
 				return node.id;
@@ -136,10 +167,10 @@
 		}
 
 		return '';
-	}
+	};
 
 	// FIXME: Renaming needed? Or just some handlers rewriting?
-	function dispatchSingleSlideMode(e) {
+	shower.dispatchSingleSlideMode = function(e) {
 		// Process links
 		// TODO: presentation links support
 		if ('A' === e.target.nodeName) {
@@ -149,23 +180,23 @@
 			return;
 		}
 
-		var slideId = getContainingSlideId(e.target);
+		var slideId = shower.getContainingSlideId(e.target);
 
-		if ('' !== slideId && isListMode()) {
+		if ('' !== slideId && shower.isListMode()) {
 			e.preventDefault();
 
 			// NOTE: we should update hash to get things work properly
 			url.hash = '#' + slideId;
 			history.replaceState(null, null, url.pathname + '?full#' + slideId);
-			enterSlideMode();
+			shower.enterSlideMode();
 
-			updateProgress(getCurrentSlideNumber());
-			updateCurrentAndPassedSlides(getCurrentSlideNumber());
-			runSlideshowIfPresented(getCurrentSlideNumber());
+			shower.updateProgress(shower.getCurrentSlideNumber());
+			shower.updateCurrentAndPassedSlides(shower.getCurrentSlideNumber());
+			shower.runSlideshowIfPresented(shower.getCurrentSlideNumber());
 		}
-	}
+	};
 
-	function runSlideshowIfPresented(slideNumber) {
+	shower.runSlideshowIfPresented = function(slideNumber) {
 		slideNumber = normalizeSlideNumber(slideNumber);
 
 		clearTimeout(timer);
@@ -177,14 +208,14 @@
 			timing = parseInt(timing[0], 10) * 60 * 1000 + parseInt(timing[1], 10) * 1000;
 
 			timer = setTimeout( function () {
-				goToSlide(slideNumber + 1);
-				runSlideshowIfPresented(slideNumber + 1);
+				shower.go(slideNumber + 1);
+				shower.runSlideshowIfPresented(slideNumber + 1);
 			}, timing );
 		}
-	}
+	};
 
 	// Increases inner navigation by adding 'active' class to next inactive inner navigation item
-	function increaseInnerNavigation(slideNumber) {
+	shower.increaseInnerNavigation = function(slideNumber) {
 		// Shortcut for slides without inner navigation
 		if (true !== slideList[slideNumber].hasInnerNavigation) { return -1; }
 
@@ -198,35 +229,35 @@
 		} else {
 			return -1;
 		}
-	}
+	};
 
 	// Event handlers
 
 	window.addEventListener('DOMContentLoaded', function () {
-		if (!isListMode()) {
+		if (!shower.isListMode()) {
 			// "?full" is present without slide hash, so we should display first slide
-			if (-1 === getCurrentSlideNumber()) {
-				history.replaceState(null, null, url.pathname + '?full' + getSlideHash(0));
+			if (-1 === shower.getCurrentSlideNumber()) {
+				history.replaceState(null, null, url.pathname + '?full' + shower.getSlideHash(0));
 			}
 
-			enterSlideMode();
-			updateProgress(getCurrentSlideNumber());
-			updateCurrentAndPassedSlides(getCurrentSlideNumber());
-			runSlideshowIfPresented(getCurrentSlideNumber())
+			shower.enterSlideMode();
+			shower.updateProgress(shower.getCurrentSlideNumber());
+			shower.updateCurrentAndPassedSlides(shower.getCurrentSlideNumber());
+			shower.runSlideshowIfPresented(shower.getCurrentSlideNumber());
 		}
 	}, false);
 
 	window.addEventListener('popstate', function (e) {
-		if (isListMode()) {
-			enterListMode();
-			scrollToSlide(getCurrentSlideNumber());
+		if (shower.isListMode()) {
+			shower.enterListMode();
+			shower.scrollToSlide(shower.getCurrentSlideNumber());
 		} else {
-			enterSlideMode();
+			shower.enterSlideMode();
 		}
 	}, false);
 
 	window.addEventListener('resize', function (e) {
-		if (!isListMode()) {
+		if (!shower.isListMode()) {
 			applyTransform(getTransform());
 		}
 	}, false);
@@ -235,31 +266,31 @@
 		// Shortcut for alt, shift and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
-		var currentSlideNumber = getCurrentSlideNumber(),
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
 			innerNavigationCompleted = true;
 
 		switch (e.which) {
 			case 116: // F5
 			case 13: // Enter
-				if (isListMode() && -1 !== currentSlideNumber) {
+				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
 
-					history.pushState(null, null, url.pathname + '?full' + getSlideHash(currentSlideNumber));
-					enterSlideMode();
+					history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
+					shower.enterSlideMode();
 
-					updateProgress(currentSlideNumber);
-					updateCurrentAndPassedSlides(currentSlideNumber);
-					runSlideshowIfPresented(currentSlideNumber);
+					shower.updateProgress(currentSlideNumber);
+					shower.updateCurrentAndPassedSlides(currentSlideNumber);
+					shower.runSlideshowIfPresented(currentSlideNumber);
 				}
 			break;
 
 			case 27: // Esc
-				if (!isListMode()) {
+				if (!shower.isListMode()) {
 					e.preventDefault();
 
-					history.pushState(null, null, url.pathname + getSlideHash(currentSlideNumber));
-					enterListMode();
-					scrollToSlide(currentSlideNumber);
+					history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
+					shower.enterListMode();
+					shower.scrollToSlide(currentSlideNumber);
 				}
 			break;
 
@@ -269,9 +300,7 @@
 			case 72: // h
 			case 75: // k
 				e.preventDefault();
-
-				currentSlideNumber--;
-				goToSlide(currentSlideNumber);
+				shower.previous();
 			break;
 
 			case 34: // PgDown
@@ -281,11 +310,11 @@
 			case 74: // j
 				e.preventDefault();
 
-				if (!isListMode() ) {
+				if (!shower.isListMode() ) {
 					// Inner navigation is "completed" if current slide have
 					// no inner navigation or inner navigation is fully shown
 					innerNavigationCompleted = !slideList[currentSlideNumber].hasInnerNavigation ||
-						-1 === increaseInnerNavigation(currentSlideNumber);
+						-1 === shower.increaseInnerNavigation(currentSlideNumber);
 				} else {
 					// Also inner navigation is always "completed" if we are in
 					// list mode
@@ -296,10 +325,10 @@
 					-1 === currentSlideNumber || innerNavigationCompleted
 				) {
 					currentSlideNumber++;
-					goToSlide(currentSlideNumber);
+					shower.go(currentSlideNumber);
 					// We must run slideshow only in full mode
-					if (!isListMode()) {
-						runSlideshowIfPresented(currentSlideNumber);
+					if (!shower.isListMode()) {
+						shower.runSlideshowIfPresented(currentSlideNumber);
 					}
 				}
 			break;
@@ -307,23 +336,20 @@
 			case 36: // Home
 				e.preventDefault();
 
-				currentSlideNumber = 0;
-				goToSlide(currentSlideNumber);
+				shower.first();
 			break;
 
 			case 35: // End
 				e.preventDefault();
 
-				currentSlideNumber = slideList.length - 1;
-				goToSlide(currentSlideNumber);
+				shower.last();
 			break;
 
 			case 9: // Tab = +1; Shift + Tab = -1
 			case 32: // Space = +1; Shift + Space = -1
 				e.preventDefault();
 
-				currentSlideNumber += e.shiftKey ? -1 : 1;
-				goToSlide(currentSlideNumber);
+				shower[e.shiftKey ? 'previous' : 'next']();
 			break;
 
 			default:
@@ -331,12 +357,12 @@
 		}
 	}, false);
 
-	document.addEventListener('click', dispatchSingleSlideMode, false);
-	document.addEventListener('touchend', dispatchSingleSlideMode, false);
+	document.addEventListener('click', shower.dispatchSingleSlideMode, false);
+	document.addEventListener('touchend', shower.dispatchSingleSlideMode, false);
 
 	document.addEventListener('touchstart', function (e) {
-		if (!isListMode()) {
-			var currentSlideNumber = getCurrentSlideNumber(),
+		if (!shower.isListMode()) {
+			var currentSlideNumber = shower.getCurrentSlideNumber(),
 				x = e.touches[0].pageX;
 			if (x > window.innerWidth / 2) {
 				currentSlideNumber++;
@@ -344,14 +370,16 @@
 				currentSlideNumber--;
 			}
 
-			goToSlide(currentSlideNumber);
+			shower.go(currentSlideNumber);
 		}
 	}, false);
 
 	document.addEventListener('touchmove', function (e) {
-		if (!isListMode()) {
+		if (!shower.isListMode()) {
 			e.preventDefault();
 		}
 	}, false);
+
+    return shower;
 
 })(this, this.document);
