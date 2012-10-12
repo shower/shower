@@ -94,13 +94,20 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	shower.scrollToSlide = function(slideNumber) {
-		if (-1 === slideNumber ) { return; }
+		var currentSlide,
+			ret;
 
-		var currentSlide = document.getElementById(slideList[slideNumber].id);
-
-		if (null != currentSlide) {
-			window.scrollTo(0, currentSlide.offsetTop);
+		if (-1 === slideNumber ) {
+			return;
 		}
+
+		if (slideList[slideNumber]) {
+			currentSlide = document.getElementById(slideList[slideNumber].id);
+			window.scrollTo(0, currentSlide.offsetTop);
+			ret = true;
+		}
+
+        return ret;
 	};
 
 	shower.isListMode = function() {
