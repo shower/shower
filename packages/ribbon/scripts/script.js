@@ -18,7 +18,7 @@ window.shower = (function(window, document, undefined) {
 		slideList.push({
 			id: slides[i].id,
 			hasInnerNavigation: null !== slides[i].querySelector('.next'),
-			hasTiming: null != slides[i].dataset.timing
+			hasTiming: (slides[i].dataset.timing && slides[i].dataset.timing.indexOf(':') !== -1)
 		});
 	}
 
