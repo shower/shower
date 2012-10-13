@@ -162,16 +162,16 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Check if arg is number.
 	* @private
-    * @param {number|whatelse} arg Any type
+	* @param {number|whatelse} arg Any type
 	* @returns {boolean}
 	*/
-    shower._isNumber = function(arg) {
+	shower._isNumber = function(arg) {
 		if(! ( ! isNaN(parseFloat(arg)) && isFinite(arg))) {
-            return false;
+			return false;
 		}
 
 		return true;
-    };
+	};
 
 	/**
 	* Scroll to slide.
@@ -203,7 +203,7 @@ window.shower = (function(window, document, undefined) {
 			throw new Error('There is no slide with number ' + slideNumber);
 		}
 
-        return ret;
+		return ret;
 	};
 
 	/**
@@ -253,7 +253,7 @@ window.shower = (function(window, document, undefined) {
 
 		progress.style.width = (100 / (slideList.length - 1) * shower._normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
 
-        return true;
+		return true;
 	};
 
 	/**
@@ -431,7 +431,7 @@ window.shower = (function(window, document, undefined) {
 			}
 		}
 
-        return ret;
+		return ret;
 	};
 
 
@@ -586,6 +586,6 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-    return shower;
+	return shower;
 
 })(this, this.document);
