@@ -7,7 +7,7 @@
 @import 'reset';
 
 body {
-	counter-reset:paging;
+	counter-reset:slide;
 	font:25px/2 'PT Sans', sans-serif;
 	}
 
@@ -20,8 +20,8 @@ body {
 	color:#000;
 	&:after {
 		position:absolute;
-		counter-increment:paging;
-		content:counter(paging, decimal-leading-zero);
+		counter-increment:slide;
+		content:counter(slide, decimal-leading-zero);
 		line-height:1;
 		}
 	.debug & {
@@ -363,9 +363,8 @@ body {
 		position:absolute;
 		top:0;
 		left:0;
-		display:none;
+		clip:rect(0, 0, 0, 0);
 		&:after {
-			position:absolute;
 			left:120px;
 			bottom:80px;
 			color:#CCC;
@@ -373,7 +372,7 @@ body {
 			font-size:25px;
 			}
 		&:target {
-			display:block;
+			clip:rect(0, auto, auto, 0);
 			}
 		// Cover Shout
 		&.cover,
