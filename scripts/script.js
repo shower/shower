@@ -216,11 +216,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {boolean}
 	*/
 	shower.isListMode = function() {
-		if (historyApiPresent) {
-		  	return 'full' !== url.search.substr(1);
-		} else {
-		  	return body.classList.contains('list');
-		}
+		return historyApiPresent ? 'full' !== url.search.substr(1) : body.classList.contains('list');
 	};
 
 	/**
