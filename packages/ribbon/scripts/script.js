@@ -6,7 +6,19 @@ window.shower = (function(window, document, undefined) {
 		progress = document.querySelector('div.progress div'),
 		slideList = [],
 		timer,
+		isHistoryApiSupported = !!(window.history && history.pushState),
 		l = slides.length, i;
+
+	/**
+	* Get value at named data store for the DOM element.
+	* @private
+	* @param {domElem} element
+	* @param {string} name
+	* @returns {string}
+	*/
+	shower._getData = function(element, name) {
+		return element.dataset ? element.dataset[name] : element.getAttribute('data-' + name);
+	}
 
 	for (i = 0; i < l; i++) {
 		// Slide ID's are optional. In case of missing ID we set it to the
@@ -18,7 +30,7 @@ window.shower = (function(window, document, undefined) {
 		slideList.push({
 			id: slides[i].id,
 			hasInnerNavigation: null !== slides[i].querySelector('.next'),
-			hasTiming: (slides[i].dataset.timing && slides[i].dataset.timing.indexOf(':') !== -1)
+			hasTiming: (shower._getData(slides[i], 'timing') && shower._getData(slides[i], 'timing').indexOf(':') !== -1)
 		});
 	}
 
@@ -211,7 +223,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {boolean}
 	*/
 	shower.isListMode = function() {
-		return 'full' !== url.search.substr(1);
+		return isHistoryApiSupported ? 'full' !== url.search.substr(1) : body.classList.contains('list');
 	};
 
 	/**
@@ -367,7 +379,8 @@ window.shower = (function(window, document, undefined) {
 
 			// NOTE: we should update hash to get things work properly
 			url.hash = '#' + slideId;
-			history.replaceState(null, null, url.pathname + '?full#' + slideId);
+			if (isHistoryApiSupported)
+				history.replaceState(null, null, url.pathname + '?full#' + slideId);
 			shower.enterSlideMode();
 
 			shower.updateProgress(shower.getCurrentSlideNumber());
@@ -395,7 +408,7 @@ window.shower = (function(window, document, undefined) {
 		if (slideList[slideNumber].hasTiming) {
 			// Compute number of milliseconds from format "X:Y", where X is
 			// number of minutes, and Y is number of seconds
-			var timing = document.getElementById(slideList[slideNumber].id).dataset.timing.split(':');
+			var timing = shower._getData(document.getElementById(slideList[slideNumber].id), 'timing').split(':');
 			timing = parseInt(timing[0], 10) * 60 * 1000 + parseInt(timing[1], 10) * 1000;
 
 			timer = setTimeout(function() {
@@ -443,7 +456,8 @@ window.shower = (function(window, document, undefined) {
 		if ( ! shower.isListMode()) {
 			// "?full" is present without slide hash, so we should display first slide
 			if (-1 === shower.getCurrentSlideNumber()) {
-				history.replaceState(null, null, url.pathname + '?full' + shower.getSlideHash(0));
+				if (isHistoryApiSupported)
+					history.replaceState(null, null, url.pathname + '?full' + shower.getSlideHash(0));
 			}
 
 			shower.enterSlideMode();
@@ -481,7 +495,8 @@ window.shower = (function(window, document, undefined) {
 				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
 
-					history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
+					if (isHistoryApiSupported)
+						history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
 					shower.enterSlideMode();
 
 					shower.updateProgress(currentSlideNumber);
@@ -494,7 +509,8 @@ window.shower = (function(window, document, undefined) {
 				if ( ! shower.isListMode()) {
 					e.preventDefault();
 
-					history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
+					if (isHistoryApiSupported)
+						history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
 					shower.enterListMode();
 					shower.scrollToSlide(currentSlideNumber);
 				}
