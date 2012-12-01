@@ -1,75 +1,63 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Shower Presentation Template</title>
-	<meta charset="utf-8">
+	<title>Ribbon theme for Shower</title>
+	<meta charset="UTF-8">
 	<meta name="viewport" content="width=1274, user-scalable=no">
-	<link rel="stylesheet" href="themes/ribbon/styles/screen.css">
-	<link rel="stylesheet" href="themes/ribbon/styles/print.css" media="print">
-	<!--
-		To apply styles to the certain slides
-		set slide ID to get needed elements
-		-->
-	<style>
-		#Cover h2 {
-			margin:65px 0 0;
-			color:#FFF;
-			text-align:center;
-			font-size:70px;
-			}
-		#Picture h2 {
-			color:#FFF;
-			}
-	</style>
+	<link rel="stylesheet" href="styles/screen.css">
+	<link rel="stylesheet" href="styles/print.css" media="print">
 </head>
-<body class="list">
+<body class="list debug">
 	<header class="caption">
-		<h1>Shower Presentation Template</h1>
-		<p><a href="http://pepelsbey.net/">Vadim Makeev</a>, <a href="http://opera.com">Opera Software</a></p>
+		<h1>Presentation Title</h1>
+		<p><a href="">Author Name</a></p>
 	</header>
-	<section class="slide cover" id="Cover"><div>
-		<h2>Shower Presentation Template</h2>
-		<img src="pictures/cover.jpg" alt="">
-	</div></section>
-	<section class="slide" data-timing="00:05"><div>
-		<h2>Slide with timer</h2>
-		<p>It will change right in five seconds</p>
+	<section class="slide"><div>
+		<h2>Header</h2>
+		<p>Typewriter etsy messenger bag <a href="">fingerstache</a>, aesthetic vinyl semiotics twee <strong>DIY</strong> forage chillwave. Thundercats ennui messenger bag, <em>squid</em> carles chillwave shoreditch pickled cliche <b>letterpress</b>. DIY beard locavore <i>occupy</i> salvia, whatever single-origin <code>coffee</code> fanny pack 3 wolf moon typewriter gastropub kale chips.</p>
+		<p class="note">Secondary footnote.</p>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Heading</h2>
-		<p>In your slides text you can use <a href="http://google.com/">links</a> and various inline elements for <em>emotional</em> and <strong>strong</strong> emphasis or just for <i>italic</i> or <b>bold</b> decoration. <code>&lt;code&gt;</code> is used for inline code samples.</p>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Two rows.<br> Mighty heading</h2>
-		<p>You can use two lines header but it would reduce space on a slide. The “Ribbon” theme is designed for seven lines of code after one-line header by default.</p>
-		<p class="note">This paragraph could be used as a footnote</p>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Various lists</h2>
+		<h2>Lists in Enlish typography</h2>
 		<ul>
-			<li>Simple lists are marked with bullets.</li>
-			<li>Ordered lists begin with a number.</li>
-			<li>You can even nest lists one inside another.
+			<li>Ennui keffiyeh thundercats</li>
+			<li>Jean shorts biodiesel</li>
+			<li>Terry richardson, swag blog
 				<ol>
-					<li>Or mix their types.</li>
-					<li>But do not go too far.</li>
-					<li>Otherwise audience will be bored.</li>
+					<li>Locavore umami vegan helvetica</li>
+					<li>Fingerstache kale chips</li>
+					<li>Keytar sriracha gluten-free</li>
 				</ol>
 			</li>
-			<li>Look, seven rows exactly!</li>
+			<li>Before they sold out master</li>
+		</ul>
+	</div></section>
+	<section class="slide" lang="ru"><div>
+		<h2>Lists in Russian typography</h2>
+		<ul>
+			<li>Ennui keffiyeh thundercats</li>
+			<li>Jean shorts biodiesel</li>
+			<li>Terry richardson, swag blog
+				<ol>
+					<li>Locavore umami vegan helvetica</li>
+					<li>Fingerstache kale chips</li>
+					<li>Keytar sriracha gluten-free</li>
+				</ol>
+			</li>
+			<li>Before they sold out master</li>
 		</ul>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Serious citation</h2>
+		<h2>Quote</h2>
 		<figure>
 			<blockquote>
-				<p>You can wrap one or more paragraphs into citation, which will make text italic and add a nice quote on the left. Giving the citation source would make it even more serious.</p>
+				<p>Typewriter etsy messenger bag fingerstache, aesthetic vinyl semiotics twee DIY forage chillwave. Thundercats ennui messenger bag, squid carles chillwave shoreditch pickled cliche letterpress. DIY beard locavore occupy salvia, whatever single-origin coffee fanny pack 3 wolf moon typewriter gastropub kale chips.</p>
 			</blockquote>
-			<figcaption>Vadim Makeev</figcaption>
+			<figcaption>Author Name</figcaption>
 		</figure>
 	</div></section>
 	<section class="slide"><div>
-		<h2>When you have a lot of code</h2>
+		<h2>Code listing</h2>
 		<pre>
 			<code>&lt;html lang="en"&gt;</code>
 			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
@@ -81,50 +69,69 @@
 		</pre>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Code in separate blocks</h2>
-		<pre>
-			<code><mark>&lt;html</mark> lang="en"&gt;</code>
-		</pre>
-		<p class="note">Now you can add a note for each block</p>
-		<pre>
-			<code><mark>&lt;meta</mark> charset="<mark>UTF-8</mark>"&gt;</code>
-		</pre>
-		<p class="note">And explain what is interesting about it</p>
+		<h2>Code listing</h2>
+		<pre><code>&lt;html lang="en"&gt;
+<mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark>
+    &lt;title&gt;Shower&lt;/title&gt;
+    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;
+    &lt;link rel="stylesheet" href="s/screen.css"&gt;
+    &lt;script src="j/jquery.js"&gt;&lt;/script&gt;
+<mark>&lt;/head&gt;</mark></code></pre>
 	</div></section>
 	<section class="slide shout"><div>
-		<h2>You can shout<br> this way</h2>
+		<h2>Shout</h2>
 	</div></section>
-	<section class="slide cover" id="Picture"><div>
-		<h2>And place any picture</h2>
-		<img src="pictures/picture.jpg" alt="">
+	<section class="slide cover"><div>
+		<img src="pictures/exact.png" alt="">
+	</div></section>
+	<section class="slide cover w"><div>
+		<img src="pictures/wide.png" alt="">
+	</div></section>
+	<section class="slide cover h"><div>
+		<img src="pictures/tall.png" alt="">
+	</div></section>
+	<section class="slide cover h"><div>
+		<img src="pictures/wide.png" alt="">
+	</div></section>
+	<section class="slide cover w"><div>
+		<img src="pictures/tall.png" alt="">
+	</div></section>
+	<section class="slide cover w h"><div>
+		<img src="pictures/square.png" alt="">
+	</div></section>
+	<section class="slide shout"><div>
+		<img src="pictures/square.png" alt="" class="place t l">
+		<img src="pictures/square.png" alt="" class="place t">
+		<img src="pictures/square.png" alt="" class="place t r">
+		<img src="pictures/square.png" alt="" class="place l">
+		<img src="pictures/square.png" alt="" class="place m">
+		<img src="pictures/square.png" alt="" class="place r">
+		<img src="pictures/square.png" alt="" class="place b l">
+		<img src="pictures/square.png" alt="" class="place b">
+		<img src="pictures/square.png" alt="" class="place b r">
+	</div></section>
+	<section class="slide" data-timing="00:03"><div>
+		<h2>Timer</h2>
+		<p>Three seconds to go.</p>
 	</div></section>
 	<section class="slide"><div>
-		<h2>Inner navigation</h2>
+		<h2>List navigation</h2>
 		<ol>
-			<li>Lets you change objects one by one</li>
-			<li class="next">For example, show list items</li>
-			<li class="next">Or switch pictures</li>
-			<li class="next">And much more</li>
-			<li class="next">But it will work only once</li>
+			<li>Ennui keffiyeh thundercats</li>
+			<li class="next">Jean shorts biodiesel</li>
+			<li class="next">Terry richardson, swag blog</li>
+			<li class="next">Locavore umami vegan helvetica</li>
+			<li class="next">Fingerstache kale chips</li>
+			<li class="next">Keytar sriracha gluten-free</li>
+			<li class="next">Before they sold out master</li>
 		</ol>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Shower Presentation Template</h2>
-		<p>Vadim Makeev, Opera Software</p>
-		<ul>
-			<li><a href="http://pepelsbey.net">pepelsbey.net</a></li>
-			<li><a href="http://twitter.com/pepelsbey">twitter.com/pepelsbey</a></li>
-			<li><a href="mailto:pepelsbey@gmail.com">pepelsbey@gmail.com</a></li>
-		</ul>
-		<p>Shower: <a href="http://github.com/pepelsbey/shower">github.com/pepelsbey/shower</a></p>
 	</div></section>
 	<!--
 		To hide progress bar from entire presentation
 		just remove “progress” element.
 		-->
 	<div class="progress"><div></div></div>
-	<script src="scripts/script.js"></script>
+	<script src="../../scripts/script.js"></script>
 	<!-- Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
-	<!-- Photos by John Carey — fiftyfootshadows.net -->
 </body>
 </html>
