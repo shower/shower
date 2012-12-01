@@ -1,0 +1,59 @@
+// Ribbon theme for Shower HTML presentation template: github.com/pepelsbey/shower
+// Copyright © 2010–2012 Vadim Makeev, pepelsbey.net
+// Licensed under MIT license: github.com/pepelsbey/shower/wiki/License-En
+
+@import 'defaults.scss';
+
+@page {
+	margin:0;
+	size:$width $height;
+	}
+
+// List
+// -------------------------------
+.list {
+	padding:0;
+	background:none;
+	// Magic
+	* {
+		-webkit-print-color-adjust:exact;
+		}
+	// Caption
+	.caption {
+		display:none;
+		}
+	// Slide
+	.slide {
+		float:none;
+		margin:0;
+		-webkit-transform:none;
+		-moz-transform:none;
+		-ms-transform:none;
+		-o-transform:none;
+		transform:none;
+		&:before {
+			display:none;
+			}
+		&:after {
+			position:absolute;
+			left:120px;
+			bottom:80px;
+			color:#CCC;
+			text-shadow:none;
+			line-height:18px;
+			font-weight:normal;
+			font-size:25px;
+			}
+		// Cover Shout
+		&.cover,
+		&.shout {
+			z-index:1;
+			&:after {
+				content:'';
+				}
+			}
+		&.cover {
+			background:#000;
+			}
+		}
+	}
