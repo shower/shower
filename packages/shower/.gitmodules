@@ -1,0 +1,3 @@
+[submodule "themes/ribbon"]
+	path = themes/ribbon
+	url = git@github.com:shower/ribbon.git
