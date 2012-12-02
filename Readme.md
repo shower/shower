@@ -54,4 +54,6 @@ You're always welcome to contibute. Fork project, make changes and send it as pu
 
 Main contributors: @pepelsbey, @jahson, @miripiruni, @kizu.
 
+---
+
 Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](shower/wiki/MIT-License) for details.
