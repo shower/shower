@@ -1,6 +1,6 @@
 # Shower
 
-Presentation engine. Follow [@shower_me](http://twitter.com/shower_me/) for support and updates.
+HTML presentation engine. Follow [@shower_me](http://twitter.com/shower_me/) for support and updates.
 
 To see Shower in action:
 
@@ -11,22 +11,27 @@ To see Shower in action:
 
 See more details on [using keyboard](shower/wiki/Shortcuts) to control Shower.
 
-## Using Shower
+## Taking Shower
 
-There are two ways of getting Shower: you can get full template or just an engine.
+There are two ways of taking Shower: you can get full template or just an engine.
 
-To get full [template](https://github.com/shower/template) run following command:
+To get full [template](https://github.com/shower/template) based on [shower](https://github.com/shower/shower) engine and [ribbon](https://github.com/shower/ribbon) theme run following command:
 
 ```
 git clone --recursive git@github.com:shower/template.git
 ```
 
-To get only [shower](https://github.com/shower/shower) engine, run this:
+To get only [shower](https://github.com/shower/shower) engine including [ribbon](https://github.com/shower/ribbon) theme, run this:
 
 ```
 git clone --recursive git@github.com:shower/shower.git
 ```
-Or you can just download latest version as ZIP file: [template](https://github.com/downloads/shower/template/template.zip) and [shower](https://github.com/downloads/shower/shower/shower.zip).
+
+Or you can just download latest version as ZIP file: [template](https://github.com/downloads/shower/template/template.zip) or [shower](https://github.com/downloads/shower/shower/shower.zip).
+
+## Printing to PDF
+
+You can print your presentation to PDF using Google Chrome (Print to PDF), [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf) or [Prince XML](http://princexml.com). Print styles should be supplied to a theme for proper results. Please see [print styles](https://github.com/shower/ribbon/blob/master/styles/print.scss) for the Ribbon theme as example.
 
 ## Usage examples
 
@@ -38,21 +43,15 @@ Or you can just download latest version as ZIP file: [template](https://github.c
 - [Sense Coding](http://pepelsbey.net/pres/sense-coding/)
 - [Dynamic Graphics](http://pepelsbey.net/pres/dynamic-graphics/)
 
-## Supported Browsers
+## Browser support
 
-Desktop platforms: Chrome, Internet Explorer 10, Firefox, Opera, Safari.
-
-Only latest stable versions of mentioned browsers are supported.
-
-## Planned Support
-
-Mobile platforms: Chrome, Firefox, Safari, Opera Mobile.
+Supported desktop browsers: Chrome, Internet Explorer, Firefox, Opera, Safari. Only latest stable versions of mentioned browsers are supported.
 
 ## Contributing
 
-You're always welcome to contibute. Fork project, make changes and send it as pull request. But it's better to file an [issue](http://github.com/shower/shower/issues) first.
+You're always welcome to contibute. Fork project, make changes and send it as pull request. But it's better to file an [issue](http://github.com/shower/shower/issues) with your idea first.
 
-Main contributors: @pepelsbey, @jahson, @miripiruni, @kizu.
+Main contributors: [pepelsbey](http://github.com/pepelsbey), [jahson](http://github.com/jahson), [miripiruni](http://github.com/miripiruni), [kizu](http://github.com/kizu).
 
 ---
 
