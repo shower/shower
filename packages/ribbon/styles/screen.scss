@@ -149,20 +149,17 @@ body {
 				}
 			}
 		mark {
-			margin:0 -8px;
 			padding:3px 8px;
 			border-radius:8px;
-			background:rgba(236,249,0,.37);
+			background:#F7FCA0;
 			color:#000;
 			font-style:normal;
 			&.important {
-				margin:0;
 				background:#C00;
 				color:#FFF;
 				font-weight:normal;
 				}
 			&.comment {
-				margin:0;
 				padding:0;
 				background:none;
 				color:#999;
