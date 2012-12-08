@@ -483,7 +483,7 @@ window.shower = (function(window, document, undefined) {
 	}, false);
 
 	document.addEventListener('keydown', function (e) {
-		// Shortcut for alt, shift and meta keys
+		// Shortcut for alt, ctrl and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
@@ -491,6 +491,30 @@ window.shower = (function(window, document, undefined) {
 
 		switch (e.which) {
 			case 116: // F5
+				e.preventDefault();
+
+				if (shower.isListMode()) {
+					var slideNumber = e.shiftKey ? currentSlideNumber : 0;
+
+					shower.go(slideNumber);
+
+					if (isHistoryApiSupported) {
+						history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(slideNumber));
+					}
+					shower.enterSlideMode();
+
+					shower.updateProgress(slideNumber);
+					shower.updateCurrentAndPassedSlides(slideNumber);
+					shower.runSlideshowIfPresented(slideNumber);
+				} else {
+					if (isHistoryApiSupported) {
+						history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
+					}
+					shower.enterListMode();
+					shower.scrollToSlide(currentSlideNumber);
+				}
+			break;
+
 			case 13: // Enter
 				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
