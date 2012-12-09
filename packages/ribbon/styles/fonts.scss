@@ -1,4 +1,8 @@
-/* PT Sans */
+// Ribbon theme for Shower HTML presentation engine: github.com/shower/shower
+// Copyright © 2010–2012 Vadim Makeev, pepelsbey.net
+// Licensed under MIT license: github.com/shower/shower/wiki/MIT-License
+
+// PT Sans
 @font-face {
 	font-family:'PT Sans';
 	src:url(../fonts/PTSans.woff) format('woff'),
@@ -35,7 +39,7 @@
 		url(../fonts/PTSans.Narrow.Bold.svg#PTSans-NarrowBold) format('svg');
 	}
 
-/* PT Mono */
+// PT Mono
 @font-face {
 	font-family:'PT Mono';
 	src:url(../fonts/PTMono.woff) format('woff'),
