@@ -379,8 +379,9 @@ window.shower = (function(window, document, undefined) {
 
 			// NOTE: we should update hash to get things work properly
 			url.hash = '#' + slideId;
-			if (isHistoryApiSupported)
+			if (isHistoryApiSupported) {
 				history.replaceState(null, null, url.pathname + '?full#' + slideId);
+			}
 			shower.enterSlideMode();
 
 			shower.updateProgress(shower.getCurrentSlideNumber());
@@ -456,8 +457,9 @@ window.shower = (function(window, document, undefined) {
 		if ( ! shower.isListMode()) {
 			// "?full" is present without slide hash, so we should display first slide
 			if (-1 === shower.getCurrentSlideNumber()) {
-				if (isHistoryApiSupported)
+				if (isHistoryApiSupported) {
 					history.replaceState(null, null, url.pathname + '?full' + shower.getSlideHash(0));
+				}
 			}
 
 			shower.enterSlideMode();
@@ -519,8 +521,9 @@ window.shower = (function(window, document, undefined) {
 				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
 
-					if (isHistoryApiSupported)
+					if (isHistoryApiSupported) {
 						history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
+					}
 					shower.enterSlideMode();
 
 					shower.updateProgress(currentSlideNumber);
@@ -533,8 +536,9 @@ window.shower = (function(window, document, undefined) {
 				if ( ! shower.isListMode()) {
 					e.preventDefault();
 
-					if (isHistoryApiSupported)
+					if (isHistoryApiSupported) {
 						history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
+					}
 					shower.enterListMode();
 					shower.scrollToSlide(currentSlideNumber);
 				}
