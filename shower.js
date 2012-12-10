@@ -223,7 +223,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {boolean}
 	*/
 	shower.isListMode = function() {
-		return isHistoryApiSupported ? 'full' !== url.search.substr(1) : body.classList.contains('list');
+		return isHistoryApiSupported ? ! /^full.*/.test(url.search.substr(1)) : body.classList.contains('list');
 	};
 
 	/**
