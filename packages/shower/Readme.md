@@ -27,7 +27,7 @@ To get only [shower](https://github.com/shower/shower) engine including [ribbon]
 git clone --recursive git@github.com:shower/shower.git
 ```
 
-Or you can just download latest version as ZIP file: [template](https://github.com/downloads/shower/template/template.zip) or [shower](https://github.com/downloads/shower/shower/shower.zip).
+Or you can just download latest version as ZIP file: [template](http://shwr.me/template.zip) or [shower](http://shwr.me/shower.zip).
 
 ## Printing to PDF
 
