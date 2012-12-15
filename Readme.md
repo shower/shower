@@ -31,9 +31,9 @@ Or you can just download latest version as ZIP file: [template](http://shwr.me/t
 
 ## Printing to PDF
 
-You can print your presentation to PDF using Google Chrome “Print to PDF” option in print dialog, [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf) or [Prince XML](http://princexml.com). Print styles should be supplied to a theme for proper results. Please see [print styles](https://github.com/shower/ribbon/blob/master/styles/print.scss) for the Ribbon theme as example.
+You can print your presentation to PDF using Google Chrome “Print to PDF” option in print dialog, [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf) or [Prince](http://princexml.com). Print styles should be supplied to a theme for proper results. Please see [print styles](https://github.com/shower/ribbon/blob/master/styles/print.scss) for the Ribbon theme as example.
 
-Example of Shower template printed by Google Chrome: [PDF, 2.3 MB](https://github.com/shower/template/blob/master/index.pdf?raw=true).
+Example of Shower template printed by Prince: [PDF 435 KB](https://github.com/shower/template/blob/master/index.pdf?raw=true). See more detais on printing in [documentation](https://github.com/shower/shower/wiki/Print).
 
 ## Usage examples
 
