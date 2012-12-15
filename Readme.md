@@ -51,10 +51,9 @@ Supported desktop browsers: Chrome, Internet Explorer, Firefox, Opera, Safari. O
 
 ## Contributing
 
-You're always welcome to contibute. Fork project, make changes and send it as pull request. But it's better to file an [issue](http://github.com/shower/shower/issues) with your idea first.
+You're always welcome to contibute. Fork project, make changes and send it as pull request. But it's better to file an [issue](http://github.com/shower/shower/issues) with your idea first. Read [contributing rules](https://github.com/shower/shower/blob/master/Contributing.md) for more details.
 
 Main contributors: [pepelsbey](http://github.com/pepelsbey), [jahson](http://github.com/jahson), [miripiruni](http://github.com/miripiruni), [kizu](http://github.com/kizu).
 
 ---
-
 Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](shower/wiki/MIT-License) for details.
