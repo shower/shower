@@ -18,13 +18,13 @@ window.shower = (function(window, document, undefined) {
 	*/
 	shower._getData = function(element, name) {
 		return element.dataset ? element.dataset[name] : element.getAttribute('data-' + name);
-	}
+	};
 
 	for (i = 0; i < l; i++) {
 		// Slide ID's are optional. In case of missing ID we set it to the
 		// slide number
 		if ( ! slides[i].id) {
-			slides[i].id = i + 1;
+			slides[i].id = 'slide' + i + 1;
 		}
 
 		slideList.push({
