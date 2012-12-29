@@ -24,7 +24,7 @@ window.shower = (function(window, document, undefined) {
 		// Slide ID's are optional. In case of missing ID we set it to the
 		// slide number
 		if ( ! slides[i].id) {
-			slides[i].id = 'slide' + i + 1;
+			slides[i].id = 'slide' + (i + 1);
 		}
 
 		slideList.push({
