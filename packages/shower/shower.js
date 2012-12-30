@@ -131,7 +131,9 @@ window.shower = (function(window, document, undefined) {
 	* @returns {number}
 	*/
 	shower.enterSlideMode = function() {
-		// @TODO: check if it's already in slide mode...
+		// check if it's already in slide mode...
+		if ( body.classList.contains('full') ) { return; }
+		
 		body.classList.remove('list');
 		body.classList.add('full');
 		return shower._applyTransform(shower._getTransform());
@@ -142,7 +144,9 @@ window.shower = (function(window, document, undefined) {
 	* @returns {number}
 	*/
 	shower.enterListMode = function() {
-		// @TODO: check if it's already in list mode...
+		// check if it's already in list mode...
+		if ( body.classList.contains('list') ) { return; }
+		
 		body.classList.remove('full');
 		body.classList.add('list');
 		return shower._applyTransform('none');
