@@ -18,7 +18,7 @@ window.shower = (function(window, document, undefined) {
 	*/
 	shower._getData = function(element, name) {
 		return element.dataset ? element.dataset[name] : element.getAttribute('data-' + name);
-	}
+	};
 
 	for (i = 0; i < l; i++) {
 		// Slide ID's are optional. In case of missing ID we set it to the
@@ -133,9 +133,13 @@ window.shower = (function(window, document, undefined) {
 	shower.enterSlideMode = function() {
 		// check if it's already in slide mode...
 		if ( body.classList.contains('full') ) { return; }
-		
+
 		body.classList.remove('list');
 		body.classList.add('full');
+
+		if ( window.console && window.console.clear ) { console.clear(); }
+		shower.showPresenterNotes( shower.getCurrentSlideNumber() );
+
 		return shower._applyTransform(shower._getTransform());
 	};
 
@@ -146,7 +150,7 @@ window.shower = (function(window, document, undefined) {
 	shower.enterListMode = function() {
 		// check if it's already in list mode...
 		if ( body.classList.contains('list') ) { return; }
-		
+
 		body.classList.remove('full');
 		body.classList.add('list');
 		return shower._applyTransform('none');
@@ -307,6 +311,29 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
+	* Show presenter notes in console.
+	* @param {number} slideNumber slide number (sic!). Attention: starts from zero.
+	*/
+	shower.showPresenterNotes = function(slideNumber) {
+		if (window.console) {
+			var slide     = slideList[ shower._normalizeSlideNumber(slideNumber) ].id;
+			var nextSlide = slideList[ shower._normalizeSlideNumber(slideNumber + 1) ].id;
+
+			var notes = document.getElementById(slide).querySelector('.presenter-notes');
+			if (notes) {
+				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+			}
+			if (nextSlide !== slide) {
+				var next = document.getElementById(nextSlide).querySelector('h2');
+				if (next) {
+					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
+					console.info('NEXT: ' + next);
+				}
+			}
+		}
+	};
+
+	/**
 	* Get slide hash.
 	* @param {number} slideNumber slide number (sic!). Attention: starts from zero.
 	* @returns {boolean}
@@ -336,6 +363,7 @@ window.shower = (function(window, document, undefined) {
 		if ( ! shower.isListMode()) {
 			shower.updateProgress(slideNumber);
 			shower.updateCurrentAndPassedSlides(slideNumber);
+			shower.showPresenterNotes(slideNumber);
 		}
 
 		return slideNumber;
