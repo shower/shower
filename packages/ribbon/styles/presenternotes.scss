@@ -1,0 +1,19 @@
+.full .presenter-notes {
+	display:none;
+}
+
+.list .presenter-notes {
+	background: #fff;
+	padding: 5px 10px;
+	z-index: 10;
+	display: block;
+	position: absolute;
+	bottom: -500px;
+	left: 50px;
+	right: 50px;
+	@include transition(bottom .5s);
+}
+
+.list .slide:hover .presenter-notes {
+	bottom: 15px;
+}
