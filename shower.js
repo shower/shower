@@ -132,13 +132,13 @@ window.shower = (function(window, document, undefined) {
 	*/
 	shower.enterSlideMode = function() {
 		// check if it's already in slide mode...
-		if ( body.classList.contains('full') ) { return; }
+		if (body.classList.contains('full')) { return; }
 
 		body.classList.remove('list');
 		body.classList.add('full');
 
-		if ( window.console && window.console.clear ) { console.clear(); }
-		shower.showPresenterNotes( shower.getCurrentSlideNumber() );
+		if (window.console && window.console.clear) { console.clear(); }
+		shower.showPresenterNotes(shower.getCurrentSlideNumber());
 
 		return shower._applyTransform(shower._getTransform());
 	};
@@ -149,7 +149,7 @@ window.shower = (function(window, document, undefined) {
 	*/
 	shower.enterListMode = function() {
 		// check if it's already in list mode...
-		if ( body.classList.contains('list') ) { return; }
+		if (body.classList.contains('list')) { return; }
 
 		body.classList.remove('full');
 		body.classList.add('list');
@@ -316,15 +316,17 @@ window.shower = (function(window, document, undefined) {
 	*/
 	shower.showPresenterNotes = function(slideNumber) {
 		if (window.console) {
-			var slide     = slideList[ shower._normalizeSlideNumber(slideNumber) ].id;
-			var nextSlide = slideList[ shower._normalizeSlideNumber(slideNumber + 1) ].id;
+			slideNumber = shower._normalizeSlideNumber(slideNumber);
 
-			var notes = document.getElementById(slide).querySelector('.presenter-notes');
+			var slideId     = slideList[slideNumber].id;
+			var nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null;
+
+			var notes = document.getElementById(slideId).querySelector('.presenter-notes');
 			if (notes) {
 				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
 			}
-			if (nextSlide !== slide) {
-				var next = document.getElementById(nextSlide).querySelector('h2');
+			if (nextSlideId) {
+				var next = document.getElementById(nextSlideId).querySelector('h2');
 				if (next) {
 					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
 					console.info('NEXT: ' + next);
