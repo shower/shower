@@ -339,6 +339,21 @@ body {
 					}
 				}
 			}
+		// Presenter Notes
+		footer {
+			position:absolute;
+			left:0;
+			right:0;
+			bottom:-500px;
+			z-index:1;
+			padding:20px 120px;
+			background:#FAFAA2;
+			box-shadow:0 0 0 2px rgba(0, 0, 0, 0.05) inset;
+			@include transition(bottom 0.4s)
+			}
+		&:hover footer {
+			bottom:0;
+			}
 		}
 	}
 
@@ -379,6 +394,10 @@ body {
 				content:'';
 				}
 			}
+		// Note
+		footer {
+			display:none;
+			}
 		}
 	// Next Lists
 	li.next {
@@ -403,5 +422,3 @@ body {
 			}
 		}
 	}
-
-@import 'presenternotes';
