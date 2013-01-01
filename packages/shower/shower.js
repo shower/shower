@@ -321,7 +321,7 @@ window.shower = (function(window, document, undefined) {
 			var slideId     = slideList[slideNumber].id;
 			var nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null;
 
-			var notes = document.getElementById(slideId).querySelector('.presenter-notes');
+			var notes = document.getElementById(slideId).querySelector('footer');
 			if (notes) {
 				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
 			}
