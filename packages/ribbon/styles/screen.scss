@@ -269,6 +269,33 @@ body {
 				}
 			}
 		}
+	// Fork me
+	.forkme {
+		position:absolute;
+		top:0;
+		right:0;
+		overflow:hidden;
+		visibility:hidden;
+		width:11em;
+		height:11em;
+		background:rgba(0, 0, 0, 0.2);
+		line-height:2.5;
+		font-size:15px;
+		}
+		.forkme a {
+			position:absolute;
+			bottom:50%;
+			right:-50%;
+			left:-50%;
+			visibility:visible;
+			background:#4B86C2;
+			box-shadow:0 0 1em rgba(0, 0, 0, 0.3);
+			color:#FFF;
+			text-decoration:none;
+			text-align:center;
+			@include transform-origin(50% 100%);
+			@include transform(rotate(45deg) translateY(-1em));
+			}
 	// Slide
 	.slide {
 		position:relative;
@@ -368,7 +395,8 @@ body {
 	width:$width;
 	height:$height;
 	background:#000;
-	.caption {
+	.caption,
+	.forkme {
 		display:none;
 		}
 	.slide {
