@@ -72,7 +72,7 @@ window.shower = (function(window, document, undefined) {
 	* number which been shown.
 	* @returns {number|false}
 	*/
-	shower.next = function () {
+	shower.next = function() {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
 			ret;
 
@@ -99,7 +99,7 @@ window.shower = (function(window, document, undefined) {
 	* number which been shown.
 	* @returns {number|false}
 	*/
-	shower.previous = function () {
+	shower.previous = function() {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
 			ret;
 
@@ -190,7 +190,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {boolean}
 	*/
 	shower._isNumber = function(arg) {
-		if(! ( ! isNaN(parseFloat(arg)) && isFinite(arg))) {
+		if ( ! ( ! isNaN(parseFloat(arg)) && isFinite(arg))) {
 			return false;
 		}
 
@@ -206,11 +206,11 @@ window.shower = (function(window, document, undefined) {
 		var currentSlide,
 			ret;
 
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
-		if( ! shower.isListMode()) {
+		if ( ! shower.isListMode()) {
 			throw new Error('You can\'t to scroll cause you in slide mode. Please, switch to list mode.');
 		}
 
@@ -245,7 +245,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {number}
 	*/
 	shower._normalizeSlideNumber = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
@@ -271,7 +271,7 @@ window.shower = (function(window, document, undefined) {
 			return false;
 		}
 
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
@@ -292,7 +292,7 @@ window.shower = (function(window, document, undefined) {
 
 		slideNumber = shower._normalizeSlideNumber(slideNumber);
 
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
@@ -345,7 +345,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {boolean}
 	*/
 	shower.getSlideHash = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
@@ -360,7 +360,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {number}
 	*/
 	shower.go = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
@@ -436,7 +436,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {undefined}
 	*/
 	shower.runSlideshowIfPresented = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
@@ -468,7 +468,7 @@ window.shower = (function(window, document, undefined) {
 			node,
 			ret = -1;
 
-		if( ! shower._isNumber(slideNumber)) {
+		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as number, baby!');
 		}
 
@@ -491,7 +491,7 @@ window.shower = (function(window, document, undefined) {
 
 	// Event handlers
 
-	window.addEventListener('DOMContentLoaded', function () {
+	window.addEventListener('DOMContentLoaded', function() {
 		if ( ! shower.isListMode()) {
 			// "?full" is present without slide hash, so we should display first slide
 			if (-1 === shower.getCurrentSlideNumber()) {
@@ -507,7 +507,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('popstate', function (e) {
+	window.addEventListener('popstate', function(e) {
 		if (shower.isListMode()) {
 			shower.enterListMode();
 			shower.scrollToSlide(shower.getCurrentSlideNumber());
@@ -516,13 +516,13 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('resize', function (e) {
+	window.addEventListener('resize', function(e) {
 		if ( ! shower.isListMode()) {
 			shower._applyTransform(shower._getTransform());
 		}
 	}, false);
 
-	document.addEventListener('keydown', function (e) {
+	document.addEventListener('keydown', function(e) {
 		// Shortcut for alt, ctrl and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
@@ -648,7 +648,7 @@ window.shower = (function(window, document, undefined) {
 	document.addEventListener('click', shower._dispatchSingleSlideMode, false);
 	document.addEventListener('touchend', shower._dispatchSingleSlideMode, false);
 
-	document.addEventListener('touchstart', function (e) {
+	document.addEventListener('touchstart', function(e) {
 		if ( ! shower.isListMode()) {
 			var currentSlideNumber = shower.getCurrentSlideNumber(),
 				x = e.touches[0].pageX;
@@ -662,7 +662,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	document.addEventListener('touchmove', function (e) {
+	document.addEventListener('touchmove', function(e) {
 		if ( ! shower.isListMode()) {
 			e.preventDefault();
 		}
