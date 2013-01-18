@@ -17,8 +17,8 @@ window.shower = (function(window, document, undefined) {
 	* Get value at named data store for the DOM element.
 	* @private
 	* @param {domElem} element
-	* @param {string} name
-	* @returns {string}
+	* @param {String} name
+	* @returns {String}
 	*/
 	shower._getData = function(element, name) {
 		return element.dataset ? element.dataset[name] : element.getAttribute('data-' + name);
@@ -55,7 +55,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Set CSS transform with prefixes to body
 	* @private
-	* @returns {true}
+	* @returns {Boolean}
 	*/
 	shower._applyTransform = function(transform) {
 		body.style.WebkitTransform = transform;
@@ -68,129 +68,13 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Show next slide. If slide is last returns false, otherwise return slide
-	* number which been shown.
-	* @returns {number|false}
-	*/
-	shower.next = function () {
-		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			ret;
-
-		// Only go to next slide if current slide have no inner
-		// navigation or inner navigation is fully shown
-		// NOTE: But first of all check if there is no current slide
-		if (
-			-1 === currentSlideNumber ||
-			!slideList[currentSlideNumber].hasInnerNavigation ||
-			-1 === shower.increaseInnerNavigation(currentSlideNumber)
-		) {
-			shower.go(currentSlideNumber + 1);
-			// slides starts from 0
-			ret = currentSlideNumber + 2;
-		} else {
-			ret = false;
-		}
-
-		return ret;
-	};
-
-	/**
-	* Show previous slide. If slide is first returns false, otherwise return slide
-	* number which been shown.
-	* @returns {number|false}
-	*/
-	shower.previous = function () {
-		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			ret;
-
-		// slides starts from 0
-		if (currentSlideNumber > 0) {
-			ret = currentSlideNumber;
-			shower.go(currentSlideNumber - 1);
-		} else {
-			ret = false;
-		}
-
-		return ret;
-	};
-
-	/**
-	* Show first slide.
-	* @returns {number}
-	*/
-	shower.first = function() {
-		return shower.go(0);
-	};
-
-	/**
-	* Show last slide.
-	* @returns {number}
-	*/
-	shower.last = function() {
-		return shower.go(slideList.length - 1);
-	};
-
-	/**
-	* Switch to slide view.
-	* @returns {number}
-	*/
-	shower.enterSlideMode = function() {
-		// check if it's already in slide mode...
-		if (body.classList.contains('full')) { return; }
-
-		body.classList.remove('list');
-		body.classList.add('full');
-
-		if (window.console && window.console.clear) { console.clear(); }
-		shower.showPresenterNotes(shower.getCurrentSlideNumber());
-
-		return shower._applyTransform(shower._getTransform());
-	};
-
-	/**
-	* Switch to list view.
-	* @returns {number}
-	*/
-	shower.enterListMode = function() {
-		// check if it's already in list mode...
-		if (body.classList.contains('list')) { return; }
-
-		body.classList.remove('full');
-		body.classList.add('list');
-		return shower._applyTransform('none');
-	};
-
-	// @TODO: add method shower.toggleMode()
-
-	/**
-	* Get current slide number. Starts from zero. Warning: when in url you have
-	* slide number 1 this method will return 0.
-	* If something wrong return -1.
-	* @returns {number}
-	*/
-	shower.getCurrentSlideNumber = function() {
-		var i = slideList.length - 1,
-			currentSlideId = url.hash.substr(1);
-
-		// As fast as you can ;-)
-		// http://jsperf.com/for-vs-foreach/46
-		for (; i >= 0; --i) {
-			if (currentSlideId === slideList[i].id) {
-				return i;
-			}
-		}
-
-		return -1;
-	};
-
-	/**
 	* Check if arg is number.
 	* @private
-	* @param {number|whatelse} arg Any type
-	* @returns {boolean}
+	* @param {Number|whatelse} arg Any type
+	* @returns {Boolean}
 	*/
 	shower._isNumber = function(arg) {
-		if(! ( ! isNaN(parseFloat(arg)) && isFinite(arg))) {
+		if ( ! ( ! isNaN(parseFloat(arg)) && isFinite(arg))) {
 			return false;
 		}
 
@@ -198,55 +82,14 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Scroll to slide.
-	* @param {number} slideNumber slide number (sic!)
-	* @returns {undefined|boolean}
-	*/
-	shower.scrollToSlide = function(slideNumber) {
-		var currentSlide,
-			ret;
-
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
-		}
-
-		if( ! shower.isListMode()) {
-			throw new Error('You can\'t to scroll cause you in slide mode. Please, switch to list mode.');
-		}
-
-		// @TODO: WTF?
-		if (-1 === slideNumber) {
-			return;
-		}
-
-		if (slideList[slideNumber]) {
-			currentSlide = document.getElementById(slideList[slideNumber].id);
-			window.scrollTo(0, currentSlide.offsetTop);
-			ret = true;
-		} else {
-			throw new Error('There is no slide with number ' + slideNumber);
-		}
-
-		return ret;
-	};
-
-	/**
-	* Chech if it's list mode.
-	* @returns {boolean}
-	*/
-	shower.isListMode = function() {
-		return isHistoryApiSupported ? ! /^full.*/.test(url.search.substr(1)) : body.classList.contains('list');
-	};
-
-	/**
 	* Normalize slide number.
 	* @private
-	* @param {number} slideNumber slide number (sic!)
-	* @returns {number}
+	* @param {Number} slideNumber slide number (sic!)
+	* @returns {Number}
 	*/
 	shower._normalizeSlideNumber = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
 		}
 
 		if (slideNumber < 0) {
@@ -261,125 +104,10 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Update progress bar.
-	* @param {number} slideNumber slide number (sic!)
-	* @returns {boolean}
-	*/
-	shower.updateProgress = function(slideNumber) {
-		// if progress bar doesn't exist
-		if (null === progress) {
-			return false;
-		}
-
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
-		}
-
-		progress.style.width = (100 / (slideList.length - 1) * shower._normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
-
-		return true;
-	};
-
-	/**
-	* Update current and passed slides.
-	* @param {number} slideNumber slide number (sic!)
-	* @returns {boolean}
-	*/
-	shower.updateCurrentAndPassedSlides = function(slideNumber) {
-		var i,
-			slide,
-			l = slideList.length;
-
-		slideNumber = shower._normalizeSlideNumber(slideNumber);
-
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
-		}
-
-		for (i = 0; i < l; ++i) {
-			slide = document.getElementById(slideList[i].id);
-
-			if (i < slideNumber) {
-				slide.classList.remove('current');
-				slide.classList.add('passed');
-			} else if (i > slideNumber) {
-				slide.classList.remove('passed');
-				slide.classList.remove('current');
-			} else {
-				slide.classList.remove('passed');
-				slide.classList.add('current');
-			}
-		}
-
-		return true;
-	};
-
-	/**
-	* Show presenter notes in console.
-	* @param {number} slideNumber slide number (sic!). Attention: starts from zero.
-	*/
-	shower.showPresenterNotes = function(slideNumber) {
-		if (window.console) {
-			slideNumber = shower._normalizeSlideNumber(slideNumber);
-
-			var slideId     = slideList[slideNumber].id;
-			var nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null;
-
-			var notes = document.getElementById(slideId).querySelector('footer');
-			if (notes) {
-				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
-			}
-			if (nextSlideId) {
-				var next = document.getElementById(nextSlideId).querySelector('h2');
-				if (next) {
-					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
-					console.info('NEXT: ' + next);
-				}
-			}
-		}
-	};
-
-	/**
-	* Get slide hash.
-	* @param {number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @returns {boolean}
-	*/
-	shower.getSlideHash = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
-		}
-
-		slideNumber = shower._normalizeSlideNumber(slideNumber);
-
-		return '#' + slideList[slideNumber].id;
-	};
-
-	/**
-	* Go to slide number...
-	* @param {number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @returns {number}
-	*/
-	shower.go = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
-		}
-
-		url.hash = shower.getSlideHash(slideNumber);
-
-		if ( ! shower.isListMode()) {
-			shower.updateProgress(slideNumber);
-			shower.updateCurrentAndPassedSlides(slideNumber);
-			shower.showPresenterNotes(slideNumber);
-		}
-
-		return slideNumber;
-	};
-
-	/**
 	* Get containing slide id.
 	* @private
 	* @param {domElem} el
-	* @returns {string}
+	* @returns {String}
 	*/
 	shower._getContainingSlideId = function(el) {
 		while ('BODY' !== el.nodeName && 'HTML' !== el.nodeName) {
@@ -398,7 +126,7 @@ window.shower = (function(window, document, undefined) {
 	* @TODO: Renaming needed? Or just some handlers rewriting?
 	* @private
 	* @param {domElem} e
-	* @returns {undefined}
+	* @returns {Undefined}
 	*/
 	shower._dispatchSingleSlideMode = function(e) {
 		// Process links
@@ -431,13 +159,327 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Run slide show in presented.
-	* @param {number} slideNumber
-	* @returns {undefined}
+	* Show next slide. If slide is last returns false, otherwise return slide
+	* number which been shown.
+	* @param {Function} callback runs only if shower.next() complete successfully
+	* @returns {Number|Boolean}
+	*/
+	shower.next = function(callback) {
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			ret;
+
+		// Only go to next slide if current slide have no inner
+		// navigation or inner navigation is fully shown
+		// NOTE: But first of all check if there is no current slide
+		if (
+			-1 === currentSlideNumber ||
+			!slideList[currentSlideNumber].hasInnerNavigation ||
+			-1 === shower.increaseInnerNavigation(currentSlideNumber)
+		) {
+			shower.go(currentSlideNumber + 1);
+			// slides starts from 0
+			ret = currentSlideNumber + 2;
+
+			if (typeof(callback) === "function") {
+				callback();
+			}
+		} else {
+			ret = false;
+		}
+
+		return ret;
+	};
+
+	/**
+	* Show previous slide. If slide is first returns false, otherwise return slide
+	* number which been shown.
+	* @param {Function} callback runs only if shower.previous() complete successfully
+	* @returns {Number|Boolean}
+	*/
+	shower.previous = function(callback) {
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			ret;
+
+		// slides starts from 0
+		if (currentSlideNumber > 0) {
+			ret = currentSlideNumber;
+			shower.go(currentSlideNumber - 1);
+
+			if (typeof(callback) === "function") {
+				callback();
+			}
+		} else {
+			ret = false;
+		}
+
+		return ret;
+	};
+
+	/**
+	* Show first slide.
+	* @param {Function} callback
+	* @returns {Number}
+	*/
+	shower.first = function(callback) {
+		if (typeof(callback) === "function") {
+			callback();
+		}
+
+		return shower.go(0);
+	};
+
+	/**
+	* Show last slide.
+	* @param {Function} callback
+	* @returns {Number}
+	*/
+	shower.last = function(callback) {
+		if (typeof(callback) === "function") {
+			callback();
+		}
+		return shower.go(slideList.length - 1);
+	};
+
+	/**
+	* Switch to slide view.
+	* @param {Function} callback runs only if shower.enterSlideMode() complete successfully
+	* @returns {Number|Boolean}
+	*/
+	shower.enterSlideMode = function(callback) {
+		// check if it's already in slide mode...
+		if (body.classList.contains('full')) {
+			return false;
+		}
+
+		body.classList.remove('list');
+		body.classList.add('full');
+
+		if (window.console && window.console.clear) {
+			console.clear();
+		}
+
+		shower.showPresenterNotes(shower.getCurrentSlideNumber());
+
+		if (typeof(callback) === "function") {
+			callback();
+		}
+
+		return shower._applyTransform(shower._getTransform());
+	};
+
+	/**
+	* Switch to list view.
+	* @param {Function} callback runs only if shower.enterListMode() complete successfully
+	* @returns {Number}
+	*/
+	shower.enterListMode = function(callback) {
+		// check if it's already in list mode...
+		if (body.classList.contains('list')) {
+			return false;
+		}
+
+		body.classList.remove('full');
+		body.classList.add('list');
+
+		if (typeof(callback) === "function") {
+			callback();
+		}
+
+		return shower._applyTransform('none');
+	};
+
+	// @TODO: add method shower.toggleMode()
+
+	/**
+	* Get current slide number. Starts from zero. Warning: when in url you have
+	* slide number 1 this method will return 0.
+	* If something wrong return -1.
+	* @returns {Number}
+	*/
+	shower.getCurrentSlideNumber = function() {
+		var i = slideList.length - 1,
+			currentSlideId = url.hash.substr(1);
+
+		// As fast as you can ;-)
+		// http://jsperf.com/for-vs-foreach/46
+		for (; i >= 0; --i) {
+			if (currentSlideId === slideList[i].id) {
+				return i;
+			}
+		}
+
+		return -1;
+	};
+
+	/**
+	* Scroll to slide.
+	* @param {Number} slideNumber slide number (sic!)
+	* @returns {Undefined|Boolean}
+	*/
+	shower.scrollToSlide = function(slideNumber) {
+		var currentSlide,
+			ret;
+
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
+		}
+
+		if ( ! shower.isListMode()) {
+			throw new Error('You can\'t scroll to because you in slide mode. Please, switch to list mode.');
+		}
+
+		// @TODO: WTF?
+		if (-1 === slideNumber) {
+			return;
+		}
+
+		if (slideList[slideNumber]) {
+			currentSlide = document.getElementById(slideList[slideNumber].id);
+			window.scrollTo(0, currentSlide.offsetTop);
+			ret = true;
+		} else {
+			throw new Error('There is no slide with number ' + slideNumber);
+		}
+
+		return ret;
+	};
+
+	/**
+	* Chech if it's list mode.
+	* @returns {Boolean}
+	*/
+	shower.isListMode = function() {
+		return isHistoryApiSupported ? ! /^full.*/.test(url.search.substr(1)) : body.classList.contains('list');
+	};
+
+	/**
+	* Update progress bar.
+	* @param {Number} slideNumber slide number (sic!)
+	* @returns {Boolean}
+	*/
+	shower.updateProgress = function(slideNumber) {
+		// if progress bar doesn't exist
+		if (null === progress) {
+			return false;
+		}
+
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
+		}
+
+		progress.style.width = (100 / (slideList.length - 1) * shower._normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
+
+		return true;
+	};
+
+	/**
+	* Update current and passed slides.
+	* @param {Number} slideNumber slide number (sic!)
+	* @returns {Boolean}
+	*/
+	shower.updateCurrentAndPassedSlides = function(slideNumber) {
+		var i,
+			slide,
+			l = slideList.length;
+
+		slideNumber = shower._normalizeSlideNumber(slideNumber);
+
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
+		}
+
+		for (i = 0; i < l; ++i) {
+			slide = document.getElementById(slideList[i].id);
+
+			if (i < slideNumber) {
+				slide.classList.remove('current');
+				slide.classList.add('passed');
+			} else if (i > slideNumber) {
+				slide.classList.remove('passed');
+				slide.classList.remove('current');
+			} else {
+				slide.classList.remove('passed');
+				slide.classList.add('current');
+			}
+		}
+
+		return true;
+	};
+
+	/**
+	* Show presenter notes in console.
+	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
+	*/
+	shower.showPresenterNotes = function(slideNumber) {
+		if (window.console) {
+			slideNumber = shower._normalizeSlideNumber(slideNumber);
+
+			var slideId     = slideList[slideNumber].id;
+			var nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null;
+
+			var notes = document.getElementById(slideId).querySelector('footer');
+			if (notes) {
+				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
+			}
+			if (nextSlideId) {
+				var next = document.getElementById(nextSlideId).querySelector('h2');
+				if (next) {
+					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
+					console.info('NEXT: ' + next);
+				}
+			}
+		}
+	};
+
+	/**
+	* Get slide hash.
+	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
+	* @returns {Boolean}
+	*/
+	shower.getSlideHash = function(slideNumber) {
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
+		}
+
+		slideNumber = shower._normalizeSlideNumber(slideNumber);
+
+		return '#' + slideList[slideNumber].id;
+	};
+
+	/**
+	* Go to slide number...
+	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
+	* @param {Function} callback runs only if you not in List mode
+	* @returns {Number}
+	*/
+	shower.go = function(slideNumber, callback) {
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
+		}
+
+		url.hash = shower.getSlideHash(slideNumber);
+
+		if ( ! shower.isListMode()) {
+			shower.updateProgress(slideNumber);
+			shower.updateCurrentAndPassedSlides(slideNumber);
+			shower.showPresenterNotes(slideNumber);
+
+			if (typeof(callback) === "function") {
+				callback();
+			}
+		}
+
+		return slideNumber;
+	};
+
+	/**
+	* Run slide show if presented.
+	* @param {Number} slideNumber
+	* @returns {Undefined}
 	*/
 	shower.runSlideshowIfPresented = function(slideNumber) {
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
 		}
 
 		slideNumber = shower._normalizeSlideNumber(slideNumber);
@@ -460,16 +502,16 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Increases inner navigation by adding 'active' class to next inactive inner navigation item
-	* @param {number} slideNumber
-	* @returns {number}
+	* @param {Number} slideNumber
+	* @returns {Number}
 	*/
 	shower.increaseInnerNavigation = function(slideNumber) {
 		var nextNodes,
 			node,
 			ret = -1;
 
-		if( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as number, baby!');
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
 		}
 
 		// If inner navigation in this slide...
@@ -491,7 +533,7 @@ window.shower = (function(window, document, undefined) {
 
 	// Event handlers
 
-	window.addEventListener('DOMContentLoaded', function () {
+	window.addEventListener('DOMContentLoaded', function() {
 		if ( ! shower.isListMode()) {
 			// "?full" is present without slide hash, so we should display first slide
 			if (-1 === shower.getCurrentSlideNumber()) {
@@ -507,7 +549,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('popstate', function (e) {
+	window.addEventListener('popstate', function(e) {
 		if (shower.isListMode()) {
 			shower.enterListMode();
 			shower.scrollToSlide(shower.getCurrentSlideNumber());
@@ -516,13 +558,13 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('resize', function (e) {
+	window.addEventListener('resize', function(e) {
 		if ( ! shower.isListMode()) {
 			shower._applyTransform(shower._getTransform());
 		}
 	}, false);
 
-	document.addEventListener('keydown', function (e) {
+	document.addEventListener('keydown', function(e) {
 		// Shortcut for alt, ctrl and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
@@ -648,7 +690,7 @@ window.shower = (function(window, document, undefined) {
 	document.addEventListener('click', shower._dispatchSingleSlideMode, false);
 	document.addEventListener('touchend', shower._dispatchSingleSlideMode, false);
 
-	document.addEventListener('touchstart', function (e) {
+	document.addEventListener('touchstart', function(e) {
 		if ( ! shower.isListMode()) {
 			var currentSlideNumber = shower.getCurrentSlideNumber(),
 				x = e.touches[0].pageX;
@@ -662,7 +704,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	document.addEventListener('touchmove', function (e) {
+	document.addEventListener('touchmove', function(e) {
 		if ( ! shower.isListMode()) {
 			e.preventDefault();
 		}
