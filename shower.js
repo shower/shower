@@ -135,27 +135,32 @@ window.shower = (function(window, document, undefined) {
 			e.preventDefault();
 
 			window.open(e.target.getAttribute('href'));
-			return;
+			return false;
 		}
 
-		var slideId = shower._getContainingSlideId(e.target);
+		var slideId = shower._getContainingSlideId(e.target),
+			i = slideList.length - 1,
+			slideNumber;
 
-		if ('' !== slideId && shower.isListMode()) {
-			e.preventDefault();
+		if (slideId === '') {
+            return false;
+		}
 
-			// NOTE: we should update hash to get things work properly
-			url.hash = '#' + slideId;
-			if (isHistoryApiSupported) {
-				history.replaceState(null, null, url.pathname + '?full#' + slideId);
+		for (; i >= 0; --i) {
+			if (slideId === slideList[i].id) {
+				slideNumber = i;
+				break;
 			}
-			shower.enterSlideMode();
-
-			shower.updateProgress(shower.getCurrentSlideNumber());
-			shower.updateCurrentAndPassedSlides(shower.getCurrentSlideNumber());
-			shower.runSlideshowIfPresented(shower.getCurrentSlideNumber());
 		}
 
-		return;
+		shower.go(slideNumber);
+
+		if (shower.isListMode()) {
+			e.preventDefault();
+			shower.enterSlideMode();
+		}
+
+		return true;
 	};
 
 	/**
@@ -246,9 +251,17 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number|Boolean}
 	*/
 	shower.enterSlideMode = function(callback) {
-		// check if it's already in slide mode...
-		if (body.classList.contains('full')) {
-			return false;
+		var currentSlideNumber = shower.getCurrentSlideNumber();
+
+		if (currentSlideNumber === -1) {
+			currentSlideNumber = 0;
+		}
+
+		shower.go(currentSlideNumber);
+		shower.showPresenterNotes(currentSlideNumber);
+
+		if (shower.isListMode() && isHistoryApiSupported) {
+			history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
 		}
 
 		body.classList.remove('list');
@@ -258,7 +271,9 @@ window.shower = (function(window, document, undefined) {
 			console.clear();
 		}
 
-		shower.showPresenterNotes(shower.getCurrentSlideNumber());
+		shower.updateProgress(currentSlideNumber);
+		shower.updateCurrentAndPassedSlides(currentSlideNumber);
+		shower.runSlideshowIfPresented(currentSlideNumber);
 
 		if (typeof(callback) === "function") {
 			callback();
@@ -273,13 +288,16 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number}
 	*/
 	shower.enterListMode = function(callback) {
-		// check if it's already in list mode...
-		if (body.classList.contains('list')) {
-			return false;
-		}
+		var currentSlideNumber = shower.getCurrentSlideNumber();
 
 		body.classList.remove('full');
 		body.classList.add('list');
+
+		if (shower.isSlideMode() && isHistoryApiSupported) {
+			history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
+		}
+
+		shower.scrollToSlide(currentSlideNumber);
 
 		if (typeof(callback) === "function") {
 			callback();
@@ -288,7 +306,23 @@ window.shower = (function(window, document, undefined) {
 		return shower._applyTransform('none');
 	};
 
-	// @TODO: add method shower.toggleMode()
+	/**
+	* Toggle Mode: Slide and List
+	* @param {Function} callback
+	*/
+	shower.toggleMode = function(callback) {
+		if (shower.isListMode()) {
+			shower.enterSlideMode();
+		} else {
+			shower.enterListMode();
+		}
+
+		if (typeof(callback) === "function") {
+			callback();
+		}
+
+		return true;
+	};
 
 	/**
 	* Get current slide number. Starts from zero. Warning: when in url you have
@@ -324,7 +358,7 @@ window.shower = (function(window, document, undefined) {
 			throw new Error('Gimme slide number as Number, baby!');
 		}
 
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			throw new Error('You can\'t scroll to because you in slide mode. Please, switch to list mode.');
 		}
 
@@ -345,11 +379,19 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Chech if it's list mode.
+	* Check if it's List mode.
 	* @returns {Boolean}
 	*/
 	shower.isListMode = function() {
 		return isHistoryApiSupported ? ! /^full.*/.test(url.search.substr(1)) : body.classList.contains('list');
+	};
+
+	/**
+	* Check if it's Slide mode.
+	* @returns {Boolean}
+	*/
+	shower.isSlideMode = function() {
+		return isHistoryApiSupported ? /^full.*/.test(url.search.substr(1)) : body.classList.contains('full');
 	};
 
 	/**
@@ -459,7 +501,7 @@ window.shower = (function(window, document, undefined) {
 
 		url.hash = shower.getSlideHash(slideNumber);
 
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			shower.updateProgress(slideNumber);
 			shower.updateCurrentAndPassedSlides(slideNumber);
 			shower.showPresenterNotes(slideNumber);
@@ -534,32 +576,21 @@ window.shower = (function(window, document, undefined) {
 	// Event handlers
 
 	window.addEventListener('DOMContentLoaded', function() {
-		if ( ! shower.isListMode()) {
-			// "?full" is present without slide hash, so we should display first slide
-			if (-1 === shower.getCurrentSlideNumber()) {
-				if (isHistoryApiSupported) {
-					history.replaceState(null, null, url.pathname + '?full' + shower.getSlideHash(0));
-				}
-			}
-
+		if (shower.isSlideMode()) {
 			shower.enterSlideMode();
-			shower.updateProgress(shower.getCurrentSlideNumber());
-			shower.updateCurrentAndPassedSlides(shower.getCurrentSlideNumber());
-			shower.runSlideshowIfPresented(shower.getCurrentSlideNumber());
 		}
 	}, false);
 
 	window.addEventListener('popstate', function(e) {
 		if (shower.isListMode()) {
 			shower.enterListMode();
-			shower.scrollToSlide(shower.getCurrentSlideNumber());
 		} else {
 			shower.enterSlideMode();
 		}
 	}, false);
 
 	window.addEventListener('resize', function(e) {
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			shower._applyTransform(shower._getTransform());
 		}
 	}, false);
@@ -579,48 +610,23 @@ window.shower = (function(window, document, undefined) {
 					var slideNumber = e.shiftKey ? currentSlideNumber : 0;
 
 					shower.go(slideNumber);
-
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(slideNumber));
-					}
 					shower.enterSlideMode();
-
-					shower.updateProgress(slideNumber);
-					shower.updateCurrentAndPassedSlides(slideNumber);
-					shower.runSlideshowIfPresented(slideNumber);
 				} else {
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
-					}
 					shower.enterListMode();
-					shower.scrollToSlide(currentSlideNumber);
 				}
 			break;
 
 			case 13: // Enter
 				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
-
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
-					}
 					shower.enterSlideMode();
-
-					shower.updateProgress(currentSlideNumber);
-					shower.updateCurrentAndPassedSlides(currentSlideNumber);
-					shower.runSlideshowIfPresented(currentSlideNumber);
 				}
 			break;
 
 			case 27: // Esc
-				if ( ! shower.isListMode()) {
+				if (shower.isSlideMode()) {
 					e.preventDefault();
-
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
-					}
 					shower.enterListMode();
-					shower.scrollToSlide(currentSlideNumber);
 				}
 			break;
 
@@ -640,7 +646,7 @@ window.shower = (function(window, document, undefined) {
 			case 74: // j
 				e.preventDefault();
 
-				if ( ! shower.isListMode()) {
+				if (shower.isSlideMode()) {
 					// Inner navigation is "completed" if current slide have
 					// no inner navigation or inner navigation is fully shown
 					innerNavigationCompleted = !slideList[currentSlideNumber].hasInnerNavigation ||
@@ -657,7 +663,7 @@ window.shower = (function(window, document, undefined) {
 					currentSlideNumber++;
 					shower.go(currentSlideNumber);
 					// We must run slideshow only in full mode
-					if ( ! shower.isListMode()) {
+					if (shower.isSlideMode()) {
 						shower.runSlideshowIfPresented(currentSlideNumber);
 					}
 				}
@@ -665,20 +671,17 @@ window.shower = (function(window, document, undefined) {
 
 			case 36: // Home
 				e.preventDefault();
-
 				shower.first();
 			break;
 
 			case 35: // End
 				e.preventDefault();
-
 				shower.last();
 			break;
 
 			case 9: // Tab = +1; Shift + Tab = -1
 			case 32: // Space = +1; Shift + Space = -1
 				e.preventDefault();
-
 				shower[e.shiftKey ? 'previous' : 'next']();
 			break;
 
