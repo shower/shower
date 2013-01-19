@@ -160,7 +160,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Show next slide. If slide is last returns false, otherwise return slide
 	* number which been shown.
-	* @param {Function} callback runs only if shower.next() complete successfully
+	* @param {Function} [callback] runs only if shower.next() complete successfully
 	* @returns {Number|Boolean}
 	*/
 	shower.next = function(callback) {
@@ -192,7 +192,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Show previous slide. If slide is first returns false, otherwise return slide
 	* number which been shown.
-	* @param {Function} callback runs only if shower.previous() complete successfully
+	* @param {Function} [callback] runs only if shower.previous() complete successfully
 	* @returns {Number|Boolean}
 	*/
 	shower.previous = function(callback) {
@@ -216,7 +216,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Show first slide.
-	* @param {Function} callback
+	* @param {Function} [callback]
 	* @returns {Number}
 	*/
 	shower.first = function(callback) {
@@ -229,7 +229,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Show last slide.
-	* @param {Function} callback
+	* @param {Function} [callback]
 	* @returns {Number}
 	*/
 	shower.last = function(callback) {
@@ -241,7 +241,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Switch to slide view.
-	* @param {Function} callback runs only if shower.enterSlideMode() complete successfully
+	* @param {Function} [callback] runs only if shower.enterSlideMode() complete successfully
 	* @returns {Number|Boolean}
 	*/
 	shower.enterSlideMode = function(callback) {
@@ -278,7 +278,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Switch to list view.
-	* @param {Function} callback runs only if shower.enterListMode() complete successfully
+	* @param {Function} [callback] runs only if shower.enterListMode() complete successfully
 	* @returns {Number}
 	*/
 	shower.enterListMode = function(callback) {
@@ -302,7 +302,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Toggle Mode: Slide and List
-	* @param {Function} callback
+	* @param {Function} [callback]
 	*/
 	shower.toggleMode = function(callback) {
 		if (shower.isListMode()) {
@@ -487,7 +487,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Go to slide number...
 	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @param {Function} callback runs only if you not in List mode
+	* @param {Function} [callback] runs only if you not in List mode
 	* @returns {Number}
 	*/
 	shower.go = function(slideNumber, callback) {
