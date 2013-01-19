@@ -342,11 +342,11 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Scroll to slide.
 	* @param {Number} slideNumber slide number (sic!)
-	* @returns {Undefined|Boolean}
+	* @returns {Boolean}
 	*/
 	shower.scrollToSlide = function(slideNumber) {
 		var currentSlide,
-			ret;
+			ret = false;
 
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
@@ -358,7 +358,7 @@ window.shower = (function(window, document, undefined) {
 
 		// @TODO: WTF?
 		if (-1 === slideNumber) {
-			return;
+			return ret;
 		}
 
 		if (slideList[slideNumber]) {
