@@ -472,7 +472,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Get slide hash.
 	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @returns {Boolean}
+	* @returns {String}
 	*/
 	shower.getSlideHash = function(slideNumber) {
 		if ( ! shower._isNumber(slideNumber)) {
