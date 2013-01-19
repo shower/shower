@@ -579,7 +579,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('popstate', function(e) {
+	window.addEventListener('popstate', function() {
 		if (shower.isListMode()) {
 			shower.enterListMode();
 		} else {
@@ -587,7 +587,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('resize', function(e) {
+	window.addEventListener('resize', function() {
 		if (shower.isSlideMode()) {
 			shower._applyTransform(shower._getTransform());
 		}
