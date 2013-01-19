@@ -279,7 +279,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Switch to list view.
 	* @param {Function} [callback] runs only if shower.enterListMode() complete successfully
-	* @returns {Number}
+	* @returns {Boolean}
 	*/
 	shower.enterListMode = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
