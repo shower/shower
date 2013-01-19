@@ -133,7 +133,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Get slide number by slideId
-	* @param {Number} slideId (HTML id or position in slideList)
+	* @param {String} slideId (HTML id or position in slideList)
 	* @returns {Number}
 	*/
 	shower.getSlideNumber = function(slideId) {
