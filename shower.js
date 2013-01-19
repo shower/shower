@@ -1,7 +1,8 @@
-// Shower HTML presentation engine: github.com/shower/shower
-// Copyright © 2010–2013 Vadim Makeev, pepelsbey.net
-// Licensed under MIT license: github.com/shower/shower/wiki/MIT-License
-
+/**
+ * Shower HTML presentation engine: github.com/shower/shower
+ * @copyright 2010–2013 Vadim Makeev, pepelsbey.net
+ * @license MIT license: github.com/shower/shower/wiki/MIT-License
+ */
 window.shower = (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
@@ -25,7 +26,7 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	for (i = 0; i < l; i++) {
-		// Slide ID's are optional. In case of missing ID we set it to the
+		// Slide IDs are optional. In case of missing ID we set it to the
 		// slide number
 		if ( ! slides[i].id) {
 			slides[i].id = i + 1;
@@ -148,9 +149,11 @@ window.shower = (function(window, document, undefined) {
 			slideNumber;
 
 		if (slideId === '') {
-            slideNumber = 0;
+			slideNumber = 0;
 		}
 
+		// As fast as you can ;-)
+		// http://jsperf.com/for-vs-foreach/46
 		for (; i >= 0; --i) {
 			if (slideId === slideList[i].id) {
 				slideNumber = i;
@@ -184,7 +187,7 @@ window.shower = (function(window, document, undefined) {
 			// slides starts from 0
 			ret = currentSlideNumber + 2;
 
-			if (typeof(callback) === "function") {
+			if (typeof(callback) === 'function') {
 				callback();
 			}
 		} else {
@@ -209,7 +212,7 @@ window.shower = (function(window, document, undefined) {
 			ret = currentSlideNumber;
 			shower.go(currentSlideNumber - 1);
 
-			if (typeof(callback) === "function") {
+			if (typeof(callback) === 'function') {
 				callback();
 			}
 		} else {
@@ -225,7 +228,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number}
 	*/
 	shower.first = function(callback) {
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 
@@ -238,7 +241,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number}
 	*/
 	shower.last = function(callback) {
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 		return shower.go(slideList.length - 1);
@@ -274,7 +277,7 @@ window.shower = (function(window, document, undefined) {
 		shower.updateCurrentAndPassedSlides(currentSlideNumber);
 		shower.runSlideshowIfPresented(currentSlideNumber);
 
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 
@@ -298,7 +301,7 @@ window.shower = (function(window, document, undefined) {
 
 		shower.scrollToSlide(currentSlideNumber);
 
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 
@@ -316,7 +319,7 @@ window.shower = (function(window, document, undefined) {
 			shower.enterListMode();
 		}
 
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 
@@ -455,15 +458,17 @@ window.shower = (function(window, document, undefined) {
 		if (window.console) {
 			slideNumber = shower._normalizeSlideNumber(slideNumber);
 
-			var slideId     = slideList[slideNumber].id;
-			var nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null;
+			var slideId = slideList[slideNumber].id,
+				nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null,
+				notes = document.getElementById(slideId).querySelector('footer');
 
-			var notes = document.getElementById(slideId).querySelector('footer');
 			if (notes) {
 				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
 			}
+
 			if (nextSlideId) {
 				var next = document.getElementById(nextSlideId).querySelector('h2');
+
 				if (next) {
 					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
 					console.info('NEXT: ' + next);
@@ -505,7 +510,7 @@ window.shower = (function(window, document, undefined) {
 			shower.updateCurrentAndPassedSlides(slideNumber);
 			shower.showPresenterNotes(slideNumber);
 
-			if (typeof(callback) === "function") {
+			if (typeof(callback) === 'function') {
 				callback();
 			}
 		}
