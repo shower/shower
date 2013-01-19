@@ -75,7 +75,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower._isNumber = function(arg) {
-        return ( ! isNaN(parseFloat(arg)) && isFinite(arg));
+        return ! isNaN(parseFloat(arg)) && isFinite(arg);
 	};
 
 	/**
