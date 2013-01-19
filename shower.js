@@ -17,7 +17,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Get value at named data store for the DOM element.
 	* @private
-	* @param {domElem} element
+	* @param {HTMLElement} element
 	* @param {String} name
 	* @returns {String}
 	*/
@@ -103,7 +103,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Get slide id from HTML element.
 	* @private
-	* @param {domElem} el
+	* @param {HTMLElement} el
 	* @returns {String}
 	*/
 	shower._getSlideIdByEl = function(el) {
@@ -124,7 +124,7 @@ window.shower = (function(window, document, undefined) {
 	* @TODO: add support for textareas/inputs/...
 	*
 	* @private
-	* @param {domElem} e
+	* @param {HTMLElement} e
 	* @returns {Boolean}
 	*/
 	shower._checkInteractiveElement = function(e) {
