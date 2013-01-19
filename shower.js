@@ -104,12 +104,12 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Get containing slide id.
+	* Get slide id from HTML element.
 	* @private
 	* @param {domElem} el
 	* @returns {String}
 	*/
-	shower._getContainingSlideId = function(el) {
+	shower._getSlideIdByEl = function(el) {
 		while ('BODY' !== el.nodeName && 'HTML' !== el.nodeName) {
 			if (el.classList.contains('slide')) {
 				return el.id;
@@ -122,28 +122,33 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Dispatch single slide mode.
-	* @TODO: Renaming needed? Or just some handlers rewriting?
+	* For touch devices: check if click on links...
+	*
+	* @TODO: add support for textareas/inputs/...
+	*
 	* @private
 	* @param {domElem} e
-	* @returns {Undefined}
+	* @returns {Boolean}
 	*/
-	shower._dispatchSingleSlideMode = function(e) {
-		// Process links
-		// @TODO: presentation links support
+	shower._checkInteractiveElement = function(e) {
 		if ('A' === e.target.nodeName) {
-			e.preventDefault();
-
-			window.open(e.target.getAttribute('href'));
+			return true;
+		} else {
 			return false;
 		}
+	};
 
-		var slideId = shower._getContainingSlideId(e.target),
-			i = slideList.length - 1,
+	/**
+	* Get slide number by slideId
+	* @param {Number} slideId (HTML id or position in slideList)
+	* @returns {Number}
+	*/
+	shower.getSlideNumber = function(slideId) {
+		var i = slideList.length - 1,
 			slideNumber;
 
 		if (slideId === '') {
-            return false;
+            slideNumber = 0;
 		}
 
 		for (; i >= 0; --i) {
@@ -153,15 +158,9 @@ window.shower = (function(window, document, undefined) {
 			}
 		}
 
-		shower.go(slideNumber);
-
-		if (shower.isListMode()) {
-			e.preventDefault();
-			shower.enterSlideMode();
-		}
-
-		return true;
+		return slideNumber;
 	};
+
 
 	/**
 	* Show next slide. If slide is last returns false, otherwise return slide
@@ -690,25 +689,37 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	document.addEventListener('click', shower._dispatchSingleSlideMode, false);
-	document.addEventListener('touchend', shower._dispatchSingleSlideMode, false);
-
-	document.addEventListener('touchstart', function(e) {
-		if ( ! shower.isListMode()) {
-			var currentSlideNumber = shower.getCurrentSlideNumber(),
-				x = e.touches[0].pageX;
-			if (x > window.innerWidth / 2) {
-				currentSlideNumber++;
-			} else {
-				currentSlideNumber--;
-			}
-
-			shower.go(currentSlideNumber);
+	document.addEventListener('click', function(e) {
+		if (shower.isListMode() && shower._getSlideIdByEl(e.target)) {
+			e.preventDefault();
+			shower.go(shower.getSlideNumber(shower._getSlideIdByEl(e.target)));
+			shower.enterSlideMode();
 		}
 	}, false);
 
+	document.addEventListener('touchstart', function(e) {
+		if (shower._getSlideIdByEl(e.target)) {
+			if (shower.isSlideMode() && ! shower._checkInteractiveElement(e)) {
+				var x = e.touches[0].pageX;
+
+				if (x > window.innerWidth / 2) {
+					shower.next();
+				} else {
+					shower.previous();
+				}
+			}
+
+			if (shower.isListMode()) {
+				shower.go(shower.getSlideNumber(shower._getSlideIdByEl(e.target)));
+				shower.enterSlideMode();
+			}
+		}
+		
+
+	}, false);
+
 	document.addEventListener('touchmove', function(e) {
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			e.preventDefault();
 		}
 	}, false);
