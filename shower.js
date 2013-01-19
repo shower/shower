@@ -513,7 +513,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Run slide show if presented.
 	* @param {Number} slideNumber
-	* @returns {Undefined}
+	* @returns {Boolean}
 	*/
 	shower.runSlideshowIfPresented = function(slideNumber) {
 		if ( ! shower._isNumber(slideNumber)) {
@@ -536,6 +536,8 @@ window.shower = (function(window, document, undefined) {
 				},
 				timing);
 		}
+
+        return true;
 	};
 
 	/**
