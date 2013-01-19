@@ -128,11 +128,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower._checkInteractiveElement = function(e) {
-		if ('A' === e.target.nodeName) {
-			return true;
-		} else {
-			return false;
-		}
+        return 'A' === e.target.nodeName;
 	};
 
 	/**
