@@ -436,14 +436,14 @@ window.shower = (function(window, document, undefined) {
 			slide = document.getElementById(slideList[i].id);
 
 			if (i < slideNumber) {
-				slide.classList.remove('current');
-				slide.classList.add('passed');
+				slide.classList.remove('active');
+				slide.classList.add('visited');
 			} else if (i > slideNumber) {
-				slide.classList.remove('passed');
-				slide.classList.remove('current');
+				slide.classList.remove('visited');
+				slide.classList.remove('active');
 			} else {
-				slide.classList.remove('passed');
-				slide.classList.add('current');
+				slide.classList.remove('visited');
+				slide.classList.add('active');
 			}
 		}
 
