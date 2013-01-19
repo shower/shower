@@ -1,7 +1,8 @@
-// Shower HTML presentation engine: github.com/shower/shower
-// Copyright © 2010–2013 Vadim Makeev, pepelsbey.net
-// Licensed under MIT license: github.com/shower/shower/wiki/MIT-License
-
+/**
+ * Shower HTML presentation engine: github.com/shower/shower
+ * @copyright 2010–2013 Vadim Makeev, pepelsbey.net
+ * @license MIT license: github.com/shower/shower/wiki/MIT-License
+ */
 window.shower = (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
@@ -25,7 +26,7 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	for (i = 0; i < l; i++) {
-		// Slide ID's are optional. In case of missing ID we set it to the
+		// Slide IDs are optional. In case of missing ID we set it to the
 		// slide number
 		if ( ! slides[i].id) {
 			slides[i].id = i + 1;
@@ -104,12 +105,12 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Get containing slide id.
+	* Get slide id from HTML element.
 	* @private
 	* @param {domElem} el
 	* @returns {String}
 	*/
-	shower._getContainingSlideId = function(el) {
+	shower._getSlideIdByEl = function(el) {
 		while ('BODY' !== el.nodeName && 'HTML' !== el.nodeName) {
 			if (el.classList.contains('slide')) {
 				return el.id;
@@ -122,41 +123,47 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Dispatch single slide mode.
-	* @TODO: Renaming needed? Or just some handlers rewriting?
+	* For touch devices: check if click on links...
+	*
+	* @TODO: add support for textareas/inputs/...
+	*
 	* @private
 	* @param {domElem} e
-	* @returns {Undefined}
+	* @returns {Boolean}
 	*/
-	shower._dispatchSingleSlideMode = function(e) {
-		// Process links
-		// @TODO: presentation links support
+	shower._checkInteractiveElement = function(e) {
 		if ('A' === e.target.nodeName) {
-			e.preventDefault();
-
-			window.open(e.target.getAttribute('href'));
-			return;
+			return true;
+		} else {
+			return false;
 		}
-
-		var slideId = shower._getContainingSlideId(e.target);
-
-		if ('' !== slideId && shower.isListMode()) {
-			e.preventDefault();
-
-			// NOTE: we should update hash to get things work properly
-			url.hash = '#' + slideId;
-			if (isHistoryApiSupported) {
-				history.replaceState(null, null, url.pathname + '?full#' + slideId);
-			}
-			shower.enterSlideMode();
-
-			shower.updateProgress(shower.getCurrentSlideNumber());
-			shower.updateCurrentAndPassedSlides(shower.getCurrentSlideNumber());
-			shower.runSlideshowIfPresented(shower.getCurrentSlideNumber());
-		}
-
-		return;
 	};
+
+	/**
+	* Get slide number by slideId
+	* @param {Number} slideId (HTML id or position in slideList)
+	* @returns {Number}
+	*/
+	shower.getSlideNumber = function(slideId) {
+		var i = slideList.length - 1,
+			slideNumber;
+
+		if (slideId === '') {
+			slideNumber = 0;
+		}
+
+		// As fast as you can ;-)
+		// http://jsperf.com/for-vs-foreach/46
+		for (; i >= 0; --i) {
+			if (slideId === slideList[i].id) {
+				slideNumber = i;
+				break;
+			}
+		}
+
+		return slideNumber;
+	};
+
 
 	/**
 	* Show next slide. If slide is last returns false, otherwise return slide
@@ -180,7 +187,7 @@ window.shower = (function(window, document, undefined) {
 			// slides starts from 0
 			ret = currentSlideNumber + 2;
 
-			if (typeof(callback) === "function") {
+			if (typeof(callback) === 'function') {
 				callback();
 			}
 		} else {
@@ -205,7 +212,7 @@ window.shower = (function(window, document, undefined) {
 			ret = currentSlideNumber;
 			shower.go(currentSlideNumber - 1);
 
-			if (typeof(callback) === "function") {
+			if (typeof(callback) === 'function') {
 				callback();
 			}
 		} else {
@@ -221,7 +228,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number}
 	*/
 	shower.first = function(callback) {
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 
@@ -234,7 +241,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number}
 	*/
 	shower.last = function(callback) {
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 		return shower.go(slideList.length - 1);
@@ -246,9 +253,17 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number|Boolean}
 	*/
 	shower.enterSlideMode = function(callback) {
-		// check if it's already in slide mode...
-		if (body.classList.contains('full')) {
-			return false;
+		var currentSlideNumber = shower.getCurrentSlideNumber();
+
+		if (currentSlideNumber === -1) {
+			currentSlideNumber = 0;
+		}
+
+		shower.go(currentSlideNumber);
+		shower.showPresenterNotes(currentSlideNumber);
+
+		if (shower.isListMode() && isHistoryApiSupported) {
+			history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
 		}
 
 		body.classList.remove('list');
@@ -258,9 +273,11 @@ window.shower = (function(window, document, undefined) {
 			console.clear();
 		}
 
-		shower.showPresenterNotes(shower.getCurrentSlideNumber());
+		shower.updateProgress(currentSlideNumber);
+		shower.updateCurrentAndPassedSlides(currentSlideNumber);
+		shower.runSlideshowIfPresented(currentSlideNumber);
 
-		if (typeof(callback) === "function") {
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 
@@ -273,22 +290,41 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Number}
 	*/
 	shower.enterListMode = function(callback) {
-		// check if it's already in list mode...
-		if (body.classList.contains('list')) {
-			return false;
-		}
+		var currentSlideNumber = shower.getCurrentSlideNumber();
 
 		body.classList.remove('full');
 		body.classList.add('list');
 
-		if (typeof(callback) === "function") {
+		if (shower.isSlideMode() && isHistoryApiSupported) {
+			history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
+		}
+
+		shower.scrollToSlide(currentSlideNumber);
+
+		if (typeof(callback) === 'function') {
 			callback();
 		}
 
 		return shower._applyTransform('none');
 	};
 
-	// @TODO: add method shower.toggleMode()
+	/**
+	* Toggle Mode: Slide and List
+	* @param {Function} callback
+	*/
+	shower.toggleMode = function(callback) {
+		if (shower.isListMode()) {
+			shower.enterSlideMode();
+		} else {
+			shower.enterListMode();
+		}
+
+		if (typeof(callback) === 'function') {
+			callback();
+		}
+
+		return true;
+	};
 
 	/**
 	* Get current slide number. Starts from zero. Warning: when in url you have
@@ -324,7 +360,7 @@ window.shower = (function(window, document, undefined) {
 			throw new Error('Gimme slide number as Number, baby!');
 		}
 
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			throw new Error('You can\'t scroll to because you in slide mode. Please, switch to list mode.');
 		}
 
@@ -345,11 +381,19 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Chech if it's list mode.
+	* Check if it's List mode.
 	* @returns {Boolean}
 	*/
 	shower.isListMode = function() {
 		return isHistoryApiSupported ? ! /^full.*/.test(url.search.substr(1)) : body.classList.contains('list');
+	};
+
+	/**
+	* Check if it's Slide mode.
+	* @returns {Boolean}
+	*/
+	shower.isSlideMode = function() {
+		return isHistoryApiSupported ? /^full.*/.test(url.search.substr(1)) : body.classList.contains('full');
 	};
 
 	/**
@@ -414,15 +458,17 @@ window.shower = (function(window, document, undefined) {
 		if (window.console) {
 			slideNumber = shower._normalizeSlideNumber(slideNumber);
 
-			var slideId     = slideList[slideNumber].id;
-			var nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null;
+			var slideId = slideList[slideNumber].id,
+				nextSlideId = slideList[slideNumber + 1] ? slideList[slideNumber + 1].id : null,
+				notes = document.getElementById(slideId).querySelector('footer');
 
-			var notes = document.getElementById(slideId).querySelector('footer');
 			if (notes) {
 				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
 			}
+
 			if (nextSlideId) {
 				var next = document.getElementById(nextSlideId).querySelector('h2');
+
 				if (next) {
 					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
 					console.info('NEXT: ' + next);
@@ -459,12 +505,12 @@ window.shower = (function(window, document, undefined) {
 
 		url.hash = shower.getSlideHash(slideNumber);
 
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			shower.updateProgress(slideNumber);
 			shower.updateCurrentAndPassedSlides(slideNumber);
 			shower.showPresenterNotes(slideNumber);
 
-			if (typeof(callback) === "function") {
+			if (typeof(callback) === 'function') {
 				callback();
 			}
 		}
@@ -534,32 +580,21 @@ window.shower = (function(window, document, undefined) {
 	// Event handlers
 
 	window.addEventListener('DOMContentLoaded', function() {
-		if ( ! shower.isListMode()) {
-			// "?full" is present without slide hash, so we should display first slide
-			if (-1 === shower.getCurrentSlideNumber()) {
-				if (isHistoryApiSupported) {
-					history.replaceState(null, null, url.pathname + '?full' + shower.getSlideHash(0));
-				}
-			}
-
+		if (shower.isSlideMode()) {
 			shower.enterSlideMode();
-			shower.updateProgress(shower.getCurrentSlideNumber());
-			shower.updateCurrentAndPassedSlides(shower.getCurrentSlideNumber());
-			shower.runSlideshowIfPresented(shower.getCurrentSlideNumber());
 		}
 	}, false);
 
 	window.addEventListener('popstate', function(e) {
 		if (shower.isListMode()) {
 			shower.enterListMode();
-			shower.scrollToSlide(shower.getCurrentSlideNumber());
 		} else {
 			shower.enterSlideMode();
 		}
 	}, false);
 
 	window.addEventListener('resize', function(e) {
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			shower._applyTransform(shower._getTransform());
 		}
 	}, false);
@@ -579,48 +614,23 @@ window.shower = (function(window, document, undefined) {
 					var slideNumber = e.shiftKey ? currentSlideNumber : 0;
 
 					shower.go(slideNumber);
-
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(slideNumber));
-					}
 					shower.enterSlideMode();
-
-					shower.updateProgress(slideNumber);
-					shower.updateCurrentAndPassedSlides(slideNumber);
-					shower.runSlideshowIfPresented(slideNumber);
 				} else {
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
-					}
 					shower.enterListMode();
-					shower.scrollToSlide(currentSlideNumber);
 				}
 			break;
 
 			case 13: // Enter
 				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
-
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
-					}
 					shower.enterSlideMode();
-
-					shower.updateProgress(currentSlideNumber);
-					shower.updateCurrentAndPassedSlides(currentSlideNumber);
-					shower.runSlideshowIfPresented(currentSlideNumber);
 				}
 			break;
 
 			case 27: // Esc
-				if ( ! shower.isListMode()) {
+				if (shower.isSlideMode()) {
 					e.preventDefault();
-
-					if (isHistoryApiSupported) {
-						history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
-					}
 					shower.enterListMode();
-					shower.scrollToSlide(currentSlideNumber);
 				}
 			break;
 
@@ -640,7 +650,7 @@ window.shower = (function(window, document, undefined) {
 			case 74: // j
 				e.preventDefault();
 
-				if ( ! shower.isListMode()) {
+				if (shower.isSlideMode()) {
 					// Inner navigation is "completed" if current slide have
 					// no inner navigation or inner navigation is fully shown
 					innerNavigationCompleted = !slideList[currentSlideNumber].hasInnerNavigation ||
@@ -657,7 +667,7 @@ window.shower = (function(window, document, undefined) {
 					currentSlideNumber++;
 					shower.go(currentSlideNumber);
 					// We must run slideshow only in full mode
-					if ( ! shower.isListMode()) {
+					if (shower.isSlideMode()) {
 						shower.runSlideshowIfPresented(currentSlideNumber);
 					}
 				}
@@ -665,20 +675,17 @@ window.shower = (function(window, document, undefined) {
 
 			case 36: // Home
 				e.preventDefault();
-
 				shower.first();
 			break;
 
 			case 35: // End
 				e.preventDefault();
-
 				shower.last();
 			break;
 
 			case 9: // Tab = +1; Shift + Tab = -1
 			case 32: // Space = +1; Shift + Space = -1
 				e.preventDefault();
-
 				shower[e.shiftKey ? 'previous' : 'next']();
 			break;
 
@@ -687,25 +694,37 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	document.addEventListener('click', shower._dispatchSingleSlideMode, false);
-	document.addEventListener('touchend', shower._dispatchSingleSlideMode, false);
-
-	document.addEventListener('touchstart', function(e) {
-		if ( ! shower.isListMode()) {
-			var currentSlideNumber = shower.getCurrentSlideNumber(),
-				x = e.touches[0].pageX;
-			if (x > window.innerWidth / 2) {
-				currentSlideNumber++;
-			} else {
-				currentSlideNumber--;
-			}
-
-			shower.go(currentSlideNumber);
+	document.addEventListener('click', function(e) {
+		if (shower.isListMode() && shower._getSlideIdByEl(e.target)) {
+			e.preventDefault();
+			shower.go(shower.getSlideNumber(shower._getSlideIdByEl(e.target)));
+			shower.enterSlideMode();
 		}
 	}, false);
 
+	document.addEventListener('touchstart', function(e) {
+		if (shower._getSlideIdByEl(e.target)) {
+			if (shower.isSlideMode() && ! shower._checkInteractiveElement(e)) {
+				var x = e.touches[0].pageX;
+
+				if (x > window.innerWidth / 2) {
+					shower.next();
+				} else {
+					shower.previous();
+				}
+			}
+
+			if (shower.isListMode()) {
+				shower.go(shower.getSlideNumber(shower._getSlideIdByEl(e.target)));
+				shower.enterSlideMode();
+			}
+		}
+		
+
+	}, false);
+
 	document.addEventListener('touchmove', function(e) {
-		if ( ! shower.isListMode()) {
+		if (shower.isSlideMode()) {
 			e.preventDefault();
 		}
 	}, false);
