@@ -280,6 +280,8 @@ window.shower = (function(window, document, undefined) {
 	shower.enterListMode = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
 
+		clearTimeout(timer);
+
 		body.classList.remove('full');
 		body.classList.add('list');
 
