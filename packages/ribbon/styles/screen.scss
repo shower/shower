@@ -25,15 +25,10 @@ body {
 		line-height:1;
 		}
 	.debug & {
-		@if	$width == 1024px {
-			@if $height == 640px {
-				$grid:'url(../images/grid-16x10.png) no-repeat,'
-				}
-			@if $height == 768px {
-				$grid:'url(../images/grid-4x3.png) no-repeat,'
-				}
-			}
-		background:url(../images/ribbon.svg) 865px 0 no-repeat, #{$grid} #FFF;
+		background:
+			url(../images/ribbon.svg) 865px 0 no-repeat,
+			url(../images/grid-#{$ratio}.svg) no-repeat,
+			#FFF;
 		}
 	> div {
 		position:absolute;

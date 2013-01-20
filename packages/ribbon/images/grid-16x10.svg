@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 640">
+	<defs>
+		<style>
+			.stroke {
+				fill:none;
+				stroke:#56FFFE;
+				stroke-width:1;
+				}
+		</style>
+		<path d="M 0,0 H 1024" class="stroke" id="horizontal"/>
+		<path d="M 0,0 V 640" class="stroke" id="vertical"/>
+	</defs>
+	<use xlink:href="#horizontal" y="115"/>
+	<use xlink:href="#horizontal" y="192"/>
+	<use xlink:href="#horizontal" y="242"/>
+	<use xlink:href="#horizontal" y="292"/>
+	<use xlink:href="#horizontal" y="342"/>
+	<use xlink:href="#horizontal" y="392"/>
+	<use xlink:href="#horizontal" y="442"/>
+	<use xlink:href="#horizontal" y="492"/>
+	<use xlink:href="#horizontal" y="560"/>
+	<use xlink:href="#horizontal" y="600"/>
+	<use xlink:href="#vertical" x="120"/>
+	<use xlink:href="#vertical" x="512"/>
+	<use xlink:href="#vertical" x="904"/>
+</svg>

@@ -8,7 +8,15 @@ $height:640px; // Slide height, 640px for 16/10, 768px for 4/3
 $top:71px;     // Top padding above slide content
 $sides:120px;  // Left and right paddings around slide content
 $break:1324px; // Window width for small thumbnails to appear
-$grid:'';
+$ratio:'';
+
+// Ratio
+@if $height == 640px {
+	$ratio:'16x10';
+}
+@if $height == 768px {
+	$ratio:'4x3';
+}
 
 // Mixins
 @mixin tab-size($n) {
