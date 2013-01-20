@@ -158,8 +158,34 @@ window.shower = (function(window, document, undefined) {
 
 
 	/**
-	* Show next slide. If slide is last returns false, otherwise return slide
-	* number which been shown.
+	* Go to slide number...
+	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
+	* @param {Function} [callback] runs only if you not in List mode
+	* @returns {Number}
+	*/
+	shower.go = function(slideNumber, callback) {
+		if ( ! shower._isNumber(slideNumber)) {
+			throw new Error('Gimme slide number as Number, baby!');
+		}
+
+		url.hash = shower.getSlideHash(slideNumber);
+
+		if (shower.isSlideMode()) {
+			shower.updateProgress(slideNumber);
+			shower.updateCurrentAndPassedSlides(slideNumber);
+			shower.showPresenterNotes(slideNumber);
+
+			if (typeof(callback) === 'function') {
+				callback();
+			}
+		}
+
+		return slideNumber;
+	};
+
+	/**
+	* Show next slide or show next item of Inner navigation. If slide is last
+    * returns false, otherwise return slide number which been shown.
 	* @param {Function} [callback] runs only if shower.next() complete successfully
 	* @returns {Number|Boolean}
 	*/
@@ -176,12 +202,16 @@ window.shower = (function(window, document, undefined) {
 			! shower.increaseInnerNavigation(currentSlideNumber)
 		) {
 			shower.go(currentSlideNumber + 1);
-			// slides starts from 0
+			// Slides starts from 0. So return next slide number.
 			ret = currentSlideNumber + 2;
+		}
 
-			if (typeof(callback) === 'function') {
-				callback();
-			}
+		if (shower.isSlideMode()) {
+			shower.runInnerNavigation(currentSlideNumber + 1);
+		}
+
+		if (typeof(callback) === 'function') {
+			callback();
 		}
 
 		return ret;
@@ -482,32 +512,6 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Go to slide number...
-	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @param {Function} [callback] runs only if you not in List mode
-	* @returns {Number}
-	*/
-	shower.go = function(slideNumber, callback) {
-		if ( ! shower._isNumber(slideNumber)) {
-			throw new Error('Gimme slide number as Number, baby!');
-		}
-
-		url.hash = shower.getSlideHash(slideNumber);
-
-		if (shower.isSlideMode()) {
-			shower.updateProgress(slideNumber);
-			shower.updateCurrentAndPassedSlides(slideNumber);
-			shower.showPresenterNotes(slideNumber);
-
-			if (typeof(callback) === 'function') {
-				callback();
-			}
-		}
-
-		return slideNumber;
-	};
-
-	/**
 	* Run slide show if presented.
 	* @param {Number} slideNumber
 	* @returns {Boolean}
@@ -528,8 +532,7 @@ window.shower = (function(window, document, undefined) {
 			timing = parseInt(timing[0], 10) * 60 * 1000 + parseInt(timing[1], 10) * 1000;
 
 			timer = setTimeout(function() {
-					shower.go(slideNumber + 1);
-					shower.runInnerNavigation(slideNumber + 1);
+					shower.next();
 				},
 				timing);
 		}
@@ -639,27 +642,7 @@ window.shower = (function(window, document, undefined) {
 			case 76: // l
 			case 74: // j
 				e.preventDefault();
-
-				if (shower.isSlideMode()) {
-					// Inner navigation is "completed" if current slide have
-					// no inner navigation or inner navigation is fully shown
-					isInnerNavCompleted = ! slideList[currentSlideNumber].hasInnerNavigation ||
-											! shower.increaseInnerNavigation(currentSlideNumber);
-				} else {
-					// Also inner navigation is always "completed" if we are in
-					// list mode
-					isInnerNavCompleted = true;
-				}
-
-				if (
-					-1 === currentSlideNumber || isInnerNavCompleted
-				) {
-					currentSlideNumber++;
-					shower.go(currentSlideNumber);
-					if (shower.isSlideMode()) {
-						shower.runInnerNavigation(currentSlideNumber);
-					}
-				}
+				shower.next();
 			break;
 
 			case 36: // Home
