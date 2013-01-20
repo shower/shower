@@ -570,7 +570,7 @@ window.shower = (function(window, document, undefined) {
 	// Event handlers
 
 	window.addEventListener('DOMContentLoaded', function() {
-		if (shower.isSlideMode()) {
+		if (body.classList.contains('full')) {
 			shower.enterSlideMode();
 		}
 	}, false);
