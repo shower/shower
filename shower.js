@@ -17,7 +17,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Get value at named data store for the DOM element.
 	* @private
-	* @param {domElem} element
+	* @param {HTMLElement} element
 	* @param {String} name
 	* @returns {String}
 	*/
@@ -75,11 +75,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower._isNumber = function(arg) {
-		if ( ! ( ! isNaN(parseFloat(arg)) && isFinite(arg))) {
-			return false;
-		}
-
-		return true;
+        return ! isNaN(parseFloat(arg)) && isFinite(arg);
 	};
 
 	/**
@@ -107,7 +103,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Get slide id from HTML element.
 	* @private
-	* @param {domElem} el
+	* @param {HTMLElement} el
 	* @returns {String}
 	*/
 	shower._getSlideIdByEl = function(el) {
@@ -128,20 +124,16 @@ window.shower = (function(window, document, undefined) {
 	* @TODO: add support for textareas/inputs/...
 	*
 	* @private
-	* @param {domElem} e
+	* @param {HTMLElement} e
 	* @returns {Boolean}
 	*/
 	shower._checkInteractiveElement = function(e) {
-		if ('A' === e.target.nodeName) {
-			return true;
-		} else {
-			return false;
-		}
+        return 'A' === e.target.nodeName;
 	};
 
 	/**
 	* Get slide number by slideId
-	* @param {Number} slideId (HTML id or position in slideList)
+	* @param {String} slideId (HTML id or position in slideList)
 	* @returns {Number}
 	*/
 	shower.getSlideNumber = function(slideId) {
@@ -168,7 +160,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Show next slide. If slide is last returns false, otherwise return slide
 	* number which been shown.
-	* @param {Function} callback runs only if shower.next() complete successfully
+	* @param {Function} [callback] runs only if shower.next() complete successfully
 	* @returns {Number|Boolean}
 	*/
 	shower.next = function(callback) {
@@ -200,7 +192,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Show previous slide. If slide is first returns false, otherwise return slide
 	* number which been shown.
-	* @param {Function} callback runs only if shower.previous() complete successfully
+	* @param {Function} [callback] runs only if shower.previous() complete successfully
 	* @returns {Number|Boolean}
 	*/
 	shower.previous = function(callback) {
@@ -224,7 +216,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Show first slide.
-	* @param {Function} callback
+	* @param {Function} [callback]
 	* @returns {Number}
 	*/
 	shower.first = function(callback) {
@@ -237,7 +229,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Show last slide.
-	* @param {Function} callback
+	* @param {Function} [callback]
 	* @returns {Number}
 	*/
 	shower.last = function(callback) {
@@ -249,7 +241,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Switch to slide view.
-	* @param {Function} callback runs only if shower.enterSlideMode() complete successfully
+	* @param {Function} [callback] runs only if shower.enterSlideMode() complete successfully
 	* @returns {Number|Boolean}
 	*/
 	shower.enterSlideMode = function(callback) {
@@ -286,8 +278,8 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Switch to list view.
-	* @param {Function} callback runs only if shower.enterListMode() complete successfully
-	* @returns {Number}
+	* @param {Function} [callback] runs only if shower.enterListMode() complete successfully
+	* @returns {Boolean}
 	*/
 	shower.enterListMode = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
@@ -310,7 +302,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Toggle Mode: Slide and List
-	* @param {Function} callback
+	* @param {Function} [callback]
 	*/
 	shower.toggleMode = function(callback) {
 		if (shower.isListMode()) {
@@ -350,11 +342,11 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Scroll to slide.
 	* @param {Number} slideNumber slide number (sic!)
-	* @returns {Undefined|Boolean}
+	* @returns {Boolean}
 	*/
 	shower.scrollToSlide = function(slideNumber) {
 		var currentSlide,
-			ret;
+			ret = false;
 
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
@@ -366,7 +358,7 @@ window.shower = (function(window, document, undefined) {
 
 		// @TODO: WTF?
 		if (-1 === slideNumber) {
-			return;
+			return ret;
 		}
 
 		if (slideList[slideNumber]) {
@@ -480,7 +472,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Get slide hash.
 	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @returns {Boolean}
+	* @returns {String}
 	*/
 	shower.getSlideHash = function(slideNumber) {
 		if ( ! shower._isNumber(slideNumber)) {
@@ -495,7 +487,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Go to slide number...
 	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @param {Function} callback runs only if you not in List mode
+	* @param {Function} [callback] runs only if you not in List mode
 	* @returns {Number}
 	*/
 	shower.go = function(slideNumber, callback) {
@@ -521,7 +513,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Run slide show if presented.
 	* @param {Number} slideNumber
-	* @returns {Undefined}
+	* @returns {Boolean}
 	*/
 	shower.runSlideshowIfPresented = function(slideNumber) {
 		if ( ! shower._isNumber(slideNumber)) {
@@ -544,6 +536,8 @@ window.shower = (function(window, document, undefined) {
 				},
 				timing);
 		}
+
+        return true;
 	};
 
 	/**
@@ -585,7 +579,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('popstate', function(e) {
+	window.addEventListener('popstate', function() {
 		if (shower.isListMode()) {
 			shower.enterListMode();
 		} else {
@@ -593,7 +587,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	}, false);
 
-	window.addEventListener('resize', function(e) {
+	window.addEventListener('resize', function() {
 		if (shower.isSlideMode()) {
 			shower._applyTransform(shower._getTransform());
 		}
