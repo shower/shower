@@ -263,7 +263,7 @@ window.shower = (function(window, document, undefined) {
 
 		shower.updateProgress(currentSlideNumber);
 		shower.updateCurrentAndPassedSlides(currentSlideNumber);
-		shower.runSlideshowIfPresented(currentSlideNumber);
+		shower.runInnerNavigation(currentSlideNumber);
 
 		if (typeof(callback) === 'function') {
 			callback();
@@ -511,7 +511,7 @@ window.shower = (function(window, document, undefined) {
 	* @param {Number} slideNumber
 	* @returns {Boolean}
 	*/
-	shower.runSlideshowIfPresented = function(slideNumber) {
+	shower.runInnerNavigation = function(slideNumber) {
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
 		}
@@ -528,7 +528,7 @@ window.shower = (function(window, document, undefined) {
 
 			timer = setTimeout(function() {
 					shower.go(slideNumber + 1);
-					shower.runSlideshowIfPresented(slideNumber + 1);
+					shower.runInnerNavigation(slideNumber + 1);
 				},
 				timing);
 		}
@@ -658,7 +658,7 @@ window.shower = (function(window, document, undefined) {
 					shower.go(currentSlideNumber);
 					// We must run slideshow only in full mode
 					if (shower.isSlideMode()) {
-						shower.runSlideshowIfPresented(currentSlideNumber);
+						shower.runInnerNavigation(currentSlideNumber);
 					}
 				}
 			break;
