@@ -260,7 +260,7 @@ body {
 			text-shadow:0 -1px 1px #1F3F60;
 			text-decoration:none;
 			&:hover {
-				color:#5ca4ed;
+				color:#5394D7;
 				}
 			}
 		}
@@ -273,7 +273,6 @@ body {
 		visibility:hidden;
 		width:11em;
 		height:11em;
-		background:rgba(0, 0, 0, 0.2);
 		line-height:2.5;
 		font-size:15px;
 		}
@@ -290,6 +289,10 @@ body {
 			text-align:center;
 			@include transform-origin(50% 100%);
 			@include transform(rotate(45deg) translateY(-1em));
+			@include transition(background 0.3s linear);
+			&:hover {
+				background:#5394D7;
+				}
 			}
 	// Slide
 	.slide {
