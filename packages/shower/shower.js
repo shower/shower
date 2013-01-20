@@ -71,7 +71,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Check if arg is number.
 	* @private
-	* @param {Number|whatelse} arg Any type
+	* @param {String|Number} arg
 	* @returns {Boolean}
 	*/
 	shower._isNumber = function(arg) {
@@ -165,7 +165,7 @@ window.shower = (function(window, document, undefined) {
 	*/
 	shower.next = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			ret;
+			ret = false;
 
 		// Only go to next slide if current slide have no inner
 		// navigation or inner navigation is fully shown
@@ -182,8 +182,6 @@ window.shower = (function(window, document, undefined) {
 			if (typeof(callback) === 'function') {
 				callback();
 			}
-		} else {
-			ret = false;
 		}
 
 		return ret;
@@ -197,7 +195,7 @@ window.shower = (function(window, document, undefined) {
 	*/
 	shower.previous = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			ret;
+			ret = false;
 
 		// slides starts from 0
 		if (currentSlideNumber > 0) {
@@ -207,8 +205,6 @@ window.shower = (function(window, document, undefined) {
 			if (typeof(callback) === 'function') {
 				callback();
 			}
-		} else {
-			ret = false;
 		}
 
 		return ret;
@@ -242,7 +238,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Switch to slide view.
 	* @param {Function} [callback] runs only if shower.enterSlideMode() complete successfully
-	* @returns {Number|Boolean}
+	* @returns {Boolean}
 	*/
 	shower.enterSlideMode = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
@@ -574,7 +570,7 @@ window.shower = (function(window, document, undefined) {
 	// Event handlers
 
 	window.addEventListener('DOMContentLoaded', function() {
-		if (shower.isSlideMode()) {
+		if (body.classList.contains('full')) {
 			shower.enterSlideMode();
 		}
 	}, false);
