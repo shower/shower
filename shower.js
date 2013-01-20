@@ -172,8 +172,8 @@ window.shower = (function(window, document, undefined) {
 		// NOTE: But first of all check if there is no current slide
 		if (
 			-1 === currentSlideNumber ||
-			!slideList[currentSlideNumber].hasInnerNavigation ||
-			-1 === shower.increaseInnerNavigation(currentSlideNumber)
+			! slideList[currentSlideNumber].hasInnerNavigation ||
+			! shower.increaseInnerNavigation(currentSlideNumber)
 		) {
 			shower.go(currentSlideNumber + 1);
 			// slides starts from 0
@@ -540,12 +540,11 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Increases inner navigation by adding 'active' class to next inactive inner navigation item
 	* @param {Number} slideNumber
-	* @returns {Number}
+	* @returns {Boolean}
 	*/
 	shower.increaseInnerNavigation = function(slideNumber) {
 		var nextNodes,
-			node,
-			ret = -1;
+			node;
 
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
@@ -558,11 +557,11 @@ window.shower = (function(window, document, undefined) {
 			if (0 !== nextNodes.length) {
 				node = nextNodes[0];
 				node.classList.add('active');
-				ret = nextNodes.length - 1;
+				return true;
 			}
 		}
 
-		return ret;
+		return false;
 	};
 
 
@@ -644,8 +643,8 @@ window.shower = (function(window, document, undefined) {
 				if (shower.isSlideMode()) {
 					// Inner navigation is "completed" if current slide have
 					// no inner navigation or inner navigation is fully shown
-					isInnerNavCompleted = !slideList[currentSlideNumber].hasInnerNavigation ||
-						-1 === shower.increaseInnerNavigation(currentSlideNumber);
+					isInnerNavCompleted = ! slideList[currentSlideNumber].hasInnerNavigation ||
+											! shower.increaseInnerNavigation(currentSlideNumber);
 				} else {
 					// Also inner navigation is always "completed" if we are in
 					// list mode
