@@ -19,7 +19,7 @@ To contribute to Shower fork needed repository and start making changes. Don't f
 
 ## Code style
 
-Please keep existing code style while contributing to Shower and be ready for code review by Shower authors and contributors. It's strognly recommended to validate your JavaScript changes using [JSHint](http://jshint.com/)
+Please keep existing code style while contributing to Shower and be ready for code review by Shower authors and contributors. It's strognly recommended to validate your JavaScript changes using [JSHint](http://jshint.com/).
 
 By historical reasons, Shower project is using tabs instead of spaces for code indentation. It's not a big deal to keep this rule while contributing using you code editor options, even if your code style is 13.4 spaces.
 
