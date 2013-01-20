@@ -595,7 +595,7 @@ window.shower = (function(window, document, undefined) {
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			innerNavigationCompleted = true;
+			isInnerNavCompleted = true;
 
 		switch (e.which) {
 			case 116: // F5
@@ -644,20 +644,19 @@ window.shower = (function(window, document, undefined) {
 				if (shower.isSlideMode()) {
 					// Inner navigation is "completed" if current slide have
 					// no inner navigation or inner navigation is fully shown
-					innerNavigationCompleted = !slideList[currentSlideNumber].hasInnerNavigation ||
+					isInnerNavCompleted = !slideList[currentSlideNumber].hasInnerNavigation ||
 						-1 === shower.increaseInnerNavigation(currentSlideNumber);
 				} else {
 					// Also inner navigation is always "completed" if we are in
 					// list mode
-					innerNavigationCompleted = true;
+					isInnerNavCompleted = true;
 				}
-				// NOTE: First of all check if there is no current slide
+
 				if (
-					-1 === currentSlideNumber || innerNavigationCompleted
+					-1 === currentSlideNumber || isInnerNavCompleted
 				) {
 					currentSlideNumber++;
 					shower.go(currentSlideNumber);
-					// We must run slideshow only in full mode
 					if (shower.isSlideMode()) {
 						shower.runInnerNavigation(currentSlideNumber);
 					}
