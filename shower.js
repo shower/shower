@@ -248,7 +248,6 @@ window.shower = (function(window, document, undefined) {
 		}
 
 		shower.go(currentSlideNumber);
-		shower.showPresenterNotes(currentSlideNumber);
 
 		if (shower.isListMode() && isHistoryApiSupported) {
 			history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
