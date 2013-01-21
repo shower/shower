@@ -264,8 +264,8 @@ body {
 				}
 			}
 		}
-	// Fork me
-	.forkme {
+	// Badge
+	.badge {
 		position:absolute;
 		top:0;
 		right:0;
@@ -276,7 +276,7 @@ body {
 		line-height:2.5;
 		font-size:15px;
 		}
-		.forkme a {
+		.badge a {
 			position:absolute;
 			bottom:50%;
 			right:-50%;
@@ -403,7 +403,7 @@ body {
 	height:$height;
 	background:#000;
 	.caption,
-	.forkme {
+	.badge {
 		display:none;
 		}
 	.slide {
