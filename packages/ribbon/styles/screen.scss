@@ -283,7 +283,7 @@ body {
 			left:-50%;
 			visibility:visible;
 			background:#4B86C2;
-			box-shadow:0 0 1em rgba(0, 0, 0, 0.3);
+			box-shadow:0 0 1em rgba(#000, 0.3);
 			color:#FFF;
 			text-decoration:none;
 			text-align:center;
@@ -313,8 +313,8 @@ body {
 			width:$width/2;
 			height:$height/2;
 			box-shadow:
-				0 0 30px rgba(0, 0, 0, 0.005),
-				0 20px 50px rgba(42, 43, 45, 0.6);
+				0 0 30px rgba(#000, 0.005),
+				0 20px 50px rgba(#2A2B2D, 0.6);
 			border-radius:2px;
 			content:'';
 			@include transform-origin(0 0);
@@ -326,42 +326,39 @@ body {
 				}
 			}
 		&:after {
-			bottom:-100px;
+			bottom:-80px;
 			left:120px;
 			color:#3C3D40;
-			text-shadow:0 2px 1px #8D8E90;
+			text-shadow:0 1px 1px #8D8E90;
 			font-weight:bold;
-			font-size:50px;
+			@include transform-origin(0 0);
+			@include transform(scale(2));
 			@media (max-width:$break) {
-				bottom:-180px;
-				text-shadow:0 4px 2px #8D8E90;
-				font-size:100px;
+				bottom:-104px;
+				@include transform(scale(4));
 				}
 			}
 		&:hover:before {
 			box-shadow:
-				0 0 0 10px rgba(42, 43, 45, 0.3),
-				0 20px 50px rgba(42, 43, 45, 0.6);
+				0 0 0 10px rgba(#2A2B2D, 0.3),
+				0 20px 50px rgba(#2A2B2D, 0.6);
 			}
 		&:target {
 			&:before {
 				box-shadow:
 					0 0 0 1px #305F8D,
 					0 0 0 10px #3C7CBD,
-					0 20px 50px rgba(42, 43, 45, 0.6);
+					0 20px 50px rgba(#2A2B2D, 0.6);
 				@media (max-width:$break) {
 					box-shadow:
 						0 0 0 1px #305F8D,
 						0 0 0 10px #3C7CBD,
-						0 20px 50px rgba(42, 43, 45, 0.6);
+						0 20px 50px rgba(#2A2B2D, 0.6);
 					}
 				}
 			&:after {
-				text-shadow:0 2px 1px rgba(42, 43, 45, 0.6);
+				text-shadow:0 1px 1px rgba(#2A2B2D, 0.6);
 				color:#4B86C2;
-				@media (max-width:$break) {
-					text-shadow:0 4px 2px rgba(42, 43, 45, 0.6);
-					}
 				}
 			}
 		// Wrapper
@@ -385,7 +382,7 @@ body {
 			z-index:1;
 			padding:20px 120px;
 			background:#FAFAA2;
-			box-shadow:0 0 0 2px rgba(0, 0, 0, 0.05) inset;
+			box-shadow:0 0 0 2px rgba(#000, 0.05) inset;
 			@include transition(bottom 0.4s)
 			}
 		&:hover footer {
@@ -453,9 +450,9 @@ body {
 		div {
 			width:0;
 			height:10px;
-			box-shadow:0 0 0 1px rgba(255, 255, 255, 0.4);
+			box-shadow:0 0 0 1px rgba(#FFF, 0.4);
 			border-radius:5px;
-			background:rgba(177, 177, 177, 0.4);
+			background:rgba(#B1B1B1, 0.4);
 			@include transition(width 0.2s linear);
 			}
 		}
