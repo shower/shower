@@ -40,7 +40,7 @@ window.shower = (function(window, document, undefined) {
 	}
 
 	/**
-	* Get slide scale value
+	* Get slide scale value.
 	* @private
 	* @returns {String}
 	*/
@@ -54,7 +54,7 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Set CSS transform with prefixes to body
+	* Set CSS transform with prefixes to body.
 	* @private
 	* @returns {Boolean}
 	*/
@@ -119,9 +119,9 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* For touch devices: check if click on links...
+	* For touch devices: check if link is clicked.
 	*
-	* @TODO: add support for textareas/inputs/...
+	* @TODO: add support for textareas/inputs/etc.
 	*
 	* @private
 	* @param {HTMLElement} e
@@ -132,7 +132,7 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Get slide number by slideId
+	* Get slide number by slideId.
 	* @param {String} slideId (HTML id or position in slideList)
 	* @returns {Number}
 	*/
@@ -156,11 +156,10 @@ window.shower = (function(window, document, undefined) {
 		return slideNumber;
 	};
 
-
 	/**
-	* Go to slide number...
+	* Go to slide number.
 	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
-	* @param {Function} [callback] runs only if you not in List mode
+	* @param {Function} [callback] runs only if you not in List mode.
 	* @returns {Number}
 	*/
 	shower.go = function(slideNumber, callback) {
@@ -172,7 +171,7 @@ window.shower = (function(window, document, undefined) {
 		url.hash = shower.getSlideHash(slideNumber);
 
 		shower.updateProgress(slideNumber);
-		shower.updateCurrentAndPassedSlides(slideNumber);
+		shower.updateActiveAndVisitedSlides(slideNumber);
 
 		if (shower.isSlideMode()) {
 			shower.showPresenterNotes(slideNumber);
@@ -187,9 +186,9 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Show next slide or show next item of Inner navigation. If slide is last
-	* returns false, otherwise return slide number which been shown.
-	* @param {Function} [callback] runs only if shower.next() complete successfully
+	* Show next slide or show next Inner navigation item.
+	* Returns false on a last slide, otherwise returns shown slide number.
+	* @param {Function} [callback] runs only if shower.next() is successfully completed.
 	* @returns {Number|Boolean}
 	*/
 	shower.next = function(callback) {
@@ -225,9 +224,8 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Show previous slide. If slide is first returns false, otherwise return slide
-	* number which been shown.
-	* @param {Function} [callback] runs only if shower.previous() complete successfully
+	* Show previous slide. Returns false on a first slide, otherwise returns shown slide number.
+	* @param {Function} [callback] runs only if shower.previous() is successfully completed.
 	* @returns {Number|Boolean}
 	*/
 	shower.previous = function(callback) {
@@ -274,7 +272,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Switch to slide view.
-	* @param {Function} [callback] runs only if shower.enterSlideMode() complete successfully
+	* @param {Function} [callback] runs only if shower.enterSlideMode() is successfully completed.
 	* @returns {Boolean}
 	*/
 	shower.enterSlideMode = function(callback) {
@@ -300,7 +298,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Switch to list view.
-	* @param {Function} [callback] runs only if shower.enterListMode() complete successfully
+	* @param {Function} [callback] runs only if shower.enterListMode() is successfully completed.
 	* @returns {Boolean}
 	*/
 	shower.enterListMode = function(callback) {
@@ -333,7 +331,7 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Toggle Mode: Slide and List
+	* Toggle Mode: Slide and List.
 	* @param {Function} [callback]
 	*/
 	shower.toggleMode = function(callback) {
@@ -351,9 +349,9 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Get current slide number. Starts from zero. Warning: when in url you have
-	* slide number 1 this method will return 0.
-	* If something wrong return -1.
+	* Get current slide number. Starts from zero. Warning: when you have
+	* slide number 1 in URL this method will return 0.
+	* If something is wrong return -1.
 	* @returns {Number}
 	*/
 	shower.getCurrentSlideNumber = function() {
@@ -441,11 +439,11 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Update current and passed slides.
+	* Update active and visited slides.
 	* @param {Number} slideNumber slide number (sic!)
 	* @returns {Boolean}
 	*/
-	shower.updateCurrentAndPassedSlides = function(slideNumber) {
+	shower.updateActiveAndVisitedSlides = function(slideNumber) {
 		var i,
 			slide,
 			l = slideList.length;
@@ -570,7 +568,7 @@ window.shower = (function(window, document, undefined) {
 			throw new Error('Gimme slide number as Number, baby!');
 		}
 
-		// If inner navigation in this slide...
+		// If inner navigation in this slide
 		if (slideList[slideNumber].hasInnerNavigation) {
 			nextNodes = document.getElementById(slideList[slideNumber].id).querySelectorAll('.next:not(.active)');
 
@@ -621,8 +619,8 @@ window.shower = (function(window, document, undefined) {
 				if (shower.isListMode()) {
 					var slideNumber = e.shiftKey ? currentSlideNumber : 0;
 
-					// Warning: go must be before enterSlideMode. Else there are
-					// bug in Chrome
+					// Warning: go must be before enterSlideMode.
+					// Otherwise there is a bug in Chrome
 					shower.go(slideNumber);
 					shower.enterSlideMode();
 					shower.showPresenterNotes(slideNumber);
@@ -648,8 +646,8 @@ window.shower = (function(window, document, undefined) {
 			case 33: // PgUp
 			case 38: // Up
 			case 37: // Left
-			case 72: // h
-			case 75: // k
+			case 72: // H
+			case 75: // K
 				e.preventDefault();
 				shower.previous();
 			break;
@@ -657,8 +655,8 @@ window.shower = (function(window, document, undefined) {
 			case 34: // PgDown
 			case 40: // Down
 			case 39: // Right
-			case 76: // l
-			case 74: // j
+			case 76: // L
+			case 74: // J
 				e.preventDefault();
 				shower.next();
 			break;
@@ -685,14 +683,12 @@ window.shower = (function(window, document, undefined) {
 	}, false);
 
 	document.addEventListener('click', function(e) {
-		e.preventDefault();
-
 		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target));
 
 		// Click on slide in List mode
 		if (shower.isListMode() && shower._getSlideIdByEl(e.target)) {
-			// Warning: go must be before enterSlideMode. Else there are
-			// bug in Chrome
+			// Warning: go must be before enterSlideMode.
+			// Otherwise there is a bug in Chrome
 			shower.go(slideNumber);
 			shower.enterSlideMode();
 			shower.showPresenterNotes(slideNumber);
@@ -716,7 +712,6 @@ window.shower = (function(window, document, undefined) {
 				shower.enterSlideMode();
 			}
 		}
-		
 
 	}, false);
 
