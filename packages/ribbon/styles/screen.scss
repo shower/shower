@@ -17,6 +17,9 @@ body {
 	width:$width;
 	height:$height;
 	background:#FFF url(../images/ribbon.svg) 865px 0 no-repeat;
+	-webkit-text-size-adjust:none;
+	-moz-text-size-adjust:none;
+	-ms-text-size-adjust:none;
 	color:#000;
 	&:after {
 		position:absolute;
