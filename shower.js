@@ -171,12 +171,12 @@ window.shower = (function(window, document, undefined) {
 		// Also triggers popstate and invoke shower.enter__Mode()
 		url.hash = shower.getSlideHash(slideNumber);
 
+		shower.updateProgress(slideNumber);
+		shower.updateCurrentAndPassedSlides(slideNumber);
+
 		if (shower.isSlideMode()) {
 			shower.showPresenterNotes(slideNumber);
-			shower.updateProgress(slideNumber);
-			shower.updateCurrentAndPassedSlides(slideNumber);
 			shower.runInnerNavigation(slideNumber);
-
 		}
 
 		if (typeof(callback) === 'function') {
