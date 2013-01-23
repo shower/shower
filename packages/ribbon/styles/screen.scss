@@ -245,6 +245,10 @@ body {
 .list {
 	padding:80px 0 40px 100px;
 	background:#585A5E url(../images/linen.png);
+	@include retina {
+		background-image:url(../images/linen@2x.png);
+		background-size:50%;
+		}
 	&:after {
 		clear:both;
 		display:block;
