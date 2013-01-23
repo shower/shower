@@ -13,7 +13,7 @@ See more details on [using keyboard](shower/wiki/Shortcuts) to control Shower.
 
 ## Using Shower
 
-There are two ways of using Shower: you can get full template [ZIP 3.5 MB](http://shwr.me/template.zip) or just an engine [ZIP 2.7 MB](http://shwr.me/shower.zip). See more details for beginners and advanced techniques in [Quick Start](shower/wiki/Quick-Start) instructions.
+There are two ways of using Shower: you can get full template [ZIP 1.4 MB](http://shwr.me/template.zip) or just an engine [ZIP 650 KB](http://shwr.me/shower.zip). See more details for beginners and advanced techniques in [Quick Start](shower/wiki/Quick-Start) instructions.
 
 ## Printing to PDF
 
