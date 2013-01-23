@@ -124,7 +124,8 @@ body {
 		}
 	// Code
 	pre {
-		margin:0 0 50px;
+		margin:0 0 49px;
+		padding:1px 0 0;
 		counter-reset:code;
 		white-space:normal;
 		code {
@@ -420,7 +421,7 @@ body {
 		clip:rect(0, 0, 0, 0);
 		&:after {
 			left:120px;
-			bottom:80px;
+			bottom:81px;
 			color:#CCC;
 			line-height:18px;
 			font-size:25px;
