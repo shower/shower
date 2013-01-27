@@ -19,7 +19,8 @@
 		-webkit-print-color-adjust:exact;
 		}
 	// Caption
-	.caption {
+	.caption,
+	.badge {
 		display:none;
 		}
 	// Slide
@@ -34,15 +35,18 @@
 		&:before {
 			display:none;
 			}
-		&:after {
-			position:absolute;
-			left:120px;
+		&:after,
+		&:target:after {
 			bottom:80px;
 			color:#CCC;
 			text-shadow:none;
 			line-height:18px;
 			font-weight:normal;
-			font-size:25px;
+			@include transform(none);
+			}
+		// Notes
+		footer {
+			display:none;
 			}
 		// Cover Shout
 		&.cover,
