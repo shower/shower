@@ -168,32 +168,34 @@ body {
 	// Cover
 	&.cover {
 		background:#000;
-		img, svg, video,
-		object, canvas {
+		@mixin cover {
+			img, svg, video,
+			object, canvas {
+				@content;
+				}
+			}
+		@include cover {
 			position:absolute;
 			top:0;
 			left:0;
 			z-index:-1;
 			}
 		&.w {
-			img, svg, video,
-			object, canvas {
+			@include cover {
 				top:50%;
 				width:100%;
 				@include transform(translateY(-50%));
 				}
 			}
 		&.h {
-			img, svg, video,
-			object, canvas {
+			@include cover {
 				left:50%;
 				height:100%;
 				@include transform(translateX(-50%));
 				}
 			}
 		&.w.h {
-			img, svg, video,
-			object, canvas {
+			@include cover {
 				top:0;
 				left:0;
 				@include transform(none);
