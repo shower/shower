@@ -633,6 +633,8 @@ window.shower = (function(window, document, undefined) {
 				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
 					shower.enterSlideMode();
+					shower.showPresenterNotes(currentSlideNumber);
+					shower.runInnerNavigation(currentSlideNumber);
 				}
 			break;
 
