@@ -11,6 +11,7 @@ window.shower = (function(window, document, undefined) {
 		progress = document.querySelector('div.progress div'),
 		slideList = [],
 		timer,
+		timing = 0,
 		isHistoryApiSupported = !!(window.history && history.pushState),
 		l = slides.length, i;
 
@@ -32,10 +33,23 @@ window.shower = (function(window, document, undefined) {
 			slides[i].id = i + 1;
 		}
 
+		timing = shower._getData(slides[i], 'timing');
+		if (timing && timing.indexOf(':') !== -1) {
+			timing = timing.split(':');
+			// Compute number of milliseconds from format "mm:ss"
+			timing = (parseInt(timing[0], 10) * 60 + parseInt(timing[1], 10)) * 1000;
+
+			if (slides[i].querySelector('.next')) {
+				timing = timing / (slides[i].querySelectorAll('.next').length + 1);
+			}
+		}
+
 		slideList.push({
-			id: slides[i].id,
-			hasInnerNavigation: null !== slides[i].querySelector('.next'),
-			hasTiming: (shower._getData(slides[i], 'timing') && shower._getData(slides[i], 'timing').indexOf(':') !== -1)
+			id : slides[i].id,
+			hasInnerNavigation : null !== slides[i].querySelector('.next'),
+			timing : timing,
+			innerLength : slides[i].querySelectorAll('.next').length,
+			innerComplete : 0
 		});
 	}
 
@@ -175,7 +189,7 @@ window.shower = (function(window, document, undefined) {
 
 		if (shower.isSlideMode()) {
 			shower.showPresenterNotes(slideNumber);
-			shower.runInnerNavigation(slideNumber);
+			shower.startInnerNavigation(slideNumber);
 		}
 
 		if (typeof(callback) === 'function') {
@@ -213,7 +227,7 @@ window.shower = (function(window, document, undefined) {
 		}
 
 		if (shower.isSlideMode()) {
-			shower.runInnerNavigation(currentSlideNumber + 1);
+			shower.startInnerNavigation(currentSlideNumber + 1);
 		}
 
 		if (typeof(callback) === 'function') {
@@ -314,7 +328,7 @@ window.shower = (function(window, document, undefined) {
 
 		var currentSlideNumber = shower.getCurrentSlideNumber();
 
-		clearTimeout(timer);
+		clearInterval(timer);
 
 		if (shower.isSlideMode() && isHistoryApiSupported) {
 			history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
@@ -527,29 +541,38 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
-	* Run slide show if presented.
+	* Start inner navigation by timer or just switch slide after timer.
+	* time sets in HTML: .slide[data-timer=MM:SS]
 	* @param {Number} slideNumber
 	* @returns {Boolean}
 	*/
-	shower.runInnerNavigation = function(slideNumber) {
+	shower.startInnerNavigation = function(slideNumber) {
+		var slide;
+
+		slideNumber = shower._normalizeSlideNumber(slideNumber);
+		slide = slideList[slideNumber];
+
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
 		}
 
-		slideNumber = shower._normalizeSlideNumber(slideNumber);
+		clearInterval(timer);
 
-		clearTimeout(timer);
-
-		if (slideList[slideNumber].hasTiming) {
-			// Compute number of milliseconds from format "X:Y", where X is
-			// number of minutes, and Y is number of seconds
-			var timing = shower._getData(document.getElementById(slideList[slideNumber].id), 'timing').split(':');
-			timing = parseInt(timing[0], 10) * 60 * 1000 + parseInt(timing[1], 10) * 1000;
-
-			timer = setTimeout(function() {
-					shower.next();
+		if (slide && slide.timing) {
+			timer = setInterval(function() {
+					// Inner Navigation not finished
+					if (slide.innerLength >= slide.innerComplete) {
+						shower.increaseInnerNavigation(slideNumber);
+						slide.innerComplete++;
+					} else {
+						clearInterval(timer);
+						// Check if last slide
+						if (slideList.length !== slideNumber + 1) {
+							shower.next();
+						}
+					}
 				},
-				timing);
+				slide.timing);
 		}
 
 		return true;
@@ -624,6 +647,7 @@ window.shower = (function(window, document, undefined) {
 					shower.go(slideNumber);
 					shower.enterSlideMode();
 					shower.showPresenterNotes(slideNumber);
+					shower.startInnerNavigation(slideNumber);
 				} else {
 					shower.enterListMode();
 				}
@@ -634,7 +658,7 @@ window.shower = (function(window, document, undefined) {
 					e.preventDefault();
 					shower.enterSlideMode();
 					shower.showPresenterNotes(currentSlideNumber);
-					shower.runInnerNavigation(currentSlideNumber);
+					shower.startInnerNavigation(currentSlideNumber);
 				}
 			break;
 
@@ -694,13 +718,17 @@ window.shower = (function(window, document, undefined) {
 			shower.go(slideNumber);
 			shower.enterSlideMode();
 			shower.showPresenterNotes(slideNumber);
+			shower.startInnerNavigation(slideNumber);
 		}
 	}, false);
 
 	document.addEventListener('touchstart', function(e) {
+		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target)),
+			x;
+
 		if (shower._getSlideIdByEl(e.target)) {
 			if (shower.isSlideMode() && ! shower._checkInteractiveElement(e)) {
-				var x = e.touches[0].pageX;
+				x = e.touches[0].pageX;
 
 				if (x > window.innerWidth / 2) {
 					shower.next();
@@ -710,8 +738,12 @@ window.shower = (function(window, document, undefined) {
 			}
 
 			if (shower.isListMode()) {
+				// Warning: go must be before enterSlideMode.
+				// Otherwise there is a bug in Chrome
 				shower.go(shower.getSlideNumber(shower._getSlideIdByEl(e.target)));
 				shower.enterSlideMode();
+				shower.showPresenterNotes(slideNumber);
+				shower.startInnerNavigation(slideNumber);
 			}
 		}
 
