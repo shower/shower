@@ -3,7 +3,7 @@
  * @copyright 2010–2013 Vadim Makeev, pepelsbey.net
  * @license MIT license: github.com/shower/shower/wiki/MIT-License
  */
-window.shower = (function(window, document, undefined) {
+window.shower = window.shower || (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
 		body = document.body,
