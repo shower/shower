@@ -48,7 +48,7 @@ window.shower = (function(window, document, undefined) {
 			id : slides[i].id,
 			hasInnerNavigation : null !== slides[i].querySelector('.next'),
 			timing : timing,
-			innerLength : slides[i].querySelectorAll('.next').length,
+			innerLength : slides[i].querySelectorAll('.next').length + 1,
 			innerComplete : 0
 		});
 	}
@@ -550,29 +550,46 @@ window.shower = (function(window, document, undefined) {
 		var slide;
 
 		slideNumber = shower._normalizeSlideNumber(slideNumber);
-		slide = slideList[slideNumber];
 
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
 		}
 
+		slide = slideList[slideNumber];
+
 		clearInterval(timer);
 
 		if (slide && slide.timing) {
-			timer = setInterval(function() {
-					// Inner Navigation not finished
-					if (slide.innerLength >= slide.innerComplete) {
-						shower.increaseInnerNavigation(slideNumber);
-						slide.innerComplete++;
-					} else {
+
+			// Inner Navigation already finished
+			if (slide.innerLength === slide.innerComplete) {
+				timer = setInterval(function() {
 						clearInterval(timer);
 						// Check if last slide
 						if (slideList.length !== slideNumber + 1) {
 							shower.next();
 						}
-					}
-				},
-				slide.timing);
+					},
+					slide.timing * slide.innerLength);
+			} else {
+				timer = setInterval(function() {
+						// Inner Navigation not finished
+						if (slide.innerLength > slide.innerComplete) {
+							shower.increaseInnerNavigation(slideNumber);
+							slide.innerComplete++;
+						}
+
+						// Inner Navigation already finished
+						if (slide.innerLength === slide.innerComplete) {
+							clearInterval(timer);
+							// Check if last slide
+							if (slideList.length !== slideNumber + 1) {
+								shower.next();
+							}
+						}
+					},
+					slide.timing);
+			}
 		}
 
 		return true;
@@ -629,11 +646,14 @@ window.shower = (function(window, document, undefined) {
 	}, false);
 
 	document.addEventListener('keydown', function(e) {
+		var currentSlideNumber,
+			isInnerNavCompleted;
+
 		// Shortcut for alt, ctrl and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
-		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			isInnerNavCompleted = true;
+		currentSlideNumber = shower.getCurrentSlideNumber(),
+		isInnerNavCompleted = true;
 
 		switch (e.which) {
 			case 116: // F5
