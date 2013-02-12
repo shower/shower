@@ -542,7 +542,7 @@ window.shower = (function(window, document, undefined) {
 
 	/**
 	* Start inner navigation by timer or just switch slide after timer.
-	* time sets in HTML: .slide[data-timer=MM:SS]
+	* time sets in HTML: .slide[data-timing=MM:SS]
 	* @param {Number} slideNumber
 	* @returns {Boolean}
 	*/
