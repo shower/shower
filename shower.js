@@ -117,7 +117,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* Get slide id from HTML element.
 	* @private
-	* @param {HTMLElement} el
+	* @param {Node} el
 	* @returns {String}
 	*/
 	shower._getSlideIdByEl = function(el) {
@@ -135,7 +135,7 @@ window.shower = (function(window, document, undefined) {
 	/**
 	* For touch devices: check if link is clicked.
 	*
-	* @TODO: add support for textareas/inputs/etc.
+	* @TODO: add support for textarea/input/etc.
 	*
 	* @private
 	* @param {HTMLElement} e
@@ -646,14 +646,12 @@ window.shower = (function(window, document, undefined) {
 	}, false);
 
 	document.addEventListener('keydown', function(e) {
-		var currentSlideNumber,
-			isInnerNavCompleted;
+		var currentSlideNumber;
 
 		// Shortcut for alt, ctrl and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
-		currentSlideNumber = shower.getCurrentSlideNumber(),
-		isInnerNavCompleted = true;
+		currentSlideNumber = shower.getCurrentSlideNumber();
 
 		switch (e.which) {
 			case 116: // F5
