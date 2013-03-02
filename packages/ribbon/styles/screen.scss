@@ -252,7 +252,7 @@ body {
 	background:#585A5E url(../images/linen.png);
 	@include retina {
 		background-image:url(../images/linen@2x.png);
-		background-size:50%;
+		background-size:256px;
 		}
 	&:after {
 		clear:both;
