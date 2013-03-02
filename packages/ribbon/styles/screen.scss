@@ -10,10 +10,67 @@ body {
 	counter-reset:slide;
 	font:25px/2 'PT Sans', sans-serif;
 	}
+a {
+	text-decoration:none;
+	}
+
+// Caption
+// -------------------------------
+.caption {
+	display:none;
+	margin:0 0 50px;
+	color:#3C3D40;
+	text-shadow:0 1px 1px #8D8E90;
+	h1 {
+		font:bold 50px/1 'PT Sans Narrow', sans-serif;
+		}
+	a {
+		color:#4B86C2;
+		text-shadow:0 -1px 1px #1F3F60;
+		text-decoration:none;
+		&:hover {
+			color:#5394D7;
+			}
+		}
+	}
+
+// Badge
+// -------------------------------
+.badge {
+	position:absolute;
+	top:0;
+	right:0;
+	display:none;
+	overflow:hidden;
+	visibility:hidden;
+	width:11em;
+	height:11em;
+	line-height:2.5;
+	font-size:15px;
+	}
+	.badge a {
+		position:absolute;
+		bottom:50%;
+		right:-50%;
+		left:-50%;
+		visibility:visible;
+		background:#4B86C2;
+		box-shadow:0 0 1em rgba(#000, 0.3);
+		color:#FFF;
+		text-decoration:none;
+		text-align:center;
+		@include transform-origin(50% 100%);
+		@include transform(rotate(45deg) translateY(-1em));
+		@include transition(background 0.3s linear);
+		&:hover {
+			background:#5394D7;
+			}
+		}
 
 // Slide
 // -------------------------------
 .slide {
+	position:relative;
 	width:$width;
 	height:$height;
 	background:#FFF url(../images/ribbon.svg) 865px 0 no-repeat;
@@ -21,18 +78,18 @@ body {
 	-webkit-text-size-adjust:none;
 	-moz-text-size-adjust:none;
 	-ms-text-size-adjust:none;
+	// Number
 	&:after {
 		position:absolute;
+		left:120px;
+		bottom:81px;
+		color:#CCC;
 		counter-increment:slide;
 		content:counter(slide, decimal-leading-zero);
-		line-height:1;
+		line-height:18px;
+		font-size:25px;
 		}
-	.debug & {
-		background:
-			url(../images/ribbon.svg) 865px 0 no-repeat,
-			url(../images/grid-#{$ratio}.svg) no-repeat,
-			#FFF;
-		}
+	// Inner
 	> div {
 		position:absolute;
 		top:0;
@@ -42,10 +99,19 @@ body {
 		width:$width - $sides * 2;
 		height:$height - $top;
 		}
+	// Debug
+	.debug & {
+		background:
+			url(../images/ribbon.svg) 865px 0 no-repeat,
+			url(../images/grid-#{$ratio}.svg) no-repeat,
+			#FFF;
+		}
 	}
 
-// Header
+// Elements
+// -------------------------------
 .slide {
+	// Header
 	h2 {
 		margin:0 0 37px;
 		color:#666;
@@ -61,7 +127,6 @@ body {
 	a {
 		border-bottom:0.1em solid;
 		color:#0174A7;
-		text-decoration:none;
 		}
 	b, strong {
 		font-weight:bold;
@@ -165,6 +230,14 @@ body {
 				}
 			}
 		}
+	// Cover Shout
+	&.cover,
+	&.shout {
+		z-index:1;
+		&:after {
+			content:'';
+			}
+		}
 	// Cover
 	&.cover {
 		background:#000;
@@ -241,231 +314,182 @@ body {
 		&.t.l, &.t.r { top:0; }
 		&.b.r, &.b.l { top:auto; }
 		}
+	// Notes
+	footer {
+		position:absolute;
+		left:0;
+		right:0;
+		bottom:-500px;
+		z-index:1;
+		display:none;
+		padding:20px 120px;
+		background:#FAFAA2;
+		box-shadow:0 0 0 2px rgba(#000, 0.05) inset;
+		@include transition(bottom 0.4s)
+		}
+	&:hover footer {
+		bottom:0;
+		}
 	}
 
-// List
-// -------------------------------
-.list {
-	position:absolute;
-	clip:rect(0, auto, auto, 0); // Having fun with IE10
-	padding:80px 0 40px 100px;
-	background:#585A5E url(../images/linen.png);
-	@include retina {
-		background-image:url(../images/linen@2x.png);
-		background-size:256px;
-		}
-	&:after {
-		clear:both;
-		display:block;
-		content:'';
-		}
-	// Caption
-	.caption {
-		margin:0 0 50px;
-		color:#3C3D40;
-		text-shadow:0 1px 1px #8D8E90;
-		h1 {
-			font:bold 50px/1 'PT Sans Narrow', sans-serif;
-			}
-		a {
-			color:#4B86C2;
-			text-shadow:0 -1px 1px #1F3F60;
-			text-decoration:none;
-			&:hover {
-				color:#5394D7;
-				}
-			}
-		}
-	// Badge
-	.badge {
+// Screen
+@media screen {
+	// List
+	.list {
 		position:absolute;
-		top:0;
-		right:0;
-		overflow:hidden;
-		visibility:hidden;
-		width:11em;
-		height:11em;
-		line-height:2.5;
-		font-size:15px;
-		}
-		.badge a {
-			position:absolute;
-			bottom:50%;
-			right:-50%;
-			left:-50%;
-			visibility:visible;
-			background:#4B86C2;
-			box-shadow:0 0 1em rgba(#000, 0.3);
-			color:#FFF;
-			text-decoration:none;
-			text-align:center;
-			@include transform-origin(50% 100%);
-			@include transform(rotate(45deg) translateY(-1em));
-			@include transition(background 0.3s linear);
-			&:hover {
-				background:#5394D7;
-				}
+		clip:rect(0, auto, auto, 0); // Having fun with IE10
+		padding:80px 0 40px 100px;
+		background:#585A5E url(../images/linen.png);
+		@include retina {
+			background-image:url(../images/linen@2x.png);
+			background-size:256px;
 			}
-	// Slide
-	.slide {
-		position:relative;
-		float:left;
-		margin:0 (100-$width/2) (100-$height/2) 0;
-		@include transform-origin(0 0);
-		@include transform(scale(0.5));
-		@media (max-width:$break) {
-			margin:0 (80-($width/2+$width/4)) (80-($height/2+$height/4)) 0;
-			@include transform(scale(0.25));
+		// Outfit
+		.caption,
+		.badge {
+			display:block;
 			}
-		&:before {
-			position:absolute;
-			top:0;
-			left:0;
-			z-index:-1;
-			width:$width/2;
-			height:$height/2;
-			box-shadow:
-				0 0 30px rgba(#000, 0.005),
-				0 20px 50px rgba(#2A2B2D, 0.6);
-			border-radius:2px;
-			content:'';
+		// Slide
+		.slide {
+			float:left;
+			margin:0 (100-$width/2) (100-$height/2) 0;
 			@include transform-origin(0 0);
-			@include transform(scale(2));
+			@include transform(scale(0.5));
 			@media (max-width:$break) {
-				width:$width/4;
-				height:$height/4;
-				@include transform(scale(4));
+				margin:0 (80-($width/2+$width/4)) (80-($height/2+$height/4)) 0;
+				@include transform(scale(0.25));
 				}
-			}
-		&:after {
-			bottom:-80px;
-			left:120px;
-			color:#3C3D40;
-			text-shadow:0 1px 1px #8D8E90;
-			font-weight:bold;
-			@include transform-origin(0 0);
-			@include transform(scale(2));
-			@media (max-width:$break) {
-				bottom:-104px;
-				@include transform(scale(4));
-				}
-			}
-		&:hover:before {
-			box-shadow:
-				0 0 0 10px rgba(#2A2B2D, 0.3),
-				0 20px 50px rgba(#2A2B2D, 0.6);
-			}
-		&:target {
+			// Shadow
 			&:before {
+				position:absolute;
+				top:0;
+				left:0;
+				z-index:-1;
+				width:$width/2;
+				height:$height/2;
 				box-shadow:
-					0 0 0 1px #305F8D,
-					0 0 0 10px #3C7CBD,
+					0 0 30px rgba(#000, 0.005),
 					0 20px 50px rgba(#2A2B2D, 0.6);
+				border-radius:2px;
+				content:'';
+				@include transform-origin(0 0);
+				@include transform(scale(2));
 				@media (max-width:$break) {
+					width:$width/4;
+					height:$height/4;
+					@include transform(scale(4));
+					}
+				}
+			// Number
+			&:after {
+				bottom:-80px;
+				left:120px;
+				color:#3C3D40;
+				text-shadow:0 1px 1px #8D8E90;
+				font-weight:bold;
+				@include transform-origin(0 0);
+				@include transform(scale(2));
+				@media (max-width:$break) {
+					bottom:-104px;
+					@include transform(scale(4));
+					}
+				}
+			// Hover
+			&:hover:before {
+				box-shadow:
+					0 0 0 10px rgba(#2A2B2D, 0.3),
+					0 20px 50px rgba(#2A2B2D, 0.6);
+				}
+			// Current
+			&:target {
+				&:before {
 					box-shadow:
 						0 0 0 1px #305F8D,
 						0 0 0 10px #3C7CBD,
 						0 20px 50px rgba(#2A2B2D, 0.6);
+					@media (max-width:$break) {
+						box-shadow:
+							0 0 0 1px #305F8D,
+							0 0 0 10px #3C7CBD,
+							0 20px 50px rgba(#2A2B2D, 0.6);
+						}
+					}
+				&:after {
+					text-shadow:0 1px 1px rgba(#2A2B2D, 0.6);
+					color:#4B86C2;
 					}
 				}
-			&:after {
-				text-shadow:0 1px 1px rgba(#2A2B2D, 0.6);
-				color:#4B86C2;
+			// Inner
+			> div {
+				&:before {
+					position:absolute;
+					top:0;
+					right:0;
+					bottom:0;
+					left:0;
+					z-index:2;
+					content:'';
+					}
+				}
+			// Notes
+			footer {
+				display:block;
 				}
 			}
-		// Wrapper
-		> div {
-			&:before {
-				position:absolute;
-				top:0;
-				right:0;
-				bottom:0;
-				left:0;
-				z-index:2;
-				content:'';
-				}
-			}
-		// Notes
-		footer {
+		}
+	// Full
+	.full {
+		position:absolute;
+		top:50%;
+		left:50%;
+		overflow:hidden;
+		margin:(-$height/2) 0 0 (-$width/2);
+		width:$width;
+		height:$height;
+		background:#000;
+		// Slide
+		.slide {
 			position:absolute;
+			top:0;
 			left:0;
-			right:0;
-			bottom:-500px;
-			z-index:1;
-			padding:20px 120px;
-			background:#FAFAA2;
-			box-shadow:0 0 0 2px rgba(#000, 0.05) inset;
-			@include transition(bottom 0.4s)
+			margin-left:150%;
+			// Next Lists
+			li.next {
+				display:none;
+				&.active {
+					display:block;
+					}
+				}
+			// Current
+			&:target {
+				margin:0;
+				}
 			}
-		&:hover footer {
-			bottom:0;
+		// Progress
+		.progress {
+			position:absolute;
+			right:118px;
+			bottom:40px;
+			left:118px;
+			div {
+				width:0;
+				height:10px;
+				box-shadow:0 0 0 1px rgba(#FFF, 0.4);
+				border-radius:5px;
+				background:rgba(#B1B1B1, 0.4);
+				@include transition(width 0.2s linear);
+				}
 			}
 		}
 	}
 
-// Full
-// -------------------------------
-.full {
-	position:absolute;
-	top:50%;
-	left:50%;
-	overflow:hidden;
-	margin:(-$height/2) 0 0 (-$width/2);
-	width:$width;
-	height:$height;
-	background:#000;
-	.caption,
-	.badge {
-		display:none;
+// Print
+@media print {
+	@page {
+		margin:0;
+		size:$width $height;
 		}
-	.slide {
-		position:absolute;
-		top:0;
-		left:0;
-		clip:rect(0, 0, 0, 0);
-		&:after {
-			left:120px;
-			bottom:81px;
-			color:#CCC;
-			line-height:18px;
-			font-size:25px;
-			}
-		&:target {
-			clip:rect(0, auto, auto, 0);
-			}
-		// Cover Shout
-		&.cover,
-		&.shout {
-			z-index:1;
-			&:after {
-				content:'';
-				}
-			}
-		// Note
-		footer {
-			display:none;
-			}
-		}
-	// Next Lists
-	li.next {
-		display:none;
-		&.active {
-			display:block;
-			}
-		}
-	// Progress
-	.progress {
-		position:absolute;
-		right:118px;
-		bottom:40px;
-		left:118px;
-		div {
-			width:0;
-			height:10px;
-			box-shadow:0 0 0 1px rgba(#FFF, 0.4);
-			border-radius:5px;
-			background:rgba(#B1B1B1, 0.4);
-			@include transition(width 0.2s linear);
-			}
+	* {
+		-webkit-print-color-adjust:exact;
 		}
 	}
