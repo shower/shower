@@ -51,7 +51,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 				hasTiming: (shower._getData(slides[i], 'timing') && shower._getData(slides[i], 'timing').indexOf(':') !== -1)
 			});
 		}
-
+		return shower;
 	};
 
 
