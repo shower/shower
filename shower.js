@@ -11,8 +11,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 		progress = [],
 		slideList = [],
 		timer,
-		isHistoryApiSupported = !!(window.history && history.pushState),
-		l = slides.length, i;
+		isHistoryApiSupported = !!(window.history && history.pushState);
 
 	/**
 	* Get value at named data store for the DOM element.
@@ -37,9 +36,9 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 		slides = document.querySelectorAll(slideSelector);
 		progress = document.querySelector(progressSelector);
-		slideList = [],
+		slideList = [];
 
-		for (i = 0; i < l; i++) {
+		for (var i = 0; i < slides.length; i++) {
 			// Slide IDs are optional. In case of missing ID we set it to the
 			// slide number
 			if ( ! slides[i].id) {
@@ -701,6 +700,8 @@ window.shower = window.shower || (function(window, document, undefined) {
 		}
 	}, false);
 
+	shower.init();
+
 	document.addEventListener('click', function(e) {
 		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target));
 
@@ -739,8 +740,6 @@ window.shower = window.shower || (function(window, document, undefined) {
 			e.preventDefault();
 		}
 	}, false);
-
-	shower.init();
 
 	return shower;
 
