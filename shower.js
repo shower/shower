@@ -276,11 +276,19 @@ window.shower = window.shower || (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.enterSlideMode = function(callback) {
-		var currentSlideNumber = shower.getCurrentSlideNumber();
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+		    docEl = document.documentElement;
 
 		// Anyway: change body class (@TODO: refactoring)
 		body.classList.remove('list');
 		body.classList.add('full');
+
+		if (docEl.requestFullscreen)
+			docEl.requestFullscreen();
+		else if (docEl.mozRequestFullScreen)
+			docEl.mozRequestFullScreen();
+		else if (docEl.webkitRequestFullScreen)
+			docEl.webkitRequestFullScreen();
 
 		// Preparing URL for shower.go()
 		if (shower.isListMode() && isHistoryApiSupported) {
@@ -307,6 +315,12 @@ window.shower = window.shower || (function(window, document, undefined) {
 		body.classList.add('list');
 
 		shower.clearPresenterNotes();
+		if (document.exitFullScreen)
+			document.cancelFullScreen();
+		else if (document.mozCancelFullScreen)
+			document.mozCancelFullScreen();
+		else if (document.webkitExitFullscreen)
+			document.webkitExitFullscreen();
 
 		if (shower.isListMode()) {
 			return false;
