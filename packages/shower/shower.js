@@ -7,12 +7,11 @@ window.shower = window.shower || (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
 		body = document.body,
-		slides = document.querySelectorAll('.slide'),
-		progress = document.querySelector('div.progress div'),
+		slides = [],
+		progress = [],
 		slideList = [],
 		timer,
-		isHistoryApiSupported = !!(window.history && history.pushState),
-		l = slides.length, i;
+		isHistoryApiSupported = !!(window.history && history.pushState);
 
 	/**
 	* Get value at named data store for the DOM element.
@@ -25,19 +24,36 @@ window.shower = window.shower || (function(window, document, undefined) {
 		return element.dataset ? element.dataset[name] : element.getAttribute('data-' + name);
 	};
 
-	for (i = 0; i < l; i++) {
-		// Slide IDs are optional. In case of missing ID we set it to the
-		// slide number
-		if ( ! slides[i].id) {
-			slides[i].id = i + 1;
-		}
+	/**
+	 * Init
+	 * @param {String} slideSelector
+	 * @param {String} progressBarSelector
+	 * @returns {Object} shower
+	 */
+	shower.init = function(slideSelector, progressSelector) {
+		slideSelector = slideSelector || '.slide';
+		progressSelector = progressSelector || 'div.progress div';
 
-		slideList.push({
-			id: slides[i].id,
-			hasInnerNavigation: null !== slides[i].querySelector('.next'),
-			hasTiming: (shower._getData(slides[i], 'timing') && shower._getData(slides[i], 'timing').indexOf(':') !== -1)
-		});
-	}
+		slides = document.querySelectorAll(slideSelector);
+		progress = document.querySelector(progressSelector);
+		slideList = [];
+
+		for (var i = 0; i < slides.length; i++) {
+			// Slide IDs are optional. In case of missing ID we set it to the
+			// slide number
+			if ( ! slides[i].id) {
+				slides[i].id = i + 1;
+			}
+
+			slideList.push({
+				id: slides[i].id,
+				hasInnerNavigation: null !== slides[i].querySelector('.next'),
+				hasTiming: (shower._getData(slides[i], 'timing') && shower._getData(slides[i], 'timing').indexOf(':') !== -1)
+			});
+		}
+		return shower;
+	};
+
 
 	/**
 	* Get slide scale value.
@@ -683,6 +699,8 @@ window.shower = window.shower || (function(window, document, undefined) {
 				// Behave as usual
 		}
 	}, false);
+
+	shower.init();
 
 	document.addEventListener('click', function(e) {
 		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target));
