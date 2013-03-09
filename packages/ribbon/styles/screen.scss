@@ -154,7 +154,7 @@ a {
 			content:'\201C';
 			}
 		& + figcaption {
-			margin:-50px 0 40px;
+			margin:-50px 0 50px;
 			font-style:italic;
 			font-weight:bold;
 			}
@@ -174,7 +174,7 @@ a {
 			}
 		ol,
 		ul {
-			margin:0 0 0 39px;
+			margin:0 0 0 2em;
 			}
 		}
 	ul > li:before {
