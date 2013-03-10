@@ -4,7 +4,7 @@ Default theme for [shower](https://github.com/shower/shower) engine, part of [te
 
 To see Shower in action:
 
-- Open [shwr.me](http://shwr.me/)
+- Open [shwr.me/shower/themes/ribbon/](http://shwr.me/shower/themes/ribbon/)
 - Click any slide to enter presentation mode
 - Use arrow keys to navigate
 - Press `Esc` to exit presentation mode
