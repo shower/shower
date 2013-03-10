@@ -319,13 +319,13 @@ a {
 		position:absolute;
 		left:0;
 		right:0;
-		bottom:-500px;
+		bottom:-$height;
 		z-index:1;
 		display:none;
 		padding:20px 120px;
 		background:#FAFAA2;
 		box-shadow:0 0 0 2px rgba(#000, 0.05) inset;
-		@include transition(bottom 0.4s)
+		@include transition(bottom 0.3s)
 		}
 	&:hover footer {
 		bottom:0;
