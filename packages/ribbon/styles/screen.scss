@@ -230,14 +230,6 @@ a {
 				}
 			}
 		}
-	// Cover Shout
-	&.cover,
-	&.shout {
-		z-index:1;
-		&:after {
-			content:'';
-			}
-		}
 	// Cover
 	&.cover {
 		background:#000;
@@ -463,6 +455,14 @@ a {
 			// Current
 			&:target {
 				margin:0;
+				}
+			// Cover Shout
+			&.cover,
+			&.shout {
+				z-index:1;
+				&:after {
+					content:'';
+					}
 				}
 			}
 		// Progress
