@@ -75,6 +75,7 @@ a {
 	height:$height;
 	background:#FFF url(../images/ribbon.svg) 865px 0 no-repeat;
 	color:#000;
+	-webkit-print-color-adjust:exact;
 	-webkit-text-size-adjust:none;
 	-moz-text-size-adjust:none;
 	-ms-text-size-adjust:none;
@@ -486,12 +487,7 @@ a {
 	}
 
 // Print
-@media print {
-	@page {
-		margin:0;
-		size:$width $height;
-		}
-	* {
-		-webkit-print-color-adjust:exact;
-		}
+@page {
+	margin:0;
+	size:$width $height;
 	}
