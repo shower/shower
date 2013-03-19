@@ -14,4 +14,4 @@ Theme is included by default to [shower](https://github.com/shower/shower) and [
 See more details in Shower [readme](https://github.com/shower/shower#readme). Follow [@shower_me](http://twitter.com/shower_me/) for support and updates. Use [Issues](https://github.com/shower/shower/issues) for sharing your ideas, bugs and feature requests.
 
 ---
-Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](shower/wiki/MIT-License) for details.
+Licensed under [MIT License](http://en.wikipedia.org/wiki/MIT_License), see [license page](https://github.com/shower/shower/wiki/MIT-License) for details.
