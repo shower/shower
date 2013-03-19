@@ -232,6 +232,7 @@ a {
 		}
 	// Cover
 	&.cover {
+		z-index:1;
 		background:#000;
 		@mixin cover {
 			img, svg, video,
@@ -269,6 +270,7 @@ a {
 		}
 	// Shout
 	&.shout {
+		z-index:1;
 		background-image:none;
 		h2 {
 			position:absolute;
