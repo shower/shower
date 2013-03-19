@@ -231,9 +231,16 @@ a {
 				}
 			}
 		}
+	// Cover Shout
+	&.cover,
+	&.shout {
+		z-index:1;
+		&:after {
+			content:'';
+			}
+		}
 	// Cover
 	&.cover {
-		z-index:1;
 		background:#000;
 		@mixin cover {
 			img, svg, video,
@@ -271,7 +278,6 @@ a {
 		}
 	// Shout
 	&.shout {
-		z-index:1;
 		background-image:none;
 		h2 {
 			position:absolute;
@@ -426,6 +432,13 @@ a {
 					content:'';
 					}
 				}
+			// Cover Shout
+			&.cover,
+			&.shout {
+				&:after {
+					content:counter(slide);
+					}
+				}
 			// Notes
 			footer {
 				display:block;
@@ -458,14 +471,6 @@ a {
 			// Current
 			&:target {
 				margin:0;
-				}
-			// Cover Shout
-			&.cover,
-			&.shout {
-				z-index:1;
-				&:after {
-					content:'';
-					}
 				}
 			}
 		// Progress
