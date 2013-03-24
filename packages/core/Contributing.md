@@ -2,9 +2,10 @@
 
 You're always welcome to contibute! There are three repositories in Shower project:
 
-- [Ribbon](https://github.com/shower/ribbon) theme for Shower
 - [Shower](https://github.com/shower/shower) engine with Ribbon theme
-- [Template](https://github.com/shower) for Shower engine and Ribbon theme
+- [Template](https://github.com/shower) for Shower engine and built-in themes
+- [Ribbon](https://github.com/shower/ribbon) theme for Shower
+- [Bright](https://github.com/shower/bright) theme for Shower
 
 The most important part of the project is the [Shower](https://github.com/shower/shower) repository, containing [shower.js](https://github.com/shower/shower/blob/master/shower.js) file.
 
