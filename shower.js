@@ -73,20 +73,15 @@ window.shower = window.shower || (function(window, document, undefined) {
 
             if (slide.isFinished()) {
                 timer = setInterval(function() {
-                        console.log('fin');
                         clearInterval(timer);
-                        if ( ! slide.isLast()) {
-                            shower.next();
-                        }
+                        shower.next();
                     },
                     slide.timing * (slide.innerLength || 1));
             } else {
                 timer = setInterval(function() {
                         if (slide.isFinished()) {
                             clearInterval(timer);
-                            if ( ! slide.isLast()) {
                                 shower.next();
-                            }
                         } else {
                             slide.next(shower);
                         }
@@ -131,10 +126,8 @@ window.shower = window.shower || (function(window, document, undefined) {
                 slide = this;
 
             if ( ! slide.hasInnerNavigation || slide.isFinished()) {
-                if ( ! slide.isLast()) {
-                    shower.next();
-                    return false;
-                }
+                shower.next();
+                return false;
             }
 
             if ( ! slide.isFinished()) {
@@ -394,11 +387,6 @@ window.shower = window.shower || (function(window, document, undefined) {
             nextSlide = shower.slideList[currentSlideNumber + 1],
             ret = false,
             slide;
-
-        // If don't exist next slide
-        if (! nextSlide) {
-            return ret;
-        }
 
         slide = shower.slideList[currentSlideNumber];
 
