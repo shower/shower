@@ -3,16 +3,14 @@
  * @copyright 2010–2013 Vadim Makeev, pepelsbey.net
  * @license MIT license: github.com/shower/shower/wiki/MIT-License
  */
-window.shower = (function(window, document, undefined) {
+window.shower = window.shower || (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
 		body = document.body,
-		slides = document.querySelectorAll('.slide'),
-		progress = document.querySelector('div.progress div'),
+		slides = [],
+		progress = [],
 		timer,
-		timing = 0,
-		isHistoryApiSupported = !!(window.history && history.pushState),
-		l = slides.length, i;
+		isHistoryApiSupported = !!(window.history && history.pushState);
 
 
     function Slide(opts) {
@@ -161,36 +159,55 @@ window.shower = (function(window, document, undefined) {
 		return element.dataset ? element.dataset[name] : element.getAttribute('data-' + name);
 	};
 
+
     shower.slideList = [];
 
-	for (i = 0; i < l; i++) {
-		// Slide IDs are optional. In case of missing ID we set it to the
-		// slide number
-		if ( ! slides[i].id) {
-			slides[i].id = 'slide_' + (i + 1);
-		}
+	/**
+	 * Shower initialization
+	 * @param {String} [slideSelector]
+	 * @param {String} [progressSelector]
+	 * @returns {Object} shower
+	 */
+	shower.init = function(slideSelector, progressSelector) {
+        var timing;
 
-		timing = shower._getData(slides[i], 'timing');
+		slideSelector = slideSelector || '.slide';
+		progressSelector = progressSelector || 'div.progress div';
 
-		if (timing && timing.indexOf(':') !== -1) {
-			timing = timing.split(':');
-			// Compute number of milliseconds from format "mm:ss"
-			timing = (parseInt(timing[0], 10) * 60 + parseInt(timing[1], 10)) * 1000;
+		slides = document.querySelectorAll(slideSelector);
+		progress = document.querySelector(progressSelector);
 
-			if (slides[i].querySelector('.next')) {
-				timing = timing / (slides[i].querySelectorAll('.next').length + 1);
+		for (var i = 0; i < slides.length; i++) {
+			// Slide IDs are optional. In case of missing ID we set it to the
+			// slide number
+			if ( ! slides[i].id) {
+				slides[i].id = i + 1;
 			}
-		}
 
-		shower.slideList.push(new Slide({
-			id : slides[i].id,
-            number : i,
-			hasInnerNavigation : null !== slides[i].querySelector('.next'),
-			timing : timing,
-			innerLength : slides[i].querySelectorAll('.next').length,
-			innerComplete : 0
-		}));
-	}
+			timing = shower._getData(slides[i], 'timing');
+
+			if (timing && timing.indexOf(':') !== -1) {
+                timing = timing.split(':');
+                // Compute number of milliseconds from format "mm:ss"
+                timing = (parseInt(timing[0], 10) * 60 + parseInt(timing[1], 10)) * 1000;
+
+                if (slides[i].querySelector('.next')) {
+                    timing = timing / (slides[i].querySelectorAll('.next').length + 1);
+                }
+            }
+
+		    shower.slideList.push(new Slide({
+                id : slides[i].id,
+                number : i,
+                hasInnerNavigation : null !== slides[i].querySelector('.next'),
+                timing : timing,
+                innerLength : slides[i].querySelectorAll('.next').length,
+                innerComplete : 0
+            }));
+        }
+
+		return shower;
+	};
 
 	/**
 	* Get slide scale value.
@@ -848,6 +865,8 @@ window.shower = (function(window, document, undefined) {
 				// Behave as usual
 		}
 	}, false);
+
+	shower.init();
 
 	document.addEventListener('click', function(e) {
 		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target)),
