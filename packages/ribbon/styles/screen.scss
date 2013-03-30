@@ -436,7 +436,7 @@ a {
 			&.cover,
 			&.shout {
 				&:after {
-					content:counter(slide);
+					content:counter(slide, decimal-leading-zero);
 					}
 				}
 			// Notes
