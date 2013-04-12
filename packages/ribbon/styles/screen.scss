@@ -461,11 +461,11 @@ a {
 			top:0;
 			left:0;
 			margin-left:150%;
-			// Next Lists
-			li.next {
-				display:none;
+			// Next
+			.next {
+				visibility:hidden;
 				&.active {
-					display:block;
+					visibility:visible;
 					}
 				}
 			// Current
