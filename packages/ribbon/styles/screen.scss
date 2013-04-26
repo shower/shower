@@ -293,27 +293,32 @@ a {
 	// Place
 	.place {
 		position:absolute;
-		&.t, &.m, &.b {
-			left:50%;
-			@include transform(translateX(-50%));
+		top:50%;
+		left:50%;
+		@include transform(translate(-50%, -50%));
+		&.t.l, &.t.r, &.b.r, &.b.l {
+			@include transform(none);
 			}
-		&.t { top:0; }
-		&.b { bottom:0; }
-		&.l, &.m, &.r {
-			top:50%;
-			@include transform(translateY(-50%));
+		&.t, &.b {
+			@include transform(translate(-50%, 0));
 			}
-		&.l { left:0; }
-		&.m { @include transform(translate(-50%, -50%)); }
+		&.l, &.r {
+			@include transform(translate(0, -50%));
+			}
+		&.t, &.t.l, &.t.r {
+			top:0;
+			}
 		&.r {
 			right:0;
 			left:auto;
 			}
-		&.t.l, &.t.r, &.b.r, &.b.l {
-			@include transform(none);
+		&.b, &.b.r, &.b.l {
+			top:auto;
+			bottom:0;
 			}
-		&.t.l, &.t.r { top:0; }
-		&.b.r, &.b.l { top:auto; }
+		&.l {
+			left:0;
+			}
 		}
 	// Notes
 	footer {
