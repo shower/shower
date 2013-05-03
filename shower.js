@@ -403,7 +403,6 @@ window.shower = window.shower || (function(window, document, undefined) {
 	 */
 	shower._turnNextSlide = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			nextSlide = shower.slideList[currentSlideNumber + 1],
 			ret = false,
 			slide;
 
