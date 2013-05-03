@@ -12,7 +12,18 @@ window.shower = window.shower || (function(window, document, undefined) {
 		timer,
 		isHistoryApiSupported = !!(window.history && window.history.pushState);
 
-
+    /**
+     * Slide constructor
+     *
+     * @param {Object} opts
+     *      @param {String} opts.id html id attribute or automaticaly assigned order number
+     *      @param {Number} opts.number slide number
+     *      @param {Boolean} opts.hasInnerNavigation
+     *      @param {Number} [opts.timing]
+     *      @param {Number} [opts.innerLength]
+     *      @param {Number} [opts.innerComplete = 0]
+     * @constructor
+     */
     function Slide(opts) {
         for (var prop in opts) {
             if (opts.hasOwnProperty(prop)) {
@@ -197,7 +208,7 @@ window.shower = window.shower || (function(window, document, undefined) {
                 id : slides[i].id,
                 number : i,
                 hasInnerNavigation : null !== slides[i].querySelector('.next'),
-                timing : timing,
+                timing : parseInt(timing, 10) || undefined,
                 innerLength : slides[i].querySelectorAll('.next').length,
                 innerComplete : 0
             }));
