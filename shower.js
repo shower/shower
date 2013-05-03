@@ -12,149 +12,149 @@ window.shower = window.shower || (function(window, document, undefined) {
 		timer,
 		isHistoryApiSupported = !!(window.history && window.history.pushState);
 
-    /**
-     * Slide constructor
-     *
-     * @param {Object} opts
-     *      @param {String} opts.id html id attribute or automaticaly assigned order number
-     *      @param {Number} opts.number slide number
-     *      @param {Boolean} opts.hasInnerNavigation
-     *      @param {Number} [opts.timing]
-     *      @param {Number} [opts.innerLength]
-     *      @param {Number} [opts.innerComplete = 0]
-     * @constructor
-     */
-    function Slide(opts) {
-        for (var prop in opts) {
-            if (opts.hasOwnProperty(prop)) {
-                this[prop] = opts[prop];
-            }
-        }
-    }
+	/**
+	 * Slide constructor
+	 *
+	 * @param {Object} opts
+	 *	  @param {String} opts.id html id attribute or automaticaly assigned order number
+	 *	  @param {Number} opts.number slide number
+	 *	  @param {Boolean} opts.hasInnerNavigation
+	 *	  @param {Number} [opts.timing]
+	 *	  @param {Number} [opts.innerLength]
+	 *	  @param {Number} [opts.innerComplete = 0]
+	 * @constructor
+	 */
+	function Slide(opts) {
+		for (var prop in opts) {
+			if (opts.hasOwnProperty(prop)) {
+				this[prop] = opts[prop];
+			}
+		}
+	}
 
-    Slide.prototype = {
-        /**
-         * Get slide number.
-         * @returns {Number}
-         */
-        getSlideNumber : function() {
-            return this.number;
-        },
+	Slide.prototype = {
+		/**
+		 * Get slide number.
+		 * @returns {Number}
+		 */
+		getSlideNumber : function() {
+			return this.number;
+		},
 
-        isLast : function() {
-            return shower.slideList.length === this.number + 1
-        },
+		isLast : function() {
+			return shower.slideList.length === this.number + 1
+		},
 
-        /**
-         * Check if inner navigation is finished
-         * @returns {boolean}
-         */
-        isFinished : function() {
-            return this.innerComplete >= this.innerLength;
-        },
+		/**
+		 * Check if inner navigation is finished
+		 * @returns {boolean}
+		 */
+		isFinished : function() {
+			return this.innerComplete >= this.innerLength;
+		},
 
-        /**
-         * Start inner navigation by timer or just switch slide after timer.
-         * time sets in HTML: .slide[data-timing=MM:SS]
-         * @returns {Object} Current slide
-         */
-        process : function(shower) {
-            if (this.timing) {
-                this.initTimer(shower);
-                return this;
-            }
+		/**
+		 * Start inner navigation by timer or just switch slide after timer.
+		 * time sets in HTML: .slide[data-timing=MM:SS]
+		 * @returns {Object} Current slide
+		 */
+		process : function(shower) {
+			if (this.timing) {
+				this.initTimer(shower);
+				return this;
+			}
 
-            this.next(shower);
-            return this;
-        },
+			this.next(shower);
+			return this;
+		},
 
-        /**
-         * Init timer for inner navigation or for just turn to next slide
-         * @param shower
-         * @returns {Object|Boolean} Current slide
-         */
-        initTimer : function(shower) {
-            var slide = this;
+		/**
+		 * Init timer for inner navigation or for just turn to next slide
+		 * @param shower
+		 * @returns {Object|Boolean} Current slide
+		 */
+		initTimer : function(shower) {
+			var slide = this;
 
-            if ( ! slide.timing) {
-                return false;
-            }
+			if ( ! slide.timing) {
+				return false;
+			}
 
-            clearInterval(timer);
+			clearInterval(timer);
 
-            if (slide.isFinished()) {
-                timer = setInterval(function() {
-                        clearInterval(timer);
-                        shower.next();
-                    },
-                    slide.timing * (slide.innerLength || 1));
-            } else {
-                timer = setInterval(function() {
-                        if (slide.isFinished()) {
-                            clearInterval(timer);
-                                shower.next();
-                        } else {
-                            slide.next(shower);
-                        }
-                    },
-                    slide.timing);
-            }
+			if (slide.isFinished()) {
+				timer = setInterval(function() {
+						clearInterval(timer);
+						shower.next();
+					},
+					slide.timing * (slide.innerLength || 1));
+			} else {
+				timer = setInterval(function() {
+						if (slide.isFinished()) {
+							clearInterval(timer);
+								shower.next();
+						} else {
+							slide.next(shower);
+						}
+					},
+					slide.timing);
+			}
 
-            return this;
-        },
+			return this;
+		},
 
-        /**
-         * Previous step of inner navigation or if current step is step 0 then go to previous slide.
-         * @returns {Object|Boolean} Current slide
-         */
-        prev : function(shower) {
-            var prevSteps,
-                slide = this;
+		/**
+		 * Previous step of inner navigation or if current step is step 0 then go to previous slide.
+		 * @returns {Object|Boolean} Current slide
+		 */
+		prev : function(shower) {
+			var prevSteps,
+				slide = this;
 
-            if ( ! slide.hasInnerNavigation || slide.isFinished() || slide.innerComplete === 0) {
-                shower.prev();
-                return false;
-            }
+			if ( ! slide.hasInnerNavigation || slide.isFinished() || slide.innerComplete === 0) {
+				shower.prev();
+				return false;
+			}
 
-            prevSteps = document.getElementById(slide.id).querySelectorAll('.next.active');
+			prevSteps = document.getElementById(slide.id).querySelectorAll('.next.active');
 
-            if ( ! prevSteps || prevSteps.length < 1) {
-                return false;
-            }
+			if ( ! prevSteps || prevSteps.length < 1) {
+				return false;
+			}
 
-            if (slide.innerComplete > 0) {
-                slide.innerComplete--;
-                prevSteps[prevSteps.length - 1].classList.remove('active');
-            } else {
-                shower.prev();
-            }
+			if (slide.innerComplete > 0) {
+				slide.innerComplete--;
+				prevSteps[prevSteps.length - 1].classList.remove('active');
+			} else {
+				shower.prev();
+			}
 
-            return this;
-        },
+			return this;
+		},
 
-        /**
-         * Next step of inner navigation or if current step is last then go to next slide.
-         * @returns {Object|Boolean} Current slide
-         */
-        next : function(shower) {
-            var nextSteps,
-                slide = this;
+		/**
+		 * Next step of inner navigation or if current step is last then go to next slide.
+		 * @returns {Object|Boolean} Current slide
+		 */
+		next : function(shower) {
+			var nextSteps,
+				slide = this;
 
-            if ( ! slide.hasInnerNavigation || slide.isFinished()) {
-                shower.next();
-                return false;
-            }
+			if ( ! slide.hasInnerNavigation || slide.isFinished()) {
+				shower.next();
+				return false;
+			}
 
-            if ( ! slide.isFinished()) {
-                nextSteps = document.getElementById(slide.id).querySelectorAll('.next:not(.active)');
-                nextSteps[0].classList.add('active');
+			if ( ! slide.isFinished()) {
+				nextSteps = document.getElementById(slide.id).querySelectorAll('.next:not(.active)');
+				nextSteps[0].classList.add('active');
 
-                slide.innerComplete++;
-            }
+				slide.innerComplete++;
+			}
 
-            return this;
-        }
-    };
+			return this;
+		}
+	};
 
 	/**
 	* Get value at named data store for the DOM element.
@@ -168,7 +168,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	};
 
 
-    shower.slideList = [];
+	shower.slideList = [];
 
 	/**
 	 * Shower initialization
@@ -177,7 +177,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	 * @returns {Object} shower
 	 */
 	shower.init = function(slideSelector, progressSelector) {
-        var timing;
+		var timing;
 
 		slideSelector = slideSelector || '.slide';
 		progressSelector = progressSelector || 'div.progress div';
@@ -195,24 +195,24 @@ window.shower = window.shower || (function(window, document, undefined) {
 			timing = shower._getData(slides[i], 'timing');
 
 			if (timing && timing.indexOf(':') !== -1) {
-                timing = timing.split(':');
-                // Compute number of milliseconds from format "mm:ss"
-                timing = (parseInt(timing[0], 10) * 60 + parseInt(timing[1], 10)) * 1000;
+				timing = timing.split(':');
+				// Compute number of milliseconds from format "mm:ss"
+				timing = (parseInt(timing[0], 10) * 60 + parseInt(timing[1], 10)) * 1000;
 
-                if (slides[i].querySelector('.next')) {
-                    timing = timing / (slides[i].querySelectorAll('.next').length + 1);
-                }
-            }
+				if (slides[i].querySelector('.next')) {
+					timing = timing / (slides[i].querySelectorAll('.next').length + 1);
+				}
+			}
 
-		    shower.slideList.push(new Slide({
-                id : slides[i].id,
-                number : i,
-                hasInnerNavigation : null !== slides[i].querySelector('.next'),
-                timing : parseInt(timing, 10) || undefined,
-                innerLength : slides[i].querySelectorAll('.next').length,
-                innerComplete : 0
-            }));
-        }
+			shower.slideList.push(new Slide({
+				id : slides[i].id,
+				number : i,
+				hasInnerNavigation : null !== slides[i].querySelector('.next'),
+				timing : parseInt(timing, 10) || undefined,
+				innerLength : slides[i].querySelectorAll('.next').length,
+				innerComplete : 0
+			}));
+		}
 
 		return shower;
 	};
@@ -309,30 +309,30 @@ window.shower = window.shower || (function(window, document, undefined) {
 		return 'A' === e.target.nodeName;
 	};
 
-    /**
-     * Get slide number by slideId.
-     * @param {String} slideId
-     * @returns {Number}
-     */
-    shower.getSlideNumber = function(slideId) {
-        var i = shower.slideList.length - 1,
-            slideNumber;
+	/**
+	 * Get slide number by slideId.
+	 * @param {String} slideId
+	 * @returns {Number}
+	 */
+	shower.getSlideNumber = function(slideId) {
+		var i = shower.slideList.length - 1,
+			slideNumber;
 
-        if (slideId === '') {
-            slideNumber = 0;
-        }
+		if (slideId === '') {
+			slideNumber = 0;
+		}
 
-        // As fast as you can ;-)
-        // http://jsperf.com/for-vs-foreach/46
-        for (; i >= 0; --i) {
-            if (slideId === shower.slideList[i].id) {
-                slideNumber = i;
-                break;
-            }
-        }
+		// As fast as you can ;-)
+		// http://jsperf.com/for-vs-foreach/46
+		for (; i >= 0; --i) {
+			if (slideId === shower.slideList[i].id) {
+				slideNumber = i;
+				break;
+			}
+		}
 
-        return slideNumber;
-    };
+		return slideNumber;
+	};
 
 	/**
 	* Go to slide number.
@@ -341,7 +341,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	* @returns {Number}
 	*/
 	shower.go = function(slideNumber, callback) {
-        var slide;
+		var slide;
 
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
@@ -355,10 +355,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 		if (shower.isSlideMode()) {
 			shower.showPresenterNotes(slideNumber);
-            slide = shower.slideList[slideNumber];
-            if (slide.timing) {
-                slide.initTimer(shower);
-            }
+			slide = shower.slideList[slideNumber];
+			if (slide.timing) {
+				slide.initTimer(shower);
+			}
 		}
 
 		if (typeof(callback) === 'function') {
@@ -376,14 +376,14 @@ window.shower = window.shower || (function(window, document, undefined) {
 	*/
 	shower.next = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-            nextSlide = shower.slideList[currentSlideNumber + 1];
+			nextSlide = shower.slideList[currentSlideNumber + 1];
 
-        // If don't exist next slide
-        if (! nextSlide) {
-            return false;
-        }
+		// If don't exist next slide
+		if (! nextSlide) {
+			return false;
+		}
 
-        shower.go(currentSlideNumber + 1);
+		shower.go(currentSlideNumber + 1);
 
 		if (typeof(callback) === 'function') {
 			callback();
@@ -392,89 +392,89 @@ window.shower = window.shower || (function(window, document, undefined) {
 		return true;
 	};
 
-    /**
-     *
-     * @param {Function} [callback]
-     * @returns {boolean}
-     */
-    shower._turnNextSlide = function(callback) {
-        var currentSlideNumber = shower.getCurrentSlideNumber(),
-            nextSlide = shower.slideList[currentSlideNumber + 1],
-            ret = false,
-            slide;
+	/**
+	 *
+	 * @param {Function} [callback]
+	 * @returns {boolean}
+	 */
+	shower._turnNextSlide = function(callback) {
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			nextSlide = shower.slideList[currentSlideNumber + 1],
+			ret = false,
+			slide;
 
-        slide = shower.slideList[currentSlideNumber];
+		slide = shower.slideList[currentSlideNumber];
 
-        if (shower.isSlideMode()) {
-            if (slide.hasInnerNavigation && ! slide.isFinished()) {
-                slide.process(shower);
-            } else {
-                shower.next();
-            }
-        } else { // listMode
-            shower.next();
-            // Slides starts from 0. So return next slide number.
-            ret = currentSlideNumber + 2;
-        }
+		if (shower.isSlideMode()) {
+			if (slide.hasInnerNavigation && ! slide.isFinished()) {
+				slide.process(shower);
+			} else {
+				shower.next();
+			}
+		} else { // listMode
+			shower.next();
+			// Slides starts from 0. So return next slide number.
+			ret = currentSlideNumber + 2;
+		}
 
-        if (typeof(callback) === 'function') {
-            callback();
-        }
+		if (typeof(callback) === 'function') {
+			callback();
+		}
 
-        return ret;
-    };
+		return ret;
+	};
 
 	/**
 	* Show previous slide. Returns false on a first slide, otherwise returns shown slide number.
 	* @param {Function} [callback] runs only if shower.previous() is successfully completed.
 	* @returns {Boolean}
 	*/
-    shower.prev = shower.previous = function(callback) {
+	shower.prev = shower.previous = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
 
-        // Slides starts from 0
-        if (currentSlideNumber < 1) {
-            return false;
-        }
+		// Slides starts from 0
+		if (currentSlideNumber < 1) {
+			return false;
+		}
 
-        shower.go(currentSlideNumber - 1);
+		shower.go(currentSlideNumber - 1);
 
-        if (typeof(callback) === 'function') {
-            callback();
-        }
+		if (typeof(callback) === 'function') {
+			callback();
+		}
 
 		return true;
 	};
 
-    /**
-     * Show previous slide. Returns false on a first slide, otherwise returns shown slide number.
-     * @param {Function} [callback] runs only if shower.previous() is successfully completed.
-     * @returns {Boolean}
-     */
-    shower._turnPreviousSlide = function(callback) {
-        var currentSlideNumber = shower.getCurrentSlideNumber(),
-            slide;
+	/**
+	 * Show previous slide. Returns false on a first slide, otherwise returns shown slide number.
+	 * @param {Function} [callback] runs only if shower.previous() is successfully completed.
+	 * @returns {Boolean}
+	 */
+	shower._turnPreviousSlide = function(callback) {
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			slide;
 
-        // Slides starts from 0
-        if (currentSlideNumber < 1) {
-            return false;
-        }
+		// Slides starts from 0
+		if (currentSlideNumber < 1) {
+			return false;
+		}
 
-        slide = shower.slideList[currentSlideNumber];
-        slide.timing && clearInterval(timer);
+		slide = shower.slideList[currentSlideNumber];
+		slide.timing && clearInterval(timer);
 
-        if (shower.isSlideMode()) {
-            slide.prev(shower);
-        } else {
-            shower.go(currentSlideNumber - 1);
-        }
+		if (shower.isSlideMode()) {
+			slide.prev(shower);
+		} else {
+			shower.go(currentSlideNumber - 1);
+		}
 
-        if (typeof(callback) === 'function') {
-            callback();
-        }
+		if (typeof(callback) === 'function') {
+			callback();
+		}
 
-        return true;
-    };
+		return true;
+	};
 
 	/**
 	* Show first slide.
@@ -495,11 +495,11 @@ window.shower = window.shower || (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.last = function(callback) {
-        shower.go(shower.slideList.length - 1)
+		shower.go(shower.slideList.length - 1)
 
-        if (typeof(callback) === 'function') {
-            callback();
-        }
+		if (typeof(callback) === 'function') {
+			callback();
+		}
 		return true;
 	};
 
@@ -535,7 +535,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.enterListMode = function(callback) {
-        var currentSlideNumber;
+		var currentSlideNumber;
 
 		// Anyway: change body class (@TODO: refactoring)
 		body.classList.remove('full');
@@ -786,13 +786,13 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 	document.addEventListener('keydown', function(e) {
 		var currentSlideNumber,
-            slide;
+			slide;
 
 		// Shortcut for alt, ctrl and meta keys
 		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 
 		currentSlideNumber = shower.getCurrentSlideNumber();
-        slide = shower.slideList[currentSlideNumber];
+		slide = shower.slideList[currentSlideNumber];
 
 		switch (e.which) {
 			case 116: // F5
@@ -848,13 +848,13 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 			case 36: // Home
 				e.preventDefault();
-                slide.timing && clearInterval(timer);
+				slide.timing && clearInterval(timer);
 				shower.first();
 			break;
 
 			case 35: // End
 				e.preventDefault();
-                slide.timing && clearInterval(timer);
+				slide.timing && clearInterval(timer);
 				shower.last();
 			break;
 
@@ -873,7 +873,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 	document.addEventListener('click', function(e) {
 		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target)),
-            slide;
+			slide;
 
 		// Click on slide in List mode
 		if (shower.isListMode() && shower._getSlideIdByEl(e.target)) {
@@ -883,17 +883,17 @@ window.shower = window.shower || (function(window, document, undefined) {
 			shower.enterSlideMode();
 			shower.showPresenterNotes(slideNumber);
 
-            slide = shower.slideList[slideNumber];
-            if (slide.timing) {
-                slide.initTimer(shower);
-            }
+			slide = shower.slideList[slideNumber];
+			if (slide.timing) {
+				slide.initTimer(shower);
+			}
 		}
 	}, false);
 
 	document.addEventListener('touchstart', function(e) {
 		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target)),
-            slide,
-            x;
+			slide,
+			x;
 
 		if (shower._getSlideIdByEl(e.target)) {
 			if (shower.isSlideMode() && ! shower._checkInteractiveElement(e)) {
@@ -913,10 +913,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 				shower.enterSlideMode();
 				shower.showPresenterNotes(slideNumber);
 
-                slide = shower.slideList[slideNumber];
-                if (slide.timing) {
-                    slide.initTimer(shower);
-                }
+				slide = shower.slideList[slideNumber];
+				if (slide.timing) {
+					slide.initTimer(shower);
+				}
 			}
 		}
 
