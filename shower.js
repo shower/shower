@@ -10,7 +10,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 		slides = [],
 		progress = [],
 		timer,
-		isHistoryApiSupported = !!(window.history && history.pushState);
+		isHistoryApiSupported = !!(window.history && window.history.pushState);
 
 
     function Slide(opts) {
