@@ -107,6 +107,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 
             prevSteps = document.getElementById(slide.id).querySelectorAll('.next.active');
 
+            if ( ! prevSteps || prevSteps.length < 1) {
+                return false;
+            }
+
             if (slide.innerComplete > 0) {
                 slide.innerComplete--;
                 prevSteps[prevSteps.length - 1].classList.remove('active');
