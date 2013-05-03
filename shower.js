@@ -237,11 +237,15 @@ window.shower = window.shower || (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower._applyTransform = function(transform) {
-		body.style.WebkitTransform = transform;
-		body.style.MozTransform = transform;
-		body.style.msTransform = transform;
-		body.style.OTransform = transform;
-		body.style.transform = transform;
+		[
+			'WebkitTransform',
+			'MozTransform',
+			'msTransform',
+			'OTransform',
+			'transform',
+		].forEach(function(prop) {
+				body.style[prop] = transform;
+		});
 
 		return true;
 	};
