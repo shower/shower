@@ -374,7 +374,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 	/**
 	* Show next slide or show next Inner navigation item.
-	* Returns false on a last slide, otherwise returns shown slide number.
+	* Returns false on a last slide, otherwise returns shower.
 	* @param {Function} [callback] runs only if shower.next() is successfully completed.
 	* @returns {Boolean}
 	*/
@@ -393,7 +393,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			callback();
 		}
 
-		return true;
+		return this;
 	};
 
 	/**
