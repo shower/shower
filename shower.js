@@ -242,7 +242,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			'MozTransform',
 			'msTransform',
 			'OTransform',
-			'transform',
+			'transform'
 		].forEach(function(prop) {
 				body.style[prop] = transform;
 		});
