@@ -498,7 +498,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.last = function(callback) {
-		shower.go(shower.slideList.length - 1)
+		shower.go(shower.slideList.length - 1);
 
 		if (typeof(callback) === 'function') {
 			callback();
