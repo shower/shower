@@ -825,7 +825,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 					e.preventDefault();
 					shower.enterSlideMode();
 					shower.showPresenterNotes(currentSlideNumber);
-					//shower.innerNavigation.start(currentSlideNumber);
+
+					if (slide.timing) {
+						slide.initTimer(shower);
+					}
 				}
 			break;
 
