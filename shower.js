@@ -80,24 +80,36 @@ window.shower = window.shower || (function(window, document, undefined) {
 				return false;
 			}
 
-			clearInterval(timer);
+			slide.stopTimer();
 
 			if (slide.isFinished()) {
 				timer = setInterval(function() {
-						clearInterval(timer);
+						slide.stopTimer();
 						shower.next();
 					},
 					slide.timing * (slide.innerLength || 1));
 			} else {
 				timer = setInterval(function() {
 						if (slide.isFinished()) {
-							clearInterval(timer);
+							slide.stopTimer();
 								shower.next();
 						} else {
 							slide.next(shower);
 						}
 					},
 					slide.timing);
+			}
+
+			return this;
+		},
+
+		/**
+		 * Stop timer
+		 */
+		stopTimer : function() {
+			if (timer) {
+				clearInterval(timer);
+				timer = false;
 			}
 
 			return this;
@@ -399,32 +411,19 @@ window.shower = window.shower || (function(window, document, undefined) {
 	/**
 	 *
 	 * @param {Function} [callback]
-	 * @returns {boolean}
 	 */
 	shower._turnNextSlide = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			ret = false,
-			slide;
+			slide = shower.slideList[currentSlideNumber];
 
-		slide = shower.slideList[currentSlideNumber];
-
-		if (shower.isSlideMode()) {
-			if (slide.hasInnerNavigation && ! slide.isFinished()) {
-				slide.process(shower);
-			} else {
-				shower.next();
-			}
-		} else { // listMode
-			shower.next();
-			// Slides starts from 0. So return next slide number.
-			ret = currentSlideNumber + 2;
-		}
+		slide.stopTimer();
+		slide.next(shower);
 
 		if (typeof(callback) === 'function') {
 			callback();
 		}
 
-		return ret;
+		return;
 	};
 
 	/**
@@ -464,7 +463,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 		}
 
 		slide = shower.slideList[currentSlideNumber];
-		slide.timing && clearInterval(timer);
+		slide.timing && slide.stopTimer();
 
 		if (shower.isSlideMode()) {
 			slide.prev(shower);
@@ -482,28 +481,31 @@ window.shower = window.shower || (function(window, document, undefined) {
 	/**
 	* Show first slide.
 	* @param {Function} [callback]
-	* @returns {Number}
 	*/
 	shower.first = function(callback) {
+		var slide = shower.slideList[shower.getCurrentSlideNumber()];
+
+		slide.timing && slide.stopTimer();
+		shower.go(0);
+
 		if (typeof(callback) === 'function') {
 			callback();
 		}
-
-		return shower.go(0);
 	};
 
 	/**
 	* Show last slide.
 	* @param {Function} [callback]
-	* @returns {Boolean}
 	*/
 	shower.last = function(callback) {
+		var slide = shower.slideList[shower.getCurrentSlideNumber()];
+
+		slide.timing && slide.stopTimer();
 		shower.go(shower.slideList.length - 1);
 
 		if (typeof(callback) === 'function') {
 			callback();
 		}
-		return true;
 	};
 
 	/**
@@ -552,7 +554,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 		currentSlideNumber = shower.getCurrentSlideNumber();
 
-		clearInterval(timer);
+		shower.slideList[currentSlideNumber].stopTimer();
 
 		if (shower.isSlideMode() && isHistoryApiSupported) {
 			history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
@@ -851,20 +853,19 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 			case 36: // Home
 				e.preventDefault();
-				slide.timing && clearInterval(timer);
 				shower.first();
 			break;
 
 			case 35: // End
 				e.preventDefault();
-				slide.timing && clearInterval(timer);
+
 				shower.last();
 			break;
 
 			case 9: // Tab = +1; Shift + Tab = -1
 			case 32: // Space = +1; Shift + Space = -1
 				e.preventDefault();
-				shower[e.shiftKey ? 'previous' : 'next']();
+				shower[e.shiftKey ? '_turnPreviousSlide' : '_turnNextSlide']();
 			break;
 
 			default:
