@@ -807,14 +807,17 @@ window.shower = window.shower || (function(window, document, undefined) {
 				e.preventDefault();
 
 				if (shower.isListMode()) {
-					var slideNumber = e.shiftKey ? currentSlideNumber : 0;
+					var slideNumber = e.shiftKey ? currentSlideNumber : 0,
+						slide;
 
 					// Warning: go must be before enterSlideMode.
 					// Otherwise there is a bug in Chrome
 					shower.go(slideNumber);
 					shower.enterSlideMode();
 					shower.showPresenterNotes(slideNumber);
-					shower.slideList[slideNumber].process(shower);
+					slide = shower.slideList[currentSlideNumber];
+
+					slide.timing && slide.initTimer(shower);
 				} else {
 					shower.enterListMode();
 				}
