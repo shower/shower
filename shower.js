@@ -815,8 +815,8 @@ window.shower = window.shower || (function(window, document, undefined) {
 					shower.go(slideNumber);
 					shower.enterSlideMode();
 					shower.showPresenterNotes(slideNumber);
+					
 					slide = shower.slideList[currentSlideNumber];
-
 					slide.timing && slide.initTimer(shower);
 				} else {
 					shower.enterListMode();
