@@ -354,13 +354,17 @@ window.shower = window.shower || (function(window, document, undefined) {
 	* Go to slide number.
 	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
 	* @param {Function} [callback] runs only if you not in List mode.
-	* @returns {Number}
+	* @returns {Number|Boolean}
 	*/
 	shower.go = function(slideNumber, callback) {
 		var slide;
 
 		if ( ! shower._isNumber(slideNumber)) {
 			throw new Error('Gimme slide number as Number, baby!');
+		}
+
+		if ( ! shower.slideList[slideNumber]) {
+			return false;
 		}
 
 		// Also triggers popstate and invoke shower.enter__Mode()
@@ -416,8 +420,13 @@ window.shower = window.shower || (function(window, document, undefined) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
 			slide = shower.slideList[currentSlideNumber];
 
-		slide.stopTimer();
-		slide.next(shower);
+
+		if (shower.isSlideMode()) {
+			slide.stopTimer();
+			slide.next(shower);
+		} else {
+			shower.go(currentSlideNumber + 1);
+		}
 
 		if (typeof(callback) === 'function') {
 			callback();
@@ -455,15 +464,9 @@ window.shower = window.shower || (function(window, document, undefined) {
 	 */
 	shower._turnPreviousSlide = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			slide;
+			slide = shower.slideList[currentSlideNumber];
 
-		// Slides starts from 0
-		if (currentSlideNumber < 1) {
-			return false;
-		}
-
-		slide = shower.slideList[currentSlideNumber];
-		slide.timing && slide.stopTimer();
+		slide.stopTimer();
 
 		if (shower.isSlideMode()) {
 			slide.prev(shower);
