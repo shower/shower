@@ -10,18 +10,16 @@
 		<path d="M 0,0 H 1024" class="stroke" id="horizontal"/>
 		<path d="M 0,0 V 768" class="stroke" id="vertical"/>
 	</defs>
-	<use xlink:href="#horizontal" y="115"/>
-	<use xlink:href="#horizontal" y="192"/>
-	<use xlink:href="#horizontal" y="242"/>
-	<use xlink:href="#horizontal" y="292"/>
-	<use xlink:href="#horizontal" y="342"/>
-	<use xlink:href="#horizontal" y="392"/>
-	<use xlink:href="#horizontal" y="442"/>
-	<use xlink:href="#horizontal" y="492"/>
-	<use xlink:href="#horizontal" y="542"/>
-	<use xlink:href="#horizontal" y="592"/>
-	<use xlink:href="#horizontal" y="688"/>
-	<use xlink:href="#horizontal" y="728"/>
+	<use xlink:href="#horizontal" y="150"/>
+	<use xlink:href="#horizontal" y="227"/>
+	<use xlink:href="#horizontal" y="277"/>
+	<use xlink:href="#horizontal" y="327"/>
+	<use xlink:href="#horizontal" y="377"/>
+	<use xlink:href="#horizontal" y="427"/>
+	<use xlink:href="#horizontal" y="477"/>
+	<use xlink:href="#horizontal" y="527"/>
+	<use xlink:href="#horizontal" y="577"/>
+	<use xlink:href="#horizontal" y="627"/>
 	<use xlink:href="#vertical" x="120"/>
 	<use xlink:href="#vertical" x="512"/>
 	<use xlink:href="#vertical" x="904"/>
