@@ -72,7 +72,7 @@ a {
 	position:relative;
 	width:$width;
 	height:$height;
-	background:#FFF url(../images/ribbon.svg) 100% 0 no-repeat;
+	background:#FFF url(../images/ribbon.svg) 855px 0 no-repeat;
 	color:#000;
 	-webkit-print-color-adjust:exact;
 	-webkit-text-size-adjust:none;
@@ -104,7 +104,7 @@ a {
 	// Debug
 	.debug & {
 		background:
-			url(../images/ribbon.svg) 100% 0 no-repeat,
+			url(../images/ribbon.svg) 855px 0 no-repeat,
 			url(../images/grid-#{$ratio}.svg) no-repeat,
 			#FFF;
 		}
