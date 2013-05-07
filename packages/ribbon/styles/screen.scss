@@ -127,7 +127,7 @@ a {
 		}
 	a {
 		border-bottom:0.1em solid;
-		color:#0174A7;
+		color:$blue;
 		}
 	b, strong {
 		font-weight:bold;
@@ -495,7 +495,8 @@ a {
 				padding-left:10px;
 				width:0;
 				height:10px;
-				background:url(../images/corner.svg) 100% 0 no-repeat;
+				background:url(../images/progress.svg) 100% 0 no-repeat;
+				background-clip:content-box;
 				@include transition(width 0.2s linear);
 				}
 			}
