@@ -392,7 +392,10 @@ a {
 				right:auto;
 				bottom:-80px;
 				left:120px;
+				padding:0;
 				width:auto;
+				height:auto;
+				background:none;
 				color:#3C3D40;
 				text-shadow:0 1px 1px #8D8E90;
 				font-weight:bold;
@@ -444,7 +447,7 @@ a {
 			&.cover,
 			&.shout {
 				&:after {
-					content:counter(slide);
+					visibility:visible;
 					}
 				}
 			// Notes
