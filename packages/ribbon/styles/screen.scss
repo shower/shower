@@ -72,7 +72,7 @@ a {
 	position:relative;
 	width:$width;
 	height:$height;
-	background:#FFF url(../images/ribbon.svg) 855px 0 no-repeat;
+	background:#FFF;
 	color:#000;
 	-webkit-print-color-adjust:exact;
 	-webkit-text-size-adjust:none;
@@ -81,14 +81,16 @@ a {
 	// Number
 	&:after {
 		position:absolute;
-		top:35px;
+		top:0;
 		right:119px;
+		padding:20px 0 0;
 		width:50px;
+		height:80px;
+		background:url(../images/ribbon.svg) no-repeat;
 		color:#FFF;
 		counter-increment:slide;
 		content:counter(slide);
 		text-align:center;
-		line-height:18px;
 		font-size:20px;
 		}
 	// Inner
@@ -103,10 +105,7 @@ a {
 		}
 	// Debug
 	.debug & {
-		background:
-			url(../images/ribbon.svg) 855px 0 no-repeat,
-			url(../images/grid-#{$ratio}.svg) no-repeat,
-			#FFF;
+		background:#FFF url(../images/grid-#{$ratio}.svg) no-repeat;
 		}
 	}
 
@@ -237,7 +236,7 @@ a {
 	&.shout {
 		z-index:1;
 		&:after {
-			content:'';
+			visibility:hidden;
 			}
 		}
 	// Cover
