@@ -815,7 +815,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 					shower.go(slideNumber);
 					shower.enterSlideMode();
 					shower.showPresenterNotes(slideNumber);
-					
+
 					slide = shower.slideList[currentSlideNumber];
 					slide.timing && slide.initTimer(shower);
 				} else {
@@ -913,9 +913,9 @@ window.shower = window.shower || (function(window, document, undefined) {
 				x = e.touches[0].pageX;
 
 				if (x > window.innerWidth / 2) {
-					shower.next();
+                    shower._turnNextSlide();
 				} else {
-					shower.previous();
+                    shower._turnPreviousSlide();
 				}
 			}
 
