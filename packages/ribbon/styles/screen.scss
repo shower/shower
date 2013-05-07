@@ -486,9 +486,10 @@ a {
 			position:absolute;
 			right:0;
 			bottom:0;
-			left:0;
+			left:-10px;
 			z-index:1;
 			div {
+				padding-left:10px;
 				width:0;
 				height:10px;
 				background:url(../images/corner.svg) 100% 0 no-repeat;
