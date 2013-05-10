@@ -179,7 +179,6 @@ window.shower = window.shower || (function(window, document, undefined) {
 		return element.dataset ? element.dataset[name] : element.getAttribute('data-' + name);
 	};
 
-
 	shower.slideList = [];
 
 	/**
@@ -189,7 +188,9 @@ window.shower = window.shower || (function(window, document, undefined) {
 	 * @returns {Object} shower
 	 */
 	shower.init = function(slideSelector, progressSelector) {
-		var timing;
+		var timing,
+			minutes,
+			seconds;
 
 		slideSelector = slideSelector || '.slide';
 		progressSelector = progressSelector || 'div.progress div';
@@ -198,29 +199,38 @@ window.shower = window.shower || (function(window, document, undefined) {
 		progress = document.querySelector(progressSelector);
 
 		for (var i = 0; i < slides.length; i++) {
-			// Slide IDs are optional. In case of missing ID we set it to the
-			// slide number
+			// Slide IDs are optional.
+			// In case of missing ID we set it to the slide number
 			if ( ! slides[i].id) {
 				slides[i].id = i + 1;
 			}
 
-			timing = shower._getData(slides[i], 'timing');
+			timing = shower._getData(slides[i], 'timing') || undefined;
 
-			if (timing && timing.indexOf(':') !== -1) {
-				timing = timing.split(':');
-				// Compute number of milliseconds from format "mm:ss"
-				timing = (parseInt(timing[0], 10) * 60 + parseInt(timing[1], 10)) * 1000;
-
+			// Parsing timing in [S] or [M:S] format
+			// and returning it in milliseconds
+			if (timing && timing.split(':').length <= 2) {
+				if (timing.indexOf(':') !== -1) {
+					timing = timing.split(':');
+					minutes = parseInt(timing[0], 10),
+					seconds = parseInt(timing[1], 10);
+					timing = (minutes * 60 + seconds) * 1000;
+				} else {
+					seconds = parseInt(timing, 10);
+					timing = seconds * 1000;
+				}
 				if (slides[i].querySelector('.next')) {
 					timing = timing / (slides[i].querySelectorAll('.next').length + 1);
 				}
+			} else {
+				timing = undefined;
 			}
 
 			shower.slideList.push(new Slide({
 				id : slides[i].id,
 				number : i,
 				hasInnerNavigation : null !== slides[i].querySelector('.next'),
-				timing : parseInt(timing, 10) || undefined,
+				timing : timing,
 				innerLength : slides[i].querySelectorAll('.next').length,
 				innerComplete : 0
 			}));
