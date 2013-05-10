@@ -188,9 +188,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	 * @returns {Object} shower
 	 */
 	shower.init = function(slideSelector, progressSelector) {
-		var timing,
-			minutes,
-			seconds;
+		var timing;
 
 		slideSelector = slideSelector || '.slide';
 		progressSelector = progressSelector || 'div.progress div';
@@ -205,25 +203,22 @@ window.shower = window.shower || (function(window, document, undefined) {
 				slides[i].id = i + 1;
 			}
 
-			timing = shower._getData(slides[i], 'timing') || undefined;
+			timing = shower._getData(slides[i], 'timing');
 
 			// Parsing timing in [S] or [M:S] format
 			// and returning it in milliseconds
-			if (timing && timing.split(':').length <= 2) {
+			if (timing && /^(\d{1,2}:)?\d{1,3}$/.test(timing)) {
 				if (timing.indexOf(':') !== -1) {
 					timing = timing.split(':');
-					minutes = parseInt(timing[0], 10),
-					seconds = parseInt(timing[1], 10);
-					timing = (minutes * 60 + seconds) * 1000;
+					timing = (parseInt(timing[0], 10) * 60 + parseInt(timing[1], 10)) * 1000;
 				} else {
-					seconds = parseInt(timing, 10);
-					timing = seconds * 1000;
+					timing = parseInt(timing, 10) * 1000;
 				}
-				if (slides[i].querySelector('.next')) {
-					timing = timing / (slides[i].querySelectorAll('.next').length + 1);
+				if (timing === 0) {
+					timing = false;
 				}
 			} else {
-				timing = undefined;
+				timing = false;
 			}
 
 			shower.slideList.push(new Slide({
