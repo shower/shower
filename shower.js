@@ -798,30 +798,34 @@ window.shower = window.shower || (function(window, document, undefined) {
 	}, false);
 
 	document.addEventListener('keydown', function(e) {
-		var currentSlideNumber,
-			slide;
-
-		// Shortcut for alt, ctrl and meta keys
-		if (e.altKey || e.ctrlKey || e.metaKey) { return; }
-
-		currentSlideNumber = shower.getCurrentSlideNumber();
-		slide = shower.slideList[currentSlideNumber];
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			slide = shower.slideList[ currentSlideNumber !== -1 ? currentSlideNumber : 0 ],
+			slideNumber;
 
 		switch (e.which) {
-			case 116: // F5
-				e.preventDefault();
+			case 80: // P Alt Cmd
+				if (shower.isListMode() && e.altKey && e.metaKey) {
+					e.preventDefault();
 
-				if (shower.isListMode()) {
-					var slideNumber = e.shiftKey ? currentSlideNumber : 0,
-						slide;
+					slideNumber = slide.number;
 
-					// Warning: go must be before enterSlideMode.
-					// Otherwise there is a bug in Chrome
 					shower.go(slideNumber);
 					shower.enterSlideMode();
 					shower.showPresenterNotes(slideNumber);
 
-					slide = shower.slideList[currentSlideNumber];
+					slide.timing && slide.initTimer(shower);
+				}
+			break;
+
+			case 116: // F5 (Shift)
+				e.preventDefault();
+				if (shower.isListMode()) {
+					slideNumber = e.shiftKey ? slide.number : 0;
+
+					shower.go(slideNumber);
+					shower.enterSlideMode();
+					shower.showPresenterNotes(slideNumber);
+
 					slide.timing && slide.initTimer(shower);
 				} else {
 					shower.enterListMode();
@@ -831,12 +835,11 @@ window.shower = window.shower || (function(window, document, undefined) {
 			case 13: // Enter
 				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
+
 					shower.enterSlideMode();
 					shower.showPresenterNotes(currentSlideNumber);
 
-					if (slide.timing) {
-						slide.initTimer(shower);
-					}
+					slide.timing && slide.initTimer(shower);
 				}
 			break;
 
@@ -852,6 +855,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			case 37: // Left
 			case 72: // H
 			case 75: // K
+				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 				e.preventDefault();
 				shower._turnPreviousSlide();
 			break;
@@ -861,6 +865,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			case 39: // Right
 			case 76: // L
 			case 74: // J
+				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 				e.preventDefault();
 				shower._turnNextSlide();
 			break;
@@ -872,12 +877,11 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 			case 35: // End
 				e.preventDefault();
-
 				shower.last();
 			break;
 
-			case 9: // Tab = +1; Shift + Tab = -1
-			case 32: // Space = +1; Shift + Space = -1
+			case 9: // Tab (Shift)
+			case 32: // Space (Shift)
 				e.preventDefault();
 				shower[e.shiftKey ? '_turnPreviousSlide' : '_turnNextSlide']();
 			break;
