@@ -852,8 +852,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 			case 37: // Left
 			case 72: // H
 			case 75: // K
-				e.preventDefault();
-				shower._turnPreviousSlide();
+				if (shower.isSlideMode()) {
+					e.preventDefault();
+					shower._turnPreviousSlide();
+				}
 			break;
 
 			case 34: // PgDown
@@ -861,25 +863,32 @@ window.shower = window.shower || (function(window, document, undefined) {
 			case 39: // Right
 			case 76: // L
 			case 74: // J
-				e.preventDefault();
-				shower._turnNextSlide();
+				if (shower.isSlideMode()) {
+					e.preventDefault();
+					shower._turnNextSlide();
+				}
 			break;
 
 			case 36: // Home
-				e.preventDefault();
-				shower.first();
+				if (shower.isSlideMode()) {
+					e.preventDefault();
+					shower.first();
+				}
 			break;
 
 			case 35: // End
-				e.preventDefault();
-
-				shower.last();
+				if (shower.isSlideMode()) {
+					e.preventDefault();
+					shower.last();
+				}
 			break;
 
 			case 9: // Tab = +1; Shift + Tab = -1
 			case 32: // Space = +1; Shift + Space = -1
-				e.preventDefault();
-				shower[e.shiftKey ? '_turnPreviousSlide' : '_turnNextSlide']();
+				if (shower.isSlideMode()) {
+					e.preventDefault();
+					shower[e.shiftKey ? '_turnPreviousSlide' : '_turnNextSlide']();
+				}
 			break;
 
 			default:
