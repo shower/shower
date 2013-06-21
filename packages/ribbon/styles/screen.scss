@@ -231,6 +231,25 @@ a {
 				}
 			}
 		}
+	// Table
+	table {
+		margin:0 0 50px;
+		width:100%;
+		border-collapse:collapse;
+		border-spacing:0;
+		th, td {
+			background:url($dot) 0 100% repeat-x;
+			}
+		th {
+			text-align:left;
+			font-weight:bold;
+			}
+		&.striped {
+			tr:nth-child(even) {
+				background:#EEE;
+				}
+			}
+		}
 	// Cover Shout
 	&.cover,
 	&.shout {
