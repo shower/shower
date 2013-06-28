@@ -30,4 +30,4 @@ By historical reasons, Shower project is using tabs instead of spaces for code i
 English is the main language for Shower project. All discussions and commit messages should be in English, no matter if it's good or bad. The second language of Shower is Russian. Offical Shower themes are always compatible with Cyrillic and Russian typography. All documentation to Shower is always localized to Russian.
 
 ---
-If you have any question, please ask [@shower_me](http://twitter.com/shower_me/) or file an [issue](https://github.com/shower/shower/issues?state=open).
+If you have any questions, please ask [@shower_me](http://twitter.com/shower_me/) or file an [issue](https://github.com/shower/shower/issues?state=open).
