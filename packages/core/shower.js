@@ -721,10 +721,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 	};
 
 	/**
-	* Clear presenter notes in console.
+	* Clear presenter notes in console (only for Slide Mode).
 	*/
 	shower.clearPresenterNotes = function() {
-		if (window.console && window.console.clear) {
+		if (shower.isSlideMode() && window.console && window.console.clear) {
 			console.clear();
 		}
 	};
