@@ -42,7 +42,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 		},
 
 		isLast : function() {
-			return shower.slideList.length === this.number + 1
+			return shower.slideList.length === this.number + 1;
 		},
 
 		/**
@@ -889,11 +889,13 @@ window.shower = window.shower || (function(window, document, undefined) {
 	shower.init();
 
 	document.addEventListener('click', function(e) {
-		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target)),
+		var slideId = shower._getSlideIdByEl(e.target),
+			slideNumber,
 			slide;
 
 		// Click on slide in List mode
-		if (shower.isListMode() && shower._getSlideIdByEl(e.target)) {
+		if (slideId && shower.isListMode()) {
+			slideNumber = shower.getSlideNumber(slideId);
 			// Warning: go must be before enterSlideMode.
 			// Otherwise there is a bug in Chrome
 			shower.go(slideNumber);
@@ -908,11 +910,12 @@ window.shower = window.shower || (function(window, document, undefined) {
 	}, false);
 
 	document.addEventListener('touchstart', function(e) {
-		var slideNumber = shower.getSlideNumber(shower._getSlideIdByEl(e.target)),
+		var slideId = shower._getSlideIdByEl(e.target),
+			slideNumber,
 			slide,
 			x;
 
-		if (shower._getSlideIdByEl(e.target)) {
+		if (slideId) {
 			if (shower.isSlideMode() && ! shower._checkInteractiveElement(e)) {
 				x = e.touches[0].pageX;
 
@@ -924,9 +927,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 			}
 
 			if (shower.isListMode()) {
+				slideNumber = shower.getSlideNumber(slideId);
 				// Warning: go must be before enterSlideMode.
 				// Otherwise there is a bug in Chrome
-				shower.go(shower.getSlideNumber(shower._getSlideIdByEl(e.target)));
+				shower.go(slideNumber);
 				shower.enterSlideMode();
 				shower.showPresenterNotes(slideNumber);
 
