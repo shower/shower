@@ -263,7 +263,7 @@ a {
 		background:#000;
 		@mixin cover {
 			img, svg, video,
-			object, canvas {
+			object, canvas, iframe {
 				@content;
 				}
 			}
