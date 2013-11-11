@@ -769,6 +769,38 @@ window.shower = window.shower || (function(window, document, undefined) {
 		return '#' + shower.slideList[slideNumber].id;
 	};
 
+	/**
+	 * Wheel event listener
+	 * @param e event
+	 */
+	shower.wheel = function (e) {
+		var body = document.querySelector('body'),
+			wheelDown,
+			lockedWheel = body.getAttribute('data-scroll') === 'locked';
+
+		if (!lockedWheel && !shower.isListMode()) {
+			body.setAttribute('data-scroll', 'locked');
+
+			if (e.deltaY === undefined) {
+				// Chrome, Opera, Safari
+				wheelDown = e.wheelDeltaY < 0;
+			} else {
+				// Firefox
+				wheelDown = e.deltaY > 0;
+			}
+
+			if (wheelDown) {
+				shower._turnNextSlide();
+			} else {
+				shower._turnPreviousSlide();
+			}
+
+			setTimeout(function () {
+				body.setAttribute('data-scroll', 'unlocked');
+			}, 200);
+		}
+	}
+
 	// Event handlers
 
 	window.addEventListener('DOMContentLoaded', function() {
@@ -948,6 +980,10 @@ window.shower = window.shower || (function(window, document, undefined) {
 			e.preventDefault();
 		}
 	}, false);
+
+	document.addEventListener('wheel', shower.wheel, false);
+
+	document.addEventListener('mousewheel', shower.wheel, false);
 
 	return shower;
 
