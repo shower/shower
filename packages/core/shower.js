@@ -860,7 +860,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			break;
 
 			case 13: // Enter
-				if (shower.isListMode()) {
+				if (shower.isListMode() && currentSlideNumber) {
 					e.preventDefault();
 
 					shower.enterSlideMode();
