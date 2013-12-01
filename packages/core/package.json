@@ -1,0 +1,12 @@
+{
+  "name": "shower",
+  "description": "Shower HTML presentation engine",
+  "repository": "https://github.com/shower/shower/",
+  "version": "1.0.0",
+  "devDependencies": {
+    "dalekjs": "0.0.8",
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.3.0",
+    "grunt-dalek": "~0.2.0"
+  }
+}
