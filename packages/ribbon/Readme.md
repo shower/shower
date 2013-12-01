@@ -1,6 +1,6 @@
 # Ribbon theme for Shower
 
-Ribbon theme for [shower](https://github.com/shower/shower) engine, part of [template](https://github.com/shower/template).
+Ribbon theme for [shower](https://github.com/shower/shower) HTML presentation engine, part of [template](https://github.com/shower/template).
 
 To see Ribbon theme in action:
 
