@@ -8,7 +8,6 @@ $height:640px; // Slide height, 640px for 16/10, 768px for 4/3
 $top:105px;     // Top padding above slide content
 $sides:120px;  // Left and right paddings around slide content
 $break:1324px; // Window width for small thumbnails to appear
-$ratio:'';
 
 // Colors
 $blue:#4B86C2;
@@ -20,10 +19,10 @@ $dot:'data:image/gif;base64,R0lGODdhAQABAPAAAJmZmQAAACH/C1hNUCBEYXRhWE1QAj94ACwA
 
 // Ratio
 @if $height == 640px {
-	$ratio:'16x10';
+	$ratio:'16x10' !global;
 }
 @if $height == 768px {
-	$ratio:'4x3';
+	$ratio:'4x3' !global;
 }
 
 // Mixins
@@ -31,29 +30,4 @@ $dot:'data:image/gif;base64,R0lGODdhAQABAPAAAJmZmQAAACH/C1hNUCBEYXRhWE1QAj94ACwA
 	@media (-webkit-min-device-pixel-ratio:2), (min-resolution:192dpi) {
 		@content;
 		}
-	}
-@mixin tab-size($n) {
-	-moz-tab-size:$n;
-	-o-tab-size:$n;
-	tab-size:$n;
-	}
-@mixin transform($n) {
-	-webkit-transform:$n;
-	-moz-transform:$n;
-	-ms-transform:$n;
-	-o-transform:$n;
-	transform:$n;
-	}
-@mixin transform-origin($n) {
-	-webkit-transform-origin:$n;
-	-moz-transform-origin:$n;
-	-ms-transform-origin:$n;
-	-o-transform-origin:$n;
-	transform-origin:$n;
-	}
-@mixin transition($n) {
-	-webkit-transition:$n;
-	-moz-transition:$n;
-	-o-transition:$n;
-	transition:$n;
 	}
