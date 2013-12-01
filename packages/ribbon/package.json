@@ -1,0 +1,12 @@
+{
+  "name": "ribbon",
+  "description": "Ribbon theme for Shower HTML presentation engine",
+  "repository": "https://github.com/shower/ribbon/",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-sass": "~0.5.1",
+    "grunt-autoprefixer": "~0.4.1",
+    "grunt-csso": "~0.5.2"
+  }
+}
