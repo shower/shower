@@ -48,4 +48,13 @@ module.exports = {
 			.assert.attr('body', 'class', 'list')
 		.done();
 	}
+	// uE004 Tab
+	// uE008 Shift
+	// uE00D Space
+	// uE00E PageUp
+	// uE00F PageDown
+	// uE012 Left
+	// uE013 Up
+	// uE014 Right
+	// uE015 Down
 };
