@@ -1,0 +1,10 @@
+{
+  "name": "shower",
+  "description": "Demo site for Shower",
+  "repository": "https://github.com/shower/shwr.me/",
+  "version": "1.0.0",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-compress": "~0.5.3"
+  }
+}
