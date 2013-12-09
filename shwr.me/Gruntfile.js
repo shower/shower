@@ -1,78 +1,41 @@
 module.exports = function(grunt) {
 
 	grunt.initConfig({
-		compress: {
-			template: {
-				options: {
-					archive: 'template.zip'
-				},
-				files: [{
-					expand: true,
-					cwd: 'template/',
-					src: [
-						'**',
-						'!node_modules/**',
-						'!**/Contributing.md',
-						'!**/Gruntfile.js',
-						'!**/package.json',
-						'!**/index.pdf',
-						'!**/tests/**'
-					]
-				}]
-			},
-			shower: {
-				options: {
-					archive: 'shower.zip'
-				},
-				files: [{
-					expand: true,
-					cwd: 'shower/',
-					src: [
-						'**',
-						'!node_modules/**',
-						'!**/Contributing.md',
-						'!**/Gruntfile.js',
-						'!**/package.json',
-						'!**/index.pdf',
-						'!**/tests/**'
-					]
-				}]
-			},
-			ribbon: {
-				options: {
-					archive: 'ribbon.zip'
-				},
-				files: [{
-					expand: true,
-					cwd: 'ribbon/',
-					src: [
-						'**',
-						'!node_modules/**',
-						'!Contributing.md',
-						'!Gruntfile.js',
-						'!package.json',
-						'!index.pdf'
-					]
-				}]
-			},
-			bright: {
-				options: {
-					archive: 'bright.zip'
-				},
-				files: [{
-					expand: true,
-					cwd: 'bright/',
-					src: [
-						'**',
-						'!node_modules/**',
-						'!Contributing.md',
-						'!Gruntfile.js',
-						'!package.json',
-						'!index.pdf'
-					]
-				}]
-			},
-		}
+		compress: (function() {
+			var modules = [
+				'template',
+				'shower',
+				'ribbon',
+				'bright'
+			];
+
+			var excludes = [
+				'**',
+				'!node_modules/**',
+				'!**/Contributing.md',
+				'!**/Gruntfile.js',
+				'!**/package.json',
+				'!**/index.pdf',
+				'!**/tests/**'
+			];
+
+			var result = {}
+
+			for (var i = 0, l = modules.length; i < l; i++) {
+				result[modules[i]] = {
+					options: {
+						archive: modules[i] + '.zip'
+					},
+					files: [{
+						expand: true,
+						cwd: modules[i] + '/',
+						src: excludes
+					}]
+				};
+			}
+
+			return result;
+		})()
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-compress');
