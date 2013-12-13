@@ -56,7 +56,7 @@ module.exports = function(grunt) {
 					--exclude "tests"\
 					--exclude "Gruntfile.js"\
 					--exclude "package.json"\
-					temporary/ pepelsbey@shwr.me:shwr.me/temp/'
+					temporary/ pepelsbey@shwr.me:shwr.me/'
 			}
 		},
 		clean: ['temporary']
