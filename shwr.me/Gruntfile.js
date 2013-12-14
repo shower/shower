@@ -1,11 +1,20 @@
 module.exports = function(grunt) {
 
 	grunt.initConfig({
+		excludes: [
+			'**',
+			'!**/node_modules/**',
+			'!**/package.json',
+			'!**/Gruntfile.js',
+			'!**/Contributing.md',
+			'!**/index.pdf',
+			'!**/tests/**'
+		],
 		copy: {
 			duplicate: {
 				expand: true,
 				cwd: 'template/',
-				src: '**',
+				src: '<%= excludes %>',
 				dest: 'temporary/'
 			}
 		},
@@ -20,15 +29,9 @@ module.exports = function(grunt) {
 					archive: 'temporary/' + module + '.zip'
 				},
 				files: [{
-					src: [
-						module + '/**',
-						'!node_modules/**',
-						'!**/Contributing.md',
-						'!**/Gruntfile.js',
-						'!**/package.json',
-						'!**/index.pdf',
-						'!**/tests/**'
-					]
+					expand: true,
+					cwd: module + '/',
+					src: '<%= excludes %>'
 				}]
 			};
 
@@ -46,17 +49,7 @@ module.exports = function(grunt) {
 		},
 		exec: {
 			deploy: {
-				cmd: 'rsync -rz\
-					--exclude ".DS_Store"\
-					--exclude ".git*"\
-					--exclude "Contributing.md"\
-					--exclude "License.md"\
-					--exclude "Readme.md"\
-					--exclude "node_modules"\
-					--exclude "tests"\
-					--exclude "Gruntfile.js"\
-					--exclude "package.json"\
-					temporary/ pepelsbey@shwr.me:shwr.me/'
+				cmd: 'rsync -rz temporary/ pepelsbey@shwr.me:shwr.me/'
 			}
 		},
 		clean: ['temporary']
