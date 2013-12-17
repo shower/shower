@@ -13,7 +13,10 @@ module.exports = function(grunt) {
 		},
 		dalek: {
 			test: {
-				src: 'tests/keys.js'
+				src: [
+					'tests/shortcuts.js',
+					'tests/inner-nav.js'
+				]
 			}
 		}
 	});
@@ -21,6 +24,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-dalek');
 
-	grunt.registerTask('default', ['uglify', 'dalek']);
+	grunt.registerTask('default', ['uglify']);
 
 };
