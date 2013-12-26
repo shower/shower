@@ -5,8 +5,8 @@
   "version": "1.0.0",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-sass": "~0.5.1",
-    "grunt-autoprefixer": "~0.4.1",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-autoprefixer": "~0.6.0",
     "grunt-csso": "~0.5.2",
     "grunt-contrib-watch": "~0.5.3"
   }
