@@ -3,6 +3,7 @@
   "description": "Demo site for Shower",
   "repository": "https://github.com/shower/shwr.me/",
   "version": "1.0.0",
+  "private": true,
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-copy": "~0.4.1",
