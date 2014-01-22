@@ -3,6 +3,7 @@
   "description": "Ribbon theme for Shower HTML presentation engine",
   "repository": "https://github.com/shower/ribbon/",
   "version": "1.0.0",
+  "private": true,
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-sass": "~0.6.0",
