@@ -3,6 +3,7 @@
   "description": "Shower HTML presentation engine",
   "repository": "https://github.com/shower/shower/",
   "version": "1.0.0",
+  "private": true,
   "devDependencies": {
     "dalekjs": "0.0.8",
     "grunt": "~0.4.2",
