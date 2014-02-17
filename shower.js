@@ -493,7 +493,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	shower.first = function(callback) {
 		var slide = shower.slideList[shower.getCurrentSlideNumber()];
 
-		slide.timing && slide.stopTimer();
+		slide && slide.timing && slide.stopTimer();
 		shower.go(0);
 
 		if (typeof(callback) === 'function') {
@@ -508,7 +508,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	shower.last = function(callback) {
 		var slide = shower.slideList[shower.getCurrentSlideNumber()];
 
-		slide.timing && slide.stopTimer();
+		slide && slide.timing && slide.stopTimer();
 		shower.go(shower.slideList.length - 1);
 
 		if (typeof(callback) === 'function') {
