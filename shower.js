@@ -599,7 +599,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	/**
 	* Get current slide number. Starts from zero. Warning: when you have
 	* slide number 1 in URL this method will return 0.
-	* If something is wrong return 0 to get the first slide.
+	* If something is wrong return -1.
 	* @returns {Number}
 	*/
 	shower.getCurrentSlideNumber = function() {
@@ -614,7 +614,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			}
 		}
 
-		return 0;
+		return -1;
 	};
 
 	/**
@@ -632,6 +632,11 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 		if (shower.isSlideMode()) {
 			throw new Error('You can\'t scroll to because you in slide mode. Please, switch to list mode.');
+		}
+
+		// @TODO: WTF?
+		if (-1 === slideNumber) {
+			return ret;
 		}
 
 		if (shower.slideList[slideNumber]) {
@@ -826,7 +831,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 	document.addEventListener('keydown', function(e) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			slide = shower.slideList[currentSlideNumber],
+			slide = shower.slideList[ currentSlideNumber !== -1 ? currentSlideNumber : 0 ],
 			slideNumber;
 
 		switch (e.which) {
@@ -860,7 +865,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			break;
 
 			case 13: // Enter
-				if (shower.isListMode() && currentSlideNumber) {
+				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
 
 					shower.enterSlideMode();
