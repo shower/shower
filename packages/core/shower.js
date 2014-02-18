@@ -555,6 +555,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 		body.classList.add('list');
 
 		shower.clearPresenterNotes();
+		shower._applyTransform('none');
 
 		if (shower.isListMode()) {
 			return false;
@@ -569,7 +570,6 @@ window.shower = window.shower || (function(window, document, undefined) {
 		}
 
 		shower.scrollToSlide(currentSlideNumber);
-		shower._applyTransform('none');
 
 		if (typeof(callback) === 'function') {
 			callback();
