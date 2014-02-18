@@ -1,4 +1,11 @@
 module.exports = {
+	'Navigation doesn’t work in List mode': function (test) {
+		test
+			.open('http://localhost:7497/tests/#5')
+			.sendKeys('body', '\uE014') // Right
+			.assert.attr('[id="6"]', 'class').to.contain('active', 'Next slide is Active')
+		.done();
+	},
 	'Right Arrow key is switching first Next item to Active': function (test) {
 		test
 			.open('http://localhost:7497/tests/?full#5')
@@ -30,10 +37,10 @@ module.exports = {
 		test
 			.open('http://localhost:7497/tests/?full#5')
 			.sendKeys('body', '\uE014') // Right
+			.screenshot('tests/1.png')
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE012') // Left
-			// Not sure why it’s failing. It works fine manually
 			.assert.attr('[id="4"]', 'class').to.contain('active', 'Previous slide is Active')
 		.done();
 	},
