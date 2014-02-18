@@ -103,10 +103,6 @@ a {
 		width:$width - $sides * 2;
 		height:$height - $top;
 		}
-	// Debug
-	.debug & {
-		background:#FFF url(../images/grid-#{$ratio}.svg) no-repeat;
-		}
 	}
 
 // Elements
@@ -297,7 +293,6 @@ a {
 		}
 	// Shout
 	&.shout {
-		background-image:none;
 		h2 {
 			position:absolute;
 			top:50%;
@@ -485,6 +480,17 @@ a {
 		width:$width;
 		height:$height;
 		background:#000;
+		// Debug
+		&.debug:after {
+			position:absolute;
+			top:0;
+			right:0;
+			bottom:0;
+			left:0;
+			z-index:2;
+			background:url(../images/grid-#{$ratio}.svg) no-repeat;
+			content:'';
+			}
 		// Slide
 		.slide {
 			position:absolute;
