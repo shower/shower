@@ -11,19 +11,28 @@ module.exports = function(grunt) {
 				dest: 'shower.min.js'
 			}
 		},
-		dalek: {
-			test: {
-				src: [
-					'tests/shortcuts.js',
-					'tests/inner-nav.js'
-				]
+		connect: {
+			ribbon: {
+				options: {
+					port: 7497
+				}
 			}
+		},
+		dalek: {
+			options: {
+				browser: ['chrome']
+			},
+			src: [
+				'tests/*.js'
+			]
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-dalek');
 
 	grunt.registerTask('default', ['uglify']);
+	grunt.registerTask('test', ['connect', 'dalek']);
 
 };
