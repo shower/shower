@@ -493,7 +493,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	shower.first = function(callback) {
 		var slide = shower.slideList[shower.getCurrentSlideNumber()];
 
-		slide.timing && slide.stopTimer();
+		slide && slide.timing && slide.stopTimer();
 		shower.go(0);
 
 		if (typeof(callback) === 'function') {
@@ -508,7 +508,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 	shower.last = function(callback) {
 		var slide = shower.slideList[shower.getCurrentSlideNumber()];
 
-		slide.timing && slide.stopTimer();
+		slide && slide.timing && slide.stopTimer();
 		shower.go(shower.slideList.length - 1);
 
 		if (typeof(callback) === 'function') {
@@ -599,12 +599,17 @@ window.shower = window.shower || (function(window, document, undefined) {
 	/**
 	* Get current slide number. Starts from zero. Warning: when you have
 	* slide number 1 in URL this method will return 0.
-	* If something is wrong return 0 to get the first slide.
+	* If there is no slide number in url, return -1.
+	* If there is a slide number in url, but the slide does not exist, return 0.
 	* @returns {Number}
 	*/
 	shower.getCurrentSlideNumber = function() {
 		var i = shower.slideList.length - 1,
 			currentSlideId = url.hash.substr(1);
+
+		if (currentSlideId === '') {
+			return -1;
+		}
 
 		// As fast as you can ;-)
 		// http://jsperf.com/for-vs-foreach/46
@@ -632,6 +637,11 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 		if (shower.isSlideMode()) {
 			throw new Error('You can\'t scroll to because you in slide mode. Please, switch to list mode.');
+		}
+
+		// @TODO: WTF?
+		if (-1 === slideNumber) {
+			return ret;
 		}
 
 		if (shower.slideList[slideNumber]) {
@@ -804,13 +814,27 @@ window.shower = window.shower || (function(window, document, undefined) {
 	// Event handlers
 
 	window.addEventListener('DOMContentLoaded', function() {
-		if (body.classList.contains('full') || shower.isSlideMode()) {
-			shower.go(shower.getCurrentSlideNumber());
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			isSlideMode = body.classList.contains('full') || shower.isSlideMode();
+
+		if (currentSlideNumber === -1 && isSlideMode) {
+			shower.go(0);
+		} else if (currentSlideNumber ===  0 || isSlideMode) {
+			shower.go(currentSlideNumber);
+		}
+
+		if (isSlideMode) {
 			shower.enterSlideMode();
 		}
 	}, false);
 
 	window.addEventListener('popstate', function() {
+		var currentSlideNumber = shower.getCurrentSlideNumber();
+
+		if (currentSlideNumber !== -1) {
+			shower.go(currentSlideNumber);
+		}
+
 		if (shower.isListMode()) {
 			shower.enterListMode();
 		} else {
@@ -826,7 +850,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 	document.addEventListener('keydown', function(e) {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			slide = shower.slideList[currentSlideNumber],
+			slide = shower.slideList[ currentSlideNumber !== -1 ? currentSlideNumber : 0 ],
 			slideNumber;
 
 		switch (e.which) {
@@ -860,7 +884,7 @@ window.shower = window.shower || (function(window, document, undefined) {
 			break;
 
 			case 13: // Enter
-				if (shower.isListMode() && currentSlideNumber) {
+				if (shower.isListMode() && -1 !== currentSlideNumber) {
 					e.preventDefault();
 
 					shower.enterSlideMode();
