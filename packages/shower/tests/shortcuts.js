@@ -6,14 +6,14 @@ module.exports = {
 		test
 			.open('http://localhost:7497/tests/')
 			.sendKeys('body', '\uE035') // F5
-			.assert.attr('body', 'class', 'full', 'Mode is Full')
+			.assert.attr('body', 'class').to.contain('full', 'Mode is Full')
 		.done();
 	},
 	'F5 is switching from Full to List': function (test) {
 		test
 			.open('http://localhost:7497/tests/?full')
 			.sendKeys('body', '\uE035') // F5
-			.assert.attr('body', 'class', 'list', 'Mode is List')
+			.assert.attr('body', 'class').to.contain('list', 'Mode is List')
 		.done();
 	},
 	// --------------------------------
@@ -23,14 +23,14 @@ module.exports = {
 		test
 			.open('http://localhost:7497/tests/')
 			.sendKeys('body', '\uE03D\uE00A\u0070') // Cmd Alt P
-			.assert.attr('body', 'class', 'full', 'Mode is Full')
+			.assert.attr('body', 'class').to.contain('full', 'Mode is Full')
 		.done();
 	},
 	'Cmd Alt P keys are not switching from Full to List': function (test) {
 		test
 			.open('http://localhost:7497/tests/?full#1')
 			.sendKeys('body', '\uE03D\uE00A\u0070') // Cmd Alt P
-			.assert.attr('body', 'class', 'full', 'Mode is Full')
+			.assert.attr('body', 'class').to.contain('full', 'Mode is Full')
 		.done();
 	},
 	// --------------------------------
