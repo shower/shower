@@ -37,7 +37,6 @@ module.exports = {
 		test
 			.open('http://localhost:7497/tests/?full#5')
 			.sendKeys('body', '\uE014') // Right
-			.screenshot('tests/1.png')
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE012') // Left
