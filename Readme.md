@@ -4,12 +4,12 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates
 
 To see Shower in action:
 
-- Open [shwr.me](http://shwr.me/).
-- Click any slide to enter presentation mode.
-- Use arrow keys or presenter remote to navigate.
-- Press `Esc` to exit presentation mode.
+- Open [shwr.me](http://shwr.me/)
+- Click any slide to enter presentation mode
+- Use arrow keys or presenter remote to navigate
+- Press `Esc` to exit presentation mode
 
-See “[Shortcuts](https://github.com/shower/shower/wiki/Shortcuts)” wiki page for more info on how to control your presentation, “[Print](https://github.com/shower/shower/wiki/Print)” on how to print your presentation to PDF and [the rest of the Wiki](https://github.com/shower/shower/wiki) for more information about Shower in English and Russian.
+See [Shortcuts](https://github.com/shower/shower/wiki/Shortcuts) wiki page for more info on how to control your presentation, [Print](https://github.com/shower/shower/wiki/Print) on how to print your presentation to PDF and [the rest of the Wiki](https://github.com/shower/shower/wiki) for more information about Shower in English and Russian.
 
 ## Using Shower
 
@@ -17,26 +17,24 @@ There are two ways of starting with Shower: simple and advanced.
 
 ### Simple way
 
-1. Download [shwr.me/shower.zip](http://shwr.me/shower.zip) and unzip it.
-2. Open `index.html` in any code or plain text editor, edit your slides in HTML.
-3. Use `picture` folder to store pictures used in presentation.
-4. Once finished, open `index.html` in browser, enter full screen and start presenting.
+1. Download [shower.zip](http://shwr.me/shower.zip) and unzip it
+2. Open `index.html` in any code or plain text editor, edit your slides in HTML
+3. Use `picture` folder to store pictures used in presentation
+4. Once finished, open `index.html` in browser, enter full screen and start presenting
 
-See “[Quick Start](https://github.com/shower/shower/wiki/Quick-Start)” page for more details.
+See [Quick Start](https://github.com/shower/shower/wiki/Quick-Start) page for more details.
 
 ### Advanced way
 
 This way requires [Git](http://git-scm.com) and [Node.js](http://nodejs.org) with npm installed.
 
-1. Clone Shower repository with Git `git clone git@github.com:shower/shower.git`.
-2. Run `npm install` inside folder to install script and themes.
-3. Open `index.html` in any code or plain text editor, edit your slides in HTML.
-4. Use `picture` folder to store pictures used in presentation.
-5. Once finished, open `index.html` in browser, enter full screen and start presenting.
+1. Clone Shower repository `git clone git@github.com:shower/shower.git` or download [shower-npm.zip](http://shwr.me/shower-npm.zip)
+2. Run `npm install` inside folder to install script and themes
+3. Open `index.html` in any code or plain text editor, edit your slides in HTML
+4. Use `picture` folder to store pictures used in presentation
+5. Once finished, open `index.html` in browser, enter full screen and start presenting
 
-If you prefer bower then clone Shower this way `git clone git@github.com:shower/shower.git -b bower` and run `bower install` on 2nd step.
-
-See “[Quick Start](https://github.com/shower/shower/wiki/Quick-Start)” page for more details.
+See [Quick Start](https://github.com/shower/shower/wiki/Quick-Start) page for more details.
 
 ## Usage examples
 
