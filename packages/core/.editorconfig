@@ -8,6 +8,6 @@ trim_trailing_whitespace = true
 insert_final_newline = false
 charset = utf-8
 
-[package.json]
+[*.json]
 indent_style = space
 indent_size = 2
