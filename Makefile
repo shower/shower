@@ -1,0 +1,2 @@
+deploy:
+	./tools/deploy.sh
