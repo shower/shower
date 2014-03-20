@@ -1,43 +1,50 @@
 module.exports = function(grunt) {
 
+	require('load-grunt-tasks')(grunt);
+
 	grunt.initConfig({
-		excludes: [
-			'**',
-			'!**/node_modules/**',
-			'!**/package.json',
-			'!**/Gruntfile.js',
-			'!**/Contributing.md',
-			'!**/index.pdf',
-			'!**/tests/**'
-		],
 		copy: {
-			duplicate: {
-				expand: true,
-				cwd: 'template/',
-				src: '<%= excludes %>',
-				dest: 'temporary/'
-			}
-		},
-		compress: [
-			'template',
-			'shower',
-			'ribbon',
-			'bright'
-		].reduce(function(result, module) {
-			result[module] = {
-				options: {
-					archive: 'temporary/' + module + '.zip'
-				},
+			tree: {
 				files: [{
 					expand: true,
-					cwd: module + '/',
-					src: '<%= excludes %>'
+					cwd: 'node_modules/shower/',
+					src: ['**', '!package.json'],
+					dest: 'temporary/'
+				},{
+					expand: true,
+					cwd: 'node_modules/shower-core/',
+					src: ['**', '!package.json'],
+					dest: 'temporary/shower/'
+				},{
+					expand: true,
+					cwd: 'node_modules/shower-ribbon/',
+					src: ['**', '!package.json'],
+					dest: 'temporary/shower/themes/ribbon/'
+				},{
+					expand: true,
+					cwd: 'node_modules/shower-bright/',
+					src: ['**', '!package.json'],
+					dest: 'temporary/shower/themes/bright/'
 				}]
-			};
-
-			return result;
-		}, {}),
+			}
+		},
 		replace: {
+			core: {
+				src: 'temporary/index.html',
+				overwrite: true,
+				replacements: [{
+					from: 'node_modules/shower-ribbon', to: 'shower/themes/ribbon'
+				},{
+					from: 'node_modules/shower-core', to: 'shower'
+				}]
+			},
+			themes: {
+				src: 'temporary/shower/themes/*/index.html',
+				overwrite: true,
+				replacements: [{
+					from: '../shower-core', to: '../..'
+				}]
+			},
 			counter: {
 				src: 'temporary/index.html',
 				overwrite: true,
@@ -47,20 +54,71 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
-		exec: {
+		compress: {
+			shower: {
+				options: {
+					archive: 'temporary/shower.zip'
+				},
+				files: [{
+					expand: true,
+					cwd: 'temporary/',
+					src: '**',
+					dest: '.'
+				}]
+			},
+			npm: {
+				options: {
+					archive: 'temporary/shower-pkg.zip'
+				},
+				files: [{
+					expand: true,
+					cwd: '../shower/',
+					src: [
+						'**',
+						'!node_modules/',
+						'!.editorconfig',
+						'!.gitignore',
+						'!.npmignore',
+						'!Contributing.md'
+					],
+					dest: '.'
+				}]
+			}
+		},
+		rsync: {
+			options: {
+				args: [
+					'--delete',
+					'--times',
+					'--omit-dir-times',
+					'--compress'
+				],
+				exclude: [
+					'.DS_Store',
+					'License.md',
+					'Readme.md'
+				],
+				recursive: true
+			},
 			deploy: {
-				cmd: 'rsync -rz temporary/ pepelsbey@shwr.me:shwr.me/'
+				options: {
+					src: 'temporary/',
+					dest: 'shwr.me/',
+					host: 'pepelsbey@shwr.me'
+				}
 			}
 		},
 		clean: ['temporary']
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-contrib-compress');
-	grunt.loadNpmTasks('grunt-contrib-clean');
-	grunt.loadNpmTasks('grunt-text-replace');
-	grunt.loadNpmTasks('grunt-exec');
-
-	grunt.registerTask('default', ['copy', 'compress', 'replace', 'exec', 'clean']);
+	grunt.registerTask('default', [
+		'copy',
+		'replace:core',
+		'replace:themes',
+		'compress',
+		'replace:counter',
+		'rsync',
+		'clean'
+	]);
 
 };
