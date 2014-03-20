@@ -4,7 +4,7 @@ module.exports = {
 	// --------------------------------
 	'Click on slide is switching from List to Full': function (test) {
 		test
-			.open('http://localhost:7497/tests/')
+			.open('http://0.0.0.0:7497/tests/')
 			.click('[id="1"]')
 			.assert.attr('body', 'class').to.contain('full', 'Mode is Full')
 		.done();
@@ -14,7 +14,7 @@ module.exports = {
 	// --------------------------------
 	'All slides could be switched from first to last in List mode': function (test) {
 		test
-			.open('http://localhost:7497/tests/#1')
+			.open('http://0.0.0.0:7497/tests/#1')
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE014') // Right
@@ -25,7 +25,7 @@ module.exports = {
 	},
 	'All slides could be switched from last to first in List mode': function (test) {
 		test
-			.open('http://localhost:7497/tests/#6')
+			.open('http://0.0.0.0:7497/tests/#6')
 			.sendKeys('body', '\uE012') // Left
 			.sendKeys('body', '\uE012') // Left
 			.sendKeys('body', '\uE012') // Left
@@ -36,7 +36,7 @@ module.exports = {
 	},
 	'All slides could be switched from first to last in Full mode': function (test) {
 		test
-			.open('http://localhost:7497/tests/?full#1')
+			.open('http://0.0.0.0:7497/tests/?full#1')
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE014') // Right
 			.sendKeys('body', '\uE014') // Right
@@ -50,7 +50,7 @@ module.exports = {
 	},
 	'All slides could be switched from last to first in Full mode': function (test) {
 		test
-			.open('http://localhost:7497/tests/?full#6')
+			.open('http://0.0.0.0:7497/tests/?full#6')
 			.sendKeys('body', '\uE012') // Left
 			.sendKeys('body', '\uE012') // Left
 			.sendKeys('body', '\uE012') // Left
@@ -64,7 +64,7 @@ module.exports = {
 	// --------------------------------
 	'Back is switching from Full to List': function (test) {
 		test
-			.open('http://localhost:7497/tests/')
+			.open('http://0.0.0.0:7497/tests/')
 			.click('[id="1"]')
 			.back()
 			.assert.attr('body', 'class').to.contain('list', 'Mode is List')
@@ -75,7 +75,7 @@ module.exports = {
 	// --------------------------------
 	'Back from Full to List is restoring scale': function (test) {
 		test
-			.open('http://localhost:7497/tests/')
+			.open('http://0.0.0.0:7497/tests/')
 			.click('[id="1"]')
 			.back()
 			.assert.attr('body', 'style').to.contain('none', 'Scale is restored')
