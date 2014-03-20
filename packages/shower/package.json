@@ -1,16 +1,33 @@
 {
   "name": "shower",
   "description": "Shower HTML presentation engine",
-  "repository": "https://github.com/shower/shower/",
-  "version": "1.0.0",
-  "private": true,
-  "devDependencies": {
-    "dalekjs": "0.0.8",
-    "dalek-browser-chrome": "0.0.9",
-    "grunt": "~0.4.2",
-    "grunt-contrib-uglify": "~0.3.2",
-    "grunt-dalek": "~0.2.0",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-connect": "~0.6.0"
+  "version": "1.0.1",
+  "author": {
+    "name": "Vadim Makeev",
+    "url": "http://pepelsbey.com/"
+  },
+  "homepage": "http://shwr.me/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shower/shower.git"
+  },
+  "bugs": {
+    "url": "http://github.com/shower/shower/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/shower/shower/wiki/MIT-License"
+    }
+  ],
+  "keywords": [
+    "shower",
+    "presentation",
+    "template"
+  ],
+  "dependencies": {
+    "shower-core": "^1.0.0",
+    "shower-ribbon": "^1.0.2",
+    "shower-bright": "^1.0.2"
   }
 }
