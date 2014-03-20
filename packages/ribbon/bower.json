@@ -1,0 +1,22 @@
+{
+  "name": "shower-ribbon",
+  "version": "1.0.2",
+  "license": "MIT",
+  "main": "styles/screen.css",
+  "ignore": [
+    ".editorconfig",
+    ".gitignore",
+    ".npmignore",
+    "Contributing.md",
+    "Gruntfile.js",
+    "node_modules",
+    "package.json",
+    "styles/*.scss"
+  ],
+  "keywords": [
+    "shower",
+    "presentation",
+    "ribbon",
+    "theme"
+  ]
+}

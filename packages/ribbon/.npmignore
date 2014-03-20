@@ -1,0 +1,6 @@
+.editorconfig
+.gitignore
+bower.json
+Contributing.md
+Gruntfile.js
+styles/*.scss
