@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+	require('load-grunt-tasks')(grunt);
+
 	grunt.initConfig({
 		uglify: {
 			options: {
@@ -27,10 +29,6 @@ module.exports = function(grunt) {
 			]
 		}
 	});
-
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-dalek');
 
 	grunt.registerTask('default', ['uglify']);
 	grunt.registerTask('test', ['connect', 'dalek']);
