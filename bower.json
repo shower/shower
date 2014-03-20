@@ -8,8 +8,8 @@
     ".gitignore",
     ".npmignore",
     "Contributing.md",
-    "node_modules"
-    "package.json",
+    "node_modules",
+    "package.json"
   ],
   "keywords": [
     "shower",
