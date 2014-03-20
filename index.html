@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Shower Presentation Engine</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Shower Presentation Engine</h1>
+		<p>Yours Truly, Famous Inc.</p>
+	</header>
+	<section class="slide cover" id="Cover"><div>
+		<h2>Shower Presentation Engine</h2>
+		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+		<img src="pictures/cover.jpg" alt="">
+		<!--
+			To apply styles to the certain slides
+			set slide ID to get needed elements
+			-->
+		<style>
+			#Cover h2 {
+				margin:30px 0 0;
+				color:#FFF;
+				text-align:center;
+				font-size:70px;
+				}
+			#Cover p {
+				margin:10px 0 0;
+				text-align:center;
+				color:#FFF;
+				font-style:italic;
+				font-size:20px;
+				}
+				#Cover p a {
+					color:#FFF;
+					}
+		</style>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Shower Key Features</h2>
+		<ol>
+			<li>Built on HTML, CSS and vanilla JavaScript</li>
+			<li>All modern browsers are supported</li>
+			<li>Slide themes are separated from engine</li>
+			<li>Fully keyboard accessible</li>
+			<li>Printable to PDF</li>
+		</ol>
+		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Plain Text on Your Slides</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+	</div></section>
+	<section class="slide"><div>
+		<h2>All Kind of Lists</h2>
+		<ol>
+			<li>Simple lists are marked with bullets</li>
+			<li>Ordered lists begin with a number</li>
+			<li>You can even nest lists one inside another
+				<ul>
+					<li>Or mix their types</li>
+					<li>But do not go too far</li>
+					<li>Otherwise audience will be bored</li>
+				</ul>
+			</li>
+			<li>Look, seven rows exactly!</li>
+		</ol>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Serious Citations</h2>
+		<figure>
+			<blockquote>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+			</blockquote>
+			<figcaption>Marcus Tullius Cicero</figcaption>
+		</figure>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Code Samples</h2>
+		<pre>
+			<code>&lt;!DOCTYPE html&gt;</code>
+			<code>&lt;html lang="en"&gt;</code>
+			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
+			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
+			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
+			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
+			<code><mark>&lt;/head&gt;</mark></code>
+		</pre>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Even Tables</h2>
+		<table>
+		<tr>
+			<th scope="col">Locavore</th>
+			<th>Umami</th>
+			<th>Helvetica</th>
+			<th>Vegan</th>
+		</tr>
+		<tr>
+			<th scope="row">Fingerstache</th>
+			<td>Kale</td>
+			<td>Chips</td>
+			<td>Keytar</td>
+		</tr>
+		<tr>
+			<th scope="row">Sriracha</th>
+			<td>Gluten-free</td>
+			<td>Ennui</td>
+			<td>Keffiyeh</td>
+		</tr>
+		<tr>
+			<th scope="row">Thundercats</th>
+			<td>Jean</td>
+			<td>Shorts</td>
+			<td>Biodiesel</td>
+		</tr>
+		<tr>
+			<th scope="row">Terry</th>
+			<td>Richardson</td>
+			<td>Swag</td>
+			<td>Blog</td>
+		</tr>
+		</table>
+		<p>It’s good to have information organized.</p>
+	</div></section>
+	<section class="slide cover" id="Picture"><div>
+		<h2>Pictures</h2>
+		<img src="pictures/picture.jpg" alt="">
+		<style>
+			#Picture h2 {
+				color:#FFF;
+				}
+		</style>
+	</div></section>
+	<section class="slide shout"><div>
+		<h2>You can even shout this way</h2>
+	</div></section>
+	<section class="slide"><div>
+		<h2>Inner Navigation</h2>
+		<ol>
+			<li>Lets you reveal list items one by one</li>
+			<li class="next">To keep some key points</li>
+			<li class="next">In secret from audience</li>
+			<li class="next">But it will work only once</li>
+			<li class="next">Nobody wants to see the same joke twice</li>
+		</ol>
+	</div></section>
+	<section class="slide shout" id="SeeMore"><div>
+		<h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower">See more on GitHub</a></h2>
+		<style>
+			#Picture h2 {
+				color:#FFF;
+				}
+			#SeeMore h2 {
+				font-size:100px
+				}
+			#SeeMore img {
+				width:0.72em;
+				height:0.72em;
+				}
+		</style>
+	</div></section>
+	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="node_modules/shower-core/shower.min.js"></script>
+	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>

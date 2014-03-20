@@ -1,0 +1,24 @@
+{
+  "name": "shower",
+  "version": "1.0.1",
+  "license": "MIT",
+  "main": "index.html",
+  "ignore": [
+    ".editorconfig",
+    ".gitignore",
+    ".npmignore",
+    "Contributing.md",
+    "node_modules",
+    "package.json"
+  ],
+  "keywords": [
+    "shower",
+    "presentation",
+    "template"
+  ],
+  "dependencies": {
+    "shower-core": "^1.0.0",
+    "shower-ribbon": "^1.0.2",
+    "shower-bright": "^1.0.2"
+  }
+}
