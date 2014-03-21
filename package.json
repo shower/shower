@@ -29,5 +29,9 @@
     "shower-core": "^1.0.1",
     "shower-ribbon": "^1.0.3",
     "shower-bright": "^1.0.3"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-bump": "0.0.13"
   }
 }
