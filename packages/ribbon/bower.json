@@ -9,7 +9,6 @@
     ".npmignore",
     "Contributing.md",
     "Gruntfile.js",
-    "node_modules",
     "package.json",
     "styles/*.scss"
   ],
