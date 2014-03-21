@@ -28,7 +28,7 @@ In a simple way you just download the latest Shower version with built-in themes
 
 Module way allows you to manually install needed Shower packages and requires [Git](http://git-scm.com/) and [Node.js](http://nodejs.org/) installed together with package managment system: `npm` or `bower`.
 
-1. Clone Shower `git clone git@github.com:shower/shower.git` or download [shower-pkg.zip](http://shwr.me/shower-pkg.zip)
+1. Clone Shower `git clone git@github.com:shower/shower.git --depth 1` or download [shower-pkg.zip](http://shwr.me/shower-pkg.zip)
 2. Run `npm install` (or `bower install`) command in resulted folder to install script and themes
 3. Open `index.html` in any code or text editor, edit your slides in HTML
 4. Use `pictures` folder for pictures used in presentation
