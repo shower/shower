@@ -34,6 +34,7 @@
     "grunt-contrib-watch": "^0.5.3",
     "grunt-dalek": "^0.2.0",
     "shower-ribbon": "^1.0.2",
-    "load-grunt-tasks": "^0.4.0"
+    "load-grunt-tasks": "^0.4.0",
+    "grunt-bump": "0.0.13"
   }
 }
