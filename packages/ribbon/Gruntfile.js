@@ -30,6 +30,13 @@ module.exports = function(grunt) {
 				files: 'styles/*.scss',
 				tasks: ['sass', 'autoprefixer', 'csso']
 			}
+		},
+		bump: {
+			options: {
+				files: ['package.json', 'bower.json'],
+				commitFiles: ['package.json', 'bower.json'],
+				pushTo: 'origin'
+			}
 		}
 	});
 
