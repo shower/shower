@@ -10,9 +10,9 @@
     "grunt-contrib-clean": "^0.5.0",
     "grunt-text-replace": "^0.3.11",
     "grunt-rsync": "^0.4.0",
-    "shower": "^1.0.1",
+    "shower": "^1.0.3",
     "shower-core": "^1.0.1",
-    "shower-ribbon": "^1.0.3",
-    "shower-bright": "^1.0.3"
+    "shower-ribbon": "^1.0.4",
+    "shower-bright": "^1.0.4"
   }
 }
