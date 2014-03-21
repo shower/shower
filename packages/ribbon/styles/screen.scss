@@ -140,6 +140,17 @@ a {
 		line-height:1;
 		font-family:'PT Mono', monospace;
 		}
+	sub, sup {
+		position: relative;
+		line-height:0;
+		font-size:75%;
+		}
+	sub {
+		bottom:-0.25em;
+		}
+	sup {
+		top:-0.5em;
+		}
 	// Quote
 	blockquote {
 		font-style:italic;
