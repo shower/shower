@@ -32,33 +32,6 @@ window.shower = window.shower || (function(window, document, undefined) {
 		}
 	}
 
-    /**
-     *
-     * @param el
-     * @param attrs
-     */
-    function setAttributes(el, attrs) {
-        for(var key in attrs) {
-            el.setAttribute(key, attrs[key]);
-        }
-    }
-
-    /**
-     *
-     * @param el
-     * @param html
-     */
-    function updateLiveRegion(el, html){
-        //empty the existing live region content
-        while (el.hasChildNodes())
-        {
-            el.removeChild(el.lastChild);
-        }
-        el.innerHTML(html);
-
-
-    }
-
 	Slide.prototype = {
 		/**
 		 * Get slide number.
@@ -715,19 +688,6 @@ window.shower = window.shower || (function(window, document, undefined) {
 
 		progress.style.width = (100 / (shower.slideList.length - 1) * shower._normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
 
-        progPct = (100 / (shower.slideList.length - 1) * shower._normalizeSlideNumber(slideNumber)).toFixed(0);
-
-        /**
-         * Add ARIA on the progressbar
-         */
-        setAttributes(progress, {
-            'role': "progressbar",
-            'aria-valuenow' : progPct,
-            'aria-valuemin': '0',
-            'aria-valuemax': '100',
-            'aria-valuetext': 'Slideshow Progress: ' + progPct + '%'
-        });
-
 		return true;
 	};
 
@@ -759,17 +719,6 @@ window.shower = window.shower || (function(window, document, undefined) {
 			} else {
 				slide.classList.remove('visited');
 				slide.classList.add('active');
-
-                /**
-                 * Add the text from the first H2 as the TITLE element
-                 */
-                document.title = slide.getElementsByTagName('h2').firstChild.nodeValue
-
-
-                /**
-                 * Swap out content of the live region as different slides are shown
-                 */
-                updateLiveRegion(document.getElementById('live-region'), slide.innerHTML);
 			}
 		}
 
