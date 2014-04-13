@@ -1,9 +1,12 @@
 /**
  * Shower HTML presentation engine: github.com/shower/shower
- * @copyright 2010–2013 Vadim Makeev, pepelsbey.net
+ * @copyright 2010–2014 Vadim Makeev, pepelsbey.net
  * @license MIT license: github.com/shower/shower/wiki/MIT-License
  */
-window.shower = window.shower || (function(window, document, undefined) {
+
+if(!(window.shower && window.shower.init)) {
+
+window.shower = (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
 		body = document.body,
@@ -1012,3 +1015,5 @@ window.shower = window.shower || (function(window, document, undefined) {
 	return shower;
 
 })(this, this.document);
+
+}
