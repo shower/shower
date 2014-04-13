@@ -62,7 +62,10 @@ module.exports = function(grunt) {
 				files: [{
 					expand: true,
 					cwd: 'temporary/',
-					src: '**',
+					src: [
+						'**',
+						'!node_modules/**'
+					],
 					dest: '.'
 				}]
 			},
@@ -75,9 +78,10 @@ module.exports = function(grunt) {
 					cwd: '../shower/',
 					src: [
 						'**',
-						'!node_modules/',
+						'!node_modules/**',
 						'!.editorconfig',
 						'!.gitignore',
+						'!Gruntfile.js',
 						'!.npmignore',
 						'!Contributing.md'
 					],
