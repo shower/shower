@@ -11,6 +11,7 @@ body {
 	font:25px/2 'PT Sans', sans-serif;
 	}
 a {
+	color:$blue;
 	text-decoration:none;
 	}
 
@@ -25,7 +26,6 @@ a {
 		font:bold 50px/1 'PT Sans Narrow', sans-serif;
 		}
 	a {
-		color:$blue;
 		text-shadow:0 -1px 1px #1F3F60;
 		text-decoration:none;
 		&:hover {
@@ -120,9 +120,6 @@ a {
 		}
 	p.note {
 		color:#999;
-		}
-	a {
-		color:$blue;
 		}
 	b, strong {
 		font-weight:bold;
