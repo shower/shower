@@ -24,3 +24,15 @@ $dot:'data:image/gif;base64,R0lGODdhAQABAPAAAJmZmQAAACH/C1hNUCBEYXRhWE1QAj94ACwA
 		@content;
 		}
 	}
+
+// Underline
+@mixin underline($color, $width) {
+	background:
+		linear-gradient(
+			to top,
+			$color,
+			$color #{$width}em,
+			transparent #{$width}em,
+			transparent
+		) repeat-x;
+	}

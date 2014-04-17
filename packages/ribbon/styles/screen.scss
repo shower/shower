@@ -12,6 +12,7 @@ body {
 	}
 a {
 	color:$blue;
+	@include underline($blue, 0.09);
 	text-decoration:none;
 	}
 
@@ -27,7 +28,7 @@ a {
 		}
 	a {
 		text-shadow:0 -1px 1px #1F3F60;
-		text-decoration:none;
+		background:none;
 		&:hover {
 			color:lighten($blue, 5%);
 			}
@@ -309,6 +310,9 @@ a {
 			line-height:1;
 			font-size:150px;
 			transform:translateY(-50%);
+			a {
+				@include underline($blue, 0.11);
+				}
 			}
 		}
 	// Place
