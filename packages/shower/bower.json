@@ -17,8 +17,8 @@
     "template"
   ],
   "dependencies": {
+    "shower-bright": "^1.0.6",
     "shower-core": "^1.0.2",
-    "shower-ribbon": "^1.0.5",
-    "shower-bright": "^1.0.5"
+    "shower-ribbon": "^1.0.6"
   }
 }
