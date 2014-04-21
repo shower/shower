@@ -812,7 +812,7 @@ window.shower = (function(window, document, undefined) {
 				body.setAttribute('data-scroll', 'unlocked');
 			}, 200);
 		}
-	}
+	};
 
 	// Event handlers
 
