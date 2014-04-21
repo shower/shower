@@ -15,7 +15,7 @@ See [Wiki](https://github.com/shower/shower/wiki) for more information how to us
 
 There are two ways of making presentation using Shower: you can just download an archive with all you need or you can install needed Shower modules using [npm](https://www.npmjs.org) or [bower](http://bower.io).
 
-## Simple Way
+### Simple Way
 
 In a simple way you just download the latest Shower version with built-in themes and use it.
 
@@ -24,15 +24,15 @@ In a simple way you just download the latest Shower version with built-in themes
 3. Use `pictures` folder for pictures used in presentation
 4. Once finished, open `index.html` in a browser, enter full screen and start presenting
 
-## Module Way
+### Advanced Way
 
-Module way allows you to manually install needed Shower packages and requires [Git](http://git-scm.com/) and [Node.js](http://nodejs.org/) installed together with package managment system: `npm` or `bower`.
+Advanced way allows you to manually install needed Shower packages and requires [Node.js](http://nodejs.org/) installed together with package managment system: `npm` or `bower`.
 
-1. Clone Shower `git clone git@github.com:shower/shower.git --depth 1` or download [shower-pkg.zip](http://shwr.me/shower-pkg.zip)
-2. Run `npm install` (or `bower install`) command in resulted folder to install script and themes
-3. Open `index.html` in any code or text editor, edit your slides in HTML
-4. Use `pictures` folder for pictures used in presentation
-5. Once finished, open `index.html` in browser, enter full screen and start presenting
+1. Run `npm install shower-core shower-ribbon`
+2. Link core and theme files in `node_modules` folder to your presentation file
+3. You’re probably know what to do next, it’s an advanced way.
+
+**Note:** you can use `bower` instead of `npm` or `shower-bright` instead of `shower-ribbon` in command above to install Shower using Bower or get Bright theme.
 
 ## Usage examples
 
