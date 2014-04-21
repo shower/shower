@@ -439,8 +439,6 @@ window.shower = (function(window, document, undefined) {
 		if (typeof(callback) === 'function') {
 			callback();
 		}
-
-		return;
 	};
 
 	/**
