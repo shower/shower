@@ -68,25 +68,6 @@ module.exports = function(grunt) {
 					],
 					dest: '.'
 				}]
-			},
-			npm: {
-				options: {
-					archive: 'temporary/shower-pkg.zip'
-				},
-				files: [{
-					expand: true,
-					cwd: '../shower/',
-					src: [
-						'**',
-						'!node_modules/**',
-						'!.editorconfig',
-						'!.gitignore',
-						'!Gruntfile.js',
-						'!.npmignore',
-						'!Contributing.md'
-					],
-					dest: '.'
-				}]
 			}
 		},
 		rsync: {
