@@ -786,21 +786,26 @@ window.shower = (function(window, document, undefined) {
 	 */
 	shower.wheel = function (e) {
 		var body = document.querySelector('body'),
-			wheelDown,
+            delta,
 			lockedWheel = body.getAttribute('data-scroll') === 'locked';
 
 		if (!lockedWheel && !shower.isListMode()) {
 			body.setAttribute('data-scroll', 'locked');
 
+            //normalize delta across browsers
 			if (e.deltaY === undefined) {
 				// Chrome, Opera, Safari
-				wheelDown = e.wheelDeltaY < 0;
+                if(e.detail) {
+                    delta = (e.wheelDeltaY / e.detail / 120 * e.detail > 0) ? 1 : -1
+                } else {
+                    delta = e.wheelDeltaY / 10;
+                }
 			} else {
 				// Firefox
-				wheelDown = e.deltaY > 0;
+                delta = - e.deltaY;
 			}
 
-			if (wheelDown) {
+			if (delta < 0) {
 				shower._turnNextSlide();
 			} else {
 				shower._turnPreviousSlide();
@@ -808,7 +813,7 @@ window.shower = (function(window, document, undefined) {
 
 			setTimeout(function () {
 				body.setAttribute('data-scroll', 'unlocked');
-			}, 200);
+			}, Math.abs(delta) > 3 ? 200 : 800);
 		}
 	};
 
