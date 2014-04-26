@@ -18,7 +18,7 @@
   ],
   "dependencies": {
     "shower-bright": "^1.0.7",
-    "shower-core": "^1.0.2",
+    "shower-core": "^1.0.3",
     "shower-ribbon": "^1.0.7"
   }
 }
