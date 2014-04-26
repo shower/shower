@@ -1,7 +1,7 @@
 {
   "name": "shower",
   "description": "Shower HTML presentation engine",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": {
     "name": "Vadim Makeev",
     "url": "http://pepelsbey.com/"
@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "shower-bright": "^1.0.7",
-    "shower-core": "^1.0.2",
+    "shower-core": "^1.0.3",
     "shower-ribbon": "^1.0.7"
   },
   "devDependencies": {
