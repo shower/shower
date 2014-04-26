@@ -19,12 +19,12 @@ window.shower = (function(window, document, undefined) {
 	 * Slide constructor
 	 *
 	 * @param {Object} opts
-	 *	  @param {String} opts.id html id attribute or automaticaly assigned order number
-	 *	  @param {Number} opts.number slide number
-	 *	  @param {Boolean} opts.hasInnerNavigation
-	 *	  @param {Number} [opts.timing]
-	 *	  @param {Number} [opts.innerLength]
-	 *	  @param {Number} [opts.innerComplete = 0]
+	 * @param {String} opts.id html id attribute or automaticaly assigned order number
+	 * @param {Number} opts.number slide number
+	 * @param {Boolean} opts.hasInnerNavigation
+	 * @param {Number} [opts.timing]
+	 * @param {Number} [opts.innerLength]
+	 * @param {Number} [opts.innerComplete = 0]
 	 * @constructor
 	 */
 	function Slide(opts) {
@@ -786,23 +786,23 @@ window.shower = (function(window, document, undefined) {
 	 */
 	shower.wheel = function (e) {
 		var body = document.querySelector('body'),
-            delta,
+			delta,
 			lockedWheel = body.getAttribute('data-scroll') === 'locked';
 
 		if (!lockedWheel && !shower.isListMode()) {
 			body.setAttribute('data-scroll', 'locked');
 
-            //normalize delta across browsers
+			// Normalize delta across browsers
 			if (e.deltaY === undefined) {
 				// Chrome, Opera, Safari
-                if(e.detail) {
-                    delta = (e.wheelDeltaY / e.detail / 120 * e.detail > 0) ? 1 : -1
-                } else {
-                    delta = e.wheelDeltaY / 10;
-                }
+				if(e.detail) {
+					delta = (e.wheelDeltaY / e.detail / 120 * e.detail > 0) ? 1 : -1;
+				} else {
+					delta = e.wheelDeltaY / 10;
+				}
 			} else {
 				// Firefox
-                delta = - e.deltaY;
+				delta = - e.deltaY;
 			}
 
 			if (delta < 0) {
@@ -825,7 +825,7 @@ window.shower = (function(window, document, undefined) {
 
 		if (currentSlideNumber === -1 && isSlideMode) {
 			shower.go(0);
-		} else if (currentSlideNumber ===  0 || isSlideMode) {
+		} else if (currentSlideNumber === 0 || isSlideMode) {
 			shower.go(currentSlideNumber);
 		}
 
@@ -982,9 +982,9 @@ window.shower = (function(window, document, undefined) {
 				x = e.touches[0].pageX;
 
 				if (x > window.innerWidth / 2) {
-                    shower._turnNextSlide();
+					shower._turnNextSlide();
 				} else {
-                    shower._turnPreviousSlide();
+					shower._turnPreviousSlide();
 				}
 			}
 
