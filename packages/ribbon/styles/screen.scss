@@ -12,7 +12,7 @@ body {
 	}
 a {
 	color:$blue;
-	@include underline($blue, 0.09);
+	@include underline(currentColor, 0.09);
 	text-decoration:none;
 	}
 
@@ -311,7 +311,7 @@ a {
 			font-size:150px;
 			transform:translateY(-50%);
 			a {
-				@include underline($blue, 0.11);
+				@include underline(currentColor, 0.11);
 				}
 			}
 		}
