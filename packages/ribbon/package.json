@@ -27,12 +27,12 @@
     "theme"
   ],
   "devDependencies": {
-    "grunt": "^0.4.3",
-    "grunt-contrib-sass": "^0.7.3",
+    "grunt": "^0.4.4",
     "grunt-autoprefixer": "^0.7.2",
-    "grunt-csso": "^0.6.0",
-    "grunt-contrib-watch": "^0.5.3",
-    "load-grunt-tasks": "^0.4.0",
-    "grunt-bump": "0.0.13"
+    "grunt-bump": "0.0.13",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-csso": "^0.6.1",
+    "load-grunt-tasks": "^0.4.0"
   }
 }
