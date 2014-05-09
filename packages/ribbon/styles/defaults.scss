@@ -15,9 +15,6 @@ $blue:#4B86C2;
 $grey:#2A2B2D;
 $yellow:#FAFAA2;
 
-// #999 1px
-$dot:'data:image/gif;base64,R0lGODdhAQABAPAAAJmZmQAAACH/C1hNUCBEYXRhWE1QAj94ACwAAAAAAQABAAACAkQBADs=';
-
 // Mixins
 @mixin retina {
 	@media (-webkit-min-device-pixel-ratio:2), (min-resolution:192dpi) {
