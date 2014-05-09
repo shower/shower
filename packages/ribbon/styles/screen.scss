@@ -353,10 +353,16 @@ a {
 		bottom:-$height;
 		z-index:1;
 		display:none;
-		padding:20px 120px;
+		padding:20px 120px 4px;
 		background:$yellow;
 		box-shadow:0 0 0 2px desaturate($yellow, 20%) inset;
 		transition:bottom 0.3s;
+		p {
+			margin:0 0 16px;
+			}
+		code {
+			background:lighten($yellow, 15%);
+			}
 		}
 	&:hover footer {
 		bottom:0;
