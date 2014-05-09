@@ -9,28 +9,28 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: 'node_modules/shower/',
 					src: ['**', '!package.json'],
-					dest: 'temporary/'
+					dest: 'temp/'
 				},{
 					expand: true,
 					cwd: 'node_modules/shower-core/',
 					src: ['**', '!package.json'],
-					dest: 'temporary/shower/'
+					dest: 'temp/shower/'
 				},{
 					expand: true,
 					cwd: 'node_modules/shower-ribbon/',
 					src: ['**', '!package.json'],
-					dest: 'temporary/shower/themes/ribbon/'
+					dest: 'temp/shower/themes/ribbon/'
 				},{
 					expand: true,
 					cwd: 'node_modules/shower-bright/',
 					src: ['**', '!package.json'],
-					dest: 'temporary/shower/themes/bright/'
+					dest: 'temp/shower/themes/bright/'
 				}]
 			}
 		},
 		replace: {
-			core: {
-				src: 'temporary/index.html',
+			shower: {
+				src: 'temp/index.html',
 				overwrite: true,
 				replacements: [{
 					from: 'node_modules/shower-ribbon', to: 'shower/themes/ribbon'
@@ -39,14 +39,14 @@ module.exports = function(grunt) {
 				}]
 			},
 			themes: {
-				src: 'temporary/shower/themes/*/index.html',
+				src: 'temp/shower/themes/*/index.html',
 				overwrite: true,
 				replacements: [{
 					from: '../shower-core', to: '../..'
 				}]
 			},
 			counter: {
-				src: 'temporary/index.html',
+				src: 'temp/index.html',
 				overwrite: true,
 				replacements: [{
 					from: '</body>',
@@ -57,11 +57,11 @@ module.exports = function(grunt) {
 		compress: {
 			shower: {
 				options: {
-					archive: 'temporary/shower.zip'
+					archive: 'temp/shower.zip'
 				},
 				files: [{
 					expand: true,
-					cwd: 'temporary/',
+					cwd: 'temp/',
 					src: [
 						'**',
 						'!node_modules/**'
@@ -87,13 +87,13 @@ module.exports = function(grunt) {
 			},
 			deploy: {
 				options: {
-					src: 'temporary/',
+					src: 'temp/',
 					dest: 'shwr.me/',
 					host: 'pepelsbey@shwr.me'
 				}
 			}
 		},
-		clean: ['temporary']
+		clean: ['temp']
 	});
 
 	grunt.registerTask('default', [
