@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 						'!bower.json',
 						'!package.json'
 					],
-					dest: 'temp/'
+					dest: 'temp/pres/'
 				},{
 					expand: true,
 					cwd: 'node_modules/shower-core/',
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
 						'!package.json',
 						'!Readme.md'
 					],
-					dest: 'temp/shower/'
+					dest: 'temp/pres/shower/'
 				},{
 					expand: true,
 					cwd: 'node_modules/shower-ribbon/',
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 						'!package.json',
 						'!Readme.md'
 					],
-					dest: 'temp/shower/themes/ribbon/'
+					dest: 'temp/pres/shower/themes/ribbon/'
 				},{
 					expand: true,
 					cwd: 'node_modules/shower-bright/',
@@ -51,13 +51,13 @@ module.exports = function(grunt) {
 						'!package.json',
 						'!Readme.md'
 					],
-					dest: 'temp/shower/themes/bright/'
+					dest: 'temp/pres/shower/themes/bright/'
 				}]
 			}
 		},
 		replace: {
 			core: {
-				src: 'temp/index.html',
+				src: 'temp/pres/index.html',
 				overwrite: true,
 				replacements: [{
 					from: /(node_modules|bower_components)\/shower-core/g,
@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 				}]
 			},
 			themes: {
-				src: 'temp/shower/themes/*/index.html',
+				src: 'temp/pres/shower/themes/*/index.html',
 				overwrite: true,
 				replacements: [{
 					from: '../shower-core', to: '../..'
@@ -77,7 +77,8 @@ module.exports = function(grunt) {
 		},
 		'gh-pages': {
 			options: {
-				base: 'temp'
+				base: 'temp/pres',
+				clone: 'temp/clone'
 			},
 			src: ['**']
 		},
