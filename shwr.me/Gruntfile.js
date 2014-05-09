@@ -29,7 +29,7 @@ module.exports = function(grunt) {
 			}
 		},
 		replace: {
-			shower: {
+			core: {
 				src: 'temp/index.html',
 				overwrite: true,
 				replacements: [{
