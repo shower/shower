@@ -143,22 +143,12 @@ module.exports = {
 	// --------------------------------
 	// Tab
 	// --------------------------------
-	'Dumb': function (test) {
-		test
-			.open('http://0.0.0.0:7497/tests/')
-		.done();
-	},
 	'Tab key is switching to the next slide': function (test) {
 		test
 			.open('http://0.0.0.0:7497/tests/?full#1')
 			.sendKeys('body', '\uE004') // Tab
 			// Not sure why it’s failing. It works fine manually
 			.assert.attr('[id="2"]', 'class').to.contain('active', 'Next slide is Active')
-		.done();
-	},
-	'Dumb': function (test) {
-		test
-			.open('about:blank')
 		.done();
 	},
 	'Shift Tab keys are switching to the previous slide': function (test) {
