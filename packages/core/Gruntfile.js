@@ -24,9 +24,7 @@ module.exports = function(grunt) {
 			options: {
 				browser: ['chrome']
 			},
-			src: [
-				'tests/*.js'
-			]
+			src: ['tests/*.js']
 		},
 		bump: {
 			options: {
