@@ -80,5 +80,20 @@ module.exports = {
 			.back()
 			.assert.attr('body', 'style').to.contain('none', 'Scale is restored')
 		.done();
+	},
+	// --------------------------------
+	// 404
+	// --------------------------------
+	'Non-existing ID is switching to to #1 in List mode': function (test) {
+		test
+			.open('http://0.0.0.0:7497/tests/#404')
+			.assert.attr('[id="1"]', 'class').to.contain('active', 'First slide is Active')
+		.done();
+	},
+	'Non-existing ID is switching to to #1 in Full mode': function (test) {
+		test
+			.open('http://0.0.0.0:7497/tests/?full#404')
+			.assert.attr('[id="1"]', 'class').to.contain('active', 'First slide is Active')
+		.done();
 	}
 };
