@@ -9,11 +9,15 @@ if(!(window.shower && window.shower.init)) {
 window.shower = (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
+		console = window.console,
 		body = document.body,
 		slides = [],
 		progress = [],
 		timer,
 		isHistoryApiSupported = !!(window.history && window.history.pushState);
+
+	//Shower debug mode env, could be overridden before shower.init
+	shower.debugMode = false;
 
 	/**
 	 * Slide constructor
@@ -730,7 +734,7 @@ window.shower = (function(window, document, undefined) {
 	* Clear presenter notes in console (only for Slide Mode).
 	*/
 	shower.clearPresenterNotes = function() {
-		if (shower.isSlideMode() && window.console && window.console.clear) {
+		if (shower.isSlideMode() && console && console.clear && !shower.debugMode) {
 			console.clear();
 		}
 	};
@@ -742,7 +746,7 @@ window.shower = (function(window, document, undefined) {
 	shower.showPresenterNotes = function(slideNumber) {
 		shower.clearPresenterNotes();
 
-		if (window.console) {
+		if (console) {
 			slideNumber = shower._normalizeSlideNumber(slideNumber);
 
 			var slideId = shower.slideList[slideNumber].id,
@@ -816,6 +820,12 @@ window.shower = (function(window, document, undefined) {
 			}, Math.abs(delta) > 3 ? 200 : 800);
 		}
 	};
+
+	//For overriding shower properties before init
+	for (var overridingProp in window.shower) {
+		shower[overridingProp] = window.shower[overridingProp];
+		console.log(shower.debugMode);
+	}
 
 	// Event handlers
 
