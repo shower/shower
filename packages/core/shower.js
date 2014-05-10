@@ -16,7 +16,7 @@ window.shower = (function(window, document, undefined) {
 		timer,
 		isHistoryApiSupported = !!(window.history && window.history.pushState);
 
-	//Shower debug mode env, could be overridden before shower.init
+	// Shower debug mode env, could be overridden before shower.init
 	shower.debugMode = false;
 
 	/**
@@ -682,7 +682,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.updateProgress = function(slideNumber) {
-		// if progress bar doesn't exist
+		// If progress bar doesn't exist
 		if (null === progress) {
 			return false;
 		}
@@ -821,7 +821,7 @@ window.shower = (function(window, document, undefined) {
 		}
 	};
 
-	//For overriding shower properties before init
+	// For overriding shower properties before init
 	for (var overridingProp in window.shower) {
 		shower[overridingProp] = window.shower[overridingProp];
 		console.log(shower.debugMode);
