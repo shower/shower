@@ -15,16 +15,11 @@ module.exports = function(grunt) {
 		},
 		connect: {
 			ribbon: {
-				options: {
-					port: 7497
-				}
+				options: { port: 7497 }
 			}
 		},
-		dalek: {
-			options: {
-				browser: ['chrome']
-			},
-			src: ['tests/*.js']
+		casperjs: {
+			files: ['tests/*.js']
 		},
 		bump: {
 			options: {
@@ -36,6 +31,6 @@ module.exports = function(grunt) {
 	});
 
 	grunt.registerTask('default', ['uglify']);
-	grunt.registerTask('test', ['connect', 'dalek']);
+	grunt.registerTask('test', ['connect', 'casperjs']);
 
 };
