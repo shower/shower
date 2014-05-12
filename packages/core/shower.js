@@ -14,7 +14,7 @@ window.shower = (function(window, document, undefined) {
 		slides = [],
 		progress = [],
 		timer,
-		isHistoryApiSupported = !!(window.history && window.history.pushState);
+		isHistoryApiSupported = ! ! (window.history && window.history.pushState);
 
 	// Shower debug mode env, could be overridden before shower.init
 	shower.debugMode = false;
