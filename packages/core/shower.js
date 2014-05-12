@@ -1,6 +1,6 @@
 /**
- * Shower HTML presentation engine: github.com/shower/shower
- * @copyright 2010–2014 Vadim Makeev, pepelsbey.net
+ * Core for Shower HTML presentation engine, https://github.com/shower/core
+ * @copyright 2010–2014 Vadim Makeev, http://pepelsbey.net
  * @license MIT license: github.com/shower/shower/wiki/MIT-License
  */
 
