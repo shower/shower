@@ -26,12 +26,14 @@
     "core"
   ],
   "devDependencies": {
+    "jscs": "~1.4.3",
     "grunt": "^0.4.4",
     "grunt-bump": "0.0.13",
     "grunt-casperjs": "^1.4.0",
     "grunt-contrib-connect": "^0.7.1",
     "grunt-contrib-uglify": "^0.4.0",
     "grunt-contrib-watch": "^0.6.1",
-    "load-grunt-tasks": "^0.4.0"
+    "load-grunt-tasks": "^0.4.0",
+    "grunt-jscs-checker": "~0.4.3"
   }
 }

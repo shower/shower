@@ -4,7 +4,7 @@
  * @license MIT license: github.com/shower/shower/wiki/MIT-License
  */
 
-if(!(window.shower && window.shower.init)) {
+if ( ! (window.shower && window.shower.init)) {
 
 window.shower = (function(window, document, undefined) {
 	var shower = {},
@@ -648,7 +648,7 @@ window.shower = (function(window, document, undefined) {
 		}
 
 		// @TODO: WTF?
-		if (-1 === slideNumber) {
+		if (slideNumber === -1) {
 			return ret;
 		}
 
@@ -737,7 +737,7 @@ window.shower = (function(window, document, undefined) {
 	* Clear presenter notes in console (only for Slide Mode).
 	*/
 	shower.clearPresenterNotes = function() {
-		if (shower.isSlideMode() && console && console.clear && !shower.debugMode) {
+		if (shower.isSlideMode() && console && console.clear && ! shower.debugMode) {
 			console.clear();
 		}
 	};
@@ -791,25 +791,25 @@ window.shower = (function(window, document, undefined) {
 	 * Wheel event listener
 	 * @param e event
 	 */
-	shower.wheel = function (e) {
+	shower.wheel = function(e) {
 		var body = document.querySelector('body'),
 			delta,
 			lockedWheel = body.getAttribute('data-scroll') === 'locked';
 
-		if (!lockedWheel && !shower.isListMode()) {
+		if ( ! lockedWheel && ! shower.isListMode()) {
 			body.setAttribute('data-scroll', 'locked');
 
 			// Normalize delta across browsers
 			if (e.deltaY === undefined) {
 				// Chrome, Opera, Safari
-				if(e.detail) {
+				if (e.detail) {
 					delta = (e.wheelDeltaY / e.detail / 120 * e.detail > 0) ? 1 : -1;
 				} else {
 					delta = e.wheelDeltaY / 10;
 				}
 			} else {
 				// Firefox
-				delta = - e.deltaY;
+				delta = -e.deltaY;
 			}
 
 			if (delta < 0) {
@@ -818,7 +818,7 @@ window.shower = (function(window, document, undefined) {
 				shower._turnPreviousSlide();
 			}
 
-			setTimeout(function () {
+			setTimeout(function() {
 				body.setAttribute('data-scroll', 'unlocked');
 			}, Math.abs(delta) > 3 ? 200 : 800);
 		}

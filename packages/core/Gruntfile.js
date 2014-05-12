@@ -27,6 +27,12 @@ module.exports = function(grunt) {
 				commitFiles: ['package.json', 'bower.json'],
 				pushTo: 'origin'
 			}
+		},
+		jscs: {
+			src: "shower.js",
+			options: {
+				config: ".jscs.json"
+			}
 		}
 	});
 
