@@ -4,13 +4,15 @@
   "license": "MIT",
   "main": "styles/screen.css",
   "ignore": [
-    ".editorconfig",
-    ".gitignore",
-    ".npmignore",
-    "Contributing.md",
-    "Gruntfile.js",
-    "package.json",
-    "styles/*.scss"
+    "*",
+    "!fonts/**",
+    "!images/**",
+    "!pictures/**",
+    "!styles/screen.css",
+    "!index.html",
+    "!License.md",
+    "!Readme.md",
+    "!bower.json"
   ],
   "keywords": [
     "shower",

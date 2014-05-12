@@ -1,6 +1,9 @@
-.editorconfig
-.gitignore
-bower.json
-Contributing.md
-Gruntfile.js
-styles/*.scss
+*
+!fonts/**
+!images/**
+!pictures/**
+!styles/screen.css
+!index.html
+!License.md
+!Readme.md
+!package.json
