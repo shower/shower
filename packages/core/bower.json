@@ -2,16 +2,13 @@
   "name": "shower-core",
   "version": "1.0.3",
   "license": "MIT",
-  "main": "index.html",
+  "main": "shower.min.js",
   "ignore": [
-    ".editorconfig",
-    ".gitignore",
-    ".npmignore",
-    "Contributing.md",
-    "Gruntfile.js",
-    "package.json",
-    "shower.js",
-    "tests"
+    "*",
+    "!License.md",
+    "!Readme.md",
+    "!shower.min.js",
+    "!bower.json"
   ],
   "keywords": [
     "shower",
