@@ -4,12 +4,12 @@
   "license": "MIT",
   "main": "index.html",
   "ignore": [
-    ".editorconfig",
-    ".gitignore",
-    ".npmignore",
-    "Contributing.md",
-    "Gruntfile.js",
-    "package.json"
+    "*",
+    "!pictures/**",
+    "!index.html",
+    "!License.md",
+    "!Readme.md",
+    "!bower.json"
   ],
   "keywords": [
     "shower",
