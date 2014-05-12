@@ -3,6 +3,7 @@ module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt);
 
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
 		sass: {
 			compile: {
 				files: {
@@ -21,7 +22,7 @@ module.exports = function(grunt) {
 					'styles/screen.css' : 'styles/screen.css'
 				},
 				options: {
-					banner: '/**\n * Ribbon theme for Shower HTML presentation engine: github.com/shower/ribbon\n * Copyright © 2010–<%= grunt.template.today("yyyy") %> Vadim Makeev, pepelsbey.net\n * Licensed under MIT license: github.com/shower/shower/wiki/MIT-License\n */\n'
+					banner: '/**\n * <%= pkg.description %>\n * <%= pkg.name %> v<%= pkg.version %>, <%= pkg.homepage %>\n * Copyright © 2010–<%= grunt.template.today("yyyy") %> Vadim Makeev, http://pepelsbey.net\n * Licensed under MIT license: github.com/shower/shower/wiki/MIT-License\n */\n'
 				}
 			}
 		},
