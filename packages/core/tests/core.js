@@ -222,20 +222,22 @@ casper.test.begin('Non-existing ID in Full mode', 2, function suite(test) {
 	});
 });
 // -------------------------------
-// UNDER CONSTRUCTION
+// Entering Full and pressing Back
 // -------------------------------
-// casper.test.begin('Entering Full and pressing Back', 1, function suite(test) {
-// 	casper.start('http://0.0.0.0:7497/tests/', function() {
+casper.test.begin('Entering Full and pressing Back', 3, function suite(test) {
+	casper.start('http://0.0.0.0:7497/tests/', function() {
 
-// 		this.click('[id="1"]');
-// 		this.back();
+		this.click('[id="1"]');
+		this.back();
 
-// 		test.assertExists('body.list', 'Body in List mode');
-// 		test.assertExists('[id="1"].active', 'Slide #1 is active');
-// 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+	}).then(function() {
 
-// 	}).run(function() {
-// 		this.clear();
-// 		test.done();
-// 	});
-// });
+		test.assertExists('body.list', 'Body in List mode');
+		test.assertExists('[id="1"].active', 'Slide #1 is active');
+		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+	}).run(function() {
+		this.clear();
+		test.done();
+	});
+});
