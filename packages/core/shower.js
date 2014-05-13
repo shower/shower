@@ -10,7 +10,6 @@ window.shower = (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
 		console = window.console,
-		body = document.body,
 		slides = [],
 		progress = [],
 		timer,
@@ -247,14 +246,40 @@ window.shower = (function(window, document, undefined) {
 	};
 
 	/**
+	 * Run shower by going to slide and entering slide mode if needed.
+	 */
+	shower.run = function() {
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			isSlideMode = document.body.classList.contains('full') || shower.isSlideMode();
+
+		// Go to first slide, if hash id is invalid or isn't set.
+		if (isSlideMode && currentSlideNumber === -1) {
+			shower.go(0);
+
+		// In List mode, go to first slide only if hash id is invalid.
+		} else if (currentSlideNumber === -1 && url.hash !== '') {
+			shower.go(0);
+		}
+
+		// If slide number is OK, got for it.
+		if (currentSlideNumber >= 0) {
+            shower.go(currentSlideNumber);
+        }
+
+		if (isSlideMode) {
+			shower.enterSlideMode();
+		}
+	};
+
+	/**
 	* Get slide scale value.
 	* @private
 	* @returns {String}
 	*/
 	shower._getTransform = function() {
 		var denominator = Math.max(
-			body.clientWidth / window.innerWidth,
-			body.clientHeight / window.innerHeight
+			document.body.clientWidth / window.innerWidth,
+			document.body.clientHeight / window.innerHeight
 		);
 
 		return 'scale(' + (1 / denominator) + ')';
@@ -273,7 +298,7 @@ window.shower = (function(window, document, undefined) {
 			'OTransform',
 			'transform'
 		].forEach(function(prop) {
-				body.style[prop] = transform;
+				document.body.style[prop] = transform;
 		});
 
 		return true;
@@ -534,8 +559,8 @@ window.shower = (function(window, document, undefined) {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
 
 		// Anyway: change body class (@TODO: refactoring)
-		body.classList.remove('list');
-		body.classList.add('full');
+		document.body.classList.remove('list');
+		document.body.classList.add('full');
 
 		// Preparing URL for shower.go()
 		if (shower.isListMode() && isHistoryApiSupported) {
@@ -560,8 +585,8 @@ window.shower = (function(window, document, undefined) {
 		var currentSlideNumber;
 
 		// Anyway: change body class (@TODO: refactoring)
-		body.classList.remove('full');
-		body.classList.add('list');
+		document.body.classList.remove('full');
+		document.body.classList.add('list');
 
 		shower.clearPresenterNotes();
 		shower._applyTransform('none');
@@ -668,7 +693,11 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.isListMode = function() {
-		return isHistoryApiSupported ? ! /^full.*/.test(url.search.substr(1)) : body.classList.contains('list');
+		if (isHistoryApiSupported) {
+			return ! /^full.*/.test(url.search.substr(1));
+		} else {
+			return document.body.classList.contains('list');
+		}
 	};
 
 	/**
@@ -676,7 +705,11 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.isSlideMode = function() {
-		return isHistoryApiSupported ? /^full.*/.test(url.search.substr(1)) : body.classList.contains('full');
+		if (isHistoryApiSupported) {
+			return /^full.*/.test(url.search.substr(1));
+		} else {
+			return document.body.classList.contains('full');
+		}
 	};
 
 	/**
@@ -831,31 +864,14 @@ window.shower = (function(window, document, undefined) {
 
 	// Event handlers
 	window.addEventListener('DOMContentLoaded', function() {
-		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			isSlideMode = body.classList.contains('full') || shower.isSlideMode();
-
-		// Go to first slide, if hash id is invalid or isn't set.
-		if (isSlideMode && currentSlideNumber === -1) {
-			shower.go(0);
-
-		// In List mode, go to first slide only if hash id is invalid.
-		} else if (currentSlideNumber === -1 && url.hash !== '') {
-			shower.go(0);
-		}
-
-		// If slide number is OK, got for it.
-		if (currentSlideNumber >= 0) {
-            shower.go(currentSlideNumber);
-        }
-
-		if (isSlideMode) {
-			shower.enterSlideMode();
-		}
+		shower.
+			init().
+			run();
 	}, false);
 
 	window.addEventListener('popstate', function() {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			isSlideMode = body.classList.contains('full') || shower.isSlideMode();
+			isSlideMode = document.body.classList.contains('full') || shower.isSlideMode();
 
 		// Go to first slide, if hash id is invalid or isn't set.
 		// Same check is located in DOMContentLoaded event,
@@ -974,8 +990,6 @@ window.shower = (function(window, document, undefined) {
 				// Behave as usual
 		}
 	}, false);
-
-	shower.init();
 
 	document.addEventListener('click', function(e) {
 		var slideId = shower._getSlideIdByEl(e.target),
