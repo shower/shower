@@ -10,6 +10,7 @@ window.shower = (function(window, document, undefined) {
 	var shower = {},
 		url = window.location,
 		console = window.console,
+		presentationTitle = document.title,
 		slides = [],
 		progress = [],
 		timer,
@@ -786,22 +787,36 @@ window.shower = (function(window, document, undefined) {
 			slideNumber = shower._normalizeSlideNumber(slideNumber);
 
 			var slideId = shower.slideList[slideNumber].id,
-				nextSlideId = shower.slideList[slideNumber + 1] ? shower.slideList[slideNumber + 1].id : null,
 				notes = document.getElementById(slideId).querySelector('footer');
 
 			if (notes && notes.innerHTML) {
 				console.info(notes.innerHTML.replace(/\n\s+/g,'\n'));
 			}
 
-			if (nextSlideId) {
-
-				var next = document.getElementById(nextSlideId).querySelector('h2');
-
-				if (next) {
-					next = next.innerHTML.replace(/^\s+|<[^>]+>/g,'');
-					console.info('NEXT: ' + next);
-				}
+			var next = shower._getSlideTitle(slideNumber + 1);
+			if (next) {
+				console.info('NEXT: ' + next);
 			}
+		}
+	};
+
+	/**
+	 * Get slide title by number.
+	 * @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
+	 * @returns {String}
+	 */
+	shower._getSlideTitle = function(slideNumber) {
+		if ( ! shower.slideList[slideNumber]) {
+			return '';
+		}
+
+		var slideId = shower.slideList[slideNumber].id,
+			slideTitle = document.getElementById(slideId).querySelector('h2');
+
+		if (slideTitle) {
+			return slideTitle.textContent.
+				replace(/\s+/g, ' ').
+				replace(/^\s+|\s+$/g, '');
 		}
 	};
 
@@ -872,6 +887,12 @@ window.shower = (function(window, document, undefined) {
 	window.addEventListener('popstate', function() {
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
 			isSlideMode = document.body.classList.contains('full') || shower.isSlideMode();
+
+		if (shower._getSlideTitle(currentSlideNumber)) {
+			document.title = shower._getSlideTitle(currentSlideNumber) + ' — ' + presentationTitle;
+		} else {
+			document.title = presentationTitle;
+		}
 
 		// Go to first slide, if hash id is invalid or isn't set.
 		// Same check is located in DOMContentLoaded event,
