@@ -82,6 +82,19 @@ module.exports = function(grunt) {
 			},
 			src: ['**']
 		},
+		compress: {
+			shower: {
+				options: {
+					archive: 'archive.zip'
+				},
+				files: [{
+					expand: true,
+					cwd: 'temp/pres/',
+					src: '**',
+					dest: '.'
+				}]
+			}
+		},
 		clean: ['temp']
 	});
 
@@ -89,6 +102,13 @@ module.exports = function(grunt) {
 		'copy',
 		'replace',
 		'gh-pages',
+		'clean'
+	]);
+
+	grunt.registerTask('archive', [
+		'copy',
+		'replace',
+		'compress',
 		'clean'
 	]);
 
