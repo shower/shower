@@ -9,6 +9,9 @@
 body {
 	counter-reset:slide;
 	font:25px/2 'PT Sans', sans-serif;
+	@media print {
+		text-rendering:geometricPrecision;
+		}
 	}
 a {
 	color:$blue;
@@ -79,6 +82,9 @@ a {
 	-webkit-text-size-adjust:none;
 	-moz-text-size-adjust:none;
 	-ms-text-size-adjust:none;
+	@media print {
+		page-break-before:always;
+		}
 	// Number
 	&:after {
 		position:absolute;
