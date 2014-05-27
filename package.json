@@ -34,6 +34,7 @@
     "grunt": "^0.4.4",
     "grunt-bump": "0.0.13",
     "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-compress": "^0.9.1",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-gh-pages": "^0.9.1",
     "grunt-text-replace": "^0.3.11",
