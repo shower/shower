@@ -134,14 +134,19 @@ a {
 	i, em {
 		font-style:italic;
 		}
-	kbd, code, samp {
+	code, kbd, mark, samp {
 		padding:3px 8px;
 		border-radius:8px;
-		background:$yellow;
 		color:#000;
-		tab-size:4;
+		}
+	kbd, code, samp {
+		background:#EEE;
+		color:#000;
 		line-height:1;
 		font-family:'PT Mono', monospace;
+		}
+	mark {
+		background:$yellow;
 		}
 	sub, sup {
 		position: relative;
@@ -183,8 +188,7 @@ a {
 				text-align:right;
 				}
 			}
-		ol,
-		ul {
+		ol, ul {
 			margin:0 0 0 2em;
 			}
 		}
@@ -204,18 +208,17 @@ a {
 		padding:1px 0 0;
 		counter-reset:code;
 		white-space:normal;
+		tab-size:4;
 		code {
 			display:block;
 			padding:0;
 			background:none;
 			white-space:pre;
-			line-height:50px;
+			line-height:2;
 			&:before {
 				position:absolute;
-				margin:0 0 0 -110px;
-				width:100px;
+				margin-left:-50px;
 				color:#BBB;
-				text-align:right;
 				counter-increment:code;
 				content:counter(code, decimal-leading-zero)'.';
 				}
@@ -223,16 +226,11 @@ a {
 				content:'';
 				}
 			}
+		// Mark
 		mark {
-			padding:3px 8px;
-			border-radius:8px;
-			background:#F7FCA0;
-			color:#000;
-			font-style:normal;
 			&.important {
 				background:#C00;
 				color:#FFF;
-				font-weight:normal;
 				}
 			&.comment {
 				padding:0;
