@@ -140,7 +140,7 @@ a {
 		color:#000;
 		}
 	kbd, code, samp {
-		background:#EEE;
+		background:rgba(#000, 0.07);
 		color:#000;
 		line-height:1;
 		font-family:'PT Mono', monospace;
@@ -364,8 +364,8 @@ a {
 		p {
 			margin:0 0 16px;
 			}
-		code {
-			background:lighten($yellow, 15%);
+		mark {
+			background:rgba(#FFF, 0.7);
 			}
 		}
 	&:hover footer {
