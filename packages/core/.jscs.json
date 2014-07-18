@@ -5,7 +5,7 @@
 	"disallowKeywordsOnNewLine": [
 		"else"
 	],
-	"disallowLeftStickedOperators": [
+	"requireSpaceBeforeBinaryOperators": [
 		"?",
 		"-",
 		"/",
@@ -21,7 +21,7 @@
 		"<="
 	],
 	"disallowMultipleLineBreaks": true,
-	"disallowRightStickedOperators": [
+	"requireSpaceAfterBinaryOperators": [
 		"!",
 		"?",
 		"/",
@@ -62,7 +62,7 @@
 		"while",
 		"do"
 	],
-	"requireLeftStickedOperators": [
+	"disallowSpaceBeforeBinaryOperators": [
 		","
 	],
 	"requireLineFeedAtFileEnd": true,
