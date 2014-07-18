@@ -29,6 +29,36 @@ casper.test.begin('Moving forward by Down', 2, function suite(test) {
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
+// Moving forward by Tab
+// -------------------------------
+casper.test.begin('Moving forward by Tab', 2, function suite(test) {
+	casper.start('http://0.0.0.0:7497/tests/#1').then(function() {
+
+		this.sendKeys('body', casper.page.event.key.Tab);
+
+	}).then(function() {
+
+		test.assertExists('[id="2"].active', 'Next slide #2 is active');
+		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
+
+	}).run(function() { test.done() }).clear();
+});
+// -------------------------------
+// Not moving forward by Ctrl Tab
+// -------------------------------
+casper.test.begin('Not moving forward by Ctrl Tab', 2, function suite(test) {
+	casper.start('http://0.0.0.0:7497/tests/#1').then(function() {
+
+		this.sendKeys('body', casper.page.event.key.Tab , { modifiers: 'ctrl' });
+
+	}).then(function() {
+
+		test.assertExists('[id="1"].active', 'Current slide #1 is active');
+		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+	}).run(function() { test.done() }).clear();
+});
+// -------------------------------
 // Moving forward by J
 // -------------------------------
 casper.test.begin('Moving forward by J', 2, function suite(test) {
@@ -115,6 +145,36 @@ casper.test.begin('Moving backward by Up', 2, function suite(test) {
 
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+	}).run(function() { test.done() }).clear();
+});
+// -------------------------------
+// Moving backward by Shift Tab
+// -------------------------------
+casper.test.begin('Moving backward by Shift Tab', 2, function suite(test) {
+	casper.start('http://0.0.0.0:7497/tests/#2').then(function() {
+
+		this.sendKeys('body', casper.page.event.key.Tab, { modifiers: 'shift' });
+
+	}).then(function() {
+
+		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
+		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+	}).run(function() { test.done() }).clear();
+});
+// -------------------------------
+// Not moving backward by Ctrl Shift Tab
+// -------------------------------
+casper.test.begin('Not moving backward by Ctrl Shift Tab', 2, function suite(test) {
+	casper.start('http://0.0.0.0:7497/tests/#2').then(function() {
+
+		this.sendKeys('body', casper.page.event.key.Tab, { modifiers: 'ctrl+shift' });
+
+	}).then(function() {
+
+		test.assertExists('[id="2"].active', 'Current slide #2 is active');
+		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
 
 	}).run(function() { test.done() }).clear();
 });

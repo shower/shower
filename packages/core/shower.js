@@ -1003,6 +1003,7 @@ window.shower = (function(window, document, undefined) {
 
 			case 9: // Tab (Shift)
 			case 32: // Space (Shift)
+				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 				e.preventDefault();
 				shower[e.shiftKey ? '_turnPreviousSlide' : '_turnNextSlide']();
 			break;

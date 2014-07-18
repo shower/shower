@@ -82,7 +82,6 @@ casper.test.begin('First slide activation', 2, function suite(test) {
 
 	}).run(function() { test.done() }).clear();
 });
-
 // -------------------------------
 // Full mode from active slide by Enter
 // -------------------------------
