@@ -567,8 +567,8 @@ a {
 				border:10px solid transparent;
 				border-bottom-color:$blue;
 				transition:width 0.2s linear;
-				&[style$='100%;'] {
-					padding-left:10px;
+				&[style*='100%'] {
+					left:0;
 					}
 				}
 			}
