@@ -835,43 +835,6 @@ window.shower = (function(window, document, undefined) {
 		return '#' + shower.slideList[slideNumber].id;
 	};
 
-	/**
-	 * Wheel event listener
-	 * @param e event
-	 */
-	shower.wheel = function(e) {
-		var body = document.querySelector('body'),
-			delta,
-			lockedWheel = body.getAttribute('data-scroll') === 'locked';
-
-		if ( ! lockedWheel && ! shower.isListMode()) {
-			body.setAttribute('data-scroll', 'locked');
-
-			// Normalize delta across browsers
-			if (e.deltaY === undefined) {
-				// Chrome, Opera, Safari
-				if (e.detail) {
-					delta = (e.wheelDeltaY / e.detail / 120 * e.detail > 0) ? 1 : -1;
-				} else {
-					delta = e.wheelDeltaY / 10;
-				}
-			} else {
-				// Firefox
-				delta = -e.deltaY;
-			}
-
-			if (delta < 0) {
-				shower._turnNextSlide();
-			} else {
-				shower._turnPreviousSlide();
-			}
-
-			setTimeout(function() {
-				body.setAttribute('data-scroll', 'unlocked');
-			}, Math.abs(delta) > 3 ? 200 : 800);
-		}
-	};
-
 	// For overriding shower properties before init
 	for (var overridingProp in window.shower) {
 		shower[overridingProp] = window.shower[overridingProp];
@@ -1073,10 +1036,6 @@ window.shower = (function(window, document, undefined) {
 			e.preventDefault();
 		}
 	}, false);
-
-	document.addEventListener('wheel', shower.wheel, false);
-
-	document.addEventListener('mousewheel', shower.wheel, false);
 
 	return shower;
 
