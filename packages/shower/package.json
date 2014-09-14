@@ -26,9 +26,9 @@
     "template"
   ],
   "dependencies": {
-    "shower-bright": "^1.0.10",
+    "shower-bright": "^1.0.11",
     "shower-core": "^1.0.7",
-    "shower-ribbon": "^1.0.10"
+    "shower-ribbon": "^1.0.11"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
