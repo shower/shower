@@ -198,12 +198,22 @@ window.shower = (function(window, document, undefined) {
 		var timing;
 
 		if (shower.debugMode) {
-			body.classList.add('debug');
+			document.body.classList.add('debug');
 			console.log('Debug mode on')
 		}
 
 		slideSelector = slideSelector || '.slide';
 		progressSelector = progressSelector || 'div.progress div';
+
+		var liveRegion = document.createElement('section');
+
+		liveRegion.className = 'live-region';
+		liveRegion.setAttribute('role', 'region');
+		liveRegion.setAttribute('aria-live', 'assertive');
+		liveRegion.setAttribute('aria-relevant', 'additions');
+		liveRegion.setAttribute('aria-label', 'Slide Content: Auto-updating');
+
+		document.body.appendChild(liveRegion);
 
 		slides = document.querySelectorAll(slideSelector);
 		progress = document.querySelector(progressSelector);
@@ -728,7 +738,15 @@ window.shower = (function(window, document, undefined) {
 			throw new Error('Gimme slide number as Number, baby!');
 		}
 
-		progress.style.width = (100 / (shower.slideList.length - 1) * shower._normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
+		progressVal = (100 / (shower.slideList.length - 1) * shower._normalizeSlideNumber(slideNumber)).toFixed(2) + '%';
+
+		progress.style.width = progressVal;
+
+		progress.setAttribute('role', 'progressbar');
+		progress.setAttribute('aria-valuenow', progressVal);
+		progress.setAttribute('aria-valuemin', '0');
+		progress.setAttribute('aria-valuemax', '100');
+		progress.setAttribute('aria-valuetext', 'Slideshow Progress: ' + progressVal);
 
 		return true;
 	};
@@ -761,6 +779,9 @@ window.shower = (function(window, document, undefined) {
 			} else {
 				slide.classList.remove('visited');
 				slide.classList.add('active');
+
+				// Update live region with content from current slide
+				document.querySelector('.live-region').innerHTML = slide.innerHTML;
 			}
 		}
 
