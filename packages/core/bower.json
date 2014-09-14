@@ -1,6 +1,6 @@
 {
   "name": "shower-core",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "license": "MIT",
   "main": "shower.min.js",
   "ignore": [
