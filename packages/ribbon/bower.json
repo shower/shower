@@ -1,6 +1,6 @@
 {
   "name": "shower-ribbon",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "license": "MIT",
   "main": "styles/screen.css",
   "ignore": [
