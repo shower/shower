@@ -1,7 +1,7 @@
 {
   "name": "shower",
   "description": "Shower HTML presentation engine",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "author": {
     "name": "Vadim Makeev",
     "url": "http://pepelsbey.com/"
@@ -27,14 +27,14 @@
   ],
   "dependencies": {
     "shower-bright": "^1.0.10",
-    "shower-core": "^1.0.6",
+    "shower-core": "^1.0.7",
     "shower-ribbon": "^1.0.10"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bump": "0.0.15",
     "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-compress": "^0.10.0",
+    "grunt-contrib-compress": "^0.11.0",
     "grunt-contrib-copy": "^0.5.0",
     "grunt-gh-pages": "^0.9.1",
     "grunt-text-replace": "^0.3.12",
