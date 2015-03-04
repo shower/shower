@@ -1,6 +1,6 @@
 # Shower HTML presentation engine
 
-Follow [@shower_me](https://twitter.com/shower_me) for support and updates
+Follow [@shower_me](https://twitter.com/shower_me) for support and updates.
 
 To see Shower in action:
 
@@ -9,7 +9,7 @@ To see Shower in action:
 - Use arrow keys or presenter remote to navigate
 - Press `Esc` to exit presentation mode
 
-See [Wiki](https://github.com/shower/shower/wiki) for more information how to use Shower.
+See [Wiki](https://github.com/shower/shower/wiki) for more information about how to use Shower.
 
 ## Using Shower
 
@@ -30,7 +30,7 @@ Advanced way allows you to manually install needed Shower packages and requires 
 
 1. Run `npm install shower-core shower-ribbon`
 2. Link core and theme files in `node_modules` folder to your presentation file
-3. You’re probably know what to do next, it’s an advanced way.
+3. You probably know what to do next, it’s an advanced way
 
 **Note:** you can use `bower` instead of `npm` or `shower-bright` instead of `shower-ribbon` in command above to install Shower using Bower or get Bright theme.
 
