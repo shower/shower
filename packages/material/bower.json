@@ -1,0 +1,29 @@
+{
+  "name": "shower-material",
+  "version": "1.0.0",
+  "license": "MIT",
+  "main": [
+    "styles/screen--16x10.css",
+    "styles/screen--4x3.css"
+  ],
+  "ignore": [
+    "*",
+    "!fonts/**",
+    "!images/**",
+    "!pictures/**",
+    "!styles/*.css",
+    "!index.html",
+    "!LICENSE.md",
+    "!README.md",
+    "!bower.json"
+  ],
+  "keywords": [
+    "shower",
+    "presentation",
+    "material",
+    "theme"
+  ],
+  "dependencies": {
+    "breakpoint-sass": "~2.4.2"
+  }
+}
