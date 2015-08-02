@@ -24,6 +24,6 @@
     "theme"
   ],
   "dependencies": {
-    "breakpoint-sass": "~2.4.2"
+    "breakpoint-sass": "~2.6.1"
   }
 }
