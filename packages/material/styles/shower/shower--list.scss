@@ -1,0 +1,13 @@
+// ------------------------------------------------------------------
+// Shower List
+// ------------------------------------------------------------------
+
+.shower--list {
+
+	background:#EEE;
+
+	@import '../caption/caption--list';
+	@import '../section/section--list';
+	@import '../badge/badge--list';
+
+	}

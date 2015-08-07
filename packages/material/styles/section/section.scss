@@ -1,0 +1,38 @@
+// ------------------------------------------------------------------
+// Section
+// ------------------------------------------------------------------
+// 1. Number ........... Red ribbon with page number
+// 2. Elements ......... Content elements
+// 3. Modifiers......... Slide modifiers
+// ------------------------------------------------------------------
+
+.shower > section {
+
+	position:relative;
+	z-index:1;
+	overflow:hidden;
+	width:$width;
+	height:$height;
+	background:#FFF;
+
+	// Elements
+
+	@import 'basic';
+	@import 'inline';
+	@import 'quote';
+	@import 'lists';
+	@import 'table';
+	@import 'code';
+	@import 'double';
+	@import 'shout';
+	@import 'cover';
+	@import 'place';
+	@import 'footer';
+
+	// Modifiers
+
+	@import 'section--grid';
+	@import 'section--black';
+	@import 'section--white';
+
+	}

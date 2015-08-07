@@ -1,0 +1,28 @@
+// ------------------------------------------------------------------
+// Shower
+// ------------------------------------------------------------------
+
+.shower {
+
+	color:$black;
+	counter-reset:slide;
+	font:24px/2 Roboto, sans-serif;
+
+	-webkit-print-color-adjust:exact;
+	-webkit-text-size-adjust:none;
+	-moz-text-size-adjust:none;
+	-ms-text-size-adjust:none;
+
+	a {
+		@include underline(currentColor, 0.09);
+		color:$color;
+		text-decoration:none;
+		}
+
+	// Print
+
+	@media print {
+		text-rendering:geometricPrecision;
+		}
+
+	}
