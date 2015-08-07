@@ -5,11 +5,11 @@
 //    - Width .......... Default slide width 1024 px
 //    - Height ......... Height calculated based on width and ratio
 //    - Gap ............ Gap between slides in list mode
-// 2. Colors ........... Global layout and color variables
-// 2. Retina ........... Retina detection mixin
-// 3. Underliner ....... Mixin for drawing lines using gradient
-// 4. Breakpoints ...... MQ generator based on slides scale factor
-// 5. Offscreen ........ Mixing for hiding things in accessible way
+// 2. Colors ........... Global color variables
+// 3. Retina ........... Retina detection mixin
+// 4. Underliner ....... Mixin for drawing lines using gradient
+// 5. Breakpoints ...... MQ generator based on slides scale factor
+// 6. Offscreen ........ Mixing for hiding things in accessible way
 // ------------------------------------------------------------------
 
 // Sizes
@@ -20,9 +20,7 @@ $gap:100px;
 
 // Colors
 
-$blue:#4B86C2;
-$yellow:#FAFAA2;
-$grey:#585A5E;
+$color:#009788;
 
 // Retina
 
