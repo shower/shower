@@ -4,7 +4,17 @@
 
 .shower--list {
 
+	width:100%;
+	display:flex;
+	flex-wrap:wrap;
 	background:#EEE;
+
+	// IE10-11 scrolling fix
+
+	position:absolute;
+	clip:rect(0, auto, auto, 0);
+
+	// Elements
 
 	@import '../caption/caption--list';
 	@import '../section/section--list';

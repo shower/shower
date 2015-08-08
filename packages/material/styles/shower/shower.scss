@@ -13,12 +13,6 @@
 	-moz-text-size-adjust:none;
 	-ms-text-size-adjust:none;
 
-	a {
-		@include underline(currentColor, 0.09);
-		color:$color;
-		text-decoration:none;
-		}
-
 	// Print
 
 	@media print {

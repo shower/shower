@@ -12,18 +12,25 @@
 
 	transform-origin:0 0;
 
-	@mixin scale-section($scale) {
-		$magic:1 - 1 / $scale;
-		margin:0 (0 - $width * $magic) ($gap / $scale - $height * $magic) $gap / $scale;
-		transform:scale(1 / $scale);
+	@each $scale in 4, 2, 1 {
+		@include scale-breakpoint($scale) {
+			$magic:1 - 1 / $scale;
+			margin:0 (0 - $width * $magic) ($gap / $scale - $height * $magic) $gap / $scale;
+			transform:scale(1 / $scale);
+			}
 		}
 
-	@include scale-section(4);
+	// Shadow
 
-	@each $scale in 2, 1 {
-		@include scale-breakpoint($scale) {
-			@include scale-section($scale);
-			}
+	border-radius:3px;
+
+	@include shadow(2, 2);
+
+	&:hover {
+		@include shadow(4, 1);
+		}
+	&:target {
+		@include shadow(2, 1);
 		}
 
 	// Content

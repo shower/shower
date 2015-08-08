@@ -1,7 +1,46 @@
 // ------------------------------------------------------------------
 // Caption List
 // ------------------------------------------------------------------
+// 1. Calculations ..... Font-size calculations
+// 2. Decoration ....... Global caption styling
+// 3. Contents ......... Caption’s contents
+// ------------------------------------------------------------------
 
 .shower__caption {
+
+	// Calculations
+
+	@each $scale in 4, 2, 1 {
+		@include scale-breakpoint($scale) {
+			font-size:32px / $scale;
+			}
+		}
+
+	// Decoration
+
+	width:100%;
 	display:block;
+	margin-bottom:3em;
+	padding:2em 3em;
+	background:linear-gradient(
+		135deg, $color 50%,
+		mix(black, $color, 10%) 50%
+		);
+	color:#FFF;
+	line-height:1.1;
+	font-family:Roboto Light, sans-serif;
+
+	// Contents
+
+	h1 {
+		font-size:3.5em;
+		}
+	p {
+		color:mix(white, $color, 70%);
+		font-size:1.5em;
+		}
+	a {
+		color:inherit;
+		}
+
 	}

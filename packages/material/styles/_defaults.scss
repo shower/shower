@@ -2,9 +2,9 @@
 // Defaults
 // ------------------------------------------------------------------
 // 1. Sizes ............ Global layout and color variables
-//    - Width .......... Default slide width 1024 px
-//    - Height ......... Height calculated based on width and ratio
-//    - Gap ............ Gap between slides in list mode
+//	- Width ............ Default slide width 1024 px
+//	- Height ........... Height calculated based on width and ratio
+//	- Gap .............. Gap between slides in list mode
 // 2. Colors ........... Global color variables
 // 3. Retina ........... Retina detection mixin
 // 4. Underliner ....... Mixin for drawing lines using gradient
@@ -16,13 +16,13 @@
 
 $width:1024px;
 $height:$width/$ratio;
-$gap:100px;
+$gap:96px;
 
 // Colors
 
 $color:#009788;
-$black:rgba(black, 0.87);
-$grey:rgba(black, 0.54);
+$black:mix(black, white, 87%);
+$grey:mix(black, white, 54%);
 
 // Retina
 
@@ -46,8 +46,13 @@ $grey:rgba(black, 0.54);
 // Breakpoints
 
 @mixin scale-breakpoint($scale) {
-	@include breakpoint(2 * ($width / $scale) + ($gap / $scale) * 3) {
+	@if $scale == 4 {
 		@content;
+		}
+	@else {
+		@include breakpoint(2 * ($width / $scale) + ($gap / $scale) * 3) {
+			@content;
+			}
 		}
 	}
 
@@ -63,3 +68,101 @@ $grey:rgba(black, 0.54);
 	height:1px;
 	border:none;
 	}
+
+// Shadows
+
+$shadows:(
+	2:(
+		0 3px 1px -2px,
+		0 3px 1px -2px,
+		0 1px 5px 0
+		),
+	3:(
+		0 3px 4px 0,
+		0 3px 3px -2px,
+		0 1px 8px 0
+		),
+	4:(
+		0 4px 5px 0,
+		0 1px 10px 0,
+		0 2px 4px -1px
+		),
+	6:(
+		0 6px 10px 0,
+		0 1px 18px 0,
+		0 3px 5px -1px
+		),
+	8:(
+		0 8px 10px 1px,
+		0 3px 14px 2px,
+		0 5px 5px -3px
+		),
+	16:(
+		0 16px 24px 2px,
+		0 6px 30px 5px,
+		0 8px 10px -5px
+		)
+	);
+$shadow-opacity:
+	0.2, 0.14, 0.12;
+
+@mixin shadow($dp, $scale) {
+	$list:map-get($shadows, $dp);
+	@each $item in $list {
+		$index:index($list, $item);
+		@each $number in $item {
+			$item:set-nth(
+				$item,
+				index($item, $number),
+				$number * $scale
+				)
+			}
+		$item:append(
+			$item,
+			rgba(0, 0, 0, nth($shadow-opacity, $index))
+			);
+		$list:set-nth(
+			$list,
+			$index,
+			$item
+			);
+		}
+	box-shadow:$list;
+	}
+
+// @mixin shadow-2dp() {
+// 	box-shadow:
+// 		0 2px 2px 0 rgba(0, 0, 0, 0.2),
+// 		0 3px 1px -2px rgba(0, 0, 0, 0.14),
+// 		0 1px 5px 0 rgba(0, 0, 0, 0.12);
+// 	}
+// @mixin shadow-3dp() {
+// 	box-shadow:
+// 		0 3px 4px 0 rgba(0, 0, 0, 0.2),
+// 		0 3px 3px -2px rgba(0, 0, 0, 0.14),
+// 		0 1px 8px 0 rgba(0, 0, 0, 0.12);
+// 	}
+// @mixin shadow-4dp() {
+// 	box-shadow:
+// 		0 4px 5px 0 rgba(0, 0, 0, 0.2),
+// 		0 1px 10px 0 rgba(0, 0, 0, 0.14),
+// 		0 2px 4px -1px rgba(0, 0, 0, 0.12);
+// 	}
+// @mixin shadow-6dp() {
+// 	box-shadow:
+// 		0 6px 10px 0 rgba(0, 0, 0, 0.2),
+// 		0 1px 18px 0 rgba(0, 0, 0, 0.14),
+// 		0 3px 5px -1px rgba(0, 0, 0, 0.12);
+// 	}
+// @mixin shadow-8dp() {
+// 	box-shadow:
+// 		0 8px 10px 1px rgba(0, 0, 0, 0.2),
+// 		0 3px 14px 2px rgba(0, 0, 0, 0.14),
+// 		0 5px 5px -3px rgba(0, 0, 0, 0.12);
+// 	}
+// @mixin shadow-16dp() {
+// 	box-shadow:
+// 		0 16px 24px 2px rgba(0, 0, 0, 0.2),
+// 		0 6px 30px 5px rgba(0, 0, 0, 0.14),
+// 		0 8px 10px -5px rgba(0, 0, 0, 0.12);
+// 	}
