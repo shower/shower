@@ -22,15 +22,17 @@
 
 	// Shadow
 
-	border-radius:3px;
-
-	@include shadow(2, 2);
-
-	&:hover {
-		@include shadow(4, 1);
-		}
-	&:target {
-		@include shadow(2, 1);
+	@each $scale in 4, 2, 1 {
+		@include scale-breakpoint($scale) {
+			border-radius:2px * $scale;
+			@include shadow(2, $scale);
+			&:hover {
+				@include shadow(4, $scale);
+				}
+			&:target {
+				@include shadow(16, $scale);
+				}
+			}
 		}
 
 	// Content

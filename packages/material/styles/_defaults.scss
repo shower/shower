@@ -103,7 +103,7 @@ $shadows:(
 		0 8px 10px -5px
 		)
 	);
-$shadow-opacity:
+$shadows-opacity:
 	0.2, 0.14, 0.12;
 
 @mixin shadow($dp, $scale) {
@@ -119,7 +119,7 @@ $shadow-opacity:
 			}
 		$item:append(
 			$item,
-			rgba(0, 0, 0, nth($shadow-opacity, $index))
+			rgba(0, 0, 0, nth($shadows-opacity, $index))
 			);
 		$list:set-nth(
 			$list,
