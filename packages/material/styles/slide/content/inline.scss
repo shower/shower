@@ -2,6 +2,10 @@
 // Content: Inline
 // ------------------------------------------------------------------
 
+a {
+	@include underline(currentColor, 0.09);
+	color:$color;
+	}
 b, strong {
 	font-weight:bold;
 	}
