@@ -1,0 +1,54 @@
+// ------------------------------------------------------------------
+// Content: Code
+// ------------------------------------------------------------------
+
+pre {
+
+	margin-bottom:1em;
+	counter-reset:code;
+	white-space:normal;
+	tab-size:4;
+
+	code {
+
+		display:block;
+		padding:0;
+		background:none;
+		line-height:2;
+		white-space:pre;
+
+		// Line numbers
+
+		&:before {
+			position:absolute;
+			margin-left:-2em;
+			color:lighten($grey, 25%);
+			counter-increment:code;
+			content:counter(code, decimal-leading-zero)'.';
+			}
+
+		// Numberless
+
+		&:only-child:before {
+			content:'';
+			}
+
+		}
+
+	// Marked
+
+	mark {
+
+		&.important {
+			background:#C00;
+			color:#FFF;
+			}
+		&.comment {
+			padding:0;
+			background:none;
+			color:#999;
+			}
+
+		}
+
+	}

@@ -1,0 +1,27 @@
+// ------------------------------------------------------------------
+// Section Full
+// ------------------------------------------------------------------
+
+.slide {
+
+	position:absolute;
+	top:0;
+	left:0;
+	margin-left:150%;
+	visibility:hidden;
+
+	&:target {
+		margin:0;
+		visibility:visible;
+		}
+
+	// Content
+
+	@import 'content/footer-full';
+
+	// Elements
+
+	@import 'elements/next-full';
+	@import 'elements/shout-full';
+
+	}

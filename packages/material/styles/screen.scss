@@ -1,4 +1,17 @@
+// ------------------------------------------------------------------
+// Screen
+// ------------------------------------------------------------------
+// 1. Breakpoint ....... Breakpoint library for handling MQs
+// 2. Global ........... Mixins, fonts, global defaults
+// 3. Elements ......... Theme’s global elements
+// 4. Modes ............ Styles specific to Full & List modes
+// ------------------------------------------------------------------
+
+// Breakpoint
+
 @import '../bower_components/breakpoint-sass/stylesheets/breakpoint';
+
+// Global
 
 @import
 	'defaults',
@@ -6,16 +19,19 @@
 	'reset',
 	'print';
 
+// Elements
+
 @import
 	'shower/shower',
 	'caption/caption',
-	'section/section',
+	'slide/slide',
 	'progress/progress',
-	'badge/badge',
-	'region/region';
+	'badge/badge';
+
+// Modes
 
 @media screen {
 	@import
-		'shower/shower--list',
-		'shower/shower--full';
+		'shower/shower-list',
+		'shower/shower-full';
 	}

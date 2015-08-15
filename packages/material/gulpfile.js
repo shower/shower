@@ -39,7 +39,7 @@ gulp.task('default', ['styles'], function() {
 // Styles
 
 gulp.task('styles', function () {
-	return gulp.src('styles/screen--*.scss')
+	return gulp.src('styles/screen-*.scss')
 		.pipe(sass())
 		.pipe(autoprefixer())
 		.pipe(cssmin())

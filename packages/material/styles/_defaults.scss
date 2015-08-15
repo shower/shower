@@ -2,13 +2,13 @@
 // Defaults
 // ------------------------------------------------------------------
 // 1. Sizes ............ Global layout and color variables
-//	- Width ............ Default slide width 1024 px
-//	- Height ........... Height calculated based on width and ratio
-//	- Gap .............. Gap between slides in list mode
+//    - Width .......... Default slide width 1024 px
+//    - Height ......... Height calculated based on width and ratio
+//    - Gap ............ Gap between slides in List mode
 // 2. Colors ........... Global color variables
 // 3. Retina ........... Retina detection mixin
 // 4. Underliner ....... Mixin for drawing lines using gradient
-// 5. Breakpoints ...... MQ generator based on slides scale factor
+// 5. Scale ............ MQ generator based on slides scale factor
 // 6. Offscreen ........ Mixing for hiding things in accessible way
 // ------------------------------------------------------------------
 
@@ -43,9 +43,9 @@ $grey:mix(black, white, 54%);
 		) repeat-x;
 	}
 
-// Breakpoints
+// Scale
 
-@mixin scale-breakpoint($scale) {
+@mixin scale($scale) {
 	@if $scale == 4 {
 		@content;
 		}

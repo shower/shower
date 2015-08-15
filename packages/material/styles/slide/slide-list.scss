@@ -1,0 +1,48 @@
+// ------------------------------------------------------------------
+// Section List
+// ------------------------------------------------------------------
+// 1. Scale ............ Scaling and size fitting with margin
+// 2. Shadow ........... Shadow, hovered and current outlines
+// 3. Content .......... Interaction in the list mode is disabled
+// ------------------------------------------------------------------
+
+.slide {
+
+	// Scale
+
+	transform-origin:0 0;
+
+	@each $scale in 4, 2, 1 {
+		@include scale($scale) {
+			$magic:1 - 1 / $scale;
+			margin:0 (0 - $width * $magic) ($gap / $scale - $height * $magic) $gap / $scale;
+			transform:scale(1 / $scale);
+			}
+		}
+
+	// Shadow
+
+	border-radius:2px;
+	box-shadow:0 20px 50px rgba(black, 0.3);
+
+	&:hover {
+		box-shadow:
+			0 0 0 20px rgba(black, 0.1),
+			0 20px 50px rgba(black, 0.3);
+		}
+	&:target {
+		box-shadow:
+			0 0 0 1px darken($color, 10%),
+			0 0 0 20px $color,
+			0 20px 50px rgba(black, 0.3);
+		}
+
+	// Content
+
+	* {
+		pointer-events:none;
+		}
+
+	@import 'content/footer-list';
+
+	}

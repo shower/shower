@@ -1,0 +1,26 @@
+// ------------------------------------------------------------------
+// Shower Full
+// ------------------------------------------------------------------
+
+.shower.full {
+
+	position:absolute;
+	top:50%;
+	left:50%;
+	overflow:hidden;
+	margin:(- $height / 2) 0 0 (- $width / 2);
+	width:$width;
+	height:$height;
+	background:#000;
+
+	// IE10-11 scrolling fix
+
+	clip:rect(0, auto, auto, 0);
+
+	// Elements
+
+	@import '../slide/slide-full';
+	@import '../progress/progress-full';
+	@import '../region/region-full';
+
+	}
