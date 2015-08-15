@@ -18,6 +18,8 @@
 
 	// Decoration
 
+	@include shadow(2, 1);
+
 	display:none;
 	margin-bottom:1em;
 	padding:1.02em 0 0.9em 1em;
