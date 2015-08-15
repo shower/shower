@@ -12,13 +12,15 @@
 
 	@each $scale in 4, 2, 1 {
 		@include scale($scale) {
-			font-size:100px / $scale;
+			font-size:$gap / $scale;
 			}
 		}
 
 	// Decoration
 
 	display:none;
+	margin-bottom:1em;
+	padding:1.02em 0 0.9em 1em;
 	width:100%;
 	background:linear-gradient(
 		135deg, $color 50%,
@@ -28,12 +30,14 @@
 	// Contents
 
 	h1 {
-		padding-bottom:0.15em;
-		font:bold 1em/1 PT Sans Narrow, sans-serif;
+		padding-bottom:0.28em;
+		color:#FFF;
+		font:1.17em/1 Roboto Light, sans-serif;
 		}
 	p {
-		line-height:1;
 		color:mix(white, $color, 70%);
+		line-height:1;
+		font-size:0.58em;
 		}
 	a {
 		color:inherit;

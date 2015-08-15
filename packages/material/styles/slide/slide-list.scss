@@ -22,19 +22,21 @@
 
 	// Shadow
 
-	border-radius:2px;
-	box-shadow:0 20px 50px rgba(black, 0.3);
+	@each $scale in 4, 2, 1 {
+		@include scale($scale) {
 
-	&:hover {
-		box-shadow:
-			0 0 0 20px rgba(black, 0.1),
-			0 20px 50px rgba(black, 0.3);
-		}
-	&:target {
-		box-shadow:
-			0 0 0 1px darken($color, 10%),
-			0 0 0 20px $color,
-			0 20px 50px rgba(black, 0.3);
+			border-radius:8px / $scale;
+
+			@include shadow(2, $scale);
+
+			&:hover {
+				@include shadow(4, $scale);
+				}
+			&:target {
+				@include shadow(8, $scale);
+				}
+
+			}
 		}
 
 	// Content
