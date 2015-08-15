@@ -13,10 +13,6 @@
 	height:$height;
 	background:#000;
 
-	// IE10-11 scrolling fix
-
-	clip:rect(0, auto, auto, 0);
-
 	// Elements
 
 	@import '../slide/slide-full';
