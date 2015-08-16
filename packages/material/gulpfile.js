@@ -1,12 +1,12 @@
 'use strict';
 
-var gulp = require('gulp'),
-	sass = require('gulp-sass'),
-	autoprefixer = require('gulp-autoprefixer'),
+var autoprefixer = require('gulp-autoprefixer'),
+	bump = require('gulp-bump'),
 	cssmin = require('gulp-cssmin'),
+	gulp = require('gulp'),
 	header = require('gulp-header'),
-	sync = require('browser-sync').create(),
-	bump = require('gulp-bump');
+	sass = require('gulp-sass'),
+	sync = require('browser-sync').create();
 
 // Banner
 
@@ -40,7 +40,7 @@ gulp.task('default', ['styles'], function() {
 
 gulp.task('styles', function () {
 	return gulp.src('styles/screen-*.scss')
-		.pipe(sass())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(cssmin())
 		.pipe(header(banner, { pkg: pkg }))
