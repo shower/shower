@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Content: Shout
+// Shout
 // ------------------------------------------------------------------
 
 .shout {
@@ -7,14 +7,32 @@
 	position:absolute;
 	top:50%;
 	left:0;
+	padding-left:96px;
 	width:100%;
-	text-align:center;
-	line-height:1;
-	font-size:150px;
+	color:#FFF;
+	line-height:1.1;
+	font-size:112px;
 	transform:translateY(-50%);
 
+	// Back
+
+	&:after {
+		position:absolute;
+		top:-250%;
+		right:0;
+		bottom:-250%;
+		left:0;
+		z-index:-1;
+		background:linear-gradient(
+			135deg, $color 50%,
+			mix(black, $color, 10%) 50%
+			);
+		content:'';
+		}
+
 	a {
-		@include underline(currentColor, 0.11);
+		@include underline(currentColor, 0.06);
+		color:inherit;
 		}
 
 	}
