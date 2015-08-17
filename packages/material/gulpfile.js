@@ -1,7 +1,6 @@
 'use strict';
 
 var autoprefixer = require('gulp-autoprefixer'),
-	bump = require('gulp-bump'),
 	cssmin = require('gulp-cssmin'),
 	gulp = require('gulp'),
 	header = require('gulp-header'),
@@ -46,24 +45,4 @@ gulp.task('styles', function () {
 		.pipe(header(banner, { pkg: pkg }))
 		.pipe(gulp.dest('styles/'))
 		.pipe(sync.stream());
-});
-
-// Version
-
-gulp.task('patch', function(){
-	gulp.src(['./bower.json', './package.json'])
-		.pipe(bump())
-		.pipe(gulp.dest('./'));
-});
-
-gulp.task('minor', function(){
-	gulp.src(['./bower.json', './package.json'])
-		.pipe(bump({ type: 'minor' }))
-		.pipe(gulp.dest('./'));
-});
-
-gulp.task('major', function(){
-	gulp.src(['./bower.json', './package.json'])
-		.pipe(bump({ type: 'major' }))
-		.pipe(gulp.dest('./'));
 });
