@@ -6,7 +6,8 @@
 
 	color:$black;
 	counter-reset:slide;
-	font:24px/2 Roboto, sans-serif;
+	line-height:1;
+	font-family:Roboto, sans-serif;
 
 	-webkit-print-color-adjust:exact;
 	-webkit-text-size-adjust:none;

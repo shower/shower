@@ -3,13 +3,13 @@
 // ------------------------------------------------------------------
 
 h2 {
-	margin-bottom:34px;
+	margin-bottom:32px;
 	color:$black;
 	font:48px/1 Roboto Light, sans-serif;
 	}
 p {
 	margin-bottom:1em;
 	&.note {
-		color:lighten($grey, 25%);
+		color:$medium;
 		}
 	}

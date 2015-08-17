@@ -11,26 +11,22 @@
 	position:relative;
 	z-index:1;
 	overflow:hidden;
-	padding:106px 100px 0;
+	padding:104px 112px 0 96px;
 	width:$width;
 	height:$height;
 	background:#FFF;
-	font-size:25px;
+	line-height:2;
+	font-size:24px;
 
 	// Number
 
 	&:after {
 		position:absolute;
-		top:0;
-		right:100px;
-		padding-top:15px;
-		width:50px;
-		height:100px;
-		background:url(../images/ribbon.svg) no-repeat;
-		color:#FFF;
+		left:96px;
+		bottom:48px;
+		color:$light;
 		counter-increment:slide;
 		content:counter(slide);
-		text-align:center;
 		}
 
 	// Content

@@ -17,7 +17,7 @@ ol, ul {
 		&:before {
 			display:inline-block;
 			width:2em;
-			color:lighten($grey, 25%);
+			color:$light;
 			text-align:right;
 			}
 

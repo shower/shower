@@ -22,7 +22,7 @@ pre {
 		&:before {
 			position:absolute;
 			margin-left:-2em;
-			color:lighten($grey, 25%);
+			color:$medium;
 			counter-increment:code;
 			content:counter(code, decimal-leading-zero)'.';
 			}
