@@ -1,5 +1,5 @@
 // ------------------------------------------------------------------
-// Footer List
+// Footer
 // ------------------------------------------------------------------
 
 footer {
@@ -8,6 +8,7 @@ footer {
 	right:0;
 	bottom:- $height;
 	left:0;
+	display:none;
 	padding:41px 100px 8px;
 	background:lighten(#C8E6C9, 5%);
 	box-shadow:0 1px 0 #C8E6C9 inset;
