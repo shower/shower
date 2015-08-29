@@ -22,8 +22,5 @@
     "presentation",
     "material",
     "theme"
-  ],
-  "dependencies": {
-    "breakpoint-sass": "~2.6.1"
-  }
+  ]
 }
