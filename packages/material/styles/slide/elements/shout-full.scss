@@ -1,32 +1,15 @@
 // ------------------------------------------------------------------
 // Shout Full
 // ------------------------------------------------------------------
+// 1. Animation ........ Backdrop animation
+// ------------------------------------------------------------------
 
-.shout {
+// Animation
 
-	&.grow,
-	&.shrink {
-		opacity:0;
-		transition:0.4s ease-out;
-		transition-property:opacity, transform;
-		}
-	&.grow {
-		transform:scale(0.1) translateY(-50%);
-		}
-	&.shrink {
-		transform:scale(10) translateY(-50%);
-		}
-
+.shout:after {
+	background-position:$width 0;
+	transition:background-position 0.4s ease-out;
 	}
-
-// Animation Trigger
-
-&:target .shout {
-
-	&.grow,
-	&.shrink {
-		opacity:1;
-		transform:scale(1) translateY(-50%);
-		}
-
+&:target .shout:after {
+	background-position:0 0;
 	}
