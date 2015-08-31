@@ -10,7 +10,8 @@
 // 4. Underliner ....... Mixin for drawing lines using gradient
 // 5. Scale ............ MQ generator based on slides scale factor
 // 6. Offscreen ........ Mixing for hiding things in accessible way
-// 7. Shadows .......... Canonical Material Design shadows
+// 7. Diagonal ......... Two-half gradient rotated by 135 degrees
+// 8. Shadows .......... Canonical Material Design shadows
 // ------------------------------------------------------------------
 
 // Sizes
@@ -22,10 +23,17 @@ $gap:96px;
 // Colors
 
 $color:#43A047;
+
 $black:mix(black, white, 87%);
 $dark:mix(black, white, 54%);
 $medium:mix(black, white, 38%);
 $light:mix(black, white, 26%);
+$back:#EEE;
+
+// TODO: MD palette
+
+$yellow:#FAFAC4;
+$red:#C00;
 
 // Retina
 
@@ -70,6 +78,15 @@ $light:mix(black, white, 26%);
 	width:1px;
 	height:1px;
 	border:none;
+	}
+
+// Diagonal
+
+@function diagonal() {
+	@return linear-gradient(
+		135deg, $color 50%,
+		mix(black, $color, 10%) 50%
+		)
 	}
 
 // Shadows

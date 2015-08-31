@@ -1,9 +1,10 @@
 // ------------------------------------------------------------------
 // Slide
 // ------------------------------------------------------------------
-// 1. Number ........... Red ribbon with page number
-// 2. Elements ......... Content elements
+// 1. Number ........... Page number
+// 2. Content .......... Various content types
 // 3. Modifiers......... Slide modifiers
+// 4. Elements ......... Content elements
 // ------------------------------------------------------------------
 
 .slide {
@@ -14,7 +15,7 @@
 	padding:104px 112px 0 96px;
 	width:$width;
 	height:$height;
-	background:#FFF;
+	background:white;
 	line-height:2;
 	font-size:24px;
 

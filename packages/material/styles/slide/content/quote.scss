@@ -9,7 +9,7 @@ blockquote {
 	&:before {
 		position:absolute;
 		margin:-0.15em 0 0 -0.43em;
-		color:#CCC;
+		color:$light;
 		line-height:1;
 		font-size:8em;
 		content:'\201C';

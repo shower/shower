@@ -18,12 +18,12 @@ code, kbd, mark, samp {
 	}
 kbd, code, samp {
 	background:$light;
-	color:#000;
+	color:black;
 	line-height:1;
-	font-family:PT Mono, monospace, monospace;
+	font-family:Roboto Mono, monospace, monospace;
 	}
 mark {
-	// background:$yellow;
+	background:$yellow;
 	}
 sub, sup {
 	position: relative;

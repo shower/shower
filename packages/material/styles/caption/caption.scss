@@ -24,16 +24,13 @@
 	margin-bottom:1em;
 	padding:1.02em 0 0.9em 1em;
 	width:100%;
-	background:linear-gradient(
-		135deg, $color 50%,
-		mix(black, $color, 10%) 50%
-		);
+	background:$color diagonal() no-repeat;
 
 	// Contents
 
 	h1 {
 		padding-bottom:0.28em;
-		color:#FFF;
+		color:white;
 		font:1.17em/1 Roboto Light, sans-serif;
 		}
 	p {
