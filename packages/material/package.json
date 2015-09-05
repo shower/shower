@@ -22,9 +22,9 @@
     "theme"
   ],
   "devDependencies": {
-    "browser-sync": "^2.8.2",
+    "browser-sync": "^2.9.1",
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
+    "gulp-autoprefixer": "^3.0.1",
     "gulp-cssmin": "^0.1.7",
     "gulp-header": "^1.7.1",
     "gulp-sass": "^2.0.4"
