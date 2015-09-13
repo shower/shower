@@ -7,6 +7,8 @@ var autoprefixer = require('gulp-autoprefixer'),
 	sass = require('gulp-sass'),
 	sync = require('browser-sync').create();
 
+require('gulp-release-it')(gulp);
+
 // Banner
 
 var pkg = require('./package.json');
