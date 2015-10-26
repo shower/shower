@@ -203,17 +203,17 @@ window.shower = (function(window, document, undefined) {
 		}
 
 		slideSelector = slideSelector || '.slide';
-		progressSelector = progressSelector || 'div.progress div';
+		progressSelector = progressSelector || '.progress';
 
-		var liveRegion = document.createElement('section');
+		var region = document.createElement('section');
 
-		liveRegion.className = 'live-region';
-		liveRegion.setAttribute('role', 'region');
-		liveRegion.setAttribute('aria-live', 'assertive');
-		liveRegion.setAttribute('aria-relevant', 'additions');
-		liveRegion.setAttribute('aria-label', 'Slide Content: Auto-updating');
+		region.className = 'region';
+		region.setAttribute('role', 'region');
+		region.setAttribute('aria-live', 'assertive');
+		region.setAttribute('aria-relevant', 'additions');
+		region.setAttribute('aria-label', 'Slide Content: Auto-updating');
 
-		document.body.appendChild(liveRegion);
+		document.body.appendChild(region);
 
 		slides = document.querySelectorAll(slideSelector);
 		progress = document.querySelector(progressSelector);
@@ -780,8 +780,8 @@ window.shower = (function(window, document, undefined) {
 				slide.classList.remove('visited');
 				slide.classList.add('active');
 
-				// Update live region with content from current slide
-				document.querySelector('.live-region').innerHTML = slide.innerHTML;
+				// Update region with content from current slide
+				document.querySelector('.region').innerHTML = slide.innerHTML;
 			}
 		}
 
