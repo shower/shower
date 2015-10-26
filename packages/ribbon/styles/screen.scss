@@ -1,22 +1,22 @@
 // Ribbon theme for Shower HTML presentation engine: github.com/shower/shower
-// Copyright © 2010–2014 Vadim Makeev, pepelsbey.net
+// Copyright © 2010–2015 Vadim Makeev, pepelsbey.net
 // Licensed under MIT license: github.com/shower/shower/wiki/MIT-License
 
 @import 'defaults';
 @import 'fonts';
 @import 'reset';
 
-body {
+.shower {
 	counter-reset:slide;
 	font:25px/2 'PT Sans', sans-serif;
 	@media print {
 		text-rendering:geometricPrecision;
 		}
-	}
-a {
-	color:$blue;
-	@include underline(currentColor, 0.09);
-	text-decoration:none;
+	a {
+		color:$blue;
+		@include underline(currentColor, 0.09);
+		text-decoration:none;
+		}
 	}
 
 // Caption
@@ -70,9 +70,9 @@ a {
 			}
 		}
 
-// Live Region
+// Region
 // -------------------------------
-.live-region {
+.region {
 	display:none;
 	}
 
@@ -382,7 +382,7 @@ a {
 // Screen
 @media screen {
 	// List
-	.list {
+	.shower.list {
 		position:absolute;
 		clip:rect(0, auto, auto, 0); // Having fun with IE10
 		padding:80px 0 40px 100px;
@@ -498,7 +498,7 @@ a {
 			}
 		}
 	// Full
-	.full {
+	.shower.full {
 		position:absolute;
 		top:50%;
 		left:50%;
@@ -518,8 +518,8 @@ a {
 			background:url(../images/grid-#{$ratio}.svg) no-repeat;
 			content:'';
 			}
-		// Live Region
-		.live-region {
+		// Region
+		.region {
 			@include offscreen;
 			display:block;
 			}
@@ -562,25 +562,20 @@ a {
 			}
 		// Progress
 		.progress {
+			$size:10px;
 			position:absolute;
-			right:0;
+			left:- $size * 2;
 			bottom:0;
-			left:0;
-			overflow:hidden;
-			height:10px;
 			z-index:1;
-			div {
-				position:absolute;
-				left:-20px;
-				top:-10px;
-				width:0;
-				height:0;
-				border:10px solid transparent;
-				border-bottom-color:$blue;
-				transition:width 0.2s linear;
-				&[style*='100%'] {
-					left:0;
-					}
+			width:0;
+			height:0;
+			box-sizing:content-box;
+			border:$size solid $blue;
+			border-right-color:transparent;
+			transition:width 0.2s linear;
+			clip:rect($size, $width + $size * 2, $size * 2, $size * 2);
+			&[style*='100%'] {
+				padding-left:$size;
 				}
 			}
 		}
