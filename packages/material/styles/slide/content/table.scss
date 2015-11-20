@@ -4,13 +4,22 @@
 
 table {
 
+	margin-left:-96px;
 	margin-bottom:1em;
-	width:100%;
+	width:calc(100% + 96px + 112px);
 
 	tr:not(:last-of-type) {
 		> * {
 			@include underline($light, 0.055);
 			}
+		}
+	th:first-child,
+	td:first-child {
+		padding-left:96px;
+		}
+	th:last-child,
+	td:last-child {
+		padding-right:96px;
 		}
 	th {
 		text-align:left;
@@ -22,7 +31,7 @@ table {
 	&.striped {
 		tr {
 			&:nth-child(even) {
-				background:rgba($light, 0.15);
+				background:mix($color, white, 10%);
 				}
 			> * {
 				background-image:none;
