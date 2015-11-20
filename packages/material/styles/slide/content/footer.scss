@@ -10,7 +10,7 @@ footer {
 	left:0;
 	display:none;
 	padding:41px 100px 8px;
-	background:$yellow;
+	background:mix($color, white, 10%);
 	box-shadow:0 0 0 2px rgba(black, 0.05);
 	transition:bottom 0.3s;
 

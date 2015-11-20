@@ -14,16 +14,15 @@ i, em, dfn {
 	}
 code, kbd, mark, samp {
 	padding:0.1em 0.3em;
-	border-radius:0.4em;
 	}
 kbd, code, samp {
-	background:$light;
+	background:$back;
 	color:black;
 	line-height:1;
 	font-family:Roboto Mono, monospace, monospace;
 	}
 mark {
-	background:$yellow;
+	background:mix($color, white, 10%);
 	}
 sub, sup {
 	position: relative;
