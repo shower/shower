@@ -32,9 +32,9 @@
 
 	&:after {
 		position:absolute;
-		top:-250%;
+		top:-300%;
 		right:0;
-		bottom:-250%;
+		bottom:-300%;
 		left:0;
 		z-index:-1;
 		background:$color diagonal() no-repeat;
