@@ -8,17 +8,11 @@ footer {
 	right:0;
 	bottom:- $height;
 	left:0;
+	z-index:1;
 	display:none;
-	padding:41px 100px 8px;
+	padding:2em 112px 1em 96px;
 	background:mix($color, white, 10%);
-	box-shadow:0 0 0 2px rgba(black, 0.05);
 	transition:bottom 0.3s;
-
-	// Content
-
-	mark {
-		background:rgba(white, 0.8);
-		}
 
 	}
 
