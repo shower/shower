@@ -8,11 +8,12 @@ blockquote {
 
 	&:before {
 		position:absolute;
-		margin:-0.15em 0 0 -0.43em;
+		margin:-0.04em 0 0 -0.4em;
 		color:$light;
 		line-height:1;
-		font-size:8em;
-		content:'\201C';
+		font-style:normal;
+		font-size:7em;
+		content:'\201D';
 		}
 
 	// Author
