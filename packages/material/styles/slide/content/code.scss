@@ -57,6 +57,8 @@ pre {
 
 	mark {
 
+		background:mix($color, white, 20%);
+
 		// Important
 
 		&.important {
