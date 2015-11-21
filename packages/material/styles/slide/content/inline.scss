@@ -14,15 +14,11 @@ i, em, dfn {
 	}
 code, kbd, mark, samp {
 	padding:0.1em 0.3em;
+	background:mix($color, white, 20%);
 	}
-kbd, code, samp {
-	background:$back;
-	color:black;
+code, kbd, samp {
 	line-height:1;
 	font-family:Roboto Mono, monospace, monospace;
-	}
-mark {
-	background:mix($color, white, 10%);
 	}
 sub, sup {
 	position: relative;

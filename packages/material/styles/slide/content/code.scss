@@ -57,7 +57,9 @@ pre {
 
 	mark {
 
-		background:mix($color, white, 20%);
+		position:relative;
+		z-index:-1;
+		margin:0 -0.3em;
 
 		// Important
 
@@ -69,6 +71,7 @@ pre {
 		// Comment
 
 		&.comment {
+			margin:0;
 			padding:0;
 			background:none;
 			color:$medium;
