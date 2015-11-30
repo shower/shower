@@ -1,6 +1,10 @@
 // ------------------------------------------------------------------
 // Table
 // ------------------------------------------------------------------
+// 1. Cells ............ Paddings and alignment
+// 2. Lines ............ Row dividing lines
+// 3. Stripes. ......... Background for even lines
+// ------------------------------------------------------------------
 
 table {
 
@@ -8,11 +12,8 @@ table {
 	margin-bottom:1em;
 	width:calc(100% + 96px + 112px);
 
-	tr:not(:last-of-type) {
-		> * {
-			@include underline($light, 0.055);
-			}
-		}
+	// Cells
+
 	th:first-child,
 	td:first-child {
 		padding-left:96px;
@@ -26,7 +27,15 @@ table {
 		font-weight:bold;
 		}
 
-	// Striped
+	// Lines
+
+	tr:not(:last-of-type) {
+		> * {
+			@include underline($light, 0.055);
+			}
+		}
+
+	// Stripes
 
 	&.striped {
 		tr {
