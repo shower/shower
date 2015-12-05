@@ -24,10 +24,11 @@ var banner = `/**
 
 gulp.task('default', ['styles'], function() {
 	sync.init({
+		ui: false,
 		notify: false,
 		server: {
-			baseDir: './',
-			routes: {
+			baseDir: '.',
+ 			routes: {
 				'/shower-core': '../shower-core'
 			}
 		}
@@ -45,6 +46,6 @@ gulp.task('styles', function () {
 		.pipe(autoprefixer())
 		.pipe(minify())
 		.pipe(header(banner, { pkg: pkg }))
-		.pipe(gulp.dest('styles/'))
+		.pipe(gulp.dest('styles'))
 		.pipe(sync.stream());
 });
