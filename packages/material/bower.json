@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": [
-    "styles/screen--16x10.css",
-    "styles/screen--4x3.css"
+    "styles/screen-16x10.css",
+    "styles/screen-4x3.css"
   ],
   "ignore": [
     "*",
