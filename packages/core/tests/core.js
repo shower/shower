@@ -41,22 +41,22 @@ casper.test.begin('Progress resizing', 6, function suite(test) {
 	casper.start('http://0.0.0.0:7497/tests/').then(function() {
 
 		this.sendKeys('body', casper.page.event.key.Right);
-		test.assertNot(this.getElementAttribute('.progress div', 'style').indexOf('width: 0%'), '1st step, width is 0%');
+		test.assertNot(this.getElementAttribute('.progress', 'style').indexOf('width: 0%'), '1st step, width is 0%');
 
 		this.sendKeys('body', casper.page.event.key.Right);
-		test.assertNot(this.getElementAttribute('.progress div', 'style').indexOf('width: 20%'), '2nd step, width is 20%');
+		test.assertNot(this.getElementAttribute('.progress', 'style').indexOf('width: 20%'), '2nd step, width is 20%');
 
 		this.sendKeys('body', casper.page.event.key.Right);
-		test.assertNot(this.getElementAttribute('.progress div', 'style').indexOf('width: 40%'), '3rd step, width is 40%');
+		test.assertNot(this.getElementAttribute('.progress', 'style').indexOf('width: 40%'), '3rd step, width is 40%');
 
 		this.sendKeys('body', casper.page.event.key.Right);
-		test.assertNot(this.getElementAttribute('.progress div', 'style').indexOf('width: 60%'), '4th step, width is 60%');
+		test.assertNot(this.getElementAttribute('.progress', 'style').indexOf('width: 60%'), '4th step, width is 60%');
 
 		this.sendKeys('body', casper.page.event.key.Right);
-		test.assertNot(this.getElementAttribute('.progress div', 'style').indexOf('width: 80%'), '5th step, width is 80%');
+		test.assertNot(this.getElementAttribute('.progress', 'style').indexOf('width: 80%'), '5th step, width is 80%');
 
 		this.sendKeys('body', casper.page.event.key.Right);
-		test.assertNot(this.getElementAttribute('.progress div', 'style').indexOf('width: 100%'), '6th step, width is 100%');
+		test.assertNot(this.getElementAttribute('.progress', 'style').indexOf('width: 100%'), '6th step, width is 100%');
 
 		this.evaluate(function () {
 			sessionStorage.clear();
