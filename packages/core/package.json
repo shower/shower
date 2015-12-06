@@ -1,7 +1,7 @@
 {
   "name": "shower-core",
   "description": "Core for Shower HTML presentation engine",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "author": {
     "name": "Vadim Makeev",
     "url": "http://pepelsbey.com/"
@@ -14,12 +14,7 @@
   "bugs": {
     "url": "http://github.com/shower/shower/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/shower/shower/wiki/MIT-License"
-    }
-  ],
+  "license": "MIT",
   "keywords": [
     "shower",
     "presentation",
@@ -30,12 +25,12 @@
     "grunt-bump": "^0.6.0",
     "grunt-casperjs": "2.1.0",
     "grunt-contrib-connect": "^0.11.2",
-    "grunt-contrib-uglify": "^0.9.2",
+    "grunt-contrib-uglify": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-jscs": "^2.2.0",
+    "grunt-jscs": "^2.4.0",
     "load-grunt-tasks": "^3.3.0"
   },
   "scripts": {
-    "test": "node -e \"require('grunt').tasks(['test'])\""
+    "test": "grunt test"
   }
 }
