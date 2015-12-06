@@ -26,7 +26,7 @@
     "grunt-autoprefixer": "^3.0.3",
     "grunt-bump": "0.6.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-csso": "^0.7.1",
+    "grunt-csso": "^0.8.0",
     "grunt-sass": "^1.1.0",
     "load-grunt-tasks": "^3.3.0"
   }
