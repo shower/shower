@@ -31,6 +31,6 @@
     "load-grunt-tasks": "^3.3.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "node -e \"require('grunt').tasks(['test'])\""
   }
 }
