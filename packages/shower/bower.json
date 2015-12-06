@@ -1,5 +1,6 @@
 {
   "name": "shower",
+  "version": "1.0.15",
   "license": "MIT",
   "main": "index.html",
   "ignore": [
@@ -16,8 +17,8 @@
     "template"
   ],
   "dependencies": {
-    "shower-bright": "~1.0.11",
-    "shower-core": "~1.0.7",
-    "shower-ribbon": "~1.0.11"
+    "shower-bright": "^1.1.0",
+    "shower-core": "^1.2.0",
+    "shower-ribbon": "^1.1.0"
   }
 }
