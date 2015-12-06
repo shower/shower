@@ -14,10 +14,61 @@ window.shower = (function(window, document, undefined) {
 		slides = [],
 		progress = [],
 		timer,
-		isHistoryApiSupported = ! ! (window.history && window.history.pushState);
+		Modes = {
+			FULL : 'full',
+			LIST : 'list'
+		};
 
 	// Shower debug mode env, could be overridden before shower.init
 	shower.debugMode = false;
+
+	/**
+	 * Configuration store.
+	 *
+	 * @param {Object} [initialState]
+	 */
+	function State(initialState) {
+		initialState = initialState || {};
+		this._storageKey = 'shower';
+		this._store = this._loadFromStorage() || initialState;
+	}
+
+	State.prototype = {
+		set : function(key, value) {
+			this._store[key] = value;
+			this._saveToStorage();
+			return this;
+		},
+
+		unset : function(key) {
+			delete this._store[key];
+			this._saveToStorage();
+			return this;
+		},
+
+		get : function(key, defaultValue) {
+			var value = this._store[key];
+			return typeof value !== 'undefined' ?
+				value : defaultValue;
+		},
+
+		_saveToStorage : function() {
+			window.sessionStorage.setItem(
+				this._storageKey,
+				JSON.stringify(this._store)
+			);
+		},
+
+		_loadFromStorage : function() {
+			var store = window.sessionStorage.getItem(this._storageKey);
+			return store && JSON.parse(store);
+		}
+	};
+
+	// Shower state.
+	shower.state = new State({
+		mode : Modes.LIST
+	});
 
 	/**
 	 * Slide constructor
@@ -569,14 +620,11 @@ window.shower = (function(window, document, undefined) {
 	shower.enterSlideMode = function(callback) {
 		var currentSlideNumber = shower.getCurrentSlideNumber();
 
+		shower.state.set('mode', Modes.FULL);
+
 		// Anyway: change body class (@TODO: refactoring)
 		document.body.classList.remove('list');
 		document.body.classList.add('full');
-
-		// Preparing URL for shower.go()
-		if (shower.isListMode() && isHistoryApiSupported) {
-			history.pushState(null, null, url.pathname + '?full' + shower.getSlideHash(currentSlideNumber));
-		}
 
 		shower._applyTransform(shower._getTransform());
 
@@ -608,12 +656,8 @@ window.shower = (function(window, document, undefined) {
 
 		currentSlideNumber = shower.getCurrentSlideNumber();
 
+		shower.state.set('mode', Modes.LIST);
 		shower.slideList[currentSlideNumber].stopTimer();
-
-		if (shower.isSlideMode() && isHistoryApiSupported) {
-			history.pushState(null, null, url.pathname + shower.getSlideHash(currentSlideNumber));
-		}
-
 		shower.scrollToSlide(currentSlideNumber);
 
 		if (typeof(callback) === 'function') {
@@ -704,11 +748,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.isListMode = function() {
-		if (isHistoryApiSupported) {
-			return ! /^full.*/.test(url.search.substr(1));
-		} else {
-			return document.body.classList.contains('list');
-		}
+		return shower.state.get('mode') === Modes.LIST;
 	};
 
 	/**
@@ -716,11 +756,7 @@ window.shower = (function(window, document, undefined) {
 	* @returns {Boolean}
 	*/
 	shower.isSlideMode = function() {
-		if (isHistoryApiSupported) {
-			return /^full.*/.test(url.search.substr(1));
-		} else {
-			return document.body.classList.contains('full');
-		}
+		return shower.state.get('mode') === Modes.FULL;
 	};
 
 	/**
@@ -792,7 +828,7 @@ window.shower = (function(window, document, undefined) {
 	* Clear presenter notes in console (only for Slide Mode).
 	*/
 	shower.clearPresenterNotes = function() {
-		if (shower.isSlideMode() && console && console.clear && ! shower.debugMode) {
+		if (shower.isSlideMode() && console && console.clear && shower.debugMode) {
 			console.clear();
 		}
 	};
@@ -804,7 +840,7 @@ window.shower = (function(window, document, undefined) {
 	shower.showPresenterNotes = function(slideNumber) {
 		shower.clearPresenterNotes();
 
-		if (console) {
+		if (console && shower.debugMode) {
 			slideNumber = shower._normalizeSlideNumber(slideNumber);
 
 			var slideId = shower.slideList[slideNumber].id,
@@ -841,6 +877,17 @@ window.shower = (function(window, document, undefined) {
 		}
 	};
 
+	shower._setTitle = function() {
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			isSlideMode = shower.isSlideMode();
+
+		if (shower._getSlideTitle(currentSlideNumber)) {
+			document.title = shower._getSlideTitle(currentSlideNumber) + ' — ' + presentationTitle;
+		} else {
+			document.title = presentationTitle;
+		}
+	}
+
 	/**
 	* Get slide hash.
 	* @param {Number} slideNumber slide number (sic!). Attention: starts from zero.
@@ -862,38 +909,24 @@ window.shower = (function(window, document, undefined) {
 	}
 
 	// Event handlers
-	window.addEventListener('DOMContentLoaded', function() {
-		shower.
-			init().
-			run();
-	}, false);
-
 	window.addEventListener('popstate', function() {
-		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			isSlideMode = document.body.classList.contains('full') || shower.isSlideMode();
+		var currentSlideNumber = shower.getCurrentSlideNumber();
 
-		if (shower._getSlideTitle(currentSlideNumber)) {
-			document.title = shower._getSlideTitle(currentSlideNumber) + ' — ' + presentationTitle;
-		} else {
-			document.title = presentationTitle;
-		}
+		shower._setTitle();
 
 		// Go to first slide, if hash id is invalid or isn't set.
 		// Same check is located in DOMContentLoaded event,
 		// but it not fires on hash change
-		if (isSlideMode && currentSlideNumber === -1) {
-			shower.go(0);
-
 		// In List mode, go to first slide only if hash id is invalid.
-		} else if (currentSlideNumber === -1 && url.hash !== '') {
+		if (currentSlideNumber === -1 && (shower.isSlideMode() || url.hash !== '')) {
 			shower.go(0);
 		}
+	}, false);
 
-		if (shower.isListMode()) {
-			shower.enterListMode();
-		} else {
-			shower.enterSlideMode();
-		}
+	window.addEventListener('DOMContentLoaded', function() {
+		shower.
+			init().
+			run();
 	}, false);
 
 	window.addEventListener('resize', function() {

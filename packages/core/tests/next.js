@@ -2,8 +2,9 @@
 // Through Nexts to the next slide
 // -------------------------------
 casper.test.begin('Through Nav to next slide', 4, function suite(test) {
-	casper.start('http://0.0.0.0:7497/tests/?full#5').then(function() {
+	casper.start('http://0.0.0.0:7497/tests/').then(function() {
 
+		this.click('[id="5"]');
 		this.sendKeys('body', casper.page.event.key.Right);
 		this.sendKeys('body', casper.page.event.key.Right);
 		this.sendKeys('body', casper.page.event.key.Right);
@@ -11,7 +12,11 @@ casper.test.begin('Through Nav to next slide', 4, function suite(test) {
 	}).then(function() {
 
 		test.assertExists('[id="5"].active', 'Slide #5 is active');
-		test.assertUrlMatch(/\/\?full#5/, 'Slide #5 in Full mode URL');
+		test.assertExists('body.full', 'Body in Full mode');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).then(function() {
 
@@ -20,7 +25,11 @@ casper.test.begin('Through Nav to next slide', 4, function suite(test) {
 	}).then(function() {
 
 		test.assertExists('[id="6"].active', 'Slide #6 is active');
-		test.assertUrlMatch(/\/\?full#6/, 'Slide #6 in Full mode URL');
+		test.assertExists('body.full', 'Body in Full mode');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });

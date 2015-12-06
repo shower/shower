@@ -11,6 +11,10 @@ casper.test.begin('Moving forward by Right', 2, function suite(test) {
 		test.assertExists('[id="2"].active', 'Next slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -25,6 +29,10 @@ casper.test.begin('Moving forward by Down', 2, function suite(test) {
 
 		test.assertExists('[id="2"].active', 'Next slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -41,6 +49,10 @@ casper.test.begin('Moving forward by Tab', 2, function suite(test) {
 		test.assertExists('[id="2"].active', 'Next slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -55,6 +67,10 @@ casper.test.begin('Not moving forward by Ctrl Tab', 2, function suite(test) {
 
 		test.assertExists('[id="1"].active', 'Current slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -71,6 +87,10 @@ casper.test.begin('Moving forward by J', 2, function suite(test) {
 		test.assertExists('[id="2"].active', 'Next slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -85,6 +105,10 @@ casper.test.begin('Moving forward by L', 2, function suite(test) {
 
 		test.assertExists('[id="2"].active', 'Next slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -101,6 +125,10 @@ casper.test.begin('Moving forward by Space', 2, function suite(test) {
 		test.assertExists('[id="2"].active', 'Next slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -115,6 +143,10 @@ casper.test.begin('Moving forward by PageDown', 2, function suite(test) {
 
 		test.assertExists('[id="2"].active', 'Next slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -131,6 +163,10 @@ casper.test.begin('Moving backward by Left', 2, function suite(test) {
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -145,6 +181,10 @@ casper.test.begin('Moving backward by Up', 2, function suite(test) {
 
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -161,6 +201,10 @@ casper.test.begin('Moving backward by Shift Tab', 2, function suite(test) {
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -175,6 +219,10 @@ casper.test.begin('Not moving backward by Ctrl Shift Tab', 2, function suite(tes
 
 		test.assertExists('[id="2"].active', 'Current slide #2 is active');
 		test.assertUrlMatch(/\/#2/, 'Slide #2 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -191,6 +239,10 @@ casper.test.begin('Moving backward by K', 2, function suite(test) {
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -205,6 +257,10 @@ casper.test.begin('Moving backward by H', 2, function suite(test) {
 
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -221,6 +277,10 @@ casper.test.begin('Moving backward by Shift Space', 2, function suite(test) {
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -235,6 +295,10 @@ casper.test.begin('Moving backward by PageUp', 2, function suite(test) {
 
 		test.assertExists('[id="1"].active', 'Previous slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -251,6 +315,10 @@ casper.test.begin('Moving to the first slide by Home', 2, function suite(test) {
 		test.assertExists('[id="1"].active', 'First slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -266,6 +334,10 @@ casper.test.begin('Moving to the first slide by End', 2, function suite(test) {
 		test.assertExists('[id="6"].active', 'Last slide #6 is active');
 		test.assertUrlMatch(/\/#6/, 'Slide #6 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
@@ -280,7 +352,11 @@ casper.test.begin('Entering Full by F5', 3, function suite(test) {
 
 		test.assertExists('body.full', 'Body in Full mode');
 		test.assertExists('[id="1"].active', 'First slide #1 is active');
-		test.assertUrlMatch(/\/\?full#1/, 'Slide #1 in Full mode URL');
+		test.assertUrlMatch(/\/\#1/, 'Slide #1 in Full mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -296,7 +372,11 @@ casper.test.begin('Entering Full by Shift F5', 3, function suite(test) {
 
 		test.assertExists('body.full', 'Body in Full mode');
 		test.assertExists('[id="MyID"].active', 'Current slide #MyID is active');
-		test.assertUrlMatch(/\/\?full#MyID/, 'Slide #MyID in Full mode URL');
+		test.assertUrlMatch(/\/\#MyID/, 'Slide #MyID in Full mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
@@ -304,8 +384,9 @@ casper.test.begin('Entering Full by Shift F5', 3, function suite(test) {
 // Exiting Full by F5
 // -------------------------------
 casper.test.begin('Exiting Full by F5', 3, function suite(test) {
-	casper.start('http://0.0.0.0:7497/tests/?full#1').then(function() {
+	casper.start('http://0.0.0.0:7497/tests/#1').then(function() {
 
+		this.click('[id="1"]');
 		this.sendKeys('body', casper.page.event.key.F5);
 
 	}).then(function() {
@@ -314,14 +395,19 @@ casper.test.begin('Exiting Full by F5', 3, function suite(test) {
 		test.assertExists('[id="1"].active', 'Slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
 
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
+
 	}).run(function() { test.done() }).clear();
 });
 // -------------------------------
 // Exiting Full by Esc
 // -------------------------------
 casper.test.begin('Exiting Full by Esc', 3, function suite(test) {
-	casper.start('http://0.0.0.0:7497/tests/?full#1').then(function() {
+	casper.start('http://0.0.0.0:7497/tests/#1').then(function() {
 
+		this.click('[id="1"]');
 		this.sendKeys('body', casper.page.event.key.Escape);
 
 	}).then(function() {
@@ -329,6 +415,10 @@ casper.test.begin('Exiting Full by Esc', 3, function suite(test) {
 		test.assertExists('body.list', 'Body in List mode');
 		test.assertExists('[id="1"].active', 'Slide #1 is active');
 		test.assertUrlMatch(/\/#1/, 'Slide #1 in List mode URL');
+
+		this.evaluate(function () {
+			sessionStorage.clear();
+		});
 
 	}).run(function() { test.done() }).clear();
 });
