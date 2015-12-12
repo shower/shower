@@ -30,7 +30,7 @@ If you want to adjust theme for your needs:
 
 1. Fork this repository and clone it to your local machine.
 2. Install dependencies: `npm install`.
-3. Start a local server with watcher: `npm run server` or just `gulp` if you have it installed globally.
+3. Start a local server with watcher: `npm run dev` or just `gulp` if you have it installed globally.
 4. Edit your files and see changes in the opened browser.
 
 To take part in Material development please read [contributing guidelines](CONTRIBUTING.md) first and [file an issue](https://github.com/shower/shower/issues/new) before sending any pull request.

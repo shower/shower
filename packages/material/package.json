@@ -22,7 +22,7 @@
     "theme"
   ],
   "scripts": {
-    "server": "gulp",
+    "dev": "gulp",
     "styles": "gulp styles"
   },
   "devDependencies": {
