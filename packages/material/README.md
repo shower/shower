@@ -1,6 +1,6 @@
 # Material theme for Shower
 
-Default theme for the [Shower](https://github.com/shower/shower/) presentation engine. Doesn’t include engine itself. [See it in action](http://shwr.me/shower/themes/material/). Follow [@shower_me](https://twitter.com/shower_me) for support and updates.
+Default theme for the [Shower](https://github.com/shower/shower/) presentation engine. Doesn’t include engine itself. [See it in action](http://shwr.me/shower/themes/material/). Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
 
 ## Usage
 
@@ -33,7 +33,7 @@ If you want to adjust theme for your needs:
 3. Start a local server with watcher: `npm run server` or just `gulp` if you have it installed globally.
 4. Edit your files and see changes in the opened browser.
 
-To take part in Material development please read [contributing guidelines](CONTRIBUTING.md) first and [file an issue](https://github.com/shower/material/issues/new) before sending any pull request.
+To take part in Material development please read [contributing guidelines](CONTRIBUTING.md) first and [file an issue](https://github.com/shower/shower/issues/new) before sending any pull request.
 
 ---
 Licensed under [MIT License](LICENSE.md).
