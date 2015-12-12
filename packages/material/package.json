@@ -32,6 +32,6 @@
     "gulp-header": "^1.7.1",
     "gulp-minify-css": "^1.2.2",
     "gulp-release-it": "^1.0.6",
-    "gulp-sass": "^2.1.0"
+    "gulp-sass": "^2.1.1"
   }
 }
