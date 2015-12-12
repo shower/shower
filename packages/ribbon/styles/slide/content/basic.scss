@@ -1,0 +1,15 @@
+// ------------------------------------------------------------------
+// Basic
+// ------------------------------------------------------------------
+
+h2 {
+	margin-bottom:34px;
+	color:$grey;
+	font:bold 50px/1 PT Sans Narrow, sans-serif;
+	}
+p {
+	margin-bottom:1em;
+	&.note {
+		color:lighten($grey, 25%);
+		}
+	}

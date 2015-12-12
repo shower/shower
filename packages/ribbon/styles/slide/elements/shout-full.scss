@@ -1,0 +1,32 @@
+// ------------------------------------------------------------------
+// Shout Full
+// ------------------------------------------------------------------
+
+.shout {
+
+	&.grow,
+	&.shrink {
+		opacity:0;
+		transition:0.4s ease-out;
+		transition-property:opacity, transform;
+		}
+	&.grow {
+		transform:scale(0.1) translateY(-50%);
+		}
+	&.shrink {
+		transform:scale(10) translateY(-50%);
+		}
+
+	}
+
+// Animation Trigger
+
+&:target .shout {
+
+	&.grow,
+	&.shrink {
+		opacity:1;
+		transform:scale(1) translateY(-50%);
+		}
+
+	}

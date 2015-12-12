@@ -1,0 +1,51 @@
+// ------------------------------------------------------------------
+// Place
+// ------------------------------------------------------------------
+
+.place {
+
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+
+	&.top.left, &.t.l,
+	&.top.right, &.t.r,
+	&.bottom.right, &.b.r,
+	&.bottom.left, &.b.l {
+		transform:none;
+		}
+
+	&.top, &.t,
+	&.bottom, &.b {
+		transform:translate(-50%, 0);
+		}
+
+	&.left, &.l,
+	&.right, &.r {
+		transform:translate(0, -50%);
+		}
+
+	&.top, &.t,
+	&.top.left,
+	&.top.right, &.t.r {
+		top:0;
+		}
+
+	&.right, &.r {
+		right:0;
+		left:auto;
+		}
+
+	&.bottom, &.b,
+	&.bottom.right, &.b.r,
+	&.bottom.left, &.b.l {
+		top:auto;
+		bottom:0;
+		}
+
+	&.left, &.l {
+		left:0;
+		}
+
+	}

@@ -1,0 +1,27 @@
+// ------------------------------------------------------------------
+// Footer
+// ------------------------------------------------------------------
+
+footer {
+
+	position:absolute;
+	right:0;
+	bottom:- $height;
+	left:0;
+	display:none;
+	padding:41px 100px 8px;
+	background:lighten($yellow, 5%);
+	box-shadow:0 1px 0 $yellow inset;
+	transition:bottom 0.3s;
+
+	// Content
+
+	mark {
+		background:rgba(white, 0.8);
+		}
+
+	}
+
+&:hover > footer {
+	bottom:0;
+	}

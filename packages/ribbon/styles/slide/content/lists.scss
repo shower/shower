@@ -1,0 +1,46 @@
+// ------------------------------------------------------------------
+// Lists
+// ------------------------------------------------------------------
+
+ol, ul {
+
+	margin-bottom:1em;
+	counter-reset:list;
+
+	li {
+
+		page-break-inside:avoid;
+		text-indent:-2em;
+
+		// Marker
+
+		&:before {
+			display:inline-block;
+			width:2em;
+			color:lighten($grey, 25%);
+			text-align:right;
+			}
+
+		}
+
+	ol, ul {
+		margin-bottom:0;
+		margin-left:2em;
+		}
+
+	}
+
+// Markers
+
+ul > li:before {
+	padding-right:0.5em;
+	content:'•';
+	}
+ul > li:lang(ru):before {
+	content:'—';
+	}
+ol > li:before {
+	padding-right:0.4em;
+	counter-increment:list;
+	content:counter(list)'.';
+	}

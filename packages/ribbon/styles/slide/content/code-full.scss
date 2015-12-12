@@ -1,0 +1,32 @@
+// ------------------------------------------------------------------
+// Code
+// ------------------------------------------------------------------
+// 1. Outer ............ Main <pre> container
+// 2. Inner ............ Generic <code> container
+//    - Marked Lines ... Dynamically highlighted lines
+// ------------------------------------------------------------------
+
+// Outer
+
+pre {
+
+	// Inner
+
+	code {
+
+		&:not(:only-child) {
+
+			// Marked Lines
+
+			&.mark.next {
+				visibility:visible;
+				background:none;
+				}
+			&.mark.next.active {
+				background:$grey-back;
+				}
+
+			}
+
+		}
+	}

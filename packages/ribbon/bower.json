@@ -1,17 +1,21 @@
 {
   "name": "shower-ribbon",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "license": "MIT",
-  "main": "styles/screen.css",
+  "main": [
+    "styles/screen--16x10.css",
+    "styles/screen--4x3.css"
+  ],
   "ignore": [
     "*",
+    "!docs/**",
     "!fonts/**",
     "!images/**",
     "!pictures/**",
-    "!styles/screen.css",
+    "!styles/*.css",
     "!index.html",
-    "!License.md",
-    "!Readme.md",
+    "!LICENSE.md",
+    "!README.md",
     "!bower.json"
   ],
   "keywords": [
