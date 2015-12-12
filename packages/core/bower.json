@@ -5,8 +5,8 @@
   "main": "shower.min.js",
   "ignore": [
     "*",
-    "!License.md",
-    "!Readme.md",
+    "!LICENSE.md",
+    "!README.md",
     "!shower.min.js",
     "!bower.json"
   ],
