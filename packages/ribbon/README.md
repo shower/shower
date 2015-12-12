@@ -4,11 +4,11 @@ Default theme for the [Shower](https://github.com/shower/shower/) presentation e
 
 ## Usage
 
-Get the Shower template where Ribbon is already included. Download the template archive or install the package:
+Get the Shower template where Ribbon is already included. Download the [template archive](http://shwr.me/shower.zip) or install the package:
 
 	npm install shower
 
-If you want to install Ribbon separately you can download the theme archive or install the package:
+If you want to install Ribbon separately you can download the [theme archive](http://shwr.me/ribbon.zip) or install the package:
 
 	npm install shower-ribbon
 
