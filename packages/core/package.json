@@ -1,11 +1,23 @@
 {
   "name": "shower-core",
   "description": "Core for Shower HTML presentation engine",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "author": {
     "name": "Vadim Makeev",
-    "url": "http://pepelsbey.com/"
+    "url": "http://pepelsbey.net/"
   },
+  "maintainers": [
+    {
+      "name": "Denis Hananein",
+      "email": "i@zloylos.me",
+      "github-username": "zloylos",
+      "role": "General architecture"
+    }, {
+      "name": "Vadim Makeev",
+      "github-username": "pepelsbey",
+      "role": "Author, idea, tests"
+    }
+  ],
   "homepage": "https://github.com/shower/core",
   "repository": {
     "type": "git",
@@ -20,17 +32,32 @@
     "presentation",
     "core"
   ],
+  "dependencies": {
+    "shower-next": "0.0.6",
+    "shower-progress": "0.0.9",
+    "shower-timer": "0.0.11",
+    "shower-touch": "0.0.7",
+    "ym": "^0.1.2"
+  },
   "devDependencies": {
+    "chai": "3.4.1",
+    "git-hooks": "^1.0.2",
     "grunt": "^0.4.5",
     "grunt-bump": "^0.6.0",
-    "grunt-casperjs": "2.1.0",
+    "grunt-casperjs": "^2.1.0",
+    "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-connect": "^0.11.2",
     "grunt-contrib-uglify": "^0.11.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-jscs": "^2.4.0",
-    "load-grunt-tasks": "^3.3.0"
+    "grunt-jscs": "^2.3.0",
+    "grunt-mocha": "^0.4.13",
+    "jscs": "^2.6.0",
+    "jshint": "^2.9.1-rc1",
+    "load-grunt-tasks": "^3.3.0",
+    "mocha": "^2.3.4"
   },
   "scripts": {
+    "validate": "jshint . && jscs .",
     "test": "node -e \"require('grunt').tasks(['test'])\""
   }
 }

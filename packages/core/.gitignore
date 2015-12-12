@@ -1,1 +1,5 @@
-node_modules
+.idea
+.DS_Store
+/node_modules
+/shower.js
+/tests/unit/tests.js

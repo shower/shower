@@ -1,0 +1,4 @@
+node_modules
+tests
+*.min.js
+Gruntfile.js

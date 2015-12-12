@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<title>Unit-test</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../node_modules/mocha/mocha.css">
+<body>
+    <div class="shower list" style="display:none">
+        <section class="slide">
+            <h2>1</h2>
+        </section>
+        <section class="slide">
+            <h2>2</h2>
+            <ul>
+                <li class="unext">1</li>
+                <li class="next">2</li>
+                <li class="next">3</li>
+            </ul>
+        </section>
+        <section class="slide">
+            <h2>3</h2>
+        </section>
+        <div class="progress"></div>
+    </div>
+
+    <script src="../bind.polyfill.js"></script>
+
+    <script src="../../node_modules/mocha/mocha.js"></script>
+    <script src="../../shower.js"></script>
+    <script src="../../node_modules/chai/chai.js"></script>
+    <script src="tests.js"></script>
+
+    <script>
+        mocha.setup('bdd');
+        mocha.checkLeaks();
+
+        mocha.globals([
+            'modules',
+            'shower'
+        ]);
+
+        shower.modules.require(['shower'], function (sh) {
+            sh.ready(function () {
+                shower.modules.require(['tests'], function () {
+                    if (window.mochaPhantomJS) {
+                        mochaPhantomJS.run();
+                    } else {
+                        mocha.run();
+                    }
+                });
+                // If tests not found.
+                shower.modules.define('tests', [], function (provide) {
+                    provide();
+                });
+            });
+        });
+    </script>
+
+    <div id="mocha"></div>
+</body>
