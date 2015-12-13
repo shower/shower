@@ -225,7 +225,7 @@ shower.modules.define('Shower', [
         },
 
         _addSlide: function (slide) {
-            slide.state.index = this._slides.length;
+            slide.state.set('index', this._slides.length);
             this._slides.push(slide);
 
             this.events.emit('slideadd', {
