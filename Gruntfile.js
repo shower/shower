@@ -31,7 +31,7 @@ module.exports = function(grunt) {
 					src: [
 						'**',
 						'!package.json',
-						'!Readme.md'
+						'!README.md'
 					],
 					dest: 'temp/pres/shower/'
 				},{
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
 					src: [
 						'**',
 						'!package.json',
-						'!Readme.md'
+						'!README.md'
 					],
 					dest: 'temp/pres/shower/themes/ribbon/'
 				},{
