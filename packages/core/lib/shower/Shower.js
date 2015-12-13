@@ -149,7 +149,7 @@ shower.modules.define('Shower', [
         /**
          * @returns {Slide[]} Array with slides {@link Slide}.
          */
-        getSlidesArray: function () {
+        getSlides: function () {
             return this._slides.slice();
         },
 
@@ -158,6 +158,14 @@ shower.modules.define('Shower', [
          */
         getSlidesCount: function () {
             return this._slides.length;
+        },
+
+        /**
+         * @param {Slide} slide
+         * @returns {number} Slide index or -1 of slide not found.
+         */
+        getSlideIndex: function (slide) {
+            return this._slides.indexOf(slide);
         },
 
         /**

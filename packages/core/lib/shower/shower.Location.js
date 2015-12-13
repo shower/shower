@@ -93,7 +93,7 @@ shower.modules.define('shower.Location', [
          * @return {slideInfo} Slide info object.
          */
         _getSlideById: function (slideId) {
-            var slides = this._shower.getSlidesArray();
+            var slides = this._shower.getSlides();
             var slide;
             var index;
 

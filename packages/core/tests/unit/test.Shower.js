@@ -16,16 +16,16 @@ shower.modules.define('test.Shower', [
             var slide = new Slide('test slide');
             shower.add(slide);
 
-            shower.getSlidesArray().indexOf(slide).should.not.eq(-1);
+            shower.getSlideIndex(slide).should.not.eq(-1);
         });
 
         it('Should remove slide from the Shower', function () {
             var slide = new Slide('test slide');
             shower.add(slide);
-            shower.getSlidesArray().indexOf(slide).should.not.eq(-1);
+            shower.getSlideIndex(slide).should.not.eq(-1);
 
             shower.remove(slide);
-            shower.getSlidesArray().indexOf(slide).should.eq(-1);
+            shower.getSlideIndex(slide).should.eq(-1);
         });
 
         it('Should get slide by the index', function () {

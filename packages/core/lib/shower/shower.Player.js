@@ -105,7 +105,7 @@ shower.modules.define('shower.Player', [
         go: function (index) {
             // If go by slide istance.
             if (typeof index !== 'number') {
-                index = this._shower.getSlidesArray().indexOf(index);
+                index = this._shower.getSlideIndex(index);
             }
 
             var slidesCount = this._shower.getSlidesCount();
@@ -180,7 +180,7 @@ shower.modules.define('shower.Player', [
 
         _onSlideActivate: function (e) {
             var slide = e.get('slide');
-            var slideNumber = this._shower.getSlidesArray().indexOf(slide);
+            var slideNumber = this._shower.getSlideIndex(slide);
 
             this.go(slideNumber);
         },
