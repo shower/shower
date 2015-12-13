@@ -17,10 +17,10 @@ module.exports = function(grunt) {
 						'**',
 						'!node_modules/**',
 						'!bower_components/**',
-						'!Contributing.md',
+						'!CONTRIBUTING.md',
 						'!Gruntfile.js',
-						'!License.md',
-						'!Readme.md',
+						'!LICENSE.md',
+						'!README.md',
 						'!bower.json',
 						'!package.json'
 					],
@@ -45,13 +45,13 @@ module.exports = function(grunt) {
 					dest: 'temp/pres/shower/themes/ribbon/'
 				},{
 					expand: true,
-					cwd: 'node_modules/shower-bright/',
+					cwd: 'node_modules/shower-material/',
 					src: [
 						'**',
 						'!package.json',
-						'!Readme.md'
+						'!README.md'
 					],
-					dest: 'temp/pres/shower/themes/bright/'
+					dest: 'temp/pres/shower/themes/material/'
 				}]
 			}
 		},
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 					from: /(node_modules|bower_components)\/shower-core/g,
 					to: 'shower'
 				},{
-					from: /(node_modules|bower_components)\/shower-(ribbon|bright)/g,
+					from: /(node_modules|bower_components)\/shower-(ribbon|material)/g,
 					to: 'shower/themes/$2'
 				}]
 			},
