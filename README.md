@@ -9,21 +9,24 @@
 5. Printable to PDF
 6. Extensible by plugin system
 
-Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins. [See it in action](http://shwr.me/). Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
+[See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.
+
+Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
 
 ## Quick Start
 
 1. Download and unzip [template archive](http://shwr.me/shower.zip)
-2. Open `index.html` and start creating your presentation in HTML
+2. Open `index.html` and start creating your presentation
 
 ## Advanced
 
 If you’re familiar with [npm](https://www.npmjs.com/) you can install Shower’s core and themes manually: `npm install shower-core shower-ribbon`. The same packages available in [bower](http://bower.io/).
 
-For more details see short [video](https://www.youtube.com/watch?v=l2OelK_hIro) with advanced usage examples and built-in `publish` and `archive` commands explained.
+For more details see [short video](https://www.youtube.com/watch?v=l2OelK_hIro) with advanced usage examples and built-in `publish` and `archive` commands explained.
 
 ## Usage Examples
 
+- [Installable Web Apps](http://pepelsbey.net/pres/web-apps/)
 - [Clear and Sharp](http://pepelsbey.net/pres/clear-and-sharp/)
 - [CSS Management](http://pepelsbey.net/pres/knife-train/)
 - [Push it!](http://pepelsbey.net/pres/push-it/)
