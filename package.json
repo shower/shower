@@ -21,9 +21,9 @@
     "template"
   ],
   "dependencies": {
-    "shower-core": "^1.2.0",
+    "shower-core": "^2.0.0",
     "shower-material": "^1.0.0",
-    "shower-ribbon": "^1.1.0"
+    "shower-ribbon": "^2.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
