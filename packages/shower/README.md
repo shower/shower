@@ -5,9 +5,9 @@
 1. Built on HTML, CSS and vanilla JavaScript
 2. Works in all modern browsers
 3. Themes are separated from engine
-4. Fully keyboard accessible
-5. Printable to PDF
-6. Extensible by plugin system
+4. Modular and extensible
+5. Fully keyboard accessible
+6. Printable to PDF
 
 [See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.
 
