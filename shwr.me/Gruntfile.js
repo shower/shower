@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 				src: 'temp/shower/themes/*/index.html',
 				overwrite: true,
 				replacements: [{
-					from: '../shower-core', to: '../..'
+					from: '/shower-core', to: '../..'
 				}]
 			},
 			counter: {
