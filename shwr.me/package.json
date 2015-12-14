@@ -10,8 +10,8 @@
     "grunt-rsync": "^0.6.2",
     "grunt-text-replace": "^0.4.0",
     "load-grunt-tasks": "^3.3.0",
-    "shower": "^2.0.0",
-    "shower-core": "^2.0.0",
+    "shower": "^2.0.3",
+    "shower-core": "^2.0.1",
     "shower-material": "^1.0.0",
     "shower-ribbon": "^2.0.0"
   }
