@@ -12,6 +12,8 @@ You can also install core as a separate package:
 
 	npm install shower-core
 
+The same packages available in [bower](http://bower.io/).
+
 ## Development
 
 To take part in core development please read [contributing guidelines](CONTRIBUTING.md) first and [file an issue](https://github.com/shower/shower/issues/new) before sending any pull request.
