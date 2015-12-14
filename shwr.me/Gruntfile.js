@@ -22,9 +22,9 @@ module.exports = function(grunt) {
 					dest: 'temp/shower/themes/ribbon/'
 				},{
 					expand: true,
-					cwd: 'node_modules/shower-bright/',
+					cwd: 'node_modules/shower-material/',
 					src: ['**', '!package.json'],
-					dest: 'temp/shower/themes/bright/'
+					dest: 'temp/shower/themes/material/'
 				}]
 			}
 		},
@@ -80,8 +80,8 @@ module.exports = function(grunt) {
 				],
 				exclude: [
 					'.DS_Store',
-					'License.md',
-					'Readme.md'
+					'LICENSE.md',
+					'README.md'
 				],
 				recursive: true
 			},
