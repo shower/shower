@@ -12,6 +12,8 @@ If you want to install Ribbon separately you can download the [theme archive](ht
 
 	npm install shower-ribbon
 
+The same packages available in [bower](http://bower.io/).
+
 ## Features
 
 All theme’s features are demonstrated in the `index.html` file. Use it as a reference while building your presentation. See more detailed [features overview](docs/features.md).
@@ -22,7 +24,7 @@ Ribbon theme supports two slide ratios: wide 16×10 (default) and taller 4×3. T
 
 ## PDF
 
-Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](docs/printing.md) for more options.
+Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](docs/printing-en.md) for more options.
 
 ## Development
 
