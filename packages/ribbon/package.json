@@ -21,10 +21,10 @@
     "ribbon",
     "theme"
   ],
-  "scripts": {
-    "dev": "gulp",
-    "styles": "gulp styles"
-  },
+  "files": [
+    "styles/screen-4x3.css",
+    "styles/screen-16x10.css"
+  ],
   "devDependencies": {
     "browser-sync": "^2.10.0",
     "gulp": "^3.9.0",
@@ -32,5 +32,10 @@
     "gulp-header": "^1.7.1",
     "gulp-minify-css": "^1.2.2",
     "gulp-sass": "^2.1.1"
+  },
+  "scripts": {
+    "dev": "gulp",
+    "styles": "gulp styles",
+    "prepublish": "npm run styles"
   }
 }
