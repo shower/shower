@@ -16,7 +16,7 @@ The same packages available in [bower](http://bower.io/).
 
 ## Features
 
-All theme’s features are demonstrated in the `index.html` file. Use it as a reference while building your presentation. See more detailed [features overview](docs/features.md).
+All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. See more detailed [features overview](docs/features.md).
 
 ## Ratios
 
