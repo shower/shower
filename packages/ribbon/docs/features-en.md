@@ -85,3 +85,5 @@ In addition to files above repository contains source files:
 - Center
 - Sides
 - Combinations
+
+### Notes
