@@ -17,3 +17,71 @@ In addition to files above repository contains source files:
 
 1. `source` folder with source fonts in TTF and theme design in [Sketch](http://bohemiancoding.com/sketch/) format.
 2. `styles` folder additionally contains source styles in SCSS format.
+
+## Elements
+
+### Canvas
+
+- Modes
+- Localization
+
+### Title
+
+### Slide
+
+### Badge
+
+### Progress
+
+## Slide
+
+### Types
+
+- White
+- Black
+- Grid
+
+### Header
+
+### Paragraphs
+
+### Inline
+
+### Lists
+
+- Unordered
+- Ordered
+- Локализация
+
+### Quotes
+
+- Simple
+- Author
+
+### Tables
+
+- Simple
+- Striped
+
+### Code
+
+- Simple
+- Numbered
+
+### Cover
+
+- Simple
+- Horizontal
+- Vertical
+
+### Shout
+
+- Simple
+- Growing
+- Shrinking
+
+### Place
+
+- Center
+- Sides
+- Combinations
