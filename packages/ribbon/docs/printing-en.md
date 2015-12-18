@@ -6,6 +6,8 @@ You can export your presentation to PDF by sending it to print in list mode in C
 2. Select PDF in targets list
 3. Save resulted file
 
+![Printing dialog](images/printing.png)
+
 ## Limitations
 
 All built-in themes’ features are tested in PDF format, the only limitation is multiple columns: Chrome and Opera don’t support them on print yet.
