@@ -1,6 +1,6 @@
 # Shower Presentation Template
 
-![Shower logo](pictures/logo.svg)
+<img src="pictures/logo.svg" width="250" alt="Shower logo">
 
 > Shower ['ʃəuə] noun. A person or thing that shows.
 
