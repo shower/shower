@@ -22,66 +22,231 @@ In addition to files above repository contains source files:
 
 ### Canvas
 
-- Modes
+- List
+
+	<body class="shower list">
+		…
+	</body>
+
+- Full
+
+	<body class="shower full">
+		…
+	</body>
+
 - Localization
+
+	<html lang="en">
+	<html lang="ru">
 
 ### Title
 
+	<header class="caption">
+		<h1>Presentation Title</h1>
+		<p><a href="">Yours Truly</a>, Famous Inc.</p>
+	</header>
+
 ### Slide
+
+	<section class="slide">
+		…
+	</section>
 
 ### Badge
 
+	<footer class="badge">
+		<a href="…">Fork me on Github</a>
+	</footer>
+
 ### Progress
+
+	<div class="progress"></div>
 
 ## Slide
 
 ### Types
 
 - White
+
+	<section class="slide white">
+		…
+	</section>
+
 - Black
+
+	<section class="slide black">
+		…
+	</section>
+
 - Grid
+
+	<section class="slide grid">
+		…
+	</section>
 
 ### Header
 
+	<section class="slide">
+		<h2>Slide Header</h2>
+	</section>
+
 ### Paragraphs
 
+	<section class="slide">
+		<p></p>
+		<p class="note"></p>
+	</section>
+
 ### Inline
+
+- `<a>`
+- `<strong>`, `<b>`
+- `<em>`, `<i>`
+- `<code>`, `<samp>`, `<kbd>`
+- `<sup>`, `<sub>`
+- `<mark>`
 
 ### Lists
 
 - Unordered
+
+	<ol>
+		<li>Literally viral vegan</li>
+		<li>Wes Anderson chillwave Marfa</li>
+	</ol>
+
 - Ordered
-- Локализация
+
+	<ul>
+		<li>Retro meh brunch aesthetic</li>
+		<li>Messenger bag retro cred</li>
+	</ul>
+
+- Localization
+
+	<ul lang="ru">
+		…
+	</ul>
 
 ### Quotes
 
 - Simple
+
+	<blockquote>
+		<p>Flannel bicycle rights locavore selfies.</p>
+	</blockquote>
+
 - Author
+
+	<figure>
+		<blockquote>
+			<p>Post-ironic fashion axe flexitarian</p>
+		</blockquote>
+		<figcaption>Yours Truly</figcaption>
+	</figure>
 
 ### Tables
 
 - Simple
+
+	<table>
+	<tr>
+		<th scope="col">Gentrify</th>
+		<th>Twee</th>
+	</tr>
+	<tr>
+		<th scope="row">Messenger</th>
+		<td>Mixtape</td>
+	</tr>
+	</table>
+
 - Striped
+
+	<table class="striped">
 
 ### Code
 
 - Simple
+
+	<pre><code>function action() {
+		// TODO
+		return true;
+	}</code></pre>
+
 - Numbered
+
+	<pre>
+		<code>function action() {</code>
+		<code>	// TODO</code>
+		<code>	return true;</code>
+		<code>}<code>
+	</pre>
+
+- Highlight
+
+	<pre><code>function <mark>action()</mark> {
+		<mark class="comment">// TODO<mark>
+		return <mark class="important">true</mark>;
+	}</code></pre>
 
 ### Cover
 
 - Simple
+
+	<section class="slide">
+		<img class="cover" src="picture.png">
+	</section>
+
 - Horizontal
+
+	<img class="cover width" src="picture.png">
+
 - Vertical
+
+	<img class="cover height" src="picture.png">
+
+- Caption
+
+	<figure>
+		<img class="cover" src="picture.png">
+		<figcaption class="white">
+			Yours Truly © 2015
+		</figcaption>
+	</figure>
 
 ### Shout
 
-- Simple
-- Growing
-- Shrinking
+	<section class="slide">
+		<h2 class="shout">Shout</h2>
+	</section>
 
 ### Place
 
 - Center
+
+	<section class="slide">
+		<img class="place" src="picture.png">
+	</section>
+
 - Sides
+
+	<img class="place top" src="picture.png">
+	<img class="place right" src="picture.png">
+	<img class="place bottom" src="picture.png">
+	<img class="place left" src="picture.png">
+
 - Combinations
+
+	<img class="place top left" src="picture.png">
+	<img class="place top right" src="picture.png">
+	<img class="place bottom left" src="picture.png">
+	<img class="place bottom right" src="picture.png">
+
+### Notes
+
+	<section class="slide">
+		<p>Retro meh brunch aesthetic.</p>
+		<footer class="footer">
+			<p>Cosby sweater Shoreditch.</p>
+		</footer>
+	</section>
