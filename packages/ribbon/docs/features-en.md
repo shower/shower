@@ -22,11 +22,13 @@ In addition to files above repository contains source files:
 
 ### Canvas
 
-- Modes
+- List
 
 	<body class="shower list">
 		…
 	</body>
+
+- Full
 
 	<body class="shower full">
 		…
@@ -111,7 +113,6 @@ In addition to files above repository contains source files:
 	<ol>
 		<li>Literally viral vegan</li>
 		<li>Wes Anderson chillwave Marfa</li>
-		<li>Ethnic polaroid lo-fi</li>
 	</ol>
 
 - Ordered
@@ -119,7 +120,6 @@ In addition to files above repository contains source files:
 	<ul>
 		<li>Retro meh brunch aesthetic</li>
 		<li>Messenger bag retro cred</li>
-		<li>Leggings skateboard literally</li>
 	</ul>
 
 - Localization
@@ -153,14 +153,10 @@ In addition to files above repository contains source files:
 	<tr>
 		<th scope="col">Gentrify</th>
 		<th>Twee</th>
-		<th>Artisan</th>
-		<th>Banksy</th>
 	</tr>
 	<tr>
 		<th scope="row">Messenger</th>
 		<td>Mixtape</td>
-		<td>Small batch</td>
-		<td>Bicycle rights</td>
 	</tr>
 	</table>
 
@@ -173,6 +169,7 @@ In addition to files above repository contains source files:
 - Simple
 
 	<pre><code>function action() {
+		// TODO
 		return true;
 	}</code></pre>
 
@@ -180,29 +177,90 @@ In addition to files above repository contains source files:
 
 	<pre>
 		<code>function action() {</code>
+		<code>	// TODO</code>
 		<code>	return true;</code>
 		<code>}<code>
 	</pre>
 
 - Highlight
 
+	<pre><code>function <mark>action()</mark> {
+		<mark class="comment">// TODO<mark>
+		return <mark class="important">true</mark>;
+	}</code></pre>
+
 ### Cover
 
 - Simple
+
+	<section class="slide">
+		<img class="cover" src="picture.png">
+	</section>
+
 - Horizontal
+
+	<img class="cover width" src="picture.png">
+
 - Vertical
+
+	<img class="cover height" src="picture.png">
+
 - Caption
+
+	<figure>
+		<img class="cover" src="picture.png">
+		<figcaption class="white">
+			Yours Truly © 2015
+		</figcaption>
+	</figure>
 
 ### Shout
 
 - Simple
+
+	<section class="slide">
+		<h2 class="shout">Shout</h2>
+	</section>
+
 - Growing
+
+	<section class="slide">
+		<h2 class="shout grow">Growing Shout</h2>
+	</section>
+
 - Shrinking
+
+	<section class="slide">
+		<h2 class="shout shrink">Shrinking Shout</h2>
+	</section>
 
 ### Place
 
 - Center
+
+	<section class="slide">
+		<img class="place" src="picture.png">
+	</section>
+
 - Sides
+
+	<img class="place top" src="picture.png">
+	<img class="place right" src="picture.png">
+	<img class="place bottom" src="picture.png">
+	<img class="place left" src="picture.png">
+
 - Combinations
 
+	<img class="place top left" src="picture.png">
+	<img class="place top right" src="picture.png">
+	<img class="place bottom left" src="picture.png">
+	<img class="place bottom right" src="picture.png">
+
 ### Notes
+
+	<section class="slide">
+		<p>Retro meh brunch aesthetic.</p>
+		<footer class="footer">
+			<p>Cosby sweater Shoreditch.</p>
+		</footer>
+	</section>
