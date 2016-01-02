@@ -22,19 +22,19 @@
 
 ### Холст
 
-- Список
+Список
 
 	<body class="shower list">
 		…
 	</body>
 
-- Полноэкранный
+Полноэкранный
 
 	<body class="shower full">
 		…
 	</body>
 
-- Локализация
+Локализация
 
 	<html lang="ru">
 	<html lang="en">
@@ -66,19 +66,19 @@
 
 ### Типы
 
-- Белый
+Белый
 
 	<section class="slide white">
 		…
 	</section>
 
-- Чёрный
+Чёрный
 
 	<section class="slide black">
 		…
 	</section>
 
-- Сетка
+Сетка
 
 	<section class="slide grid">
 		…
@@ -108,21 +108,21 @@
 
 ### Списки
 
-- Нумерованные
+Нумерованные
 
 	<ol>
 		<li>Literally viral vegan</li>
 		<li>Wes Anderson chillwave Marfa</li>
 	</ol>
 
-- Ненумерованные
+Ненумерованные
 
 	<ul>
 		<li>Retro meh brunch aesthetic</li>
 		<li>Messenger bag retro cred</li>
 	</ul>
 
-- Локализация
+Локализация
 
 	<ul lang="en">
 		…
@@ -130,13 +130,13 @@
 
 ### Цитаты
 
-- Простая
+Простая
 
 	<blockquote>
 		<p>Flannel bicycle rights locavore selfies.</p>
 	</blockquote>
 
-- Подпись
+Подпись
 
 	<figure>
 		<blockquote>
@@ -147,7 +147,7 @@
 
 ### Таблицы
 
-- Простые
+Простые
 
 	<table>
 	<tr>
@@ -160,20 +160,20 @@
 	</tr>
 	</table>
 
-- Полосатые
+Полосатые
 
 	<table class="striped">
 
 ### Код
 
-- Простой
+Простой
 
 	<pre><code>function action() {
 		// TODO
 		return true;
 	}</code></pre>
 
-- Нумерованный
+Нумерованный
 
 	<pre>
 		<code>function action() {</code>
@@ -182,7 +182,7 @@
 		<code>}<code>
 	</pre>
 
-- Выделение
+Выделение
 
 	<pre><code>function <mark>action()</mark> {
 		<mark class="comment">// TODO<mark>
@@ -191,21 +191,21 @@
 
 ### Обложка
 
-- Простая
+Простая
 
 	<section class="slide">
 		<img class="cover" src="picture.png">
 	</section>
 
-- Горизонтальная
+Горизонтальная
 
 	<img class="cover width" src="picture.png">
 
-- Вертикальная
+Вертикальная
 
 	<img class="cover height" src="picture.png">
 
-- Подпись
+Подпись
 
 	<figure>
 		<img class="cover" src="picture.png">
@@ -222,20 +222,20 @@
 
 ### Плейс
 
-- Центр
+Центр
 
 	<section class="slide">
 		<img class="place" src="picture.png">
 	</section>
 
-- Стороны
+Стороны
 
 	<img class="place top" src="picture.png">
 	<img class="place right" src="picture.png">
 	<img class="place bottom" src="picture.png">
 	<img class="place left" src="picture.png">
 
-- Комбинации
+Комбинации
 
 	<img class="place top left" src="picture.png">
 	<img class="place top right" src="picture.png">
