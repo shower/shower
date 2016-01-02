@@ -22,19 +22,19 @@ In addition to files above repository contains source files:
 
 ### Canvas
 
-- List
+List
 
 	<body class="shower list">
 		…
 	</body>
 
-- Full
+Full
 
 	<body class="shower full">
 		…
 	</body>
 
-- Localization
+Localization
 
 	<html lang="en">
 	<html lang="ru">
@@ -66,19 +66,19 @@ In addition to files above repository contains source files:
 
 ### Types
 
-- White
+White
 
 	<section class="slide white">
 		…
 	</section>
 
-- Black
+Black
 
 	<section class="slide black">
 		…
 	</section>
 
-- Grid
+Grid
 
 	<section class="slide grid">
 		…
@@ -108,21 +108,21 @@ In addition to files above repository contains source files:
 
 ### Lists
 
-- Unordered
+Unordered
 
 	<ol>
 		<li>Literally viral vegan</li>
 		<li>Wes Anderson chillwave Marfa</li>
 	</ol>
 
-- Ordered
+Ordered
 
 	<ul>
 		<li>Retro meh brunch aesthetic</li>
 		<li>Messenger bag retro cred</li>
 	</ul>
 
-- Localization
+Localization
 
 	<ul lang="ru">
 		…
@@ -130,13 +130,13 @@ In addition to files above repository contains source files:
 
 ### Quotes
 
-- Simple
+Simple
 
 	<blockquote>
 		<p>Flannel bicycle rights locavore selfies.</p>
 	</blockquote>
 
-- Author
+Author
 
 	<figure>
 		<blockquote>
@@ -147,7 +147,7 @@ In addition to files above repository contains source files:
 
 ### Tables
 
-- Simple
+Simple
 
 	<table>
 	<tr>
@@ -160,20 +160,20 @@ In addition to files above repository contains source files:
 	</tr>
 	</table>
 
-- Striped
+Striped
 
 	<table class="striped">
 
 ### Code
 
-- Simple
+Simple
 
 	<pre><code>function action() {
 		// TODO
 		return true;
 	}</code></pre>
 
-- Numbered
+Numbered
 
 	<pre>
 		<code>function action() {</code>
@@ -182,7 +182,7 @@ In addition to files above repository contains source files:
 		<code>}<code>
 	</pre>
 
-- Highlight
+Highlight
 
 	<pre><code>function <mark>action()</mark> {
 		<mark class="comment">// TODO<mark>
@@ -191,21 +191,21 @@ In addition to files above repository contains source files:
 
 ### Cover
 
-- Simple
+Simple
 
 	<section class="slide">
 		<img class="cover" src="picture.png">
 	</section>
 
-- Horizontal
+Horizontal
 
 	<img class="cover width" src="picture.png">
 
-- Vertical
+Vertical
 
 	<img class="cover height" src="picture.png">
 
-- Caption
+Caption
 
 	<figure>
 		<img class="cover" src="picture.png">
@@ -216,19 +216,19 @@ In addition to files above repository contains source files:
 
 ### Shout
 
-- Simple
+Simple
 
 	<section class="slide">
 		<h2 class="shout">Shout</h2>
 	</section>
 
-- Growing
+Growing
 
 	<section class="slide">
 		<h2 class="shout grow">Growing Shout</h2>
 	</section>
 
-- Shrinking
+Shrinking
 
 	<section class="slide">
 		<h2 class="shout shrink">Shrinking Shout</h2>
@@ -236,20 +236,20 @@ In addition to files above repository contains source files:
 
 ### Place
 
-- Center
+Center
 
 	<section class="slide">
 		<img class="place" src="picture.png">
 	</section>
 
-- Sides
+Sides
 
 	<img class="place top" src="picture.png">
 	<img class="place right" src="picture.png">
 	<img class="place bottom" src="picture.png">
 	<img class="place left" src="picture.png">
 
-- Combinations
+Combinations
 
 	<img class="place top left" src="picture.png">
 	<img class="place top right" src="picture.png">
