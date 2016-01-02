@@ -16,7 +16,7 @@ If you want to install Material separately you can download the [theme archive](
 
 ## Features
 
-All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. See more detailed [features overview](docs/features.md).
+All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. See more detailed [features overview](docs/features-en.md).
 
 ## Ratios
 
@@ -24,7 +24,7 @@ Material theme supports two slide ratios: wide 16×10 (default) and taller 4×3.
 
 ## PDF
 
-Material could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](docs/printing.md) for more options.
+Material could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](docs/printing-en.md) for more options.
 
 ## Development
 
