@@ -26,7 +26,7 @@
     "styles/screen-16x10.css"
   ],
   "devDependencies": {
-    "browser-sync": "^2.10.1",
+    "browser-sync": "^2.11.0",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-header": "^1.7.1",
