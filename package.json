@@ -23,7 +23,7 @@
   "dependencies": {
     "shower-core": "^2.0.0",
     "shower-material": "^1.0.1",
-    "shower-ribbon": "^2.0.0"
+    "shower-ribbon": "^2.0.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
