@@ -186,7 +186,8 @@ shower.modules.define('shower.Player', [
         },
 
         _onKeyDown: function (e) {
-            if (!this._shower.isHotkeysEnabled()) {
+            if (!this._shower.isHotkeysEnabled() ||
+                /^(?:button|input|select|textarea)$/i.test(e.target.tagName)) {
                 return;
             }
 
