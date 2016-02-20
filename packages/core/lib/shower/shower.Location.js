@@ -3,8 +3,9 @@
  */
 shower.modules.define('shower.Location', [
     'util.SessionStore',
+    'util.bound',
     'util.extend'
-], function (provide, SessionStore, extend) {
+], function (provide, SessionStore, bound, extend) {
 
     /**
      * @typedef {object} slideInfo
@@ -78,11 +79,11 @@ shower.modules.define('shower.Location', [
             this._containerListener = shower.container.events.group()
                 .on(['slidemodeenter', 'slidemodeexit'], this._onContainerSlideModeChange, this);
 
-            window.addEventListener('popstate', this._onPopstate.bind(this));
+            window.addEventListener('popstate', bound(this, '_onPopstate'));
         },
 
         _clearListeners: function () {
-            window.removeEventListener('popstate', this._onPopstate.bind(this));
+            window.removeEventListener('popstate', bound(this, '_onPopstate'));
             this._playerListeners.offAll();
             this._containerListener.offAll();
         },

@@ -5,8 +5,9 @@ shower.modules.define('slide.Layout', [
     'Options',
     'shower.defaultOptions',
     'Emitter',
+    'util.bound',
     'util.extend'
-], function (provide, OptionsManager, defaultOptions, EventEmitter, extend) {
+], function (provide, OptionsManager, defaultOptions, EventEmitter, bound, extend) {
 
     /**
      * @typedef {object} HTMLElement
@@ -161,7 +162,7 @@ shower.modules.define('slide.Layout', [
                 .on('activate', this._onSlideActivate, this)
                 .on('deactivate', this._onSlideDeactivate, this);
 
-            this._element.addEventListener('click', this._onSlideClick.bind(this), false);
+            this._element.addEventListener('click', bound(this, '_onSlideClick'), false);
         },
 
         _clearListeners: function () {
@@ -169,7 +170,7 @@ shower.modules.define('slide.Layout', [
                 this._slideListeners.offAll();
             }
 
-            this._element.removeEventListener('click', this._onSlideClick.bind(this));
+            this._element.removeEventListener('click', bound(this, '_onSlideClick'));
         },
 
         _onSlideActivate: function () {

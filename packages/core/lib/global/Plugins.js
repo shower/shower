@@ -3,9 +3,8 @@
  */
 shower.modules.define('Plugins', [
     'Emitter',
-    'util.bind',
     'util.extend'
-], function (provide, EventEmitter, bind, extend) {
+], function (provide, EventEmitter, extend) {
 
     /**
      * @class

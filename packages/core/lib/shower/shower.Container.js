@@ -3,8 +3,9 @@
  */
 shower.modules.define('shower.Container', [
     'Emitter',
+    'util.bound',
     'util.extend'
-], function (provide, EventEmitter, extend) {
+], function (provide, EventEmitter, bound, extend) {
     /**
      * @typedef {object} HTMLElement
      */
@@ -135,15 +136,15 @@ shower.modules.define('shower.Container', [
                 .on('slideadd', this._onSlideAdd, this)
                 .on('slideremove', this._onSlideRemove, this);
 
-            window.addEventListener('resize', this._onResize.bind(this));
-            document.addEventListener('keydown', this._onKeyDown.bind(this));
+            window.addEventListener('resize', bound(this, '_onResize'));
+            document.addEventListener('keydown', bound(this, '_onKeyDown'));
         },
 
         _clearListeners: function () {
             this._showerListeners.offAll();
 
-            window.removeEventListener('resize', this._onResize.bind(this));
-            document.removeEventListener('keydown', this._onKeyDown.bind(this));
+            window.removeEventListener('resize', bound(this, '_onResize'));
+            document.removeEventListener('keydown', bound(this, '_onKeyDown'));
         },
 
         _getTransformScale: function () {

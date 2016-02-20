@@ -3,8 +3,9 @@
  */
 shower.modules.define('shower.Player', [
     'Emitter',
+    'util.bound',
     'util.extend'
-], function (provide, EventEmitter, extend) {
+], function (provide, EventEmitter, bound, extend) {
 
     /**
      * @class
@@ -42,14 +43,14 @@ shower.modules.define('shower.Player', [
                 .on('prev', this._onPrev, this)
                 .on('next', this._onNext, this);
 
-            document.addEventListener('keydown', this._onKeyDown.bind(this));
+            document.addEventListener('keydown', bound(this, '_onKeyDown'));
         },
 
         destroy: function () {
             this._showerListeners.offAll();
             this._playerListeners.offAll();
 
-            document.removeEventListener('keydown', this._onKeyDown.bind(this));
+            document.removeEventListener('keydown', bound(this, '_onKeyDown'));
 
             this._currentSlide = null;
             this._currentSlideNumber = null;
