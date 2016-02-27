@@ -22,8 +22,14 @@
     "theme"
   ],
   "files": [
-    "styles/screen-4x3.css",
-    "styles/screen-16x10.css"
+    "docs/**",
+    "fonts/**",
+    "images/**",
+    "pictures/**",
+    "styles/*.css",
+    "index.html",
+    "LICENSE.md",
+    "README.md"
   ],
   "devDependencies": {
     "browser-sync": "^2.11.1",
