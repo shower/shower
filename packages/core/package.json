@@ -34,8 +34,9 @@
     "core"
   ],
   "files": [
-    "shower.js",
-    "shower.min.js"
+    "shower.min.js",
+    "LICENSE.md",
+    "README.md"
   ],
   "devDependencies": {
     "shower-next": "0.0.6",
