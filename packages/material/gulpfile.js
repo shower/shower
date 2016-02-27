@@ -1,7 +1,7 @@
 'use strict';
 
 var autoprefixer = require('gulp-autoprefixer'),
-	cssmin = require('gulp-cleancss'),
+	csso = require('gulp-csso'),
 	gulp = require('gulp'),
 	header = require('gulp-header'),
 	sass = require('gulp-sass'),
@@ -42,7 +42,7 @@ gulp.task('styles', function () {
 	return gulp.src('styles/screen-*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
-		.pipe(cssmin())
+		.pipe(csso())
 		.pipe(header(banner, { pkg: pkg }))
 		.pipe(gulp.dest('styles'))
 		.pipe(sync.stream());
