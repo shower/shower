@@ -21,7 +21,7 @@
     "template"
   ],
   "dependencies": {
-    "shower-core": "^2.0.2",
+    "shower-core": "^2.0.3",
     "shower-material": "^1.0.1",
     "shower-ribbon": "^2.0.2"
   },
