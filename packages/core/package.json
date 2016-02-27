@@ -61,7 +61,7 @@
     "ym": "^0.1.2"
   },
   "scripts": {
-    "build": "grunt",
+    "build": "node -e \"require('grunt').tasks(['default'])\"",
     "prepublish": "npm run build",
     "validate": "jshint . && jscs .",
     "test": "node -e \"require('grunt').tasks(['test'])\""
