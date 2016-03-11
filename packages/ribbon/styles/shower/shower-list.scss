@@ -4,6 +4,12 @@
 
 .shower.list {
 
+	@each $scale in 4, 2, 1 {
+		@include scale($scale) {
+			padding-top:$gap / $scale;
+			}
+		}
+
 	width:100%;
 	display:flex;
 	flex-wrap:wrap;
