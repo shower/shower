@@ -12,7 +12,7 @@
     "load-grunt-tasks": "^3.4.1",
     "shower": "^2.0.6",
     "shower-core": "^2.0.4",
-    "shower-material": "^1.0.2",
+    "shower-material": "^1.0.3",
     "shower-ribbon": "^2.0.2"
   }
 }
