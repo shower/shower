@@ -3,16 +3,10 @@
   "description": "Demo site for Shower HTML presentation engine",
   "private": true,
   "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-clean": "^1.0.0",
-    "grunt-contrib-compress": "^1.1.1",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-rsync": "^1.0.1",
-    "grunt-text-replace": "^0.4.0",
-    "load-grunt-tasks": "^3.4.1",
-    "shower": "^2.0.7",
-    "shower-core": "^2.0.4",
-    "shower-material": "^1.0.3",
-    "shower-ribbon": "^2.0.3"
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "merge-stream": "^1.0.0",
+    "shower": "^2.0.7"
   }
 }
