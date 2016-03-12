@@ -227,7 +227,7 @@
 	<figure>
 		<img class="cover" src="picture.png">
 		<figcaption class="white">
-			Yours Truly © 2015
+			© Yours Truly
 		</figcaption>
 	</figure>
 
