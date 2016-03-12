@@ -9,7 +9,7 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 ## Build and deploy
 
 1. Install all dependencies by `npm i` or update existing ones to the latest versions.
-2. Run `grunt` to build site from packages and rsync it to [shwr.me](http://shwr.me/).
+2. Run `gulp` to build site from packages and rsync it to [shwr.me](http://shwr.me/).
 
 ---
 Licensed under [MIT License](LICENSE.md).
