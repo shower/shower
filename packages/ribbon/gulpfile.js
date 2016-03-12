@@ -1,16 +1,16 @@
 'use strict';
 
-var autoprefixer = require('gulp-autoprefixer'),
-	csso = require('gulp-csso'),
-	gulp = require('gulp'),
-	header = require('gulp-header'),
-	sass = require('gulp-sass'),
-	sync = require('browser-sync').create();
+const autoprefixer = require('gulp-autoprefixer');
+const csso = require('gulp-csso');
+const gulp = require('gulp');
+const header = require('gulp-header');
+const sass = require('gulp-sass');
+const sync = require('browser-sync').create();
 
 // Banner
 
-var pkg = require('./package.json');
-var banner = `/**
+const pkg = require('./package.json');
+const banner = `/**
  * ${ pkg.description }
  * ${ pkg.name } v${ pkg.version }, ${ pkg.homepage }
  * @copyright 2010–${ new Date().getFullYear() } ${ pkg.author.name }, ${ pkg.author.url }
@@ -20,7 +20,7 @@ var banner = `/**
 
 // Server
 
-gulp.task('default', ['styles'], function() {
+gulp.task('default', ['styles'], () => {
 	sync.init({
 		ui: false,
 		notify: false,
@@ -38,7 +38,7 @@ gulp.task('default', ['styles'], function() {
 
 // Styles
 
-gulp.task('styles', function () {
+gulp.task('styles', () => {
 	return gulp.src('styles/screen-*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer())
