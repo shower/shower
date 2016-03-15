@@ -227,8 +227,9 @@ shower.modules.define('shower.Player', [
                     this.last();
                     break;
 
-                case 9: // Tab (Shift)
                 case 32: // Space (Shift)
+                    if (!this._shower.container.isSlideMode()) { return; }
+                case 9: // Tab (Shift)
                     if (e.altKey || e.ctrlKey || e.metaKey) { return; }
                     e.preventDefault();
 

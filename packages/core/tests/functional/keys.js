@@ -96,12 +96,30 @@ casper.test.begin(
 
 casper.test.begin(
 // ------------------------------------------------------------------
-    'Moving forward by Space', 1,
+    'Moving forward by Space in list mode', 1,
 // ------------------------------------------------------------------
     function suite(test) {
     casper.start('tests/functional/keys.html#1').then(function() {
 
         this.sendKeys('body', casper.page.event.key.Space);
+
+    }).then(function() {
+
+        test.assertExists('[id="1"].active', 'Current slide #1 is still active');
+
+    }).run(function() { test.done() }).clear();
+});
+
+casper.test.begin(
+// ------------------------------------------------------------------
+    'Moving forward by Space in slide mode', 1,
+// ------------------------------------------------------------------
+    function suite(test) {
+    casper.start('tests/functional/keys.html#1').then(function() {
+
+        this.sendKeys('body', casper.page.event.key.Enter);
+        this.sendKeys('body', casper.page.event.key.Space);
+        this.sendKeys('body', casper.page.event.key.Escape);
 
     }).then(function() {
 
@@ -224,12 +242,30 @@ casper.test.begin(
 
 casper.test.begin(
 // ------------------------------------------------------------------
-    'Moving backward by Shift Space', 1,
+    'Moving backward by Shift Space in list mode', 1,
 // ------------------------------------------------------------------
     function suite(test) {
     casper.start('tests/functional/keys.html#2').then(function() {
 
         this.sendKeys('body', casper.page.event.key.Space, { modifiers: 'shift' });
+
+    }).then(function() {
+
+        test.assertExists('[id="2"].active', 'Current slide #2 is still active');
+
+    }).run(function() { test.done() }).clear();
+});
+
+casper.test.begin(
+// ------------------------------------------------------------------
+    'Moving backward by Shift Space in slide mode', 1,
+// ------------------------------------------------------------------
+    function suite(test) {
+    casper.start('tests/functional/keys.html#2').then(function() {
+
+        this.sendKeys('body', casper.page.event.key.Enter);
+        this.sendKeys('body', casper.page.event.key.Space, { modifiers: 'shift' });
+        this.sendKeys('body', casper.page.event.key.Escape);
 
     }).then(function() {
 
