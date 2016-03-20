@@ -33,6 +33,7 @@
     "presentation",
     "core"
   ],
+  "main": "shower.min.js",
   "files": [
     "shower.min.js",
     "LICENSE.md",
