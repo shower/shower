@@ -44,8 +44,10 @@ module.exports = function(grunt) {
                 dest: 'shower.min.js'
             }
         },
-        casperjs: {
-            files: ['tests/functional/*.js']
+        webdriver: {
+            test: {
+                configFile: './wdio.conf.js'
+            }
         },
         bump: {
             options: {
@@ -76,7 +78,7 @@ module.exports = function(grunt) {
         'jscs',
         'concat:basic',
         'uglify',
-        'casperjs'
+        'webdriver'
     ]);
 
     grunt.registerTask('test:unit', [
