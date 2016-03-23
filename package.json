@@ -20,6 +20,12 @@
     "presentation",
     "template"
   ],
+  "files": [
+    "pictures/**",
+    "index.html",
+    "LICENSE.md",
+    "README.md"
+  ],
   "dependencies": {
     "shower-core": "^2.0.5",
     "shower-material": "^1.0.4",
