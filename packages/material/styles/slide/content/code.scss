@@ -68,15 +68,12 @@ pre {
 			color:white;
 			}
 
-		// Comment
+		}
 
-		&.comment {
-			margin:0;
-			padding:0;
-			background:none;
-			color:$medium;
-			}
+	// Comment
 
+	&.comment {
+		color:$medium;
 		}
 
 	}
