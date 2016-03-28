@@ -42,7 +42,7 @@ pre {
 
 			// Line Numbers
 
-			&:before {
+			&::before {
 				position:absolute;
 				margin-left:-2em;
 				color:lighten($grey, 25%);
