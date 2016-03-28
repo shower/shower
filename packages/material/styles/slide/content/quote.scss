@@ -6,7 +6,7 @@ blockquote {
 
 	font-style:italic;
 
-	&:before {
+	&::before {
 		position:absolute;
 		margin:-0.04em 0 0 -0.4em;
 		color:$light;
