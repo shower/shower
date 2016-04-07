@@ -1,16 +1,15 @@
-'use strict';
-
-var autoprefixer = require('gulp-autoprefixer'),
-	csso = require('gulp-csso'),
-	gulp = require('gulp'),
-	header = require('gulp-header'),
-	sass = require('gulp-sass'),
-	sync = require('browser-sync').create();
+const autoprefixer = require('autoprefixer');
+const csso = require('postcss-csso');
+const gulp = require('gulp');
+const header = require('gulp-header');
+const postcss = require('gulp-postcss');
+const sass = require('gulp-sass');
+const sync = require('browser-sync').create();
 
 // Banner
 
-var pkg = require('./package.json');
-var banner = `/**
+const pkg = require('./package.json');
+const banner = `/**
  * ${ pkg.description }
  * ${ pkg.name } v${ pkg.version }, ${ pkg.homepage }
  * @copyright 2010–${ new Date().getFullYear() } ${ pkg.author.name }, ${ pkg.author.url }
@@ -20,13 +19,13 @@ var banner = `/**
 
 // Server
 
-gulp.task('default', ['styles'], function() {
+gulp.task('default', ['styles'], () => {
 	sync.init({
 		ui: false,
 		notify: false,
 		server: {
 			baseDir: '.',
- 			routes: {
+			routes: {
 				'/shower-core': '../shower-core'
 			}
 		}
@@ -38,11 +37,13 @@ gulp.task('default', ['styles'], function() {
 
 // Styles
 
-gulp.task('styles', function () {
+gulp.task('styles', () => {
 	return gulp.src('styles/screen-*.scss')
 		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer())
-		.pipe(csso())
+        .pipe(postcss([
+			autoprefixer,
+			csso
+		]))
 		.pipe(header(banner, { pkg: pkg }))
 		.pipe(gulp.dest('styles'))
 		.pipe(sync.stream());

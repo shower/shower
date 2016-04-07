@@ -32,12 +32,13 @@
     "README.md"
   ],
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
     "browser-sync": "^2.11.2",
     "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-csso": "^1.1.0",
     "gulp-header": "^1.7.1",
-    "gulp-sass": "^2.2.0"
+    "gulp-postcss": "^6.1.0",
+    "gulp-sass": "^2.2.0",
+    "postcss-csso": "^1.1.0"
   },
   "scripts": {
     "dev": "gulp",
