@@ -39,7 +39,7 @@ Final theme package consists of the following folders and files:
 3. `images` folder with decoration images.
 4. `pictures` folder with sample pictures.
 5. `styles` folder with built styles in 16×10 and 4×3 ratios.
-6. `index.html` file with demostration of all features.
+6. `index.html` file with demonstration of all features.
 
 In addition to files above repository contains source files:
 
@@ -59,7 +59,7 @@ Appropriate typography traditions are used based on this value. `lang` attribute
 
 ### Canvas
 
-The root presentation element has the main `shower` class and additional mode class: `list` for the list and `full` for the full screen. `list` mode is usually set by default, but if there’s no one, it’ll be set to `list` anyway and presentation will be opened in the list mode. If `full` is set instead of `list` then presenation will be opened in the full screen mode.
+The root presentation element has the main `shower` class and additional mode class: `list` for the list and `full` for the full screen. `list` mode is usually set by default, but if there’s no one, it’ll be set to `list` anyway and presentation will be opened in the list mode. If `full` is set instead of `list` then presentation will be opened in the full screen mode.
 
 List:
 
@@ -73,7 +73,7 @@ Full screen:
 		…
 	</body>
 
-Themes’s architecture is based on agreement that all presentation elements are nested in `shower` element and mode classes are hiding or showing needed element depending on current mode.
+Theme’s architecture is based on agreement that all presentation elements are nested in `shower` element and mode classes are hiding or showing needed element depending on current mode.
 
 ### Title
 
@@ -102,7 +102,7 @@ If you want to remove it from presentation just delete this element from documen
 
 ## Slide
 
-Slides are marked with `slide` class. Please don’t nest slides and don’t foget closing tags, this could go wrong.
+Slides are marked with `slide` class. Please don’t nest slides and don’t forget closing tags, this could go wrong.
 
 	<section class="slide">
 		…
