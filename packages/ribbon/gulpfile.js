@@ -1,9 +1,8 @@
-'use strict';
-
-const autoprefixer = require('gulp-autoprefixer');
-const csso = require('gulp-csso');
+const autoprefixer = require('autoprefixer');
+const csso = require('postcss-csso');
 const gulp = require('gulp');
 const header = require('gulp-header');
+const postcss = require('gulp-postcss');
 const sass = require('gulp-sass');
 const sync = require('browser-sync').create();
 
@@ -41,8 +40,10 @@ gulp.task('default', ['styles'], () => {
 gulp.task('styles', () => {
 	return gulp.src('styles/screen-*.scss')
 		.pipe(sass().on('error', sass.logError))
-		.pipe(autoprefixer())
-		.pipe(csso())
+        .pipe(postcss([
+			autoprefixer,
+			csso
+		]))
 		.pipe(header(banner, { pkg: pkg }))
 		.pipe(gulp.dest('styles'))
 		.pipe(sync.stream());
