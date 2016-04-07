@@ -2,33 +2,33 @@
 
 All theme’s features are demonstrated in the [index.html](../index.html) file. Use it as a reference while building your presentation. More detailed features overview follows below.
 
-- Anatomy
-- Common elements
-	- Language
-	- Canvas
-	- Title
-	- Badge
-	- Progress
-- Slide
-	- Number
-	- Types
-		- White
-		- Black
-		- Grid
-	- Content
-		- Header
-		- Paragraphs
-		- Inline
-		- Quotes
-		- Lists
-		- Columns
-		- Tables
-		- Code
-	- Elements
-		- Cover
-		- Shout
-		- Place
-		- Notes
+- [Anatomy](#Anatomy)
+- [Common](#Common)
+	- [Language](#Language)
+	- [Canvas](#Canvas)
+	- [Title](#Title)
+	- [Badge](#Badge)
+	- [Progress](#Progress)
+- [Slide](#Slide)
+	- [Number](#Number)
+	- [Types](#Types)
+		- [White](#White)
+		- [Black](#Black)
+		- [Grid](#Grid)
+	- [Content](#Content)
+		- [Header](#Header)
+		- [Paragraphs](#Paragraphs)
+		- [Inline](#Inline)
+		- [Quotes](#Quotes)
+		- [Lists](#Lists)
+		- [Columns](#Columns)
+		- [Tables](#Tables)
+		- [Code](#Code)
+	- [Elements](#Elements)
+		- [Cover](#Cover)
+		- [Shout](#Shout)
+		- [Place](#Place)
+		- [Notes](#Notes)
 
 ## Anatomy
 
@@ -46,7 +46,7 @@ In addition to files above repository contains source files:
 1. `source` folder with font source files in TTF and design in [Sketch](http://bohemiancoding.com/sketch/).
 2. `styles` folder also contains source styles in SCSS format.
 
-## Common elements
+## Common
 
 ### Language
 
