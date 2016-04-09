@@ -228,15 +228,12 @@ shower.modules.define('shower.Player', [
                     break;
 
                 case 32: // Space (Shift)
-                    if (!this._shower.container.isSlideMode()) { return; }
-                case 9: // Tab (Shift)
-                    if (e.altKey || e.ctrlKey || e.metaKey) { return; }
-                    e.preventDefault();
-
-                    if (e.shiftKey) {
-                        this.prev();
-                    } else {
-                        this.next();
+                    if (this._shower.container.isSlideMode()) {
+                        if (e.shiftKey) {
+                            this.prev();
+                        } else {
+                            this.next();
+                        }
                     }
                     break;
             }
