@@ -6,7 +6,7 @@ You can export your presentation to PDF by sending it to print in list mode in C
 2. Select PDF in targets list
 3. Save resulted file
 
-![Printing dialog](images/printing.png)
+![Printing dialog](images/ribbon-printing.png)
 
 ## Other options
 
