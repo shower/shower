@@ -202,12 +202,18 @@ shower.modules.define('shower.Container', [
             }
 
             switch (e.which) {
-                case 13: // enter
+                case 13: // Enter
                     e.preventDefault();
-                    this.enterSlideMode();
+                    if (!this.isSlideMode()) {
+                        var slideNumber = e.shiftKey ? 0 : this._shower.player.getCurrentSlideIndex();
+                        this._shower.player.go(slideNumber);
+                        this.enterSlideMode();
+                    } else {
+                        this._shower.player.next();
+                    }
                     break;
 
-                case 27: // esc
+                case 27: // Esc
                     e.preventDefault();
                     this.exitSlideMode();
                     break;
@@ -221,7 +227,6 @@ shower.modules.define('shower.Container', [
                     } else {
                         this.exitSlideMode();
                     }
-
                     break;
 
                 case 80: // P Alt Cmd
