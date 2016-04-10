@@ -77,6 +77,8 @@ shower.modules.define('shower.Container', [
             bodyClassList.remove(showerOptions.get('mode_list_classname'));
             bodyClassList.add(showerOptions.get('mode_full_classname'));
 
+            document.body.setAttribute('role', 'application');
+
             this._applyTransform(this._getTransformScale());
 
             this._isSlideMode = true;
@@ -97,6 +99,8 @@ shower.modules.define('shower.Container', [
 
             elementClassList.remove(showerOptions.get('mode_full_classname'));
             elementClassList.add(showerOptions.get('mode_list_classname'));
+
+            document.body.removeAttribute('role', 'application');
 
             this._applyTransform('none');
 
