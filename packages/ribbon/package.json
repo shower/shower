@@ -38,7 +38,7 @@
     "gulp-header": "^1.7.1",
     "gulp-postcss": "^6.1.0",
     "gulp-sass": "^2.2.0",
-    "postcss-csso": "^1.1.0"
+    "postcss-csso": "^1.1.1"
   },
   "scripts": {
     "dev": "gulp",
