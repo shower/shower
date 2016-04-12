@@ -37,7 +37,7 @@ shower.modules.define('shower.Player', [
             this._showerListeners = this._shower.events.group()
                 .on('slideadd', this._onSlideAdd, this)
                 .on('slideremove', this._onSlideRemove, this)
-                .on('slidemodeenter', this._onContainerSlideModeEnter, this);
+                .on('slidemodeenter', this._onSlideModeEnter, this);
 
             this._playerListeners = this.events.group()
                 .on('prev', this._onPrev, this)
@@ -239,7 +239,7 @@ shower.modules.define('shower.Player', [
             }
         },
 
-        _onContainerSlideModeEnter: function () {
+        _onSlideModeEnter: function () {
             if (!this._currentSlide) {
                 this.go(0);
             }

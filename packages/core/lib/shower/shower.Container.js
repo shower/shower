@@ -221,8 +221,6 @@ shower.modules.define('shower.Container', [
                 case 116: // F5 (Shift)
                     e.preventDefault();
                     if (!this.isSlideMode()) {
-                        var slideNumber = e.shiftKey ? this._shower.player.getCurrentSlideIndex() : 0;
-                        this._shower.player.go(slideNumber);
                         this.enterSlideMode();
                     } else {
                         this.exitSlideMode();
