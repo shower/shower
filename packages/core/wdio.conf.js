@@ -5,12 +5,12 @@ var seleniumServer;
 
 exports.config = {
     specs: [
-        //TODO: use wildcard when all tests will be migrated
-        './tests/functional/core.js'
+        // TODO: use wildcard when all tests will be migrated
+        './tests/functional/*/test.js'
     ],
 
     capabilities: [{
-        browserName: 'firefox'
+        browserName: 'chrome'
     }],
 
     // Level of logging verbosity: silent | verbose | command | data | result | error
@@ -26,7 +26,7 @@ exports.config = {
 
     framework: 'mocha',
 
-    reporters: ['dot', 'allure'],
+    // reporters: ['dot', 'allure'],
 
     mochaOpts: {
         ui: 'bdd'
