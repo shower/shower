@@ -10,6 +10,6 @@ describe('a11y', () => {
 
     it('adds `application` role in full mode', () => {
         browser.url('/core/full.html');
-        browser.isExisting('.shower[role=application]');
+        browser.isExisting('.shower[role=application]').should.equal(true);
     });
 });
