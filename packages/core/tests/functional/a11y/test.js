@@ -1,4 +1,9 @@
 describe('a11y', () => {
+
+    beforeEach(() => {
+        browser.url('about:blank');
+    });
+
     afterEach(() => {
         browser.sessionStorage('DELETE');
     });
@@ -12,4 +17,5 @@ describe('a11y', () => {
         browser.url('/core/full.html');
         browser.isExisting('.shower[role=application]').should.equal(true);
     });
+
 });
