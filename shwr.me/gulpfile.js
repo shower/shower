@@ -66,7 +66,9 @@ gulp.task('prepare', () => {
 
 gulp.task('deploy', () => {
 
-	return gulp.src('dest/**')
+	return gulp.src([
+			'dest/**', '.htaccess'
+		])
 		.pipe(replace(
 			/(<\/body>)/,
 			'\t' + fs.readFileSync('counter.html', 'utf8') + '\n$1', { skipBinary: true }
