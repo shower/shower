@@ -50,7 +50,7 @@
     "grunt-contrib-uglify": "^1.0.1",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jscs": "^2.8.0",
-    "grunt-mocha": "^1.0.1",
+    "grunt-mocha": "^1.0.2",
     "grunt-webdriver": "just-boris/grunt-webdriver#infinite-loop",
     "jscs": "^3.0.3",
     "jshint": "^2.9.2",
