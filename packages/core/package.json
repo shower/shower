@@ -64,7 +64,7 @@
     "shower-touch": "0.0.11",
     "wdio-allure-reporter": "0.0.2",
     "wdio-dot-reporter": "0.0.5",
-    "wdio-mocha-framework": "^0.2.12",
+    "wdio-mocha-framework": "^0.2.13",
     "webdriverio": "^4.0.6",
     "ym": "^0.1.2"
   },
