@@ -70,16 +70,16 @@ shower.modules.define('shower.global', [
     };
 
     /**
-     * @name shower.plugins
+     * @name shower.events
      * @field
-     * @type {Plugins}
+     * @type {Emitter}
      */
     sh.events = new EventEmitter({context: sh});
 
     /**
-     * @name shower.events
+     * @name shower.plugins
      * @field
-     * @type {Emitter}
+     * @type {Plugins}
      */
     sh.plugins = new Plugins(sh);
 
