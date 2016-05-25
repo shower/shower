@@ -55,7 +55,7 @@
     "jscs": "^3.0.3",
     "jshint": "^2.9.2",
     "load-grunt-tasks": "^3.5.0",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.3",
     "pinkie-promise": "^2.0.1",
     "selenium-standalone": "^5.1.0",
     "shower-next": "0.0.6",
@@ -65,7 +65,7 @@
     "wdio-allure-reporter": "0.0.2",
     "wdio-dot-reporter": "0.0.5",
     "wdio-mocha-framework": "^0.2.13",
-    "webdriverio": "^4.0.7",
+    "webdriverio": "^4.0.8",
     "ym": "^0.1.2"
   },
   "scripts": {
