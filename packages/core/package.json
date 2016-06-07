@@ -53,6 +53,7 @@
     "grunt-mocha": "^1.0.2",
     "grunt-webdriver": "just-boris/grunt-webdriver#infinite-loop",
     "jscs": "^3.0.4",
+    "jscs-preset-loris": "^1.1.2",
     "jshint": "^2.9.2",
     "load-grunt-tasks": "^3.5.0",
     "mocha": "^2.5.3",
