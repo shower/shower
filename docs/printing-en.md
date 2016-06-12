@@ -10,4 +10,6 @@ You can export your presentation to PDF by sending it to print in list mode in C
 
 ## Other options
 
+You can use [DeckTape](https://github.com/astefanutti/decktape), a PDF exporter for HTML presentation frameworks based on [PhantomJS](http://phantomjs.org) and that provides plugins for Shower.
+
 You could also try [Prince](http://princexml.com), [wkhtmltopdf](http://code.google.com/p/wkhtmltopdf) and such console utilities for printing, although not complete modern CSS features support and complicated configuration make them less convenient.
