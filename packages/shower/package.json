@@ -32,7 +32,7 @@
     "shower-ribbon": "^2.0.5"
   },
   "devDependencies": {
-    "del": "^2.2.0",
+    "del": "^2.2.1",
     "fs": "0.0.2",
     "gulp": "^3.9.1",
     "gulp-gh-pages": "^0.5.4",
