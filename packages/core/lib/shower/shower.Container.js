@@ -204,7 +204,7 @@ shower.modules.define('shower.Container', [
             switch (e.which) {
                 case 13: // Enter
                     e.preventDefault();
-                    if (!this.isSlideMode()) {
+                    if (!this.isSlideMode() && e.metaKey) {
                         var slideNumber = e.shiftKey ? 0 : this._shower.player.getCurrentSlideIndex();
                         this._shower.player.go(slideNumber);
                         this.enterSlideMode();

@@ -58,12 +58,12 @@
     "load-grunt-tasks": "^3.5.0",
     "mocha": "^2.5.3",
     "pinkie-promise": "^2.0.1",
-    "selenium-standalone": "^5.1.1",
+    "selenium-standalone": "^5.3.1",
     "shower-next": "0.0.6",
     "shower-progress": "0.0.9",
     "shower-timer": "0.0.12",
     "shower-touch": "0.0.11",
-    "wdio-allure-reporter": "0.0.2",
+    "wdio-allure-reporter": "0.1.1",
     "wdio-dot-reporter": "0.0.5",
     "wdio-mocha-framework": "^0.3.4",
     "webdriverio": "^4.1.1",
@@ -71,10 +71,10 @@
   },
   "scripts": {
     "prebuild": "selenium-standalone install",
-    "build": "node -e \"require('grunt').tasks(['default'])\"",
+    "build": "grunt default",
     "prepublish": "npm run build",
     "validate": "jshint . && jscs .",
-    "test": "node -e \"require('grunt').tasks(['test'])\"",
+    "test": "grunt test",
     "report": "allure report generate -o allure-report allure-results && allure report open -o allure-report"
   }
 }
