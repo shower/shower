@@ -42,7 +42,7 @@
   ],
   "devDependencies": {
     "chai": "^3.5.0",
-    "git-hooks": "^1.0.2",
+    "git-hooks": "^1.1.0",
     "grunt": "^1.0.1",
     "grunt-bump": "^0.8.0",
     "grunt-contrib-concat": "^1.0.1",
@@ -66,7 +66,7 @@
     "wdio-allure-reporter": "0.1.1",
     "wdio-dot-reporter": "0.0.6",
     "wdio-mocha-framework": "^0.3.5",
-    "webdriverio": "^4.2.0",
+    "webdriverio": "^4.2.1",
     "ym": "^0.1.2"
   },
   "scripts": {
