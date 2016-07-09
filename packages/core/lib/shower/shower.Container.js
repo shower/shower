@@ -209,7 +209,11 @@ shower.modules.define('shower.Container', [
                         this._shower.player.go(slideNumber);
                         this.enterSlideMode();
                     } else {
-                        this._shower.player.next();
+                        if (e.shiftKey) {
+                            this._shower.player.prev();
+                        } else {
+                            this._shower.player.next();
+                        }
                     }
                     break;
 
@@ -221,6 +225,8 @@ shower.modules.define('shower.Container', [
                 case 116: // F5 (Shift)
                     e.preventDefault();
                     if (!this.isSlideMode()) {
+                        var slideNumber = e.shiftKey ? 0 : this._shower.player.getCurrentSlideIndex();
+                        this._shower.player.go(slideNumber);
                         this.enterSlideMode();
                     } else {
                         this.exitSlideMode();
