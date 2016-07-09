@@ -38,12 +38,6 @@ describe('core', () => {
         browser.isExisting('[id="1"].active').should.equal(true);
     });
 
-    it('goes to Full mode when Enter key is pressed in the list mode with an active slide', () => {
-        browser.url('/core/list.html#1');
-        browser.keys(['Enter']);
-        browser.isExisting('.shower.full').should.equal(true);
-    });
-
     it('goes to Full mode when a slide is clicked', () => {
         browser.url('/core/list.html');
         browser.click('[id="1"]');
