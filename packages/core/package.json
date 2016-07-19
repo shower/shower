@@ -47,7 +47,7 @@
     "grunt-bump": "^0.8.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jscs": "^3.0.1",
     "grunt-mocha": "^1.0.2",
