@@ -77,7 +77,7 @@ gulp.task('deploy', () => {
 		.pipe(rsync({
 			root: 'dest',
 			hostname: 'shwr.me',
-			destination: 'shwr.me',
+			destination: '/var/www/shwr.me/html',
 			recursive: true,
 			clean: true,
 			incremental: true,
