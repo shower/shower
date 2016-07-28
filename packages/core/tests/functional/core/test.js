@@ -73,7 +73,7 @@ describe('core', () => {
 
     it('activates the first slide in the List mode if Right Arrow key is pressed', () => {
         browser.url('/core/list.html');
-        browser.keys(['Right arrow']);
+        browser.keys(['\uE014']); // Right
         browser.isExisting('[id="1"].active').should.equal(true);
     });
 
@@ -87,8 +87,8 @@ describe('core', () => {
 
     it('changes slide states while moving forward', () => {
         browser.url('/core/list.html#1');
-        browser.keys(['Right arrow']); // 2
-        browser.keys(['Right arrow']); // 3
+        browser.keys(['\uE014']); // Right
+        browser.keys(['\uE014']); // Right
         browser.isExisting('[id="1"].visited:not(.active)').should.equal(true);
         browser.isExisting('[id="ID"].visited:not(.active)').should.equal(true);
         browser.isExisting('[id="3"].active').should.equal(true);
@@ -96,8 +96,8 @@ describe('core', () => {
 
     it('changes slide states while moving backward', () => {
         browser.url('/core/list.html#3');
-        browser.keys(['Left arrow']); // 2
-        browser.keys(['Left arrow']); // 1
+        browser.keys(['\uE012']); // Left
+        browser.keys(['\uE012']); // Left
         browser.isExisting('[id="1"].active').should.equal(true);
         browser.isExisting('[id="ID"].visited:not(.active)').should.equal(true);
         browser.isExisting('[id="3"].visited:not(.active)').should.equal(true);
@@ -105,10 +105,10 @@ describe('core', () => {
 
     it('changes slide states while moving forward and backward', () => {
         browser.url('/core/list.html#1');
-        browser.keys(['Right arrow']); // 2
-        browser.keys(['Right arrow']); // 3
-        browser.keys(['Left arrow']); // 2
-        browser.keys(['Left arrow']); // 1
+        browser.keys(['\uE014']); // Right
+        browser.keys(['\uE014']); // Right
+        browser.keys(['\uE012']); // Left
+        browser.keys(['\uE012']); // Left
         browser.isExisting('[id="1"].visited.active').should.equal(true);
         browser.isExisting('[id="ID"].visited:not(.active)').should.equal(true);
         browser.isExisting('[id="3"].visited:not(.active)').should.equal(true);
@@ -116,69 +116,135 @@ describe('core', () => {
 
     // History
 
-    // history.html#1
-    // Right
-    // back()
+    it('goes to previous and next slides while moving back and forward in history', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\uE014']); // Right
+        browser.keys(['\uE014']); // Right
+        browser.back();
+        browser.back();
+        browser.forward();
+        browser.isExisting('[id="1"].visited').should.equal(true);
+        browser.isExisting('[id="ID"].visited.active').should.equal(true);
+        browser.isExisting('[id="3"].visited').should.equal(true);
+    });
 
-    // history.html#1
-    // Right
-    // Right
-    // back()
-    // back()
-    // forward()
+    // Forward
 
-    // Keys
+    it('moves forward when Right Arrow key is pressed', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\uE014']); // Right
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
 
-    // keys.html#1
-    // Right
-    // keys.html#1
-    // Down
-    // keys.html#1
-    // Tab
-    // keys.html#1
-    // Ctrl Tab
-    // keys.html#1
-    // J
-    // keys.html#1
-    // L
-    // keys.html#1
-    // Space
-    // keys.html#1
-    // PageDown
-    // keys.html#2
-    // Left
-    // keys.html#2
-    // Up
-    // keys.html#2
-    // Shift Tab
-    // keys.html#2
-    // Ctrl Shift Tab
-    // keys.html#2
-    // K
-    // keys.html#2
-    // H
-    // keys.html#2
-    // Shift Space
-    // keys.html#2
-    // PageUp
-    // keys.html#2
+    it('moves forward when Down Arrow key is pressed', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\uE015']); // Down
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
+
+    it('moves forward when Page Down key is pressed', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\uE00F']); // Page Down
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
+
+    it('moves forward when J key is pressed', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\u004A']); // J
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
+
+    it('moves forward when L key is pressed', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\u004C']); // L
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
+
+    it('moves forward when Enter key is pressed', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\uE007']); // Enter
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
+
+    it('moves forward when Space key is pressed in Full mode', () => {
+        browser.url('/core/list.html');
+        browser.click('[id="1"]');
+        browser.keys(['\uE00D']); // Space
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
+
+    it('doesn’t move forward when Space key is pressed in List mode', () => {
+        browser.url('/core/list.html#1');
+        browser.keys(['\uE00D']); // Space
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    // Backward
+
+    it('moves backward when Left Arrow key is pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['\uE012']); // Left
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    it('moves backward when Up Arrow key is pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['\uE013']); // Up
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    it('moves backward when Page Up key is pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['\uE00E']); // Page Up
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    it('moves backward when K key is pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['\u004B']); // K
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    it('moves backward when H key is pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['\u0048']); // H
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    it('moves backward when Shift Enter keys are pressed in List mode', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['\uE008\uE007']); // Shift Enter
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    // it('moves backward when Shift Enter keys are pressed in Full mode', () => {
+    //     browser.url('/core/list.html');
+    //     browser.click('[id="ID"]');
+    //     browser.keys(['\uE008\uE007']); // Shift Enter
+    //     browser.isExisting('[id="1"].active').should.equal(true);
+    // });
+
+    it('doesn’t move backward when Shift Space keys are pressed in List mode', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['\uE008\uE00D']); // Shift Space
+        browser.isExisting('[id="ID"].active').should.equal(true);
+    });
+
+    it('moves backward when Shift Space keys are pressed in Full mode', () => {
+        browser.url('/core/list.html');
+        browser.click('[id="ID"]');
+        browser.keys(['\uE008\uE00D']); // Shift Space
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
     // Home
-    // keys.html#2
     // End
-    // keys.html#2
     // F5
-    // keys.html#2
     // Shift F5
-    // keys.html#2
-    // Enter
-    // keys.html#2
-    // Shift Enter
-
-    // Title
 
     it('keeps page title unchanged in List mode', () => {
         browser.url('/core/title.html');
-        browser.getTitle().should.equal('Title')
+        browser.getTitle().should.equal('Title');
     });
 
     it('prepends page title with current slide title in Full mode', () => {
@@ -190,13 +256,13 @@ describe('core', () => {
     it('doesn’t change page title in lack of slide title', () => {
         browser.url('/core/title.html');
         browser.click('[id="2"]');
-        browser.getTitle().should.equal('Title')
+        browser.getTitle().should.equal('Title');
     });
 
     it('strips tags from slide title while prepending', () => {
         browser.url('/core/title.html');
         browser.click('[id="3"]');
-        browser.getTitle().should.equal('3 — Title')
+        browser.getTitle().should.equal('3 — Title');
     });
 
 });
