@@ -217,7 +217,7 @@ describe('core', () => {
         browser.isExisting('[id="1"].active').should.equal(true);
     });
 
-    it('moves backward when Shift Enter keys are pressed in Full mode', () => {
+    xit('moves backward when Shift Enter keys are pressed in Full mode', () => {
         browser.url('/core/list.html');
         browser.click('[id="ID"]');
         browser.keys(['Shift', 'Enter']);
@@ -230,7 +230,7 @@ describe('core', () => {
         browser.isExisting('[id="ID"].active').should.equal(true);
     });
 
-    it('moves backward when Shift Space keys are pressed in Full mode', () => {
+    xit('moves backward when Shift Space keys are pressed in Full mode', () => {
         browser.url('/core/list.html');
         browser.click('[id="ID"]');
         browser.keys(['Shift', 'Space']);
@@ -249,14 +249,49 @@ describe('core', () => {
         browser.isExisting('[id="3"].active').should.equal(true);
     });
 
-    // F5
-    // Shift F5
+    // Start End
 
-    // Cmd Enter
-    // Cmd Shift Enter
-    // Cmd Shift Enter
+    it('starts presenation from the first slide when F5 key is pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys('F5');
+        browser.isExisting('[id="1"].active').should.equal(true);
+        browser.isExisting('.shower.full').should.equal(true);
+    });
 
-    // Esc
+    it('starts presenation from the current slide when Shift F5 keys are pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['Shift', 'F5']);
+        browser.isExisting('[id="ID"].active').should.equal(true);
+        browser.isExisting('.shower.full').should.equal(true);
+    });
+
+    xit('starts presenation from the first slide when Cmd Shift Enter keys are pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['Meta', 'Shift', 'Enter']);
+        browser.isExisting('[id="1"].active').should.equal(true);
+        browser.isExisting('.shower.full').should.equal(true);
+    });
+
+    xit('starts presenation from the current slide when Cmd Enter keys are pressed', () => {
+        browser.url('/core/list.html#ID');
+        browser.keys(['Meta', 'Enter']);
+        browser.isExisting('[id="ID"].active').should.equal(true);
+        browser.isExisting('.shower.full').should.equal(true);
+    });
+
+    it('stops presenation when F5 key is pressed', () => {
+        browser.url('/core/list.html');
+        browser.click('[id="1"]');
+        browser.keys('F5');
+        browser.isExisting('.shower.list').should.equal(true);
+    });
+
+    it('stops presenation when Esc key is pressed', () => {
+        browser.url('/core/list.html');
+        browser.click('[id="1"]');
+        browser.keys('Escape');
+        browser.isExisting('.shower.list').should.equal(true);
+    });
 
     // Title
 
