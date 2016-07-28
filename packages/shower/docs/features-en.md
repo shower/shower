@@ -1,6 +1,6 @@
 # Features
 
-All theme’s features are demonstrated in the [index.html](../index.html) file. Use it as a reference while building your presentation. More detailed features overview follows below.
+All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. More detailed features overview follows below.
 
 - [Anatomy](#anatomy)
 - [Common](#common)
@@ -32,7 +32,7 @@ All theme’s features are demonstrated in the [index.html](../index.html) file.
 
 ## Anatomy
 
-Final theme package consists of the following folders and files:
+Theme package consists of the following folders and files:
 
 1. `docs` folder with usage documentation, including this manual.
 2. `fonts` folder with fonts in WOFF compressed format.
@@ -52,14 +52,14 @@ In addition to files above repository contains source files:
 
 The main presentation language is set on the root element of the document, please note it and set the right one:
 
-	<html lang="ru">
 	<html lang="en">
+	<html lang="ru">
 
-Appropriate typography traditions are used based on this value. `lang` attribute could also be set to separate slides and even elements.
+Appropriate typography traditions are used based on this value. `lang` attribute could also be set to separate slides or elements.
 
 ### Canvas
 
-The root presentation element has the main `shower` class and additional mode class: `list` for the list and `full` for the full screen. `list` mode is usually set by default, but if there’s no one, it’ll be set to `list` anyway and presentation will be opened in the list mode. If `full` is set instead of `list` then presentation will be opened in the full screen mode.
+The root presentation element has the main `shower` class and additional mode class: `list` for the list and `full` for the full screen. `list` mode is usually set by default, but if there’s no one, it’ll be set to `list` anyway and slides will be opened in the list mode. If `full` is set instead of `list` then slides will be opened in the full screen mode.
 
 List:
 
@@ -67,15 +67,15 @@ List:
 		…
 	</body>
 
-Full screen:
+Full:
 
 	<body class="shower full">
 		…
 	</body>
 
-Theme’s architecture is based on agreement that all presentation elements are nested in `shower` element and mode classes are hiding or showing needed element depending on current mode.
+Theme’s architecture is based on agreement that all presentation elements are nested in `shower` element and mode classes are hiding or showing needed elements depending on current mode.
 
-### Title
+### Caption
 
 Presentation title is marked with the `caption` element, which has following elements provided: `<h1>` for the header, `<p>` for the description and also links.
 
@@ -83,6 +83,8 @@ Presentation title is marked with the `caption` element, which has following ele
 		<h1>Presentation Title</h1>
 		<p><a href="">Yours Truly</a>, Famous Inc.</p>
 	</header>
+
+Caption is visible only in the list mode. Don’t forget to specify presentation title in document’s `<title>` element.
 
 ### Badge
 
@@ -92,13 +94,15 @@ Badge with “Fork me on GitHub” link (or any other call to action) is marked 
 		<a href="…">Fork me on Github</a>
 	</footer>
 
+Badge is visible only in the list mode.
+
 ### Progress
 
-Progress bar shows how many slides left until presentation end and marked with `progress` element visible only in full screen mode:
+Progress bar shows how much is left until presentation end and marked with `progress` element visible only in full screen mode:
 
 	<div class="progress"></div>
 
-If you want to remove it from presentation just delete this element from document. It’s not possible to hide it only for the certain slides.
+To remove it from presentation just remove this element from document. There’s no way to hide it for certain slides.
 
 ## Slide
 
@@ -111,51 +115,122 @@ Slides are marked with `slide` class. Please don’t nest slides and don’t for
 		…
 	</section>
 
-There are two slide ratios supported: 16×10 and 4×3. To enable needed one include appropriate style file `screen-4x3.css` or `screen-16x10.css`. Wide screen 16×10 format is included by default.
+There are two slide ratios supported: 16×10 and 4×3. To enable needed one include appropriate file `screen-4x3.css` or `screen-16x10.css`. Wide screen 16×10 format is included by default.
 
 Slide width is 1024 px for the both ratios, height for 16×10 is 640 px and 768 px for 4×3. Bare in mind these sizes while preparing presentation pictures. In list mode slides are scaled down 2 or 4 times and in full screen mode they are scaled dynamically based in window size.
 
 ### Number
 
-…
+Slide numbers help audience to remember slides for questions and open needed slide by changing number in address field. Numbers are generated automatically using CSS counters and could be turned off for certain slides.
+
+You can hide number manually:
+
+	<section class="slide" id="off">
+		<style>
+			#off::after {
+				visibility: hidden;
+			}
+		</style>
+	</section>
+
+Or change slide type: add `white` or `black` to `slide`. Read more about types in the next section.
 
 ### Types
 
-…
+Types are changing slide’s look. You can set type by adding class to the main `slide`. There are few built-in types available in the theme, you could also describe custom types for each presention or add it to your theme.
 
 #### White
 
-…
+White type set white background and turns off slide number. Use it when you need just a pure white slide.
+
+	<section class="slide white">
+		…
+	</section>
 
 #### Black
 
-…
+Black type set black background and turns off slide number. Use it when you need just a pure black slide.
+
+	<section class="slide black">
+		…
+	</section>
+
+Please note that black slide type doesn’t change text color.
 
 #### Grid
 
-…
+Grid set a background with two guide types: main magenta guides and additional cyan guides, setting margins, rows and columns.
+
+	<section class="slide grid">
+		…
+	</section>
+
+All theme elements are aligned by this grid and it’s recommended to follow it while changing or extending a theme.
 
 ### Content
 
-…
+Simple content: headers, paragraphs, lists.
 
 #### Header
 
-…
+Slide header is marked with `<h2>` element:
+
+	<section class="slide">
+		<h2>Slide Header</h2>
+	</section>
+
+We haven’t introduced next heading levels to not provoke slides complexity.
 
 #### Paragraphs
 
-…
+Paragraphs are marked with `<p>` element. You could also make a note, less important part of a slide, by adding a `note` class to a paragraph:
+
+	<section class="slide">
+		<p>Text</p>
+		<p class="note">Note</p>
+	</section>
 
 #### Inline
 
-…
+There are following inline elements styled in the theme:
+
+- `<a>` is underlined;
+- `<strong>` and `<b>` are bold;
+- `<em>` and `<i>` are italic;
+- `<code>`, `<samp>`, and `<kbd>` are monospaced;
+- `<sup>` and `<sub>` for superscrip and subscript indexes;
+- `<mark>` for highliting parts of text.
 
 #### Quotes
 
-…
+Quotes are marked with `<blockquote>` element which contains one or more paragraphs:
+
+	<blockquote>
+		<p>Flannel bicycle rights locavore selfies.</p>
+	</blockquote>
+
+To add quote’s author wrap a quote to a `<figure>` element and put a caption in the `<figcaption>` right after:
+
+	<figure>
+		<blockquote>
+			<p>Post-ironic fashion axe flexitarian</p>
+		</blockquote>
+		<figcaption>Yours Truly</figcaption>
+	</figure>
 
 #### Lists
+
+…
+
+	<ol>
+		<li>Literally viral vegan</li>
+		<li>Wes Anderson chillwave Marfa
+			<ul>
+				<li>Retro meh brunch aesthetic</li>
+				<li>Messenger bag retro cred</li>
+			</ul>
+		</li>
+	</ol>
 
 …
 
@@ -163,11 +238,60 @@ Slide width is 1024 px for the both ratios, height for 16×10 is 640 px and 768 
 
 …
 
+	<p class="double">
+		Echo Park 8-bit sustainable umami deep v Kickstarter.
+	</p>
+
+…
+
+	<ul class="double">
+		<li>Occupy locavore blog</li>
+		<li>Mustache you haven’t heard of</li>
+	</ul>
+
 #### Tables
 
 …
 
+	<table>
+	<tr>
+		<th scope="col">Gentrify</th>
+		<th>Twee</th>
+	</tr>
+	<tr>
+		<th scope="row">Messenger</th>
+		<td>Mixtape</td>
+	</tr>
+	</table>
+
+…
+
+	<table class="striped">
+
 #### Code
+
+…
+
+	<pre><code>function action() {
+		// TODO
+		return true;
+	}</code></pre>
+
+…
+
+	<pre>
+		<code>function action() {</code>
+		<code>	// TODO</code>
+		<code>	return true;</code>
+		<code>}<code>
+	</pre>
+
+…
+
+	<pre><code>function <mark>action()</mark> {
+		<span class="comment">// TODO<span>
+		return <mark class="important">true</mark>;
+	}</code></pre>
 
 …
 
@@ -179,14 +303,84 @@ Slide width is 1024 px for the both ratios, height for 16×10 is 640 px and 768 
 
 …
 
+	<section class="slide">
+		<img class="cover" src="picture.png">
+	</section>
+
+…
+
+…
+
+…
+
+	<img class="cover width" src="picture.png">
+	<img class="cover height" src="picture.png">
+
+…
+
+	<img class="cover w" src="picture.png">
+	<img class="cover h" src="picture.png">
+
+…
+
+	<figure>
+		<img class="cover" src="picture.png">
+		<figcaption class="white">
+			© Yours Truly
+		</figcaption>
+	</figure>
+
 #### Shout
 
 …
+
+	<section class="slide">
+		<h2 class="shout">Shout</h2>
+	</section>
+
+…
+
+	<section class="slide">
+		<h2 class="shout grow">Growing Shout</h2>
+	</section>
+
+…
+
+	<section class="slide">
+		<h2 class="shout shrink">Shrinking Shout</h2>
+	</section>
 
 #### Place
 
 …
 
+	<section class="slide">
+		<img class="place" src="picture.png">
+	</section>
+
+…
+
+	<img class="place top" src="picture.png">
+	<img class="place right" src="picture.png">
+	<img class="place bottom" src="picture.png">
+	<img class="place left" src="picture.png">
+
+…
+
+	<img class="place top left" src="picture.png">
+	<img class="place top right" src="picture.png">
+	<img class="place bottom left" src="picture.png">
+	<img class="place bottom right" src="picture.png">
+
 #### Notes
+
+…
+
+	<section class="slide">
+		<p>Retro meh brunch aesthetic.</p>
+		<footer class="footer">
+			<p>Cosby sweater Shoreditch.</p>
+		</footer>
+	</section>
 
 …
