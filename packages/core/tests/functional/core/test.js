@@ -237,10 +237,28 @@ describe('core', () => {
         browser.isExisting('[id="1"].active').should.equal(true);
     });
 
-    // Home
-    // End
+    it('goes to first slide when Home key is pressed', () => {
+        browser.url('/core/list.html#3');
+        browser.keys('Home');
+        browser.isExisting('[id="1"].active').should.equal(true);
+    });
+
+    it('goes to last slide when End key is pressed', () => {
+        browser.url('/core/list.html#1');
+        browser.keys('End');
+        browser.isExisting('[id="3"].active').should.equal(true);
+    });
+
     // F5
     // Shift F5
+
+    // Cmd Enter
+    // Cmd Shift Enter
+    // Cmd Shift Enter
+
+    // Esc
+
+    // Title
 
     it('keeps page title unchanged in List mode', () => {
         browser.url('/core/title.html');
