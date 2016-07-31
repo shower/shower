@@ -1,44 +1,35 @@
 # Keyboard Shortcuts
 
-You can navigate between slides, enter slide mode and exit to list mode using various keyboard shortcuts.
+You can navigate between slides, start and stop presentation using keyboard shortcuts.
 
 - [Forward](#forward)
-- [Back](#back)
+- [Backward](#back)
 - [First and Last](#first-and-last)
-- [Enter and Exit](#enter-and-exit)
-- [PowerPoint](#powerpoint)
-- [Keynote](#keynote)
+- [Start and Stop](#start-and-stop)
 
 ## Forward
 
-- Right `→` and down `↓` arrows
-- `PgDown` key or `Fn ↓` on OS X
-- `J` or `L` key, like in console
-- `Space` key in slide mode
-- `Enter` key in slide mode
+- `Right` and `Down` arrows
+- `Page Down` key or `Fn Down` on Mac
+- `J` or `L` keys, like in console
+- `Enter` key
+- `Space` key during presentation
 
-## Back
+## Backward
 
-- Left `←` and up `↑` arrows
-- `PgUp` key or `Fn ↑` on OS X
+- `Left` and `Up` arrows
+- `Page Up` key or `Fn Up` on Mac
 - `K` or `H` keys, like in console
-- `Shift Space` combo in list mode
+- `Shift Enter` key
+- `Shift Space` key during presentation
 
 ## First and Last
 
-- First slide: `Home` key or `Fn ←` on OS X
-- Last slide: `End` key or `Fn →` on OS X
+- First slide: `Home` key or `Fn Left` on Mac
+- Last slide: `End` key or `Fn Right` on Mac
 
-## Slide and List
+## Start and Stop
 
-- Slide mode: any [forward](#forward) key and `Enter`
-- List mode: `Esc` or `F5` key
-
-## PowerPoint
-
-- Windows: `F5` key for starting slide mode from the first slide or `Shift F5` for starting from the current one.
-- OS X: `Cmd Enter` combo for starting slide mode from the current slide or `Cmd Shift Enter` for starting from the first one.
-
-## Keynote
-
-- `Cmd Option P` combo for starting slide mode from the current slide.
+- Start presentation from the current slide: `Cmd Enter`, `Cmd Option P`, `Shift F5`
+- Start presentation from the first slide `Cmd Shift Enter` or `F5`
+- Stop presentation: `Esc` or `F5` key

@@ -1,6 +1,6 @@
 # Ribbon theme for Shower
 
-![Ribbon screen shot](docs/images/canvas.png)
+![Ribbon screen shot](pictures/canvas.png)
 
 Default theme for the [Shower](https://github.com/shower/shower/) presentation engine. Doesn’t include engine itself. [See it in action](http://shwr.me/shower/themes/ribbon/). Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
 
@@ -14,11 +14,9 @@ If you want to install Ribbon separately you can download the [theme archive](ht
 
 	npm install shower-ribbon
 
-The same packages available in [bower](http://bower.io/).
-
 ## Features
 
-All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. See more detailed [features overview](docs/features-en.md).
+All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. See more detailed [features overview](https://github.com/shower/shower/blob/master/docs/features-en.md).
 
 ## Ratios
 
@@ -26,7 +24,7 @@ Ribbon theme supports two slide ratios: wide 16×10 (default) and taller 4×3. T
 
 ## PDF
 
-Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](docs/printing-en.md) for more options.
+Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](https://github.com/shower/shower/blob/master/docs/printing-en.md) for more options.
 
 ## Development
 
