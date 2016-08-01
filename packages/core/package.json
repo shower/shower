@@ -1,7 +1,7 @@
 {
   "name": "shower-core",
   "description": "Core for Shower HTML presentation engine",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "author": {
     "name": "Vadim Makeev",
     "url": "http://pepelsbey.net/"
@@ -56,7 +56,7 @@
     "jscs-preset-loris": "^1.1.2",
     "jshint": "^2.9.2",
     "load-grunt-tasks": "^3.5.0",
-    "mocha": "^2.5.3",
+    "mocha": "^3.0.0",
     "pinkie-promise": "^2.0.1",
     "selenium-standalone": "^5.5.0",
     "shower-next": "0.0.6",
