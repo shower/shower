@@ -38,11 +38,13 @@
     "gulp-header": "^1.8.8",
     "gulp-postcss": "^6.1.1",
     "gulp-sass": "^2.3.2",
+    "path-exists-cli": "^1.0.0",
     "postcss-csso": "^1.1.2"
   },
   "scripts": {
     "dev": "gulp",
     "styles": "gulp styles",
-    "prepublish": "npm run styles"
+    "prepublish": "npm run styles",
+    "test": "path-exists styles/screen-16x10.css && path-exists styles/screen-4x3.css"
   }
 }
