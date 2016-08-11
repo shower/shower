@@ -1,4 +1,4 @@
-# Material theme for Shower
+# Material theme for Shower [![Build Status](https://travis-ci.org/shower/material.svg?branch=master)](https://travis-ci.org/shower/material)
 
 ![Ribbon screen shot](pictures/canvas.png)
 
