@@ -41,7 +41,14 @@ gulp.task('styles', () => {
 	return gulp.src('styles/screen-*.scss')
 		.pipe(sass().on('error', sass.logError))
         .pipe(postcss([
-			autoprefixer,
+			autoprefixer({
+				browsers: [
+					'> 1%',
+					'last 2 versions',
+					'Firefox ESR',
+					'iOS >= 8',
+				]
+			}),
 			csso
 		]))
 		.pipe(header(banner, { pkg: pkg }))
