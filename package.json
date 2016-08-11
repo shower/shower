@@ -41,11 +41,13 @@
     "gulp-rsync": "0.0.6",
     "gulp-zip": "^3.2.0",
     "merge-stream": "^1.0.0",
+    "path-exists-cli": "^1.0.0",
     "run-sequence": "^1.2.2"
   },
   "scripts": {
     "prepare": "gulp prepare",
     "archive": "gulp archive",
-    "publish": "gulp publish"
+    "publish": "gulp publish",
+    "test": "npm run prepare && ls prepared && npm run archive && path-exists archive.zip"
   }
 }
