@@ -22,8 +22,8 @@ gulp.task('prepare', () => {
 			'!package.json'
 		])
 		.pipe(replace(
-			/(<link rel="stylesheet" href=")(node_modules\/shower-ribbon\/)(styles\/screen-16x10.css">)/g,
-			'$1shower/themes/ribbon/$3', { skipBinary: true }
+			/(<link rel="stylesheet" href=")(node_modules\/shower-)([^\/]*)\/(.*\.css">)/g,
+			'$1shower/themes/$3/$4', { skipBinary: true }
 		))
 		.pipe(replace(
 			/(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
