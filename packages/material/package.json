@@ -37,6 +37,8 @@
     "gulp": "^3.9.1",
     "gulp-header": "^1.8.8",
     "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.3.2",
     "path-exists-cli": "^1.0.0",
     "postcss-csso": "^1.1.2",
