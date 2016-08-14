@@ -24,10 +24,7 @@ gulp.task('default', ['styles'], () => {
 		ui: false,
 		notify: false,
 		server: {
-			baseDir: '.',
-			routes: {
-				'/shower-core': '../shower-core'
-			}
+			baseDir: '.'
 		}
 	});
 
