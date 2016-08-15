@@ -3,7 +3,7 @@
   "description": "Demo site for Shower HTML presentation engine",
   "private": true,
   "dependencies": {
-    "del": "^2.2.1",
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
