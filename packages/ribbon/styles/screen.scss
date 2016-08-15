@@ -1,12 +1,14 @@
 // ------------------------------------------------------------------
 // Screen
 // ------------------------------------------------------------------
-// 1. Global ........... Mixins, fonts, global defaults
+// 1. Global ........... Ratio, mixins, fonts, global defaults
 // 2. Elements ......... Theme’s global elements
 // 3. Modes ............ Styles specific to Full & List modes
 // ------------------------------------------------------------------
 
 // Global
+
+$ratio:[RATIO];
 
 @import
 	'defaults',
