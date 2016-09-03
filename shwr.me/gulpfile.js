@@ -71,7 +71,7 @@ gulp.task('deploy', () => {
 		])
 		.pipe(replace(
 			/(<\/body>)/,
-			'\t' + fs.readFileSync('counter.html', 'utf8') + '\n$1', { skipBinary: true }
+			'\t' + fs.readFileSync('counter.html', 'utf8') + '$1', { skipBinary: true }
 		))
 		.pipe(gulp.dest('dest'))
 		.pipe(rsync({
