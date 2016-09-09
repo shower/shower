@@ -58,7 +58,7 @@
     "load-grunt-tasks": "^3.5.2",
     "mocha": "^3.0.2",
     "pinkie-promise": "^2.0.1",
-    "selenium-standalone": "^5.6.2",
+    "selenium-standalone": "^5.6.3",
     "shower-next": "0.0.6",
     "shower-progress": "0.0.9",
     "shower-timer": "0.0.12",
