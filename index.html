@@ -37,6 +37,9 @@
 			#cover p a {
 				color:#FFF;
 			}
+			.slide .cover {
+				max-height: inherit;
+			}
 			.red {
 				color: red;
 			}
@@ -45,6 +48,9 @@
 			}
 			.white {
 				color:#FFF !important;
+			}
+			.small {
+				font-size: 14px;
 			}
 		</style>
 	</section>
@@ -91,33 +97,123 @@
 		</p>
 	</section>
 	<section class="slide">
-		<h2 class="white">BoltDB</h2>
+		<h2 class="white">Database Requirements</h2>
 		<img src="pictures/bolt.jpg" alt="" class="cover">
-		<p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-	</section>
-	<section class="slide">
-		<h2>All kind of lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
+		<ol class="white">
+			<li>Fast reads</li>
+			<li>Don't care about writes</li>
+			<li>JSON support (because I'm lazy?)</li>
+			<li class="next">Fast reads</li>
+			<li class="next">Written in Go</li>
+			<li class="next">Fast reads</li>
 		</ol>
 	</section>
 	<section class="slide">
-		<h2>Serious citations</h2>
+		<h2 class="shout shrink">FAST READS!</h2>
+	</section>
+	<section class="slide">
+		<h2>BoltDB Structure</h2>
+		<ul class="next small">
+			<li>Genesis</li>
+				<ul>
+					<li>"1:1" -> "In the beginning God ..."</li>
+					<li>"1:2" -> "And the earth was without form ..."</li>
+				</ul>
+			<li>Exodus</li>
+			<li>Leviticus</li>
+			<li>...</li>
+			<li>Jude</li>
+			<li>Revelation
+				<ul>
+					<li>"1:1" -> "The Revelation of Jesus Christ ..."</li>
+					<li>"1:2" -> "Who bare record of the word of God ..."</li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2>BoltDB Structure</h2>
+		<ul class="small">
+			<li>Genesis <span class="red">  { BUCKET }</span></li>
+				<ul>
+					<li>"1:1" -> "In the beginning God ..." <span class="red">  { Key-Value Pair }</span></li>
+					<li>"1:2" -> "And the earth was without form ..." <span class="red">  { Key-Value Pair }</span></li>
+				</ul>
+			<li>Exodus<span class="red">  { BUCKET }</span></li>
+			<li>Leviticus<span class="red">  { BUCKET }</span></li>
+			<li>...</li>
+			<li>Jude<span class="red">  { BUCKET }</span></li>
+			<li>Revelation <span class="red">  { BUCKET }</span>
+				<ul>
+					<li>"1:1" -> "The Revelation of Jesus Christ ..." <span class="red">  { Key-Value Pair }</span></li>
+					<li>"1:2" -> "Who bare record of the word of God ..." <span class="red">  { Key-Value Pair }</span></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2 class="white">Let's "Migrate"</h2>
+		<img src="pictures/birds.jpg" alt="" class="cover">
+		<br><br>
 		<figure>
 			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+				<p class="white">Talk is cheap. Show me the code.</p>
 			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
+			<figcaption class="white">-- Linus Torvalds</figcaption>
 		</figure>
+	</section>
+	<section class="slide">
+		<pre class="small">
+			<code>// New DB</code>
+			<code>db, err := bolt.Open(dbsLocation+kjvDb, 0600, &amp;bolt.Options{Timeout: 1 * time.Second})</code>
+			<code>if err != nil {</code>
+			<code>	log.Fatal(err)</code>
+			<code>}</code>
+			<code>defer db.Close()</code>
+			<code><br></code>
+			<code>// Read from raw file</code>
+			<code>file, err := os.Open("raw/kjv.txt")</code>
+			<code>if err != nil {</code>
+			<code>	log.Fatal(err)</code>
+			<code>}</code>
+			<code>defer file.Close()</code>
+			<code><br></code>
+			<code>copyFileToDB(file, db)</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<pre class="small">
+			<code>// Start a writable transaction.</code>
+			<code>tx, errBeginTransaction := db.Begin(true)</code>
+			<code>if errBeginTransaction != nil {</code>
+			<code>	log.Fatal("Error beginning transaction: ", errBeginTransaction)</code>
+			<code>}</code>
+			<code>defer tx.Rollback()</code>
+			<code><br></code>
+			<code>scanner := bufio.NewScanner(file)</code>
+			<code>for scanner.Scan() {</code>
+			<code>	// Per line</code>
+			<code>	currLine := scanner.Text()</code>
+			<code>	// Do several Split strings to extract reference and verse</code>
+			<code>	// Next slide...</code>
+			<code>}</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<h2>Finally...</h2>
+		<pre class="small">
+			<code>// One bucket per book</code>
+			<code>bucket, errBucket := tx.CreateBucketIfNotExists([]byte(book))</code>
+			<code>if errBucket != nil {</code>
+			<code>	log.Fatal("create bucket: %s", errBucket)</code>
+			<code>}</code>
+			<code><br></code>
+			<code>// Key Value pair - reference to verse</code>
+			<code>errKey := bucket.Put([]byte(chapterVerse), []byte(verseText))</code>
+			<code>if errKey != nil {</code>
+			<code>	log.Fatal("Add key to bucket: %s", errKey)</code>
+			<code>}</code>
+		</pre>
 	</section>
 	<section class="slide">
 		<h2>Code samples</h2>
