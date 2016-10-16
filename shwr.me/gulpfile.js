@@ -53,7 +53,7 @@ gulp.task('prepare', () => {
 
 	const themes = merge(material, ribbon)
 		.pipe(replace(
-			/(<script src=")(\/shower-core\/)(shower.min.js"><\/script>)/,
+			/(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
 			'$1../../$3', { skipBinary: true }
 		));
 
