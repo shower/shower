@@ -41,7 +41,9 @@ shower.modules.define('shower.Player', [
 
             this._playerListeners = this.events.group()
                 .on('prev', this._onPrev, this)
-                .on('next', this._onNext, this);
+                .on('next', this._onNext, this)
+                .on('prevslide', this._onPrev, this)
+                .on('nextslide', this._onNext, this);
 
             document.addEventListener('keydown', bound(this, '_onKeyDown'));
         },
@@ -58,7 +60,7 @@ shower.modules.define('shower.Player', [
         },
 
         /**
-         * Go to next slide.
+         * Go to next step.
          *
          * @returns {shower.Player}
          */
@@ -68,12 +70,32 @@ shower.modules.define('shower.Player', [
         },
 
         /**
-         * Go to previous slide.
+         * Go to previous step.
          *
          * @returns {shower.Player}
          */
         prev: function () {
             this.events.emit('prev');
+            return this;
+        },
+
+        /**
+         * Go to next slide.
+         *
+         * @returns {shower.Player}
+         */
+        nextSlide: function () {
+            this.events.emit('nextslide');
+            return this;
+        },
+
+        /**
+         * Go to previous slide.
+         *
+         * @returns {shower.Player}
+         */
+        prevSlide: function () {
+            this.events.emit('prevslide');
             return this;
         },
 
@@ -196,46 +218,46 @@ shower.modules.define('shower.Player', [
                 event: e
             });
 
+            var action;
+            var allowModifiers = false;
+
             switch (e.which) {
-                case 33: // PgUp
-                case 38: // Up
-                case 37: // Left
-                case 72: // H
-                case 75: // K
-                    if (e.altKey || e.ctrlKey || e.metaKey) { return; }
-                    e.preventDefault();
-                    this.prev();
+                case 33: // PgUp (Shift)
+                case 38: // Up   (Shift)
+                case 37: // Left (Shift)
+                case 72: // H (Shift)
+                case 75: // K (Shift)
+                    action = e.shiftKey ? 'prevSlide' : 'prev';
                     break;
 
-                case 34: // PgDown
-                case 40: // Down
-                case 39: // Right
-                case 76: // L
-                case 74: // J
-                    if (e.altKey || e.ctrlKey || e.metaKey) { return; }
-                    e.preventDefault();
-                    this.next();
+                case 34: // PgDown (Shift)
+                case 40: // Down   (Shift)
+                case 39: // Right  (Shift)
+                case 76: // L (Shift)
+                case 74: // J (Shift)
+                    action = e.shiftKey ? 'nextSlide' : 'next';
                     break;
 
                 case 36: // Home
-                    e.preventDefault();
-                    this.first();
+                    allowModifiers = true;
+                    action = 'first';
                     break;
 
                 case 35: // End
-                    e.preventDefault();
-                    this.last();
+                    allowModifiers = true;
+                    action = 'last';
                     break;
 
                 case 32: // Space (Shift)
                     if (this._shower.container.isSlideMode()) {
-                        if (e.shiftKey) {
-                            this.prev();
-                        } else {
-                            this.next();
-                        }
+                        action = e.shiftKey ? 'prev' : 'next';
                     }
                     break;
+            }
+
+            if (action && (allowModifiers || !e.altKey && !e.ctrlKey && !e.metaKey)) {
+                e.preventDefault();
+                this[action]();
             }
         },
 
