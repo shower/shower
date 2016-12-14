@@ -74,7 +74,7 @@
     "build": "grunt default",
     "prepublish": "npm run build",
     "validate": "jshint . && jscs .",
-    "test": "grunt test",
+    "test": "grunt default && ls shower.min.js",
     "report": "allure report generate -o allure-report allure-results && allure report open -o allure-report"
   }
 }
