@@ -44,3 +44,12 @@ ol > li::before {
 	counter-increment:list;
 	content:counter(list)'.';
 	}
+
+// Custom
+
+ol > li[value]::before {
+	content:attr(value)'.';
+	}
+ul > li[value]::before {
+	content:attr(value);
+	}
