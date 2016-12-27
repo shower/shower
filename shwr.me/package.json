@@ -11,6 +11,6 @@
     "gulp-zip": "^3.2.0",
     "merge-stream": "^1.0.0",
     "run-sequence": "^1.2.2",
-    "shower": "^2.1.5"
+    "shower": "^2.1.6"
   }
 }
