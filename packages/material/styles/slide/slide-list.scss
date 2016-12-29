@@ -32,7 +32,7 @@
 			&:hover {
 				@include shadow(4, $scale);
 				}
-			&:target {
+			&.active {
 				@include shadow(8, $scale);
 				}
 

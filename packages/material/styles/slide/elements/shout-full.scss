@@ -10,6 +10,6 @@
 	background-position:$width 0;
 	transition:background-position 0.4s ease-out;
 	}
-&:target .shout::after {
+&.active .shout::after {
 	background-position:0 0;
 	}
