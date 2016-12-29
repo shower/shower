@@ -21,7 +21,7 @@
 
 // Animation Trigger
 
-&:target .shout {
+&.active .shout {
 
 	&.grow,
 	&.shrink {

@@ -30,7 +30,7 @@
 			0 0 0 20px rgba(black, 0.1),
 			0 20px 50px rgba(black, 0.3);
 		}
-	&:target {
+	&.active {
 		box-shadow:
 			0 0 0 1px darken($blue, 10%),
 			0 0 0 20px $blue,
