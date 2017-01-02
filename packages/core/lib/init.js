@@ -10,7 +10,14 @@
         options: global.showerOptions || {}
     };
 
-    document.addEventListener('DOMContentLoaded', function () {
+    if (/interactive|complete|loaded/.test(document.readyState)) {
+        initialize();
+    }
+    else {
+        document.addEventListener('DOMContentLoaded', initialize);
+    }
+
+    function initialize() {
         global.shower.modules.require('shower.defaultOptions', function (defaultOptions) {
             var hasOptions = global.hasOwnProperty('showerOptions');
             var options = global.shower.options;
@@ -43,7 +50,7 @@
                 });
             }
         });
-    }, false);
+    };
 
     /**
      * Get data-attr value.
