@@ -199,7 +199,7 @@ There are following inline elements styled in the theme:
 - `<em>` and `<i>` are italic;
 - `<code>`, `<samp>`, and `<kbd>` are monospaced;
 - `<sup>` and `<sub>` for superscrip and subscript indexes;
-- `<mark>` for highliting parts of text.
+- `<mark>` for highlighting parts of text.
 
 #### Quotes
 
