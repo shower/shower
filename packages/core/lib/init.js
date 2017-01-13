@@ -12,8 +12,7 @@
 
     if (/interactive|complete|loaded/.test(document.readyState)) {
         initialize();
-    }
-    else {
+    } else {
         document.addEventListener('DOMContentLoaded', initialize);
     }
 

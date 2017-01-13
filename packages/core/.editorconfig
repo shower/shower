@@ -9,6 +9,5 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 charset = utf-8
 
-[{bower.json,package.json,.travis.yml}]
-indent_style = space
+[{package.json,.travis.yml}]
 indent_size = 2

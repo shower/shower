@@ -1,5 +1,4 @@
 require('chai').should();
-var Promise = require('pinkie-promise');
 var selenium = require('selenium-standalone');
 var seleniumServer;
 

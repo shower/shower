@@ -4,7 +4,6 @@
         "node_modules/**",
         ".git/**",
         "tests/**/*",
-        "*.min.js",
-        "Gruntfile.js"
+        "*.min.js"
     ]
 }
