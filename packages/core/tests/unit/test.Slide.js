@@ -2,8 +2,6 @@ shower.modules.define('test.Slide', [
     'Slide'
 ], function (provide, Slide) {
 
-    var should = chai.should();
-
     describe('Slide', function () {
         var slide;
 
@@ -47,26 +45,25 @@ shower.modules.define('test.Slide', [
         });
 
         it('should not be active after create', function () {
-            slide.isActive().should.eq(false);
+            slide.isActive().should.be.false;
         });
 
         it('should be active after activate', function () {
             slide.activate();
-            slide.isActive().should.eq(true);
+            slide.isActive().should.be.true;
         });
 
         it('should not be visited after create', function () {
-            slide.isVisited().should.eq(false);
+            slide.isVisited().should.be.false;
         });
 
         it('should not be visited after activate', function () {
             slide.activate();
-            slide.isVisited().should.eq(true);
+            slide.isVisited().should.be.true;
         });
 
         it('should auto init layout after create', function () {
-            var layout = slide.layout;
-            (typeof layout).should.not.eq('undefined');
+            slide.layout.should.not.be.undefined;
         });
     });
 

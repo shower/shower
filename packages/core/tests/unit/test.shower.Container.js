@@ -3,7 +3,6 @@ shower.modules.define('test.shower.Container', [
     'shower.Container'
 ], function (provide, shower, Container) {
 
-    var should = chai.should();
     var shower = shower.getInited()[0];
 
     describe('shower.Container', function () {
@@ -32,23 +31,16 @@ shower.modules.define('test.shower.Container', [
 
         it('Should turn to the slide mode', function () {
             container.enterSlideMode();
-            document.body
-                .classList.contains('full')
-                .should.eq(true);
+            document.body.should.have.class('full');
         });
 
         it('Should turn to the list mode', function () {
-            var bodyClassList = document.body.classList;
-
             container
                 .enterSlideMode()
                 .exitSlideMode();
 
-            bodyClassList.contains('full')
-                .should.eq(false);
-
-            bodyClassList.contains('list')
-                .should.eq(true);
+            document.body.should.not.have.class('full');
+            document.body.should.have.class('list');
         });
 
         it('Should return the container element', function () {

@@ -3,7 +3,6 @@ shower.modules.define('test.shower.Plugins', [
     'Plugins'
 ], function (provide, shower, Plugins) {
 
-    var should = chai.should();
     var sh = shower.getInited[0];
 
     describe('shower.Plugins', function () {

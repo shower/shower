@@ -3,12 +3,11 @@ shower.modules.define('test.Shower', [
     'Slide'
 ], function (provide, showerGlobal, Slide) {
 
-    var should = chai.should();
     var shower;
 
     describe('Shower', function () {
         it('Should be ready', function () {
-            showerGlobal.ready().should.eq(true);
+            showerGlobal.ready().should.be.true;
             shower = showerGlobal.getInited()[0];
         });
 

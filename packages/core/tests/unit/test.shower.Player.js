@@ -3,7 +3,6 @@ shower.modules.define('test.shower.Player', [
     'Slide'
 ], function (provide, shower, Slide) {
 
-    var should = chai.should();
     var shower = shower.getInited()[0];
 
     describe('shower.Player', function () {

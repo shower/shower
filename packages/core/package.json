@@ -42,6 +42,7 @@
   ],
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-dom": "^1.4.3",
     "git-hooks": "^1.1.1",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
