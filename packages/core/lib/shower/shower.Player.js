@@ -227,6 +227,7 @@ shower.modules.define('shower.Player', [
                 case 37: // Left (Shift)
                 case 72: // H (Shift)
                 case 75: // K (Shift)
+                case 80: // P (Shift)
                     action = e.shiftKey ? 'prevSlide' : 'prev';
                     break;
 
@@ -235,6 +236,7 @@ shower.modules.define('shower.Player', [
                 case 39: // Right  (Shift)
                 case 76: // L (Shift)
                 case 74: // J (Shift)
+                case 78: // N (Shift)
                     action = e.shiftKey ? 'nextSlide' : 'next';
                     break;
 
