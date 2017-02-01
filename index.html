@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>Writing Go In The Shower</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="node_modules/shower-material/styles/screen-16x10.css">
 </head>
 <body class="shower list">
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
+		<h1>Go Search Lots of Text</h1>
+		<p>Ok, so it's not a TON but...</p>
 	</header>
 	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
-		<img src="pictures/cover.jpg" alt="" class="cover">
+		<h2>Go Search Lots of Text (not a ton)</h2>
+		<p>Brought to you by <a href="http://ivanportugal.com">Ivan Portugal</a></p>
+		<img src="pictures/oldBible.jpg" alt="" class="cover">
 		<!--
 			To apply styles to the certain slides
 			set slide ID to get needed elements
@@ -34,65 +34,206 @@
 				font-style:italic;
 				font-size:20px;
 				}
-				#cover p a {
-					color:#FFF;
-					}
+			#cover p a {
+				color:#FFF;
+			}
+			.slide .cover {
+				max-height: inherit;
+			}
+			.red {
+				color: red;
+			}
+			.pull-right {
+				float: right;
+			}
+			.white {
+				color:#FFF !important;
+			}
+			.dark-bg {
+				background-color: rgba(10,10,10,0.9) !important;
+			}
+			.small {
+				font-size: 14px;
+			}
 		</style>
 	</section>
 	<section class="slide">
-		<h2>Shower key features</h2>
+		<h2>Overview</h2>
 		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
+			<li>Statistics of Biblical proportions</li>
+			<li>Technical Overview</li>
+			<li>Deployment Strategy</li>
+			<li>Demo</li>
+			<li>Code</li>
 		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
 	</section>
 	<section class="slide">
-		<h2>Plain text on your slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+		<h2>Stats</h2>
+		<p class="next">Old Testament, New Testament, 66 books total.</p>
+		<!-- <p class="next">There are <b>23,145</b> verses in the Old Testament and <b>7,957</b> verses in the New Testament. This gives a total of <b>31,102</b> verses, which is an average of a little more than <b>26</b> verses per chapter.
+		<br>
+		The King James Authorized Bible has <b class="red">783,137</b> words.</p> -->
+		<table class="next">
+			<tr>
+				<th>Section</th>
+				<th># of Verses</th>
+				<th># of Words</th>
+			</tr>
+			<tr>
+				<td>Old Testament</td>
+				<td><b>23,145</b></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>New Testament</td>
+				<td><b>7,957</b></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Both</td>
+				<td><b>31,102</b></td>
+				<td><b class="next red">783,137</b></td>
+			</tr>
+		</table>
+		<p class="next">Number of Letters: <b class="red">3,116,480</b><br>
+			<span class="pull-right">** King James Version</span>
+		</p>
 	</section>
 	<section class="slide">
-		<h2>Two columns if you like</h2>
-		<p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+		<h2 class="white">Database Requirements</h2>
+		<img src="pictures/bolt.jpg" alt="" class="cover">
+		<ol class="white">
+			<li>Fast reads</li>
+			<li>Don't care about writes</li>
+			<li>JSON support (because I'm lazy?)</li>
+			<li class="next">Fast reads</li>
+			<li class="next">Written in Go</li>
+			<li class="next">Fast reads</li>
+		</ol>
 	</section>
 	<section class="slide">
-		<h2>All kind of lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
+		<h2 class="shout shrink">FAST READS!</h2>
+	</section>
+	<section class="slide">
+		<h2>BoltDB Structure</h2>
+		<ul class="next small">
+			<li>Genesis</li>
 				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
+					<li>"1:1" -> "In the beginning God ..."</li>
+					<li>"1:2" -> "And the earth was without form ..."</li>
+				</ul>
+			<li>Exodus</li>
+			<li>Leviticus</li>
+			<li>...</li>
+			<li>Jude</li>
+			<li>Revelation
+				<ul>
+					<li>"1:1" -> "The Revelation of Jesus Christ ..."</li>
+					<li>"1:2" -> "Who bare record of the word of God ..."</li>
 				</ul>
 			</li>
-			<li>Look, seven rows exactly!</li>
-		</ol>
+		</ul>
 	</section>
 	<section class="slide">
-		<h2>Serious citations</h2>
+		<h2>BoltDB Structure</h2>
+		<ul class="small">
+			<li>Genesis <span class="red">  { BUCKET }</span></li>
+				<ul>
+					<li>"1:1" -> "In the beginning God ..." <span class="red">  { Key-Value Pair }</span></li>
+					<li>"1:2" -> "And the earth was without form ..." <span class="red">  { Key-Value Pair }</span></li>
+				</ul>
+			<li>Exodus<span class="red">  { BUCKET }</span></li>
+			<li>Leviticus<span class="red">  { BUCKET }</span></li>
+			<li>...</li>
+			<li>Jude<span class="red">  { BUCKET }</span></li>
+			<li>Revelation <span class="red">  { BUCKET }</span>
+				<ul>
+					<li>"1:1" -> "The Revelation of Jesus Christ ..." <span class="red">  { Key-Value Pair }</span></li>
+					<li>"1:2" -> "Who bare record of the word of God ..." <span class="red">  { Key-Value Pair }</span></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+	<section class="slide">
+		<h2 class="white">Let's "Migrate"</h2>
+		<img src="pictures/birds.jpg" alt="" class="cover">
+		<br><br>
 		<figure>
 			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+				<p class="white">Talk is cheap. Show me the code.</p>
 			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
+			<figcaption class="white">-- Linus Torvalds</figcaption>
 		</figure>
 	</section>
 	<section class="slide">
-		<h2>Code samples</h2>
-		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code class="mark">&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
+		<pre class="small">
+			<code>// New DB</code>
+			<code>db, err := bolt.Open(dbsLocation+kjvDb, 0600, &amp;bolt.Options{Timeout: 1 * time.Second})</code>
+			<code>if err != nil {</code>
+			<code>	log.Fatal(err)</code>
+			<code>}</code>
+			<code>defer db.Close()</code>
+			<code><br></code>
+			<code>// Read from raw file</code>
+			<code>file, err := os.Open("raw/kjv.txt")</code>
+			<code>if err != nil {</code>
+			<code>	log.Fatal(err)</code>
+			<code>}</code>
+			<code>defer file.Close()</code>
+			<code><br></code>
+			<code>copyFileToDB(file, db)</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<pre class="small">
+			<code>// Start a writable transaction.</code>
+			<code>tx, errBeginTransaction := db.Begin(true)</code>
+			<code>if errBeginTransaction != nil {</code>
+			<code>	log.Fatal("Error beginning transaction: ", errBeginTransaction)</code>
+			<code>}</code>
+			<code>defer tx.Rollback()</code>
+			<code><br></code>
+			<code>scanner := bufio.NewScanner(file)</code>
+			<code>for scanner.Scan() {</code>
+			<code>	// Per line</code>
+			<code>	currLine := scanner.Text()</code>
+			<code>	// Do several Split strings to extract reference and verse</code>
+			<code>	// Next slide...</code>
+			<code>}</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<h2>Finally...</h2>
+		<pre class="small">
+			<code>// One bucket per book</code>
+			<code>bucket, errBucket := tx.CreateBucketIfNotExists([]byte(book))</code>
+			<code>if errBucket != nil {</code>
+			<code>	log.Fatal("create bucket: %s", errBucket)</code>
+			<code>}</code>
+			<code><br></code>
+			<code>// Key Value pair - reference to verse</code>
+			<code>errKey := bucket.Put([]byte(chapterVerse), []byte(verseText))</code>
+			<code>if errKey != nil {</code>
+			<code>	log.Fatal("Add key to bucket: %s", errKey)</code>
+			<code>}</code>
+		</pre>
+	</section>
+	<section class="slide">
+		<h2 class="white">Now, we can build our middle tier</h2>
+		<img src="pictures/gorilla.jpg" alt="" class="cover">
+		<pre class="small next white dark-bg">
+			<code>r := mux.NewRouter()</code>
+			<code>r.HandleFunc("/search", SearchHandler).Methods("POST")</code>
+			<code>r.PathPrefix("/").Handler(http.FileServer(http.Dir("./public/")))</code>
+			<code>http.Handle("/", r)</code>
+			<code><br></code>
+			<code>port := ":9080"</code>
+			<code>fmt.Println("Launching on port " + port)</code>
+			<code><br></code>
+			<code>errHttp := http.ListenAndServe(port, r)</code>
+			<code>if errHttp != nil {</code>
+			<code>	log.Println("Could not launch HTTP server: " + errHttp.Error())</code>
+			<code>}</code>
 		</pre>
 	</section>
 	<section class="slide">
