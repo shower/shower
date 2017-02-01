@@ -222,14 +222,12 @@ shower.modules.define('shower.Container', [
                     this.exitSlideMode();
                     break;
 
-                case 116: // F5 (Shift)
-                    e.preventDefault();
-                    if (!this.isSlideMode()) {
-                        var slideNumber = e.shiftKey ? this._shower.player.getCurrentSlideIndex() : 0;
+                case 116: // F5 Shift
+                    if (!this.isSlideMode() && e.shiftKey) {
+                        e.preventDefault();
+                        var slideNumber = this._shower.player.getCurrentSlideIndex();
                         this._shower.player.go(slideNumber);
                         this.enterSlideMode();
-                    } else {
-                        this.exitSlideMode();
                     }
                     break;
 
