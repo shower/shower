@@ -42,7 +42,7 @@
     "gulp-sass": "^3.0.0",
     "path-exists-cli": "^1.0.0",
     "postcss-csso": "^1.1.2",
-    "shower-core": "^2.0.7"
+    "shower-core": "latest"
   },
   "scripts": {
     "dev": "gulp",
