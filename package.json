@@ -27,8 +27,8 @@
     "README.md"
   ],
   "dependencies": {
-    "shower-core": "^2.0.7",
-    "shower-material": "^1.0.10",
+    "shower-core": "^2.1.0",
+    "shower-material": "^1.0.11",
     "shower-ribbon": "^2.0.10"
   },
   "devDependencies": {
