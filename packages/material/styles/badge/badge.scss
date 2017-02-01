@@ -2,12 +2,11 @@
 // Badge
 // ------------------------------------------------------------------
 // 1. Calculations ..... Font size calculations
-// 2. Link ............. Octocat icon and label
+// 2. Decoration ....... Global badge styling
+// 3. Link ............. Octocat icon and label
 // ------------------------------------------------------------------
 
 .badge {
-
-	padding:0.5em 0 2em;
 
 	// Calculations
 
@@ -17,26 +16,26 @@
 			}
 		}
 
+	// Calculations
+
 	display:none;
+	padding:0.5em 0 2em;
 	width:100%;
 
 	// Link
 
 	a {
-
 		display:inline-block;
 		margin-left:9em;
 		padding-left:4em;
 		color:$medium;
-
-		svg {
-			position:absolute;
-			margin:-1.1em 0 0 -4.5em;
-			width:4em;
-			height:4em;
-			fill:currentColor;
-			}
-
+		}
+	svg {
+		position:absolute;
+		margin:-1.1em 0 0 -4.5em;
+		width:4em;
+		height:4em;
+		fill:currentColor;
 		}
 
 	}
