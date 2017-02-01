@@ -8,9 +8,9 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-rsync": "0.0.7",
-    "gulp-zip": "^3.2.0",
+    "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
     "run-sequence": "^1.2.2",
-    "shower": "^2.1.8"
+    "shower": "^2.1.9"
   }
 }
