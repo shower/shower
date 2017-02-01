@@ -9,7 +9,7 @@ You can navigate between slides, start and stop presentation using keyboard shor
 
 ## Start and Stop
 
-- Start from the current slide: `Cmd Enter` or `Cmd Option P`
+- Start from the current slide: `Cmd Enter`, `Shift F5`, `Cmd Option P`
 - Start from the first slide `Cmd Shift Enter`
 - Stop: `Esc` key
 
