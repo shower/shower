@@ -134,7 +134,7 @@ shower.modules.define('shower.Player', [
             var slidesCount = this._shower.getSlidesCount();
             var currentSlide = this._currentSlide;
 
-            if (index != this._currentSlideNumber && index < slidesCount && index >= 0) {
+            if (index !== this._currentSlideNumber && index < slidesCount && index >= 0) {
                 if (currentSlide && currentSlide.isActive()) {
                     currentSlide.deactivate();
                 }

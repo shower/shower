@@ -58,11 +58,11 @@ shower.modules.define('options.Monitor', [
                 var fields = field;
                 for (var fieldName in fields) {
                     if (fields.hasOwnProperty(fieldName)) {
-                        this._remodeHandler(fieldName, callback, context);
+                        this._removeHandler(fieldName, callback, context);
                     }
                 }
             } else {
-                this._remodeHandler(field, callback, context);
+                this._removeHandler(field, callback, context);
             }
 
             return this;
@@ -89,7 +89,7 @@ shower.modules.define('options.Monitor', [
             }, this);
         },
 
-        _addHandler: function (field, callback, context) {
+        _addHandler: function (fieldName, callback, context) {
             var handler = {
                 callback: callback,
                 context: context
@@ -102,7 +102,7 @@ shower.modules.define('options.Monitor', [
             }
         },
 
-        _remodeHandler: function (field, callback, context) {
+        _removeHandler: function (field, callback, context) {
             if (!this._fieldsHanders.hasOwnProperty(field)) {
                 throw new Error('Remove undefined handler for ' + field + ' field');
             }
@@ -112,7 +112,7 @@ shower.modules.define('options.Monitor', [
                 return hander.callback === callback && hander.context === context;
             })[0];
 
-            if (!hander) {
+            if (!handler) {
                 throw new Error('Hanlder for ' + field + ' not found.');
             }
 

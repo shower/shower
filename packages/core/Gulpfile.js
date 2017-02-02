@@ -2,8 +2,9 @@
 
 const gulp = require('gulp');
 const concat = require('gulp-concat');
+const eslint = require('gulp-eslint');
 const insert = require('gulp-insert');
-const jscs = require('gulp-jscs');
+const lintspaces = require('gulp-lintspaces');
 const mocha = require('gulp-mocha-phantomjs');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
@@ -19,10 +20,34 @@ const banner = `/**
  */
 `;
 
-gulp.task('lint', () => {
-    return gulp.src('lib/*.js')
-        .pipe(jscs())
-        .pipe(jscs.reporter());
+gulp.task('lint:ec', () => {
+    const sources = [
+        '.editorconfig',
+        '.gitignore',
+        '*.{json,yml,md}',
+        'lib/**',
+        'tests/**',
+        'wdio.conf.js',
+    ];
+
+    const options = {
+        editorconfig: '.editorconfig',
+        ignores: [
+            'js-comments',
+            'html-comments',
+        ],
+    };
+
+    return gulp.src(sources, { dot: true })
+        .pipe(lintspaces(options))
+        .pipe(lintspaces.reporter());
+});
+
+gulp.task('lint:js', () => {
+    return gulp.src('lib/**/*.js')
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
 gulp.task('concat:lib', () => {
@@ -33,7 +58,7 @@ gulp.task('concat:lib', () => {
         // Core.
         'lib/init.js',
         'lib/shower.js',
-        'lib/*/*.js',
+        'lib/**/*.js',
 
         // Plugins.
         'node_modules/shower-*/shower-*.js',
@@ -65,6 +90,11 @@ gulp.task('mocha', () => {
     return gulp.src('tests/unit/index.html')
         .pipe(mocha());
 });
+
+gulp.task('lint', [
+    'lint:ec',
+    'lint:js',
+]);
 
 gulp.task('dev', [
     'lint',

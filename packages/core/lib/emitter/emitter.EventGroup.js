@@ -97,9 +97,9 @@ shower.modules.define('emitter.EventGroup', [
 
         _removeListener: function (type, callback, context) {
             var index = this._listeners.indexOf(type, 0);
-            while (index != -1) {
-                if (this._listeners[index + 1] == callback &&
-                    this._listeners[index + 2] == context) {
+            while (index !== -1) {
+                if (this._listeners[index + 1] === callback &&
+                    this._listeners[index + 2] === context) {
                     this._listeners.splice(index, 3);
 
                     this.events.off(type, callback, context);

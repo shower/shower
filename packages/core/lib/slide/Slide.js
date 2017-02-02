@@ -10,7 +10,7 @@ shower.modules.define('Slide', [
     'util.Store',
     'util.extend'
 ], function (provide, defaultOptions, EventEmitter, OptionsManager, Layout,
-             slideLayoutFactory, DataStore, extend) {
+            slideLayoutFactory, DataStore, extend) {
 
     /**
      * @typedef {object} HTMLElement
@@ -51,7 +51,7 @@ shower.modules.define('Slide', [
 
         init: function () {
             this.layout = typeof this._content === 'string' ?
-                new slideLayoutFactory.createLayout({
+                slideLayoutFactory.createLayout({
                     content: this._content
                 }) :
                 new Layout(this._content, this.options);

@@ -66,7 +66,7 @@ shower.modules.define('Emitter', [
         off: function (types, callback, context, priority) {
             priority = priority || 0;
 
-            if (typeof types == 'string') {
+            if (typeof types === 'string') {
                 this._removeListener(types, callback, context, priority);
             } else {
                 for (var i = 0, l = types.length; i < l; i++) {
@@ -108,7 +108,7 @@ shower.modules.define('Emitter', [
             var event = eventObject;
             var listeners = this._listeners;
 
-            if (!event || typeof event.get != 'function') {
+            if (!event || typeof event.get !== 'function') {
                 event = this.createEventObject(eventType, eventObject, this._context);
             }
 
@@ -141,7 +141,7 @@ shower.modules.define('Emitter', [
          * @param {Emitter} parent
          */
         setParent: function (parent) {
-            if (this._parent != parent) {
+            if (this._parent !== parent) {
                 this._parent = parent;
             }
         },
@@ -180,16 +180,16 @@ shower.modules.define('Emitter', [
                 for (var i = 0, l = listeners.length; i < l; i++) {
                     listener = listeners[i];
 
-                    if (listener.callback == callback &&
-                        listener.context == context &&
-                        listener.priority == priority) {
+                    if (listener.callback === callback &&
+                        listener.context === context &&
+                        listener.priority === priority) {
 
                         foundIndex = i;
                     }
                 }
 
-                if (foundIndex != -1) {
-                    if (listeners.length == 1) {
+                if (foundIndex !== -1) {
+                    if (listeners.length === 1) {
                         this._clearType(eventType);
                     } else {
                         listeners.splice(foundIndex, 1);

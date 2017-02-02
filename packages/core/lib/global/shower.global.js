@@ -57,6 +57,7 @@ shower.modules.define('shower.global', [
             initOptions = initOptions || {};
 
             shower.modules.require(['Shower'], function (Shower) {
+                // eslint-disable-next-line no-new
                 new Shower(initOptions.container, initOptions.options);
             });
         },

@@ -54,7 +54,7 @@ shower.modules.define('slide.Layout', [
         },
 
         setParent: function (parent) {
-            if (this._parent != parent) {
+            if (this._parent !== parent) {
                 this._clearListeners();
 
                 this._parent = parent;
@@ -77,7 +77,7 @@ shower.modules.define('slide.Layout', [
          * @param {HTMLElement} parentElement
          */
         setParentElement: function (parentElement) {
-            if (parentElement != this._parentElement) {
+            if (parentElement !== this._parentElement) {
                 this._parentElement = parentElement;
                 parentElement.appendChild(this._element);
 

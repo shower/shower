@@ -102,7 +102,7 @@ shower.modules.define('Plugins', [
 
         _requireAndAdd: function (plugin) {
             shower.modules.require(plugin.name, function (pluginClass) {
-                plugin.class = pluginClass;
+                plugin.Class = pluginClass;
                 this._plugins[plugin.name] = plugin;
                 this._instancePlugin(plugin);
             }.bind(this));
@@ -131,7 +131,7 @@ shower.modules.define('Plugins', [
             this._instances.push({
                 shower: shower,
                 plugin: plugin,
-                instance: new plugin.class(shower, options)
+                instance: new plugin.Class(shower, options)
             });
         },
 

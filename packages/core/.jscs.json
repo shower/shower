@@ -1,9 +1,0 @@
-{
-    "preset": "loris",
-    "excludeFiles": [
-        "node_modules/**",
-        ".git/**",
-        "tests/**/*",
-        "*.min.js"
-    ]
-}

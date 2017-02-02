@@ -1,4 +1,3 @@
-# EditorConfig is awesome: http://EditorConfig.org
 root = true
 
 [*]
@@ -9,5 +8,5 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 charset = utf-8
 
-[{package.json,.travis.yml}]
+[{package.json,.eslintrc.json,.travis.yml}]
 indent_size = 2

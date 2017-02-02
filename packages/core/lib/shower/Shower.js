@@ -118,9 +118,9 @@ shower.modules.define('Shower', [
         remove: function (slide) {
             var slidePosition;
 
-            if (typeof slide == 'number') {
+            if (typeof slide === 'number') {
                 slidePosition = slide;
-            } else if (this._slides.indexOf(slide) != -1) {
+            } else if (this._slides.indexOf(slide) !== -1) {
                 slidePosition = this._slides.indexOf(slide);
             } else {
                 throw new Error('Slide not found');

@@ -15,7 +15,7 @@ shower.modules.define('util.Store', [
         }
     }
 
-    extend(Store.prototype, /**@lends Store.prototype */{
+    extend(Store.prototype, /** @lends Store.prototype */{
         /**
          * @param {string} key
          * @param {object} [defaultValue] Default value which returns if data is not definded.
