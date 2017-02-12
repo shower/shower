@@ -1,125 +1,152 @@
-describe('core', () => {
+'use strict';
+module.exports = {
+    '@tags': ['core'],
 
-    beforeEach(() => {
-        browser.url('about:blank');
-    });
+    // Init
 
-    afterEach(() => {
-        browser.sessionStorage('DELETE');
-    });
+    'uses `list` mode in lack of any': browser => {
+        browser.url(`file:///${__dirname}/none.html`);
+        browser.assert.elementPresent('.shower.list');
+        browser.end();
+    },
 
-    // Initialisation
+    'stays in `list` mode if `list` is present': browser => {
+        browser.url(`file:///${__dirname}/list.html`);
+        browser.assert.elementPresent('.shower.list');
+        browser.end();
+    },
 
-    it('uses `list` mode in lack of any', () => {
-        browser.url('/core/none.html');
-        browser.isExisting('.shower.list').should.equal(true);
-    });
+    'stays in `full` mode if `full` is present': browser => {
+        browser.url(`file:///${__dirname}/full.html`);
+        browser.assert.elementPresent('.shower.full');
+        browser.end();
+    },
 
-    it('stays in `list` mode if `list` is present', () => {
-        browser.url('/core/list.html');
-        browser.isExisting('.shower.list').should.equal(true);
-    });
-
-    it('stays in `full` mode if `full` is present', () => {
-        browser.url('/core/full.html');
-        browser.isExisting('.shower.full').should.equal(true);
-    });
-
-    it('keeps `full` mode after reload', () => {
-        browser.url('/core/full.html');
+    'keeps `full` mode after reload': browser => {
+        browser.url(`file:///${__dirname}/full.html`);
         browser.refresh();
-        browser.isExisting('.shower.full').should.equal(true);
-    });
+        browser.assert.elementPresent('.shower.full');
+        browser.end();
+    },
 
-    it('adds ID to all slides if it’s not alredy set', () => {
-        browser.url('/core/list.html');
-        browser.isExisting('[id="1"]').should.equal(true);
-        browser.isExisting('[id="2"]').should.equal(false);
-        browser.isExisting('[id="ID"]').should.equal(true);
-        browser.isExisting('[id="3"]').should.equal(true);
-    });
+    'adds IDs to all slides unless alredy set': browser => {
+        browser.url(`file:///${__dirname}/list.html`);
+        browser.assert.elementPresent('[id="1"]');
+        browser.assert.elementNotPresent('[id="2"]');
+        browser.assert.elementPresent('#id');
+        browser.assert.elementPresent('[id="3"]');
+        browser.end();
+    },
 
-    it('doesn’t set any slide states on initialisation', () => {
-        browser.url('/core/list.html');
-        browser.isExisting('.active').should.equal(false);
-        browser.isExisting('.visited').should.equal(false);
-    });
+    'doesn’t set any slide states on init': browser => {
+        browser.url(`file:///${__dirname}/list.html`);
+        browser.assert.elementNotPresent('.active');
+        browser.assert.elementNotPresent('.visited');
+        browser.end();
+    },
 
-    it('sets `active` state to a current slide only and no `visited` ones', () => {
-        browser.url('/core/list.html#ID');
-        browser.isExisting('[id="1"]:not(.active):not(.visited)').should.equal(true);
-        browser.isExisting('[id="ID"].active:not(.visited)').should.equal(true);
-        browser.isExisting('[id="3"]:not(.active):not(.visited)').should.equal(true);
-    });
+    'sets `active` state to a current slide only (not `visited`)': browser => {
+        browser.url(`file:///${__dirname}/list.html#id`);
+        browser.assert.cssClassNotPresent('[id="1"]', 'active');
+        browser.assert.cssClassNotPresent('[id="1"]', 'visited');
+        browser.assert.cssClassPresent('#id', 'active');
+        browser.assert.cssClassNotPresent('#id', 'visited');
+        browser.assert.cssClassNotPresent('[id="3"]', 'active');
+        browser.assert.cssClassNotPresent('[id="3"]', 'visited');
+        browser.end();
+    },
 
     // URL
 
-    it('activates a slide if its ID is present in URL', () => {
-        browser.url('/core/list.html#ID');
-        browser.isExisting('[id="ID"].active').should.equal(true);
-    });
+    'activates a slide if its ID is present in URL': browser => {
+        browser.url(`file:///${__dirname}/list.html#id`);
+        browser.assert.cssClassPresent('#id', 'active');
+        browser.end();
+    },
 
-    it('changes non-existing ID to ID of the first slide in URL', () => {
-        browser.url('/core/list.html#404');
-        browser.getUrl().should.match(/#1/, 'URL in Full mode')
-    });
+    'changes non-existing ID to ID of the first slide in URL': browser => {
+        browser.url(`file:///${__dirname}/list.html#404`);
+        browser.assert.urlContains('#1'); // 'URL in Full mode'
+        browser.end();
+    },
 
-    it('activates the first slide if ID in URL doesn’t exist', () => {
-        browser.url('/core/list.html#404');
-        browser.isExisting('[id="1"].active').should.equal(true);
-    });
+    'activates the first slide if ID in URL doesn’t exist': browser => {
+        browser.url(`file:///${__dirname}/list.html#404`);
+        browser.assert.cssClassPresent('[id="1"]', 'active');
+        browser.end();
+    },
 
     // Action
 
-    it('goes to Full mode when a slide is clicked', () => {
-        browser.url('/core/list.html');
-        browser.click('[id="1"]');
-        browser.isExisting('.shower.full').should.equal(true);
-    });
+    'goes to `full` mode when a slide is clicked': browser => {
+        browser.url(`file:///${__dirname}/list.html`);
+        browser.click('[id="3"]');
+        browser.assert.elementPresent('.shower.full');
+        browser.end();
+    },
 
     // Traverse
 
-    it('changes slide states while moving forward', () => {
-        browser.url('/core/list.html#1');
-        browser.keys('\uE014'); // Right
-        browser.keys('\uE014'); // Right
-        browser.isExisting('[id="1"].visited:not(.active)').should.equal(true);
-        browser.isExisting('[id="ID"].visited:not(.active)').should.equal(true);
-        browser.isExisting('[id="3"].active').should.equal(true);
-    });
+    'changes slides states when moving forward': browser => {
+        browser.url(`file:///${__dirname}/list.html#1`);
+        browser.keys(browser.Keys.ARROW_RIGHT);
+        browser.keys(browser.Keys.ARROW_RIGHT);
 
-    it('changes slide states while moving backward', () => {
-        browser.url('/core/list.html#3');
-        browser.keys('\uE012'); // Left
-        browser.keys('\uE012'); // Left
-        browser.isExisting('[id="1"].active').should.equal(true);
-        browser.isExisting('[id="ID"].visited:not(.active)').should.equal(true);
-        browser.isExisting('[id="3"].visited:not(.active)').should.equal(true);
-    });
+        browser.assert.cssClassNotPresent('[id="1"]', 'active');
+        browser.assert.cssClassPresent('[id="1"]', 'visited');
+        browser.assert.cssClassNotPresent('#id', 'active');
+        browser.assert.cssClassPresent('#id', 'visited');
+        browser.assert.cssClassPresent('[id="3"]', 'active');
+        browser.assert.cssClassNotPresent('[id="3"]', 'visited');
+        browser.end();
+    },
 
-    it('changes slide states while moving forward and backward', () => {
-        browser.url('/core/list.html#1');
-        browser.keys('\uE014'); // Right
-        browser.keys('\uE014'); // Right
-        browser.keys('\uE012'); // Left
-        browser.keys('\uE012'); // Left
-        browser.isExisting('[id="1"].visited.active').should.equal(true);
-        browser.isExisting('[id="ID"].visited:not(.active)').should.equal(true);
-        browser.isExisting('[id="3"].visited:not(.active)').should.equal(true);
-    });
+    'changes slides states when moving backward': browser => {
+        browser.url(`file:///${__dirname}/list.html#3`);
+        browser.keys(browser.Keys.ARROW_LEFT);
+        browser.keys(browser.Keys.ARROW_LEFT);
+
+        browser.assert.cssClassPresent('[id="1"]', 'active');
+        browser.assert.cssClassNotPresent('[id="1"]', 'visited');
+        browser.assert.cssClassNotPresent('#id', 'active');
+        browser.assert.cssClassPresent('#id', 'visited');
+        browser.assert.cssClassNotPresent('[id="3"]', 'active');
+        browser.assert.cssClassPresent('[id="3"]', 'visited');
+        browser.end();
+    },
+
+    'changes slides states when moving forward and backward': browser => {
+        browser.url(`file:///${__dirname}/list.html#1`);
+        browser.keys(browser.Keys.ARROW_RIGHT);
+        browser.keys(browser.Keys.ARROW_RIGHT);
+        browser.keys(browser.Keys.ARROW_LEFT);
+        browser.keys(browser.Keys.ARROW_LEFT);
+
+        browser.assert.cssClassPresent('[id="1"]', 'active');
+        browser.assert.cssClassPresent('[id="1"]', 'visited');
+        browser.assert.cssClassNotPresent('#id', 'active');
+        browser.assert.cssClassPresent('#id', 'visited');
+        browser.assert.cssClassNotPresent('[id="3"]', 'active');
+        browser.assert.cssClassPresent('[id="3"]', 'visited');
+        browser.end();
+    },
 
     // History
 
-    it('goes to previous and next slides while moving back and forward in history', () => {
-        browser.url('/core/list.html#1');
-        browser.keys('\uE014'); // Right
-        browser.keys('\uE014'); // Right
+    'goes to previous and next slides when moving back and forward in history': browser => {
+        browser.url(`file:///${__dirname}/list.html#1`);
+        browser.keys(browser.Keys.ARROW_RIGHT);
+        browser.keys(browser.Keys.ARROW_RIGHT);
         browser.back();
         browser.back();
         browser.forward();
-        browser.isExisting('[id="1"].visited').should.equal(true);
-        browser.isExisting('[id="ID"].visited.active').should.equal(true);
-        browser.isExisting('[id="3"].visited').should.equal(true);
-    });
 
-});
+        browser.assert.cssClassNotPresent('[id="1"]', 'active');
+        browser.assert.cssClassPresent('[id="1"]', 'visited');
+        browser.assert.cssClassPresent('#id', 'active');
+        browser.assert.cssClassPresent('#id', 'visited');
+        browser.assert.cssClassNotPresent('[id="3"]', 'active');
+        browser.assert.cssClassPresent('[id="3"]', 'visited');
+        browser.end();
+    },
+};

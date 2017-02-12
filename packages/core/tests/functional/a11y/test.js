@@ -1,21 +1,16 @@
-describe('a11y', () => {
+'use strict';
+module.exports = {
+    '@tags': ['a11y'],
 
-    beforeEach(() => {
-        browser.url('about:blank');
-    });
+    'doesn’t add `application` role in list mode': browser => {
+        browser.url(`file:///${__dirname}/list.html`);
+        browser.assert.elementNotPresent('.shower[role=application]');
+        browser.end();
+    },
 
-    afterEach(() => {
-        browser.sessionStorage('DELETE');
-    });
-
-    it('doesn’t add `application` role in list mode', () => {
-        browser.url('/a11y/list.html');
-        browser.isExisting('.shower[role=application]').should.equal(false);
-    });
-
-    it('adds `application` role in full mode', () => {
-        browser.url('/a11y/full.html');
-        browser.isExisting('.shower[role=application]').should.equal(true);
-    });
-
-});
+    'adds `application` role in full screen mode': browser => {
+        browser.url(`file:///${__dirname}/full.html`);
+        browser.assert.elementPresent('.shower[role=application]');
+        browser.end();
+    },
+};

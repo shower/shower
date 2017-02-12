@@ -43,6 +43,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-dom": "^1.4.3",
+    "chromedriver": "^2.27.2",
     "eslint-config-standard": "^6.2.1",
     "eslint-plugin-promise": "^3.4.0",
     "eslint-plugin-standard": "^2.0.1",
@@ -57,6 +58,7 @@
     "gulp-uglify": "^2.0.0",
     "gulp-webdriver": "^2.0.3",
     "mocha": "^3.0.2",
+    "nightwatch": "^0.9.12",
     "selenium-standalone": "^5.6.3",
     "shower-next": "0.0.6",
     "shower-progress": "0.0.9",
@@ -73,7 +75,7 @@
     "prepublish": "gulp build",
     "build": "gulp build",
     "lint": "gulp lint",
-    "test": "gulp test",
+    "test": "gulp unit && nightwatch",
     "report": "allure report generate -o allure-report allure-results && allure report open -o allure-report"
   }
 }

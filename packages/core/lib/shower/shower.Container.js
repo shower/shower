@@ -201,11 +201,13 @@ shower.modules.define('shower.Container', [
                 return;
             }
 
+            var slideNumber;
+
             switch (e.which) {
                 case 13: // Enter
                     e.preventDefault();
                     if (!this.isSlideMode() && e.metaKey) {
-                        var slideNumber = e.shiftKey ? 0 : this._shower.player.getCurrentSlideIndex();
+                        slideNumber = e.shiftKey ? 0 : this._shower.player.getCurrentSlideIndex();
                         this._shower.player.go(slideNumber);
                         this.enterSlideMode();
                     } else {
@@ -225,7 +227,7 @@ shower.modules.define('shower.Container', [
                 case 116: // F5 Shift
                     if (!this.isSlideMode() && e.shiftKey) {
                         e.preventDefault();
-                        var slideNumber = this._shower.player.getCurrentSlideIndex();
+                        slideNumber = this._shower.player.getCurrentSlideIndex();
                         this._shower.player.go(slideNumber);
                         this.enterSlideMode();
                     }

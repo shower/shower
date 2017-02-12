@@ -8,7 +8,6 @@ const lintspaces = require('gulp-lintspaces');
 const mocha = require('gulp-mocha-phantomjs');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
-const webdriver = require('gulp-webdriver');
 
 const pkg = require('./package.json');
 const now = new Date().getFullYear();
@@ -24,10 +23,9 @@ gulp.task('lint:ec', () => {
     const sources = [
         '.editorconfig',
         '.gitignore',
-        '*.{json,yml,md}',
+        '{.,}*.{json,yml,md}',
         'lib/**',
         'tests/**',
-        'wdio.conf.js',
     ];
 
     const options = {
@@ -38,7 +36,7 @@ gulp.task('lint:ec', () => {
         ],
     };
 
-    return gulp.src(sources, { dot: true })
+    return gulp.src(sources)
         .pipe(lintspaces(options))
         .pipe(lintspaces.reporter());
 });
@@ -81,11 +79,6 @@ gulp.task('minify', [ 'concat:lib' ], () => {
         .pipe(gulp.dest('.'));
 });
 
-gulp.task('webdriver', () => {
-    return gulp.src('wdio.conf.js')
-        .pipe(webdriver());
-});
-
 gulp.task('mocha', () => {
     return gulp.src('tests/unit/index.html')
         .pipe(mocha());
@@ -107,17 +100,8 @@ gulp.task('build', [
     'minify',
 ]);
 
-gulp.task('test', [
+gulp.task('unit', [
     'lint',
-    'test:unit',
-    'test:func',
-]);
-
-gulp.task('test:func', [
-    'webdriver',
-]);
-
-gulp.task('test:unit', [
     'concat:test',
     'mocha',
 ]);
