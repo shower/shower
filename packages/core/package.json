@@ -56,26 +56,18 @@
     "gulp-mocha-phantomjs": "^0.12.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.0",
-    "gulp-webdriver": "^2.0.3",
     "mocha": "^3.0.2",
     "nightwatch": "^0.9.12",
-    "selenium-standalone": "^5.6.3",
     "shower-next": "0.0.6",
     "shower-progress": "0.0.9",
     "shower-timer": "0.0.12",
     "shower-touch": "0.0.11",
-    "wdio-allure-reporter": "^0.1.2",
-    "wdio-dot-reporter": "0.0.6",
-    "wdio-mocha-framework": "^0.5.7",
-    "webdriverio": "^4.2.15",
     "ym": "^0.1.2"
   },
   "scripts": {
-    "prebuild": "selenium-standalone install",
     "prepublish": "gulp build",
     "build": "gulp build",
     "lint": "gulp lint",
-    "test": "gulp unit && nightwatch",
-    "report": "allure report generate -o allure-report allure-results && allure report open -o allure-report"
+    "test": "gulp unit && nightwatch"
   }
 }
