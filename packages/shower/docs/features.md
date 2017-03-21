@@ -34,14 +34,13 @@ All theme’s features are demonstrated in the [index.html](index.html) file. Us
 
 Theme package consists of the following folders and files:
 
-1. `docs` folder with usage documentation, including this manual.
-2. `fonts` folder with fonts in WOFF compressed format.
+2. `fonts` folder with fonts in WOFF format.
 3. `images` folder with decoration images.
 4. `pictures` folder with sample pictures.
 5. `styles` folder with built styles in 16×10 and 4×3 ratios.
 6. `index.html` file with demonstration of all features.
 
-In addition to files above repository contains source files:
+In addition to files theme’s repository contains source files:
 
 1. `source` folder with font source files in TTF and design in [Sketch](http://bohemiancoding.com/sketch/).
 2. `styles` folder also contains source styles in SCSS format.
@@ -55,7 +54,7 @@ The main presentation language is set on the root element of the document, pleas
 	<html lang="en">
 	<html lang="ru">
 
-Appropriate typography traditions are used based on this value. `lang` attribute could also be set to separate slides or elements.
+Appropriate typography traditions are used based on this value. `lang` attribute could also be set on separate slides or elements.
 
 ### Canvas
 
@@ -64,14 +63,10 @@ The root presentation element has the main `shower` class and additional mode cl
 List:
 
 	<body class="shower list">
-		…
-	</body>
 
 Full:
 
 	<body class="shower full">
-		…
-	</body>
 
 Theme’s architecture is based on agreement that all presentation elements are nested in `shower` element and mode classes are hiding or showing needed elements depending on current mode.
 
@@ -84,11 +79,11 @@ Presentation title is marked with the `caption` element, which has following ele
 		<p><a href="">Yours Truly</a>, Famous Inc.</p>
 	</header>
 
-Caption is visible only in the list mode. Don’t forget to specify presentation title in document’s `<title>` element.
+Caption is visible only in the list mode. Don’t forget to also specify presentation title in document’s `<title>` element.
 
 ### Badge
 
-Badge with “Fork me on GitHub” link (or any other call to action) is marked with `badge` element and placed to the top right corner.
+Badge with “Fork me on GitHub” link (or any other call to action) is marked with `badge` element.
 
 	<footer class="badge">
 		<a href="…">Fork me on Github</a>
@@ -102,11 +97,11 @@ Progress bar shows how much is left until presentation end and marked with `prog
 
 	<div class="progress"></div>
 
-To remove it from presentation just remove this element from document. There’s no way to hide it for certain slides.
+To remove it from presentation just remove this element from document. There’s no way to hide it for specific slides.
 
 ## Slide
 
-Slides are marked with `slide` class. Please don’t nest slides and don’t forget closing tags, this could go wrong.
+Slides are marked with `slide` class. Please don’t nest slides and don’t forget closing tags, things could go wrong.
 
 	<section class="slide">
 		…
@@ -117,11 +112,11 @@ Slides are marked with `slide` class. Please don’t nest slides and don’t for
 
 There are two slide ratios supported: 16×10 and 4×3. To enable needed one include appropriate file `screen-4x3.css` or `screen-16x10.css`. Wide screen 16×10 format is included by default.
 
-Slide width is 1024 px for the both ratios, height for 16×10 is 640 px and 768 px for 4×3. Bare in mind these sizes while preparing presentation pictures. In list mode slides are scaled down 2 or 4 times and in full screen mode they are scaled dynamically based in window size.
+Slide width is 1024 px for the both ratios, for 16×10 height is 640 px, for 4×3 it’s 768. Bare in mind these sizes while preparing presentation pictures. In list mode slides are scaled down 2 or 4 times and in full screen mode they are scaled dynamically based on window size.
 
 ### Number
 
-Slide numbers help audience to remember slides for questions and open needed slide by changing number in address field. Numbers are generated automatically using CSS counters and could be turned off for certain slides.
+Slide numbers help audience to remember slides for questions and open needed slide by changing number in address field. Numbers are generated automatically using CSS counters and could be turned off for specific slides.
 
 You can hide number manually:
 
@@ -133,7 +128,7 @@ You can hide number manually:
 		</style>
 	</section>
 
-Or change slide type: add `white` or `black` to `slide`. Read more about types in the next section.
+Some slide types could also hide slide number: `white` or `black`.
 
 ### Types
 
@@ -144,16 +139,12 @@ Types are changing slide’s look. You can set type by adding class to the main 
 White type set white background and turns off slide number. Use it when you need just a pure white slide.
 
 	<section class="slide white">
-		…
-	</section>
 
 #### Black
 
 Black type set black background and turns off slide number. Use it when you need just a pure black slide.
 
 	<section class="slide black">
-		…
-	</section>
 
 Please note that black slide type doesn’t change text color.
 
@@ -198,8 +189,8 @@ There are following inline elements styled in the theme:
 - `<strong>` and `<b>` are bold;
 - `<em>` and `<i>` are italic;
 - `<code>`, `<samp>`, and `<kbd>` are monospaced;
-- `<sup>` and `<sub>` for superscrip and subscript indexes;
-- `<mark>` for highlighting parts of text.
+- `<sup>` and `<sub>` make superscript and subscript indexes;
+- `<mark>` highlights text with background color.
 
 #### Quotes
 
