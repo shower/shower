@@ -14,6 +14,10 @@
 			position: relative;
 			top: -1.2em;
 		}
+		.clarification {
+			margin-left: 2em;
+			line-height: 1.6em;
+		}
 	</style>
 </head>
 <body class="shower list">
@@ -30,10 +34,19 @@
 		</figure>
 		<style>
 		#cover {
-			text-shadow: black 3px 4px 1px;
+			text-shadow: black 3px 4px 2px;
 		}
+			#cover figure:after {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				top: 0; left: 0;
+				width: 100%;
+				height: 70%;
+				background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+			}
 			#cover h2 {
-				margin:30px 0 0;
+				margin: 0;
 				color:#FFF;
 				text-align:center;
 				font-size:70px;
@@ -42,7 +55,7 @@
 				margin:10px 0 0;
 				text-align:center;
 				color:#FFF;
-				font-size:30px;
+				font-size:36px;
 				}
 				#cover p a {
 					color:#FFF;
@@ -53,7 +66,7 @@
 	<section class="slide">
 		<h2>O себе</h2>
 		<p>
-			Занимаюсь обработкой кртинок на лету в Uploadcare.
+			Занимаюсь сервисом обработки кртинок на лету в Uploadcare.
 		</p>
 		<p>
 			Член команды <a href="https://python-pillow.org/">Pillow</a>.
@@ -111,19 +124,161 @@
 		<h2>Возможности Pillow</h2>
 		<ul>
 			<li>Кодеки для 17 форматов + декодеры еще для 18
-			<li>Есть все для «модификации пользовательского контента»
-			<li>Режимы: RGB, RGBA, L, LA
+			<li>Есть всё для «модификации пользовательского контента»
+			<li>Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>. 8-bit only*
 			<li>Рисование на зачаточном уровне, нет Безье, режимов смешивания
+			<li>Чтение и запись метаданных через замысловатый API
 		</ul>
 	</section>
 
 	<section class="slide">
 		<h2>Ввод/вывод Pillow</h2>
 		<ul>
-			<li>
-			<li>Оценка: 4
+			<li>Много кодеков, не все одинаково полезны
+			<li class="next">Есть механизмы защиты от DoS-атак
+			<li class="next">Есть режим битых картинок
+			<li class="next">Ленивая загрузка
 		</ul>
 	</section>
+
+	<section class="slide">
+		<h2>Режим битых картинок</h2>
+		<pre>
+			<code>In: from PIL import Image</code>
+			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+			<code><mark>IOError</mark>: image file is truncated (143 bytes not processed)</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Режим битых картинок</h2>
+		<pre>
+			<code>In: from PIL import Image, ImageFile</code>
+			<code>In: ImageFile.<mark>LOAD_TRUNCATED_IMAGES</mark> = True</code>
+			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+		</pre>
+		<img src="./pictures/trucated.out.jpg">
+	</section>
+
+	<section class="slide">
+		<h2>Ленивая загрузка</h2>
+		<pre>
+			<code>In: from PIL import Image</code>
+			<code>In: <mark>%time</mark> im = Image.open('./pictures/cover.jpg')</code>
+			<code>Wall time: <mark>1.2 ms</mark></code>
+		<span class="next">
+			<code>In: im.mode, im.size</code>
+			<code>Out: ('RGB', (2152, 1345))</code>
+		</span>
+		<span class="next">
+			<code>In: <mark>%time</mark> im.load()</code>
+			<code>Wall time: <mark>73.6 ms</mark></code>
+		</span>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Ввод/вывод Pillow</h2>
+		<ul>
+			<li>Много кодеков, не все одинаково полезны
+			<li>Есть механизмы защиты от DoS-атак
+			<li>Есть режим битых картинок
+			<li>Ленивая загрузка
+		</ul>
+		<p>Оценка: ⭐⭐⭐⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Производительность Pillow</h2>
+		<ul>
+			<li>Ядро написано на Си
+			<li class="next">Многие операции хорошо оптимизированы
+			<li class="next">Работа с кодеками напрямую
+			<li class="next">Pillow-SIMD для пущей производительности
+			<li class="next">Официальные бенчмарки: <a href="https://python-pillow.org/pillow-perf/">python-pillow.org/pillow-perf</a>
+		</ul>
+		<p class="next">Оценка: ⭐⭐⭐⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Установка Pillow</h2>
+		<pre>
+			<code>$ pip install Pillow</code>
+		</pre>
+		<ul>
+			<li class="next">Да, так просто
+			<li class="next">Есть бинарные сборки для разных платформ
+			<li class="next">Входит в дистрибутивы Linux, но не советую
+		</ul>
+		<p class="next">Оценка: ⭐⭐⭐⭐⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<pre>
+			<code>from PIL import Image</code>
+			<code>Image.open('cover.jpg') \</code>
+			<code class="mark">    .resize((640, 480), Image.BICUBIC) \</code>
+			<code>    .save('output.png')</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<pre>
+			<code>from PIL import Image</code>
+			<code>Image.open('cover.jpg') \</code>
+			<code class="mark">    .thumbnail((640, 480)) \</code>
+			<code>    .save('output.png')</code>
+			<code><mark>AttributeError</mark>: 'NoneType' object has no attribute 'save'</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<pre>
+			<code>from PIL import Image, <mark>ImageFilter</mark></code>
+			<code>Image.open('cover.jpg') \</code>
+			<code>    .resize((640, 480), Image.BICUBIC) \</code>
+			<code class="mark">    .filter(ImageFilter.GaussianBlur(10)) \</code>
+			<code>    .save('output.png')</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<ul>
+			<li>Изображение — объект со chainable методами
+			<li>Иногда это правило нарушается
+			<li>Операции разбросаны между методами, <code>ImageFilter</code> и <code>ImageOps</code>
+			<li>Странные исключения: <code>SyntaxError</code>, <code>IOError</code>, <code>struct.error</code>
+		</ul>
+		<p class="next">Оценка: ⭐⭐⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Pillow: итог</h2>
+			<h3>Хорошо подойдет для модификации пользовательского контента</h3>
+			<p class="clarification">
+				Много кодеков, быстрая работа, легкая разработка
+			</p>
+			<div class="next">
+				<h3>Свой графический редактор написать не получится</h3>
+				<p class="clarification">
+					Нет 16-битного цвета и необходимых средств рисования
+				</p>
+			</div>
+			<div class="next">
+				<h3>Для обработки данных подходит минимально</h3>
+				<p class="clarification">
+					Есть только самые общие сердства: гистограммы, работа со значениями
+				</p>
+			</div>
+	</section>
+
+
+
+
 
 	<section class="slide">
 		<h2>Shower key features</h2>
