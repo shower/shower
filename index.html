@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>Работа с озображениями на Python в 2017 году</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+	<style type="text/css">
+		h4 {
+			font-size: .8em;
+		}
+		h2 + h4 {
+			position: relative;
+			top: -1.2em;
+		}
+	</style>
 </head>
 <body class="shower list">
 
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
+		<h1>Работа с озображениями на Python в 2017 году</h1>
 	</header>
 
 	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+		<h2>Работа с озображениями на Python в 2017 году</h2>
+		<p>Александр Карпинский, Uploadcare LLC</p>
 		<figure>
 			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
 		</figure>
 		<style>
+		#cover {
+			text-shadow: black 3px 4px 1px;
+		}
 			#cover h2 {
 				margin:30px 0 0;
 				color:#FFF;
@@ -34,8 +42,7 @@
 				margin:10px 0 0;
 				text-align:center;
 				color:#FFF;
-				font-style:italic;
-				font-size:20px;
+				font-size:30px;
 				}
 				#cover p a {
 					color:#FFF;
@@ -44,14 +51,89 @@
 	</section>
 
 	<section class="slide">
+		<h2>O себе</h2>
+		<p>
+			Занимаюсь обработкой кртинок на лету в Uploadcare.
+		</p>
+		<p>
+			Член команды <a href="https://python-pillow.org/">Pillow</a>.
+		</p>
+		<p>
+			Автор форка <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>.
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Задачи</h2>
+		<p>Модификация пользовательского контента</p>
+		<ul>
+				<li>Геометрия
+				<li>Наложение
+				<li>Блюр, шарп
+				<li>Работа с цветом
+				<li>Работа с метаданными
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Задачи</h2>
+		<p>Графический редактор</p>
+		<ul>
+			<li>Все из первой задачи
+			<li>Геометрические примитивы
+			<li>Нанесение текста
+			<li>Высокая точность работы
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Задачи</h2>
+		<p>Обработка данных</p>
+		<ul>
+			<li>Фильтры Собеля
+			<li>Статистика
+			<li>Распознавание образов
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Pillow</h2>
+		<ul>
+			<li>Форк Python Imaging Library (1995 года)
+			<li>Нативный модуль для Python
+			<li>Версии Python: 2.7, 3.3 — 3.6
+			<li>Разработка ведется 3-месячными циклами
+			<li>Сайт: <a href="https://python-pillow.org">python-pillow.org</a>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Возможности Pillow</h2>
+		<ul>
+			<li>Кодеки для 17 форматов + декодеры еще для 18
+			<li>Есть все для «модификации пользовательского контента»
+			<li>Режимы: RGB, RGBA, L, LA
+			<li>Рисование на зачаточном уровне, нет Безье, режимов смешивания
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Ввод/вывод Pillow</h2>
+		<ul>
+			<li>
+			<li>Оценка: 4
+		</ul>
+	</section>
+
+	<section class="slide">
 		<h2>Shower key features</h2>
 		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
+			<li>Built on HTML, CSS and vanilla JavaScript
+			<li>Works in all modern browsers
+			<li>Themes are separated from engine
+			<li>Modular and extensible
+			<li>Fully keyboard accessible
+			<li>Printable to PDF
 		</ol>
 		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
 	</section>
@@ -69,16 +151,16 @@
 	<section class="slide">
 		<h2>All kind of lists</h2>
 		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
+			<li>Simple lists are marked with bullets
+			<li>Ordered lists begin with a number
 			<li>You can even nest lists one inside another
 				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
+					<li>Or mix their types
+					<li>But do not go too far
+					<li>Otherwise audience will be bored
 				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
+			
+			<li>Look, seven rows exactly!
 		</ol>
 	</section>
 
@@ -164,11 +246,11 @@
 	<section class="slide">
 		<h2>Inner navigation</h2>
 		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
+			<li>Lets you reveal list items one by one
+			<li class="next">To keep some key points
+			<li class="next">In secret from audience
+			<li class="next">But it will work only once
+			<li class="next">Nobody wants to see the same joke twice
 		</ol>
 	</section>
 
@@ -191,10 +273,6 @@
 				}
 		</style>
 	</section>
-
-	<footer class="badge">
-		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
-	</footer>
 
 	<div class="progress"></div>
 
