@@ -7,6 +7,8 @@ There’s a brand new [Logitech Spotlight](http://www.logitech.com/en-us/product
 3. Change _Hold Next Button_ to `Cmd Enter` (just press it).
 4. Change _Hold Back Button_ to `Esc` (just press it).
 
+<img src="images/logitech.png" width="300" alt="Logitech Presenter application">
+
 You might have to enable accessibility access on macOS in order to use this features. App will ask you once it’s needed.
 
 Now when all is set you can:
