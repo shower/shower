@@ -4,7 +4,7 @@ There’s a brand new [Logitech Spotlight](http://www.logitech.com/en-us/product
 
 1. [Download](http://support.logitech.com/en_us/software/logi-presentation) and install an app.
 2. Go to the main menu and locate additional shortcuts options.
-3. Change _Hold Next Button_ to `Cmd Enter` (just press it).
+3. Change _Hold Next Button_ to `Cmd Enter` for macOS or `Shift F5` for Windows (just press it).
 4. Change _Hold Back Button_ to `Esc` (just press it).
 
 <img src="images/logitech.png" width="300" alt="Logitech Presenter application">
