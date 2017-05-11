@@ -18,6 +18,21 @@
 			margin-left: 2em;
 			line-height: 1.6em;
 		}
+		.gap {
+			text-align: center;
+		}
+			.gap h2 {
+				font-size: 120px;
+				margin-top: 100px;
+			}
+		.slide ol + ol,
+		.slide ul + ul {
+			margin-top: -1em;
+		}
+		.stars {
+			font-size: 50px;
+			margin-top: -0.3em;
+		}
 	</style>
 </head>
 <body class="shower list">
@@ -28,7 +43,7 @@
 
 	<section class="slide" id="cover">
 		<h2>Работа с озображениями на Python в 2017 году</h2>
-		<p>Александр Карпинский, Uploadcare LLC</p>
+		<p>Александр Карпинский, Uploadcare</p>
 		<figure>
 			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
 		</figure>
@@ -66,76 +81,130 @@
 	<section class="slide">
 		<h2>O себе</h2>
 		<p>
-			Занимаюсь сервисом обработки кртинок на лету в Uploadcare.
+			Занимаюсь сервисом обработки картинок на лету в Uploadcare
 		</p>
-		<p>
-			Член команды <a href="https://python-pillow.org/">Pillow</a>.
+		<p class="next">
+			Член команды <a href="https://python-pillow.org/">Pillow</a>
 		</p>
-		<p>
-			Автор форка <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>.
+		<p class="next">
+			Автор форка <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>
 		</p>
 	</section>
 
-	<section class="slide">
+	<section class="slide gap">
 		<h2>Задачи</h2>
-		<p>Модификация пользовательского контента</p>
+	</section>
+
+	<section class="slide">
+		<h2>Модификация пользовательского контента</h2>
 		<ul>
-				<li>Геометрия
-				<li>Наложение
-				<li>Блюр, шарп
-				<li>Работа с цветом
-				<li>Работа с метаданными
+				<li>Разнообразные форматы
+				<li class="next">Изменение геометрии
+				<li class="next">Наложения
+				<li class="next">Размытие, резкость
+				<li class="next">Работа с цветом
+				<li class="next">Работа с метаданными
 		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>Задачи</h2>
-		<p>Графический редактор</p>
+		<h2>Графический редактор</h2>
 		<ul>
 			<li>Все из первой задачи
-			<li>Геометрические примитивы
-			<li>Нанесение текста
-			<li>Высокая точность работы
+			<li class="next">Геометрические примитивы
+			<li class="next">Нанесение текста
+			<li class="next">Высокая точность работы
 		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>Задачи</h2>
-		<p>Обработка данных</p>
+		<h2>Обработка данных</h2>
 		<ul>
-			<li>Фильтры Собеля
+			<li>Форматы оговорены или их можно задать
+		</ul>
+		<ul class="next">
+			<li>Различная фильтрация
 			<li>Статистика
 			<li>Распознавание образов
 		</ul>
 	</section>
 
-	<section class="slide">
-		<h2>Pillow</h2>
-		<ul>
-			<li>Форк Python Imaging Library (1995 года)
-			<li>Нативный модуль для Python
-			<li>Версии Python: 2.7, 3.3 — 3.6
-			<li>Разработка ведется 3-месячными циклами
-			<li>Сайт: <a href="https://python-pillow.org">python-pillow.org</a>
-		</ul>
+	<section class="slide gap">
+		<h2>Библиотеки</h2>
 	</section>
 
 	<section class="slide">
-		<h2>Возможности Pillow</h2>
+		<h2>Pillow</h2>
 		<ul>
-			<li>Кодеки для 17 форматов + декодеры еще для 18
-			<li>Есть всё для «модификации пользовательского контента»
-			<li>Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>. 8-bit only*
-			<li>Рисование на зачаточном уровне, нет Безье, режимов смешивания
-			<li>Чтение и запись метаданных через замысловатый API
+			<li>Форк Python Imaging Library. 1995 год
+			<li>Разработка ведется 3-месячными циклами
 		</ul>
+		<ul class="next">
+			<li>Ядро на Си. Нативный модуль для Python
+			<li>Версии Python: 2.7, 3.3+, pypy, pypy3
+		</ul>
+		<ul class="next">
+			<li>Есть всё для «модификации пользовательского контента»
+			<li>Рисование на зачаточном уровне, нет Безье, режимов смешивания
+		</ul>
+		<p>Сайт: <a href="https://python-pillow.org/">python-pillow.org</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>OpenCV</h2>
+		<ul>
+			<li>Расшифровывается Open Computer Vision. 2000 год
+		</ul>
+		<ul class="next">
+			<li>Биндинг на Python входит в комплект и очень популярен
+			<li>Версии Python: 2.7, 3.4+
+		</ul>
+		<ul class="next">
+			<li>Геометрия, размытие, резкость, работа с цветом
+			<li>Рисование на зачаточном уровне, нет Безье, режимов смешивания
+		</ul>
+		<ul class="next">
+			<li>Огромное количество функций компьютероного зрения
+		</ul>
+		<p>Сайт: <a href="http://opencv.org/">opencv.org</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>ImageMagick</h2>
+		<ul>
+			<li>Очень популярная библиотека. 1990 год
+			<li class="next">Биндинг для питона Wand
+		</ul>
+		<ul class="next">
+			<li>Есть всё для «модификации пользовательского контента»
+			<li>Рисование всего что можно
+		</ul>
+		<p>Сайт: <a href="https://www.imagemagick.org/">imagemagick.org</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>ImageMagick: Wand</h2>
+		<ul>
+			<li>Ставится через pip
+			<li>Версии Python: 2.6+, 3.2+, pypy
+			<li class="next">Хорошая документация
+			<li class="next">Проект почти заброшен
+			<li class="next">Требует ручного управления паматью
+		</ul>
+		<p>Сайт: <a href="http://docs.wand-py.org">docs.wand-py.org</a></p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Ввод/вывод</h2>
 	</section>
 
 	<section class="slide">
 		<h2>Ввод/вывод Pillow</h2>
 		<ul>
-			<li>Много кодеков, не все одинаково полезны
+			<li>Кодеки для 17 форматов + декодеры еще для 18
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>. 8-bit only*
 			<li class="next">Есть механизмы защиты от DoS-атак
+			<li class="next">Нет автоповорота, но есть возможность прочитать EXIF
 			<li class="next">Есть режим битых картинок
 			<li class="next">Ленивая загрузка
 		</ul>
@@ -164,7 +233,7 @@
 		<h2>Ленивая загрузка</h2>
 		<pre>
 			<code>In: from PIL import Image</code>
-			<code>In: <mark>%time</mark> im = Image.open('./pictures/cover.jpg')</code>
+			<code>In: <mark>%time</mark> im = Image.open('cover.jpg')</code>
 			<code>Wall time: <mark>1.2 ms</mark></code>
 		<span class="next">
 			<code>In: im.mode, im.size</code>
@@ -180,12 +249,41 @@
 	<section class="slide">
 		<h2>Ввод/вывод Pillow</h2>
 		<ul>
-			<li>Много кодеков, не все одинаково полезны
+			<li>Кодеки для 17 форматов + декодеры еще для 18
+			<li>Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 8-bit only*
 			<li>Есть механизмы защиты от DoS-атак
+			<li>Нет автоповорота, но есть возможность прочитать EXIF
 			<li>Есть режим битых картинок
 			<li>Ленивая загрузка
 		</ul>
-		<p>Оценка: ⭐⭐⭐⭐</p>
+		<p class="stars">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Ввод/вывод OpenCV</h2>
+		<ul>
+			<li>Кодеки для 8 форматов, включая WebP и JPEG 2000
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, 16-битный цвет
+			<li class="next">Читает битые картинки по-умолчанию
+			<li class="next">Автоматически поворачивает, но нет доступа к EXIF и ICC
+			<li class="next">Нет ленивой загрузки и защиты от DoS
+			<li class="next">Не открывает PNG в <code>LA</code> формате
+		</ul>
+		<p class="stars next">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+
+	<section class="slide">
+		<h2>Ввод/вывод ImageMagick</h2>
+		<ul>
+			<li>Кодеки для 66 форматов + декодеры для 34
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 16-битный цвет
+			<li class="next">Читает битые картинки по-умолчанию
+			<li class="next">Есть доступ к EXIF или ICC
+			<li class="next">Нет ленивой загрузки и защиты от DoS
+			<li class="next">Не открывает PNG в <code>LA</code> формате
+		</ul>
+		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
 	<section class="slide">
@@ -193,11 +291,23 @@
 		<ul>
 			<li>Ядро написано на Си
 			<li class="next">Многие операции хорошо оптимизированы
-			<li class="next">Работа с кодеками напрямую
+			<li class="next">Быстрая работа с кодеками
 			<li class="next">Pillow-SIMD для пущей производительности
+			<li class="next">Нет распараллеливания
 			<li class="next">Официальные бенчмарки: <a href="https://python-pillow.org/pillow-perf/">python-pillow.org/pillow-perf</a>
 		</ul>
-		<p class="next">Оценка: ⭐⭐⭐⭐</p>
+		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Производительность OpenCV</h2>
+		<ul>
+			<li>Написан на Си++
+			<li>Многие операции хорошо оптимизированы
+			<li>Распараллеливание из коробки
+			<li>Уступает Pillow в открытии JPEG и других операциях
+		</ul>
+		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
 	<section class="slide">
@@ -210,7 +320,7 @@
 			<li class="next">Есть бинарные сборки для разных платформ
 			<li class="next">Входит в дистрибутивы Linux, но не советую
 		</ul>
-		<p class="next">Оценка: ⭐⭐⭐⭐⭐</p>
+		<p class="next stars">⭐ ⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
 	<section class="slide">
@@ -253,7 +363,7 @@
 			<li>Операции разбросаны между методами, <code>ImageFilter</code> и <code>ImageOps</code>
 			<li>Странные исключения: <code>SyntaxError</code>, <code>IOError</code>, <code>struct.error</code>
 		</ul>
-		<p class="next">Оценка: ⭐⭐⭐</p>
+		<p class="next stars">⭐⭐⭐</p>
 	</section>
 
 	<section class="slide">
@@ -271,10 +381,17 @@
 			<div class="next">
 				<h3>Для обработки данных подходит минимально</h3>
 				<p class="clarification">
-					Есть только самые общие сердства: гистограммы, работа со значениями
+					Есть только самые общие сердства: гистограммы,
+					математика каналов в модуле <code>ImageMath</code>
 				</p>
 			</div>
 	</section>
+
+
+
+
+
+
 
 
 
