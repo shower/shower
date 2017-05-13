@@ -267,7 +267,7 @@
 			<li class="next">Нет ленивой загрузки и защиты от DoS
 			<li class="next">Не открывает PNG в <code>LA</code> формате
 		</ul>
-		<p class="stars next">⭐ ⭐ ⭐ ⭐</p>
+		<p class="stars next">⭐ ⭐ ⭐</p>
 	</section>
 
 	<section class="slide">
@@ -277,8 +277,7 @@
 			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 16-битный цвет
 			<li class="next">Читает битые картинки по-умолчанию
 			<li class="next">Есть доступ к EXIF или ICC
-			<li class="next">Нет ленивой загрузки и защиты от DoS
-			<li class="next">Не открывает PNG в <code>LA</code> формате
+			<li class="next">Нет ленивой загрузки
 		</ul>
 		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
 	</section>
@@ -293,7 +292,7 @@
 			<li>Ядро написано на Си
 			<li class="next">Многие операции хорошо оптимизированы
 			<li class="next">Быстрая работа с кодеками
-			<li class="next">Pillow-SIMD для пущей производительности
+			<li class="next">Pillow-SIMD для большей производительности
 			<li class="next">Нет распараллеливания
 			<li class="next">Официальные бенчмарки: <a href="https://python-pillow.org/pillow-perf/">python-pillow.org/pillow-perf</a>
 		</ul>
@@ -375,7 +374,7 @@
 		</pre>
 		<p class="next" style="margin-top: -1em;">
 			Need to get 96.8 MB of archives.<br>
-			After this operation, 410 MB of additional disk space will be used.
+			After this operation, <mark>410 MB</mark> of additional disk space will be used.
 		</p>
 		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
 	</section>
@@ -429,6 +428,83 @@
 	</section>
 
 	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<pre style="font-size: 20px">
+			<code>import cv2</code>
+			<code>im = cv2.imread('cover.jpg')</code>
+			<code>im = cv2.resize(im, (160, 100), interpolation=cv2.INTER_CUBIC)</code>
+			<code>cv2.imwrite('output.png', im)</code>
+		</pre>
+		<img class="next" src="./pictures/cv2.inter_cubic.png"
+				 width="320" style="image-rendering: pixelated">
+		<img class="next" src="./pictures/cv2.inter_area.2.png"
+				 width="320" style="image-rendering: pixelated">
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<pre>
+			<code>import cv2</code>
+			<code>im = cv2.imread('cover.jpg')</code>
+			<code>im = cv2.resize(im, (160, 100), interpolation=cv2.INTER_AREA)</code>
+			<code>cv2.imwrite('output.png', im)</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<pre>
+			<code>import cv2</code>
+			<code>im = cv2.imread(filename, <mark>-1</mark>)</code>
+			<code>height, width = im.shape<mark>[:2]</mark></code>
+			<code>has_alpha = len(im.shape) == <mark>3</mark> and im.shape<mark>[2]</mark> == <mark>4</mark></code>
+			<code>inter = cv2.INTER_AREA if width > 300 else cv2.INTER_CUBIC</code>
+      <code>if has_alpha:</code>
+      <code>    im = cv2.cvtColor(im, <mark>cv2.COLOR_RGBA2M_RGBA</mark>)</code>
+			<code class="next"><mark>...</mark></code>
+		</pre>
+	</section>
+
+  <section class="slide">
+    <h2>Питоняшность OpenCV</h2>
+    <pre>
+      <code><mark>...</mark></code>
+      <code>im = cv2.resize(im, (320, 200), interpolation=inter)</code>
+      <code>if has_alpha:</code>
+      <code>    im = cv2.cvtColor(im, <mark>cv2.COLOR_M_RGBA2RGBA</mark>)</code>
+      <code>cv2.imwrite('output.png', im)</code>
+    </pre>
+  </section>
+
+	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<ul>
+			<li>Изображение — массив numpy без методов
+			<li class="next">В изображении нет информации о его режиме
+			<li class="next">Методы слишком низкоуровневые, нужно много оберток
+			<li class="next">Огромное количество магических констант
+			<li class="next">Вы никогда не узнаете ничего полезного из исключений
+		</ul>
+		<p class="next stars">⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Wand</h2>
+		<pre>
+      <code>from wand.image import Image</code>
+      <code>im = Image(filename='cover.jpg')</code>
+      <code>im.resize(320, 200)</code>
+      <code>im.save(filename='output.png')</code>
+      <code class="next">im.<mark>destroy</mark>()</code>
+    </pre>
+		<p class="next stars">⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Итоги</h2>
+	</section>
+
+	<section class="slide">
 		<h2>Pillow: итог</h2>
 			<h3>Хорошо подойдет для модификации пользовательского контента</h3>
 			<p class="clarification">
@@ -445,6 +521,47 @@
 				<p class="clarification">
 					Есть только самые общие сердства: гистограммы,
 					математика каналов в модуле <code>ImageMath</code>
+				</p>
+			</div>
+	</section>
+
+	<section class="slide">
+		<h2>OpenCV: итог</h2>
+			<h3>Для модификации пользовательского контента лучше взять что-то еще</h3>
+			<p class="clarification">
+				Мало кодеков и функциональности, очень сложно работать
+			</p>
+			<div class="next">
+				<h3>Свой графический редактор написать не получится</h3>
+				<p class="clarification">
+					Причины те же, нет необходимых средств рисования
+				</p>
+			</div>
+			<div class="next">
+				<h3>Отлично подохдит для обработки данных</h3>
+				<p class="clarification">
+					Огромное количество функций, которое компенсирует даже неудобство работы
+				</p>
+			</div>
+	</section>
+
+	<section class="slide">
+		<h2>Wand: итог</h2>
+			<h3>Для модификации пользовательского контента подходит,</h3>
+			<p class="clarification">
+				если вас устраивает скорость и вы будете программировать<br>
+				оочень внимательно
+			</p>
+			<div class="next">
+				<h3>Написать свой графический редактор более чем реально</h3>
+				<p class="clarification">
+					Функциональность в избытке, а пользователь может и подождать
+				</p>
+			</div>
+			<div class="next">
+				<h3>Кое-какая обработка данных возможна</h3>
+				<p class="clarification">
+					Функциональность сильно уступает OpenCV, но шире чем в Pillow
 				</p>
 			</div>
 	</section>
