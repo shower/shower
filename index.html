@@ -22,7 +22,7 @@
 			text-align: center;
 		}
 			.gap h2 {
-				font-size: 120px;
+				font-size: 100px;
 				margin-top: 100px;
 			}
 		.slide ol + ol,
@@ -272,7 +272,6 @@
 		<p class="stars next">⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
-
 	<section class="slide">
 		<h2>Ввод/вывод ImageMagick</h2>
 		<ul>
@@ -284,6 +283,10 @@
 			<li class="next">Не открывает PNG в <code>LA</code> формате
 		</ul>
 		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Производительность</h2>
 	</section>
 
 	<section class="slide">
@@ -303,11 +306,27 @@
 		<h2>Производительность OpenCV</h2>
 		<ul>
 			<li>Написан на Си++
-			<li>Многие операции хорошо оптимизированы
-			<li>Распараллеливание из коробки
-			<li>Уступает Pillow в открытии JPEG и других операциях
+			<li class="next">Многие операции хорошо оптимизированы
+			<li class="next">Распараллеливание из коробки
+			<li class="next">Уступает Pillow в открытии JPEG и других операциях
 		</ul>
 		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Производительность Wand</h2>
+		<ul>
+			<li>ImageMagick написан на Си
+			<li class="next">Никогда не был заточен на производительность
+			<li class="next">Уступает Pilow-SIMD при ресайзе до 20 раз
+			<li class="next">Уступает OpenCV при размытии до 20 раз
+			<li class="next">Распараллеливание из коробки не помогает
+		</ul>
+		<p class="next stars">⭐</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Установка</h2>
 	</section>
 
 	<section class="slide">
@@ -321,6 +340,11 @@
 			<li class="next">Входит в дистрибутивы Linux, но не советую
 		</ul>
 		<p class="next stars">⭐ ⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Питоняшность</h2>
+		<p>от слова pythonic</p>
 	</section>
 
 	<section class="slide">
