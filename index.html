@@ -1,31 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>Работа с озображениями на Python в 2017 году</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+	<style type="text/css">
+		h4 {
+			font-size: .8em;
+		}
+		h2 + h4 {
+			position: relative;
+			top: -1.2em;
+		}
+		.clarification {
+			margin-left: 2em;
+			line-height: 1.6em;
+		}
+		.gap {
+			text-align: center;
+		}
+			.gap h2 {
+				font-size: 100px;
+				margin-top: 100px;
+			}
+		.slide ol + ol,
+		.slide ul + ul {
+			margin-top: -1em;
+		}
+		.stars {
+			font-size: 50px;
+			margin-top: -0.3em;
+		}
+	</style>
 </head>
 <body class="shower list">
 
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
+		<h1>Работа с озображениями на Python в 2017 году</h1>
 	</header>
 
 	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
+		<h2>Работа с озображениями на Python в 2017 году</h2>
+		<p>Александр Карпинский, Uploadcare</p>
 		<figure>
 			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
 		</figure>
 		<style>
+		#cover {
+			text-shadow: black 3px 4px 2px;
+		}
+			#cover figure:after {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				top: 0; left: 0;
+				width: 100%;
+				height: 70%;
+				background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+			}
 			#cover h2 {
-				margin:30px 0 0;
+				margin: 0;
 				color:#FFF;
 				text-align:center;
 				font-size:70px;
@@ -34,8 +70,7 @@
 				margin:10px 0 0;
 				text-align:center;
 				color:#FFF;
-				font-style:italic;
-				font-size:20px;
+				font-size:36px;
 				}
 				#cover p a {
 					color:#FFF;
@@ -44,157 +79,493 @@
 	</section>
 
 	<section class="slide">
-		<h2>Shower key features</h2>
-		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
-		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+		<h2>O себе</h2>
+		<p>
+			Занимаюсь сервисом обработки картинок на лету в Uploadcare
+		</p>
+		<p class="next">
+			Член команды <a href="https://python-pillow.org/">Pillow</a>
+		</p>
+		<p class="next">
+			Автор форка <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>
+		</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Задачи</h2>
 	</section>
 
 	<section class="slide">
-		<h2>Plain text on your slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+		<h2>Модификация пользовательского контента</h2>
+		<ul>
+				<li>Разнообразные форматы
+				<li class="next">Изменение геометрии
+				<li class="next">Наложения
+				<li class="next">Размытие, резкость
+				<li class="next">Работа с цветом
+				<li class="next">Работа с метаданными
+		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>Two columns if you like</h2>
-		<p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+		<h2>Графический редактор</h2>
+		<ul>
+			<li>Все из первой задачи
+			<li class="next">Геометрические примитивы
+			<li class="next">Нанесение текста
+			<li class="next">Высокая точность работы
+		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>All kind of lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
-		</ol>
+		<h2>Обработка данных</h2>
+		<ul>
+			<li>Форматы оговорены или их можно задать
+		</ul>
+		<ul class="next">
+			<li>Различная фильтрация
+			<li>Статистика
+			<li>Распознавание образов
+		</ul>
+	</section>
+
+	<section class="slide gap">
+		<h2>Библиотеки</h2>
 	</section>
 
 	<section class="slide">
-		<h2>Serious citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
+		<h2>Pillow</h2>
+		<ul>
+			<li>Форк Python Imaging Library. 1995 год
+			<li>Разработка ведется 3-месячными циклами
+		</ul>
+		<ul class="next">
+			<li>Ядро на Си. Нативный модуль для Python
+			<li>Версии Python: 2.7, 3.3+, pypy, pypy3
+		</ul>
+		<ul class="next">
+			<li>Есть всё для «модификации пользовательского контента»
+		</ul>
+		<ul class="next">
+			<li>Рисование на зачаточном уровне, нет Безье, режимов смешивания
+		</ul>
+		<p>Сайт: <a href="https://python-pillow.org/">python-pillow.org</a></p>
 	</section>
 
 	<section class="slide">
-		<h2>Code samples</h2>
+		<h2>OpenCV</h2>
+		<ul>
+			<li>Расшифровывается Open Computer Vision. 2000 год
+		</ul>
+		<ul class="next">
+			<li>Биндинг на Python входит в комплект и очень популярен
+			<li>Версии Python: 2.7, 3.4+
+		</ul>
+		<ul>
+			<li class="next">Геометрия, размытие, резкость, работа с цветом
+			<li class="next">Рисование на зачаточном уровне, нет Безье, режимов смешивания
+			<li class="next">Огромное количество функций компьютероного зрения
+		</ul>
+		<p>Сайт: <a href="http://opencv.org/">opencv.org</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>ImageMagick</h2>
+		<ul>
+			<li>Очень популярная библиотека. 1990 год
+			<li class="next">Биндинг для питона Wand
+			<li class="next">Есть всё для «модификации пользовательского контента»
+			<li class="next">Рисование всего что можно
+		</ul>
+		<p>Сайт: <a href="https://www.imagemagick.org/">imagemagick.org</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>ImageMagick: Wand</h2>
+		<ul>
+			<li>Ставится через pip
+			<li>Версии Python: 2.6+, 3.2+, pypy
+			<li class="next">Хорошая документация
+			<li class="next">Проект почти заброшен
+		</ul>
+		<p>Сайт: <a href="http://docs.wand-py.org">docs.wand-py.org</a></p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Ввод/вывод</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Ввод/вывод Pillow</h2>
+		<ul>
+			<li>Кодеки для 17 форматов + декодеры еще для 18
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>. 8-bit only*
+			<li class="next">Есть механизмы защиты от DoS-атак
+			<li class="next">Нет автоповорота, но есть возможность прочитать EXIF
+			<li class="next">Есть режим битых картинок
+			<li class="next">Ленивая загрузка
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Режим битых картинок</h2>
 		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code class="mark">&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
+			<code>In: from PIL import Image</code>
+			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+			<code><mark>IOError</mark>: image file is truncated (143 bytes not processed)</code>
 		</pre>
 	</section>
 
 	<section class="slide">
-		<h2>Even tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</section>
-
-	<section class="slide" id="picture">
-		<h2>Pictures</h2>
-		<figure>
-			<img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
-		</figure>
-		<style>
-			#picture h2 {
-				color:#FFF;
-				}
-		</style>
+		<h2>Режим битых картинок</h2>
+		<pre>
+			<code>In: from PIL import Image, ImageFile</code>
+			<code>In: ImageFile.<mark>LOAD_TRUNCATED_IMAGES</mark> = True</code>
+			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+		</pre>
+		<img src="./pictures/trucated.out.jpg">
 	</section>
 
 	<section class="slide">
-		<h2 class="shout shrink">You can even shout this way</h2>
+		<h2>Ленивая загрузка</h2>
+		<pre>
+			<code>In: from PIL import Image</code>
+			<code>In: <mark>%time</mark> im = Image.open('cover.jpg')</code>
+			<code>Wall time: <mark>1.2 ms</mark></code>
+		<span class="next">
+			<code>In: im.mode, im.size</code>
+			<code>Out: ('RGB', (2152, 1345))</code>
+		</span>
+		<span class="next">
+			<code>In: <mark>%time</mark> im.load()</code>
+			<code>Wall time: <mark>73.6 ms</mark></code>
+		</span>
+		</pre>
 	</section>
 
 	<section class="slide">
-		<h2>Inner navigation</h2>
-		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
-		</ol>
+		<h2>Ввод/вывод Pillow</h2>
+		<ul>
+			<li>Кодеки для 17 форматов + декодеры еще для 18
+			<li>Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 8-bit only*
+			<li>Есть механизмы защиты от DoS-атак
+			<li>Нет автоповорота, но есть возможность прочитать EXIF
+			<li>Есть режим битых картинок
+			<li>Ленивая загрузка
+		</ul>
+		<p class="stars">⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
-	<section class="slide grid">
-		<h2>All nicely aligned to grid</h2>
+	<section class="slide">
+		<h2>Ввод/вывод OpenCV</h2>
+		<ul>
+			<li>Кодеки для 8 форматов, включая WebP и JPEG 2000
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, 16-битный цвет
+			<li class="next">Читает битые картинки по-умолчанию
+			<li class="next">Автоматически поворачивает, но нет доступа к EXIF и ICC
+			<li class="next">Нет ленивой загрузки
+			<li class="next">Не открывает PNG в <code>LA</code> формате
+		</ul>
+		<p class="stars next">⭐ ⭐ ⭐</p>
 	</section>
 
-	<section class="slide" id="see-more">
-		<h2 class="shout">
-			<img src="pictures/logo.svg" alt="Shower logo">
-			<a href="https://github.com/shower/shower">See more on GitHub</a>
-		</h2>
-		<style>
-			#see-more h2 {
-				font-size:100px
-				}
-			#see-more img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
+	<section class="slide">
+		<h2>Ввод/вывод ImageMagick</h2>
+		<ul>
+			<li>Кодеки для 66 форматов + декодеры для 34
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 16-битный цвет
+			<li class="next">Читает битые картинки по-умолчанию
+			<li class="next">Есть доступ к EXIF или ICC
+			<li class="next">Нет ленивой загрузки
+		</ul>
+		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
-	<footer class="badge">
-		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
-	</footer>
+	<section class="slide gap">
+		<h2>Производительность</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Производительность Pillow</h2>
+		<ul>
+			<li>Ядро написано на Си
+			<li class="next">Многие операции хорошо оптимизированы
+			<li class="next">Быстрая работа с кодеками
+			<li class="next">Pillow-SIMD для большей производительности
+			<li class="next">Нет распараллеливания
+			<li class="next">Официальные бенчмарки: <a href="https://python-pillow.org/pillow-perf/">python-pillow.org/pillow-perf</a>
+		</ul>
+		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Производительность OpenCV</h2>
+		<ul>
+			<li>Написан на Си++
+			<li class="next">Многие операции хорошо оптимизированы
+			<li class="next">Распараллеливание из коробки
+			<li class="next">Уступает Pillow-SIMD в некоторых операциях
+		</ul>
+		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Производительность Wand</h2>
+		<ul>
+			<li>ImageMagick написан на Си
+			<li class="next">Никогда не был заточен под производительность
+			<li class="next">При ресайзе уступает Pilow-SIMD до 20 раз
+			<li class="next">При размытии уступает OpenCV до 20 раз
+			<li class="next">Распараллеливание из коробки не помогает
+		</ul>
+		<p class="next stars">⭐</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Установка</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Установка Pillow</h2>
+		<pre>
+			<code>$ pip install Pillow</code>
+		</pre>
+		<ul>
+			<li class="next">Есть бинарные сборки для разных платформ
+			<li class="next">Входит в дистрибутивы Linux, но не советую
+		</ul>
+		<p class="next stars">⭐ ⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Установка OpenCV</h2>
+		<pre>
+			<code>$ sudo apt-get install python-opencv</code>
+		</pre>
+		<ul>
+			<li class="next">В Ubuntu 17.04 всё еще версия <code>2.4</code> от 2014 года
+			<li class="next">Сложно прокинуть в virtualenv
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Установка OpenCV</h2>
+		<pre>
+			<code>$ pip install opencv-python</code>
+		</pre>
+		<ul>
+			<li class="next">Пакет неофициальный
+			<li class="next">Только бинарные сборки
+		</ul>
+		<p class="next stars">⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Установка Wand</h2>
+		<pre>
+			<code>$ pip install wand</code>
+		</pre>
+		<p class="next" style="margin-top: -1em;">
+			<code>ImportError: MagickWand shared library not found.</code>
+		</p>
+		<pre class="next">
+			<code>$ sudo apt install libmagickwand-dev</code>
+		</pre>
+		<p class="next" style="margin-top: -1em;">
+			Need to get 96.8 MB of archives.<br>
+			After this operation, <mark>410 MB</mark> of additional disk space will be used.
+		</p>
+		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Питоняшность</h2>
+		<p>от слова pythonic</p>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<pre>
+			<code>from PIL import Image</code>
+			<code>Image.open('cover.jpg') \</code>
+			<code class="mark">    .resize((640, 480), Image.BICUBIC) \</code>
+			<code>    .save('output.png')</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<pre>
+			<code>from PIL import Image</code>
+			<code>Image.open('cover.jpg') \</code>
+			<code class="mark">    .thumbnail((640, 480)) \</code>
+			<code>    .save('output.png')</code>
+			<code><mark>AttributeError</mark>: 'NoneType' object has no attribute 'save'</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<pre>
+			<code>from PIL import Image, <mark>ImageFilter</mark></code>
+			<code>Image.open('cover.jpg') \</code>
+			<code>    .resize((640, 480), Image.BICUBIC) \</code>
+			<code class="mark">    .filter(ImageFilter.GaussianBlur(10)) \</code>
+			<code>    .save('output.png')</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Pillow</h2>
+		<ul>
+			<li>Изображение — объект со chainable методами
+			<li>Иногда это правило нарушается
+			<li>Операции разбросаны между методами, <code>ImageFilter</code> и <code>ImageOps</code>
+			<li>Странные исключения: <code>SyntaxError</code>, <code>IOError</code>, <code>struct.error</code>
+		</ul>
+		<p class="next stars">⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<pre style="font-size: 20px">
+			<code>import cv2</code>
+			<code>im = cv2.imread('cover.jpg')</code>
+			<code>im = cv2.resize(im, (160, 100), interpolation=cv2.INTER_CUBIC)</code>
+			<code>cv2.imwrite('output.png', im)</code>
+		</pre>
+		<img class="next" src="./pictures/cv2.inter_cubic.png"
+				 width="320" style="image-rendering: pixelated">
+		<img class="next" src="./pictures/cv2.inter_area.2.png"
+				 width="320" style="image-rendering: pixelated">
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<pre>
+			<code>import cv2</code>
+			<code>im = cv2.imread('cover.jpg')</code>
+			<code>im = cv2.resize(im, (160, 100), interpolation=cv2.INTER_AREA)</code>
+			<code>cv2.imwrite('output.png', im)</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<pre>
+			<code>import cv2</code>
+			<code>im = cv2.imread(filename, <mark>-1</mark>)</code>
+			<code>height, width = im.shape<mark>[:2]</mark></code>
+			<code>has_alpha = len(im.shape) == <mark>3</mark> and im.shape<mark>[2]</mark> == <mark>4</mark></code>
+			<code>inter = cv2.INTER_AREA if width > 300 else cv2.INTER_CUBIC</code>
+      <code>if has_alpha:</code>
+      <code>    im = cv2.cvtColor(im, <mark>cv2.COLOR_RGBA2M_RGBA</mark>)</code>
+			<code class="next"><mark>...</mark></code>
+		</pre>
+	</section>
+
+  <section class="slide">
+    <h2>Питоняшность OpenCV</h2>
+    <pre>
+      <code><mark>...</mark></code>
+      <code>im = cv2.resize(im, (320, 200), interpolation=inter)</code>
+      <code>if has_alpha:</code>
+      <code>    im = cv2.cvtColor(im, <mark>cv2.COLOR_M_RGBA2RGBA</mark>)</code>
+      <code>cv2.imwrite('output.png', im)</code>
+    </pre>
+  </section>
+
+	<section class="slide">
+		<h2>Питоняшность OpenCV</h2>
+		<ul>
+			<li>Изображение — массив numpy без методов
+			<li class="next">В изображении нет информации о его режиме
+			<li class="next">Методы слишком низкоуровневые, нужно много оберток
+			<li class="next">Огромное количество магических констант
+			<li class="next">Вы никогда не узнаете ничего полезного из исключений
+		</ul>
+		<p class="next stars">⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Питоняшность Wand</h2>
+		<pre>
+      <code>from wand.image import Image</code>
+      <code>im = Image(filename='cover.jpg')</code>
+      <code>im.resize(320, 200)</code>
+      <code>im.save(filename='output.png')</code>
+      <code class="next">im.<mark>destroy</mark>()</code>
+    </pre>
+		<p class="next stars">⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide gap">
+		<h2>Итоги</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Pillow: итог</h2>
+			<h3>Хорошо подойдет для модификации пользовательского контента</h3>
+			<p class="clarification">
+				Много кодеков, быстрая работа, легкая разработка
+			</p>
+			<div class="next">
+				<h3>Свой графический редактор написать не получится</h3>
+				<p class="clarification">
+					Нет 16-битного цвета и необходимых средств рисования
+				</p>
+			</div>
+			<div class="next">
+				<h3>Для обработки данных подходит минимально</h3>
+				<p class="clarification">
+					Есть только самые общие сердства: гистограммы,
+					математика каналов в модуле <code>ImageMath</code>
+				</p>
+			</div>
+	</section>
+
+	<section class="slide">
+		<h2>OpenCV: итог</h2>
+			<h3>Для модификации пользовательского контента лучше взять что-то еще</h3>
+			<p class="clarification">
+				Мало кодеков и функциональности, очень сложно работать
+			</p>
+			<div class="next">
+				<h3>Свой графический редактор написать не получится</h3>
+				<p class="clarification">
+					Причины те же, нет необходимых средств рисования
+				</p>
+			</div>
+			<div class="next">
+				<h3>Отлично подохдит для обработки данных</h3>
+				<p class="clarification">
+					Огромное количество функций, которое компенсирует даже неудобство работы
+				</p>
+			</div>
+	</section>
+
+	<section class="slide">
+		<h2>Wand: итог</h2>
+			<h3>Для модификации пользовательского контента подходит,</h3>
+			<p class="clarification">
+				если вас устраивает скорость и вы будете программировать<br>
+				оочень внимательно
+			</p>
+			<div class="next">
+				<h3>Написать свой графический редактор более чем реально</h3>
+				<p class="clarification">
+					Функциональность в избытке, а пользователь может и подождать
+				</p>
+			</div>
+			<div class="next">
+				<h3>Кое-какая обработка данных возможна</h3>
+				<p class="clarification">
+					Функциональность сильно уступает OpenCV, но шире чем в Pillow
+				</p>
+			</div>
+	</section>
+
+
 
 	<div class="progress"></div>
 
