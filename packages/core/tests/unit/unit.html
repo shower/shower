@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<title>Unit-test</title>
+<title>Unit Tests</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../../node_modules/mocha/mocha.css">
+<base href="../..">
+<link rel="stylesheet" href="node_modules/mocha/mocha.css">
 <body>
-    <div class="shower list" style="display:none">
+    <div class="shower list" hidden>
         <section class="slide">
             <h2>1</h2>
         </section>
@@ -21,11 +22,11 @@
         <div class="progress"></div>
     </div>
 
-    <script src="../../node_modules/mocha/mocha.js"></script>
-    <script src="../../shower.js"></script>
-    <script src="../../node_modules/chai/chai.js"></script>
-    <script src="../../node_modules/chai-dom/chai-dom.js"></script>
-    <script src="tests.js"></script>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+    <script src="node_modules/chai-dom/chai-dom.js"></script>
+    <script src="dist/shower.js"></script>
+    <script src="dist/shower.test.js"></script>
 
     <script>
         chai.should();
@@ -34,7 +35,7 @@
 
         mocha.globals([
             'modules',
-            'shower'
+            'shower',
         ]);
 
         shower.modules.require(['shower'], function (sh) {

@@ -3,7 +3,7 @@ module.exports = {
     '@tags': ['title'],
 
     beforeEach: browser => {
-        browser.url(`file:///${__dirname}/list.html`);
+        browser.url(`${browser.launchUrl}/title.html`);
     },
 
     'stays unchanged in `list` mode': browser => {

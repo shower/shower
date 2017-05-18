@@ -84,7 +84,7 @@ shower.modules.define('test.shower.Plugins', [
     provide();
 });
 
-// Тестовый плагин.
+// Test plugin
 shower.modules.define('shower-test-plugin', [
     'Emitter'
 ], function (provide, EventEmitter) {

@@ -21,11 +21,10 @@ const banner = `/**
 
 gulp.task('lint:ec', () => {
     const sources = [
-        '.editorconfig',
-        '.gitignore',
-        '{.,}*.{json,yml,md}',
-        'lib/**',
-        'tests/**',
+        '!.DS_Store',
+        '!{.git,node_modules}/**',
+        '!{dist,tests_output}/**',
+        '**',
     ];
 
     const options = {
@@ -36,7 +35,7 @@ gulp.task('lint:ec', () => {
         ],
     };
 
-    return gulp.src(sources)
+    return gulp.src(sources, { dot: true })
         .pipe(lintspaces(options))
         .pipe(lintspaces.reporter());
 });
@@ -62,25 +61,25 @@ gulp.task('concat:lib', () => {
         'node_modules/shower-*/shower-*.js',
     ])
     .pipe(concat('shower.js'))
-    .pipe(gulp.dest('.'));
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('concat:test', () => {
-    return gulp.src('tests/unit/test.*.js')
-        .pipe(concat('tests.js'))
-        .pipe(gulp.dest('tests/unit'));
+    return gulp.src('tests/unit/**/*.js')
+        .pipe(concat('shower.test.js'))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('minify', [ 'concat:lib' ], () => {
-    return gulp.src('shower.js')
+    return gulp.src('dist/shower.js')
         .pipe(uglify({ mangle: false }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(insert.prepend(banner))
-        .pipe(gulp.dest('.'));
+        .pipe(gulp.dest('dist'));
 });
 
-gulp.task('mocha', () => {
-    return gulp.src('tests/unit/index.html')
+gulp.task('mocha', [ 'concat:test' ], () => {
+    return gulp.src('tests/unit/unit.html')
         .pipe(mocha());
 });
 
@@ -96,13 +95,11 @@ gulp.task('dev', [
 
 gulp.task('build', [
     'lint',
-    'concat:lib',
     'minify',
 ]);
 
 gulp.task('unit', [
     'lint',
-    'concat:test',
     'mocha',
 ]);
 
