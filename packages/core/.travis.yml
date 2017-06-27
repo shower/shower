@@ -4,5 +4,8 @@ node_js:
 script:
   - npm run build
   - npm run test:sauce
+branches:
+  only:
+    - master
 addons:
   sauce_connect: true
