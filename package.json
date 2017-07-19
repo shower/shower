@@ -32,6 +32,7 @@
     "shower-ribbon": "^2.0.10"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.12",
     "del": "^2.2.1",
     "fs": "0.0.2",
     "gulp": "^3.9.1",
