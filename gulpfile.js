@@ -101,7 +101,7 @@ gulp.task('clean', () => {
 	return del('prepared/**');
 });
 
-gulp.task('dev-server', () => {
+gulp.task('serve', () => {
 	browserSync.init({
 		ui: false,
 		notify: false,
