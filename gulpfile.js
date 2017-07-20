@@ -113,4 +113,4 @@ gulp.task('serve', () => {
 	gulp.watch('index.html').on('change', browserSync.reload);
 });
 
-gulp.task('default', ['prepare']);
+gulp.task('default', ['serve']);
