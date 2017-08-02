@@ -1,9 +1,9 @@
 language: node_js
 node_js:
   - node
-script:
-  - npm run build
-  - npm run test:sauce
+before_script:
+  - npm run serve &
+  - sleep 1
 branches:
   only:
     - master

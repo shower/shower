@@ -1,0 +1,6 @@
+env:
+  mocha: true
+parserOptions:
+  sourceType: module
+rules:
+  no-unused-expressions: off

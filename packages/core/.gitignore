@@ -1,6 +1,5 @@
 .DS_Store
 /node_modules
 /npm-debug.log*
-/dist/*.js
-/tests/unit/tests.js
+/dist/shower.js
 /tests_output

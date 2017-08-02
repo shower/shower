@@ -21,67 +21,75 @@
     }
   ],
   "homepage": "https://github.com/shower/core",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/shower/core.git"
-  },
-  "bugs": {
-    "url": "http://github.com/shower/shower/issues"
-  },
+  "repository": "shower/core",
+  "bugs": "http://github.com/shower/shower/issues",
   "license": "MIT",
   "keywords": [
     "shower",
     "presentation",
     "core"
   ],
-  "main": "shower.min.js",
+  "main": "lib",
   "files": [
-    "shower.min.js",
-    "LICENSE.md",
-    "README.md"
+    "dist/shower.js"
   ],
+  "dependencies": {
+    "shim-keyboard-event-key": "^1.0.0"
+  },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "chai-dom": "^1.4.3",
-    "chromedriver": "^2.27.2",
-    "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.0",
-    "eslint-plugin-standard": "^2.0.1",
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^3.0.1",
-    "gulp-insert": "^0.5.0",
-    "gulp-lintspaces": "^0.5.0",
-    "gulp-mocha-phantomjs": "^0.12.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^2.0.0",
-    "lint-staged": "^3.3.0",
-    "lintspaces-cli": "^0.6.0",
-    "mocha": "^3.0.2",
-    "nightwatch": "^0.9.12",
-    "pre-commit": "^1.2.2",
-    "serve": "^4.0.1",
-    "shower-next": "0.0.6",
-    "shower-progress": "0.0.9",
-    "shower-timer": "0.0.12",
-    "shower-touch": "0.0.11",
-    "ym": "^0.1.2"
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^4.0.2",
+    "chai-dom": "^1.5.0",
+    "chromedriver": "^2.30.1",
+    "eclint": "^2.2.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.6.1",
+    "husky": "^0.14.2",
+    "jsdom": "^11.0.0",
+    "jsdom-global": "^3.0.2",
+    "lint-staged": "^3.6.1",
+    "mocha": "^3.4.2",
+    "nightwatch": "^0.9.16",
+    "rollup": "^0.45.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "serve": "^6.0.2"
+  },
+  "config": {
+    "dotfiles": ".editorconfig **/.eslintrc.yml .gitignore .travis.yml",
+    "js": "*.js lib test",
+    "port": "8080"
   },
   "scripts": {
-    "lint-staged": "lint-staged",
-    "prepublish": "gulp build",
-    "build": "gulp build",
-    "lint": "gulp lint",
-    "test": "gulp unit && nightwatch -e local",
-    "test:unit": "gulp unit",
-    "test:sauce": "nightwatch -e chrome && nightwatch -e firefox && nightwatch -e edge"
+    "build": "rollup --config",
+    "prepublish": "npm run build",
+    "precommit": "lint-staged",
+    "fix:ec": "eclint fix && eclint fix $npm_package_config_dotfiles",
+    "fix:js": "eslint $npm_package_config_js --fix",
+    "fix": "npm run fix:ec && npm run fix:js",
+    "lint:ec": "eclint check && eclint check $npm_package_config_dotfiles",
+    "lint:js": "eslint $npm_package_config_js",
+    "lint": "npm run lint:ec && npm run lint:js",
+    "serve": "serve dist --port $npm_package_config_port --cache 0",
+    "test:unit": "mocha test/unit --require test/unit-harness",
+    "test:local": "npm run build && nightwatch --env local",
+    "test:sauce": "npm run build && nightwatch --env chrome,firefox,safari,edge",
+    "test": "npm run lint && npm run test:unit && npm run test:sauce"
   },
-  "pre-commit": "lint-staged",
   "lint-staged": {
-    "lib/**/*.js": [
+    "*.js": [
       "eslint --fix",
       "git add"
     ],
-    "*": "lintspaces -e .editorconfig -i js-comments"
+    "*": [
+      "eclint fix",
+      "git add"
+    ]
+  },
+  "babel": {
+    "plugins": [
+      "transform-es2015-modules-commonjs"
+    ]
   }
 }

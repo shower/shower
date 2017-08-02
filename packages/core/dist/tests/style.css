@@ -1,0 +1,7 @@
+.progress {
+    display: none;
+}
+
+.shower.full .progress {
+    display: block;
+}
