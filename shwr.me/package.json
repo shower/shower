@@ -3,14 +3,14 @@
   "description": "Demo site for Shower HTML presentation engine",
   "private": true,
   "dependencies": {
-    "del": "^2.2.2",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-rsync": "0.0.7",
+    "gulp-replace": "^0.6.1",
+    "gulp-rsync": "0.0.8",
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
-    "run-sequence": "^1.2.2",
-    "shower": "^2.1.9"
+    "run-sequence": "^2.1.0",
+    "shower": "^2.3.0"
   }
 }
