@@ -32,16 +32,16 @@
     "README.md"
   ],
   "devDependencies": {
-    "autoprefixer": "^6.4.0",
+    "autoprefixer": "^7.1.2",
     "browser-sync": "^2.14.0",
     "gulp": "^3.9.1",
     "gulp-header": "^1.8.8",
-    "gulp-postcss": "^6.1.1",
+    "gulp-postcss": "^7.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
+    "gulp-replace": "^0.6.1",
     "gulp-sass": "^3.0.0",
     "path-exists-cli": "^1.0.0",
-    "postcss-csso": "^1.1.2",
+    "postcss-csso": "^2.0.0",
     "shower-core": "latest"
   },
   "scripts": {
