@@ -5,6 +5,7 @@
 &.grid {
 
 	background-image:url(../images/grid.png);
+
 	@include retina {
 		background-image:url(../images/grid@2x.png);
 		background-size:$width auto;
