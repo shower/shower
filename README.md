@@ -22,11 +22,11 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 
 ## Advanced
 
-1. [Fork](https://github.com/shower/shower/fork) this repository
-2. Go to fork setting and rename it: `shower` → `my-slides`
-2. Clone it to your computer: `git clone git@github.com:username/my-slides.git`
-3. Go to `my-slides` folder and install dependencies: `npm install`
-4. Start creating your presentation
+1. Clone this repository locally `git clone git@github.com:shower/shower.git`.
+2. [Create](https://github.com/new) a new blank repository and copy its cloning address `git@github.com:USER/REPO.git`.
+3. Change remote of your local clone to the one you’ve just copied `git remote set-url origin git@github.com:USER/REPO.git`.
+4. Push your local clone to GitHub `git push -u origin master`.
+6. Install dependencies `npm install` and start it `npm start`.
 
 Once you’re done you can build a clean copy of your slides:
 
@@ -36,7 +36,7 @@ And you’ll find your presentation in `prepared` folder with only needed files 
 
 	npm run publish
 
-And you’ll have your slides published on `http://username.github.io/my-slides/`.
+And you’ll have your slides published to `http://USER.github.io/REPO/`.
 
 ## Usage Examples
 

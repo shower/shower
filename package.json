@@ -46,6 +46,7 @@
     "run-sequence": "^2.1.0"
   },
   "scripts": {
+    "start": "gulp",
     "prepare": "gulp prepare",
     "archive": "gulp archive",
     "publish": "gulp publish",
