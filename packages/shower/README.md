@@ -40,13 +40,10 @@ And you’ll have your slides published to `http://USER.github.io/REPO/`.
 
 ## Usage Examples
 
-- [Installable Web Apps](http://pepelsbey.net/pres/web-apps/)
-- [Clear and Sharp](http://pepelsbey.net/pres/clear-and-sharp/)
-- [CSS Management](http://pepelsbey.net/pres/knife-train/)
-- [Push it!](http://pepelsbey.net/pres/push-it/)
-- [Pre-fixes](http://pepelsbey.net/pres/pre-fixes/)
-- [Web In Curves](http://pepelsbey.net/pres/web-in-curves/)
-- [Sense Coding](http://pepelsbey.net/pres/sense-coding/)
+- [Inhuman UI](https://pepelsbey.net/pres/inhuman-ui/)
+- [My Vanilla CSS](https://pepelsbey.net/pres/vanilla-css/)
+- [I’m in IoT](https://pepelsbey.net/pres/im-in-iot/)
+- [Enough Bricks](https://pepelsbey.net/pres/enough-bricks/)
 
 ## Browser Support
 
