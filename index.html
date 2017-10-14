@@ -7,6 +7,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 	<style type="text/css">
+		.shower.full {
+			margin:-288px 0 0 -512px;
+			height: 576px;
+		}
+		.slide {
+			height: 576px;
+			padding: 72px 100px 0;
+		}
+		.slide:after {
+			top: -20px;
+			padding-top: 25px;
+		}
+
 		h4 {
 			font-size: .8em;
 		}
@@ -357,28 +370,64 @@
 	</section>
 
 	<section class="slide">
-		<h2>Производительность ресайза в Pillow, Mpx/s</h2>
+		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf1.png" height="400">
 	</section>
 
 	<section class="slide">
-		<h2>Производительность ресайза в Pillow, Mpx/s</h2>
+		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf2.png" height="400">
 	</section>
 
 	<section class="slide">
-		<h2>Производительность ресайза в Pillow, Mpx/s</h2>
+		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf3.png" height="400">
 	</section>
 	
 	<section class="slide">
-		<h2>Производительность ресайза в Pillow, Mpx/s</h2>
+		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf4.png" height="400">
 	</section>
 
 	<section class="slide">
-		<h2>Производительность ресайза в Pillow, Mpx/s</h2>
-		<img src="./pictures/perf4.png" height="400">
+		<h2>Ускорение в Pillow-SIMD</h2>
+		<ul>
+			<li>Ресайз: от <mark>4</mark> до <mark>7</mark> раз</li>
+			<li>Размытие: <mark>2,8</mark> раз</li>
+			<li>Применение ядра 3x3 или 5x5: <mark>11</mark> раз</li>
+			<li>Умножение и деление на альфаканал: в <mark>10</mark> и <mark>4</mark> раза</li>
+			<li>Альфа-композиция: <mark>5</mark> раз</li>
+			<li>Еще что-то по мелочи</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Какой-то набор операций, Mpx/s</h2>
+		<p>Загрузка, поворот на 90°, уменьшение в 2,5 раза, размытие, запись в JPEG</p>
+		<img src="./pictures/perf5.png" height="330">
+	</section>
+
+	<section class="slide">
+		<h2>Набор бенчмарков</h2>
+		<p>
+			<code>https://python-pillow.org/pillow-perf/</code><br>
+			Страница с результатами
+		</p>
+		<p>
+			<code>https://github.com/python-pillow/pillow-perf</code><br>
+			Репозиторий
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Бенчмарки самого VIPS</h2>
+		<img src="./pictures/vips-bench1.png" height="280">
+	</section>
+
+	<section class="slide">
+		<h2>Бенчмарки самого VIPS</h2>
+		<img src="./pictures/vips-bench2.png" height="280">
+		<p>1. Pillow is single-threaded, so the fairest comparison for raw processing speed would be against vips-1thread.</p>
 	</section>
 
 	<section class="slide">
