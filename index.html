@@ -13,11 +13,15 @@
 		}
 		.slide {
 			height: 576px;
-			padding: 72px 100px 0;
+			padding: 62px 70px 0 100px;
 		}
 		.slide:after {
 			top: -20px;
 			padding-top: 25px;
+		}
+
+		.slide ol>li.non-zero::before {
+			content: attr(data-counter) ".";
 		}
 
 		h4 {
@@ -45,6 +49,10 @@
 		.stars {
 			font-size: 50px;
 			margin-top: -0.3em;
+		}
+
+		.red {
+			color: rgb(200, 0, 0);
 		}
 	</style>
 </head>
@@ -365,8 +373,50 @@
 		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
+
+
 	<section class="slide gap">
 		<h2>Производительность</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Почему важно проверять результат</h2>
+		<pre>
+			<code>from PIL import Image, ImageFilter.BoxBlur</code>
+			<code>im.filter(ImageFilter.BoxBlur(<mark>3</mark>))</code>
+			<code>...</code>
+		</pre>
+		<pre>
+			<code>import cv2</code>
+			<code>cv2.blur(im, ksize=(<mark>3, 3</mark>))</code>
+			<code>...</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>В чем проблема?</h2>
+		<pre>
+			<code>cv2.GaussianBlur(im, (window, window), 30)</code>
+		</pre>
+		<div style="columns: 2 auto">
+			<img src="./pictures/gaus.3.pillow.jpeg" width="100%">
+			<mark>58 ms</mark>
+			<img src="./pictures/gaus.30.pillow.jpeg" width="100%">
+			<mark>880 ms</mark>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>В чем проблема?</h2>
+		<pre>
+			<code>im.filter(ImageFilter.GaussianBlur(30))</code>
+		</pre>
+		<div style="columns: 2 auto">
+			<img src="./pictures/gaus.3.pillow.jpeg" width="100%">
+			<mark>60 ms</mark>
+			<img src="./pictures/gaus.30.pillow.jpeg" width="100%">
+			<mark>60 ms</mark>
+		</div>
 	</section>
 
 	<section class="slide">
@@ -395,7 +445,7 @@
 			<li>Ресайз: от <mark>4</mark> до <mark>7</mark> раз</li>
 			<li>Размытие: <mark>2,8</mark> раз</li>
 			<li>Применение ядра 3x3 или 5x5: <mark>11</mark> раз</li>
-			<li>Умножение и деление на альфаканал: в <mark>10</mark> и <mark>4</mark> раза</li>
+			<li>Умножение и деление на альфаканал: в <mark>4</mark> и <mark>10</mark> раза</li>
 			<li>Альфа-композиция: <mark>5</mark> раз</li>
 			<li>Еще что-то по мелочи</li>
 		</ul>
@@ -410,11 +460,11 @@
 	<section class="slide">
 		<h2>Набор бенчмарков</h2>
 		<p>
-			<code>https://python-pillow.org/pillow-perf/</code><br>
+			<a href="https://python-pillow.org/pillow-perf/">https://python-pillow.org/pillow-perf/</a><br>
 			Страница с результатами
 		</p>
 		<p>
-			<code>https://github.com/python-pillow/pillow-perf</code><br>
+			<a href="https://github.com/python-pillow/pillow-perf">https://github.com/python-pillow/pillow-perf</a><br>
 			Репозиторий
 		</p>
 	</section>
@@ -422,13 +472,124 @@
 	<section class="slide">
 		<h2>Бенчмарки самого VIPS</h2>
 		<img src="./pictures/vips-bench1.png" height="280">
+		<p><a href="https://github.com/jcupitt/libvips/wiki/Speed-and-memory-use">
+		https://github.com/jcupitt/libvips/wiki/Speed-and-memory-use</a></p>
 	</section>
 
 	<section class="slide">
 		<h2>Бенчмарки самого VIPS</h2>
 		<img src="./pictures/vips-bench2.png" height="280">
-		<p>1. Pillow is single-threaded, so the fairest comparison for raw processing speed would be against vips-1thread.</p>
+		<p>1. Pillow is single-threaded, so the fairest comparison
+			 for raw processing speed would be against vips-1thread.</p>
 	</section>
+
+
+
+	<section class="slide gap">
+		<h2>Параллельная работа</h2>
+	</section>
+
+	<section class="slide">
+		<h2>Метрики производительности</h2>
+		<ul>
+			<li><b>Реальное время выполнения одной операций</b><br>
+				Важно на десктопе
+			</li>
+			<li><b>Пропускная способность потока операций</b><br>
+				Становится более важным на сервере
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Способы параллельной работы</h2>
+		<ol>
+			<li>На уровне команд процессора и данных</li>
+		</ol>
+		<p>
+			Реальное время выполнения уменьшается<br>
+			Пропусканая способность растет<br>
+			Win-win
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Способы параллельной работы</h2>
+		<ol>
+			<li class="non-zero" data-counter="2">На уровне графических операций</li>
+		</ol>
+		<p>
+			Реальное время выполнения уменьшается<br>
+			Пропусканая способность растет далеко не линейно от количества ядер
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Способы параллельной работы</h2>
+		<ol>
+			<li class="non-zero" data-counter="3">На уровне приложения</li>
+		</ol>
+		<p>
+			Реальное время выполнения не меняется<br>
+			Пропусканая способность растет пропорционально количеству ядер
+		</p>
+	</section>
+
+	<section class="slide">
+		<h2>Комбинации</h2>
+		<p>Первый со вторым</p>
+		<p>Первый с третьим</p>
+		<p class="red">Второй с третьим нет</p>
+	</section>
+
+	<section class="slide">
+		<h2>Многопоточность</h2>
+		<p>
+			<b>Отпускают GIL</b><br>
+			Pillow, OpenCV, pyvips, Wand
+		</p>
+		<p><b>Не отпускает</b><br>
+			pgmagick</p>
+	</section>
+
+	<section class="slide">
+		<h2>Правило N + 1</h2>
+		<p>
+			Создавать для обработки не более N + 1 воркеров,<br>
+			где N — количество ядер или потоков процессора.
+		</p>
+		<p>Воркер — процес или поток, занятый обработкой.</p>
+	</section>
+
+	<section class="slide">
+		<h2>Асинхронная работа</h2>
+		<p>
+			Долгая работа процессора блочит event loop,<br>
+			даже если библиотека отпускает GIL
+		</p>
+		<pre>
+			<code>@gen.coroutine</code>
+    	<code>def get(self, *args, **kwargs):</code>
+			<code>    im = process_image(...)</code>
+    	<code>    ...</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Асинхронная работа</h2>
+		<pre>
+			<code>@run_on_executor(executor=ThreadPoolExecutor(<mark>1</mark>))</code>
+    	<code>def process_image(self, ...):</code>
+    	<code>    ...</code>
+    	<code> </code>
+    	<code>def get(self, *args, **kwargs):</code>
+			<code>    im = <mark>yield</mark> process_image(...)</code>
+			<code>    ...</code>
+		<pre>
+		</pre>
+	</section>
+
+
 
 	<section class="slide">
 		<h2>Производительность Pillow</h2>
