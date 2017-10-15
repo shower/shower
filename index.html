@@ -102,53 +102,28 @@
 	<section class="slide">
 		<h2>O себе</h2>
 		<p>
-			Занимаюсь сервисом обработки картинок на лету в Uploadcare
-		</p>
-		<p class="next">
 			Член команды <a href="https://python-pillow.org/">Pillow</a>
 		</p>
-		<p class="next">
+		<p>
 			Автор форка <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>
 		</p>
 	</section>
 
-	<section class="slide gap">
-		<h2>Задачи</h2>
-	</section>
-
 	<section class="slide">
-		<h2>Модификация пользовательского контента</h2>
+		<h2>Чем занимаюсь</h2>
+		<p>
+			Сервис обработки картинок на лету в Uploadcare
+		</p>
+		<p>Требования к графической библотеке:</p>
 		<ul>
-				<li>Разнообразные форматы
-				<li class="next">Изменение геометрии
-				<li class="next">Наложения
-				<li class="next">Размытие, резкость
-				<li class="next">Работа с цветом
-				<li class="next">Работа с метаданными
+			<li>Производительность</li>
+			<li>Всеядность</li>
+			<li>Защита от DOS</li>
+			<li>Простота работы</li>
 		</ul>
 	</section>
 
-	<section class="slide">
-		<h2>Графический редактор</h2>
-		<ul>
-			<li>Все из первой задачи
-			<li class="next">Геометрические примитивы
-			<li class="next">Нанесение текста
-			<li class="next">Высокая точность работы
-		</ul>
-	</section>
 
-	<section class="slide">
-		<h2>Обработка данных</h2>
-		<ul>
-			<li>Форматы оговорены или их можно задать
-		</ul>
-		<ul class="next">
-			<li>Различная фильтрация
-			<li>Статистика
-			<li>Распознавание образов
-		</ul>
-	</section>
 
 	<section class="slide gap">
 		<h2>Библиотеки</h2>
@@ -159,218 +134,60 @@
 		<ul>
 			<li>Форк Python Imaging Library. 1995 год
 			<li>Разработка ведется 3-месячными циклами
-		</ul>
-		<ul class="next">
-			<li>Ядро на Си. Нативный модуль для Python
+			<li>Ядро на Си. Нативное расширение для Python
 			<li>Версии Python: 2.7, 3.3+, pypy, pypy3
-		</ul>
-		<ul class="next">
-			<li>Есть всё для «модификации пользовательского контента»
-		</ul>
-		<ul class="next">
-			<li>Рисование на зачаточном уровне, нет Безье, режимов смешивания
+			<li>Легкая установка из pypi
 		</ul>
 		<p>Сайт: <a href="https://python-pillow.org/">python-pillow.org</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>Pillow-SIMD</h2>
+		<ul>
+			<li>C мая 2016 года
+			<li>Drop-in replacement for Pillow
+			<li>Те же версии Python
+			<li>Инснтрукции SSE4 (по умолчанию) и AVX2
+			<li>Установка из pypi, нужен компилятор
+		</ul>
+		<p>Сайт: <a href="https://github.com/uploadcare/pillow-simd">github.com/uploadcare/pillow-simd</a></p>
 	</section>
 
 	<section class="slide">
 		<h2>OpenCV</h2>
 		<ul>
 			<li>Расшифровывается Open Computer Vision. 2000 год
-		</ul>
-		<ul class="next">
 			<li>Биндинг на Python входит в комплект и очень популярен
-			<li>Версии Python: 2.7, 3.4+
+			<li>Версии Python: 2.7, 3.4+, пока без pypy
+			<li>Огромное количество функций компьютерного зрения
+			<li>В pypi есть неофициальная сборка
 		</ul>
-		<ul>
-			<li class="next">Геометрия, размытие, резкость, работа с цветом
-			<li class="next">Рисование на зачаточном уровне, нет Безье, режимов смешивания
-			<li class="next">Огромное количество функций компьютерного зрения
-		</ul>
-		<p>Сайт: <a href="http://opencv.org/">opencv.org</a></p>
+		<p>Сайт: <a href="https://opencv.org/">opencv.org</a></p>
 	</section>
 
 	<section class="slide">
-		<h2>ImageMagick</h2>
+		<h2>VIPS</h2>
+		<ul>
+			<li>1993 года, обогнала своё время
+			<li>Может работать в режиме стриминга
+			<li>Биндинг pyvips поддерживается автором
+			<li>Для работы нужно ставить или собирать пакеты
+			<li>Версии Python: 2.7, 3.3+, pypy, pypy3
+		</ul>
+		<p>Сайт: <a href="https://jcupitt.github.io/libvips/">jcupitt.github.io/libvips/</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>ImageMagick &amp; GraphicsMagick</h2>
 		<ul>
 			<li>Очень популярная библиотека. 1990 год
-			<li class="next">Биндинг для питона Wand
-			<li class="next">Есть всё для «модификации пользовательского контента»
-			<li class="next">Рисование всего что можно
+			<li>Биндинг для питона: Wand и pgmagick
+			<li>Wand использует ctypes, проект заброшен
+			<li>pgmagick использует Boost.Python, не работает в pypy
+			<li>Для работы нужно ставить пакеты
 		</ul>
-		<p>Сайт: <a href="https://www.imagemagick.org/">imagemagick.org</a></p>
-	</section>
-
-	<section class="slide">
-		<h2>ImageMagick: Wand</h2>
-		<ul>
-			<li>Ставится через pip
-			<li>Версии Python: 2.6+, 3.2+, pypy
-			<li class="next">Хорошая документация
-			<li class="next">Проект почти заброшен
-		</ul>
-		<p>Сайт: <a href="http://docs.wand-py.org">docs.wand-py.org</a></p>
-	</section>
-
-	<section class="slide gap">
-		<h2>Установка</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Установка Pillow</h2>
-		<pre>
-			<code>$ pip install Pillow</code>
-		</pre>
-		<ul>
-			<li class="next">Есть бинарные сборки для разных платформ
-			<li class="next">Входит в дистрибутивы Linux, но не советую
-		</ul>
-		<p class="next stars">⭐ ⭐ ⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Установка Pillow-SIMD</h2>
-		<pre>
-			<code>$ sudo apt-get install libtiff5-dev libjpeg8-dev \
-  zlib1g-dev libfreetype6-dev liblcms2-dev libwebp-dev \
-  libharfbuzz-dev libfribidi-dev</code>
-			<p>After this operation, 18.0 MB of additional disk space will be used.</p>
-		</pre>
-		<pre>
-			<code>$ pip install Pillow-SIMD</code>
-		</pre>
-		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Установка OpenCV</h2>
-		<pre>
-			<code>$ sudo apt-get install python-opencv</code>
-		</pre>
-		<ul>
-			<li class="next">В Ubuntu 17.04 всё еще версия <code>2.4</code> от 2014 года
-			<li class="next">Сложно прокинуть в virtualenv
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Установка OpenCV</h2>
-		<pre>
-			<code>$ pip install opencv-python</code>
-		</pre>
-		<ul>
-			<li class="next">Пакет неофициальный
-			<li class="next">Только бинарные сборки
-		</ul>
-		<p class="next stars">⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Установка Wand</h2>
-		<pre>
-			<code>$ pip install wand</code>
-		</pre>
-		<p class="next" style="margin-top: -1em;">
-			<code>ImportError: MagickWand shared library not found.</code>
-		</p>
-		<pre class="next">
-			<code>$ sudo apt install libmagickwand-dev</code>
-		</pre>
-		<p class="next" style="margin-top: -1em;">
-			Need to get 96.8 MB of archives.<br>
-			After this operation, <mark>410 MB</mark> of additional disk space will be used.
-		</p>
-		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide gap">
-		<h2>Ввод/вывод</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Ввод/вывод Pillow</h2>
-		<ul>
-			<li>Кодеки для 17 форматов + декодеры еще для 18
-			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>. 8-bit only*
-			<li class="next">Есть механизмы защиты от DoS-атак
-			<li class="next">Нет автоповорота, но есть возможность прочитать EXIF
-			<li class="next">Есть режим битых картинок
-			<li class="next">Ленивая загрузка
-		</ul>
-	</section>
-
-	<section class="slide">
-		<h2>Режим битых картинок</h2>
-		<pre>
-			<code>In: from PIL import Image</code>
-			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
-			<code><mark>IOError</mark>: image file is truncated (143 bytes not processed)</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Режим битых картинок</h2>
-		<pre>
-			<code>In: from PIL import Image, ImageFile</code>
-			<code>In: ImageFile.<mark>LOAD_TRUNCATED_IMAGES</mark> = True</code>
-			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
-		</pre>
-		<img src="./pictures/trucated.out.jpg">
-	</section>
-
-	<section class="slide">
-		<h2>Ленивая загрузка</h2>
-		<pre>
-			<code>In: from PIL import Image</code>
-			<code>In: <mark>%time</mark> im = Image.open('cover.jpg')</code>
-			<code>Wall time: <mark>1.2 ms</mark></code>
-		<span class="next">
-			<code>In: im.mode, im.size</code>
-			<code>Out: ('RGB', (2152, 1345))</code>
-		</span>
-		<span class="next">
-			<code>In: <mark>%time</mark> im.load()</code>
-			<code>Wall time: <mark>73.6 ms</mark></code>
-		</span>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Ввод/вывод Pillow</h2>
-		<ul>
-			<li>Кодеки для 17 форматов + декодеры еще для 18
-			<li>Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 8-bit only*
-			<li>Есть механизмы защиты от DoS-атак
-			<li>Нет автоповорота, но есть возможность прочитать EXIF
-			<li>Есть режим битых картинок
-			<li>Ленивая загрузка
-		</ul>
-		<p class="stars">⭐ ⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Ввод/вывод OpenCV</h2>
-		<ul>
-			<li>Кодеки для 8 форматов, включая WebP и JPEG 2000
-			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, 16-битный цвет
-			<li class="next">Читает битые картинки по-умолчанию
-			<li class="next">Автоматически поворачивает, но нет доступа к EXIF и ICC
-			<li class="next">Нет ленивой загрузки
-			<li class="next">Не открывает PNG в <code>LA</code> формате
-		</ul>
-		<p class="stars next">⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Ввод/вывод ImageMagick</h2>
-		<ul>
-			<li>Кодеки для 66 форматов + декодеры для 34
-			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 16-битный цвет
-			<li class="next">Читает битые картинки по-умолчанию
-			<li class="next">Есть доступ к EXIF или ICC
-			<li class="next">Нет ленивой загрузки
-		</ul>
-		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
+		<p>Сайт: <a href="https://www.imagemagick.org/">imagemagick.org</a>,
+			<a href="http://graphicsmagick.org">graphicsmagick.org</a></p>
 	</section>
 
 
@@ -396,26 +213,34 @@
 	<section class="slide">
 		<h2>В чем проблема?</h2>
 		<pre>
-			<code>cv2.GaussianBlur(im, (window, window), 30)</code>
+			<code>cv2.GaussianBlur(im, (window, window), radius)</code>
 		</pre>
 		<div style="columns: 2 auto">
-			<img src="./pictures/gaus.3.pillow.jpeg" width="100%">
-			<mark>58 ms</mark>
-			<img src="./pictures/gaus.30.pillow.jpeg" width="100%">
-			<mark>880 ms</mark>
+			<div style="break-inside: avoid;">
+				<code>radius = 3</code> <mark>58 ms</mark>
+				<img src="./pictures/gaus.3.pillow.jpeg" width="90%">
+			</div>
+			<div style="break-inside: avoid;">
+				<code>radius = 30</code> <mark>880 ms</mark>
+				<img src="./pictures/gaus.30.pillow.jpeg" width="90%">
+			</div>
 		</div>
 	</section>
 
 	<section class="slide">
 		<h2>В чем проблема?</h2>
 		<pre>
-			<code>im.filter(ImageFilter.GaussianBlur(30))</code>
+			<code>im.filter(ImageFilter.GaussianBlur(radius))</code>
 		</pre>
 		<div style="columns: 2 auto">
-			<img src="./pictures/gaus.3.pillow.jpeg" width="100%">
-			<mark>60 ms</mark>
-			<img src="./pictures/gaus.30.pillow.jpeg" width="100%">
-			<mark>60 ms</mark>
+			<div style="break-inside: avoid;">
+				<code>radius = 3</code> <mark>60 ms</mark>
+				<img src="./pictures/gaus.3.pillow.jpeg" width="90%">
+			</div>
+			<div style="break-inside: avoid;">
+				<code>radius = 30</code> <mark>61 ms</mark>
+				<img src="./pictures/gaus.30.pillow.jpeg" width="90%">
+			</div>
 		</div>
 	</section>
 
@@ -591,40 +416,94 @@
 
 
 
-	<section class="slide">
-		<h2>Производительность Pillow</h2>
-		<ul>
-			<li>Ядро написано на Си
-			<li class="next">Многие операции хорошо оптимизированы
-			<li class="next">Быстрая работа с кодеками
-			<li class="next">Pillow-SIMD для большей производительности
-			<li class="next">Нет распараллеливания
-			<li class="next">Официальные бенчмарки: <a href="https://python-pillow.org/pillow-perf/">python-pillow.org/pillow-perf</a>
-		</ul>
-		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
+	<section class="slide gap">
+		<h2>Ввод/вывод</h2>
 	</section>
 
 	<section class="slide">
-		<h2>Производительность OpenCV</h2>
+		<h2>Ввод/вывод Pillow</h2>
 		<ul>
-			<li>Написан на Си++
-			<li class="next">Многие операции хорошо оптимизированы
-			<li class="next">Распараллеливание из коробки
-			<li class="next">Уступает Pillow-SIMD в некоторых операциях
+			<li>Кодеки для 17 форматов + декодеры еще для 18
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>. 8-bit only*
+			<li class="next">Есть механизмы защиты от DoS-атак
+			<li class="next">Нет автоповорота, но есть возможность прочитать EXIF
+			<li class="next">Есть режим битых картинок
+			<li class="next">Ленивая загрузка
 		</ul>
-		<p class="next stars">⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
 	<section class="slide">
-		<h2>Производительность Wand</h2>
+		<h2>Режим битых картинок</h2>
+		<pre>
+			<code>In: from PIL import Image</code>
+			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+			<code><mark>IOError</mark>: image file is truncated (143 bytes not processed)</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Режим битых картинок</h2>
+		<pre>
+			<code>In: from PIL import Image, ImageFile</code>
+			<code>In: ImageFile.<mark>LOAD_TRUNCATED_IMAGES</mark> = True</code>
+			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+		</pre>
+		<img src="./pictures/trucated.out.jpg">
+	</section>
+
+	<section class="slide">
+		<h2>Ленивая загрузка</h2>
+		<pre>
+			<code>In: from PIL import Image</code>
+			<code>In: <mark>%time</mark> im = Image.open('cover.jpg')</code>
+			<code>Wall time: <mark>1.2 ms</mark></code>
+		<span class="next">
+			<code>In: im.mode, im.size</code>
+			<code>Out: ('RGB', (2152, 1345))</code>
+		</span>
+		<span class="next">
+			<code>In: <mark>%time</mark> im.load()</code>
+			<code>Wall time: <mark>73.6 ms</mark></code>
+		</span>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Ввод/вывод Pillow</h2>
 		<ul>
-			<li>ImageMagick написан на Си
-			<li class="next">Никогда не был заточен под производительность
-			<li class="next">При ресайзе уступает Pilow-SIMD до 20 раз
-			<li class="next">При размытии уступает OpenCV до 20 раз
-			<li class="next">Распараллеливание из коробки не помогает
+			<li>Кодеки для 17 форматов + декодеры еще для 18
+			<li>Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 8-bit only*
+			<li>Есть механизмы защиты от DoS-атак
+			<li>Нет автоповорота, но есть возможность прочитать EXIF
+			<li>Есть режим битых картинок
+			<li>Ленивая загрузка
 		</ul>
-		<p class="next stars">⭐</p>
+		<p class="stars">⭐ ⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Ввод/вывод OpenCV</h2>
+		<ul>
+			<li>Кодеки для 8 форматов, включая WebP и JPEG 2000
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, 16-битный цвет
+			<li class="next">Читает битые картинки по-умолчанию
+			<li class="next">Автоматически поворачивает, но нет доступа к EXIF и ICC
+			<li class="next">Нет ленивой загрузки
+			<li class="next">Не открывает PNG в <code>LA</code> формате
+		</ul>
+		<p class="stars next">⭐ ⭐ ⭐</p>
+	</section>
+
+	<section class="slide">
+		<h2>Ввод/вывод ImageMagick</h2>
+		<ul>
+			<li>Кодеки для 66 форматов + декодеры для 34
+			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 16-битный цвет
+			<li class="next">Читает битые картинки по-умолчанию
+			<li class="next">Есть доступ к EXIF или ICC
+			<li class="next">Нет ленивой загрузки
+		</ul>
+		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
 	</section>
 
 	<section class="slide gap">
@@ -747,73 +626,6 @@
     </pre>
 		<p class="next stars">⭐ ⭐ ⭐</p>
 	</section>
-
-	<section class="slide gap">
-		<h2>Итоги</h2>
-	</section>
-
-	<section class="slide">
-		<h2>Pillow: итог</h2>
-			<h3>Хорошо подойдет для модификации пользовательского контента</h3>
-			<p class="clarification">
-				Много кодеков, быстрая работа, легкая разработка
-			</p>
-			<div class="next">
-				<h3>Свой графический редактор написать не получится</h3>
-				<p class="clarification">
-					Нет 16-битного цвета и необходимых средств рисования
-				</p>
-			</div>
-			<div class="next">
-				<h3>Для обработки данных подходит минимально</h3>
-				<p class="clarification">
-					Есть только самые общие средства: гистограммы,
-					математика каналов в модуле <code>ImageMath</code>
-				</p>
-			</div>
-	</section>
-
-	<section class="slide">
-		<h2>OpenCV: итог</h2>
-			<h3>Для модификации пользовательского контента лучше взять что-то еще</h3>
-			<p class="clarification">
-				Мало кодеков и функциональности, очень сложно работать
-			</p>
-			<div class="next">
-				<h3>Свой графический редактор написать не получится</h3>
-				<p class="clarification">
-					Причины те же, нет необходимых средств рисования
-				</p>
-			</div>
-			<div class="next">
-				<h3>Отлично подходит для обработки данных</h3>
-				<p class="clarification">
-					Огромное количество функций, которое компенсирует даже неудобство работы
-				</p>
-			</div>
-	</section>
-
-	<section class="slide">
-		<h2>Wand: итог</h2>
-			<h3>Для модификации пользовательского контента подходит,</h3>
-			<p class="clarification">
-				если вас устраивает скорость и вы будете программировать<br>
-				оочень внимательно
-			</p>
-			<div class="next">
-				<h3>Написать свой графический редактор более чем реально</h3>
-				<p class="clarification">
-					Функциональность в избытке, а пользователь может и подождать
-				</p>
-			</div>
-			<div class="next">
-				<h3>Кое-какая обработка данных возможна</h3>
-				<p class="clarification">
-					Функциональность сильно уступает OpenCV, но шире чем в Pillow
-				</p>
-			</div>
-	</section>
-
 
 
 	<div class="progress"></div>
