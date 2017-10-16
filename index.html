@@ -13,7 +13,7 @@
 		}
 		.slide {
 			height: 576px;
-			padding: 62px 70px 0 100px;
+			padding: 62px 80px 0 100px;
 		}
 		.slide:after {
 			top: -20px;
@@ -40,19 +40,22 @@
 		}
 			.gap h2 {
 				font-size: 100px;
-				margin-top: 100px;
+				margin-top: 140px;
+				margin-right: 30px;
 			}
 		.slide ol + ol,
 		.slide ul + ul {
 			margin-top: -1em;
 		}
-		.stars {
-			font-size: 50px;
-			margin-top: -0.3em;
-		}
 
 		.red {
 			color: rgb(200, 0, 0);
+		}
+		.jackie_chan {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 400px;
 		}
 	</style>
 </head>
@@ -105,7 +108,7 @@
 			Член команды <a href="https://python-pillow.org/">Pillow</a>
 		</p>
 		<p>
-			Автор форка <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>
+			Автор <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>
 		</p>
 	</section>
 
@@ -119,7 +122,6 @@
 			<li>Производительность</li>
 			<li>Всеядность</li>
 			<li>Защита от DOS</li>
-			<li>Простота работы</li>
 		</ul>
 	</section>
 
@@ -133,10 +135,8 @@
 		<h2>Pillow</h2>
 		<ul>
 			<li>Форк Python Imaging Library. 1995 год
-			<li>Разработка ведется 3-месячными циклами
-			<li>Ядро на Си. Нативное расширение для Python
+			<li>Нативное расширение для Python
 			<li>Версии Python: 2.7, 3.3+, pypy, pypy3
-			<li>Легкая установка из pypi
 		</ul>
 		<p>Сайт: <a href="https://python-pillow.org/">python-pillow.org</a></p>
 	</section>
@@ -146,9 +146,7 @@
 		<ul>
 			<li>C мая 2016 года
 			<li>Drop-in replacement for Pillow
-			<li>Те же версии Python
 			<li>Инснтрукции SSE4 (по умолчанию) и AVX2
-			<li>Установка из pypi, нужен компилятор
 		</ul>
 		<p>Сайт: <a href="https://github.com/uploadcare/pillow-simd">github.com/uploadcare/pillow-simd</a></p>
 	</section>
@@ -159,8 +157,6 @@
 			<li>Расшифровывается Open Computer Vision. 2000 год
 			<li>Биндинг на Python входит в комплект и очень популярен
 			<li>Версии Python: 2.7, 3.4+, пока без pypy
-			<li>Огромное количество функций компьютерного зрения
-			<li>В pypi есть неофициальная сборка
 		</ul>
 		<p>Сайт: <a href="https://opencv.org/">opencv.org</a></p>
 	</section>
@@ -168,10 +164,8 @@
 	<section class="slide">
 		<h2>VIPS</h2>
 		<ul>
-			<li>1993 года, обогнала своё время
-			<li>Может работать в режиме стриминга
+			<li>1993 год, обогнала своё время
 			<li>Биндинг pyvips поддерживается автором
-			<li>Для работы нужно ставить или собирать пакеты
 			<li>Версии Python: 2.7, 3.3+, pypy, pypy3
 		</ul>
 		<p>Сайт: <a href="https://jcupitt.github.io/libvips/">jcupitt.github.io/libvips/</a></p>
@@ -181,10 +175,8 @@
 		<h2>ImageMagick &amp; GraphicsMagick</h2>
 		<ul>
 			<li>Очень популярная библиотека. 1990 год
-			<li>Биндинг для питона: Wand и pgmagick
-			<li>Wand использует ctypes, проект заброшен
-			<li>pgmagick использует Boost.Python, не работает в pypy
-			<li>Для работы нужно ставить пакеты
+			<li>Биндинг Wand использует ctypes, проект заброшен
+			<li>Биндинг pgmagick использует Boost.Python, не работает в pypy
 		</ul>
 		<p>Сайт: <a href="https://www.imagemagick.org/">imagemagick.org</a>,
 			<a href="http://graphicsmagick.org">graphicsmagick.org</a></p>
@@ -278,8 +270,13 @@
 
 	<section class="slide">
 		<h2>Какой-то набор операций, Mpx/s</h2>
-		<p>Загрузка, поворот на 90°, уменьшение в 2,5 раза, размытие, запись в JPEG</p>
+		<p>Загрузка, поворот на 90°, уменьшение в 2,5 раза, размытие, запись в JPEG.</p>
 		<img src="./pictures/perf5.png" height="330">
+	</section>
+	<section class="slide">
+		<h2>Какой-то набор операций, Mpx/s</h2>
+		<p>Если подождать и собрать руками.</p>
+		<img src="./pictures/perf6.png" height="330">
 	</section>
 
 	<section class="slide">
@@ -395,7 +392,7 @@
 		<pre>
 			<code>@gen.coroutine</code>
     	<code>def get(self, *args, **kwargs):</code>
-			<code>    im = process_image(...)</code>
+			<code>    im = <mark>process_image</mark>(...)</code>
     	<code>    ...</code>
 		</pre>
 	</section>
@@ -417,26 +414,48 @@
 
 
 	<section class="slide gap">
-		<h2>Ввод/вывод</h2>
+		<h2>Ввод/Вывод</h2>
+	</section>
+
+	<!--section class="slide">
+		<h2>Поддерживаемые форматы</h2>	
+		<ul>
+			<li>Pillow: Кодеки для 17 форматов + декодеры еще для 18</li>
+			<li>OpenCV: Кодеки для 8 форматов, включая WebP и JPEG 2000</li>
+			<li>ImageMagick: Кодеки для 66 форматов + декодеры для 34</li>
+			<li>VIPS: порядка 12 сам + может использовать ImageMagick</li>
+		</ul>
+	</section-->
+
+	<section class="slide">
+		<h2>Ленивая загрузка</h2>
+		<pre>
+			<code>>>> from PIL import Image</code>
+			<code>>>> <mark>%time</mark> im = Image.open('cover.jpg')</code>
+			<code>Wall time: <mark>1.2 ms</mark></code>
+			<code>>>> im.mode, im.size</code>
+			<code>('RGB', (2152, 1345))</code>
+		</pre>
 	</section>
 
 	<section class="slide">
-		<h2>Ввод/вывод Pillow</h2>
-		<ul>
-			<li>Кодеки для 17 форматов + декодеры еще для 18
-			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>. 8-bit only*
-			<li class="next">Есть механизмы защиты от DoS-атак
-			<li class="next">Нет автоповорота, но есть возможность прочитать EXIF
-			<li class="next">Есть режим битых картинок
-			<li class="next">Ленивая загрузка
-		</ul>
+		<h2>Ленивая загрузка</h2>
+		<pre>
+			<code>>>> from PIL import Image</code>
+			<code>>>> <mark>%time</mark> im = Image.open('cover.jpg')</code>
+			<code>Wall time: <mark>1.2 ms</mark></code>
+			<code>>>> im.mode, im.size</code>
+			<code>('RGB', (2152, 1345))</code>
+			<code>>>> <mark>%time</mark> im.load()</code>
+			<code>Wall time: <mark>73.6 ms</mark></code>
+		</pre>
 	</section>
 
 	<section class="slide">
 		<h2>Режим битых картинок</h2>
 		<pre>
-			<code>In: from PIL import Image</code>
-			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+			<code>from PIL import Image</code>
+			<code>Image.open('trucated.jpg').save('trucated.out.jpg')</code>
 			<code><mark>IOError</mark>: image file is truncated (143 bytes not processed)</code>
 		</pre>
 	</section>
@@ -444,188 +463,131 @@
 	<section class="slide">
 		<h2>Режим битых картинок</h2>
 		<pre>
-			<code>In: from PIL import Image, ImageFile</code>
-			<code>In: ImageFile.<mark>LOAD_TRUNCATED_IMAGES</mark> = True</code>
-			<code>In: Image.open('trucated.jpg').save('trucated.out.jpg')</code>
+			<code>from PIL import Image, ImageFile</code>
+			<code>ImageFile.<mark>LOAD_TRUNCATED_IMAGES</mark> = True</code>
+			<code>Image.open('trucated.jpg').save('trucated.out.jpg')</code>
 		</pre>
 		<img src="./pictures/trucated.out.jpg">
 	</section>
 
 	<section class="slide">
-		<h2>Ленивая загрузка</h2>
+		<h2></h2>
+		<table>
+			<tr>
+				<th width="40%"></th>
+				<th width="11%">Pillow</th>
+				<th width="11%">VIPS</th>
+				<th width="11%">OpenCV</th>
+				<th width="20%">IM</th>
+			</tr>
+			<tr>
+				<td>Количество кодеков</td>
+				<td>17</td>
+				<td>12+</td>
+				<td>8</td>
+				<td>66</td>
+			</tr>
+			<tr>
+				<td>Битые картинки</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Ленивая загрузка</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>❌</td>
+				<td>❌</td>
+			</tr>
+			<tr>
+				<td>Чтение EXIF и ICC</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>❌</td>
+				<td>✅</td>
+			</tr>
+			<tr>
+				<td>Автоповорот EXIF</td>
+				<td>❌</td>
+				<td>✅</td>
+				<td>✅</td>
+				<td>✅</td>
+			</tr>
+		</table>
+	</section>
+
+	<section class="slide">
+		<h2>Особенности OpenCV</h2>
 		<pre>
-			<code>In: from PIL import Image</code>
-			<code>In: <mark>%time</mark> im = Image.open('cover.jpg')</code>
-			<code>Wall time: <mark>1.2 ms</mark></code>
-		<span class="next">
-			<code>In: im.mode, im.size</code>
-			<code>Out: ('RGB', (2152, 1345))</code>
-		</span>
-		<span class="next">
-			<code>In: <mark>%time</mark> im.load()</code>
-			<code>Wall time: <mark>73.6 ms</mark></code>
-		</span>
+			<code>cv2.imread(filename)</code>
+		</pre>
+		<ul>
+			<li>Поворачивает JPEG-файлы в соответствии с EXIF
+			<li>Игнорирует альфа-канал у PNG-файлов
+		</ul>
+	</section>
+	<section class="slide">
+		<h2>Особенности OpenCV</h2>
+		<pre>
+			<code>cv2.imread(filename, flags=<mark>cv2.IMREAD_UNCHANGED</mark>)</code>
+		</pre>
+		<ul>
+			<li>Оставляет альфа-канал у PNG-файлов
+			<li>Перестает поворачивать JPEG-файлы
+		</ul>
+	</section>
+	<!--section class="slide">
+		<h2>Особенности OpenCV</h2>
+		<pre>
+			<code>cv2.imread(filename, flags=<mark>cv2.IMREAD_UNCHANGED</mark>)</code>
+		</pre>
+		<ul>
+			<li>Оставляет альфа-канал у PNG-файлов
+			<li>Перестает поворачивать JPEG-файлы
+		</ul>
+		<img src="./pictures/jackie_chan.jpeg" class="jackie_chan">
+	</section-->
+
+	<section class="slide">
+		<h2>Почему так?</h2>
+		<p>OpenCV не рассчитана на работу с непроверенными источниками.</p>
+	</section>
+
+	<section class="slide">
+		<h2>Решение</h2>
+		<img src="./pictures/apple.jpg" style="height: 250px; margin: 20px 80px 0;">
+		<img src="./pictures/pen.png" style="height: 280px;">
+	</section>
+
+	<section class="slide">
+		<h2>Решение</h2>
+		<p>Изображение в OpenCV — это массив numpy.</p>
+		<pre>
+			<code>import numpy</code>
+			<code>from PIL import Image</code>
+			<code>...</code>
+			<code>pillow_image = Image.open(filename)</code>
+			<code>cv_image = <mark>numpy.array</mark>(pillow_image)</code>
 		</pre>
 	</section>
 
 	<section class="slide">
-		<h2>Ввод/вывод Pillow</h2>
-		<ul>
-			<li>Кодеки для 17 форматов + декодеры еще для 18
-			<li>Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 8-bit only*
-			<li>Есть механизмы защиты от DoS-атак
-			<li>Нет автоповорота, но есть возможность прочитать EXIF
-			<li>Есть режим битых картинок
-			<li>Ленивая загрузка
-		</ul>
-		<p class="stars">⭐ ⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Ввод/вывод OpenCV</h2>
-		<ul>
-			<li>Кодеки для 8 форматов, включая WebP и JPEG 2000
-			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, 16-битный цвет
-			<li class="next">Читает битые картинки по-умолчанию
-			<li class="next">Автоматически поворачивает, но нет доступа к EXIF и ICC
-			<li class="next">Нет ленивой загрузки
-			<li class="next">Не открывает PNG в <code>LA</code> формате
-		</ul>
-		<p class="stars next">⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Ввод/вывод ImageMagick</h2>
-		<ul>
-			<li>Кодеки для 66 форматов + декодеры для 34
-			<li class="next">Режимы: <code>RGB</code>, <code>RGBA</code>, <code>L</code>, <code>LA</code>, <code>P</code>, 16-битный цвет
-			<li class="next">Читает битые картинки по-умолчанию
-			<li class="next">Есть доступ к EXIF или ICC
-			<li class="next">Нет ленивой загрузки
-		</ul>
-		<p class="stars next">⭐ ⭐ ⭐ ⭐ ⭐</p>
+		<h2>Решение</h2>
+		<pre>
+			<code>import numpy</code>
+			<code>from PIL import Image</code>
+			<code>...</code>
+			<code>pillow_image = <mark>Image.fromarray</mark>(cv_image)</code>
+			<code>pillow_image.save(filename)</code>
+		</pre>
 	</section>
 
 	<section class="slide gap">
-		<h2>Питоняшность</h2>
-		<p>от слова pythonic</p>
+		<h2>Вопросы</h2>
 	</section>
 
-	<section class="slide">
-		<h2>Питоняшность Pillow</h2>
-		<pre>
-			<code>from PIL import Image</code>
-			<code>Image.open('cover.jpg') \</code>
-			<code class="mark">    .resize((640, 480), Image.BICUBIC) \</code>
-			<code>    .save('output.png')</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Питоняшность Pillow</h2>
-		<pre>
-			<code>from PIL import Image</code>
-			<code>Image.open('cover.jpg') \</code>
-			<code class="mark">    .thumbnail((640, 480)) \</code>
-			<code>    .save('output.png')</code>
-			<code><mark>AttributeError</mark>: 'NoneType' object has no attribute 'save'</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Питоняшность Pillow</h2>
-		<pre>
-			<code>from PIL import Image, <mark>ImageFilter</mark></code>
-			<code>Image.open('cover.jpg') \</code>
-			<code>    .resize((640, 480), Image.BICUBIC) \</code>
-			<code class="mark">    .filter(ImageFilter.GaussianBlur(10)) \</code>
-			<code>    .save('output.png')</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Питоняшность Pillow</h2>
-		<ul>
-			<li>Изображение — объект со chainable методами
-			<li>Иногда это правило нарушается
-			<li>Операции разбросаны между методами, <code>ImageFilter</code> и <code>ImageOps</code>
-			<li>Странные исключения: <code>SyntaxError</code>, <code>IOError</code>, <code>struct.error</code>
-		</ul>
-		<p class="next stars">⭐ ⭐ ⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Питоняшность OpenCV</h2>
-		<pre style="font-size: 20px">
-			<code>import cv2</code>
-			<code>im = cv2.imread('cover.jpg')</code>
-			<code>im = cv2.resize(im, (160, 100), interpolation=cv2.INTER_CUBIC)</code>
-			<code>cv2.imwrite('output.png', im)</code>
-		</pre>
-		<img class="next" src="./pictures/cv2.inter_cubic.png"
-				 width="320" style="image-rendering: pixelated">
-		<img class="next" src="./pictures/cv2.inter_area.2.png"
-				 width="320" style="image-rendering: pixelated">
-	</section>
-
-	<section class="slide">
-		<h2>Питоняшность OpenCV</h2>
-		<pre>
-			<code>import cv2</code>
-			<code>im = cv2.imread('cover.jpg')</code>
-			<code>im = cv2.resize(im, (160, 100), interpolation=cv2.INTER_AREA)</code>
-			<code>cv2.imwrite('output.png', im)</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Питоняшность OpenCV</h2>
-		<pre>
-			<code>import cv2</code>
-			<code>im = cv2.imread(filename, <mark>-1</mark>)</code>
-			<code>height, width = im.shape<mark>[:2]</mark></code>
-			<code>has_alpha = len(im.shape) == <mark>3</mark> and im.shape<mark>[2]</mark> == <mark>4</mark></code>
-			<code>inter = cv2.INTER_AREA if width > 300 else cv2.INTER_CUBIC</code>
-      <code>if has_alpha:</code>
-      <code>    im = cv2.cvtColor(im, <mark>cv2.COLOR_RGBA2M_RGBA</mark>)</code>
-			<code class="next"><mark>...</mark></code>
-		</pre>
-	</section>
-
-  <section class="slide">
-    <h2>Питоняшность OpenCV</h2>
-    <pre>
-      <code><mark>...</mark></code>
-      <code>im = cv2.resize(im, (320, 200), interpolation=inter)</code>
-      <code>if has_alpha:</code>
-      <code>    im = cv2.cvtColor(im, <mark>cv2.COLOR_M_RGBA2RGBA</mark>)</code>
-      <code>cv2.imwrite('output.png', im)</code>
-    </pre>
-  </section>
-
-	<section class="slide">
-		<h2>Питоняшность OpenCV</h2>
-		<ul>
-			<li>Изображение — массив numpy без методов
-			<li class="next">В изображении нет информации о его режиме
-			<li class="next">Методы слишком низкоуровневые, нужно много оберток
-			<li class="next">Огромное количество магических констант
-			<li class="next">Вы не узнаете ничего полезного из исключений
-		</ul>
-		<p class="next stars">⭐</p>
-	</section>
-
-	<section class="slide">
-		<h2>Питоняшность Wand</h2>
-		<pre>
-      <code>from wand.image import Image</code>
-      <code>im = Image(filename='cover.jpg')</code>
-      <code>im.resize(320, 200)</code>
-      <code>im.save(filename='output.png')</code>
-      <code class="next">im.<mark>destroy</mark>()</code>
-    </pre>
-		<p class="next stars">⭐ ⭐ ⭐</p>
-	</section>
 
 
 	<div class="progress"></div>
