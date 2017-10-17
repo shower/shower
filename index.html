@@ -140,7 +140,7 @@
 		<ul>
 			<li>C мая 2016 года
 			<li>Drop-in replacement for Pillow
-			<li>Инснтрукции SSE4 (по умолчанию) и AVX2
+			<li>Инструкции SSE4 (по умолчанию) и AVX2
 		</ul>
 		<p>Сайт: <a href="https://github.com/uploadcare/pillow-simd">github.com/uploadcare/pillow-simd</a></p>
 	</section>
@@ -281,7 +281,7 @@
 		</p>
 	</section>
 
-	<section class="slide">
+	<!--section class="slide">
 		<h2>Бенчмарки самого VIPS</h2>
 		<img src="./pictures/vips-bench1.png" height="280">
 		<p><a href="https://github.com/jcupitt/libvips/wiki/Speed-and-memory-use">
@@ -293,7 +293,7 @@
 		<img src="./pictures/vips-bench2.png" height="280">
 		<p>1. Pillow is single-threaded, so the fairest comparison
 			 for raw processing speed would be against vips-1thread.</p>
-	</section>
+	</section-->
 
 
 
@@ -301,7 +301,7 @@
 		<h2>Параллельная работа</h2>
 	</section>
 
-	<!--section class="slide">
+	<section class="slide">
 		<h2>Метрики производительности</h2>
 		<ul>
 			<li><b>Реальное время выполнения одной операций</b><br>
@@ -311,17 +311,16 @@
 				Становится более важным на сервере.
 			</li>
 		</ul>
-	</section-->
+	</section>
 
 	<section class="slide">
 		<h2>Способы параллельной работы</h2>
 		<ol>
-			<li>На уровне команд процессора и данных</li>
+			<li class="non-zero" data-counter="1">На уровне приложения</li>
 		</ol>
 		<p>
-			Реальное время выполнения уменьшается.<br>
-			Пропусканая способность растет.<br>
-			Win-win.
+			Реальное время выполнения не меняется.<br>
+			Пропусканая способность растет пропорционально количеству ядер.
 		</p>
 	</section>
 
@@ -339,19 +338,20 @@
 	<section class="slide">
 		<h2>Способы параллельной работы</h2>
 		<ol>
-			<li class="non-zero" data-counter="3">На уровне приложения</li>
+			<li class="non-zero" data-counter="3">На уровне команд процессора и данных</li>
 		</ol>
 		<p>
-			Реальное время выполнения не меняется.<br>
-			Пропусканая способность растет пропорционально количеству ядер.
+			Реальное время выполнения уменьшается.<br>
+			Пропусканая способность растет.<br>
+			Win-win.
 		</p>
 	</section>
 
 	<section class="slide">
 		<h2>Комбинации</h2>
-		<p>Первый со вторым</p>
 		<p>Первый с третьим</p>
-		<p class="red">Второй с третьим нет</p>
+		<p>Второй с третьим</p>
+		<p class="red">Первый со вторым нет</p>
 	</section>
 
 	<section class="slide">
@@ -367,7 +367,7 @@
 	<section class="slide">
 		<h2>Правило N + 1</h2>
 		<p>
-			Создавать для обработки не более N + 1 воркеров,<br>
+			Создавать для обработки <mark>не более</mark> N + 1 воркеров,<br>
 			где N — количество ядер или потоков процессора.
 		</p>
 		<p>Воркер — процесс или поток, занятый обработкой.</p>
