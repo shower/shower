@@ -7,6 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
 	<style type="text/css">
+		@page {
+			size: 1024px 576px;
+		}
 		.shower.full {
 			margin:-288px 0 0 -512px;
 			height: 576px;
@@ -65,63 +68,54 @@
 		<h1>Работа с изображениями на Python в 2017 году</h1>
 	</header>
 
+	<!--section class="slide" id="cover" style="background-size: 1024px; background-image: url(./pictures/cover.markup.png)"-->
 	<section class="slide" id="cover">
-		<h2>Работа с изображениями на Python в 2017 году</h2>
+		<img src="./pictures/cover.png" alt="" width="180">
+		<h2>
+			Работа с изображениями<br>
+			на Python в 2017 году
+		</h2>
 		<p>Александр Карпинский, Uploadcare</p>
-		<figure>
-			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-		</figure>
 		<style>
 		#cover {
-			text-shadow: black 3px 4px 2px;
+			color: rgb(23,23,23);
 		}
-			#cover figure:after {
-				content: "";
-				position: absolute;
-				z-index: -1;
-				top: 0; left: 0;
-				width: 100%;
-				height: 70%;
-				background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
-			}
+			#cover:after {
+				display: none;
+				}
 			#cover h2 {
-				margin: 0;
-				color:#FFF;
-				text-align:center;
-				font-size:70px;
+				margin: 42px 0 0;
+				font-size: 60px;
+				line-height: 1.1;
+				color: rgb(23,23,23);
 				}
 			#cover p {
-				margin:10px 0 0;
-				text-align:center;
-				color:#FFF;
-				font-size:36px;
+				margin: 30px 0 0;
+				font-size: 30px;
 				}
-				#cover p a {
-					color:#FFF;
-					}
 		</style>
 	</section>
 
 	<section class="slide">
 		<h2>O себе</h2>
 		<p>
-			Член команды <a href="https://python-pillow.org/">Pillow</a>
+			Член команды <a href="https://python-pillow.org/">Pillow</a>.
 		</p>
 		<p>
-			Автор <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>
+			Автор <a href="https://github.com/uploadcare/pillow-simd">Pillow-SIMD</a>.
 		</p>
 	</section>
 
 	<section class="slide">
 		<h2>Чем занимаюсь</h2>
 		<p>
-			Сервис обработки картинок на лету в Uploadcare
+			Сервис обработки картинок на лету в Uploadcare.
 		</p>
-		<p>Требования к графической библотеке:</p>
 		<ul>
-			<li>Производительность</li>
-			<li>Всеядность</li>
-			<li>Защита от DOS</li>
+			<li>Построен на Pillow</li>
+			<li>Высокая производительность</li>
+			<li>Надежность</li>
+			<li>Масштабируемость</li>
 		</ul>
 	</section>
 
@@ -134,7 +128,7 @@
 	<section class="slide">
 		<h2>Pillow</h2>
 		<ul>
-			<li>Форк Python Imaging Library. 1995 год
+			<li>Форк PIL (Python Imaging Library). 1995 год
 			<li>Нативное расширение для Python
 			<li>Версии Python: 2.7, 3.3+, pypy, pypy3
 		</ul>
@@ -218,7 +212,6 @@
 			</div>
 		</div>
 	</section>
-
 	<section class="slide">
 		<h2>В чем проблема?</h2>
 		<pre>
@@ -240,17 +233,14 @@
 		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf1.png" height="400">
 	</section>
-
 	<section class="slide">
 		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf2.png" height="400">
 	</section>
-
 	<section class="slide">
 		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf3.png" height="400">
 	</section>
-	
 	<section class="slide">
 		<h2>Скорость ресайза в Pillow, Mpx/s</h2>
 		<img src="./pictures/perf4.png" height="400">
@@ -262,7 +252,7 @@
 			<li>Ресайз: от <mark>4</mark> до <mark>7</mark> раз</li>
 			<li>Размытие: <mark>2,8</mark> раз</li>
 			<li>Применение ядра 3x3 или 5x5: <mark>11</mark> раз</li>
-			<li>Умножение и деление на альфаканал: в <mark>4</mark> и <mark>10</mark> раза</li>
+			<li>Умножение и деление на альфа-канал: в <mark>4</mark> и <mark>10</mark> раза</li>
 			<li>Альфа-композиция: <mark>5</mark> раз</li>
 			<li>Еще что-то по мелочи</li>
 		</ul>
@@ -275,19 +265,19 @@
 	</section>
 	<section class="slide">
 		<h2>Какой-то набор операций, Mpx/s</h2>
-		<p>Если подождать и собрать руками.</p>
+		<p>Если подождать и собрать самому.</p>
 		<img src="./pictures/perf6.png" height="330">
 	</section>
 
 	<section class="slide">
 		<h2>Набор бенчмарков</h2>
 		<p>
-			<a href="https://python-pillow.org/pillow-perf/">https://python-pillow.org/pillow-perf/</a><br>
-			Страница с результатами
+			<b>Страница с результатами</b><br>
+			<a href="https://python-pillow.org/pillow-perf/">https://python-pillow.org/pillow-perf/</a>
 		</p>
 		<p>
-			<a href="https://github.com/python-pillow/pillow-perf">https://github.com/python-pillow/pillow-perf</a><br>
-			Репозиторий
+			<b>Фреймворк для тестирования</b><br>
+			<a href="https://github.com/python-pillow/pillow-perf">https://github.com/python-pillow/pillow-perf</a>
 		</p>
 	</section>
 
@@ -311,17 +301,17 @@
 		<h2>Параллельная работа</h2>
 	</section>
 
-	<section class="slide">
+	<!--section class="slide">
 		<h2>Метрики производительности</h2>
 		<ul>
 			<li><b>Реальное время выполнения одной операций</b><br>
-				Важно на десктопе
+				Важно на десктопе.
 			</li>
 			<li><b>Пропускная способность потока операций</b><br>
-				Становится более важным на сервере
+				Становится более важным на сервере.
 			</li>
 		</ul>
-	</section>
+	</section-->
 
 	<section class="slide">
 		<h2>Способы параллельной работы</h2>
@@ -329,9 +319,9 @@
 			<li>На уровне команд процессора и данных</li>
 		</ol>
 		<p>
-			Реальное время выполнения уменьшается<br>
-			Пропусканая способность растет<br>
-			Win-win
+			Реальное время выполнения уменьшается.<br>
+			Пропусканая способность растет.<br>
+			Win-win.
 		</p>
 	</section>
 
@@ -341,8 +331,8 @@
 			<li class="non-zero" data-counter="2">На уровне графических операций</li>
 		</ol>
 		<p>
-			Реальное время выполнения уменьшается<br>
-			Пропусканая способность растет далеко не линейно от количества ядер
+			Реальное время выполнения уменьшается.<br>
+			Пропусканая способность растет далеко не линейно от количества ядер.
 		</p>
 	</section>
 
@@ -352,8 +342,8 @@
 			<li class="non-zero" data-counter="3">На уровне приложения</li>
 		</ol>
 		<p>
-			Реальное время выполнения не меняется<br>
-			Пропусканая способность растет пропорционально количеству ядер
+			Реальное время выполнения не меняется.<br>
+			Пропусканая способность растет пропорционально количеству ядер.
 		</p>
 	</section>
 
@@ -380,14 +370,14 @@
 			Создавать для обработки не более N + 1 воркеров,<br>
 			где N — количество ядер или потоков процессора.
 		</p>
-		<p>Воркер — процес или поток, занятый обработкой.</p>
+		<p>Воркер — процесс или поток, занятый обработкой.</p>
 	</section>
 
 	<section class="slide">
 		<h2>Асинхронная работа</h2>
 		<p>
-			Долгая работа процессора блочит event loop,<br>
-			даже если библиотека отпускает GIL
+			Долгая работа процессора блокирует event loop,<br>
+			даже если библиотека отпускает GIL.
 		</p>
 		<pre>
 			<code>@gen.coroutine</code>
@@ -403,7 +393,7 @@
 			<code>@run_on_executor(executor=ThreadPoolExecutor(<mark>1</mark>))</code>
     	<code>def process_image(self, ...):</code>
     	<code>    ...</code>
-    	<code> </code>
+    	<code>@gen.coroutine</code>
     	<code>def get(self, *args, **kwargs):</code>
 			<code>    im = <mark>yield</mark> process_image(...)</code>
 			<code>    ...</code>
@@ -552,7 +542,13 @@
 
 	<section class="slide">
 		<h2>Почему так?</h2>
-		<p>OpenCV не рассчитана на работу с непроверенными источниками.</p>
+		<ul>
+			<li>Мало кодеков</li>
+			<li>Нет ленивой загрузки</li>
+			<li>Нет доступа к EXIF и ICC</li>
+			<li>Странное флаги</li>
+		</ul>
+		<p>OpenCV не рассчитан на работу с непроверенными источниками.</p>
 	</section>
 
 	<section class="slide">
@@ -579,7 +575,7 @@
 			<code>import numpy</code>
 			<code>from PIL import Image</code>
 			<code>...</code>
-			<code>pillow_image = <mark>Image.fromarray</mark>(cv_image)</code>
+			<code>pillow_image = <mark>Image.fromarray</mark>(cv_image, "RGB")</code>
 			<code>pillow_image.save(filename)</code>
 		</pre>
 	</section>
