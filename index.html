@@ -338,7 +338,7 @@
 	<section class="slide">
 		<h2>Способы параллельной работы</h2>
 		<ol>
-			<li class="non-zero" data-counter="3">На уровне команд процессора и данных</li>
+			<li class="non-zero" data-counter="3">На уровне команд процессора и данных (SIMD)</li>
 		</ol>
 		<p>
 			Реальное время выполнения уменьшается.<br>
@@ -348,10 +348,24 @@
 	</section>
 
 	<section class="slide">
-		<h2>Комбинации</h2>
-		<p>Первый с третьим</p>
-		<p>Второй с третьим</p>
-		<p class="red">Первый со вторым нет</p>
+		<h2>Как совместить параллельную работу</h2>
+		<div class="puzzles">
+			<img src="./pictures/puzzle4.png" style="opacity: 0.8;">
+			<span style="top: 80px; left: 30px; font-size: 40px;">SIMD</span>
+			<span style="left: 190px; width: 170px; top: 20px;">внутри операций</span>
+			<span style="top: 230px; width: 170px; left: 20px;">внутри приложения</span>
+		</div>
+		<style type="text/css">
+			.puzzles {
+				position: relative;
+				margin: 0 auto;
+				width: 400px;
+			}
+			.puzzles > * {
+				position: absolute;
+				text-align: center;
+			}
+		</style>
 	</section>
 
 	<section class="slide">
