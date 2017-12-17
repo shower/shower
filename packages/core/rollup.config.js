@@ -15,12 +15,14 @@ const banner = `
 `;
 
 module.exports = {
-    entry: 'lib/index.js',
+    input: 'lib/index.js',
     plugins: [
         resolve(),
     ],
-    format: 'iife',
-    moduleName: 'shower',
-    banner,
-    dest: 'dist/shower.js',
+    output: {
+        file: 'dist/shower.js',
+        format: 'iife',
+        name: 'shower',
+        banner,
+    },
 };

@@ -3,7 +3,7 @@ import defaultOptions from './default-options';
 import Player from './player';
 import Container from './container';
 import Plugins from './plugins';
-import defaultSlidesParser from './slides-parser';
+import parseSlides from './parse-slides';
 import { Store } from '../utils';
 
 /**
@@ -17,7 +17,6 @@ import { Store } from '../utils';
  * @param {boolean} [options.debug_mode = false] Debug mode.
  * @param {boolean} [options.hotkeys = true] If true — hotkeys will works.
  * @param {string} [options.slides_selector = '.shower .slide'] Slide selector.
- * @param {ISlidesParseFunction} [options.slides_parser] Parse function.
  * @param {object} [options.plugins] Plugins options.
  */
 class Shower {
@@ -184,8 +183,7 @@ class Shower {
     }
 
     _initSlides() {
-        const slidesParser = this.options.get('slides_parser') || defaultSlidesParser;
-        const slides = slidesParser(
+        const slides = parseSlides(
             this.container.getElement(),
             this.options.get('slides_selector')
         );

@@ -45,6 +45,14 @@ module.exports = {
         browser.end();
     },
 
+    'skips slides with `hidden` attribute': browser => {
+        browser.url(`${browser.launchUrl}/list-hidden.html`);
+        browser.assert.elementPresent('[id="1"]');
+        browser.assert.elementPresent('[id="2"]');
+        browser.assert.elementNotPresent('[id="3"]');
+        browser.end();
+    },
+
     'doesn’t set any slide states on init': browser => {
         browser.url(`${browser.launchUrl}/list.html`);
         browser.assert.elementNotPresent('.active');

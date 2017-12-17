@@ -27,6 +27,7 @@ rules:
   no-prototype-builtins: off
   no-param-reassign: off
   no-restricted-syntax: off
+  no-restricted-globals: off
   no-mixed-operators: off
   default-case: off
   prefer-const:
