@@ -33,11 +33,8 @@ class Shower {
         this.container = new Container(this, containerElement);
 
         this._slides = [];
-        this._isHotkeysOn = true;
-        this._liveRegion = null;
-
         this._initSlides();
-        this._initLiveRegion();
+        this._isHotkeysOn = true;
 
         if (this.options.get('debug_mode')) {
             document.body.classList.add(this.options.get('debug_mode_classname'));
@@ -49,9 +46,6 @@ class Shower {
         }
 
         this.plugins = new Plugins(this);
-
-        this._playerListeners = this.player.events.group()
-            .on('activate', this._onPlayerSlideActivate, this);
     }
 
     /**
@@ -95,8 +89,8 @@ class Shower {
             throw new Error('Slide not found');
         }
 
-        [slide] = this._slides.splice(index, 1);
-        this.events.emit('slideremove', { slide });
+        const [removed] = this._slides.splice(index, 1);
+        this.events.emit('slideremove', { slide: removed });
         return this;
     }
 
@@ -159,29 +153,6 @@ class Shower {
         return this._isHotkeysOn;
     }
 
-    /**
-     * @returns {HTMLElement} Live region element.
-     */
-    getLiveRegion() {
-        return this._liveRegion;
-    }
-
-    /**
-     * Update live region content.
-     *
-     * @param {string} content New content for live region.
-     * @returns {Shower}
-     */
-    updateLiveRegion(content) {
-        this._liveRegion.innerHTML = content;
-        return this;
-    }
-
-    _onPlayerSlideActivate(event) {
-        const currentSlide = event.get('slide');
-        this.updateLiveRegion(currentSlide.getContent());
-    }
-
     _initSlides() {
         const slides = parseSlides(
             this.container.getElement(),
@@ -195,18 +166,6 @@ class Shower {
         slide.state.set('index', this._slides.length);
         this._slides.push(slide);
         this.events.emit('slideadd', { slide });
-    }
-
-    _initLiveRegion() {
-        const region = document.createElement('section');
-        region.className = 'region';
-        region.setAttribute('role', 'region');
-        region.setAttribute('aria-live', 'assertive');
-        region.setAttribute('aria-relevant', 'additions');
-        region.setAttribute('aria-label', 'Slide Content: Auto-updating');
-
-        this._liveRegion = region;
-        document.body.appendChild(region);
     }
 }
 

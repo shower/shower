@@ -89,8 +89,6 @@ class Container {
         list.add(options.get('mode_full_classname'));
         sessionStorage[this._key] = 'full';
 
-        document.body.setAttribute('role', 'application');
-
         applyTransform(getTransformScale());
         this._isSlideMode = true;
         this.events.emit('modechange');
@@ -113,8 +111,6 @@ class Container {
         list.remove(options.get('mode_full_classname'));
         list.add(options.get('mode_list_classname'));
         sessionStorage[this._key] = 'list';
-
-        document.body.removeAttribute('role');
 
         applyTransform('none');
         this.scrollToCurrentSlide();

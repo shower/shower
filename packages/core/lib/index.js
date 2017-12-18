@@ -6,6 +6,7 @@ import Next from './plugins/next';
 import Progress from './plugins/progress';
 import Timer from './plugins/timer';
 import Touch from './plugins/touch';
+import a11y from './plugins/a11y';
 
 export let shower; // eslint-disable-line
 
@@ -41,5 +42,6 @@ if ((hasOptions && autoInit) || container.dataset.autoInit !== 'false') {
         .add('next', Next)
         .add('progress', Progress)
         .add('timer', Timer)
-        .add('touch', Touch);
+        .add('touch', Touch)
+        .add('a11y', a11y);
 }
