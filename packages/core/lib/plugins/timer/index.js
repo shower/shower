@@ -1,80 +1,47 @@
 import parseTiming from './parse-timing';
 
-/**
- * @class
- * @name Timer
- *
- * Timer plugin for shower.
- *
- * @param {Shower} shower
- */
-class Timer {
-    constructor(shower) {
-        this._shower = shower;
-        this._clearTimer = () => {};
-        this._setupListeners();
-    }
+export default shower => {
+    let id;
 
-    _setupListeners() {
-        document.addEventListener('keydown', event => {
-            if (!event.defaultPrevented) {
-                this._clearTimer();
-            }
-        });
+    const goNext = () => {
+        shower.player.next();
+    };
 
-        this._showerListeners = this._shower.events.group()
-            .on('destroy', this._destroy.bind(this));
-
-        this._playerListeners = this._shower.player.events.group()
-            .on('activate', this._onSlideActivate.bind(this));
-
-        if (this._shower.player.getCurrentSlideIndex() !== -1) {
-            this._onSlideActivate();
+    const setTimer = timing => {
+        const plugin = shower.plugins.get('next');
+        if (plugin && plugin.canGoNext) {
+            const stepTiming = timing / (plugin.stepsCount + 1);
+            id = setInterval(goNext, stepTiming);
+        } else {
+            id = setTimeout(goNext, timing);
         }
-    }
+    };
 
-    _onSlideActivate() {
-        this._clearTimer();
-        if (!this._shower.container.isSlideMode()) return;
+    const clearTimer = () => {
+        clearTimeout(id);
+    };
 
-        const slide = this._shower.player.getCurrentSlide();
+    const onSlideActivate = () => {
+        clearTimer();
+        if (!shower.container.isSlideMode()) return;
+
+        const slide = shower.player.getCurrentSlide();
         if (slide.state.get('visited') > 1) return;
 
         const timing = parseTiming(slide.layout.getData('timing'));
-        if (timing) this._setTimer(timing);
-    }
+        if (timing) setTimer(timing);
+    };
 
-    _setTimer(timing) {
-        const plugin = this._shower.plugins.get('next');
-        if (plugin && plugin.canGoNext) {
-            const id = setInterval(() => {
-                this._shower.player.next();
-            }, timing / (plugin.stepsCount + 1));
-
-            this._clearTimer = () => {
-                clearInterval(id);
-            };
-        } else {
-            const id = setTimeout(() => {
-                this._shower.player.next();
-            }, timing);
-
-            this._clearTimer = () => {
-                clearTimeout(id);
-            };
+    const containerElement = shower.container.getElement();
+    containerElement.addEventListener('keydown', event => {
+        if (!event.defaultPrevented) {
+            clearTimer();
         }
-    }
+    });
 
-    _destroy() {
-        this._shower = null;
-        this._clearTimer();
-        this._clearListeners();
-    }
+    shower.player.events.on('activate', onSlideActivate);
 
-    _clearListeners() {
-        this._showerListeners.offAll();
-        this._playerListeners.offAll();
+    if (shower.player.getCurrentSlideIndex() !== -1) {
+        onSlideActivate();
     }
-}
-
-export default Timer;
+};
