@@ -1,17 +1,14 @@
-const del = require('del');
-const fs = require('fs');
 const gulp = require('gulp');
 const merge = require('merge-stream');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
-const rsync = require('gulp-rsync');
-const sequence = require('run-sequence');
 const zip = require('gulp-zip');
 
-gulp.task('prepare', () => {
+gulp.task('build', () => {
 
 	const shower = gulp.src([
-			'**', '!package.json'
+			'**',
+			'!package.json'
 		], {
 			cwd: 'node_modules/shower'
 		})
@@ -62,38 +59,4 @@ gulp.task('prepare', () => {
 		.pipe(zip('shower.zip'))
 		.pipe(gulp.dest('dest'));
 
-});
-
-gulp.task('deploy', () => {
-
-	return gulp.src([
-			'dest/**', '.htaccess'
-		])
-		.pipe(replace(
-			/(<\/body>)/,
-			'\t' + fs.readFileSync('counter.html', 'utf8') + '$1', { skipBinary: true }
-		))
-		.pipe(gulp.dest('dest'))
-		.pipe(rsync({
-			root: 'dest',
-			hostname: 'shwr.me',
-			destination: '/var/www/shwr.me/html',
-			recursive: true,
-			clean: true,
-			incremental: true,
-			silent: true
-		}));
-
-});
-
-gulp.task('clean', () => {
-	return del('dest/**');
-});
-
-gulp.task('default', (callback) => {
-	sequence(
-		'prepare',
-		'deploy',
-		'clean', callback
-	)
 });
