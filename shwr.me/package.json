@@ -6,7 +6,7 @@
     "pretest": "gulp build"
   },
   "dependencies": {
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
     "gulp-zip": "^4.0.0",
