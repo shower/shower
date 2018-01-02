@@ -34,15 +34,15 @@ class Container {
         this._element = containerElement;
         this._isSlideMode = false;
 
-        this._key = `${shower.options.get('sessionstore_key')}-mode`;
+        this._key = `${shower.options.sessionstore_key}-mode`;
         this._init();
         this._setupListeners();
     }
 
     _init() {
         const { options } = this._shower;
-        const fullMode = options.get('mode_full_classname');
-        const listMode = options.get('mode_list_classname');
+        const fullMode = options.mode_full_classname;
+        const listMode = options.mode_list_classname;
 
         const list = document.body.classList;
         if (list.contains(fullMode) || sessionStorage[this._key] === 'full') {
@@ -85,8 +85,8 @@ class Container {
         const list = document.body.classList;
         const { options } = this._shower;
 
-        list.remove(options.get('mode_list_classname'));
-        list.add(options.get('mode_full_classname'));
+        list.remove(options.mode_list_classname);
+        list.add(options.mode_full_classname);
         sessionStorage[this._key] = 'full';
 
         applyTransform(getTransformScale());
@@ -108,8 +108,8 @@ class Container {
         const list = document.body.classList;
         const { options } = this._shower;
 
-        list.remove(options.get('mode_full_classname'));
-        list.add(options.get('mode_list_classname'));
+        list.remove(options.mode_full_classname);
+        list.add(options.mode_list_classname);
         sessionStorage[this._key] = 'list';
 
         applyTransform('none');
@@ -135,7 +135,7 @@ class Container {
      * @returns {Container}
      */
     scrollToCurrentSlide() {
-        const activeSlideClass = this._shower.options.get('slide_active_classname');
+        const activeSlideClass = this._shower.options.slide_active_classname;
         const slideElement = this._element.querySelector(`.${activeSlideClass}`);
         if (slideElement) {
             slideElement.scrollIntoView();

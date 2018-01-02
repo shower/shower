@@ -33,3 +33,4 @@ rules:
   prefer-const:
     - error
     - destructuring: all
+  import/prefer-default-export: off

@@ -7,7 +7,7 @@
 class Plugins {
     constructor(shower) {
         this._shower = shower;
-        this._map = new Map();
+        this._set = new Set();
     }
 
     /**
@@ -19,30 +19,21 @@ class Plugins {
      * @returns {Plugins}
      */
     add(name, fn, options) {
-        if (this._map.has(name)) {
+        if (this._set.has(name)) {
             throw new Error(`Plugin "shower-${name}" already exist.`);
         }
 
         if (!options) {
-            options = this._shower.options.get(`plugin_shower-${name}`) || {};
+            options = this._shower.options[`plugin_shower-${name}`] || {};
         }
 
-        const plugin = fn.hasOwnProperty('prototype')
-            ? new fn(this._shower, options) // eslint-disable-line new-cap
-            : fn(this._shower, options);
+        if (fn.hasOwnProperty('prototype')) {
+            new fn(this._shower, options); // eslint-disable-line new-cap, no-new
+        } else {
+            fn(this._shower, options);
+        }
 
-        this._map.set(name, plugin);
         return this;
-    }
-
-    /**
-     * Get plugin by name.
-     *
-     * @param {string} name Plugin name.
-     * @returns {(object|undefined)} Instanced plugin.
-     */
-    get(name) {
-        return this._map.get(name);
     }
 }
 

@@ -1,6 +1,5 @@
 import EventEmitter from '../emitter';
 import { defaultOptions } from '../shower';
-import { Store } from '../utils';
 
 /**
  * @class Slide layout. Work with DOM, DOM events, etc. View for Slide class.
@@ -35,7 +34,7 @@ class Layout {
 
     constructor(element, options) {
         this.events = new EventEmitter();
-        this.options = new Store({
+        this.options = Object.assign({
             title_element_selector: defaultOptions.slide_title_element_selector,
             active_classname: defaultOptions.slide_active_classname,
             visited_classname: defaultOptions.slide_visited_classname,
@@ -109,7 +108,7 @@ class Layout {
      * @param {string} title Slide title.
      */
     setTitle(title) {
-        const titleSelector = this.options.get('title_element_selector');
+        const titleSelector = this.options.title_element_selector;
         let titleElement = this._element.querySelector(titleSelector);
 
         if (!titleElement) {
@@ -126,20 +125,10 @@ class Layout {
      * @returns {(string|null)} Title.
      */
     getTitle() {
-        const titleSelector = this.options.get('title_element_selector');
+        const titleSelector = this.options.title_element_selector;
         const titleElement = this._element.querySelector(titleSelector);
 
         return titleElement && titleElement.textContent;
-    }
-
-    /**
-     * Get data, defined in property of slide element.
-     *
-     * @param {string} name Data attr name.
-     * @returns {string} Value of data attr.
-     */
-    getData(name) {
-        return this._element.dataset[name];
     }
 
     /**
@@ -169,13 +158,13 @@ class Layout {
     }
 
     _onSlideActivate() {
-        this._element.classList.add(this.options.get('active_classname'));
+        this._element.classList.add(this.options.active_classname);
     }
 
     _onSlideDeactivate() {
         const list = this._element.classList;
-        list.remove(this.options.get('active_classname'));
-        list.add(this.options.get('visited_classname'));
+        list.remove(this.options.active_classname);
+        list.add(this.options.visited_classname);
     }
 
     _onSlideClick() {

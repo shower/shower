@@ -7,10 +7,10 @@ export default shower => {
         shower.player.next();
     };
 
-    const setTimer = timing => {
-        const plugin = shower.plugins.get('next');
-        if (plugin && plugin.canGoNext) {
-            const stepTiming = timing / (plugin.stepsCount + 1);
+    const setTimer = (slide, timing) => {
+        const { innerStepsCount } = slide.state;
+        if (innerStepsCount) {
+            const stepTiming = timing / (innerStepsCount + 1);
             id = setInterval(goNext, stepTiming);
         } else {
             id = setTimeout(goNext, timing);
@@ -26,10 +26,11 @@ export default shower => {
         if (!shower.container.isSlideMode()) return;
 
         const slide = shower.player.getCurrentSlide();
-        if (slide.state.get('visited') > 1) return;
+        if (slide.state.visited > 1) return;
 
-        const timing = parseTiming(slide.layout.getData('timing'));
-        if (timing) setTimer(timing);
+        const slideElement = slide.layout.getElement();
+        const timing = parseTiming(slideElement.dataset.timing);
+        if (timing) setTimer(slide, timing);
     };
 
     const containerElement = shower.container.getElement();

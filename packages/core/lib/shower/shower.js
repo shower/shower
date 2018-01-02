@@ -4,7 +4,6 @@ import Player from './player';
 import Container from './container';
 import Plugins from './plugins';
 import parseSlides from './parse-slides';
-import { Store } from '../utils';
 
 /**
  * @class
@@ -22,9 +21,9 @@ import { Store } from '../utils';
 class Shower {
     constructor(container, options) {
         this.events = new EventEmitter({ context: this });
-        this.options = new Store(defaultOptions, options);
+        this.options = Object.assign({}, defaultOptions, options);
 
-        let containerElement = container || this.options.get('container_selector');
+        let containerElement = container || this.options.container_selector;
         if (typeof containerElement === 'string') {
             containerElement = document.querySelector(containerElement);
         }
@@ -36,12 +35,12 @@ class Shower {
         this._initSlides();
         this._isHotkeysOn = true;
 
-        if (this.options.get('debug_mode')) {
-            document.body.classList.add(this.options.get('debug_mode_classname'));
+        if (this.options.debug_mode) {
+            document.body.classList.add(this.options.debug_mode_classname);
             console.info('Debug mode: on');
         }
 
-        if (!this.options.get('hotkeys')) {
+        if (!this.options.hotkeys) {
             this.disableHotkeys();
         }
 
@@ -156,14 +155,14 @@ class Shower {
     _initSlides() {
         const slides = parseSlides(
             this.container.getElement(),
-            this.options.get('slides_selector')
+            this.options.slides_selector
         );
 
         this.add(slides);
     }
 
     _addSlide(slide) {
-        slide.state.set('index', this._slides.length);
+        slide.state.index = this._slides.length;
         this._slides.push(slide);
         this.events.emit('slideadd', { slide });
     }

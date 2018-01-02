@@ -1,5 +1,4 @@
 import EventEmitter from '../emitter';
-import { Store } from '../utils';
 import Layout from './layout';
 
 /**
@@ -19,16 +18,15 @@ import Layout from './layout';
 class Slide {
     constructor(content, options, state) {
         this.events = new EventEmitter();
-        this.options = new Store(options);
+        this.options = Object.assign({}, options);
         this.layout = null;
 
-        this.state = new Store({
+        this.state = Object.assign({
             visited: 0,
             index: null,
         }, state);
 
         this._content = content;
-        this._isVisited = this.state.get('visited') > 0;
         this._isActive = false;
 
         this.init();
@@ -58,9 +56,7 @@ class Slide {
      */
     activate() {
         this._isActive = true;
-
-        const visited = this.state.get('visited');
-        this.state.set('visited', visited + 1);
+        this.state.visited++;
         this.events.emit('activate', { slide: this });
 
         return this;
@@ -93,7 +89,7 @@ class Slide {
      * @returns {boolean}
      */
     isVisited() {
-        return this.state.get('visited') > 0;
+        return this.state.visited > 0;
     }
 
     /**
