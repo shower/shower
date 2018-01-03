@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    '@tags': ['keys'],
+    '@tags': ['plugin', 'keys'],
 
     // Forward
 

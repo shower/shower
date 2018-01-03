@@ -57,8 +57,6 @@ class Container {
             .on('slideadd', this._onSlideAdd, this)
             .on('slideremove', this._onSlideRemove, this);
 
-        document.addEventListener('keydown', this._onKeyDown.bind(this));
-
         window.addEventListener('resize', () => {
             if (this.isSlideMode()) {
                 applyTransform(getTransformScale());
@@ -152,47 +150,6 @@ class Container {
     _onSlideRemove(event) {
         const slide = event.get('slide');
         slide.events.off('click', this.enterSlideMode, this);
-    }
-
-    _onKeyDown(event) {
-        if (!this._shower.isHotkeysEnabled()) return;
-
-        switch (event.key.toLowerCase()) {
-            case 'enter':
-                event.preventDefault();
-                if (!this.isSlideMode() && event.metaKey) {
-                    if (event.shiftKey) {
-                        this._shower.player.first();
-                    }
-
-                    this.enterSlideMode();
-                } else if (event.shiftKey) {
-                    this._shower.player.prev();
-                } else {
-                    this._shower.player.next();
-                }
-
-                break;
-
-            case 'escape':
-                event.preventDefault();
-                this.exitSlideMode();
-                break;
-
-            case 'p':
-                if (!this.isSlideMode() && event.altKey && event.metaKey) {
-                    event.preventDefault();
-                    this.enterSlideMode();
-                }
-                break;
-
-            case 'f5':
-                if (!this.isSlideMode() && event.shiftKey) {
-                    event.preventDefault();
-                    this.enterSlideMode();
-                }
-                break;
-        }
     }
 }
 

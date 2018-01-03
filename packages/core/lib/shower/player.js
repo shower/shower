@@ -1,5 +1,4 @@
 import EventEmitter from '../emitter';
-import { isInteractiveElement } from '../utils';
 
 /**
  * @class
@@ -29,8 +28,6 @@ class Player {
         this.events.group()
             .on('prev', this._onPrev, this, 100)
             .on('next', this._onNext, this, 100);
-
-        document.addEventListener('keydown', this._onKeyDown.bind(this));
     }
 
     _onPrev() {
@@ -123,59 +120,6 @@ class Player {
         const index = this._shower.getSlideIndex(slide);
 
         this.go(index);
-    }
-
-    _onKeyDown(event) {
-        if (!this._shower.isHotkeysEnabled()) return;
-        if (isInteractiveElement(event.target)) return;
-
-        const isModifierUsed = event.altKey || event.ctrlKey || event.metaKey;
-
-        switch (event.key.toLowerCase()) {
-            case 'pageup':
-            case 'arrowup':
-            case 'arrowleft':
-            case 'h':
-            case 'k':
-            case 'p':
-                if (!isModifierUsed) {
-                    this.prev({ cancelable: event.shiftKey });
-                }
-                break;
-
-            case 'pagedown':
-            case 'arrowdown':
-            case 'arrowright':
-            case 'l':
-            case 'j':
-            case 'n':
-                if (!isModifierUsed) {
-                    this.next({ cancelable: event.shiftKey });
-                }
-                break;
-
-            case ' ':
-                if (!isModifierUsed && this._shower.container.isSlideMode()) {
-                    if (event.shiftKey) {
-                        this.prev();
-                    } else {
-                        this.next();
-                    }
-                }
-                break;
-
-            case 'home':
-                this.first();
-                break;
-
-            case 'end':
-                this.last();
-                break;
-
-            default: return;
-        }
-
-        event.preventDefault();
     }
 }
 

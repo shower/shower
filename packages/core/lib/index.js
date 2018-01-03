@@ -1,5 +1,6 @@
 import 'shim-keyboard-event-key';
 import { Shower, defaultOptions } from './shower';
+import Keys from './plugins/keys';
 import Title from './plugins/title';
 import Location from './plugins/location';
 import Next from './plugins/next';
@@ -37,6 +38,7 @@ if ((hasOptions && autoInit) || container.dataset.autoInit !== 'false') {
 
     shower = new Shower(container, options);
     shower.plugins
+        .add('keys', Keys)
         .add('title', Title)
         .add('location', Location)
         .add('next', Next)

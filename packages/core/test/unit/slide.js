@@ -18,7 +18,7 @@ describe('Slide', () => {
 
     it('should fire event and change visited state after activate', done => {
         slide.events.once('activate', () => {
-            slide.state.get('visited').should.eq(1);
+            slide.state.visited.should.eq(1);
             done();
         });
 
