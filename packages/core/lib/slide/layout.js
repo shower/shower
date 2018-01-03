@@ -64,8 +64,6 @@ class Layout {
         if (this._parent) {
             this._setupListeners();
         }
-
-        this.events.emit('parentchange', { parent });
     }
 
     getParent() {
@@ -80,8 +78,6 @@ class Layout {
 
         this._parentElement = parentElement;
         parentElement.appendChild(this._element);
-
-        this.events.emit('parentelementchange', { parentElement });
     }
 
     /**
