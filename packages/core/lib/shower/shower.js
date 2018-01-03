@@ -162,7 +162,6 @@ class Shower {
     }
 
     _addSlide(slide) {
-        slide.state.index = this._slides.length;
         this._slides.push(slide);
         this.events.emit('slideadd', { slide });
     }

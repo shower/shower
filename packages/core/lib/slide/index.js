@@ -23,7 +23,6 @@ class Slide {
 
         this.state = Object.assign({
             visited: 0,
-            index: null,
         }, state);
 
         this._content = content;
