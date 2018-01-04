@@ -14,7 +14,6 @@ export let shower; // eslint-disable-line
 const dataAttrsOptions = [
     'debug-mode',
     'slides-selector',
-    'hotkeys',
 ];
 
 const hasOptions = typeof showerOptions !== 'undefined';

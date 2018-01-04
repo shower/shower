@@ -4,7 +4,6 @@ export default {
     debug_mode: false,
     debug_mode_classname: 'debug',
 
-    hotkeys: true,
     sessionstore_key: 'shower',
 
     slides_selector: '.shower .slide',

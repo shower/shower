@@ -14,7 +14,6 @@ import parseSlides from './parse-slides';
  * @param {(HTMLElement|string)} [container='.shower'] Container element or his selector.
  * @param {object} [options] Shower options.
  * @param {boolean} [options.debug_mode = false] Debug mode.
- * @param {boolean} [options.hotkeys = true] If true — hotkeys will works.
  * @param {string} [options.slides_selector = '.shower .slide'] Slide selector.
  * @param {object} [options.plugins] Plugins options.
  */
@@ -33,15 +32,10 @@ class Shower {
 
         this._slides = [];
         this._initSlides();
-        this._isHotkeysOn = true;
 
         if (this.options.debug_mode) {
             document.body.classList.add(this.options.debug_mode_classname);
             console.info('Debug mode: on');
-        }
-
-        if (!this.options.hotkeys) {
-            this.disableHotkeys();
         }
 
         this.plugins = new Plugins(this);
@@ -123,33 +117,6 @@ class Shower {
      */
     getSlideIndex(slide) {
         return this._slides.indexOf(slide);
-    }
-
-    /**
-     * Turn off hotkeys control.
-     *
-     * @returns {Shower}
-     */
-    disableHotkeys() {
-        this._isHotkeysOn = false;
-        return this;
-    }
-
-    /**
-     * Turn on hotkeys control.
-     *
-     * @returns {Shower}
-     */
-    enableHotkeys() {
-        this._isHotkeysOn = true;
-        return this;
-    }
-
-    /**
-     * @returns {boolean} Hotkeys is enabled.
-     */
-    isHotkeysEnabled() {
-        return this._isHotkeysOn;
     }
 
     _initSlides() {

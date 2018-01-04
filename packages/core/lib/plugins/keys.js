@@ -5,7 +5,6 @@ export default shower => {
     const containerElement = container.getElement();
     containerElement.addEventListener('keydown', event => {
         if (event.defaultPrevented) return;
-        if (!shower.isHotkeysEnabled()) return;
         if (isInteractiveElement(event.target)) return;
 
         slideActions(event);
