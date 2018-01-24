@@ -128,7 +128,7 @@ You can hide number manually:
 		</style>
 	</section>
 
-Some slide type `clear` could also hide slide number.
+Slide type `clear` could also hide slide number.
 
 ### Types
 
@@ -136,21 +136,23 @@ Types are changing slide’s look. You can set type by adding class to the main 
 
 #### White
 
-White type set white background and turns off slide number. Use it when you need a white slide.
+White type sets white background.
 
 	<section class="slide white">
 
 #### Black
 
-Black type set black background and turns off slide number. Use it when you need a black slide.
+Black type sets black background.
 
 	<section class="slide black">
 
-Please note that black slide type doesn’t change text color.
+Please note that black slide type doesn’t change text color. Make sure you 
 
 #### Clear
 
 Clear type turns off slide number. Use it when you need a pure slide. May be mixed with `white` or `black` type.
+
+	<section class="slide clear">
 
 #### Grid
 
