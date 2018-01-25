@@ -146,7 +146,7 @@ Black type sets black background.
 
 	<section class="slide black">
 
-Please note that black slide type doesn’t change text color. Make sure you 
+Please note that black slide type doesn’t change text color.
 
 #### Clear
 
