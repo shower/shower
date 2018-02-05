@@ -1,10 +1,8 @@
 const del = require('del');
-const fs = require('fs');
 const gulp = require('gulp');
 const merge = require('merge-stream');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
-const rsync = require('gulp-rsync');
 const sequence = require('run-sequence');
 const zip = require('gulp-zip');
 const pages = require('gulp-gh-pages');
@@ -49,7 +47,7 @@ gulp.task('prepare', () => {
 		})
 		.pipe(rename( (path) => {
 			path.dirname = 'shower/themes/material/' + path.dirname;
-		}))
+		}));
 
 	const ribbon = gulp.src([
 			'**', '!package.json'
