@@ -6,6 +6,7 @@ const replace = require('gulp-replace');
 const sequence = require('run-sequence');
 const zip = require('gulp-zip');
 const pages = require('gulp-gh-pages');
+const highlightCodeSnippets = require('./highlightCodeSnippets');
 const browserSync = require('browser-sync').create();
 
 gulp.task('prepare', () => {
@@ -27,9 +28,14 @@ gulp.task('prepare', () => {
 			'$1shower/themes/$3/$4', { skipBinary: true }
 		))
 		.pipe(replace(
+			/(<link rel="stylesheet" href=")(node_modules\/highlight\.js\/styles)\/(.*\.css">)/g,
+			'$1shower/highlight.js/styles/$3', { skipBinary: true }
+		))
+		.pipe(replace(
 			/(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
 			'$1shower/$3', { skipBinary: true }
-		));
+		))
+		.pipe(highlightCodeSnippets());
 
 	const core = gulp.src([
 			'shower.min.js'
@@ -64,7 +70,16 @@ gulp.task('prepare', () => {
 			'$1../../$3', { skipBinary: true }
 		));
 
-	return merge(shower, core, themes)
+	const highlightStyles = gulp.src([
+			'**', '!package.json'
+		], {
+			cwd: 'node_modules/highlight.js/styles'
+		})
+			.pipe(rename( (path) => {
+				path.dirname = 'shower/highlight.js/styles/' + path.dirname;
+			}));
+
+	return merge(shower, core, themes, highlightStyles)
 		.pipe(gulp.dest('prepared'));
 
 });

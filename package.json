@@ -32,16 +32,18 @@
     "shower-ribbon": "^2.1.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.12",
+    "browser-sync": "^2.23.6",
+    "cherio": "^1.0.0-rc.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-gh-pages": "^0.5.4",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
-    "gulp-zip": "^4.0.0",
+    "gulp-zip": "^4.1.0",
+    "highlight.js": "^9.12.0",
     "merge-stream": "^1.0.0",
     "path-exists-cli": "^1.0.0",
-    "run-sequence": "^2.1.0"
+    "run-sequence": "^2.2.1"
   },
   "scripts": {
     "start": "gulp",
