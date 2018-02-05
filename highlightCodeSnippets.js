@@ -82,11 +82,7 @@ module.exports = function() {
 	transformStream._transform = (file, encoding, callback) => {
 		let error = null;
 
-		if (file === null || file.isDirectory()) {
-			return callback();
-		}
-
-		if (file.isBuffer()) {
+		if (file.isBuffer() && file.path.endsWith('.html')) {
 			const content = String(file.contents);
 			const compiledFile = new gutil.File();
 
@@ -98,7 +94,7 @@ module.exports = function() {
 			return callback(error, compiledFile);
 		}
 
-		return callback();
+		return callback(null, file);
 	};
 
 	return transformStream;

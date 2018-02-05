@@ -313,6 +313,17 @@ If you want to color part of code, wrap this part with `mark` to add yellow back
 		return <mark class="important">true</mark>;
 	}</code></pre>
 
+Automatic code highlighting based on [https://highlightjs.org/](https://highlightjs.org/);
+All code samples by default would be highlighted as HTML, to switch the language type this name in class property of <pre> tag;
+To switch highlighting style find <link> tag with linked highlight.js style in <head>;
+Check the available languages and styles list [https://highlightjs.org/static/demo/](https://highlightjs.org/static/demo/);
+All included to <pre> custom tags will be saved =)
+
+	<pre class="javascript"><code>function <mark>action()</mark> {
+		<span class="comment">// TODO<span>
+		return <mark class="important">true</mark>;
+	}</code></pre>
+
 ### Elements
 
 …
