@@ -47,7 +47,7 @@ And you’ll have your slides published to `http://USER.github.io/REPO/`.
 
 ## Browser Support
 
-Latest stable versions of Chrome, Internet Explorer, Firefox, Opera and Safari are supported.
+Latest stable versions of Chrome, Edge, Firefox, and Safari are supported.
 
 ## Contributing
 
