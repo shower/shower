@@ -20,6 +20,7 @@ gulp.task('prepare', () => {
 			'!LICENSE.md',
 			'!README.md',
 			'!gulpfile.js',
+			'!highlightCodeSnippets.js',
 			'!package.json',
 			'!package-lock.json'
 		])
@@ -28,14 +29,9 @@ gulp.task('prepare', () => {
 			'$1shower/themes/$3/$4', { skipBinary: true }
 		))
 		.pipe(replace(
-			/(<link rel="stylesheet" href=")(node_modules\/highlight\.js\/styles)\/(.*\.css">)/g,
-			'$1shower/highlight.js/styles/$3', { skipBinary: true }
-		))
-		.pipe(replace(
 			/(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
 			'$1shower/$3', { skipBinary: true }
-		))
-		.pipe(highlightCodeSnippets());
+		));
 
 	const core = gulp.src([
 			'shower.min.js'
@@ -82,6 +78,27 @@ gulp.task('prepare', () => {
 	return merge(shower, core, themes, highlightStyles)
 		.pipe(gulp.dest('prepared'));
 
+});
+
+gulp.task('highlight', () => {
+	const STYLES_SRC_PATH = 'node_modules/highlight.js/styles';
+	const STYLES_DEST_PATH = 'shower/highlight.js/styles/';
+
+	const copyStyles = gulp.src(['**', '!package.json'], {cwd: STYLES_SRC_PATH})
+		.pipe(rename(path =>
+			path.dirname = STYLES_DEST_PATH + path.dirname
+		))
+		.pipe(gulp.dest('prepared'));
+
+	const highlightFiles = gulp.src(['prepared/*.html'])
+		.pipe(replace(
+			/(<link rel="stylesheet" href=")(node_modules\/highlight\.js\/styles)\/(.*\.css">)/g,
+			`$1${STYLES_DEST_PATH}$3`, { skipBinary: true }
+		))
+		.pipe(highlightCodeSnippets())
+		.pipe(gulp.dest(''));
+
+	return merge(copyStyles, highlightFiles);
 });
 
 gulp.task('zip', () => {
