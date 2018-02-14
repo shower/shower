@@ -133,8 +133,9 @@ class Container {
      * @returns {Container}
      */
     scrollToCurrentSlide() {
+        const slidesSelector = this._shower.options.slides_selector;
         const activeSlideClass = this._shower.options.slide_active_classname;
-        const slideElement = this._element.querySelector(`.${activeSlideClass}`);
+        const slideElement = document.querySelector(`${slidesSelector}.${activeSlideClass}`);
         if (slideElement) {
             slideElement.scrollIntoView();
         }
