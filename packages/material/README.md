@@ -10,7 +10,7 @@ Get the Shower template where Material is already included. Download the [templa
 
 	npm install shower
 
-If you want to install Ribbon separately you can install the package:
+If you want to install Material separately you can install the package:
 
 	npm install shower-material
 
