@@ -1,5 +1,4 @@
 const del = require('del');
-const fs = require('fs');
 const gulp = require('gulp');
 const merge = require('merge-stream');
 const rename = require('gulp-rename');
