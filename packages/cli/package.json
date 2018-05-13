@@ -1,0 +1,27 @@
+{
+  "name": "shower-cli",
+  "description": "CLI for Shower & friends",
+  "version": "0.1.0",
+  "author": {
+    "name": "Nikolay Govorov",
+    "url": "https://govorov.online"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikolay-govorov/shower-cli.git"
+  },
+  "bin": {
+    "shower-cli": "./bin/shower.js"
+  },
+  "main": "./bin/shower.js",
+  "keywords": [
+    "shower",
+    "cli"
+  ],
+  "scripts": {},
+  "files": [
+    "bin",
+    "lib"
+  ]
+}
