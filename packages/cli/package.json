@@ -1,27 +1,22 @@
 {
   "name": "shower-cli",
-  "description": "CLI for Shower & friends",
   "version": "0.1.0",
-  "author": {
-    "name": "Nikolay Govorov",
-    "url": "https://govorov.online"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nikolay-govorov/shower-cli.git"
-  },
-  "bin": {
-    "shower-cli": "./bin/shower.js"
-  },
-  "main": "./bin/shower.js",
+  "description": "CLI for Shower & friends",
   "keywords": [
     "shower",
     "cli"
   ],
-  "scripts": {},
-  "files": [
-    "bin",
-    "lib"
-  ]
+  "author": "Nikolay Govorov <nikolay_govorov@bk.ru>",
+  "license": "MIT",
+  "repository": "shower/cli",
+  "bin": "cli.js",
+  "engines": {
+    "node": ">=6.11.5"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  }
 }
