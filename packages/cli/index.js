@@ -1,5 +1,4 @@
-const fs = require('fs');
-const util = require('util');
+const opn = require('opn');
 const path = require('path');
 const puppeteer = require('puppeteer');
 const { createServer } = require('http');
@@ -7,48 +6,46 @@ const { Server: StaticServer } = require('node-static');
 
 const utils = require('./utils');
 
-class ShowerCLI {
-  constructor(root) {
-    this.root = root;
+const ROOT = process.env.PWD;
 
-    this.config = {
-      port: 8080,
-      pdfFile: 'presentation.pdf',
-      templateURL: 'http://shwr.me/shower.zip',
-    };
-  }
-
+module.export = {
   async pdf() {
+    const fileName = 'presentation.pdf';
+
     console.log('Run to create pdf');
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    await page.goto(`file://${this.root}/index.html`);
+    await page.goto(`file://${ROOT}/index.html`);
 
-    await page.pdf({ path: this.config.pdfFile, width: '960px', height: '600px' });
+    await page.pdf({ path: fileName, width: '960px', height: '600px' });
 
     browser.close();
-  }
+  },
 
-  async new() {
+  async create() {
+    const template = 'http://shwr.me/shower.zip';
+
     console.log('Run to create new project\n');
 
-    const archive = path.join(this.root, 'shower.zip');
+    const archive = path.join(ROOT, 'shower.zip');
 
     console.log(`-- Download template...`);
-    await utils.download({ url: this.config.templateURL, destination: archive }); // Download
+    await utils.download({ url: template, destination: archive }); // Download
 
     console.log(`-- Unzip...`);
-    await utils.unzip({ file: archive, destination: this.root }); // Unzip
+    await utils.unzip({ file: archive, destination: ROOT }); // Unzip
 
     console.log(`-- Clear...`);
     await utils.remove({ file: archive }); // Remove archive
-  }
+  },
 
-  serve() {
+  serve(options) {
+    const port = options.port || 8080;
+
     return new Promise((resolve, reject) => {
-      const server = new StaticServer(this.root);
+      const server = new StaticServer(ROOT);
 
       const app = createServer((request, response) => {
         request.addListener('end', () => {
@@ -58,15 +55,17 @@ class ShowerCLI {
 
       app.on('error', reject);
 
-      app.listen(this.config.port, (error) => {
+      app.listen(port, (error) => {
         if (error) {
           reject(error);
         }
 
-        console.log(`Server listening "${this.config.port}" port...`);
+        if (options.open) {
+          opn(`http://localhost:${port}`);
+        }
+
+        console.log(`Server listening "${port}" port...`);
       });
     });
-  }
-}
-
-module.exports = ShowerCLI;
+  },
+};
