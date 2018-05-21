@@ -20,6 +20,14 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 1. Download and unzip [template archive](http://shwr.me/shower.zip)
 2. Open `index.html` and start creating your presentation
 
+## Deploy to Netlify
+
+By clicking the button below you can fork this repo and deploy it to Netlify.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/shower/shower)
+
+ By doing this you would get a GitHub repo linked with Netlify in a way any change to the repo would trigger a shower rebuild and deploy to Netlify servers, which allows for a really easy way to create and share Shower presentation without the need to install anything locally.
+
 ## Advanced
 
 1. Clone this repository locally `git clone git@github.com:shower/shower.git`.
