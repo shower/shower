@@ -1,0 +1,4 @@
+[build]
+  publish = "prepared"
+  command = "npm run prepare"
+
