@@ -6,7 +6,7 @@ const replace = require('gulp-replace');
 const rsync = require('gulp-rsync');
 const sequence = require('run-sequence');
 const zip = require('gulp-zip');
-const ghpages = require('gh-pages');
+const pages = require('gh-pages');
 const browserSync = require('browser-sync').create();
 
 gulp.task('prepare', () => {
@@ -77,7 +77,7 @@ gulp.task('zip', () => {
 });
 
 gulp.task('upload', () => {
-	return ghpages.publish('prepared')
+	return pages.publish('prepared')
 });
 
 gulp.task('archive', (callback) => {
