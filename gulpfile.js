@@ -97,7 +97,7 @@ gulp.task('publish', (callback) => {
 });
 
 gulp.task('clean', () => {
-	return del('prepared/**')
+	return del('prepared/**');
 });
 
 gulp.task('serve', () => {
