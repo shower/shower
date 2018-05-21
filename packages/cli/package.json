@@ -9,7 +9,9 @@
   "author": "Nikolay Govorov <nikolay_govorov@bk.ru>",
   "license": "MIT",
   "repository": "shower/cli",
-  "bin": "cli.js",
+  "bin": {
+    "shower": "cli.js"
+  },
   "engines": {
     "node": ">=6.11.5"
   },
