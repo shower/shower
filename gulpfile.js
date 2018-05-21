@@ -6,7 +6,7 @@ const replace = require('gulp-replace');
 const rsync = require('gulp-rsync');
 const sequence = require('run-sequence');
 const zip = require('gulp-zip');
-const pages = require('gulp-gh-pages');
+const ghpages = require('gh-pages');
 const browserSync = require('browser-sync').create();
 
 gulp.task('prepare', () => {
@@ -77,8 +77,7 @@ gulp.task('zip', () => {
 });
 
 gulp.task('upload', () => {
-	return gulp.src('prepared/**')
-		.pipe(pages())
+	return ghpages.publish('prepared')
 });
 
 gulp.task('archive', (callback) => {
@@ -98,7 +97,7 @@ gulp.task('publish', (callback) => {
 });
 
 gulp.task('clean', () => {
-	return del('prepared/**');
+	return del('prepared/**')
 });
 
 gulp.task('serve', () => {
