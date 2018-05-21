@@ -18,5 +18,11 @@
   },
   "scripts": {
     "test": "jest --coverage"
+  },
+  "dependencies": {
+    "node-static": "^0.7.10",
+    "node-wget": "^0.4.2",
+    "puppeteer": "^1.4.0",
+    "yauzl": "^2.9.1"
   }
 }

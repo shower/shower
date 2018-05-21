@@ -10,5 +10,7 @@ if (command === undefined) {
 } else if (typeof app[command] !== 'function') {
   console.error(`Unknown task "${command}"`);
 } else {
-  app[command]();
+  app[command]()
+    .catch((error) => console.error('Error: ', error))
+    .then(() => console.log('Done!'));
 }
