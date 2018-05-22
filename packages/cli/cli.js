@@ -28,7 +28,15 @@ app
 const commands = [
   {
     command: 'create',
-    describe: 'Create a new project'
+    describe: 'Create a new project',
+    builder: yargs => yargs.options({
+      file: {
+        alias: 'f',
+        type: 'string',
+        default: 'presentation.pdf',
+        describe: 'File name'
+      }
+    })
   },
 
   {
@@ -37,6 +45,7 @@ const commands = [
     builder: yargs => yargs.options({
       open: {
         alias: 'o',
+        type: 'bool',
         default: false,
         describe: 'Open browser'
       },
@@ -51,7 +60,15 @@ const commands = [
 
   {
     command: 'pdf',
-    describe: 'Converts the presentation to PDF'
+    describe: 'Converts the presentation to PDF',
+    builder: yargs => yargs.options({
+      url: {
+        alias: 'u',
+        type: 'string',
+        default: 'http://shwr.me/shower.zip',
+        describe: 'URL to the archive with the template'
+      }
+    })
   }
 ]
 
