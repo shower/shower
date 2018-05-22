@@ -22,7 +22,7 @@ if (!semver.satisfies(process.version, engines.node)) {
 app
   .locale('en')
   .version(version)
-  .usage('Usage: $0 <command> [-h, --help] [-v, --version] [...options]')
+  .usage('Usage: ' + chalk.cyan('$0 [--version] [--help] <command> [<args>]'))
 
 const commands = [
   {
@@ -60,16 +60,15 @@ const commands = [
   },
 
   {
-    command: 'pdf',
+    command: 'pdf [<file>]',
     describe: 'Converts the presentation to PDF',
-    builder: yargs => yargs.options({
-      file: {
+    builder: yargs => yargs
+      .positional('file', {
         alias: 'f',
         type: 'string',
         default: 'presentation.pdf',
         describe: 'File name'
-      }
-    })
+      })
   }
 ]
 
@@ -107,18 +106,16 @@ for (const command of commands) {
           signale.fatal(error)
         })
     },
-    describe: `\b- ${ command.describe }`
+    describe: `\b- ${ chalk.yellow(command.describe) }`
   }))
 }
 
 // add some useful info on help
 app.epilog(
-  `Run ${ chalk.cyan(`$0 <command> -h`) } for detailed usage of given command`
+  `See ` +
+  chalk.cyan('$0 <command> --help') +
+  ' to read about a specific subcommand.'
 )
-
-app
-  .alias('help', 'h')
-  .alias('version', 'v')
 
 app.strict()
 
