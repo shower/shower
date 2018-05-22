@@ -13,11 +13,11 @@ npm i -g shower/cli
 ## Usage:
 
 ```bash
-$ shower [task]
+shower [--version] [--help] <command> [<args>]
 ```
 
-## Tasks
+### Commands:
 
- - `new` - creating new project
- - `pdf` - build pdf presentation
- - `serve` - run development server
+ - `create [<directory>]` - Creating a new project
+ - `serve` - Serve a the presentation in development mode
+ - `pdf [<file>]` - Converts the presentation to PDF
