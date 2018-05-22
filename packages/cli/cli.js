@@ -26,16 +26,18 @@ app
 
 const commands = [
   {
-    command: 'create',
+    command: 'create [<directory>]',
     describe: 'Create a new project',
-    builder: yargs => yargs.options({
-      url: {
-        alias: 'u',
-        type: 'string',
-        default: 'http://shwr.me/shower.zip',
-        describe: 'URL to the archive with the template'
-      }
-    })
+    builder: yargs => yargs
+      .positional('directory', {})
+      .options({
+        url: {
+          alias: 'u',
+          type: 'string',
+          default: 'http://shwr.me/shower.zip',
+          describe: 'URL to the archive with the template'
+        }
+      })
   },
 
   {
@@ -76,7 +78,7 @@ const config = {
 }
 
 for (const command of commands) {
-  const { command: name } = command
+  const name = command.command.split(' ')[0]
 
   const lib = require(`./lib/${ name }.js`)
 

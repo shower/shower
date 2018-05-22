@@ -1,7 +1,7 @@
 const download = require('download')
 
-function create ({ root }, { url }) {
-  return download(url, root, { extract: true })
+function create ({ root }, { url, directory = root }) {
+  return download(url, directory, { extract: true })
 }
 
 create.messages = {
