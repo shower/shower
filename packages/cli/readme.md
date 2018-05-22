@@ -16,4 +16,4 @@ $ shower [task]
 
  - `new` - creating new project
  - `pdf` - build pdf presentation
- - `serve` - run dev server
+ - `serve` - run development server

@@ -12,14 +12,39 @@
   "bin": {
     "shower": "cli.js"
   },
-  "engines": {
-    "node": ">=8"
-  },
   "scripts": {
-    "test": "jest --coverage"
+    "lint-staged": "lint-staged",
+    "spellcheck": "yaspeller-ci *.md",
+    "lint": "eslint-ci *.js test/{fixtures/**/,}*.js",
+    "test": "jest && npm run lint && npm run spellcheck"
   },
+  "engines": {
+    "node": ">=6.11.5"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/test/fixtures"
+    ]
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
   "devDependencies": {
-    "jest": "^22.4.3"
+    "eslint": "^4.19.1",
+    "eslint-ci": "^0.1.1",
+    "eslint-config-logux": "^23.0.0",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.15.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.1.2",
+    "pre-commit": "^1.2.2",
+    "yaspeller-ci": "^1.0.0"
   },
   "dependencies": {
     "chalk": "^2.4.1",
