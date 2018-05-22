@@ -1,8 +1,6 @@
 const puppeteer = require('puppeteer')
 
-module.exports = function pdf ({ root }, { file }) {
-  console.log('Run to create pdf')
-
+function pdf ({ root }, { file }) {
   let browser, page
 
   return Promise.resolve()
@@ -20,3 +18,10 @@ module.exports = function pdf ({ root }, { file }) {
       browser.close()
     })
 }
+
+pdf.messages = (_, { file }) => ({
+  start: 'Creating PDF in progress',
+  end: `PDF built in '${ file }'`
+})
+
+module.exports = pdf

@@ -1,7 +1,12 @@
 const download = require('download')
 
-module.exports = function create ({ root }, { url }) {
-  console.log('Run to create new project\n')
-
+function create ({ root }, { url }) {
   return download(url, root, { extract: true })
 }
+
+create.messages = {
+  start: 'Creating new project in progress',
+  end: 'Project created'
+}
+
+module.exports = create

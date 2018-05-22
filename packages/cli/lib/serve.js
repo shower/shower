@@ -2,7 +2,7 @@ const opn = require('opn')
 const { createServer } = require('http')
 const { Server: StaticServer } = require('node-static')
 
-module.exports = function serve ({ root }, { port, open }) {
+function serve ({ root }, { port, open }) {
   return new Promise((resolve, reject) => {
     const server = new StaticServer(root)
 
@@ -22,8 +22,12 @@ module.exports = function serve ({ root }, { port, open }) {
       if (open) {
         opn(`http://localhost:${ port }`)
       }
-
-      console.log(`Server listening "${ port }" port...`)
     })
   })
 }
+
+serve.messages = (_, { port }) => ({
+  start: `Server listening ${ port } port`
+})
+
+module.exports = serve

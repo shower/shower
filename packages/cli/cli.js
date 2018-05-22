@@ -3,6 +3,7 @@
 const app = require('yargs')
 const chalk = require('chalk')
 const semver = require('semver')
+const signale = require('signale')
 
 const { engines, version } = require('./package.json')
 
@@ -74,15 +75,29 @@ const config = {
   root: process.env.PWD
 }
 
-function loadLib (name) {
-  return require(`./lib/${ name }.js`)
-}
-
 for (const command of commands) {
   const { command: name } = command
 
+  const lib = require(`./lib/${ name }.js`)
+
   app.command(Object.assign(command, {
-    handler: (command.handler || loadLib(name)).bind(null, config),
+    handler (options) {
+      let messages = lib.messages
+
+      if (typeof messages === 'function') {
+        messages = messages(config, options)
+      }
+
+      signale.watch(messages.start)
+
+      return lib(config, options)
+        .then(() => {
+          signale.success(messages.end)
+        })
+        .catch(error => {
+          signale.fatal(error)
+        })
+    },
     describe: `\b- ${ command.describe }`
   }))
 }
