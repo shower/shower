@@ -1,22 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const yauzl = require('yauzl')
-
-function mkdirp (dir) {
-  return new Promise(resolve => {
-    if (dir === '.') {
-      resolve(); return
-    }
-
-    fs.stat(dir, error => {
-      if (error === null) { // already exists
-        resolve(); return
-      }
-
-      mkdirp(path.dirname(dir)).then(() => fs.mkdir(dir, resolve))
-    })
-  })
-}
+const mkdirp = require('mkdirp')
 
 module.exports = function unzip ({ file, destination = '.' }) {
   return new Promise((resolve, reject) => {
@@ -33,9 +18,7 @@ module.exports = function unzip ({ file, destination = '.' }) {
 
       zipfile.on('entry', entry => {
         if (/\/$/.test(entry.fileName)) {
-          mkdirp(entry.fileName)
-            .then(() => zipfile.readEntry())
-            .catch(reject)
+          mkdirp(entry.fileName, () => zipfile.readEntry())
         } else {
           const out =
             fs.createWriteStream(path.join(destination, entry.fileName))
