@@ -1,5 +1,7 @@
 # CLI for Shower
 
+[![Build Status](https://travis-ci.org/shower/cli.svg?branch=master)](https://travis-ci.org/shower/cli)
+
 ## Install
 
 ```bash
