@@ -1,0 +1,9 @@
+language: node_js
+cache: npm
+node_js:
+  - node
+  - "9"
+  - "8"
+  - "6"
+git:
+  depth: 5
