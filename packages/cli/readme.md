@@ -1,14 +1,16 @@
-# CLI for Shower
+# Shower CLI
+
+**Command line interface for [Shower](http://shwr.me/)**
 
 [![Build Status](https://travis-ci.org/shower/cli.svg?branch=master)](https://travis-ci.org/shower/cli)
 
-## Install
+## Installation
 
 ```bash
-$ npm i -g shower/cli
+npm i -g shower/cli
 ```
 
-## Usage
+## Usage:
 
 ```bash
 $ shower [task]
