@@ -18,8 +18,6 @@ if (!semver.satisfies(process.version, engines.node)) {
   process.exit(1)
 }
 
-const libs = require('./')
-
 app
   .locale('en')
   .version(version)
@@ -30,11 +28,11 @@ const commands = [
     command: 'create',
     describe: 'Create a new project',
     builder: yargs => yargs.options({
-      file: {
-        alias: 'f',
+      url: {
+        alias: 'u',
         type: 'string',
-        default: 'presentation.pdf',
-        describe: 'File name'
+        default: 'http://shwr.me/shower.zip',
+        describe: 'URL to the archive with the template'
       }
     })
   },
@@ -62,21 +60,29 @@ const commands = [
     command: 'pdf',
     describe: 'Converts the presentation to PDF',
     builder: yargs => yargs.options({
-      url: {
-        alias: 'u',
+      file: {
+        alias: 'f',
         type: 'string',
-        default: 'http://shwr.me/shower.zip',
-        describe: 'URL to the archive with the template'
+        default: 'presentation.pdf',
+        describe: 'File name'
       }
     })
   }
 ]
 
+const config = {
+  root: process.env.PWD
+}
+
+function loadLib (name) {
+  return require(`./lib/${ name }.js`)
+}
+
 for (const command of commands) {
   const { command: name } = command
 
   app.command(Object.assign(command, {
-    handler: command.handler || libs[name],
+    handler: (command.handler || loadLib(name)).bind(null, config),
     describe: `\b- ${ command.describe }`
   }))
 }

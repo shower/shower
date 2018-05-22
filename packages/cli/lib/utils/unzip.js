@@ -1,19 +1,6 @@
 const fs = require('fs')
 const path = require('path')
 const yauzl = require('yauzl')
-const wget = require('node-wget')
-const { promisify } = require('util')
-
-module.exports.download = ({ url, destination }) =>
-  new Promise((resolve, reject) => {
-    wget({ url, dest: destination }, error => {
-      if (error) {
-        reject(error)
-      } else {
-        resolve()
-      }
-    })
-  })
 
 function mkdirp (dir) {
   return new Promise(resolve => {
@@ -31,8 +18,8 @@ function mkdirp (dir) {
   })
 }
 
-module.exports.unzip = ({ file, destination = '.' }) =>
-  new Promise((resolve, reject) => {
+module.exports = function unzip ({ file, destination = '.' }) {
+  return new Promise((resolve, reject) => {
     yauzl.open(file, { lazyEntries: true }, (error, zipfile) => {
       if (error) {
         reject(error); return
@@ -67,5 +54,4 @@ module.exports.unzip = ({ file, destination = '.' }) =>
       })
     })
   })
-
-module.exports.remove = ({ file }) => promisify(fs.unlink)(file)
+}
