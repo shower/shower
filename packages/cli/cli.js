@@ -82,17 +82,24 @@ for (const command of commands) {
 
   app.command(Object.assign(command, {
     handler (options) {
+      const s = Date.now()
+
       let messages = lib.messages
 
       if (typeof messages === 'function') {
         messages = messages(config, options)
       }
 
-      signale.watch(messages.start)
+      signale.pending(messages.start)
 
       return lib(config, options)
         .then(() => {
-          signale.success(messages.end)
+          const time = ((Date.now() - s) / 1000).toFixed()
+
+          signale.success({
+            message: messages.end,
+            suffix: chalk.yellow(`[in ${ time }s]`)
+          })
         })
         .catch(error => {
           signale.fatal(error)
