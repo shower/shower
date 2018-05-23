@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm i -g shower/cli
+npm i -g shower-cli
 ```
 
 ## Usage:
