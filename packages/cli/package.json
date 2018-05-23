@@ -1,7 +1,7 @@
 {
   "name": "shower-cli",
   "version": "0.1.0",
-  "description": "CLI for Shower & friends",
+  "description": "Command line interface for Shower",
   "keywords": [
     "shower",
     "cli"
@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": "shower/cli",
   "bin": {
-    "shower": "cli.js"
+    "shower-cli": "cli.js"
   },
   "scripts": {
     "lint-staged": "lint-staged",
