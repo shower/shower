@@ -70,9 +70,7 @@ gulp.task('build', () => {
 
 gulp.task('sync', () => {
 
-	return gulp.src([
-			'dest/**', '.htaccess'
-		])
+	return gulp.src('dest/**')
 		.pipe(replace(
 			/(<\/body>)/,
 			'\t' + fs.readFileSync('counter.html', 'utf8') + '$1', { skipBinary: true }
