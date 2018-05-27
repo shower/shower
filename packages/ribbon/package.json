@@ -1,7 +1,7 @@
 {
   "name": "shower-ribbon",
   "description": "Ribbon theme for Shower HTML presentation engine",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "author": {
     "name": "Vadim Makeev",
     "url": "http://pepelsbey.net/"
@@ -22,32 +22,20 @@
     "theme"
   ],
   "files": [
-    "docs/**",
     "fonts/**",
-    "images/**",
     "pictures/**",
-    "styles/*.css",
+    "styles/**/*.css",
     "index.html",
     "LICENSE.md",
     "README.md"
   ],
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "browser-sync": "^2.14.0",
-    "gulp": "^3.9.1",
-    "gulp-header": "^1.8.8",
-    "gulp-postcss": "^7.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.6.1",
-    "gulp-sass": "^3.0.0",
-    "path-exists-cli": "^1.0.0",
-    "postcss-csso": "^2.0.0",
-    "shower-core": "latest"
+    "browser-sync": "^2.24.4",
+    "shower-core": "latest",
+    "stylelint": "^9.2.1"
   },
   "scripts": {
-    "dev": "gulp",
-    "styles": "gulp styles",
-    "prepublish": "npm run styles",
-    "test": "path-exists styles/screen-16x10.css && path-exists styles/screen-4x3.css"
+    "test": "stylelint 'styles/**/*.css'",
+    "start": "browser-sync start --server --no-notify --no-ui --files 'index.html, styles/**/*.css'"
   }
 }
