@@ -1,0 +1,33 @@
+/* Columns */
+
+.columns {
+    display: grid;
+    width: 100%;
+    grid-column-gap: 75px;
+}
+
+.columns.two {
+    grid-template-columns: 1fr 1fr;
+}
+
+.columns.three {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.columns.four {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/* .double,
+.triple {
+    column-gap: 75px;
+    hyphens: auto;
+}
+
+.double {
+    column-count: 2;
+}
+
+.triple {
+    column-count: 3;
+} */

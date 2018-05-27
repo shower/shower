@@ -1,0 +1,29 @@
+/* Progress */
+
+.progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: var(--progress-size);
+    background: var(--color-blue);
+    transform-origin: 0 100%;
+    transform: skewX(45deg);
+    transition: all 0.2s linear;
+}
+
+.progress[style*='100%'] {
+    transform: none;
+}
+
+/* List */
+
+.shower.list .progress {
+    display: none;
+}
+
+/* Full */
+
+.shower.full .progress {
+    display: block;
+}

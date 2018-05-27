@@ -1,0 +1,54 @@
+/* Shout */
+
+.slide .shout {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    line-height: 1;
+    font-size: 150px;
+    transform: translateY(-50%);
+}
+
+/* Link */
+
+.slide .shout a {
+    background-image:
+        linear-gradient(
+            to top,
+            rgba(75, 134, 194, 0.4) 0.06em,
+            transparent 0.06em
+        );
+    background-position: bottom 0.13em left 0;
+    background-repeat: repeat-x;
+}
+
+/* Full */
+
+.shower.full .slide .shout.grow {
+    opacity: 0;
+    transform: scale(0.1) translateY(-50%);
+}
+
+.shower.full .slide .shout.shrink {
+    opacity: 0;
+    transform: scale(10) translateY(-50%);
+}
+
+/* Active */
+
+@keyframes shout {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(-50%);
+    }
+}
+
+.shower.full .slide.active .shout.grow,
+.shower.full .slide.active .shout.shrink {
+    animation-name: shout;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}

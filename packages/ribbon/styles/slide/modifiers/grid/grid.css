@@ -1,0 +1,19 @@
+/* Grid */
+
+.slide.grid {
+    background-image: url('grid.png');
+
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: pixelated;
+}
+
+/* Retina */
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    .slide.grid {
+        background-image: url('grid@2x.png');
+        background-size: 100% auto;
+    }
+}

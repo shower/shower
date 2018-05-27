@@ -1,0 +1,34 @@
+/* Footer */
+
+.slide footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 41px 100px 8px;
+    background: var(--color-yellow); /* TODO: lighten, 5% */
+    box-shadow: 0 1px 0 var(--color-yellow) inset;
+    transition: bottom 0.3s;
+}
+
+/* Content */
+
+.slide footer mark {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* Footer List */
+
+.shower.list .slide footer {
+    bottom: calc(var(--slide-height) * -1);
+}
+
+.shower.list .slide:hover footer {
+    bottom: 0;
+}
+
+/* Footer Full */
+
+.shower.full .slide footer {
+    display: none;
+}
