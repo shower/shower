@@ -6,13 +6,21 @@
     bottom: 0;
     width: 0;
     height: var(--progress-size);
-    background: var(--color-blue);
-    transform-origin: 0 100%;
-    transform: skewX(45deg);
+    overflow: hidden;
     transition: all 0.2s linear;
 }
 
-.progress[style*='100%'] {
+.progress::before {
+    display: block;
+    width: 100%;
+    height: var(--progress-size);
+    background: var(--color-blue);
+    content: '';
+    transform-origin: 0 100%;
+    transform: skewX(45deg);
+}
+
+.progress[style*='100%']::before {
     transform: none;
 }
 
