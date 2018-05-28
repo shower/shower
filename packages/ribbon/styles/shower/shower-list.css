@@ -8,13 +8,6 @@
     background: var(--color-grey);
 }
 
-/* IE10-11 scrolling fix */
-
-.shower.list {
-    position: absolute;
-    clip: rect(0, auto, auto, 0);
-}
-
 /* Responsive */
 
 @media (min-width: 1174px) {
