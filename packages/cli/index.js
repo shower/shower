@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const l = fs.readdirSync('./lib')
+module.exports = fs.readdirSync('./lib')
   .filter(file => /\.js$/i.test(file))
   .map(name => name.replace(/\.js$/, ''))
   .reduce((libs, libName) => {
@@ -8,5 +8,3 @@ const l = fs.readdirSync('./lib')
 
     return Object.assign(libs, { [libName]: lib })
   }, {})
-
-console.log(l)
