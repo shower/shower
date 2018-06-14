@@ -30,7 +30,7 @@ By clicking the button below you can fork this repo and deploy it to Netlify.
 
 ## Advanced
 
-1. Clone this repository locally `git clone git@github.com:shower/shower.git`.
+1. Сlone this repository `git clone --depth=1 git@github.com:shower/shower.git`, (`--depth=1` will make it way faster).
 2. [Create](https://github.com/new) a new blank repository and copy its cloning address `git@github.com:USER/REPO.git`.
 3. Change remote of your local clone to the one you’ve just copied `git remote set-url origin git@github.com:USER/REPO.git`.
 4. Push your local clone to GitHub `git push -u origin master`.
