@@ -30,12 +30,12 @@
     "README.md"
   ],
   "devDependencies": {
-    "browser-sync": "^2.24.4",
+    "live-server": "^1.2.0",
     "shower-core": "^2.1.0",
     "stylelint": "^9.2.1"
   },
   "scripts": {
     "test": "stylelint 'styles/**/*.css'",
-    "start": "browser-sync start --server --no-notify --no-ui --files 'index.html, styles/**/*.css'"
+    "start": "live-server . --watch=fonts/*,pictures/*,styles/**/*.css,index.html"
   }
 }
