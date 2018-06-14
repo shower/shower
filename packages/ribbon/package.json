@@ -31,7 +31,7 @@
   ],
   "devDependencies": {
     "browser-sync": "^2.24.4",
-    "shower-core": "latest",
+    "shower-core": "^2.1.0",
     "stylelint": "^9.2.1"
   },
   "scripts": {
