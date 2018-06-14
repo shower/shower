@@ -36,7 +36,7 @@
     z-index: 0;
     overflow: hidden;
     box-sizing: border-box;
-    padding: 106px 100px 0;
+    padding: 81px 100px 0;
     width: var(--slide-width);
     height: var(--slide-height);
     background: #ffffff;
@@ -47,7 +47,7 @@
 .slide::after {
     position: absolute;
     top: 0;
-    right: 100px;
+    left: 875px;
     box-sizing: border-box;
     padding-top: 15px;
     width: var(--ribbon-size);
