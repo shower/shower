@@ -6,5 +6,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-    content: url('grid.svg');
+    content: '';
+    background-image: url('grid.svg');
 }
