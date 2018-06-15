@@ -24,7 +24,7 @@
   "files": [
     "fonts/**",
     "pictures/**",
-    "styles/**/*.css",
+    "styles/**",
     "index.html",
     "LICENSE.md",
     "README.md"
