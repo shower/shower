@@ -3,7 +3,8 @@
   "scripts": {
     "start": "gulp build",
     "test": "ls dest",
-    "pretest": "gulp build"
+    "pretest": "gulp build",
+    "deploy": "gulp deploy"
   },
   "dependencies": {
     "del": "^3.0.0",
@@ -13,6 +14,6 @@
     "gulp-rsync": "0.0.8",
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
-    "shower": "^2.3.0"
+    "shower": "^2.4.0"
   }
 }

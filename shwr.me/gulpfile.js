@@ -20,7 +20,7 @@ gulp.task('build', () => {
 			cwd: 'node_modules/shower'
 		})
 		.pipe(replace(
-			/(<link rel="stylesheet" href=")(node_modules\/shower-ribbon\/)(styles\/screen-16x10.css">)/g,
+			/(<link rel="stylesheet" href=")(node_modules\/shower-ribbon\/)(styles\/styles.css">)/g,
 			'$1shower/themes/ribbon/$3', { skipBinary: true }
 		))
 		.pipe(replace(
