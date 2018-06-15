@@ -20,7 +20,7 @@ All theme’s features are demonstrated in the [index.html](index.html) file. Us
 
 ## Ratios
 
-Ribbon theme supports two slide ratios: wide 16×10 (default) and taller 4×3. To change the slide’s ratio include one of the pre-built `screen-16x10.css` or `screen-4x3.css` files in the `<head>` of your presentation.
+Ribbon theme supports any slide ratio you want. But it’s optimized for the most common ones: 16×9 and 4×3. It’s 16 × 9 by default, but you can change it by adjusting `--slide-ratio` property for `.shower`, [see example](https://github.com/shower/ribbon/blob/master/index.html#L10) in `index.html`.
 
 ## PDF
 
@@ -32,7 +32,7 @@ If you want to adjust theme for your needs:
 
 1. Fork this repository and clone it to your local machine.
 2. Install dependencies: `npm install`.
-3. Start a local server with watcher: `npm run dev` or just `gulp` if you have it installed globally.
+3. Start a local server with watcher: `npm start`.
 4. Edit your files and see changes in the opened browser.
 
 To take part in Ribbon development please read [contributing guidelines](CONTRIBUTING.md) first and [file an issue](https://github.com/shower/shower/issues/new) before sending any pull request.
