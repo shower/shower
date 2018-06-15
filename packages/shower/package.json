@@ -29,23 +29,22 @@
   "dependencies": {
     "shower-core": "^2.1.0",
     "shower-material": "^1.1.0",
-    "shower-ribbon": "^2.1.0"
+    "shower-ribbon": "^3.0.1"
   },
   "devDependencies": {
     "browser-sync": "^2.18.12",
     "del": "^3.0.0",
-    "gh-pages": "^1.1.0",
-    "gulp": "^3.9.1",
+    "gh-pages": "^1.2.0",
+    "gulp": "^4.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^1.0.0",
     "gulp-rsync": "0.0.8",
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
-    "path-exists-cli": "^1.0.0",
-    "run-sequence": "^2.1.0"
+    "path-exists-cli": "^1.0.0"
   },
   "scripts": {
-    "start": "gulp",
+    "start": "gulp serve",
     "prepare": "gulp prepare",
     "archive": "gulp archive",
     "publish": "gulp publish",

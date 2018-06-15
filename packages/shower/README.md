@@ -7,9 +7,8 @@
 1. Built on HTML, CSS and vanilla JavaScript
 2. Works in all modern browsers
 3. Themes are separated from engine
-4. Modular and extensible
-5. Fully keyboard accessible
-6. Printable to PDF
+4. Fully keyboard accessible
+5. Printable to PDF
 
 [See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.
 
@@ -26,7 +25,7 @@ By clicking the button below you can fork this repo and deploy it to Netlify.
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/shower/shower)
 
- By doing this you would get a GitHub repo linked with Netlify in a way any change to the repo would trigger a shower rebuild and deploy to Netlify servers, which allows for a really easy way to create and share Shower presentation without the need to install anything locally.
+By doing this you would get a GitHub repo linked with Netlify in a way any change to the repo would trigger a shower rebuild and deploy to Netlify servers, which allows for a really easy way to create and share Shower presentation without the need to install anything locally.
 
 ## Advanced
 
