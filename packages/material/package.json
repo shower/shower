@@ -22,32 +22,20 @@
     "theme"
   ],
   "files": [
-    "docs/**",
     "fonts/**",
-    "images/**",
     "pictures/**",
-    "styles/*.css",
+    "styles/**",
     "index.html",
     "LICENSE.md",
     "README.md"
   ],
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "browser-sync": "^2.14.0",
-    "gulp": "^3.9.1",
-    "gulp-header": "^1.8.8",
-    "gulp-postcss": "^7.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.6.1",
-    "gulp-sass": "^3.0.0",
-    "path-exists-cli": "^1.0.0",
-    "postcss-csso": "^2.0.0",
-    "shower-core": "latest"
+    "live-server": "^1.2.0",
+    "shower-core": "^2.1.0",
+    "stylelint": "^9.2.1"
   },
   "scripts": {
-    "dev": "gulp",
-    "styles": "gulp styles",
-    "prepublish": "npm run styles",
-    "test": "path-exists styles/screen-16x10.css && path-exists styles/screen-4x3.css"
+    "test": "stylelint 'styles/**/*.css'",
+    "start": "live-server . --watch='fonts/*,pictures/*,styles/**/*.css,index.html'"
   }
 }
