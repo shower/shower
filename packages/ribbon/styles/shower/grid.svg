@@ -23,18 +23,18 @@
 
 	<rect x="0" y="0" width="1024" height="768" class="grid"/>
 
-	<line x1="100" y1="0" x2="100" y2="768" class="line"/>
-	<line x1="475" y1="0" x2="475" y2="768" class="line"/>
-	<line x1="550" y1="0" x2="550" y2="768" class="line"/>
-	<line x1="925" y1="0" x2="925" y2="768" class="line"/>
+	<line x1="100" x2="100" y1="0" y2="768" class="line"/>
+	<line x1="475" x2="475" y1="0" y2="768" class="line"/>
+	<line x1="550" x2="550" y1="0" y2="768" class="line"/>
+	<line x1="925" x2="925" y1="0" y2="768" class="line"/>
 
-	<line x1="0" y1="125" x2="1024" y2="125" class="line"/>
-	<line x1="0" y1="200" x2="1024" y2="200" class="line"/>
-	<line x1="0" y1="275" x2="1024" y2="275" class="line"/>
-	<line x1="0" y1="350" x2="1024" y2="350" class="line"/>
-	<line x1="0" y1="425" x2="1024" y2="425" class="line"/>
-	<line x1="0" y1="500" x2="1024" y2="500" class="line"/>
-	<line x1="0" y1="575" x2="1024" y2="575" class="line"/>
-	<line x1="0" y1="650" x2="1024" y2="650" class="line"/>
-	<line x1="0" y1="725" x2="1024" y2="725" class="line"/>
+	<line y1="125" y2="125" x1="0" x2="1024" class="line"/>
+	<line y1="200" y2="200" x1="0" x2="1024" class="line"/>
+	<line y1="275" y2="275" x1="0" x2="1024" class="line"/>
+	<line y1="350" y2="350" x1="0" x2="1024" class="line"/>
+	<line y1="425" y2="425" x1="0" x2="1024" class="line"/>
+	<line y1="500" y2="500" x1="0" x2="1024" class="line"/>
+	<line y1="575" y2="575" x1="0" x2="1024" class="line"/>
+	<line y1="650" y2="650" x1="0" x2="1024" class="line"/>
+	<line y1="725" y2="725" x1="0" x2="1024" class="line"/>
 </svg>
