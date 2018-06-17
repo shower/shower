@@ -1,0 +1,23 @@
+/* List */
+
+.shower.list {
+    padding-top: 24px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--color-back);
+}
+
+/* Responsive */
+
+@media (min-width: 1168px) {
+    .shower.list {
+        padding-top: 48px;
+    }
+}
+
+@media (min-width: 2336px) {
+    .shower.list {
+        padding-top: 96px;
+    }
+}
