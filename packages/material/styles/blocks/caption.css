@@ -1,0 +1,58 @@
+/* Caption */
+
+.caption {
+    margin-top: -24px;
+    margin-bottom: 1em;
+    padding: 1.02em 0 0.9em 1em;
+    width: 100%;
+    background-color: var(--color-key);
+    background-image: var(--diagonal);
+    font-size: 24px;
+}
+
+@media (min-width: 1168px) {
+    .caption {
+        margin-top: -48px;
+        font-size: 48px;
+    }
+}
+
+@media (min-width: 2336px) {
+    .caption {
+        margin-top: -96px;
+        font-size: 96px;
+    }
+}
+
+/* Elements */
+
+.caption h1 {
+    margin: 0;
+    padding-bottom: 0.28em;
+    color: white;
+    font: 100 1.17em/1 'Roboto', sans-serif;
+}
+
+.caption p {
+    margin: 0;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.58em;
+}
+
+.caption a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Caption List */
+
+.shower.list .caption {
+    display: block;
+}
+
+/* Caption Full */
+
+.shower.full .caption {
+    display: none;
+}

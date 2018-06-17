@@ -1,0 +1,56 @@
+/* Badge */
+
+.badge {
+    padding: 0.5em 0 2em;
+    width: 100%;
+    line-height: 1;
+    font-size: 12px;
+}
+
+@media (min-width: 1168px) {
+    .badge {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 2336px) {
+    .badge {
+        font-size: 48px;
+    }
+}
+
+/* Elements */
+
+.badge a {
+    display: inline-block;
+    margin-left: 9em;
+    padding-left: 4em;
+    color: var(--color-medium);
+    text-decoration: none;
+}
+
+.badge a:hover,
+.badge a:focus {
+    outline: none;
+    color: var(--color-key);
+}
+
+.badge svg {
+    position: absolute;
+    margin: -1.1em 0 0 -4.5em;
+    width: 4em;
+    height: 4em;
+    fill: currentColor;
+}
+
+/* Badge List */
+
+.shower.list .badge {
+    display: block;
+}
+
+/* Badge Full */
+
+.shower.full .badge {
+    display: none;
+}
