@@ -6,6 +6,10 @@
     transform-origin: 0 0;
 }
 
+.shower.list .slide * {
+    pointer-events: none;
+}
+
 /* Scaling */
 
 .shower.list .slide {
