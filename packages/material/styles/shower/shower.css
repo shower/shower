@@ -11,31 +11,22 @@
     --slide-width: 1024px;
     --slide-height: calc(var(--slide-width) / var(--slide-ratio));
 
+    --progress-size: 8px;
+
     --color-key: #4caf50;
     --color-black: #212121;
     --color-dark: #757575;
     --color-medium: #9e9e9e;
     --color-light: #bdbdbd;
     --color-back: #eeeeee;
+    --color-yellow: #fff59d;
+    --color-yellow-light: #ffffcf;
 
     --diagonal:
         linear-gradient(
             135deg, var(--color-key) 50%,
             rgba(0, 0, 0, 0.1) 50%
         );
-
-    --progress-size: 8px;
-
-    /* Ribbon */
-
-    --color-blue: #4b86c2;
-    --color-red: #cc0000;
-    --color-yellow: #fafaa2;
-    --color-grey: #585a5e;
-    --color-fill: rgba(88, 90, 94, 0.1);
-    --color-line: rgba(88, 90, 94, 0.5);
-
-    --ribbon-size: 50px;
 
     -webkit-text-size-adjust: none;
     -moz-text-size-adjust: none;
@@ -44,5 +35,5 @@
     margin: 0;
     color: black;
     counter-reset: slide;
-    font: 25px/2 'Roboto', sans-serif;
+    font: 24px/2 'Roboto', sans-serif;
 }

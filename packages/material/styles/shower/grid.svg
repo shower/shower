@@ -34,17 +34,17 @@
 	<line x1="816" x2="816" y1="0" y2="768" class="line"/>
 	<line x1="912" x2="912" y1="0" y2="768" class="line"/>
 
-	<line y1="144" y2="144" x1="0" x2="1024" class="line"/>
-	<line y1="216" y2="216" x1="0" x2="1024" class="line"/>
-	<line y1="264" y2="264" x1="0" x2="1024" class="line"/>
-	<line y1="312" y2="312" x1="0" x2="1024" class="line"/>
-	<line y1="360" y2="360" x1="0" x2="1024" class="line"/>
-	<line y1="408" y2="408" x1="0" x2="1024" class="line"/>
-	<line y1="456" y2="456" x1="0" x2="1024" class="line"/>
-	<line y1="504" y2="504" x1="0" x2="1024" class="line"/>
-	<line y1="552" y2="552" x1="0" x2="1024" class="line"/>
-	<line y1="600" y2="600" x1="0" x2="1024" class="line"/>
-	<line y1="648" y2="648" x1="0" x2="1024" class="line"/>
-	<line y1="696" y2="696" x1="0" x2="1024" class="line"/>
-	<line y1="744" y2="744" x1="0" x2="1024" class="line"/>
+	<line y1="120" y2="120" x1="0" x2="1024" class="line"/>
+	<line y1="192" y2="192" x1="0" x2="1024" class="line"/>
+	<line y1="240" y2="240" x1="0" x2="1024" class="line"/>
+	<line y1="288" y2="288" x1="0" x2="1024" class="line"/>
+	<line y1="336" y2="336" x1="0" x2="1024" class="line"/>
+	<line y1="384" y2="384" x1="0" x2="1024" class="line"/>
+	<line y1="432" y2="432" x1="0" x2="1024" class="line"/>
+	<line y1="480" y2="480" x1="0" x2="1024" class="line"/>
+	<line y1="528" y2="528" x1="0" x2="1024" class="line"/>
+	<line y1="576" y2="576" x1="0" x2="1024" class="line"/>
+	<line y1="624" y2="624" x1="0" x2="1024" class="line"/>
+	<line y1="672" y2="672" x1="0" x2="1024" class="line"/>
+	<line y1="720" y2="720" x1="0" x2="1024" class="line"/>
 </svg>
