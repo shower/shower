@@ -20,10 +20,6 @@
     tab-size: 4;
 }
 
-.slide pre code.mark:not(:only-child) {
-    background: var(--color-fill);
-}
-
 /* Line Numbers */
 
 .slide pre code:not(:only-child)::before {
@@ -56,7 +52,13 @@
     color: #999999;
 }
 
-/* Code */
+/* Marked Line */
+
+.slide pre code.mark:not(:only-child) {
+    background: var(--color-fill);
+}
+
+/* Next Line */
 
 .slide pre code.mark.next:not(:only-child) {
     visibility: visible;
@@ -67,7 +69,7 @@
     background: var(--color-fill);
 }
 
-/* Full */
+/* Code Full */
 
 .shower.full .slide pre code:not(:only-child).mark.next {
     visibility: visible;
