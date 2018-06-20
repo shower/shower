@@ -16,11 +16,15 @@ If you want to install Material separately you can install the package:
 
 ## Features
 
-All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. See more detailed [features overview](https://github.com/shower/shower/blob/master/docs/features-en.md).
+All theme’s features are demonstrated in the [index.html](index.html) file, [see it live](https://shwr.me/shower/themes/material/). Use it as a reference while building your presentation. See more detailed [features overview](https://github.com/shower/shower/blob/master/docs/features-en.md).
 
 ## Ratios
 
-Material theme supports two slide ratios: wide 16×10 (default) and taller 4×3. To change the slide’s ratio include one of the pre-built `screen-16x10.css` or `screen-4x3.css` files in the `<head>` of your presentation.
+Material theme supports any slide ratio you want. But it’s optimized for the most common ones: 16×9 and 4×3. It’s 16×9 by default, but you can change it by adjusting `--slide-ratio` property for `.shower`, [see example](https://github.com/shower/ribbon/blob/master/index.html#L10) in `index.html`.
+
+## Key color
+
+By default Material theme is green, but you can easily change the key color by adjusting `--color-key` property for `.shower`. You can choose any color you want, just make sure that it’s dark enough for a good contrast. For example, in [Material Color Tool](https://material.io/tools/color/) good colors start at 500 column.
 
 ## PDF
 
