@@ -47,6 +47,7 @@
     "yaspeller-ci": "^1.0.0"
   },
   "dependencies": {
+    "browser-sync": "^2.24.4",
     "chalk": "^2.4.1",
     "download": "^7.0.0",
     "mkdirp": "^0.5.1",

@@ -1,30 +1,24 @@
-const opn = require('opn')
-const { createServer } = require('http')
-const { Server: StaticServer } = require('node-static')
+const { create } = require('browser-sync')
 
-function serve ({ root }, { port, open }) {
+function serve ({ root: cwd }, { port, open }) {
+  const bs = create()
+
   return new Promise((resolve, reject) => {
-    const server = new StaticServer(root)
-
-    const app = createServer((request, response) => {
-      request.addListener('end', () => {
-        server.serve(request, response)
-      }).resume()
+    bs.init({
+      cwd,
+      port,
+      open,
+      server: '.'
+    }, err => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve()
+      }
     })
 
-    app.on('error', reject)
-
-    app.listen(port, error => {
-      if (error) {
-        reject(error)
-      }
-
-      if (open) {
-        opn(`http://localhost:${ port }`)
-      }
-
-      resolve()
-    })
+    bs.watch('**/*.*', { cwd })
+      .on('change', bs.reload)
   })
 }
 
