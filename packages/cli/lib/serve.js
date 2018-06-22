@@ -22,6 +22,8 @@ function serve ({ root }, { port, open }) {
       if (open) {
         opn(`http://localhost:${ port }`)
       }
+
+      resolve()
     })
   })
 }

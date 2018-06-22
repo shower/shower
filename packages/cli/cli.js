@@ -97,10 +97,12 @@ for (const command of commands) {
         .then(() => {
           const time = ((Date.now() - s) / 1000).toFixed()
 
-          signale.success({
-            message: messages.end,
-            suffix: chalk.yellow(`[in ${ time }s]`)
-          })
+          if (messages.end) {
+            signale.success({
+              message: messages.end,
+              suffix: chalk.yellow(`[in ${ time }s]`)
+            })
+          }
         })
         .catch(error => {
           signale.fatal(error)
