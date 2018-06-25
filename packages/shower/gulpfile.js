@@ -5,7 +5,7 @@ const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const zip = require('gulp-zip');
 const pages = require('gh-pages');
-const browserSync = require('browser-sync').create();
+const sync = require('browser-sync').create();
 
 gulp.task('prepare', () => {
 
@@ -95,7 +95,7 @@ gulp.task('publish', gulp.series(
 ));
 
 gulp.task('serve', () => {
-	browserSync.init({
+	sync.init({
 		ui: false,
 		notify: false,
 		port: 3000,
@@ -104,6 +104,6 @@ gulp.task('serve', () => {
 		}
 	});
 	gulp.watch('index.html').on('change', () => {
-    	browserSync.reload();
+    	sync.reload();
 	});
 });
