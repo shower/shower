@@ -32,7 +32,7 @@
     "shower-ribbon": "^3.0.1"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.12",
+    "browser-sync": "^2.24.5",
     "del": "^3.0.0",
     "gh-pages": "^1.2.0",
     "gulp": "^4.0.0",
