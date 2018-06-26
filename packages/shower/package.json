@@ -28,8 +28,8 @@
   ],
   "dependencies": {
     "shower-core": "^2.1.0",
-    "shower-material": "^2.0.0",
-    "shower-ribbon": "^3.0.1"
+    "shower-material": "^2.0.1",
+    "shower-ribbon": "^3.0.2"
   },
   "devDependencies": {
     "browser-sync": "^2.24.5",
