@@ -12,7 +12,6 @@ gulp.task('clean', () => {
 });
 
 gulp.task('build', () => {
-
 	const shower = gulp.src([
 			'**',
 			'!package.json'
@@ -38,7 +37,8 @@ gulp.task('build', () => {
 		}));
 
 	const material = gulp.src([
-			'**', '!package.json'
+			'**',
+			'!package.json'
 		], {
 			cwd: 'node_modules/shower-material'
 		})
@@ -47,7 +47,8 @@ gulp.task('build', () => {
 		}))
 
 	const ribbon = gulp.src([
-			'**', '!package.json'
+			'**',
+			'!package.json'
 		], {
 			cwd: 'node_modules/shower-ribbon'
 		})
@@ -65,17 +66,35 @@ gulp.task('build', () => {
 		.pipe(gulp.dest('dest'))
 		.pipe(zip('shower.zip'))
 		.pipe(gulp.dest('dest'));
+});
 
+gulp.task('assets', () => {
+	const files = gulp.src([
+		'icons{,/**}',
+		'.webmanifest',
+		'favicon.ico'
+	]);
+
+	const html = gulp.src('dest/**/*.html')
+		.pipe(replace(
+			/(<meta name="viewport" content="width=device-width, initial-scale=1">)/,
+			`$1
+	<link rel="manifest" href="/.webmanifest">
+	<link rel="icon" href="/favicon.ico">
+	<link rel="icon" type="image/png" sizes="228x228" href="/icons/228.png">
+	<link rel="apple-touch-icon" type="image/png" href="/icons/228.png">`, { skipBinary: true }
+		))
+		.pipe(replace(
+			/(<\/body>)/,
+			`\t${fs.readFileSync('counter.html', 'utf8')}$1`, { skipBinary: true }
+		));
+
+	return merge(files, html)
+		.pipe(gulp.dest('dest'));
 });
 
 gulp.task('sync', () => {
-
 	return gulp.src('dest/**')
-		.pipe(replace(
-			/(<\/body>)/,
-			'\t' + fs.readFileSync('counter.html', 'utf8') + '$1', { skipBinary: true }
-		))
-		.pipe(gulp.dest('dest'))
 		.pipe(rsync({
 			root: 'dest',
 			hostname: 'shwr.me',
@@ -85,11 +104,11 @@ gulp.task('sync', () => {
 			incremental: true,
 			silent: true
 		}));
-
 });
 
 gulp.task('deploy', gulp.series(
 	'clean',
 	'build',
+	'assets',
 	'sync'
 ));
