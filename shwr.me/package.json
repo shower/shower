@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "start": "gulp build",
-    "test": "ls dest",
+    "build": "gulp build",
+    "deploy": "gulp deploy",
     "pretest": "gulp build",
-    "deploy": "gulp deploy"
+    "test": "ls dest"
   },
   "dependencies": {
     "del": "^3.0.0",
