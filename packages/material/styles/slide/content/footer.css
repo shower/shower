@@ -1,28 +1,29 @@
 /* Footer */
 
-.slide footer {
+.slide > footer {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 1;
-    padding: 2em 112px 1em 96px;
+    padding: 48px 112px 24px 96px;
     background: var(--color-yellow-light);
-    transition: bottom 0.3s ease-out;
+    transition: transform 0.3s;
 }
 
 /* Footer List */
 
-.shower.list .slide footer {
-    bottom: calc(var(--slide-height) * -1);
+.shower.list .slide > footer {
+    transform: translateY(100%);
 }
 
-.shower.list .slide:hover footer {
-    bottom: 0;
+.shower.list .slide.active > footer,
+.shower.list .slide:hover > footer {
+    transform: translateY(0);
 }
 
 /* Footer Full */
 
-.shower.full .slide footer {
+.shower.full .slide > footer {
     display: none;
 }
