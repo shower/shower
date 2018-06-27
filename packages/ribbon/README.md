@@ -16,7 +16,7 @@ If you want to install Ribbon separately you can install the package:
 
 ## Features
 
-All theme’s features are demonstrated in the [index.html](index.html) file, [see it live](https://shwr.me/shower/themes/ribbon/). Use it as a reference while building your presentation. See more detailed [features overview](https://github.com/shower/shower/blob/master/docs/features-en.md).
+All theme’s features are demonstrated in the [index.html](index.html) file, [see it live](https://shwr.me/shower/themes/ribbon/). Use it as a reference while building your presentation. See more detailed [features overview](https://github.com/shower/shower/blob/master/docs/features.md).
 
 ## Ratios
 
