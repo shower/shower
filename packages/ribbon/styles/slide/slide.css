@@ -1,7 +1,7 @@
 /* Types */
 
-@import 'slide-list.css';
-@import 'slide-full.css';
+@import 'slide-list.css' screen;
+@import 'slide-full.css' screen;
 
 /* Content */
 

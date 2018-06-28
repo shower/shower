@@ -52,3 +52,12 @@
 .shower.full .caption {
     display: none;
 }
+
+/* Print */
+
+@media print {
+    .shower.list .caption,
+    .shower.full .caption {
+        display: none;
+    }
+}

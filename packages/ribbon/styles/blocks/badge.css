@@ -52,3 +52,12 @@
 .shower.full .badge {
     display: none;
 }
+
+/* Badge Print */
+
+@media print {
+    .shower.list .badge,
+    .shower.full .badge {
+        display: none;
+    }
+}

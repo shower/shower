@@ -18,3 +18,12 @@
 .shower.full .region {
     display: block;
 }
+
+/* Print */
+
+@media print {
+    .shower.list .region,
+    .shower.full .region {
+        display: none;
+    }
+}
