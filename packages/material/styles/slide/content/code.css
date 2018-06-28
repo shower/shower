@@ -67,7 +67,7 @@
     background: var(--color-back);
 }
 
-/* Code Full */
+/* Full */
 
 .shower.full .slide pre code:not(:only-child).mark.next {
     visibility: visible;

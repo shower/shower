@@ -11,7 +11,7 @@
     transition: transform 0.3s;
 }
 
-/* Footer List */
+/* List */
 
 .shower.list .slide > footer {
     transform: translateY(100%);
@@ -22,7 +22,7 @@
     transform: translateY(0);
 }
 
-/* Footer Full */
+/* Full */
 
 .shower.full .slide > footer {
     display: none;

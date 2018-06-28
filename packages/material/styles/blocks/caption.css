@@ -45,13 +45,13 @@
     color: inherit;
 }
 
-/* Caption List */
+/* List */
 
 .shower.list .caption {
     display: block;
 }
 
-/* Caption Full */
+/* Full */
 
 .shower.full .caption {
     display: none;

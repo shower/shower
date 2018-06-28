@@ -43,13 +43,13 @@
     fill: currentColor;
 }
 
-/* Badge List */
+/* List */
 
 .shower.list .badge {
     display: block;
 }
 
-/* Badge Full */
+/* Full */
 
 .shower.full .badge {
     display: none;
