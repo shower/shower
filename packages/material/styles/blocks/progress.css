@@ -26,3 +26,12 @@
 .shower.full .progress {
     display: block;
 }
+
+/* Print */
+
+@media print {
+    .shower.list .progress,
+    .shower.full .progress {
+        display: none;
+    }
+}
