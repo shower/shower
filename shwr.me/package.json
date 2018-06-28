@@ -14,6 +14,6 @@
     "gulp-rsync": "0.0.8",
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
-    "shower": "^2.5.1"
+    "shower": "^2.6.0"
   }
 }
