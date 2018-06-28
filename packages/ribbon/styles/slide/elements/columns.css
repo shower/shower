@@ -17,17 +17,3 @@
 .columns.four {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
-/* .double,
-.triple {
-    column-gap: 75px;
-    hyphens: auto;
-}
-
-.double {
-    column-count: 2;
-}
-
-.triple {
-    column-count: 3;
-} */

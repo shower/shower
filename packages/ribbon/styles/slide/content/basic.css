@@ -13,7 +13,7 @@
 }
 
 .slide p.note {
-    color: var(--color-grey); /* TODO: lighten 25% */
+    color: var(--color-grey);
 }
 
 .slide figure {
