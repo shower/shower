@@ -27,13 +27,6 @@
     box-shadow: 0 0 0 20px var(--color-key);
 }
 
-/* IE & Edge Fix */
-
-.shower.list .slide {
-    position: absolute;
-    clip: rect(0, auto, auto, 0);
-}
-
 /* Scaling */
 
 .shower.list .slide {
