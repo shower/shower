@@ -52,6 +52,7 @@
     width: var(--ribbon-size);
     height: calc(var(--ribbon-size) * 2);
     background-image: url('ribbon.svg');
+    background-size: cover;
     color: #ffffff;
     counter-increment: slide;
     content: counter(slide);
