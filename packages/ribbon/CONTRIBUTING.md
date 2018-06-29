@@ -8,11 +8,11 @@ Fork needed repository, create a brach for each feature or issue you’re dealin
 
 ## Code style
 
-Please preserve existing code style while contributing to Shower and be ready for code review by Shower maintainers. It’s strongly recommended to install [EditorConfig](http://editorconfig.org) extension to your editor and validate your JavaScript changes using [JSHint](http://jshint.com/).
+Please preserve existing code style while contributing to Shower and be ready for code review by Shower maintainers. It’s strongly recommended to install [EditorConfig](http://editorconfig.org/) extension to your editor and validate your JavaScript changes using [JSHint](http://jshint.com/).
 
 ## Language
 
-English is the main language for Shower project. All discussions and commit messages should be in English, no matter if it’s good or bad. The second language of Shower is Russian. Official Shower themes are always compatible with Cyrillic and Russian typography. All documentation to Shower is always localized to Russian.
+English is the main language for Shower project. All discussions and commit messages should be in English, no matter if it’s good or bad. The second language of Shower is Russian. Official Shower themes are always compatible with Cyrillic and Russian typography.
 
 ---
 Licensed under [MIT License](LICENSE.md).
