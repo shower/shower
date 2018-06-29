@@ -10,6 +10,13 @@
     pointer-events: none;
 }
 
+/* IE & Edge Fix */
+
+.shower.list .slide {
+    position: absolute;
+    clip: rect(0, auto, auto, 0);
+}
+
 /* Scaling */
 
 .shower.list .slide {
