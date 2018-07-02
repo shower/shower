@@ -28,6 +28,10 @@ gulp.task('prepare', () => {
 			'$1shower/themes/$3/$4', { skipBinary: true }
 		))
 		.pipe(replace(
+			/(<link rel="stylesheet" href=")(node_modules\/highlight\.js\/styles\/)(.*\.css">)/g,
+			'$1shower/highlight.js/styles/$3', { skipBinary: true }
+		))
+		.pipe(replace(
 			/(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
 			'$1shower/$3', { skipBinary: true }
 		))

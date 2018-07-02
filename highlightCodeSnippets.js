@@ -88,7 +88,7 @@ module.exports = function() {
 			$ = cheerio.load(content);
 
 			compiledFile.path = file.path;
-			compiledFile.contents = new Buffer(getCompiledHtml());
+			compiledFile.contents = Buffer.from(getCompiledHtml());
 
 			return callback(error, compiledFile);
 		}
