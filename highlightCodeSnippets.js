@@ -2,8 +2,8 @@
 const highlight = require('highlight.js');
 const cheerio = require('cherio');
 const gutil = require('gulp-util');
+const Transform = require('stream').Transform;
 
-const DEFAULT_LANGUAGE = 'html';
 const AVAILABLE_LANGUAGES = highlight.listLanguages();
 
 let $ = null;
@@ -53,18 +53,19 @@ function getCompiledCodeLines(language, preNode) {
 }
 
 function getCompiledHtml() {
-    const preNodes = $('.slide pre:has(code)');
+    const preNodes = $('.slide pre[class]:has(code)');
 
     preNodes.each((i, preNode) => {
         const $node = $(preNode);
-        const langClass = ($node.attr('class') || '').trim();
-        let language = DEFAULT_LANGUAGE;
+        const langClass = ($node.attr('class') || '').trim().toLowerCase();
 
-        if (AVAILABLE_LANGUAGES.includes(langClass)) {
-            language = langClass;
+        if (!AVAILABLE_LANGUAGES.includes(langClass)) {
+            return;
         }
 
-        const compiledLines = getCompiledCodeLines(language, $node);
+		$node.removeAttr('class');
+
+        const compiledLines = getCompiledCodeLines(langClass, $node);
 
         $node.html(compiledLines.map(({code, className}) => {
 			return `<code ${className ? 'class="' + className + '"' : ''}>${code}</code>`;
@@ -73,8 +74,6 @@ function getCompiledHtml() {
 
     return $.html();
 }
-
-const Transform = require('stream').Transform;
 
 module.exports = function() {
 	const transformStream = new Transform({objectMode: true});
