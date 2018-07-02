@@ -3,11 +3,10 @@ const gulp = require('gulp');
 const merge = require('merge-stream');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
-const sequence = require('run-sequence');
 const zip = require('gulp-zip');
-const pages = require('gulp-gh-pages');
 const highlightCodeSnippets = require('./highlightCodeSnippets');
-const browserSync = require('browser-sync').create();
+const pages = require('gh-pages');
+const sync = require('browser-sync').create();
 
 gulp.task('prepare', () => {
 
@@ -84,6 +83,10 @@ gulp.task('prepare', () => {
 
 });
 
+gulp.task('clean', () => {
+	return del('prepared/**');
+});
+
 gulp.task('zip', () => {
 	return gulp.src('prepared/**')
 		.pipe(zip('archive.zip'))
@@ -91,32 +94,23 @@ gulp.task('zip', () => {
 });
 
 gulp.task('upload', () => {
-	return gulp.src('prepared/**')
-		.pipe(pages())
+	return pages.publish('prepared')
 });
 
-gulp.task('archive', (callback) => {
-	sequence(
-		'prepare',
-		'zip',
-		'clean', callback
-	)
-});
+gulp.task('archive', gulp.series(
+	'prepare',
+	'zip',
+	'clean'
+));
 
-gulp.task('publish', (callback) => {
-	sequence(
-		'prepare',
-		'upload',
-		'clean', callback
-	)
-});
-
-gulp.task('clean', () => {
-	return del('prepared/**');
-});
+gulp.task('publish', gulp.series(
+	'prepare',
+	'upload',
+	'clean'
+));
 
 gulp.task('serve', () => {
-	browserSync.init({
+	sync.init({
 		ui: false,
 		notify: false,
 		port: 3000,
@@ -125,8 +119,6 @@ gulp.task('serve', () => {
 		}
 	});
 	gulp.watch('index.html').on('change', () => {
-    	browserSync.reload();
+    	sync.reload();
 	});
 });
-
-gulp.task('default', ['serve']);

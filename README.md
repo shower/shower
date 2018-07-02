@@ -7,9 +7,8 @@
 1. Built on HTML, CSS and vanilla JavaScript
 2. Works in all modern browsers
 3. Themes are separated from engine
-4. Modular and extensible
-5. Fully keyboard accessible
-6. Printable to PDF
+4. Fully keyboard accessible
+5. Printable to PDF
 
 [See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.
 
@@ -20,9 +19,17 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 1. Download and unzip [template archive](http://shwr.me/shower.zip)
 2. Open `index.html` and start creating your presentation
 
+## Deploy to Netlify
+
+By clicking the button below you can fork this repo and deploy it to Netlify.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/shower/shower)
+
+By doing this you would get a GitHub repo linked with Netlify in a way any change to the repo would trigger a shower rebuild and deploy to Netlify servers, which allows for a really easy way to create and share Shower presentation without the need to install anything locally.
+
 ## Advanced
 
-1. Clone this repository locally `git clone git@github.com:shower/shower.git`.
+1. Сlone this repository `git clone --depth=1 git@github.com:shower/shower.git`, (`--depth=1` will make it way faster).
 2. [Create](https://github.com/new) a new blank repository and copy its cloning address `git@github.com:USER/REPO.git`.
 3. Change remote of your local clone to the one you’ve just copied `git remote set-url origin git@github.com:USER/REPO.git`.
 4. Push your local clone to GitHub `git push -u origin master`.
@@ -47,7 +54,7 @@ And you’ll have your slides published to `http://USER.github.io/REPO/`.
 
 ## Browser Support
 
-Latest stable versions of Chrome, Internet Explorer, Firefox, Opera and Safari are supported.
+Latest stable versions of Chrome, Edge, Firefox, and Safari are supported.
 
 ## Contributing
 
