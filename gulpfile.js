@@ -4,9 +4,9 @@ const merge = require('merge-stream');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const zip = require('gulp-zip');
-const highlightCodeSnippets = require('./highlightCodeSnippets');
 const pages = require('gh-pages');
 const sync = require('browser-sync').create();
+const highlightCode = require('./highlightCode');
 
 gulp.task('prepare', () => {
 
@@ -19,7 +19,7 @@ gulp.task('prepare', () => {
 			'!LICENSE.md',
 			'!README.md',
 			'!gulpfile.js',
-			'!highlightCodeSnippets.js',
+			'!highlightCode.js',
 			'!package.json',
 			'!package-lock.json'
 		])
@@ -35,7 +35,7 @@ gulp.task('prepare', () => {
 			/(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
 			'$1shower/$3', { skipBinary: true }
 		))
-		.pipe(highlightCodeSnippets());
+		.pipe(highlightCode());
 
 	const core = gulp.src([
 			'shower.min.js'
@@ -70,7 +70,7 @@ gulp.task('prepare', () => {
 			'$1../../$3', { skipBinary: true }
 		));
 
-	const highlightStyles = gulp.src([
+	const highlight = gulp.src([
 			'**', '!package.json'
 		], {
 			cwd: 'node_modules/highlight.js/styles'
@@ -79,7 +79,7 @@ gulp.task('prepare', () => {
 				path.dirname = 'shower/highlight.js/styles/' + path.dirname;
 			}));
 
-	return merge(shower, core, themes, highlightStyles)
+	return merge(shower, core, themes, highlight)
 		.pipe(gulp.dest('prepared'));
 
 });
