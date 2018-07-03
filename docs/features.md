@@ -24,6 +24,7 @@ All theme’s features are demonstrated in the [index.html](index.html) file. Us
 		- [Columns](#columns)
 		- [Tables](#tables)
 		- [Code](#code)
+		- [Highlight](#highlight)
 	- [Elements](#elements)
 		- [Cover](#cover)
 		- [Shout](#shout)
@@ -305,25 +306,29 @@ If you want to add lines numbers use next construction:
 		<code>}<code>
 	</pre>
 
-When neccessary emphasize that code is commented, you need to use span element with `comment` class;
-If you want to color part of code, wrap this part with `mark` to add yellow background and `mark` with `important` class to add red background;
+When neccessary emphasize that code is commented, you need to use span element with `comment` class.
+
+If you want to color part of code, wrap this part with `mark` to add yellow background and `mark` with `important` class to add red background.
 
 	<pre><code>function <mark>action()</mark> {
 		<span class="comment">// TODO<span>
 		return <mark class="important">true</mark>;
 	}</code></pre>
 
-Automatic code highlighting based on [https://highlightjs.org/](https://highlightjs.org/);
-All code samples wrapped in ```<pre>``` with language name in class attribute;
-Check the available languages and styles list [https://highlightjs.org/static/demo/](https://highlightjs.org/static/demo/);
-To switch highlighting style find ```<link>``` tag with linked highlight.js style in ```<head>```;
-All custom tags included to ```<pre>``` will be saved =)
-Run ```gulp highlight```;
+#### Highlight
 
-	<pre class="javascript"><code>function <mark>action()</mark> {
-		<span class="comment">// TODO<span>
-		return <mark class="important">true</mark>;
-	}</code></pre>
+You can automatically highlight code samples using [highlight.js](https://highlightjs.org/).
+
+Add language definition to all `<pre>` code blocks you want to highlight.
+
+<pre class="javascript"><code>function action() {
+	// TODO
+	return true;
+}</code></pre>
+
+Run `npm run highlight` from command line.
+
+Check all available languages and styles in [highlight.js demo](https://highlightjs.org/static/demo/).
 
 ### Elements
 
