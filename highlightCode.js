@@ -1,8 +1,7 @@
-
 const highlight = require('highlight.js');
 const cheerio = require('cherio');
-const gutil = require('gulp-util');
 const Transform = require('stream').Transform;
+const Vinyl = require('vinyl');
 
 const AVAILABLE_LANGUAGES = highlight.listLanguages();
 
@@ -83,12 +82,13 @@ module.exports = function() {
 
 		if (file.isBuffer() && file.path.endsWith('.html')) {
 			const content = String(file.contents);
-			const compiledFile = new gutil.File();
 
 			$ = cheerio.load(content);
 
-			compiledFile.path = file.path;
-			compiledFile.contents = Buffer.from(getCompiledHtml());
+			const compiledFile = new Vinyl({
+				path: file.path,
+				contents: Buffer.from(getCompiledHtml())
+			});
 
 			return callback(error, compiledFile);
 		}

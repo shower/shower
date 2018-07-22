@@ -99,8 +99,8 @@ gulp.task('highlight', () => {
 			/(<link rel="stylesheet" href=")(node_modules\/highlight\.js\/styles)\/(.*\.css">)/g,
 			`$1${STYLES_DEST_PATH}$3`, { skipBinary: true }
 		))
-		.pipe(highlightCodeSnippets())
-		.pipe(gulp.dest(''));
+		.pipe(highlightCode())
+		.pipe(gulp.dest('.'));
 
 	return merge(copyStyles, highlightFiles);
 });
