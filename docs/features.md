@@ -326,8 +326,6 @@ Add language definition to all `<pre>` code blocks you want to highlight.
 	return true;
 }</code></pre>
 
-Run `npm run highlight` from command line.
-
 Check all available languages and styles in [highlight.js demo](https://highlightjs.org/static/demo/).
 
 ### Elements
