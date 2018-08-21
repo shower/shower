@@ -18,16 +18,16 @@ function pdf ({ root }, { file }) {
       page = p
     })
     .then(() => page.goto(`file://${root}/index.html`))
-    .then(() => page.evaluate(async () => {
+    .then(() => page.evaluate(() => new Promise((resolve) => {
       const container = document.querySelector('.shower')
 
       const styles = window.getComputedStyle(container)
 
-      return [
+      resolve([
         evalCalcExpression(styles.getPropertyValue('--slide-width')),
         evalCalcExpression(styles.getPropertyValue('--slide-height'))
-      ]
-    }))
+      ])
+    })))
     .then(([width, height]) => page.pdf({ path: file, width, height }))
     .catch(error => {
       console.error(error)
