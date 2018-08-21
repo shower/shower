@@ -23,7 +23,7 @@ function serve ({ root: cwd }, { port, open }) {
 }
 
 serve.messages = (_, { port }) => ({
-  start: `Server listening ${ port } port`
+  start: `Server listening ${port} port`
 })
 
 module.exports = serve

@@ -12,7 +12,7 @@ function pdf ({ root }, { file }) {
     .then(p => {
       page = p
     })
-    .then(() => page.goto(`file://${ root }/index.html`))
+    .then(() => page.goto(`file://${root}/index.html`))
     .then(() => page.pdf({ path: file, width: '960px', height: '600px' }))
     .then(() => {
       browser.close()
@@ -21,7 +21,7 @@ function pdf ({ root }, { file }) {
 
 pdf.messages = (_, { file }) => ({
   start: 'Creating PDF in progress',
-  end: `PDF built in '${ file }'`
+  end: `PDF built in '${file}'`
 })
 
 module.exports = pdf

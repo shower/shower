@@ -15,7 +15,7 @@
   "scripts": {
     "lint-staged": "lint-staged",
     "spellcheck": "yaspeller-ci *.md",
-    "lint": "eslint-ci *.js test/{fixtures/**/,}*.js",
+    "lint": "eslint-ci {,{lib,test}{,/**}/}*.js --fix",
     "test": "jest && npm run lint && npm run spellcheck"
   },
   "engines": {
