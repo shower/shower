@@ -10,7 +10,7 @@
   "license": "MIT",
   "repository": "shower/cli",
   "bin": {
-    "shower-cli": "cli.js"
+    "shower": "cli.js"
   },
   "scripts": {
     "lint-staged": "lint-staged",
