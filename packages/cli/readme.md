@@ -21,7 +21,7 @@ npm i -g shower-cli
 ## Usage:
 
 ```bash
-shower-cli [--version] [--help] <command> [<args>]
+shower [--version] [--help] <command> [<args>]
 ```
 
 ### Commands:
