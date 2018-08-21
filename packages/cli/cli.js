@@ -10,8 +10,8 @@ const { engines, version } = require('./package.json')
 if (!semver.satisfies(process.version, engines.node)) {
   console.log(
     chalk.red(
-      `You are using Node ${ process.version },` +
-      `but this version of vue-cli requires Node ${ engines.node }.\n` +
+      `You are using Node ${process.version},` +
+      `but this version of vue-cli requires Node ${engines.node}.\n` +
       `Please upgrade your Node version.`
     )
   )
@@ -79,7 +79,7 @@ const config = {
 for (const command of commands) {
   const name = command.command.split(' ')[0]
 
-  const lib = require(`./lib/${ name }.js`)
+  const lib = require(`./lib/${name}.js`)
 
   app.command(Object.assign(command, {
     handler (options) {
@@ -100,7 +100,7 @@ for (const command of commands) {
           if (messages.end) {
             signale.success({
               message: messages.end,
-              suffix: chalk.yellow(`[in ${ time }s]`)
+              suffix: chalk.yellow(`[in ${time}s]`)
             })
           }
         })
@@ -108,7 +108,7 @@ for (const command of commands) {
           signale.fatal(error)
         })
     },
-    describe: `\b- ${ chalk.yellow(command.describe) }`
+    describe: `\b- ${chalk.yellow(command.describe)}`
   }))
 }
 
