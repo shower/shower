@@ -1,0 +1,46 @@
+/* Progress */
+
+.progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: var(--progress-size);
+    overflow: hidden;
+    transition: all 0.2s linear;
+}
+
+.progress::before {
+    display: block;
+    width: 100%;
+    height: var(--progress-size);
+    background: var(--color-blue);
+    content: '';
+    transform-origin: 0 100%;
+    transform: skewX(45deg);
+}
+
+.progress[style*='100%']::before {
+    transform: none;
+}
+
+/* List */
+
+.shower.list .progress {
+    display: none;
+}
+
+/* Full */
+
+.shower.full .progress {
+    display: block;
+}
+
+/* Print */
+
+@media print {
+    .shower.list .progress,
+    .shower.full .progress {
+        display: none;
+    }
+}

@@ -1,0 +1,53 @@
+/* Table */
+
+.slide table {
+    margin-left: -100px;
+    margin-bottom: 1em;
+    width: calc(100% + 100px + 100px);
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Cells */
+
+.slide th,
+.slide td {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.slide th {
+    text-align: left;
+    font-weight: bold;
+}
+
+.slide th:first-child,
+.slide td:first-child {
+    padding-left: 96px;
+}
+
+.slide th:last-child,
+.slide td:last-child {
+    padding-right: 96px;
+}
+
+/* Lines */
+
+.slide tr:not(:last-of-type) > * {
+    background:
+        linear-gradient(
+            to top,
+            var(--color-line) 0.06em,
+            transparent 0.06em
+        ) repeat-x;
+}
+
+/* Stripes */
+
+.slide table.striped tr:nth-child(even) {
+    background: var(--color-fill);
+}
+
+.slide table.striped tr > * {
+    background-image: none;
+}

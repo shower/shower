@@ -23,14 +23,23 @@ function pdf ({ root }, { file }) {
 
       const styles = window.getComputedStyle(container)
 
-      resolve([
-        evalCalcExpression(styles.getPropertyValue('--slide-width')),
-        evalCalcExpression(styles.getPropertyValue('--slide-height'))
-      ])
+      resolve({
+        width: styles.getPropertyValue('--slide-width'),
+        height: styles.getPropertyValue('--slide-height')
+      })
     })))
-    .then(([width, height]) => page.pdf({ path: file, width, height }))
+    .then((size) => {
+      const width = evalCalcExpression(size.width)
+      const height = evalCalcExpression(size.height)
+
+      return page.pdf({
+        path: file, width, height
+      })
+    })
     .catch(error => {
-      console.error(error)
+      browser.close()
+
+      throw error
     })
     .then(() => {
       browser.close()

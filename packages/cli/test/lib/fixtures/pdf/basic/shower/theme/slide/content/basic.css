@@ -1,0 +1,21 @@
+/* Basic */
+
+.slide h2 {
+    margin-top: 0;
+    margin-bottom: 34px;
+    color: var(--color-grey);
+    font: bold 50px/1 'PT Sans Narrow', sans-serif;
+}
+
+.slide p {
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+
+.slide p.note {
+    color: var(--color-grey);
+}
+
+.slide figure {
+    margin: 0;
+}

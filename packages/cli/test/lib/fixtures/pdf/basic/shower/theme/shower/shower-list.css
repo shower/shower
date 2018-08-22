@@ -1,0 +1,30 @@
+/* Shower List */
+
+.shower.list {
+    padding-top: 25px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--color-grey);
+}
+
+/* IE & Edge Fix */
+
+.shower.list {
+    position: absolute;
+    clip: rect(0, auto, auto, 0);
+}
+
+/* Responsive */
+
+@media (min-width: 1174px) {
+    .shower.list {
+        padding-top: 50px;
+    }
+}
+
+@media (min-width: 2348px) {
+    .shower.list {
+        padding-top: 100px;
+    }
+}

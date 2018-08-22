@@ -1,0 +1,68 @@
+/* Slide List */
+
+.shower.list .slide {
+    border-radius: 2px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    transform-origin: 0 0;
+}
+
+.shower.list .slide * {
+    pointer-events: none;
+}
+
+/* Scaling */
+
+.shower.list .slide {
+    --slide-scale: 0.25;
+    --slide-magic: calc(1 - var(--slide-scale));
+
+    margin-top: 0;
+    margin-right:
+        calc(
+            var(--slide-width) *
+            var(--slide-magic) * -1
+        );
+    margin-bottom:
+        calc(
+            var(--slide-gap) *
+            var(--slide-scale) -
+            var(--slide-height) *
+            var(--slide-magic)
+        );
+    margin-left:
+        calc(
+            var(--slide-gap) *
+            var(--slide-scale)
+        );
+
+    transform: scale(var(--slide-scale));
+}
+
+@media (min-width: 1174px) {
+    .shower.list .slide {
+        --slide-scale: 0.5;
+    }
+}
+
+@media (min-width: 2348px) {
+    .shower.list .slide {
+        --slide-scale: 1;
+    }
+}
+
+/* Hover */
+
+.shower.list .slide:hover {
+    box-shadow:
+        0 0 0 20px rgba(0, 0, 0, 0.1),
+        0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Active */
+
+.shower.list .slide.active {
+    box-shadow:
+        0 0 0 1px #376da3,
+        0 0 0 20px #4b86c2,
+        0 20px 50px rgba(0, 0, 0, 0.3);
+}

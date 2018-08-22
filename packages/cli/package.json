@@ -16,7 +16,7 @@
     "lint-staged": "lint-staged",
     "spellcheck": "yaspeller-ci *.md",
     "lint": "eslint-ci {,{lib,test}{,/**}/}*.js --fix",
-    "test": "jest && npm run lint && npm run spellcheck"
+    "test": "mkdir -p temp && jest && npm run lint && npm run spellcheck"
   },
   "engines": {
     "node": ">=6.11.5"
@@ -40,6 +40,7 @@
     "eslint-plugin-standard": "^3.1.0",
     "jest": "^22.4.4",
     "lint-staged": "^7.2.2",
+    "pdf-parse": "^1.0.8",
     "pre-commit": "^1.2.2",
     "yaspeller-ci": "^1.0.0"
   },
