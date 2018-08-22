@@ -40,13 +40,15 @@
     "gulp-replace": "^1.0.0",
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
-    "path-exists-cli": "^1.0.0"
+    "path-exists-cli": "^1.0.0",
+    "puppeteer": "^1.7.0"
   },
   "scripts": {
     "start": "gulp serve",
     "prepare": "gulp prepare",
     "archive": "gulp archive",
     "publish": "gulp publish",
+    "print": "node print.js",
     "test": "npm run prepare && ls prepared && npm run archive && path-exists archive.zip"
   }
 }
