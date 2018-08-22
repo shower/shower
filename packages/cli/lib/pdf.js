@@ -37,7 +37,9 @@ function pdf ({ root }, { file }) {
       })
     })
     .catch(error => {
-      browser.close()
+      if (browser) {
+        browser.close()
+      }
 
       throw error
     })
