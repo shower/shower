@@ -33,6 +33,29 @@ const commands = [
   },
 
   {
+    command: 'archive [<file>]',
+    describe: 'Archive the project',
+    dependencies: ['prepare'],
+    builder: yargs => yargs
+      .positional('file', {
+        default: 'archive.zip'
+      })
+  },
+
+  {
+    command: 'prepare',
+    describe: 'Prepare the project',
+    builder: yargs => yargs.options({
+      directory: {
+        alias: 'd',
+        type: 'string',
+        default: 'prepared',
+        describe: 'In which folder will the prepared presentation be written'
+      }
+    })
+  },
+
+  {
     command: 'serve',
     describe: 'Serve a the presentation in development mode',
     builder: yargs => yargs.options({
