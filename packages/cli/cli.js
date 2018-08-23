@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
+const fs = require('fs')
 const app = require('yargs')
+const path = require('path')
 const chalk = require('chalk')
 const semver = require('semver')
 const signale = require('signale')
@@ -27,6 +29,7 @@ app
 const commands = [
   {
     command: 'create [<directory>]',
+    requiredPresentation: false,
     describe: 'Create a new project',
     builder: yargs => yargs
       .positional('directory', {})
@@ -34,6 +37,7 @@ const commands = [
 
   {
     command: 'archive [<file>]',
+    requiredPresentation: true,
     describe: 'Archive the project',
     dependencies: ['prepare'],
     builder: yargs => yargs
@@ -44,6 +48,7 @@ const commands = [
 
   {
     command: 'prepare',
+    requiredPresentation: true,
     describe: 'Prepare the project',
     builder: yargs => yargs.options({
       directory: {
@@ -57,6 +62,7 @@ const commands = [
 
   {
     command: 'serve',
+    requiredPresentation: true,
     describe: 'Serve a the presentation in development mode',
     builder: yargs => yargs.options({
       open: {
@@ -76,6 +82,7 @@ const commands = [
 
   {
     command: 'pdf [<file>]',
+    requiredPresentation: true,
     describe: 'Converts the presentation to PDF',
     builder: yargs => yargs
       .positional('file', {
@@ -98,6 +105,16 @@ for (const command of commands) {
 
   app.command(Object.assign(command, {
     handler (options) {
+      if (command.requiredPresentation) {
+        try {
+          fs.statSync(path.join(config.root, 'index.html')).isFile()
+        } catch (_) {
+          signale.fatal('Shower presentation not found')
+
+          return
+        }
+      }
+
       const s = Date.now()
 
       let messages = lib.messages
