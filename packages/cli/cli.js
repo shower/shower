@@ -81,6 +81,13 @@ const commands = [
   },
 
   {
+    command: 'publish',
+    requiredPresentation: true,
+    describe: 'Publish the presentation to gh-pages',
+    builder: yargs => yargs
+  },
+
+  {
     command: 'pdf [<file>]',
     requiredPresentation: true,
     describe: 'Converts the presentation to PDF',

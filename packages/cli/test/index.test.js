@@ -7,7 +7,7 @@ it('Must be a object', () => {
 it('Must contain libs', () => {
   const keys = Object.keys(index)
 
-  expect(keys.sort()).toEqual(['archive', 'create', 'pdf', 'serve', 'prepare'].sort())
+  expect(keys.sort()).toEqual(['archive', 'create', 'pdf', 'serve', 'prepare', 'publish'].sort())
 })
 
 it('Libs must be functions', () => {
