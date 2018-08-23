@@ -26,6 +26,8 @@ shower [--version] [--help] <command> [<args>]
 
 ### Commands:
 
- - `create [<directory>]` - Creating a new project
  - `serve` - Serve a the presentation in development mode
  - `pdf [<file>]` - Converts the presentation to PDF
+ - `archive [<file>]` - To create an archive of the presentation
+ - `create [<directory>]` - Creating a new project
+ - `prepare [<directory>]` - Gather the necessary files in a separate folder
