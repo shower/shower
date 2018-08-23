@@ -103,9 +103,13 @@ for (const command of commands) {
               suffix: chalk.yellow(`[in ${time}s]`)
             })
           }
+
+          process.exitCode = 0
         })
         .catch(error => {
           signale.fatal(error)
+
+          process.exitCode = 1
         })
     },
     describe: `\b- ${chalk.yellow(command.describe)}`
