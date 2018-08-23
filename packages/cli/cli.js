@@ -30,14 +30,6 @@ const commands = [
     describe: 'Create a new project',
     builder: yargs => yargs
       .positional('directory', {})
-      .options({
-        url: {
-          alias: 'u',
-          type: 'string',
-          default: 'http://shwr.me/shower.zip',
-          describe: 'URL to the archive with the template'
-        }
-      })
   },
 
   {
