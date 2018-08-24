@@ -3,7 +3,7 @@ const vfs = require('vinyl-fs')
 const pages = require('gh-pages')
 const { promisify } = require('util')
 
-const { preparedPresentation } = require('../utils/files')
+const { preparedPresentation } = require('../util/files')
 
 function publish () {
   let tempDirPath = null

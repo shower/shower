@@ -1,7 +1,7 @@
 const vfs = require('vinyl-fs')
 const path = require('path')
 
-const { preparedPresentation } = require('../utils/files')
+const { preparedPresentation } = require('../util/files')
 
 function prepare ({ root }, { directory }) {
   if (!path.isAbsolute(directory)) {

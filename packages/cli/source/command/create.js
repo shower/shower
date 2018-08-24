@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const { promisify } = require('util')
 
-const { installDependencies } = require('../utils/npm')
+const { installDependencies } = require('../util/npm')
 
 const files = [
   {

@@ -4,7 +4,7 @@ const path = require('path')
 const pdfParse = require('pdf-parse')
 const { promisify } = require('util')
 
-const pdf = require('../../source/lib/pdf')
+const pdf = require('../../source/command/pdf')
 
 it('Must be function', () => {
   expect(typeof pdf).toBe('function')
