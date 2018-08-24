@@ -24,7 +24,7 @@ Ribbon theme supports any slide ratio you want. But it’s optimized for the mos
 
 ## PDF
 
-Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](https://github.com/shower/shower/blob/master/docs/printing.md) for more options.
+Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](https://github.com/shower/shower/blob/master/docs/pdf.md) for more options.
 
 ## Development
 
