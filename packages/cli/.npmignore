@@ -1,5 +1,5 @@
 .editorconfig
-.eslintrc
+.eslintrc.json
 .lintstagedrc
 .yaspellerrc
 
