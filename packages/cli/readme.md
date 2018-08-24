@@ -31,3 +31,4 @@ shower [--version] [--help] <command> [<args>]
  - `archive [<file>]` - To create an archive of the presentation
  - `create [<directory>]` - Creating a new project
  - `prepare [<directory>]` - Gather the necessary files in a separate folder
+ - `publish` - Publish your project to GitHub Pages
