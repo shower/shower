@@ -20,7 +20,7 @@
     "test": "mkdir -p temp && jest && npm run lint && npm run spellcheck"
   },
   "engines": {
-    "node": ">=6.11.5"
+    "node": ">=8.11.4"
   },
   "jest": {
     "testEnvironment": "node",
