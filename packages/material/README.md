@@ -28,7 +28,7 @@ By default Material theme is green, but you can easily change the key color by a
 
 ## PDF
 
-Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](https://github.com/shower/shower/blob/master/docs/printing.md) for more options.
+Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](https://github.com/shower/shower/blob/master/docs/pdf.md) for more options.
 
 ## Development
 
