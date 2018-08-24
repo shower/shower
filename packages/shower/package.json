@@ -40,9 +40,11 @@
     "gulp-replace": "^1.0.0",
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
-    "path-exists-cli": "^1.0.0"
+    "path-exists-cli": "^1.0.0",
+    "shower-cli": "^0.1.4"
   },
   "scripts": {
+    "pdf": "shower pdf",
     "start": "gulp serve",
     "prepare": "gulp prepare",
     "archive": "gulp archive",
