@@ -1,4 +1,4 @@
-const index = require('../index')
+const index = require('../source/index')
 
 it('Must be a object', () => {
   expect(typeof index === 'object' && index !== null).toBe(true)
