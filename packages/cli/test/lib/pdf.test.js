@@ -1,4 +1,5 @@
 const fs = require('fs')
+const tmp = require('tmp')
 const path = require('path')
 const pdfParse = require('pdf-parse')
 const { promisify } = require('util')
@@ -20,6 +21,8 @@ it('must generated pdf file', async () => {
   const root = path.join(__dirname, 'fixtures', 'pdf')
   const cases = await promisify(fs.readdir)(root)
 
+  const tempDir = tmp.dirSync({ unsafeCleanup: true })
+
   async function readPresentation (file) {
     const presentation = await pdfParse(await promisify(fs.readFile)(file))
 
@@ -30,7 +33,7 @@ it('must generated pdf file', async () => {
   }
 
   await Promise.all(cases.map(async (file) => {
-    const generatedPresentationFile = path.join(__dirname, '..', '..', 'temp', `${file}_presentation.pdf`)
+    const generatedPresentationFile = path.join(tempDir.name, `${file}_presentation.pdf`)
     const canonPresentationFile = path.join(__dirname, 'fixtures', 'pdf', file, 'presentation.pdf')
 
     await pdf(
@@ -43,4 +46,5 @@ it('must generated pdf file', async () => {
 
     expect(canonPresentation).toEqual(generatedPresentation)
   }))
+    .then(() => tempDir.removeCallback())
 })
