@@ -18,6 +18,7 @@ gulp.task('prepare', () => {
 			'!LICENSE.md',
 			'!README.md',
 			'!gulpfile.js',
+			'!netlify.toml',
 			'!package.json',
 			'!package-lock.json'
 		])
