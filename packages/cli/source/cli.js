@@ -7,7 +7,7 @@ const chalk = require('chalk')
 const semver = require('semver')
 const signale = require('signale')
 
-const { engines, version } = require('./package.json')
+const { engines, version } = require('../package.json')
 
 if (!semver.satisfies(process.version, engines.node)) {
   console.log(
