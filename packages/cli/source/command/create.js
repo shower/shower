@@ -1,7 +1,6 @@
 const fs = require('fs')
 const del = require('del')
 const path = require('path')
-const execa = require('execa')
 const chalk = require('chalk')
 const Listr = require('listr')
 const vfs = require('vinyl-fs')
@@ -39,32 +38,16 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
   }
 
   const params = [{
-    name: 'name',
-    type: 'input',
-    default: 'slides',
-    message: 'Input presentation name'
-  }, {
     name: 'theme',
     type: 'list',
     message: 'Select theme',
     choices: ['ribbon', 'material']
   }, {
     name: 'ratio',
-    type: 'input',
-    default: '16 / 9',
-    message: 'Select presentation ratio'
+    type: 'list',
+    message: 'Select presentation ratio',
+    choices: ['16 / 9', '5 / 3']
   }]
-
-  try {
-    await execa('which', ['git'])
-
-    params.push({
-      name: 'isGit',
-      type: 'confirm',
-      default: true,
-      message: 'To create a git repository?'
-    })
-  } catch (e) {}
 
   Object.assign(options, await inquirer.prompt(params))
 
@@ -80,10 +63,6 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
         await new Promise((resolve, reject) => {
           const files = ['**', '**/.*']
 
-          if (!options.isGit) {
-            files.push('!.gitignore')
-          }
-
           vfs.src(files, {
             cwd: path.join(__dirname, '..', '..', 'templates', options.template)
           })
@@ -95,18 +74,13 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
       }
     },
 
-    // 2. Initialize git repository
-    ...(options.isGit ? [
-      {
-        title: 'Initialize git repository',
-        task: () => execa('git', ['init'], { cwd: directory })
-      }
-    ] : []),
-
-    // 3. Install dependencies
+    // 2. Install dependencies
     {
       title: 'Installing dependencies',
-      task: () => installDependencies(directory, ['shower-core', `shower-${options.theme}`])
+      task: () => Promise.all([
+        installDependencies(directory, ['shower-cli'], 'save-dev'),
+        installDependencies(directory, ['shower-core', `shower-${options.theme}`])
+      ])
     }
   ])
 

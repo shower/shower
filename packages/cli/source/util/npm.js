@@ -4,13 +4,14 @@ const execa = require('execa')
  * Install node modules synchronously and save to dependencies in package.json
  * @param {string} cwd Root dir
  * @param {string|string[]} packages Node module or modules to install
+ * @param {string} mode Type package installing
  * @returns {void}
  */
-module.exports.installDependencies = async function installDevDependencies (cwd, packages) {
+module.exports.installDependencies = async function installDevDependencies (cwd, packages, mode = 'save') {
   packages = Array.isArray(packages) ? packages : [packages]
 
   try {
-    return await execa('npm', ['i', '--package-lock', '--save'].concat(packages), { cwd })
+    return await execa('npm', ['i', '--package-lock', `--${mode}`].concat(packages), { cwd })
   } catch (error) {
     if (error.code === 'ENOENT') {
       const pluralS = packages.length > 1 ? 's' : ''
