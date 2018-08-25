@@ -2,9 +2,12 @@ const fs = require('fs')
 const { resolve } = require('path')
 const { promisify } = require('util')
 
+const { isExist } = require('../util/files')
+
 /**
  * @typedef {Object} ProjectConfig
  * @property {string} project.path – Found an project
+ * @property {Object} project.pkg – project package.json
  */
 
 /**
@@ -56,6 +59,11 @@ async function findExistProject (path) {
 async function loadConfig () {
   const root = process.env.PWD
   const project = await findExistProject(root)
+
+  const pkgFile = resolve(project.path, 'package.json')
+  if (isExist(pkgFile)) {
+    project.pkg = require(pkgFile)
+  }
 
   return {
     root,

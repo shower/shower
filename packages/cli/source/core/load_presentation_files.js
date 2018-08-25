@@ -3,14 +3,16 @@ const merge = require('merge-stream')
 const rename = require('gulp-rename')
 const replace = require('gulp-replace')
 
-module.exports.loadPresentationFiles = function loadPresentationFiles () {
-  const shower = vfs.src([
+module.exports.loadPresentationFiles = function loadPresentationFiles (config = {}) {
+  const files = ((config.project || {}).pkg || {}).files || [
     '**',
     '!node_modules{,/**}',
     '!prepared{,/**}',
     '!package.json',
     '!package-lock.json'
-  ])
+  ]
+
+  const shower = vfs.src(files)
     .pipe(replace(
       /(<link rel="stylesheet" href=")(node_modules\/shower-)([^/]*)\/(.*\.css">)/g,
       '$1shower/themes/$3/$4', { skipBinary: true }

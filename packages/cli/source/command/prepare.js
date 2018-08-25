@@ -3,12 +3,14 @@ const path = require('path')
 
 const { loadPresentationFiles } = require('../core/load_presentation_files')
 
-function prepare ({ root }, { directory }) {
+function prepare (config, { directory }) {
+  const { root } = config
+
   if (!path.isAbsolute(directory)) {
     directory = path.join(root, directory)
   }
 
-  const stream = loadPresentationFiles()
+  const stream = loadPresentationFiles(config)
     .pipe(vfs.dest(directory))
 
   return new Promise((resolve, reject) => {

@@ -1,4 +1,7 @@
 {
   "name": "<%= name %>",
-  "dependencies": {}
+  "files": [
+    "index.html",
+    "pitures/**"
+  ]
 }
