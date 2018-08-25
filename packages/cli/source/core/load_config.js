@@ -40,13 +40,22 @@ async function isShowerProjectRoot (path) {
  * @return {string|null} – path to shower project if project exists else null
  */
 async function findExistProject (path) {
-  do {
+  const searchLimit = process.env.HOME || '/'
+
+  while (path !== searchLimit) {
     if (await isShowerProjectRoot(path)) {
-      return { path }
+      const project = { path }
+
+      const pkgFile = resolve(project.path, 'package.json')
+      if (isExist(pkgFile)) {
+        project.pkg = require(pkgFile)
+      }
+
+      return project
     }
 
     path = resolve(path, '..')
-  } while (path !== (process.env.HOME || '/'))
+  }
 
   return null
 }
@@ -59,11 +68,6 @@ async function findExistProject (path) {
 async function loadConfig () {
   const root = process.env.PWD
   const project = await findExistProject(root)
-
-  const pkgFile = resolve(project.path, 'package.json')
-  if (isExist(pkgFile)) {
-    project.pkg = require(pkgFile)
-  }
 
   return {
     root,
