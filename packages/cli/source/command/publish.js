@@ -3,7 +3,7 @@ const vfs = require('vinyl-fs')
 const pages = require('gh-pages')
 const { promisify } = require('util')
 
-const { preparedPresentation } = require('../util/files')
+const { loadPresentationFiles } = require('../core/load_presentation_files')
 
 function publish () {
   let tempDirPath = null
@@ -22,7 +22,7 @@ function publish () {
     })
   })
     .then(() => {
-      const stream = preparedPresentation()
+      const stream = loadPresentationFiles()
         .pipe(vfs.dest(tempDirPath))
 
       return new Promise((resolve, reject) => {

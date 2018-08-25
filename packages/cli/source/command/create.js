@@ -1,4 +1,5 @@
 const fs = require('fs')
+const del = require('del')
 const path = require('path')
 const chalk = require('chalk')
 const Listr = require('listr')
@@ -7,9 +8,30 @@ const inquirer = require('inquirer')
 const { promisify } = require('util')
 const template = require('gulp-template')
 
+const { isExist } = require('../util/files')
 const { installDependencies } = require('../util/npm')
 
 async function create ({ root }, { directory: folderName = 'slides' }) {
+  // Let's check if such folder exists
+  const directory = path.isAbsolute(folderName) ? folderName : path.join(root, folderName)
+
+  if (isExist(directory)) {
+    const { isForce } = await inquirer.prompt({
+      name: 'isForce',
+      type: 'confirm',
+      default: false,
+      message: `The ${chalk.yellow(folderName)} dir already exists. Do you want to overwrite it?`
+    })
+
+    if (isForce) {
+      await del([directory])
+    } else {
+      process.stdout.write(chalk.red(`\n Creating aborted\n`))
+
+      return
+    }
+  }
+
   const options = {
     template: 'presentation',
     year: (new Date()).getFullYear()
@@ -34,8 +56,6 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
     }])
 
   Object.assign(options, params)
-
-  const directory = path.isAbsolute(folderName) ? folderName : path.join(root, folderName)
 
   process.stdout.write('\n')
 

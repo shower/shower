@@ -1,10 +1,10 @@
 const vfs = require('vinyl-fs')
 const zip = require('gulp-zip')
 
-const { preparedPresentation } = require('../util/files')
+const { loadPresentationFiles } = require('../core/load_presentation_files')
 
 function archive (_, { file }) {
-  const stream = preparedPresentation()
+  const stream = loadPresentationFiles()
     .pipe(zip(file))
     .pipe(vfs.dest('.'))
 
