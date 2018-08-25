@@ -91,7 +91,7 @@ module.exports = async function setupCLI () {
 
   for (const command of commands) {
     const describe = `\b- ${chalk.yellow(command.describe)}`
-    const handler = (options) => applyTask.bind(config, command, options)
+    const handler = (options) => applyTask(config, command, options)
 
     app.command(Object.assign({}, command, { describe, handler }))
   }
