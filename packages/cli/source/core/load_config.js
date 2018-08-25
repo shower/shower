@@ -62,11 +62,13 @@ async function findExistProject (path) {
 
 /**
  * Creates a application config
+ * @async
  *
- * @returns {AppConfig}
+ * @param {string=$PWD} root – The directory from which the script is run
+ *
+ * @returns {AppConfig} – application config
  */
-async function loadConfig () {
-  const root = process.env.PWD
+async function loadConfig (root = process.env.PWD) {
   const project = await findExistProject(root)
 
   return {

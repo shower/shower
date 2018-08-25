@@ -24,7 +24,7 @@ updateNotifier({ pkg }).notify()
 process.on('SIGINT', () => {
   console.log('\nAborted')
 
-  process.exit(1)
+  process.exit(0)
 })
 
 const setup = require('./core/setup_cli')
