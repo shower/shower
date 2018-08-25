@@ -1,6 +1,7 @@
 /* Code */
 
 .slide pre {
+    margin-top: 0;
     margin-bottom: 1em;
     counter-reset: code;
     white-space: normal;
