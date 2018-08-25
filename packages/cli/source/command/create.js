@@ -85,8 +85,14 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
   ])
 
   await tasks.run()
-
-  process.stdout.write(`\n Project created in ${chalk.green(folderName)} dir 🎉\n`)
 }
+
+create.config = {
+  requiredExistingPresentation: false
+}
+
+create.messages = (_, { directory: folderName = 'slides' }) => ({
+  end: `Project created in ${chalk.bold(folderName)} dir`
+})
 
 module.exports = create

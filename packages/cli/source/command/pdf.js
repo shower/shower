@@ -48,6 +48,10 @@ function pdf ({ root }, { file }) {
     })
 }
 
+pdf.config = {
+  requiredExistingPresentation: true
+}
+
 pdf.messages = (_, { file }) => ({
   start: 'Creating PDF in progress',
   end: `PDF built in '${file}'`

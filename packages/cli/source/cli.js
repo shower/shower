@@ -31,4 +31,11 @@ const setup = require('./core/setup_cli')
 
 // If the node version is supported, setup CLI
 setup()
-  .catch(console.error)
+  .then(() => {
+    process.exitCode = 0
+  })
+  .catch(error => {
+    console.error(error)
+
+    process.exitCode = 1
+  })

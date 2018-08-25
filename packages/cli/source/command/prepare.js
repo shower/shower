@@ -20,6 +20,10 @@ function prepare (config, { directory }) {
   })
 }
 
+prepare.config = {
+  requiredExistingPresentation: true
+}
+
 prepare.messages = {
   start: 'Project preparation in progress',
   end: 'Project prepared'

@@ -40,6 +40,10 @@ function publish () {
     })
 }
 
+publish.config = {
+  requiredExistingPresentation: true
+}
+
 publish.messages = {
   start: 'The project is being published',
   end: 'Project published'
