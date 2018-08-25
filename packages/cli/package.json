@@ -58,6 +58,7 @@
     "semver": "^5.5.1",
     "signale": "^1.2.1",
     "tmp": "0.0.33",
+    "update-notifier": "^2.5.0",
     "vinyl-fs": "^3.0.3",
     "yargs": "^11.1.0"
   }

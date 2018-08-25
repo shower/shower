@@ -2,20 +2,30 @@
 
 const chalk = require('chalk')
 const semver = require('semver')
+const updateNotifier = require('update-notifier')
 
-const { engines } = require('../package.json')
+const pkg = require('../package.json')
 
-if (!semver.satisfies(process.version, engines.node)) {
+if (!semver.satisfies(process.version, pkg.engines.node)) {
   console.log(
     chalk.red(
-      `You are using Node ${process.version},` +
-      `but this version of shower-cli requires Node ${engines.node}.\n` +
+      `You are using Node ${pkg.process.version},` +
+      `but this version of shower-cli requires Node ${pkg.engines.node}.\n` +
       `Please upgrade your Node version.`
     )
   )
 
   process.exit(1)
 }
+
+// Warn the user about new versions
+updateNotifier({ pkg }).notify()
+
+process.on('SIGINT', () => {
+  console.log('\nAborted')
+
+  process.exit(1)
+})
 
 const setup = require('./core/setup_cli')
 
