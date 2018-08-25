@@ -1,5 +1,7 @@
 const fs = require('fs')
 const path = require('path')
+const chalk = require('chalk')
+const Listr = require('listr')
 const vfs = require('vinyl-fs')
 const inquirer = require('inquirer')
 const { promisify } = require('util')
@@ -7,13 +9,11 @@ const template = require('gulp-template')
 
 const { installDependencies } = require('../util/npm')
 
-async function create ({ root }, { directory = 'slides' }) {
+async function create ({ root }, { directory: folderName = 'slides' }) {
   const options = {
     template: 'presentation',
     year: (new Date()).getFullYear()
   }
-
-  process.stdout.write('\n')
 
   const params = await inquirer
     .prompt([{
@@ -35,31 +35,39 @@ async function create ({ root }, { directory = 'slides' }) {
 
   Object.assign(options, params)
 
-  if (path.isAbsolute(directory)) {
-    directory = path.join(root, directory)
-  }
+  const directory = path.isAbsolute(folderName) ? folderName : path.join(root, folderName)
 
-  // 1. Create new folder
-  await promisify(fs.mkdir)(directory)
+  process.stdout.write('\n')
 
-  // 2. Create 'index.html'and 'package.json'
-  await new Promise((resolve, reject) => {
-    vfs.src(['**/**'], {
-      cwd: path.join(__dirname, '..', '..', 'templates', options.template)
-    })
-      .pipe(template(options))
-      .pipe(vfs.dest(directory))
-      .on('end', resolve)
-      .on('error', reject)
-  })
+  const tasks = new Listr([
+    // 1. Create project structure
+    {
+      title: `Creating is project structure in "${folderName}" dir`,
+      async task () {
+        await promisify(fs.mkdir)(directory)
 
-  // 3. Install dependencies
-  await installDependencies(directory, ['shower-core', `shower-${options.theme}`])
-}
+        await new Promise((resolve, reject) => {
+          vfs.src(['**/**'], {
+            cwd: path.join(__dirname, '..', '..', 'templates', options.template)
+          })
+            .pipe(template(options))
+            .pipe(vfs.dest(directory))
+            .on('end', resolve)
+            .on('error', reject)
+        })
+      }
+    },
 
-create.messages = {
-  start: 'Creating new project in progress',
-  end: 'Project created'
+    // 3. Install dependencies
+    {
+      title: 'Installing dependencies',
+      task: () => installDependencies(directory, ['shower-core', `shower-${options.theme}`])
+    }
+  ])
+
+  await tasks.run()
+
+  process.stdout.write(`\n Project created in ${chalk.green(folderName)} dir 🎉\n`)
 }
 
 module.exports = create

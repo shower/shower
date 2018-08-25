@@ -22,13 +22,15 @@ module.exports = async function applyCommand (config, command, options) {
 
   const s = Date.now()
 
-  let messages = task.messages
+  let messages = task.messages || {}
 
   if (typeof messages === 'function') {
     messages = messages(config, options)
   }
 
-  signale.pending(messages.start)
+  if (messages.start) {
+    signale.pending(messages.start)
+  }
 
   try {
     await task(config, options)

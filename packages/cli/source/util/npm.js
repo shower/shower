@@ -1,4 +1,4 @@
-const spawn = require('cross-spawn')
+const execa = require('execa')
 
 /**
  * Install node modules synchronously and save to dependencies in package.json
@@ -6,13 +6,18 @@ const spawn = require('cross-spawn')
  * @param {string|string[]} packages Node module or modules to install
  * @returns {void}
  */
-module.exports.installDependencies = function installDevDependencies (cwd, packages) {
+module.exports.installDependencies = async function installDevDependencies (cwd, packages) {
   packages = Array.isArray(packages) ? packages : [packages]
-  const { error } = spawn.sync('npm', ['i', '--save'].concat(packages), { cwd, stdio: 'inherit' })
 
-  if (error && error.code === 'ENOENT') {
-    const pluralS = packages.length > 1 ? 's' : ''
+  try {
+    return await execa('npm', ['i', '--package-lock', '--save'].concat(packages), { cwd })
+  } catch (error) {
+    if (error.code === 'ENOENT') {
+      const pluralS = packages.length > 1 ? 's' : ''
 
-    console.error(`Could not execute npm. Please install the following package${pluralS} with a package manager of your choice: ${packages.join(', ')}`)
+      console.error(`Could not execute npm. Please install the following package${pluralS} with a package manager of your choice: ${packages.join(', ')}`)
+    } else {
+      throw error
+    }
   }
 }
