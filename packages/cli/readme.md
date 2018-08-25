@@ -2,7 +2,9 @@
 
 **Command line interface for [Shower](http://shwr.me/)**
 
+[![npm](https://img.shields.io/npm/v/shower-cli.svg)](https://www.npmjs.com/package/shower-cli)
 [![Build Status](https://travis-ci.org/shower/cli.svg?branch=master)](https://travis-ci.org/shower/cli)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/shower/cli/blob/master/LICENSE.md)
 
 ## Quick Creating Slides
 
