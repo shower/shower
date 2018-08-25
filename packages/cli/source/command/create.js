@@ -1,6 +1,7 @@
 const fs = require('fs')
 const del = require('del')
 const path = require('path')
+const execa = require('execa')
 const chalk = require('chalk')
 const Listr = require('listr')
 const vfs = require('vinyl-fs')
@@ -37,25 +38,35 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
     year: (new Date()).getFullYear()
   }
 
-  const params = await inquirer
-    .prompt([{
-      name: 'name',
-      type: 'input',
-      default: 'slides',
-      message: 'Input presentation name'
-    }, {
-      name: 'theme',
-      type: 'list',
-      message: 'Select theme',
-      choices: ['ribbon', 'material']
-    }, {
-      name: 'ratio',
-      type: 'input',
-      default: '16 / 9',
-      message: 'Select presentation ratio'
-    }])
+  const params = [{
+    name: 'name',
+    type: 'input',
+    default: 'slides',
+    message: 'Input presentation name'
+  }, {
+    name: 'theme',
+    type: 'list',
+    message: 'Select theme',
+    choices: ['ribbon', 'material']
+  }, {
+    name: 'ratio',
+    type: 'input',
+    default: '16 / 9',
+    message: 'Select presentation ratio'
+  }]
 
-  Object.assign(options, params)
+  try {
+    await execa('which', ['git'])
+
+    params.push({
+      name: 'isGit',
+      type: 'confirm',
+      default: true,
+      message: 'To create a git repository?'
+    })
+  } catch (e) {}
+
+  Object.assign(options, await inquirer.prompt(params))
 
   process.stdout.write('\n')
 
@@ -67,7 +78,13 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
         await promisify(fs.mkdir)(directory)
 
         await new Promise((resolve, reject) => {
-          vfs.src(['**/**'], {
+          const files = ['**', '**/.*']
+
+          if (!options.isGit) {
+            files.push('!.gitignore')
+          }
+
+          vfs.src(files, {
             cwd: path.join(__dirname, '..', '..', 'templates', options.template)
           })
             .pipe(template(options))
@@ -77,6 +94,14 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
         })
       }
     },
+
+    // 2. Initialize git repository
+    ...(options.isGit ? [
+      {
+        title: 'Initialize git repository',
+        task: () => execa('git', ['init'], { cwd: directory })
+      }
+    ] : []),
 
     // 3. Install dependencies
     {
