@@ -54,6 +54,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-template": "^5.0.0",
     "gulp-zip": "^4.2.0",
+    "inquirer": "^6.2.0",
     "merge-stream": "^1.0.1",
     "puppeteer": "^1.7.0",
     "semver": "^5.5.1",
