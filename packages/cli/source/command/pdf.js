@@ -1,3 +1,4 @@
+const chalk = require('chalk')
 const puppeteer = require('puppeteer')
 
 function evalCalcExpression (expression) {
@@ -5,7 +6,7 @@ function evalCalcExpression (expression) {
   return eval(expression.replace(/calc/g, '').replace(/px/g, '')) + 'px'
 }
 
-function pdf ({ root }, { file }) {
+function pdf ({ root }, { output }) {
   let browser, page
 
   return Promise.resolve()
@@ -33,7 +34,7 @@ function pdf ({ root }, { file }) {
       const height = evalCalcExpression(size.height)
 
       return page.pdf({
-        path: file, width, height
+        path: output, width, height
       })
     })
     .catch(error => {
@@ -52,9 +53,9 @@ pdf.config = {
   requiredExistingPresentation: true
 }
 
-pdf.messages = (_, { file }) => ({
+pdf.messages = (_, { ouput }) => ({
   start: 'Creating PDF in progress',
-  end: `PDF built in '${file}'`
+  end: chalk`PDF built in {bold ${ouput}}`
 })
 
 module.exports = pdf

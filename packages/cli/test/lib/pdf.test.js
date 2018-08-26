@@ -38,7 +38,7 @@ it('must generated pdf file', async () => {
 
     await pdf(
       { root: path.join(root, file) },
-      { file: generatedPresentationFile }
+      { output: generatedPresentationFile }
     )
 
     const canonPresentation = await readPresentation(canonPresentationFile)

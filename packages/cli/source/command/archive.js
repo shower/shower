@@ -4,9 +4,9 @@ const chalk = require('chalk')
 
 const { loadPresentationFiles } = require('../core/load_presentation_files')
 
-function archive (_, { file }) {
-  const stream = loadPresentationFiles()
-    .pipe(zip(file))
+function archive (_, { output, files }) {
+  const stream = loadPresentationFiles(files)
+    .pipe(zip(output))
     .pipe(vfs.dest('.'))
 
   return new Promise((resolve, reject) => {
@@ -20,9 +20,9 @@ archive.config = {
   requiredExistingPresentation: true
 }
 
-archive.messages = (_, { file }) => ({
+archive.messages = (_, { output }) => ({
   start: 'The project is being archived',
-  end: `Created archive ${chalk.bold(file)} with presentation`
+  end: chalk`Created archive {bold ${output}} with presentation`
 })
 
 module.exports = archive

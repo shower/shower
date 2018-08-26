@@ -2,8 +2,6 @@ const fs = require('fs')
 const { resolve } = require('path')
 const { promisify } = require('util')
 
-const { isExist } = require('../util/files')
-
 /**
  * @typedef {Object} ProjectConfig
  * @property {string} project.path – Found an project
@@ -44,14 +42,7 @@ async function findExistProject (path) {
 
   while (path !== searchLimit) {
     if (await isShowerProjectRoot(path)) {
-      const project = { path }
-
-      const pkgFile = resolve(project.path, 'package.json')
-      if (isExist(pkgFile)) {
-        project.pkg = require(pkgFile)
-      }
-
-      return project
+      return { path }
     }
 
     path = resolve(path, '..')

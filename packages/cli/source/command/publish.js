@@ -5,7 +5,7 @@ const { promisify } = require('util')
 
 const { loadPresentationFiles } = require('../core/load_presentation_files')
 
-function publish () {
+function publish (_, { files }) {
   let tempDirPath = null
   let cleanupCallback = null
 
@@ -22,7 +22,7 @@ function publish () {
     })
   })
     .then(() => {
-      const stream = loadPresentationFiles()
+      const stream = loadPresentationFiles(files)
         .pipe(vfs.dest(tempDirPath))
 
       return new Promise((resolve, reject) => {

@@ -9,7 +9,6 @@ const applyTask = require('./apply_command')
 const commands = [
   {
     command: 'create [<directory>]',
-    requiredPresentation: false,
     describe: 'Create a new project',
     builder: yargs => yargs
       .positional('directory', {})
@@ -17,32 +16,44 @@ const commands = [
 
   {
     command: 'archive [<file>]',
-    requiredPresentation: true,
     describe: 'Archive the project',
-    dependencies: ['prepare'],
-    builder: yargs => yargs
-      .positional('file', {
-        default: 'archive.zip'
-      })
+    builder: yargs => yargs.options({
+      output: {
+        alias: 'o',
+        type: 'string',
+        default: 'archive.zip',
+        describe: 'Archive name'
+      },
+      files: {
+        alias: 'f',
+        array: true,
+        type: 'string',
+        describe: 'List of files that will get the build'
+      }
+    })
   },
 
   {
     command: 'prepare',
-    requiredPresentation: true,
     describe: 'Prepare the project',
     builder: yargs => yargs.options({
-      directory: {
-        alias: 'd',
+      output: {
+        alias: 'o',
         type: 'string',
         default: 'prepared',
         describe: 'In which folder will the prepared presentation be written'
+      },
+      files: {
+        alias: 'f',
+        array: true,
+        type: 'string',
+        describe: 'List of files that will get the build'
       }
     })
   },
 
   {
     command: 'serve',
-    requiredPresentation: true,
     describe: 'Serve a the presentation in development mode',
     builder: yargs => yargs.options({
       open: {
@@ -62,22 +73,28 @@ const commands = [
 
   {
     command: 'publish',
-    requiredPresentation: true,
     describe: 'Publish the presentation to gh-pages',
-    builder: yargs => yargs
+    builder: yargs => yargs.options({
+      files: {
+        alias: 'f',
+        array: true,
+        type: 'string',
+        describe: 'List of files that will get the build'
+      }
+    })
   },
 
   {
     command: 'pdf [<file>]',
-    requiredPresentation: true,
     describe: 'Converts the presentation to PDF',
-    builder: yargs => yargs
-      .positional('file', {
-        alias: 'f',
+    builder: yargs => yargs.options({
+      'output': {
+        alias: 'o',
         type: 'string',
         default: 'presentation.pdf',
         describe: 'File name'
-      })
+      }
+    })
   }
 ]
 

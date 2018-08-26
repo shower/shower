@@ -1,17 +1,16 @@
 const vfs = require('vinyl-fs')
+const chalk = require('chalk')
 const path = require('path')
 
 const { loadPresentationFiles } = require('../core/load_presentation_files')
 
-function prepare (config, { directory }) {
-  const { root } = config
-
-  if (!path.isAbsolute(directory)) {
-    directory = path.join(root, directory)
+function prepare ({ root }, { output, files }) {
+  if (!path.isAbsolute(output)) {
+    output = path.join(root, output)
   }
 
-  const stream = loadPresentationFiles(config)
-    .pipe(vfs.dest(directory))
+  const stream = loadPresentationFiles(files)
+    .pipe(vfs.dest(output))
 
   return new Promise((resolve, reject) => {
     stream
@@ -24,9 +23,9 @@ prepare.config = {
   requiredExistingPresentation: true
 }
 
-prepare.messages = {
+prepare.messages = (_, { output }) => ({
   start: 'Project preparation in progress',
-  end: 'Project prepared'
-}
+  end: chalk`Project prepared in {bold ${output}} dir`
+})
 
 module.exports = prepare
