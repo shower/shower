@@ -15,39 +15,14 @@ const commands = [
   },
 
   {
-    command: 'archive [<file>]',
-    describe: 'Archive the project',
+    command: 'pdf',
+    describe: 'Converts the presentation to PDF',
     builder: yargs => yargs.options({
-      output: {
+      'output': {
         alias: 'o',
         type: 'string',
-        default: 'archive.zip',
-        describe: 'Archive name'
-      },
-      files: {
-        alias: 'f',
-        array: true,
-        type: 'string',
-        describe: 'List of files that will get the build'
-      }
-    })
-  },
-
-  {
-    command: 'prepare',
-    describe: 'Prepare the project',
-    builder: yargs => yargs.options({
-      output: {
-        alias: 'o',
-        type: 'string',
-        default: 'prepared',
-        describe: 'In which folder will the prepared presentation be written'
-      },
-      files: {
-        alias: 'f',
-        array: true,
-        type: 'string',
-        describe: 'List of files that will get the build'
+        default: 'presentation.pdf',
+        describe: 'File name'
       }
     })
   },
@@ -72,9 +47,15 @@ const commands = [
   },
 
   {
-    command: 'publish',
-    describe: 'Publish the presentation to gh-pages',
+    command: 'prepare',
+    describe: 'Prepare the project',
     builder: yargs => yargs.options({
+      output: {
+        alias: 'o',
+        type: 'string',
+        default: 'prepared',
+        describe: 'In which folder will the prepared presentation be written'
+      },
       files: {
         alias: 'f',
         array: true,
@@ -85,14 +66,33 @@ const commands = [
   },
 
   {
-    command: 'pdf [<file>]',
-    describe: 'Converts the presentation to PDF',
+    command: 'archive',
+    describe: 'Archive the project',
     builder: yargs => yargs.options({
-      'output': {
+      output: {
         alias: 'o',
         type: 'string',
-        default: 'presentation.pdf',
-        describe: 'File name'
+        default: 'archive.zip',
+        describe: 'Archive name'
+      },
+      files: {
+        alias: 'f',
+        array: true,
+        type: 'string',
+        describe: 'List of files that will get the build'
+      }
+    })
+  },
+
+  {
+    command: 'publish',
+    describe: 'Publish the presentation to gh-pages',
+    builder: yargs => yargs.options({
+      files: {
+        alias: 'f',
+        array: true,
+        type: 'string',
+        describe: 'List of files that will get the build'
       }
     })
   }
