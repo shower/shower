@@ -2,4 +2,4 @@ temp/
 
 node_modules/
 
-test/**/fixtures/
+**/__tests__/**/fixtures/

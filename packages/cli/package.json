@@ -24,8 +24,8 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/test/fixtures"
+    "testMatch": [
+      "<rootDir>/**/__tests__/*.test.js"
     ]
   },
   "pre-commit": [
