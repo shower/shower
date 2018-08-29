@@ -3,6 +3,8 @@
 .lintstagedrc
 .yaspellerrc
 
+source/
+
 node_modules/
 npm-debug.log
 

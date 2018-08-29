@@ -9,11 +9,12 @@
   "author": "Nikolay Govorov <nikolay_govorov@bk.ru>",
   "license": "MIT",
   "repository": "shower/cli",
-  "main": "source/index.js",
+  "main": "lib/index.js",
   "bin": {
-    "shower": "source/cli.js"
+    "shower": "lib/cli.js"
   },
   "scripts": {
+    "build": "rimraf lib && babel source --ignore __tests__/** -d lib",
     "lint-staged": "lint-staged",
     "spellcheck": "yaspeller-ci *.md",
     "lint": "eslint-ci **/*.js --fix",
@@ -32,6 +33,9 @@
     "lint-staged"
   ],
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "eslint": "^4.19.1",
     "eslint-ci": "^0.1.1",
     "eslint-config-standard": "^11.0.0",
