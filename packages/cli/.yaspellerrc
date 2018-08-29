@@ -2,6 +2,7 @@
   "lang": "en",
   "ignoreCapitalization": true,
   "dictionary": [
+    "ShowerCLI",
     "CLI",
     "Vadim",
     "Makeev",
@@ -11,6 +12,7 @@
     "NONINFRINGEMENT",
     "npm",
     "npx",
-    "GitHub"
+    "GitHub",
+    "dev"
   ]
 }

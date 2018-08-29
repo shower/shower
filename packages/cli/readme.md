@@ -16,9 +16,22 @@ npx shower-cli create my-slides
 
 ## Installation
 
+Install ShowerCLI using `npm`:
 ```bash
-npm i -g shower-cli
+$ npm install --global shower-cli
 ```
+
+or via `yarn`:
+```bash
+$ yarn global add shower-cli
+```
+
+The minimum supported Node version is `v8.0.0` by default.
+
+**Note:** For easy creation of slides for one command,
+          we recommend installing the `ShowerCLI` globally.
+          After the presentation is created, ShowerCLI
+          is added as dev-dependencies by default
 
 ## Usage:
 
@@ -26,11 +39,26 @@ npm i -g shower-cli
 shower [--version] [--help] <command> [<args>]
 ```
 
-### Commands:
+### Create presentation
 
- - `serve` - Serve a the presentation in development mode
- - `pdf [<file>]` - Converts the presentation to PDF
- - `archive [<file>]` - To create an archive of the presentation
- - `create [<directory>]` - Creating a new project
- - `prepare [<directory>]` - Gather the necessary files in a separate folder
- - `publish` - Publish your project to GitHub Pages
+`$ shower create [<directory>]` - Creating a new project
+
+### Run development server
+
+`$ shower serve` - Serve a the presentation in development mode
+
+### Prepare presentation
+
+`$ shower prepare` - Gather the necessary files in a separate folder
+
+### Create an archive of the prepared presentation
+
+`$ shower archive` - To create an archive of the presentation
+
+### Convert presentation to PDF
+
+`$ shower pdf` - Converts the presentation to PDF
+
+### Publish presentation with [GitHub Pages](https://pages.github.com/)
+
+`$ shower publish` - Publish your project to GitHub Pages
