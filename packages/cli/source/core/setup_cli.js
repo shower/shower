@@ -42,6 +42,16 @@ const commands = [
         type: 'number',
         default: 8080,
         describe: 'Listening Port'
+      },
+      ui: {
+        type: 'bool',
+        default: false,
+        describe: 'Whether to run BrowserSync UI'
+      },
+      notify: {
+        type: 'bool',
+        default: false,
+        describe: 'Whether to show BrowserSync notifications'
       }
     })
   },

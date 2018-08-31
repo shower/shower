@@ -1,15 +1,19 @@
 const { create } = require('browser-sync')
 
-function serve ({ root: cwd }, { port, open }) {
+function serve ({ root: cwd }, { port, open, ui, notify }) {
   const bs = create()
 
+  const options = {
+    cwd,
+    port,
+    open,
+    notify,
+    ui: ui ? { port } : false,
+    server: '.'
+  }
+
   return new Promise((resolve, reject) => {
-    bs.init({
-      cwd,
-      port,
-      open,
-      server: '.'
-    }, err => {
+    bs.init(options, err => {
       if (err) {
         reject(err)
       } else {
