@@ -8,14 +8,13 @@ const inquirer = require('inquirer')
 const { promisify } = require('util')
 const template = require('gulp-template')
 
-const { isExist } = require('../util/files')
-const { installDependencies } = require('../util/npm')
+const { installDependencies } = require('../lib/npm')
 
-async function create ({ root }, { directory: folderName = 'slides' }) {
+async function create ({ cwd }, { directory: folderName = 'slides' }) {
   // Let's check if such folder exists
-  const directory = path.isAbsolute(folderName) ? folderName : path.join(root, folderName)
+  const directory = path.isAbsolute(folderName) ? folderName : path.join(cwd, folderName)
 
-  if (isExist(directory)) {
+  if (fs.existsSync(directory)) {
     const { isForce } = await inquirer.prompt({
       name: 'isForce',
       type: 'confirm',
@@ -79,7 +78,7 @@ async function create ({ root }, { directory: folderName = 'slides' }) {
       title: 'Installing dependencies',
       task: () => Promise.all([
         installDependencies(directory, ['shower-cli'], 'save-dev'),
-        installDependencies(directory, ['shower-core', `shower-${options.theme}`])
+        installDependencies(directory, ['shower-lib', `shower-${options.theme}`])
       ])
     }
   ])

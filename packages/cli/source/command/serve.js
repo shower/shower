@@ -1,6 +1,6 @@
 const { create } = require('browser-sync')
 
-function serve ({ root: cwd }, { port, open, ui, notify }) {
+function serve ({ cwd }, { port, open, ui, notify }) {
   const bs = create()
 
   const options = {

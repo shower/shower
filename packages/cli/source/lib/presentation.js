@@ -11,7 +11,7 @@ const defaultFiles = [
   '!package-lock.json'
 ]
 
-module.exports.loadPresentationFiles = function loadPresentationFiles (files = defaultFiles) {
+function loadPresentationFiles (files = defaultFiles) {
   const shower = vfs.src(files)
     .pipe(replace(
       /(<link rel="stylesheet" href=")(node_modules\/shower-)([^/]*)\/(.*\.css">)/g,
@@ -25,7 +25,7 @@ module.exports.loadPresentationFiles = function loadPresentationFiles (files = d
   const core = vfs.src([
     'shower.min.js'
   ], {
-    cwd: 'node_modules/shower-core'
+    cwd: 'node_modules/shower-lib'
   })
     .pipe(rename((path) => {
       path.dirname = 'shower/' + path.dirname
@@ -57,3 +57,5 @@ module.exports.loadPresentationFiles = function loadPresentationFiles (files = d
 
   return merge(shower, core, themes)
 }
+
+module.exports = { loadPresentationFiles }

@@ -6,7 +6,7 @@ function evalCalcExpression (expression) {
   return eval(expression.replace(/calc/g, '').replace(/px/g, '')) + 'px'
 }
 
-function pdf ({ root }, { output }) {
+function pdf ({ cwd }, { output }) {
   let browser, page
 
   return Promise.resolve()
@@ -18,7 +18,7 @@ function pdf ({ root }, { output }) {
     .then(p => {
       page = p
     })
-    .then(() => page.goto(`file://${root}/index.html`))
+    .then(() => page.goto(`file://${cwd}/index.html`))
     .then(() => page.evaluate(() => new Promise((resolve) => {
       const container = document.querySelector('.shower')
 

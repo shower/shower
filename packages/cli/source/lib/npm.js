@@ -2,7 +2,7 @@ const execa = require('execa')
 
 /**
  * Install node modules synchronously and save to dependencies in package.json
- * @param {string} cwd Root dir
+ * @param {string} cwd cwd dir
  * @param {string|string[]} packages Node module or modules to install
  * @param {string} mode Type package installing
  * @returns {void}

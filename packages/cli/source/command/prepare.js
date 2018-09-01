@@ -3,11 +3,11 @@ const chalk = require('chalk')
 const path = require('path')
 const del = require('del')
 
-const { loadPresentationFiles } = require('../core/load_presentation_files')
+const { loadPresentationFiles } = require('../lib/presentation')
 
-function prepare ({ root }, { output, files }) {
+function prepare ({ cwd }, { output, files }) {
   if (!path.isAbsolute(output)) {
-    output = path.join(root, output)
+    output = path.join(cwd, output)
   }
 
   const stream = loadPresentationFiles(files)

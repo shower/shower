@@ -18,8 +18,8 @@ it('Messages must provided "start" and "end" messages', () => {
 })
 
 it('must generated pdf file', async () => {
-  const root = path.join(__dirname, 'fixtures', 'pdf')
-  const cases = await promisify(fs.readdir)(root)
+  const cwd = path.join(__dirname, 'fixtures', 'pdf')
+  const cases = await promisify(fs.readdir)(cwd)
 
   const tempDir = tmp.dirSync({ unsafeCleanup: true })
 
@@ -37,7 +37,7 @@ it('must generated pdf file', async () => {
     const canonPresentationFile = path.join(__dirname, 'fixtures', 'pdf', file, 'presentation.pdf')
 
     await pdf(
-      { root: path.join(root, file) },
+      { cwd: path.join(cwd, file) },
       { output: generatedPresentationFile }
     )
 

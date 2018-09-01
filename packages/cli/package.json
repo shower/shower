@@ -9,9 +9,8 @@
   "author": "Nikolay Govorov <nikolay_govorov@bk.ru>",
   "license": "MIT",
   "repository": "shower/cli",
-  "main": "source/index.js",
   "bin": {
-    "shower": "source/cli.js"
+    "shower": "source/index.js"
   },
   "scripts": {
     "lint-staged": "lint-staged",

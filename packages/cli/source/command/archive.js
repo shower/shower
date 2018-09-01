@@ -2,7 +2,7 @@ const vfs = require('vinyl-fs')
 const zip = require('gulp-zip')
 const chalk = require('chalk')
 
-const { loadPresentationFiles } = require('../core/load_presentation_files')
+const { loadPresentationFiles } = require('../lib/presentation')
 
 function archive (_, { output, files }) {
   const stream = loadPresentationFiles(files)
