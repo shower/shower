@@ -86,10 +86,6 @@ async function create ({ cwd }, { directory: folderName = 'slides' }) {
   await tasks.run()
 }
 
-create.config = {
-  requiredExistingPresentation: false
-}
-
 create.messages = (_, { directory: folderName = 'slides' }) => ({
   end: `Project created in ${chalk.bold(folderName)} dir`
 })

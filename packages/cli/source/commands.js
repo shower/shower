@@ -1,55 +1,41 @@
-const chalk = require('chalk')
 const Listr = require('listr')
+const chalk = require('chalk')
 
 /**
  * Apply CLI command
  *
- * @param {ProjectConfig} config
- * @param {Object} command
+ * @param {string} name
+ * @param {ProjectConfig} env
  * @param {Object} options
+ *
  * @return {Promise<void>}
  */
-async function applyCommand (config, command, options) {
-  const name = command.command.split(' ')[0]
-
-  const task = require(`../command/${name}.js`)
-
-  let { messages = {}, config: taskConfig = {} } = task
-
-  if (typeof messages === 'function') {
-    messages = messages(config, options)
-  }
-
-  if (taskConfig.requiredExistingPresentation && !config.project) {
-    process.stdout.write(
-      chalk`{red Shower presentation not found}\n\n` +
-      chalk`Use {yellow shower create} to create a presentation\n` +
-      chalk`Run {yellow shower create --help} to learn more\n`
-    )
-
-    return
-  }
-
+async function applyCommand (name, env, options) {
   const s = Date.now()
+
+  const task = require(`./command/${name}.js`)
+
+  let { messages = {} } = task
+  if (typeof task.messages === 'function') {
+    messages = typeof task.messages === 'function' ? task.messages(env, options) : task.messages
+  }
 
   if (messages.start) {
     await (new Listr([
       {
         title: messages.start,
-        task: () => task(config, options)
+        task: () => task(env, options)
       }
     ])).run()
   } else {
-    await task(config, options)
+    await task(env, options)
   }
-
-  const time = ((Date.now() - s) / 1000).toFixed()
 
   if (messages.end) {
-    process.stdout.write(chalk`\n ${messages.end} 🎉 {yellow [in ${time}s]}\n`)
-  }
+    const time = ((Date.now() - s) / 1000).toFixed()
 
-  process.exitCode = 0
+    process.stdout.write(chalk`${messages.end} 🎉 {yellow [in ${time}s]}\n`)
+  }
 }
 
 const list = {
@@ -64,6 +50,7 @@ const list = {
 
   pdf: {
     describe: 'Converts the presentation to PDF',
+    usesExistingPresentation: true,
     builder: yargs => yargs.options({
       'output': {
         alias: 'o', type: 'string', default: 'presentation.pdf', describe: 'File name'
@@ -73,6 +60,7 @@ const list = {
 
   serve: {
     describe: 'Serve a the presentation in development mode',
+    usesExistingPresentation: true,
     builder: yargs => yargs.options({
       open: {
         alias: 'o', type: 'bool', default: false, describe: 'Open browser'
@@ -93,6 +81,7 @@ const list = {
 
   prepare: {
     describe: 'Prepare the project',
+    usesExistingPresentation: true,
     builder: yargs => yargs.options({
       output: {
         alias: 'o', type: 'string', default: 'prepared', describe: 'In which folder will the prepared presentation be written'
@@ -105,6 +94,7 @@ const list = {
 
   archive: {
     describe: 'Archive the project',
+    usesExistingPresentation: true,
     builder: yargs => yargs.options({
       output: {
         alias: 'o', type: 'string', default: 'archive.zip', describe: 'Archive name'
@@ -117,6 +107,7 @@ const list = {
 
   publish: {
     describe: 'Publish the presentation to gh-pages',
+    usesExistingPresentation: true,
     builder: yargs => yargs.options({
       files: {
         alias: 'f', array: true, type: 'string', describe: 'List of files that will get the build'

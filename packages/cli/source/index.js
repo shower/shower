@@ -33,16 +33,32 @@ async function setup () {
   app.usage(chalk`Usage: {bold $0 [--version] [--help] <command> [<args>]}`)
   app.epilog(chalk`See {bold $0 <command> --help} to read about a specific subcommand.`)
 
-  const config = getEnv()
+  const env = getEnv()
 
   for (const name in list) {
+    if (!list.hasOwnProperty(name)) {
+      return
+    }
+
     let command = list[name]
 
     app.command({
       command: command.meta ? `${name} ${command.meta}` : name,
       describe: chalk.yellow(command.describe),
       builder: command.builder,
-      handler: (options) => apply(config, command, options)
+      handler: (options) => {
+        if (command.usesExistingPresentation && !env.project) {
+          process.stdout.write(
+            chalk`{red Shower presentation not found}\n\n` +
+            chalk`Use {yellow shower create} to create a presentation\n` +
+            chalk`Run {yellow shower create --help} to learn more\n`
+          )
+
+          return Promise.resolve()
+        }
+
+        return apply(name, env, options)
+      }
     })
   }
 

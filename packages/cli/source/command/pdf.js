@@ -49,10 +49,6 @@ function pdf ({ cwd }, { output }) {
     })
 }
 
-pdf.config = {
-  requiredExistingPresentation: true
-}
-
 pdf.messages = (_, { ouput }) => ({
   start: 'Creating PDF in progress',
   end: chalk`PDF built in {bold ${ouput}}`

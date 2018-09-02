@@ -22,10 +22,6 @@ function prepare ({ cwd }, { output, files }) {
   })
 }
 
-prepare.config = {
-  requiredExistingPresentation: true
-}
-
 prepare.messages = (_, { output }) => ({
   start: 'Project preparation in progress',
   end: chalk`Project prepared in {bold ${output}} dir`
