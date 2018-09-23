@@ -3,7 +3,7 @@
 @font-face {
     font-family: 'Roboto';
     font-weight: 100;
-    font-display: optional;
+    font-display: swap;
     src:
         local('Roboto Light'),
         local('Roboto-Light'),
@@ -13,7 +13,7 @@
 @font-face {
     font-family: 'Roboto';
     font-weight: 400;
-    font-display: optional;
+    font-display: swap;
     src:
         local('Roboto'),
         local('Roboto-Regular'),
@@ -24,7 +24,7 @@
     font-family: 'Roboto';
     font-weight: 400;
     font-style: italic;
-    font-display: optional;
+    font-display: swap;
     src:
         local('Roboto Italic'),
         local('Roboto-Italic'),
@@ -34,7 +34,7 @@
 @font-face {
     font-family: 'Roboto';
     font-weight: 700;
-    font-display: optional;
+    font-display: swap;
     src:
         local('Roboto Bold'),
         local('Roboto-Bold'),
@@ -45,7 +45,7 @@
     font-family: 'Roboto';
     font-weight: 700;
     font-style: italic;
-    font-display: optional;
+    font-display: swap;
     src:
         local('Roboto Bold Italic'),
         local('Roboto-BoldItalic'),
@@ -56,7 +56,7 @@
 
 @font-face {
     font-family: 'Roboto Mono';
-    font-display: optional;
+    font-display: swap;
     src:
         local('Roboto Mono'),
         local('RobotoMono-Regular'),
