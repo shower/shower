@@ -32,16 +32,16 @@
     "shower-ribbon": "^3.1.3"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.5",
+    "browser-sync": "^2.24.7",
     "del": "^3.0.0",
-    "gh-pages": "^1.2.0",
+    "gh-pages": "^2.0.0",
     "gulp": "^4.0.0",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^1.0.0",
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
     "path-exists-cli": "^1.0.0",
-    "shower-cli": "^0.1.4"
+    "shower-cli": "^0.2.2"
   },
   "scripts": {
     "pdf": "shower pdf",
