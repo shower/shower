@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "pdf": "shower pdf",
+    "serve": "shower serve",
+    "archive": "shower archive",
+    "prepare": "shower prepare",
+    "publish": "shower publish"
+  }
+}
