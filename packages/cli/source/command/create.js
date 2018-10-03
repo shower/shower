@@ -45,7 +45,7 @@ async function create ({ cwd }, { directory: folderName = 'slides' }) {
     name: 'ratio',
     type: 'list',
     message: 'Select presentation ratio',
-    choices: ['16 / 9', '5 / 3']
+    choices: ['16:9', '4:3']
   }]
 
   Object.assign(options, await inquirer.prompt(params))
