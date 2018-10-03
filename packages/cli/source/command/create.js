@@ -50,6 +50,8 @@ async function create ({ cwd }, { directory: folderName = 'slides' }) {
 
   Object.assign(options, await inquirer.prompt(params))
 
+  options.ratio = options.ratio.replace(/:/, ' / ')
+
   process.stdout.write('\n')
 
   const tasks = new Listr([
