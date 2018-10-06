@@ -28,8 +28,8 @@
   ],
   "dependencies": {
     "shower-core": "^2.1.0",
-    "shower-material": "^2.1.3",
-    "shower-ribbon": "^3.1.3"
+    "shower-material": "^2.1.4",
+    "shower-ribbon": "^3.1.4"
   },
   "devDependencies": {
     "browser-sync": "^2.24.7",
@@ -41,7 +41,7 @@
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
     "path-exists-cli": "^1.0.0",
-    "shower-cli": "^0.2.2"
+    "shower-cli": "^0.2.3"
   },
   "scripts": {
     "pdf": "shower pdf",
