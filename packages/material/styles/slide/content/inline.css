@@ -4,8 +4,8 @@
     background-image:
         linear-gradient(
             to top,
-            currentColor 0.09em,
-            transparent 0.09em
+            currentColor 0.08em,
+            transparent 0.08em
         );
     background-repeat: repeat-x;
     color: var(--color-key);
