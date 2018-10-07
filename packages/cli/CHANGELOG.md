@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.2.4
+* Fixes `prepare` and `archive` tasks
+
 ## 0.2.3
 * Merge pull request #17
 * Fix 4:3 ratio, change separator to colon

@@ -1,6 +1,6 @@
 {
   "name": "shower-cli",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Command line interface for Shower",
   "keywords": [
     "shower",
