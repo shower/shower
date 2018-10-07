@@ -13,6 +13,10 @@
     "npm",
     "npx",
     "GitHub",
-    "dev"
+    "dev",
+    "ui",
+    "notifier",
+    "dir",
+    "js"
   ]
 }
