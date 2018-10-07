@@ -1,7 +1,6 @@
 const vfs = require('vinyl-fs')
 const zip = require('gulp-zip')
 const chalk = require('chalk')
-const getStream = require('get-stream')
 
 const { loadPresentationFiles } = require('../lib/presentation')
 
@@ -10,7 +9,11 @@ function archive (_, { output, files }) {
     .pipe(zip(output))
     .pipe(vfs.dest('.'))
 
-  return getStream(stream)
+  return new Promise((resolve, reject) => {
+    stream
+      .on('end', resolve)
+      .on('error', reject)
+  })
 }
 
 archive.messages = (_, { output }) => ({
