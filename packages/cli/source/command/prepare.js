@@ -10,10 +10,10 @@ function prepare ({ cwd }, { output, files }) {
     output = path.join(cwd, output)
   }
 
+  del.sync([output])
+
   const stream = loadPresentationFiles(files)
     .pipe(vfs.dest(output))
-
-  del.sync([output])
 
   return new Promise((resolve, reject) => {
     stream
