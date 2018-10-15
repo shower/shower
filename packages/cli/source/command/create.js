@@ -57,7 +57,7 @@ async function create ({ cwd }, { directory: folderName = 'slides' }) {
   const tasks = new Listr([
     // 1. Create project structure
     {
-      title: `Creating is project structure in "${folderName}" dir`,
+      title: `Creating project structure in "${folderName}" dir`,
       async task () {
         await promisify(fs.mkdir)(directory)
 
