@@ -41,7 +41,6 @@ function publish (_, { files }) {
 }
 
 publish.messages = {
-  start: 'The project is being published',
   end: 'Project published'
 }
 
