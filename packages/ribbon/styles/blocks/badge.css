@@ -9,19 +9,9 @@
     visibility: hidden;
     width: 9em;
     height: 9em;
-    font-size: 10px;
-}
-
-@media (min-width: 1174px) {
-    .badge {
-        font-size: 20px;
-    }
-}
-
-@media (min-width: 2348px) {
-    .badge {
-        font-size: 40px;
-    }
+    font-size: calc(
+        40px * var(--slide-scale)
+    );
 }
 
 /* Link */

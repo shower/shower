@@ -2,23 +2,14 @@
 
 .caption {
     margin-top: -0.2em;
-    padding: 0 1em 0.93em;
+    margin-bottom: -0.07em;
+    grid-column: 1 / -1;
     width: 100%;
     color: #bfbfbf;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    font-size: 25px;
-}
-
-@media (min-width: 1174px) {
-    .caption {
-        font-size: 50px;
-    }
-}
-
-@media (min-width: 2348px) {
-    .caption {
-        font-size: 100px;
-    }
+    font-size: calc(
+        var(--slide-gap) * var(--slide-scale)
+    );
 }
 
 /* Elements */
