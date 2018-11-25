@@ -14,12 +14,11 @@
 /* Link */
 
 .slide .shout a {
-    background-image:
-        linear-gradient(
-            to top,
-            rgba(75, 134, 194, 0.4) 0.06em,
-            transparent 0.06em
-        );
+    background-image: linear-gradient(
+        to top,
+        rgba(75, 134, 194, 0.4) 0.06em,
+        transparent 0.06em
+    );
     background-position: bottom 0.13em left 0;
     background-repeat: repeat-x;
 }

@@ -17,10 +17,9 @@
     color: var(--color-grey);
     text-align: right;
     opacity: 0.75;
-    transform:
-        translateX(
-            calc(-100% - 0.5em)
-        );
+    transform: translateX(
+        calc(-100% - 0.5em)
+    );
 }
 
 .slide li ol,

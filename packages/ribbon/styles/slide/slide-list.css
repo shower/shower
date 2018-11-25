@@ -4,6 +4,9 @@
     border-radius: 2px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
     transform-origin: 0 0;
+    transform: scale(
+        var(--slide-scale)
+    );
 }
 
 .shower.list .slide * {

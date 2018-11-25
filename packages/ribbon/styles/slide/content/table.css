@@ -3,7 +3,9 @@
 .slide table {
     margin-left: -100px;
     margin-bottom: 1em;
-    width: calc(100% + 100px + 100px);
+    width: calc(
+        100% + 100px + 100px
+    );
     border-collapse: collapse;
     border-spacing: 0;
 }
@@ -34,12 +36,11 @@
 /* Lines */
 
 .slide tr:not(:last-of-type) > * {
-    background:
-        linear-gradient(
-            to top,
-            var(--color-line) 0.06em,
-            transparent 0.06em
-        ) repeat-x;
+    background: linear-gradient(
+        to top,
+        var(--color-line) 0.06em,
+        transparent 0.06em
+    ) repeat-x;
 }
 
 /* Stripes */
