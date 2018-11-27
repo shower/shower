@@ -4,8 +4,8 @@
     margin-top: -0.2em;
     padding: 0 1em 0.93em;
     width: 100%;
-    color: #3c3d40;
-    text-shadow: 0 1px 0 #8d8e90;
+    color: #bfbfbf;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     font-size: 25px;
 }
 
@@ -37,8 +37,7 @@
 
 .caption a {
     text-decoration: none;
-    color: var(--color-blue);
-    text-shadow: 0 -1px 0 #1f3f60;
+    color: var(--color-blue-lighter);
 }
 
 /* List */
