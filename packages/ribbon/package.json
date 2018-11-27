@@ -33,7 +33,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "live-server": "^1.2.0",
+    "live-server": "^1.2.1",
     "shower-core": "^2.1.0",
     "stylelint": "^9.2.1"
   },
