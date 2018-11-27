@@ -27,12 +27,12 @@
     "README.md"
   ],
   "dependencies": {
-    "shower-core": "^2.1.0",
-    "shower-material": "^2.1.4",
-    "shower-ribbon": "^3.1.4"
+    "@shower/material": "^2.1.5",
+    "@shower/ribbon": "^3.2.0",
+    "shower-core": "^2.1.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.24.7",
+    "browser-sync": "^2.26.3",
     "del": "^3.0.0",
     "gh-pages": "^2.0.0",
     "gulp": "^4.0.0",
