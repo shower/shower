@@ -19,7 +19,7 @@ gulp.task('build', () => {
             cwd: 'node_modules/shower'
         })
         .pipe(replace(
-            /(<link rel="stylesheet" href=")(node_modules\/shower-ribbon\/)(styles\/styles.css">)/g,
+            /(<link rel="stylesheet" href=")(node_modules\/@shower\/ribbon\/)(styles\/styles.css">)/g,
             '$1shower/themes/ribbon/$3', { skipBinary: true }
         ))
         .pipe(replace(
@@ -40,7 +40,7 @@ gulp.task('build', () => {
             '**',
             '!package.json'
         ], {
-            cwd: 'node_modules/shower-material'
+            cwd: 'node_modules/@shower/material'
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/themes/material/' + path.dirname;
@@ -50,7 +50,7 @@ gulp.task('build', () => {
             '**',
             '!package.json'
         ], {
-            cwd: 'node_modules/shower-ribbon'
+            cwd: 'node_modules/@shower/ribbon'
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/themes/ribbon/' + path.dirname;
