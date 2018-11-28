@@ -4,7 +4,7 @@
     "build": "gulp build",
     "deploy": "gulp deploy",
     "pretest": "gulp build",
-    "test": "ls dest"
+    "test": "ls dest/shower/themes/ribbon && ls dest/shower/themes/material"
   },
   "dependencies": {
     "del": "^3.0.0",
