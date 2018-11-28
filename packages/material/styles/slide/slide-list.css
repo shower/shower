@@ -3,13 +3,16 @@
 .shower.list .slide {
     box-shadow: 2px 2px 0 2px var(--color-light);
     transform-origin: 0 0;
+    transform: scale(
+        var(--slide-scale)
+    );
 }
 
 .shower.list .slide * {
     pointer-events: none;
 }
 
-@media (min-width: 1174px) {
+@media (min-width: 1168px) {
     .shower.list .slide {
         box-shadow: 1px 1px 0 1px var(--color-light);
     }
@@ -25,44 +28,4 @@
 
 .shower.list .slide.active {
     box-shadow: 0 0 0 20px var(--color-key);
-}
-
-/* Scaling */
-
-.shower.list .slide {
-    --slide-scale: 0.25;
-    --slide-magic: calc(1 - var(--slide-scale));
-
-    margin-top: 0;
-    margin-right:
-        calc(
-            var(--slide-width) *
-            var(--slide-magic) * -1
-        );
-    margin-bottom:
-        calc(
-            var(--slide-gap) *
-            var(--slide-scale) -
-            var(--slide-height) *
-            var(--slide-magic)
-        );
-    margin-left:
-        calc(
-            var(--slide-gap) *
-            var(--slide-scale)
-        );
-
-    transform: scale(var(--slide-scale));
-}
-
-@media (min-width: 1174px) {
-    .shower.list .slide {
-        --slide-scale: 0.5;
-    }
-}
-
-@media (min-width: 2348px) {
-    .shower.list .slide {
-        --slide-scale: 1;
-    }
 }

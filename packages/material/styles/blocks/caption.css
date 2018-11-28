@@ -1,10 +1,17 @@
 /* Caption */
 
 .caption {
-    margin-top: -24px;
-    margin-bottom: 1em;
-    padding: 1.02em 0 0.9em 1em;
-    width: 100%;
+    grid-column: 1 / -1;
+    margin-left: calc(
+        -1 * var(--slide-gap) * var(--slide-scale)
+    );
+    padding-left: calc(
+        var(--slide-gap) * var(--slide-scale)
+    );
+    padding-bottom: 0.9em;
+    padding-top: 1.02em;
+    box-sizing: border-box;
+    width: 100vw;
     background-color: var(--color-key);
     background-image: var(--diagonal);
     font-size: 24px;

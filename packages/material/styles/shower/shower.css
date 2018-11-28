@@ -9,9 +9,9 @@
     --slide-gap: 96px;
     --slide-ratio: calc(16 / 9);
     --slide-width: 1024px;
-    --slide-height: calc(var(--slide-width) / var(--slide-ratio));
-
-    --progress-size: 8px;
+    --slide-height: calc(
+        var(--slide-width) / var(--slide-ratio)
+    );
 
     --color-key: #4caf50;
     --color-black: #212121;
@@ -22,11 +22,12 @@
     --color-yellow: #fff59d;
     --color-yellow-light: #ffffcf;
 
-    --diagonal:
-        linear-gradient(
-            135deg, var(--color-key) 50%,
-            rgba(0, 0, 0, 0.1) 50%
-        );
+    --progress-size: 8px;
+
+    --diagonal: linear-gradient(
+        135deg, var(--color-key) 50%,
+        rgba(0, 0, 0, 0.1) 50%
+    );
 
     -webkit-text-size-adjust: none;
     -moz-text-size-adjust: none;
