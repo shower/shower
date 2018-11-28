@@ -23,7 +23,7 @@ gulp.task('prepare', () => {
             '!package-lock.json'
         ])
         .pipe(replace(
-            /(<link rel="stylesheet" href=")(node_modules\/shower-)([^\/]*)\/(.*\.css">)/g,
+            /(<link rel="stylesheet" href=")(node_modules\/@shower\/)([^\/]*)\/(.*\.css">)/g,
             '$1shower/themes/$3/$4', { skipBinary: true }
         ))
         .pipe(replace(
@@ -43,7 +43,7 @@ gulp.task('prepare', () => {
     const material = gulp.src([
             '**', '!package.json'
         ], {
-            cwd: 'node_modules/shower-material'
+            cwd: 'node_modules/@shower/material'
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/themes/material/' + path.dirname;
@@ -52,7 +52,7 @@ gulp.task('prepare', () => {
     const ribbon = gulp.src([
             '**', '!package.json'
         ], {
-            cwd: 'node_modules/shower-ribbon'
+            cwd: 'node_modules/@shower/ribbon'
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/themes/ribbon/' + path.dirname;
