@@ -49,9 +49,9 @@ function pdf ({ cwd }, { output }) {
     })
 }
 
-pdf.messages = (_, { ouput }) => ({
+pdf.messages = (_, { output }) => ({
   start: 'Creating PDF in progress',
-  end: chalk`PDF built in {bold ${ouput}}`
+  end: chalk`PDF built in {bold ${output}}`
 })
 
 module.exports = pdf
