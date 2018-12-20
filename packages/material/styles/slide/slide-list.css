@@ -1,7 +1,11 @@
 /* Slide List */
 
 .shower.list .slide {
-    box-shadow: 2px 2px 0 2px var(--color-light);
+    box-shadow:
+        calc(var(--slide-scale) * 4px)
+        calc(var(--slide-scale) * 4px) 0
+        calc(var(--slide-scale) * 4px)
+        var(--color-light);
     transform-origin: 0 0;
     transform: scale(
         var(--slide-scale)
@@ -10,12 +14,6 @@
 
 .shower.list .slide * {
     pointer-events: none;
-}
-
-@media (min-width: 1168px) {
-    .shower.list .slide {
-        box-shadow: 1px 1px 0 1px var(--color-light);
-    }
 }
 
 /* Hover */

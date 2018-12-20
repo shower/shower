@@ -3,22 +3,16 @@
 .badge {
     align-content: center;
     justify-items: center;
-    outline: 2px dashed rgba(0, 0, 0, 0.2);
-    outline-offset: -2px;
+    outline:
+        calc(var(--slide-scale) * 8px)
+        dashed rgba(0, 0, 0, 0.2);
+    outline-offset: calc(
+        -1 * var(--slide-scale) * 8px
+    );
     line-height: 1;
-    font-size: 12px;
-}
-
-@media (min-width: 1168px) {
-    .badge {
-        font-size: 24px;
-    }
-}
-
-@media (min-width: 2336px) {
-    .badge {
-        font-size: 48px;
-    }
+    font-size: calc(
+        var(--slide-scale) * 48px
+    );
 }
 
 /* Elements */
