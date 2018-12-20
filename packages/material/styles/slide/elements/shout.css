@@ -33,8 +33,8 @@
     background-image:
         linear-gradient(
             to top,
-            currentColor 0.06em,
-            transparent 0.06em
+            currentColor 0.05em,
+            transparent 0.05em
         );
     background-position: bottom 0.05em left 0;
     background-repeat: repeat-x;
