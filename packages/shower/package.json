@@ -12,7 +12,7 @@
     "url": "git://github.com/shower/shower.git"
   },
   "bugs": {
-    "url": "http://github.com/shower/shower/issues"
+    "url": "https://github.com/shower/shower/issues"
   },
   "license": "MIT",
   "keywords": [
@@ -27,8 +27,8 @@
     "README.md"
   ],
   "dependencies": {
-    "@shower/material": "^2.1.5",
-    "@shower/ribbon": "^3.2.0",
+    "@shower/material": "^2.2.0",
+    "@shower/ribbon": "^3.2.1",
     "shower-core": "^2.1.0"
   },
   "devDependencies": {
