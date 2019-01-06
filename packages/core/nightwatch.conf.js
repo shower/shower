@@ -1,69 +1,60 @@
 'use strict';
 
-const {
-    TRAVIS_JOB_NUMBER: job,
-    npm_package_config_port: port,
-} = process.env;
+const { env } = process;
+const makeSauceEnv = desired => ({
+    live_output: true,
+    skip_testcases_on_fail: false,
+    selenium: {
+        host: 'ondemand.saucelabs.com',
+        port: 80,
+    },
+    username: env.SAUCE_USERNAME,
+    access_key: env.SAUCE_ACCESS_KEY,
+    desiredCapabilities: {
+        'tunnel-identifier': env.TRAVIS_JOB_NUMBER,
+        ...desired,
+    },
+});
 
 module.exports = {
+    globals_path: 'test/func-harness.js',
     src_folders: 'test/func',
-    globals_path: 'test/chromedriver.js',
-    live_output: true,
-
-    selenium: {
-        start_process: false,
-    },
+    output_folder: 'test/output',
+    launch_url: `http://localhost:${env.npm_package_config_port}/tests`,
 
     test_settings: {
-        default: {
-            launch_url: `http://localhost:${port}/tests`,
-            selenium_host: 'ondemand.saucelabs.com',
-            selenium_port: 80,
-            username: process.env.SAUCE_USERNAME,
-            access_key: process.env.SAUCE_ACCESS_KEY,
-            desiredCapabilities: {
-                version: 'latest',
-                build: `build-${job}`,
-                'tunnel-identifier': job,
+        'chrome-local': {
+            webdriver: {
+                start_process: true,
+                server_path: 'node_modules/.bin/chromedriver',
+                port: 9515,
             },
-            skip_testcases_on_fail: false,
-        },
-
-        chrome: {
             desiredCapabilities: {
                 browserName: 'chrome',
-                platform: 'macOS 10.12',
+                chromeOptions: {
+                    args: ['headless'],
+                },
             },
         },
 
-        firefox: {
-            desiredCapabilities: {
-                browserName: 'firefox',
-                platform: 'windows 10',
-            },
-        },
+        chrome: makeSauceEnv({
+            browserName: 'chrome',
+            platform: 'macOS 10.13',
+        }),
 
-        safari: {
-            desiredCapabilities: {
-                browserName: 'safari',
-                platform: 'macOS 10.12',
-            },
-        },
+        firefox: makeSauceEnv({
+            browserName: 'firefox',
+            platform: 'windows 10',
+        }),
 
-        edge: {
-            desiredCapabilities: {
-                browserName: 'microsoftedge',
-                platform: 'windows 10',
-            },
-        },
+        safari: makeSauceEnv({
+            browserName: 'safari',
+            platform: 'macOS 10.13',
+        }),
 
-        local: {
-            selenium_host: 'localhost',
-            selenium_port: 9515,
-            default_path_prefix: '',
-            desiredCapabilities: {
-                browserName: 'chrome',
-            },
-        },
+        edge: makeSauceEnv({
+            browserName: 'microsoftedge',
+            platform: 'windows 10',
+        }),
     },
 };

@@ -10,12 +10,12 @@ Get the [Shower template](https://github.com/shower/shower/) where core is alrea
 
 You can also install core as a separate package:
 
-    npm install shower-core
-
+    npm install @shower/core
 
 ## Development
 
 To take part in core development please read [contributing guidelines](CONTRIBUTING.md) first and [file an issue](https://github.com/shower/shower/issues/new) before sending any pull request.
 
 ---
+
 Licensed under [MIT License](LICENSE.md).

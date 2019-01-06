@@ -76,14 +76,14 @@ module.exports = {
         browser.url(`${browser.launchUrl}/list-id.html#1`);
         browser.assert.cssClassPresent('[id="1"]', 'active');
 
-        browser.execute(function () {
+        browser.execute(function() {
             location.hash = '3';
         });
 
         browser.assert.cssClassPresent('[id="1"]', 'visited');
         browser.assert.cssClassPresent('[id="3"]', 'active');
 
-        browser.execute(function () {
+        browser.execute(function() {
             location.hash = 'id';
         });
 
@@ -97,7 +97,7 @@ module.exports = {
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
 
-        browser.execute(function () {
+        browser.execute(function() {
             history.back();
         });
 
@@ -105,7 +105,7 @@ module.exports = {
         browser.assert.cssClassPresent('#id', 'active');
         browser.assert.cssClassNotPresent('[id="3"]', 'active');
 
-        browser.execute(function () {
+        browser.execute(function() {
             history.back();
         });
 
@@ -113,7 +113,7 @@ module.exports = {
         browser.assert.cssClassPresent('[id="1"]', 'active');
         browser.assert.cssClassNotPresent('#id', 'active');
 
-        browser.execute(function () {
+        browser.execute(function() {
             history.forward();
         });
 
@@ -121,7 +121,7 @@ module.exports = {
         browser.assert.cssClassPresent('#id', 'active');
         browser.assert.cssClassNotPresent('[id="1"]', 'active');
 
-        browser.execute(function () {
+        browser.execute(function() {
             history.forward();
         });
 
@@ -134,7 +134,7 @@ module.exports = {
 
     'does not change slide if hash is invalid in `list` mode': browser => {
         browser.url(`${browser.launchUrl}/list-id.html#id`);
-        browser.execute(function () {
+        browser.execute(function() {
             location.hash = 'invalid';
         });
 
@@ -145,12 +145,52 @@ module.exports = {
 
     'does not change slide if hash is invalid in `full` mode': browser => {
         browser.url(`${browser.launchUrl}/full-id.html#id`);
-        browser.execute(function () {
+        browser.execute(function() {
             location.hash = 'invalid';
         });
 
         browser.assert.cssClassPresent('#id', 'active');
         browser.assert.cssClassNotPresent('#id', 'visited');
+        browser.end();
+    },
+
+    'sets `full` query on page load (no hash)': browser => {
+        browser.url(`${browser.launchUrl}/full.html`);
+        browser.assert.urlContains('?full');
+        browser.end();
+    },
+
+    'sets `full` query on page load (valid hash)': browser => {
+        browser.url(`${browser.launchUrl}/full-id.html#id`);
+        browser.assert.urlContains('?full');
+        browser.end();
+    },
+
+    'sets `full` query on page load (invalid hash)': browser => {
+        browser.url(`${browser.launchUrl}/full-id.html#invalid`);
+        browser.assert.urlContains('?full');
+        browser.end();
+    },
+
+    'persists `full` query after refresh': browser => {
+        browser.url(`${browser.launchUrl}/list.html`);
+        browser.click('[id="3"]');
+        browser.refresh();
+        browser.assert.elementPresent('.shower.full');
+        browser.end();
+    },
+
+    'persists hash after refresh in `list` mode': browser => {
+        browser.url(`${browser.launchUrl}/list.html#3`);
+        browser.refresh();
+        browser.assert.urlContains('#3');
+        browser.end();
+    },
+
+    'persists hash after refresh in `full` mode': browser => {
+        browser.url(`${browser.launchUrl}/full.html#3`);
+        browser.refresh();
+        browser.assert.urlContains('#3');
         browser.end();
     },
 };

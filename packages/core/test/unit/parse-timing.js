@@ -1,4 +1,4 @@
-import p from '../../lib/plugins/timer/parse-timing';
+import p from '../../lib/modules/timer/parse-timing';
 
 describe('parseTiming', () => {
     it('empty string', () => {

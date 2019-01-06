@@ -1,5 +1,5 @@
-.DS_Store
-/node_modules
-/npm-debug.log*
+chromedriver.log
+node_modules
+npm-debug.log*
 /dist/shower.js
-/tests_output
+/test/output

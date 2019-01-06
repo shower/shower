@@ -1,0 +1,9 @@
+printWidth: 100
+singleQuote: true
+trailingComma: all
+endOfLine: lf
+
+overrides:
+  - files: '*.js'
+    options:
+      tabWidth: 4

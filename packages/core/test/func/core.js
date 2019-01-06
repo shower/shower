@@ -28,14 +28,6 @@ module.exports = {
         browser.end();
     },
 
-    'keeps `full` mode after reload': browser => {
-        browser.url(`${browser.launchUrl}/list.html`);
-        browser.click('[id="3"]');
-        browser.refresh();
-        browser.assert.elementPresent('.shower.full');
-        browser.end();
-    },
-
     'adds IDs to all slides unless alredy set': browser => {
         browser.url(`${browser.launchUrl}/list-id.html`);
         browser.assert.elementPresent('[id="1"]');

@@ -4,15 +4,11 @@ const hasUnits = timing => {
 };
 
 const parseUnits = timing => {
-    return units
-        .map(unit => timing.match(`(\\S+)${unit}`))
-        .map(match => match && match[1]);
+    return units.map(unit => timing.match(`(\\S+)${unit}`)).map(match => match && match[1]);
 };
 
 const parseColons = timing => {
-    return `::${timing}`
-        .split(':')
-        .reverse();
+    return `::${timing}`.split(':').reverse();
 };
 
 const SEC_IN_MIN = 60;
@@ -21,9 +17,7 @@ const SEC_IN_HOUR = SEC_IN_MIN * 60;
 export default timing => {
     if (!timing) return 0;
 
-    const parsed = hasUnits(timing)
-        ? parseUnits(timing)
-        : parseColons(timing);
+    const parsed = hasUnits(timing) ? parseUnits(timing) : parseColons(timing);
 
     let [sec, min, hour] = parsed.map(Number);
 

@@ -1,23 +1,15 @@
-import { isInteractiveElement, isModifierUsed } from '../utils';
+import { isInteractiveElement } from '../utils';
 
 export default shower => {
-    const { container, player } = shower;
-    const containerElement = container.getElement();
-    containerElement.addEventListener('keydown', event => {
-        if (event.defaultPrevented) return;
-        if (isInteractiveElement(event.target)) return;
+    const doSlideActions = event => {
+        const isShowerAction = !(event.ctrlKey || event.altKey || event.metaKey);
 
-        slideActions(event);
-        modeActions(event);
-    });
-
-    const slideActions = event => {
         switch (event.key.toUpperCase()) {
             case 'ENTER':
-                if (event.metaKey && !container.isSlideMode()) {
+                if (event.metaKey && shower.isListMode) {
                     if (event.shiftKey) {
                         event.preventDefault();
-                        player.first();
+                        shower.first();
                     }
 
                     break;
@@ -25,9 +17,9 @@ export default shower => {
 
                 event.preventDefault();
                 if (event.shiftKey) {
-                    player.prev();
+                    shower.prev();
                 } else {
-                    player.next();
+                    shower.next();
                 }
                 break;
 
@@ -37,9 +29,9 @@ export default shower => {
             case 'H':
             case 'K':
             case 'P':
-                if (!isModifierUsed(event)) {
+                if (isShowerAction) {
                     event.preventDefault();
-                    player.prev({ cancelable: event.shiftKey });
+                    shower.prev(event.shiftKey);
                 }
                 break;
 
@@ -49,64 +41,72 @@ export default shower => {
             case 'L':
             case 'J':
             case 'N':
-                if (!isModifierUsed(event)) {
+                if (isShowerAction) {
                     event.preventDefault();
-                    player.next({ cancelable: event.shiftKey });
+                    shower.next(event.shiftKey);
                 }
                 break;
 
             case ' ':
-                if (!isModifierUsed(event) && container.isSlideMode()) {
+                if (isShowerAction && shower.isFullMode) {
                     event.preventDefault();
                     if (event.shiftKey) {
-                        player.prev();
+                        shower.prev();
                     } else {
-                        player.next();
+                        shower.next();
                     }
                 }
                 break;
 
             case 'HOME':
                 event.preventDefault();
-                player.first();
+                shower.first();
                 break;
 
             case 'END':
                 event.preventDefault();
-                player.last();
+                shower.last();
                 break;
         }
     };
 
-    const modeActions = event => {
+    const doModeActions = event => {
         switch (event.key.toUpperCase()) {
             case 'ESCAPE':
-                if (container.isSlideMode()) {
+                if (shower.isFullMode) {
                     event.preventDefault();
-                    container.exitSlideMode();
+                    shower.exitFullMode();
                 }
                 break;
 
             case 'ENTER':
-                if (event.metaKey && !container.isSlideMode()) {
+                if (event.metaKey && shower.isListMode) {
                     event.preventDefault();
-                    container.enterSlideMode();
+                    shower.enterFullMode();
                 }
                 break;
 
             case 'P':
-                if (event.metaKey && event.altKey && !container.isSlideMode()) {
+                if (event.metaKey && event.altKey && shower.isListMode) {
                     event.preventDefault();
-                    container.enterSlideMode();
+                    shower.enterFullMode();
                 }
                 break;
 
             case 'F5':
-                if (event.shiftKey && !container.isSlideMode()) {
+                if (event.shiftKey && shower.isListMode) {
                     event.preventDefault();
-                    container.enterSlideMode();
+                    shower.enterFullMode();
                 }
                 break;
         }
     };
+
+    shower.container.addEventListener('keydown', event => {
+        if (event.defaultPrevented) return;
+        if (isInteractiveElement(event.target)) return;
+
+        doSlideActions(event);
+        doModeActions(event);
+    });
 };

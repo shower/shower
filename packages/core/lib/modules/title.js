@@ -3,9 +3,9 @@ const mdash = '\u2014';
 export default shower => {
     const { title } = document;
     const updateTitle = () => {
-        if (shower.container.isSlideMode()) {
-            const slide = shower.player.getCurrentSlide();
-            const slideTitle = slide.getTitle();
+        if (shower.isFullMode) {
+            const slide = shower.activeSlide;
+            const slideTitle = slide.title;
             if (slideTitle) {
                 document.title = `${slideTitle} ${mdash} ${title}`;
                 return;
@@ -15,6 +15,6 @@ export default shower => {
         document.title = title;
     };
 
-    shower.player.events.on('activate', updateTitle);
-    shower.container.events.on('modechange', updateTitle);
+    shower.addEventListener('modechange', updateTitle);
+    shower.addEventListener('slidechange', updateTitle);
 };

@@ -1,6 +1,7 @@
 'use strict';
 
 const resolve = require('rollup-plugin-node-resolve');
+const commonjs = require('rollup-plugin-commonjs');
 const pkg = require('./package.json');
 
 const ndash = '\u2013';
@@ -12,17 +13,15 @@ const banner = `
  * @copyright 2010${ndash}${now} ${pkg.author.name}, ${pkg.author.url}
  * @license ${pkg.license}
  */
-`;
+`.trim();
 
 module.exports = {
     input: 'lib/index.js',
-    plugins: [
-        resolve(),
-    ],
     output: {
         file: 'dist/shower.js',
         format: 'iife',
         name: 'shower',
         banner,
     },
+    plugins: [resolve(), commonjs()],
 };

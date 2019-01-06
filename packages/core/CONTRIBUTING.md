@@ -15,4 +15,5 @@ Please preserve existing code style while contributing to Shower and be ready fo
 English is the main language for Shower project. All discussions and commit messages should be in English, no matter if it’s good or bad. The second language of Shower is Russian. Official Shower themes are always compatible with Cyrillic and Russian typography. All documentation to Shower is always localized to Russian.
 
 ---
+
 Licensed under [MIT License](LICENSE.md).

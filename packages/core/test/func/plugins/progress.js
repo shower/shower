@@ -17,8 +17,14 @@ module.exports = {
         browser.end();
     },
 
-    'updates progress on page load': browser => {
+    'updates progress on page load (class)': browser => {
         browser.url(`${browser.launchUrl}/full.html#2`);
+        browser.assert.attributeEquals('.progress', VALUE_ATTR, '50');
+        browser.end();
+    },
+
+    'updates progress on page load (query)': browser => {
+        browser.url(`${browser.launchUrl}/list.html?full#2`);
         browser.assert.attributeEquals('.progress', VALUE_ATTR, '50');
         browser.end();
     },
