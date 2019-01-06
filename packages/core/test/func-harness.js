@@ -12,6 +12,7 @@ const server = new Server((request, response) => {
 
 module.exports = {
     before: done => {
+        process.setMaxListeners(0);
         server.listen(process.env.npm_package_config_port, done);
     },
     after: done => {
