@@ -9,20 +9,6 @@
     "name": "Vadim Makeev",
     "url": "https://pepelsbey.net"
   },
-  "maintainers": [
-    {
-      "name": "Denis Hananein",
-      "email": "i@zloylos.me",
-      "github-username": "zloylos",
-      "role": "General architecture"
-    },
-    {
-      "name": "Vadim Makeev",
-      "email": "pepelsbey@gmail.com",
-      "github-username": "pepelsbey",
-      "role": "Author, idea, tests"
-    }
-  ],
   "homepage": "https://github.com/shower/core",
   "repository": "shower/core",
   "bugs": "https://github.com/shower/shower/issues",
