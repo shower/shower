@@ -1,5 +1,6 @@
 'use strict';
 
+const { EventEmitter } = require('events');
 const { Server } = require('http');
 const handler = require('serve-handler');
 
@@ -13,7 +14,7 @@ const server = new Server((request, response) => {
 
 module.exports = {
     before: done => {
-        process.setMaxListeners(0);
+        EventEmitter.defaultMaxListeners = 0;
         server.listen(port, done);
     },
     after: done => {
