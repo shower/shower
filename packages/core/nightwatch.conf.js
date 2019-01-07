@@ -1,7 +1,7 @@
 'use strict';
 
 const { env } = process;
-const makeSauceEnv = desired => ({
+const makeSauceEnv = caps => ({
     selenium: {
         host: 'ondemand.saucelabs.com',
         port: 80,
@@ -10,7 +10,7 @@ const makeSauceEnv = desired => ({
     access_key: env.SAUCE_ACCESS_KEY,
     desiredCapabilities: {
         'tunnel-identifier': env.TRAVIS_JOB_NUMBER,
-        ...desired,
+        ...caps,
     },
 });
 
@@ -31,7 +31,7 @@ module.exports = {
                 port: 9515,
             },
             desiredCapabilities: {
-                browserName: 'chrome',
+                browserName: 'Chrome',
                 chromeOptions: {
                     args: ['headless'],
                 },
@@ -39,23 +39,23 @@ module.exports = {
         },
 
         chrome: makeSauceEnv({
-            browserName: 'chrome',
-            platform: 'macOS 10.13',
+            browserName: 'Chrome',
+            platform: 'macOS 10.14',
         }),
 
         firefox: makeSauceEnv({
-            browserName: 'firefox',
-            platform: 'windows 10',
+            browserName: 'Firefox',
+            platform: 'Windows 10',
         }),
 
         safari: makeSauceEnv({
-            browserName: 'safari',
-            platform: 'macOS 10.13',
+            browserName: 'Safari',
+            platform: 'macOS 10.14',
         }),
 
         edge: makeSauceEnv({
-            browserName: 'microsoftedge',
-            platform: 'windows 10',
+            browserName: 'MicrosoftEdge',
+            platform: 'Windows 10',
         }),
     },
 };
