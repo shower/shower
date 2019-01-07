@@ -40,7 +40,7 @@ module.exports = {
 
         chrome: makeSauceEnv({
             browserName: 'Chrome',
-            platform: 'macOS 10.14',
+            platform: 'macOS 10.13',
         }),
 
         firefox: makeSauceEnv({
@@ -50,7 +50,7 @@ module.exports = {
 
         safari: makeSauceEnv({
             browserName: 'Safari',
-            platform: 'macOS 10.14',
+            platform: 'macOS 10.13',
         }),
 
         edge: makeSauceEnv({
