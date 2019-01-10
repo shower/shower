@@ -4,5 +4,7 @@ node_js:
 branches:
   only:
     - master
+notifications:
+  email: false
 addons:
   sauce_connect: true

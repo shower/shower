@@ -41,6 +41,7 @@
     "rollup": "^1.0.2",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
+    "sauce-connect-launcher": "^1.2.4",
     "serve-handler": "^5.0.7"
   },
   "config": {
@@ -54,8 +55,8 @@
     "prettier:etc": "prettier '**/*.{json,md,yml}' --write",
     "prettier": "npm run prettier:js && npm run prettier:etc",
     "test:unit": "mocha test/unit --require esm --require chai/register-should",
-    "test:local": "npm run build && nightwatch --env chrome-local",
-    "test:sauce": "npm run build && nightwatch --env chrome,firefox,safari,edge",
+    "test:local": "nightwatch --env chrome-local",
+    "test:sauce": "nightwatch --env chrome,firefox,safari,edge",
     "test": "npm run lint && npm run test:unit && npm run test:sauce"
   }
 }
