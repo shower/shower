@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    '@tags': ['plugin', 'location'],
+    '@tags': ['location'],
 
     'activates slide on page load by number in `list` mode': browser => {
         browser.url(`${browser.launchUrl}/list-id.html#3`);
@@ -132,6 +132,29 @@ module.exports = {
         browser.end();
     },
 
+    'exits `full` mode when navigating through history': browser => {
+        browser.url(`${browser.launchUrl}/list-id.html`);
+        browser.click('[id="1"]');
+        browser.assert.cssClassPresent('.shower', 'full');
+
+        browser.execute(function() {
+            history.back();
+        });
+        browser.assert.cssClassPresent('.shower', 'list');
+    },
+
+    'enters `full` mode when navigating through history': browser => {
+        browser.url(`${browser.launchUrl}/full.html`);
+        browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
+        browser.sendKeys('.send-keys', browser.Keys.ESCAPE);
+        browser.assert.cssClassPresent('.shower', 'list');
+
+        browser.execute(function() {
+            history.back();
+        });
+        browser.assert.cssClassPresent('.shower', 'full');
+    },
+
     'does not change slide if hash is invalid in `list` mode': browser => {
         browser.url(`${browser.launchUrl}/list-id.html#id`);
         browser.execute(function() {
@@ -176,7 +199,7 @@ module.exports = {
         browser.url(`${browser.launchUrl}/list.html`);
         browser.click('[id="3"]');
         browser.refresh();
-        browser.assert.elementPresent('.shower.full');
+        browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
     },
 

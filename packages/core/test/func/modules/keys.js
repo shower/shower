@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    '@tags': ['plugin', 'keys'],
+    '@tags': ['keys'],
 
     // Forward
 
@@ -207,7 +207,7 @@ module.exports = {
         browser.url(`${browser.launchUrl}/list.html#2`);
         browser.sendKeys('.send-keys', [browser.Keys.SHIFT, browser.Keys.F5]);
         browser.assert.cssClassPresent('[id="2"]', 'active');
-        browser.assert.elementPresent('.shower.full');
+        browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
     },
 
@@ -217,7 +217,7 @@ module.exports = {
         browser.url(`${browser.launchUrl}/list.html#2`);
         browser.sendKeys('.send-keys', [browser.Keys.META, browser.Keys.SHIFT, browser.Keys.ENTER]);
         browser.assert.cssClassPresent('[id="1"]', 'active');
-        browser.assert.elementPresent('.shower.full');
+        browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
     },
 
@@ -227,14 +227,14 @@ module.exports = {
         browser.url(`${browser.launchUrl}/list.html#2`);
         browser.sendKeys('.send-keys', [browser.Keys.META, browser.Keys.ENTER]);
         browser.assert.cssClassPresent('[id="2"]', 'active');
-        browser.assert.elementPresent('.shower.full');
+        browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
     },
 
     'stops presenation when Esc key is pressed': browser => {
         browser.url(`${browser.launchUrl}/full.html#1`);
         browser.sendKeys('.send-keys', browser.Keys.ESCAPE);
-        browser.assert.elementPresent('.shower.list');
+        browser.assert.cssClassPresent('.shower', 'list');
         browser.end();
     },
 };

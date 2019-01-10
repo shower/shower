@@ -3,7 +3,7 @@
 const VALUE_ATTR = 'aria-valuenow';
 
 module.exports = {
-    '@tags': ['plugin', 'progress'],
+    '@tags': ['progress'],
 
     'is shown in `full` mode': browser => {
         browser.url(`${browser.launchUrl}/full.html`);

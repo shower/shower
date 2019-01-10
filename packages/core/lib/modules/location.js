@@ -1,6 +1,6 @@
-export default shower => {
-    let isPopState = false;
+import { freezeHistory } from '../utils';
 
+export default shower => {
     const getURL = () => {
         const search = shower.isFullMode ? '?full' : '';
         const slide = shower.activeSlide;
@@ -22,15 +22,11 @@ export default shower => {
     };
 
     shower.addEventListener('modechange', () => {
-        if (!isPopState) {
-            history.replaceState(null, document.title, getURL());
-        }
+        history.replaceState(null, document.title, getURL());
     });
 
     shower.addEventListener('slidechange', () => {
-        if (!isPopState) {
-            history.pushState(null, document.title, getURL());
-        }
+        history.pushState(null, document.title, getURL());
     });
 
     shower.addEventListener('start', () => {
@@ -42,8 +38,14 @@ export default shower => {
     });
 
     window.addEventListener('popstate', () => {
-        isPopState = true;
-        changeSlide();
-        isPopState = false;
+        freezeHistory(() => {
+            changeSlide();
+            const isFull = new URL(location).searchParams.has('full');
+            if (isFull) {
+                shower.enterFullMode();
+            } else {
+                shower.exitFullMode();
+            }
+        });
     });
 };

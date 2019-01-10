@@ -5,26 +5,26 @@ module.exports = {
 
     'uses `list` mode in lack of any': browser => {
         browser.url(`${browser.launchUrl}/none.html`);
-        browser.assert.elementPresent('.shower.list');
+        browser.assert.cssClassPresent('.shower', 'list');
         browser.end();
     },
 
     'stays in `list` mode if `list` is present': browser => {
         browser.url(`${browser.launchUrl}/list.html`);
-        browser.assert.elementPresent('.shower.list');
+        browser.assert.cssClassPresent('.shower', 'list');
         browser.end();
     },
 
     'stays in `full` mode if `full` is present': browser => {
         browser.url(`${browser.launchUrl}/full.html`);
-        browser.assert.elementPresent('.shower.full');
+        browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
     },
 
     'goes to `full` mode when a slide is clicked': browser => {
         browser.url(`${browser.launchUrl}/list.html`);
         browser.click('[id="1"]');
-        browser.assert.elementPresent('.shower.full');
+        browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
     },
 

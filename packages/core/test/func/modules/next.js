@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    '@tags': ['plugin', 'next'],
+    '@tags': ['next'],
 
     'does not work in list mode (forwards)': browser => {
         browser.url(`${browser.launchUrl}/list-next.html#2`);
