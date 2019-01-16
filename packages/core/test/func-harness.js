@@ -1,5 +1,6 @@
 'use strict';
 
+/* eslint-disable no-console */
 const { EventEmitter } = require('events');
 const { Server } = require('http');
 const handler = require('serve-handler');
