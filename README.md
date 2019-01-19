@@ -47,10 +47,10 @@ And you’ll have your slides published to `http://USER.github.io/REPO/`.
 
 ## Usage Examples
 
+- [Semantic for cynics](https://pepelsbey.net/pres/semantics/en/)
 - [Inhuman UI](https://pepelsbey.net/pres/inhuman-ui/)
 - [My Vanilla CSS](https://pepelsbey.net/pres/vanilla-css/)
 - [I’m in IoT](https://pepelsbey.net/pres/im-in-iot/)
-- [Enough Bricks](https://pepelsbey.net/pres/enough-bricks/)
 
 ## Browser Support
 
