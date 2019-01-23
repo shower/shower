@@ -8,15 +8,15 @@ parserOptions:
   sourceType: script
 rules:
   no-underscore-dangle: off
-  arrow-body-style: off
   no-plusplus: off
   no-param-reassign: off
   no-restricted-syntax: off
   no-restricted-globals: off
-  no-mixed-operators: off
+
+  arrow-body-style: off
   default-case: off
   prefer-const:
     - error
     - destructuring: all
+
   import/prefer-default-export: off
-  no-use-before-define: off
