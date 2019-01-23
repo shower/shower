@@ -19,7 +19,7 @@
     "presentation",
     "core"
   ],
-  "main": "lib",
+  "main": "lib/shower.js",
   "files": [
     "dist/shower.js"
   ],
