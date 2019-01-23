@@ -16,7 +16,7 @@ const banner = `
 `.trim();
 
 module.exports = {
-    input: 'lib/index.js',
+    input: 'lib/start.js',
     output: {
         file: 'dist/shower.js',
         format: 'iife',
