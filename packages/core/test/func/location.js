@@ -97,34 +97,22 @@ module.exports = {
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
 
-        browser.execute(function() {
-            history.back();
-        });
-
+        browser.back();
         browser.assert.urlContains('#id');
         browser.assert.cssClassPresent('#id', 'active');
         browser.assert.cssClassNotPresent('[id="3"]', 'active');
 
-        browser.execute(function() {
-            history.back();
-        });
-
+        browser.back();
         browser.assert.urlContains('#1');
         browser.assert.cssClassPresent('[id="1"]', 'active');
         browser.assert.cssClassNotPresent('#id', 'active');
 
-        browser.execute(function() {
-            history.forward();
-        });
-
+        browser.forward();
         browser.assert.urlContains('#id');
         browser.assert.cssClassPresent('#id', 'active');
         browser.assert.cssClassNotPresent('[id="1"]', 'active');
 
-        browser.execute(function() {
-            history.forward();
-        });
-
+        browser.forward();
         browser.assert.urlContains('#3');
         browser.assert.cssClassPresent('[id="3"]', 'active');
         browser.assert.cssClassNotPresent('#id', 'active');
@@ -137,9 +125,7 @@ module.exports = {
         browser.click('[id="1"]');
         browser.assert.cssClassPresent('.shower', 'full');
 
-        browser.execute(function() {
-            history.back();
-        });
+        browser.back();
         browser.assert.cssClassPresent('.shower', 'list');
     },
 
@@ -149,9 +135,7 @@ module.exports = {
         browser.sendKeys('.send-keys', browser.Keys.ESCAPE);
         browser.assert.cssClassPresent('.shower', 'list');
 
-        browser.execute(function() {
-            history.back();
-        });
+        browser.back();
         browser.assert.cssClassPresent('.shower', 'full');
     },
 
