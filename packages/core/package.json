@@ -50,8 +50,8 @@
   },
   "scripts": {
     "build": "rollup --config",
-    "fix": "eslint '**/*.js' --fix",
     "lint": "eslint '**/*.js'",
+    "lint:fix": "eslint '**/*.js' --fix",
     "prettier:js": "prettier '**/*.js' --write",
     "prettier:etc": "prettier '**/*.{json,md,yml}' --write",
     "prettier": "npm run prettier:js && npm run prettier:etc",
