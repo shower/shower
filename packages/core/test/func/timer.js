@@ -3,12 +3,12 @@
 const TIMING = 1100;
 
 function dispatchKeydown() {
-    const event = new KeyboardEvent('keydown', {
-        key: 'a',
-        bubbles: true,
-    });
-
-    document.body.dispatchEvent(event);
+    document.body.dispatchEvent(
+        new KeyboardEvent('keydown', {
+            bubbles: true,
+            key: 'a',
+        }),
+    );
 }
 
 module.exports = {
