@@ -201,7 +201,7 @@ module.exports = {
         browser.end();
     },
 
-    // Start End
+    // Mode change
 
     'starts presenation from the current slide when Shift F5 keys are pressed': browser => {
         browser.url(`${browser.launchUrl}/list.html#2`);
@@ -212,20 +212,35 @@ module.exports = {
     },
 
     'starts presenation from the first slide when Cmd Shift Enter keys are pressed': browser => {
-        if (browser.options.desiredCapabilities.platform.includes('windows')) return;
-
         browser.url(`${browser.launchUrl}/list.html#2`);
-        browser.sendKeys('.send-keys', [browser.Keys.META, browser.Keys.SHIFT, browser.Keys.ENTER]);
+        browser.execute(function() {
+            document.body.dispatchEvent(
+                new KeyboardEvent('keydown', {
+                    bubbles: true,
+                    key: 'Enter',
+                    shiftKey: true,
+                    metaKey: true,
+                }),
+            );
+        });
+
         browser.assert.cssClassPresent('[id="1"]', 'active');
         browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
     },
 
     'starts presenation from the current slide when Cmd Enter keys are pressed': browser => {
-        if (browser.options.desiredCapabilities.platform.includes('windows')) return;
-
         browser.url(`${browser.launchUrl}/list.html#2`);
-        browser.sendKeys('.send-keys', [browser.Keys.META, browser.Keys.ENTER]);
+        browser.execute(function() {
+            document.body.dispatchEvent(
+                new KeyboardEvent('keydown', {
+                    bubbles: true,
+                    key: 'Enter',
+                    metaKey: true,
+                }),
+            );
+        });
+
         browser.assert.cssClassPresent('[id="2"]', 'active');
         browser.assert.cssClassPresent('.shower', 'full');
         browser.end();
