@@ -19,7 +19,6 @@ module.exports = {
     src_folders: 'test/func',
     output_folder: 'test/output',
 
-    launch_url: `http://localhost:${env.npm_package_config_port}/tests`,
     live_output: true,
     skip_testcases_on_fail: false,
 

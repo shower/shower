@@ -15,14 +15,14 @@ module.exports = {
     '@tags': ['timer'],
 
     'does not activate on page load in `list` mode': browser => {
-        browser.url(`${browser.launchUrl}/list-timer.html#2`);
+        browser.url(`${browser.globals.url}/list-timer.html#2`);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="2"]', 'active');
         browser.end();
     },
 
     'does not activate when moving forwards in `list` mode': browser => {
-        browser.url(`${browser.launchUrl}/list-timer.html#1`);
+        browser.url(`${browser.globals.url}/list-timer.html#1`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="2"]', 'active');
@@ -30,7 +30,7 @@ module.exports = {
     },
 
     'does not activate when moving backwards in `list` mode': browser => {
-        browser.url(`${browser.launchUrl}/list-timer.html#3`);
+        browser.url(`${browser.globals.url}/list-timer.html#3`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_LEFT);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="2"]', 'active');
@@ -38,14 +38,14 @@ module.exports = {
     },
 
     'activates on page load': browser => {
-        browser.url(`${browser.launchUrl}/full-timer.html#2`);
+        browser.url(`${browser.globals.url}/full-timer.html#2`);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="3"]', 'active');
         browser.end();
     },
 
     'activates when moving forwards': browser => {
-        browser.url(`${browser.launchUrl}/full-timer.html#1`);
+        browser.url(`${browser.globals.url}/full-timer.html#1`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="3"]', 'active');
@@ -53,7 +53,7 @@ module.exports = {
     },
 
     'activates when moving backwards': browser => {
-        browser.url(`${browser.launchUrl}/full-timer.html#3`);
+        browser.url(`${browser.globals.url}/full-timer.html#3`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_LEFT);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="3"]', 'active');
@@ -61,7 +61,7 @@ module.exports = {
     },
 
     'works only once': browser => {
-        browser.url(`${browser.launchUrl}/full-timer.html#2`);
+        browser.url(`${browser.globals.url}/full-timer.html#2`);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="3"]', 'active');
         browser.sendKeys('.send-keys', browser.Keys.ARROW_LEFT);
@@ -72,7 +72,7 @@ module.exports = {
     },
 
     'gets cancelled by key press': browser => {
-        browser.url(`${browser.launchUrl}/full-timer.html#2`);
+        browser.url(`${browser.globals.url}/full-timer.html#2`);
         browser.execute(dispatchKeydown);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="2"]', 'active');
@@ -80,7 +80,7 @@ module.exports = {
     },
 
     '[nested steps] activates on page load': browser => {
-        browser.url(`${browser.launchUrl}/full-timer-next.html#2`);
+        browser.url(`${browser.globals.url}/full-timer-next.html#2`);
         browser.pause(TIMING);
         browser.assert.cssClassPresent('.a.next', 'active');
         browser.pause(TIMING);
@@ -93,7 +93,7 @@ module.exports = {
     },
 
     '[nested steps] gets cancelled by key press': browser => {
-        browser.url(`${browser.launchUrl}/full-timer-next.html#2`);
+        browser.url(`${browser.globals.url}/full-timer-next.html#2`);
         browser.execute(dispatchKeydown);
         browser.pause(TIMING);
         browser.assert.cssClassNotPresent('.a.next', 'active');

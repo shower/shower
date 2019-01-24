@@ -45,9 +45,6 @@
     "sauce-connect-launcher": "^1.2.4",
     "serve-handler": "^5.0.7"
   },
-  "config": {
-    "port": "8080"
-  },
   "scripts": {
     "build": "rollup --config",
     "lint": "eslint '**/*.js'",

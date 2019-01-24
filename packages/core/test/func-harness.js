@@ -9,7 +9,6 @@ const sauceConnect = require('sauce-connect-launcher');
 
 EventEmitter.defaultMaxListeners = 0;
 
-const port = Number(process.env.npm_package_config_port);
 const server = new Server((request, response) => {
     handler(request, response, {
         public: 'dist',
@@ -30,7 +29,10 @@ module.exports = {
     before(done) {
         childProcess.execSync('npm run build');
 
-        server.listen(port, () => {
+        server.listen(() => {
+            const { port } = server.address();
+            console.log(`Started HTTP server on port ${port}.`);
+
             if (this.isSauce && !process.env.TRAVIS) {
                 console.log('Starting Sauce Connect proxy...');
                 sauceConnect((err, res) => {
@@ -45,6 +47,12 @@ module.exports = {
                 done();
             }
         });
+    },
+
+    beforeEach(browser, done) {
+        const { port } = server.address();
+        browser.globals.url = `http://localhost:${port}/tests`;
+        done();
     },
 
     after(done) {
