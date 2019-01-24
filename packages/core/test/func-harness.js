@@ -3,8 +3,8 @@
 /* eslint-disable no-console */
 const { EventEmitter } = require('events');
 const { Server } = require('http');
+const { execSync } = require('child_process');
 const handler = require('serve-handler');
-const childProcess = require('child_process');
 const sauceConnect = require('sauce-connect-launcher');
 
 EventEmitter.defaultMaxListeners = 0;
@@ -27,7 +27,7 @@ module.exports = {
     },
 
     before(done) {
-        childProcess.execSync('npm run build');
+        execSync('npm run build');
 
         server.listen(() => {
             const { port } = server.address();

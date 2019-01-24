@@ -43,10 +43,12 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "sauce-connect-launcher": "^1.2.4",
+    "serve": "^10.1.1",
     "serve-handler": "^5.0.7"
   },
   "scripts": {
     "build": "rollup --config",
+    "serve": "serve dist",
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "prettier:js": "prettier '**/*.js' --write",
