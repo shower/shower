@@ -6,6 +6,7 @@ const { Server } = require('http');
 const { execSync } = require('child_process');
 const handler = require('serve-handler');
 const sauceConnect = require('sauce-connect-launcher');
+const { port } = require('./func-constants');
 
 EventEmitter.defaultMaxListeners = 0;
 
@@ -29,8 +30,7 @@ module.exports = {
     before(done) {
         execSync('npm run build');
 
-        server.listen(() => {
-            const { port } = server.address();
+        server.listen(port, () => {
             console.log(`Started HTTP server on port ${port}.`);
 
             if (this.isSauce && !process.env.TRAVIS) {
@@ -47,12 +47,6 @@ module.exports = {
                 done();
             }
         });
-    },
-
-    beforeEach(browser, done) {
-        const { port } = server.address();
-        browser.globals.url = `http://localhost:${port}/tests`;
-        done();
     },
 
     after(done) {

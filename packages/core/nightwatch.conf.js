@@ -1,5 +1,7 @@
 'use strict';
 
+const { port } = require('./test/func-constants');
+
 const { env } = process;
 const makeSauceEnv = caps => ({
     selenium: {
@@ -19,6 +21,7 @@ module.exports = {
     src_folders: 'test/func',
     output_folder: 'test/output',
 
+    launch_url: `http://localhost:${port}/tests`,
     live_output: true,
     skip_testcases_on_fail: false,
 
