@@ -4,14 +4,14 @@ module.exports = {
     '@tags': ['next'],
 
     'does not work in list mode (forwards)': browser => {
-        browser.url(`${browser.globals.url}/list-next.html#2`);
+        browser.url(`${browser.launchUrl}/list-next#2`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.assert.cssClassPresent('[id="3"]', 'active');
         browser.end();
     },
 
     'does not work in list mode (backwards)': browser => {
-        browser.url(`${browser.globals.url}/full-next.html#2`);
+        browser.url(`${browser.launchUrl}/full-next#2`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.sendKeys('.send-keys', browser.Keys.ESCAPE);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_LEFT);
@@ -20,7 +20,7 @@ module.exports = {
     },
 
     'moves forwards': browser => {
-        browser.url(`${browser.globals.url}/full-next.html#2`);
+        browser.url(`${browser.launchUrl}/full-next#2`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.assert.cssClassPresent('.a.next', 'active');
 
@@ -39,7 +39,7 @@ module.exports = {
     },
 
     'moves backwards': browser => {
-        browser.url(`${browser.globals.url}/full-next.html#2`);
+        browser.url(`${browser.launchUrl}/full-next#2`);
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.assert.cssClassPresent('.a.next', 'active');
         browser.sendKeys('.send-keys', browser.Keys.ARROW_LEFT);
@@ -50,7 +50,7 @@ module.exports = {
     },
 
     'remembers progress when switching slides': browser => {
-        browser.url(`${browser.globals.url}/full-next.html#2`);
+        browser.url(`${browser.launchUrl}/full-next#2`);
         browser.sendKeys('.send-keys', [browser.Keys.ARROW_RIGHT, browser.Keys.ARROW_RIGHT]);
 
         browser.execute(function() {
@@ -72,7 +72,7 @@ module.exports = {
             browser.assert.cssClassPresent('.c.next', 'active');
         };
 
-        browser.url(`${browser.globals.url}/full-next.html#2`);
+        browser.url(`${browser.launchUrl}/full-next#2`);
         browser.sendKeys('.send-keys', [
             browser.Keys.ARROW_RIGHT,
             browser.Keys.ARROW_RIGHT,
