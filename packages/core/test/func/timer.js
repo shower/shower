@@ -74,6 +74,7 @@ module.exports = {
     'gets cancelled by key press': browser => {
         browser.url(`${browser.launchUrl}/full-timer#2`);
         browser.execute(dispatchKeydown);
+        browser.sendKeys('.send-keys', 'a');
         browser.pause(TIMING);
         browser.assert.cssClassPresent('[id="2"]', 'active');
         browser.end();
@@ -95,6 +96,7 @@ module.exports = {
     '[nested steps] gets cancelled by key press': browser => {
         browser.url(`${browser.launchUrl}/full-timer-next#2`);
         browser.execute(dispatchKeydown);
+        browser.sendKeys('.send-keys', 'a');
         browser.pause(TIMING);
         browser.assert.cssClassNotPresent('.a.next', 'active');
         browser.end();
