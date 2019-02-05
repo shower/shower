@@ -14,7 +14,7 @@ const defaultFiles = [
 function loadPresentationFiles (files = defaultFiles) {
   const shower = vfs.src(files)
     .pipe(replace(
-      /(<link rel="stylesheet" href=")(node_modules\/shower-)([^/]*)\/(.*\.css">)/g,
+      /(<link rel="stylesheet" href=")(node_modules\/@shower\/)([^/]*)\/(.*\.css">)/g,
       '$1shower/themes/$3/$4', { skipBinary: true }
     ))
     .pipe(replace(
@@ -34,7 +34,7 @@ function loadPresentationFiles (files = defaultFiles) {
   const material = vfs.src([
     '**', '!package.json'
   ], {
-    cwd: 'node_modules/shower-material'
+    cwd: 'node_modules/@shower/material'
   })
     .pipe(rename((path) => {
       path.dirname = 'shower/themes/material/' + path.dirname
@@ -43,7 +43,7 @@ function loadPresentationFiles (files = defaultFiles) {
   const ribbon = vfs.src([
     '**', '!package.json'
   ], {
-    cwd: 'node_modules/shower-ribbon'
+    cwd: 'node_modules/@shower/ribbon'
   })
     .pipe(rename((path) => {
       path.dirname = 'shower/themes/ribbon/' + path.dirname
