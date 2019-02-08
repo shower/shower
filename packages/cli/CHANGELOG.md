@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.2.5
+* Change paths for themes to org
+* Make publish command useful
+
 ## 0.2.4
 * Fixes `prepare` and `archive` tasks
 
