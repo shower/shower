@@ -41,7 +41,7 @@
     "gulp-zip": "^4.0.0",
     "merge-stream": "^1.0.0",
     "path-exists-cli": "^1.0.0",
-    "shower-cli": "^0.2.3"
+    "shower-cli": "^0.2.5"
   },
   "scripts": {
     "pdf": "shower pdf",
