@@ -1,0 +1,48 @@
+/* Inline */
+
+.slide a {
+    background-image:
+        linear-gradient(
+            to top,
+            currentColor 0.08em,
+            transparent 0.08em
+        );
+    background-repeat: repeat-x;
+    color: var(--color-key);
+    text-decoration: none;
+}
+
+.slide code,
+.slide kbd,
+.slide mark,
+.slide samp {
+    padding: 0.1em 0.3em;
+}
+
+.slide code,
+.slide kbd,
+.slide samp {
+    background: var(--color-back);
+    line-height: 1;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.slide mark {
+    background: var(--color-yellow);
+}
+
+.slide sub,
+.slide sup {
+    position: relative;
+    vertical-align: baseline;
+    line-height: 0;
+    font-size: 75%;
+}
+
+.slide sub {
+    bottom: -0.25em;
+}
+
+.slide sup {
+    top: -0.5em;
+}

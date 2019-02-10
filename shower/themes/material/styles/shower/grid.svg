@@ -1,0 +1,50 @@
+<svg width="1024" height="768" xmlns="http://www.w3.org/2000/svg">
+	<defs>
+		<style>
+			.square {
+				stroke: red;
+                stroke-opacity: 0.1;
+				stroke-width: 1;
+				fill: transparent;
+			}
+
+            .grid {
+                fill: url(#grid);
+            }
+
+            .line {
+                stroke: #8af8f9;
+            }
+		</style>
+		<pattern x="0" y="0" width="24" height="24" viewBox="0 0 24 24" patternUnits="userSpaceOnUse" id="grid">
+			<rect x="0" y="0" width="24" height="24" class="square"/>
+		</pattern>
+	</defs>
+
+	<rect x="0" y="0" width="1024" height="768" class="grid"/>
+
+	<line x1="96" y1="0" x2="96" y2="768" class="line"/>
+	<line x1="192" x2="192" y1="0" y2="768" class="line"/>
+	<line x1="288" x2="288" y1="0" y2="768" class="line"/>
+	<line x1="384" x2="384" y1="0" y2="768" class="line"/>
+	<line x1="480" x2="480" y1="0" y2="768" class="line"/>
+	<line x1="528" x2="528" y1="0" y2="768" class="line"/>
+	<line x1="624" x2="624" y1="0" y2="768" class="line"/>
+	<line x1="720" x2="720" y1="0" y2="768" class="line"/>
+	<line x1="816" x2="816" y1="0" y2="768" class="line"/>
+	<line x1="912" x2="912" y1="0" y2="768" class="line"/>
+
+	<line y1="120" y2="120" x1="0" x2="1024" class="line"/>
+	<line y1="192" y2="192" x1="0" x2="1024" class="line"/>
+	<line y1="240" y2="240" x1="0" x2="1024" class="line"/>
+	<line y1="288" y2="288" x1="0" x2="1024" class="line"/>
+	<line y1="336" y2="336" x1="0" x2="1024" class="line"/>
+	<line y1="384" y2="384" x1="0" x2="1024" class="line"/>
+	<line y1="432" y2="432" x1="0" x2="1024" class="line"/>
+	<line y1="480" y2="480" x1="0" x2="1024" class="line"/>
+	<line y1="528" y2="528" x1="0" x2="1024" class="line"/>
+	<line y1="576" y2="576" x1="0" x2="1024" class="line"/>
+	<line y1="624" y2="624" x1="0" x2="1024" class="line"/>
+	<line y1="672" y2="672" x1="0" x2="1024" class="line"/>
+	<line y1="720" y2="720" x1="0" x2="1024" class="line"/>
+</svg>

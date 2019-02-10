@@ -1,0 +1,11 @@
+/* Print */
+
+@page {
+    margin: 0;
+    size: 1024px 576px;
+}
+
+.shower {
+    -webkit-print-color-adjust: exact;
+    text-rendering: geometricPrecision;
+}

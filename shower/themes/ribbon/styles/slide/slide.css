@@ -1,0 +1,60 @@
+/* Types */
+
+@import 'slide-list.css' screen;
+@import 'slide-full.css' screen;
+
+/* Content */
+
+@import 'content/basic.css';
+@import 'content/code.css';
+@import 'content/footer.css';
+@import 'content/inline.css';
+@import 'content/lists.css';
+@import 'content/quote.css';
+@import 'content/table.css';
+
+/* Elements */
+
+@import 'elements/columns.css';
+@import 'elements/copyright.css';
+@import 'elements/cover.css';
+@import 'elements/next.css';
+@import 'elements/place.css';
+@import 'elements/shout.css';
+
+/* Modifiers */
+
+@import 'modifiers/clear.css';
+@import 'modifiers/white.css';
+@import 'modifiers/black.css';
+
+/* Slide */
+
+.slide {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 81px 100px 0;
+    width: var(--slide-width);
+    height: var(--slide-height);
+    background: #ffffff;
+}
+
+/* Number */
+
+.slide::after {
+    position: absolute;
+    top: 0;
+    left: 875px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    width: var(--ribbon-size);
+    height: calc(var(--ribbon-size) * 2);
+    background-image: url('ribbon.svg');
+    background-size: cover;
+    color: #ffffff;
+    counter-increment: slide;
+    content: counter(slide);
+    text-align: center;
+}

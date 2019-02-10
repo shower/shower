@@ -1,0 +1,65 @@
+/* Caption */
+
+.caption {
+    grid-column: 1 / -1;
+    margin-top: calc(
+        -1 * var(--slide-gap) * var(--slide-scale)
+    );
+    margin-left: calc(
+        -1 * var(--slide-gap) * var(--slide-scale)
+    );
+    padding-top: 0.8em;
+    padding-bottom: 0.9em;
+    padding-left: calc(
+        var(--slide-gap) * var(--slide-scale)
+    );
+    box-sizing: border-box;
+    width: 100vw;
+    background-color: var(--color-key);
+    background-image: var(--diagonal);
+    font-size: calc(
+        var(--slide-scale) * 96px
+    );
+}
+
+/* Elements */
+
+.caption h1 {
+    margin: 0;
+    padding-bottom: 0.28em;
+    color: white;
+    font: 100 1.17em/1 'Roboto', sans-serif;
+}
+
+.caption p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1;
+    font-size: 0.58em;
+}
+
+.caption a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* List */
+
+.shower.list .caption {
+    display: block;
+}
+
+/* Full */
+
+.shower.full .caption {
+    display: none;
+}
+
+/* Print */
+
+@media print {
+    .shower.list .caption,
+    .shower.full .caption {
+        display: none;
+    }
+}

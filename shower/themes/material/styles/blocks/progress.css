@@ -1,0 +1,37 @@
+/* Progress */
+
+.progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: var(--progress-size);
+    background-color: var(--color-key);
+    transition: width 0.2s linear;
+    box-shadow:
+        calc(var(--slide-width) / 2) 0 0
+        calc(var(--slide-width) / 2)
+        var(--color-light);
+    clip: rect(0 var(--slide-width) var(--progress-size) 0);
+}
+
+/* List */
+
+.shower.list .progress {
+    display: none;
+}
+
+/* Full */
+
+.shower.full .progress {
+    display: block;
+}
+
+/* Print */
+
+@media print {
+    .shower.list .progress,
+    .shower.full .progress {
+        display: none;
+    }
+}

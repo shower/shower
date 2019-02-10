@@ -1,0 +1,47 @@
+/* Shower List */
+
+.shower.list {
+    padding: calc(
+        var(--slide-gap) * var(--slide-scale)
+    );
+    box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-gap: calc(
+        var(--slide-gap) * var(--slide-scale)
+    );
+    grid-auto-rows: calc(
+        var(--slide-height) * var(--slide-scale)
+    );
+    grid-template-rows: min-content;
+    grid-template-columns: repeat(
+        auto-fill,
+        calc(var(--slide-width) * var(--slide-scale))
+    );
+    background: var(--color-grey);
+}
+
+/* IE & Edge Fix */
+
+.shower.list {
+    position: absolute;
+    clip: rect(0, auto, auto, 0);
+}
+
+/* Responsive */
+
+.shower.list {
+    --slide-scale: 0.25;
+}
+
+@media (min-width: 1174px) {
+    .shower.list {
+        --slide-scale: 0.5;
+    }
+}
+
+@media (min-width: 2348px) {
+    .shower.list {
+        --slide-scale: 1;
+    }
+}

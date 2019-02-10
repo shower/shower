@@ -1,0 +1,53 @@
+/* Shout */
+
+.slide .shout {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    padding-left: 96px;
+    color: white;
+    line-height: 1.1;
+    font-size: 112px;
+    transform: translateY(-50%);
+}
+
+/* Back */
+
+.slide .shout::after {
+    position: absolute;
+    top: -300%;
+    right: 0;
+    bottom: -300%;
+    left: 0;
+    z-index: -1;
+    background-color: var(--color-key);
+    background-image: var(--diagonal);
+    background-repeat: no-repeat;
+    content: '';
+}
+
+/* Link */
+
+.slide .shout a {
+    background-image:
+        linear-gradient(
+            to top,
+            currentColor 0.05em,
+            transparent 0.05em
+        );
+    background-position: bottom 0.05em left 0;
+    background-repeat: repeat-x;
+    color: inherit;
+}
+
+/* Full */
+
+.shower.full .slide .shout::after {
+    background-position: var(--slide-width) 0;
+    transition: background-position 0.4s ease-out;
+}
+
+.shower.full .slide.active .shout::after {
+    background-position: 0 0;
+}

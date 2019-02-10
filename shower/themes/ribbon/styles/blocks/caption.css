@@ -1,0 +1,53 @@
+/* Caption */
+
+.caption {
+    margin-top: -0.2em;
+    margin-bottom: -0.07em;
+    grid-column: 1 / -1;
+    width: 100%;
+    color: #bfbfbf;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: calc(
+        var(--slide-gap) * var(--slide-scale)
+    );
+}
+
+/* Elements */
+
+.caption h1 {
+    margin: 0;
+    padding-bottom: 0.15em;
+    font: bold 1em/1 'PT Sans Narrow', sans-serif;
+}
+
+.caption p {
+    margin: 0;
+    line-height: 1;
+    font-size: 0.6em;
+}
+
+.caption a {
+    text-decoration: none;
+    color: var(--color-blue-lighter);
+}
+
+/* List */
+
+.shower.list .caption {
+    display: block;
+}
+
+/* Full */
+
+.shower.full .caption {
+    display: none;
+}
+
+/* Print */
+
+@media print {
+    .shower.list .caption,
+    .shower.full .caption {
+        display: none;
+    }
+}

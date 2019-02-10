@@ -1,0 +1,42 @@
+/* Copyright */
+
+.copyright {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    margin: 0;
+    font-size: 12px;
+    opacity: 0.7;
+    transform-origin: 0 100%;
+    transform: translateX(100%) rotate(-90deg);
+}
+
+/* Sides */
+
+.copyright.top {
+    top: 10px;
+    right: auto;
+    bottom: auto;
+    left: 20px;
+    transform: none;
+}
+
+.copyright.bottom {
+    top: auto;
+    right: auto;
+    bottom: 20px;
+    left: 20px;
+    transform: none;
+}
+
+/* White */
+
+.copyright.white {
+    color: white;
+}
+
+/* Links */
+
+.copyright a {
+    color: currentColor;
+}

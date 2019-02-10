@@ -1,0 +1,29 @@
+/* Footer */
+
+.slide > footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 48px 112px 24px 96px;
+    background: var(--color-yellow-light);
+    transition: transform 0.3s;
+}
+
+/* List */
+
+.shower.list .slide > footer {
+    transform: translateY(100%);
+}
+
+.shower.list .slide.active > footer,
+.shower.list .slide:hover > footer {
+    transform: translateY(0);
+}
+
+/* Full */
+
+.shower.full .slide > footer {
+    display: none;
+}

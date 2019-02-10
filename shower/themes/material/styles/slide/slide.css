@@ -1,0 +1,56 @@
+/* Types */
+
+@import 'slide-list.css' screen;
+@import 'slide-full.css' screen;
+
+/* Content */
+
+@import 'content/basic.css';
+@import 'content/code.css';
+@import 'content/footer.css';
+@import 'content/inline.css';
+@import 'content/lists.css';
+@import 'content/quote.css';
+@import 'content/table.css';
+
+/* Elements */
+
+@import 'elements/columns.css';
+@import 'elements/copyright.css';
+@import 'elements/cover.css';
+@import 'elements/next.css';
+@import 'elements/place.css';
+@import 'elements/shout.css';
+
+/* Modifiers */
+
+@import 'modifiers/clear.css';
+@import 'modifiers/white.css';
+@import 'modifiers/black.css';
+
+/* Slide */
+
+.slide {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 80px 112px 0 96px;
+    width: var(--slide-width);
+    height: var(--slide-height);
+    background: white;
+}
+
+/* Number */
+
+.slide::after {
+    position: absolute;
+    right: 0;
+    bottom: 38px;
+    left: 0;
+    color: var(--color-light);
+    line-height: 18px;
+    text-align: center;
+    counter-increment: slide;
+    content: counter(slide);
+}

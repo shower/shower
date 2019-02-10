@@ -1,0 +1,80 @@
+/* Code */
+
+.slide pre {
+    margin-top: 0;
+    margin-bottom: 1em;
+    counter-reset: code;
+    white-space: normal;
+}
+
+/* Inner */
+
+.slide pre code {
+    display: block;
+    margin-left: -96px;
+    padding: 0 0 0 96px;
+    width: calc(100% + 96px + 112px);
+    background: none;
+    line-height: 2;
+    white-space: pre;
+    tab-size: 4;
+}
+
+/* Line Numbers */
+
+.slide pre code:not(:only-child)::before {
+    position: absolute;
+    margin-left: -2em;
+    color: var(--color-light);
+    counter-increment: code;
+    content: counter(code, decimal-leading-zero) '.';
+}
+
+/* Marked */
+
+.slide pre mark {
+    position: relative;
+    z-index: -1;
+    margin: 0 -0.3em;
+}
+
+/* Important */
+
+.slide pre mark.important {
+    background: var(--color-key);
+    color: white;
+}
+
+/* Comment */
+
+.slide pre .comment {
+    color: var(--color-medium);
+}
+
+/* Marked Line */
+
+.slide pre code.mark:not(:only-child) {
+    background: var(--color-back);
+}
+
+/* Next Line */
+
+.slide pre code.mark.next:not(:only-child) {
+    visibility: visible;
+    background: none;
+}
+
+.slide pre code.mark.next.active:not(:only-child) {
+    background: var(--color-back);
+}
+
+/* Full */
+
+.shower.full .slide pre code:not(:only-child).mark.next {
+    visibility: visible;
+    background: none;
+}
+
+.shower.full .slide pre code:not(:only-child).mark.next.active {
+    background: var(--color-back);
+}

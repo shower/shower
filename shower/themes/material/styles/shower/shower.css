@@ -1,0 +1,40 @@
+/* Shower */
+
+@import 'shower-list.css' screen;
+@import 'shower-full.css' screen;
+@import 'shower-grid.css' screen;
+@import 'shower-print.css' print;
+
+.shower {
+    --slide-gap: 96px;
+    --slide-ratio: calc(16 / 9);
+    --slide-width: 1024px;
+    --slide-height: calc(
+        var(--slide-width) / var(--slide-ratio)
+    );
+
+    --color-key: #4caf50;
+    --color-black: #212121;
+    --color-dark: #757575;
+    --color-medium: #9e9e9e;
+    --color-light: #bdbdbd;
+    --color-back: #eeeeee;
+    --color-yellow: #fff59d;
+    --color-yellow-light: #ffffcf;
+
+    --progress-size: 8px;
+
+    --diagonal: linear-gradient(
+        135deg, var(--color-key) 50%,
+        rgba(0, 0, 0, 0.1) 50%
+    );
+
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+
+    margin: 0;
+    color: black;
+    counter-reset: slide;
+    font: 24px/2 'Roboto', sans-serif;
+}

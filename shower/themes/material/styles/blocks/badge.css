@@ -1,0 +1,60 @@
+/* Badge */
+
+.badge {
+    align-content: center;
+    justify-items: center;
+    outline:
+        calc(var(--slide-scale) * 8px)
+        dashed rgba(0, 0, 0, 0.2);
+    outline-offset: calc(
+        -1 * var(--slide-scale) * 8px
+    );
+    line-height: 1;
+    font-size: calc(
+        var(--slide-scale) * 48px
+    );
+}
+
+/* Elements */
+
+.badge a {
+    display: inline-block;
+    margin-left: 4em;
+    color: var(--color-medium);
+    text-decoration: none;
+}
+
+.badge a:hover,
+.badge a:focus {
+    outline: none;
+    color: var(--color-key);
+}
+
+.badge svg {
+    position: absolute;
+    margin: -1.1em 0 0 -4.5em;
+    width: 4em;
+    height: 4em;
+    fill: currentColor;
+}
+
+/* List */
+
+.shower.list .badge {
+    display: grid;
+}
+
+/* Full */
+
+.shower.full .badge {
+    display: none;
+}
+
+/* Print */
+
+@media print {
+    .shower.list .badge,
+    .shower.full .badge {
+        display: none;
+    }
+}

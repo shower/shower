@@ -1,0 +1,24 @@
+/* Quote */
+
+.slide blockquote {
+    margin: 0;
+    font-style: italic;
+}
+
+.slide blockquote::before {
+    position: absolute;
+    margin: 0 0 0 -0.45em;
+    color: var(--color-light);
+    line-height: 1;
+    font-style: normal;
+    font-size: 7em;
+    content: '\201D';
+}
+
+/* Author */
+
+.slide blockquote + figcaption {
+    margin: -1em 0 1em;
+    font-style: italic;
+    font-weight: bold;
+}
