@@ -36,19 +36,37 @@
 /* Lines */
 
 .slide tr:not(:last-of-type) > * {
-    background: linear-gradient(
+    background-image: linear-gradient(
         to top,
         var(--color-line) 0.06em,
         transparent 0.06em
-    ) repeat-x;
+    );
+    background-repeat: repeat-x;
 }
 
 /* Stripes */
 
 .slide table.striped tr:nth-child(even) {
-    background: var(--color-fill);
+    background-color: var(--color-fill);
 }
 
 .slide table.striped tr > * {
     background-image: none;
+}
+
+/* Marked Row */
+
+.slide tr.mark {
+    background-color: var(--color-yellow);
+}
+
+/* Next Marked Row */
+
+.slide tr.mark.next {
+    visibility: visible;
+    background-color: transparent;
+}
+
+.slide tr.mark.next.active {
+    background-color: var(--color-yellow);
 }
