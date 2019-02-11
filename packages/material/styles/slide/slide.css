@@ -45,7 +45,7 @@
 
 .slide::after {
     position: absolute;
-    right: 0;
+    right: 16px;
     bottom: 38px;
     left: 0;
     color: var(--color-light);
