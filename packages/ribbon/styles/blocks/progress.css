@@ -14,7 +14,7 @@
     display: block;
     width: 100%;
     height: var(--progress-size);
-    background: var(--color-blue);
+    background-color: var(--color-blue);
     content: '';
     transform-origin: 0 100%;
     transform: skewX(45deg);

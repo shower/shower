@@ -7,7 +7,7 @@
     left: 0;
     z-index: 1;
     padding: 50px 100px 25px;
-    background: var(--color-yellow);
+    background-color: var(--color-yellow);
     transition: transform 0.3s linear;
 }
 

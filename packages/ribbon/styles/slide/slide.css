@@ -38,7 +38,7 @@
     padding: 75px 100px 0;
     width: var(--slide-width);
     height: var(--slide-height);
-    background: #ffffff;
+    background-color: white;
 }
 
 /* Number */
@@ -53,7 +53,7 @@
     height: calc(var(--ribbon-size) * 2);
     background-image: url('ribbon.svg');
     background-size: cover;
-    color: #ffffff;
+    color: white;
     counter-increment: slide;
     content: counter(slide);
     text-align: center;
