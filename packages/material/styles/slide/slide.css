@@ -38,7 +38,7 @@
     padding: 79px 112px 0 96px;
     width: var(--slide-width);
     height: var(--slide-height);
-    background: white;
+    background-color: white;
 }
 
 /* Number */

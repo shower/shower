@@ -22,13 +22,13 @@
 .slide code,
 .slide kbd,
 .slide samp {
-    background: var(--color-back);
+    background-color: var(--color-back);
     line-height: 1;
     font-family: 'Roboto Mono', monospace;
 }
 
 .slide mark {
-    background: var(--color-yellow);
+    background-color: var(--color-yellow);
 }
 
 .slide sub,

@@ -7,7 +7,7 @@
     left: 0;
     z-index: 1;
     padding: 48px 112px 24px 96px;
-    background: var(--color-yellow-light);
+    background-color: var(--color-yellow-light);
     transition: transform 0.3s;
 }
 

@@ -46,7 +46,7 @@
 /* Stripes */
 
 .slide table.striped tr:nth-child(even) {
-    background: var(--color-back);
+    background-color: var(--color-back);
 }
 
 .slide table.striped tr > * {
