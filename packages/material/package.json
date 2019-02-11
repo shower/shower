@@ -7,7 +7,7 @@
   },
   "author": {
     "name": "Vadim Makeev",
-    "url": "http://pepelsbey.net/"
+    "url": "https://pepelsbey.net/"
   },
   "homepage": "https://github.com/shower/material",
   "repository": {
@@ -15,7 +15,7 @@
     "url": "git://github.com/shower/material.git"
   },
   "bugs": {
-    "url": "http://github.com/shower/material/issues"
+    "url": "https://github.com/shower/material/issues"
   },
   "license": "MIT",
   "keywords": [
