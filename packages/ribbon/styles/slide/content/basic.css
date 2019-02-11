@@ -1,10 +1,14 @@
 /* Basic */
 
 .slide h2 {
-    margin-top: 0;
+    margin-top: 6px;
     margin-bottom: 34px;
     color: var(--color-grey);
     font: bold 50px/1 'PT Sans Narrow', sans-serif;
+}
+
+.slide * + h2 {
+    margin-top: 41px;
 }
 
 .slide p {
