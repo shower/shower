@@ -25,7 +25,7 @@
 /* Modifiers */
 
 @import 'modifiers/clear.css';
-@import 'modifiers/white.css';
+@import 'modifiers/gray.css';
 @import 'modifiers/black.css';
 
 /* Slide */
@@ -35,7 +35,7 @@
     z-index: 0;
     overflow: hidden;
     box-sizing: border-box;
-    padding: 81px 100px 0;
+    padding: 75px 100px 0;
     width: var(--slide-width);
     height: var(--slide-height);
     background: #ffffff;

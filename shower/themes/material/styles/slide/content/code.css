@@ -14,7 +14,7 @@
     margin-left: -96px;
     padding: 0 0 0 96px;
     width: calc(100% + 96px + 112px);
-    background: none;
+    background-color: transparent;
     line-height: 2;
     white-space: pre;
     tab-size: 4;
@@ -41,7 +41,7 @@
 /* Important */
 
 .slide pre mark.important {
-    background: var(--color-key);
+    background-color: var(--color-key);
     color: white;
 }
 
@@ -54,27 +54,27 @@
 /* Marked Line */
 
 .slide pre code.mark:not(:only-child) {
-    background: var(--color-back);
+    background-color: var(--color-back);
 }
 
 /* Next Line */
 
 .slide pre code.mark.next:not(:only-child) {
     visibility: visible;
-    background: none;
+    background-color: transparent;
 }
 
 .slide pre code.mark.next.active:not(:only-child) {
-    background: var(--color-back);
+    background-color: var(--color-back);
 }
 
 /* Full */
 
 .shower.full .slide pre code:not(:only-child).mark.next {
     visibility: visible;
-    background: none;
+    background-color: transparent;
 }
 
 .shower.full .slide pre code:not(:only-child).mark.next.active {
-    background: var(--color-back);
+    background-color: var(--color-back);
 }

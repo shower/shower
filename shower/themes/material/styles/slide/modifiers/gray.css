@@ -1,0 +1,5 @@
+/* Gray */
+
+.slide.gray {
+    background-color: var(--color-medium);
+}

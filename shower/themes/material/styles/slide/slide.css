@@ -25,7 +25,7 @@
 /* Modifiers */
 
 @import 'modifiers/clear.css';
-@import 'modifiers/white.css';
+@import 'modifiers/gray.css';
 @import 'modifiers/black.css';
 
 /* Slide */
@@ -35,17 +35,17 @@
     z-index: 0;
     overflow: hidden;
     box-sizing: border-box;
-    padding: 80px 112px 0 96px;
+    padding: 79px 112px 0 96px;
     width: var(--slide-width);
     height: var(--slide-height);
-    background: white;
+    background-color: white;
 }
 
 /* Number */
 
 .slide::after {
     position: absolute;
-    right: 0;
+    right: 16px;
     bottom: 38px;
     left: 0;
     color: var(--color-light);

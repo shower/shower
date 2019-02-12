@@ -29,12 +29,4 @@
 	<line x1="925" x2="925" y1="0" y2="768" class="line"/>
 
 	<line y1="125" y2="125" x1="0" x2="1024" class="line"/>
-	<line y1="200" y2="200" x1="0" x2="1024" class="line"/>
-	<line y1="275" y2="275" x1="0" x2="1024" class="line"/>
-	<line y1="350" y2="350" x1="0" x2="1024" class="line"/>
-	<line y1="425" y2="425" x1="0" x2="1024" class="line"/>
-	<line y1="500" y2="500" x1="0" x2="1024" class="line"/>
-	<line y1="575" y2="575" x1="0" x2="1024" class="line"/>
-	<line y1="650" y2="650" x1="0" x2="1024" class="line"/>
-	<line y1="725" y2="725" x1="0" x2="1024" class="line"/>
 </svg>

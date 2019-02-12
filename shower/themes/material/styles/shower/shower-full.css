@@ -9,5 +9,5 @@
     margin-left: calc(var(--slide-width) / 2 * -1);
     width: var(--slide-width);
     height: var(--slide-height);
-    background: black;
+    background-color: black;
 }

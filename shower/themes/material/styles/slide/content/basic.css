@@ -9,6 +9,20 @@
     font-size: 48px;
 }
 
+.slide * + h2 {
+    margin-top: 40px;
+}
+
+.slide h2 a {
+    background-image:
+        linear-gradient(
+            to top,
+            currentColor 0.05em,
+            transparent 0.05em
+        );
+    background-position: bottom 0.05em left 0;
+}
+
 .slide p {
     margin-top: 0;
     margin-bottom: 1em;
