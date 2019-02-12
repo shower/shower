@@ -27,28 +27,20 @@
     "README.md"
   ],
   "dependencies": {
-    "@shower/material": "^2.2.0",
-    "@shower/ribbon": "^3.2.1",
+    "@shower/material": "^2.2.1",
+    "@shower/ribbon": "^3.2.2",
     "shower-core": "^2.1.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
-    "del": "^3.0.0",
-    "gh-pages": "^2.0.0",
-    "gulp": "^4.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^1.0.0",
-    "gulp-zip": "^4.0.0",
-    "merge-stream": "^1.0.0",
     "path-exists-cli": "^1.0.0",
     "shower-cli": "^0.2.6"
   },
   "scripts": {
     "pdf": "shower pdf",
-    "start": "gulp serve",
-    "prepare": "gulp prepare",
-    "archive": "gulp archive",
-    "publish": "gulp publish",
+    "start": "shower serve",
+    "prepare": "shower prepare --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
+    "archive": "shower archive --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
+    "publish": "shower publish --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
     "test": "npm run prepare && ls prepared && npm run archive && path-exists archive.zip"
   }
 }
