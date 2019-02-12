@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "path-exists-cli": "^1.0.0",
-    "shower-cli": "^0.2.3"
+    "shower-cli": "^0.2.6"
   },
   "scripts": {
     "pdf": "shower pdf",
