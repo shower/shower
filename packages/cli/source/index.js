@@ -9,7 +9,7 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
   console.log(
     chalk.red(
       `You are using Node ${chalk.bold(pkg.process.version)},` +
-      `but this version of shower-cli requires Node ${chalk.bold(pkg.engines.node)}.\n` +
+      `but this version of @shower/cli requires Node ${chalk.bold(pkg.engines.node)}.\n` +
       `Please upgrade your Node version.`
     )
   )

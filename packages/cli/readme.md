@@ -2,14 +2,14 @@
 
 **Command line interface for [Shower](http://shwr.me/)**
 
-[![npm](https://img.shields.io/npm/v/shower-cli.svg)](https://www.npmjs.com/package/shower-cli)
+[![npm](https://img.shields.io/npm/v/@shower/cli.svg)](https://www.npmjs.com/package/@shower/cli)
 [![Build Status](https://travis-ci.org/shower/cli.svg?branch=master)](https://travis-ci.org/shower/cli)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/shower/cli/blob/master/LICENSE.md)
 
 ## Quick Creating Slides
 
 ```sh
-npx shower-cli create my-slides
+npx @shower/cli create my-slides
 ```
 
 *([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher)*
@@ -18,12 +18,12 @@ npx shower-cli create my-slides
 
 Install ShowerCLI using `npm`:
 ```bash
-$ npm install --global shower-cli
+$ npm install --global @shower/cli
 ```
 
 or via `yarn`:
 ```bash
-$ yarn global add shower-cli
+$ yarn global add @shower/cli
 ```
 
 The minimum supported Node version is `v8.0.0` by default.
