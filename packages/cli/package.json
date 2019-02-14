@@ -1,35 +1,34 @@
 {
-  "name": "shower-cli",
-  "version": "0.2.6",
+  "name": "@shower/cli",
   "description": "Command line interface for Shower",
+  "version": "0.2.6",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Nikolay Govorov",
+    "email": "nikolay_govorov@bk.ru"
+  },
+  "homepage": "https://github.com/shower/cli",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shower/cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shower/cli/issues"
+  },
+  "license": "MIT",
   "keywords": [
     "shower",
+    "presentation",
     "cli"
   ],
-  "author": "Nikolay Govorov <nikolay_govorov@bk.ru>",
-  "license": "MIT",
-  "repository": "shower/cli",
-  "bin": {
-    "shower": "source/index.js"
-  },
-  "scripts": {
-    "lint-staged": "lint-staged",
-    "spellcheck": "yaspeller-ci *.md",
-    "lint": "eslint-ci **/*.js --fix",
-    "test": "jest && npm run lint && npm run spellcheck"
-  },
   "engines": {
     "node": ">=8"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "testMatch": [
-      "<rootDir>/**/__tests__/*.test.js"
-    ]
+  "bin": {
+    "shower": "source/index.js"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
   "devDependencies": {
     "eslint": "^5.13.0",
     "eslint-ci": "^1.0.0",
@@ -65,5 +64,20 @@
     "update-notifier": "^2.5.0",
     "vinyl-fs": "^3.0.3",
     "yargs": "^12.0.5"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/**/__tests__/*.test.js"
+    ]
+  },
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "spellcheck": "yaspeller-ci *.md",
+    "lint": "eslint-ci **/*.js --fix",
+    "test": "jest && npm run lint && npm run spellcheck"
   }
 }
