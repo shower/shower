@@ -12,7 +12,7 @@ Get the Shower template where Ribbon is already included. Download the [template
 
 If you want to install Ribbon separately you can install the package:
 
-	npm install shower-ribbon
+	npm install @shower/ribbon
 
 ## Features
 
