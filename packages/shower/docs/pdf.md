@@ -20,7 +20,7 @@ Open you presentation in a browser, make sure it’s in the list mode and send i
 
 To export your slides to PDF via console, you’ll need [Node.js](https://nodejs.org/) with npm installed. Once you have it, you can install Shower CLI package that’ll take care of export:
 
-    npm install -g shower-cli
+    npm install -g @shower/cli
 
 Once it’s installed, it becomes globally available as `shower` command. Run it in your presentation’s folder like this to get your PDF:
 
