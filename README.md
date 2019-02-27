@@ -7,9 +7,8 @@
 1. Built on HTML, CSS and vanilla JavaScript
 2. Works in all modern browsers
 3. Themes are separated from engine
-4. Modular and extensible
-5. Fully keyboard accessible
-6. Printable to PDF
+4. Fully keyboard accessible
+5. Printable to PDF
 
 [See it in action](http://shwr.me/). Includes [Ribbon](https://github.com/shower/ribbon/) and [Material](https://github.com/shower/material/) themes, and [core](https://github.com/shower/core/) with plugins.
 
@@ -20,37 +19,42 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 1. Download and unzip [template archive](http://shwr.me/shower.zip)
 2. Open `index.html` and start creating your presentation
 
+## Deploy to Netlify
+
+By clicking the button below you can fork this repo and deploy it to Netlify.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/shower/shower)
+
+By doing this you would get a GitHub repo linked with Netlify in a way any change to the repo would trigger a shower rebuild and deploy to Netlify servers, which allows for a really easy way to create and share Shower presentation without the need to install anything locally.
+
 ## Advanced
 
-1. [Fork](https://github.com/shower/shower/fork) this repository
-2. Go to fork setting and rename it: `shower` → `my-slides`
-2. Clone it to your computer: `git clone git@github.com:username/my-slides.git`
-3. Go to `my-slides` folder and install dependencies: `npm install`
-4. Start creating your presentation
+1. Сlone this repository `git clone --depth=1 git@github.com:shower/shower.git`, (`--depth=1` will make it way faster).
+2. [Create](https://github.com/new) a new blank repository and copy its cloning address `git@github.com:USER/REPO.git`.
+3. Change remote of your local clone to the one you’ve just copied `git remote set-url origin git@github.com:USER/REPO.git`.
+4. Push your local clone to GitHub `git push -u origin master`.
+6. Install dependencies `npm install` and start it `npm start`.
 
 Once you’re done you can build a clean copy of your slides:
 
-	npm run prepare
+    npm run prepare
 
 And you’ll find your presentation in `prepared` folder with only needed files in it. You can also run `npm run archive` to get the same files in `archive.zip`. But there’s more! You can easily publish your presentation online by running:
 
-	npm run publish
+    npm run publish
 
-And you’ll have your slides published on `http://username.github.io/my-slides/`.
+And you’ll have your slides published to `http://USER.github.io/REPO/`.
 
 ## Usage Examples
 
-- [Installable Web Apps](http://pepelsbey.net/pres/web-apps/)
-- [Clear and Sharp](http://pepelsbey.net/pres/clear-and-sharp/)
-- [CSS Management](http://pepelsbey.net/pres/knife-train/)
-- [Push it!](http://pepelsbey.net/pres/push-it/)
-- [Pre-fixes](http://pepelsbey.net/pres/pre-fixes/)
-- [Web In Curves](http://pepelsbey.net/pres/web-in-curves/)
-- [Sense Coding](http://pepelsbey.net/pres/sense-coding/)
+- [Semantic for cynics](https://pepelsbey.net/pres/semantics/en/)
+- [Inhuman UI](https://pepelsbey.net/pres/inhuman-ui/)
+- [My Vanilla CSS](https://pepelsbey.net/pres/vanilla-css/)
+- [I’m in IoT](https://pepelsbey.net/pres/im-in-iot/)
 
 ## Browser Support
 
-Latest stable versions of Chrome, Internet Explorer, Firefox, Opera and Safari are supported.
+Latest stable versions of Chrome, Edge, Firefox, and Safari are supported.
 
 ## Contributing
 

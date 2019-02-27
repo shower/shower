@@ -1,10 +1,10 @@
 {
   "name": "shower",
   "description": "Shower HTML presentation engine",
-  "version": "2.1.4",
+  "version": "2.7.0",
   "author": {
     "name": "Vadim Makeev",
-    "url": "http://pepelsbey.net/"
+    "url": "https://pepelsbey.net/"
   },
   "homepage": "https://github.com/shower/shower",
   "repository": {
@@ -12,7 +12,7 @@
     "url": "git://github.com/shower/shower.git"
   },
   "bugs": {
-    "url": "http://github.com/shower/shower/issues"
+    "url": "https://github.com/shower/shower/issues"
   },
   "license": "MIT",
   "keywords": [
@@ -27,27 +27,20 @@
     "README.md"
   ],
   "dependencies": {
-    "shower-core": "^2.0.7",
-    "shower-material": "^1.0.6",
-    "shower-ribbon": "^2.0.7"
+    "@shower/material": "^2.2.1",
+    "@shower/ribbon": "^3.2.2",
+    "shower-core": "^2.1.0"
   },
   "devDependencies": {
-    "del": "^2.2.1",
-    "fs": "0.0.2",
-    "gulp": "^3.9.1",
-    "gulp-gh-pages": "^0.5.4",
-    "gulp-rename": "^1.2.2",
-    "gulp-replace": "^0.5.4",
-    "gulp-rsync": "0.0.6",
-    "gulp-zip": "^3.2.0",
-    "merge-stream": "^1.0.0",
     "path-exists-cli": "^1.0.0",
-    "run-sequence": "^1.2.2"
+    "@shower/cli": "^0.2.6"
   },
   "scripts": {
-    "prepare": "gulp prepare",
-    "archive": "gulp archive",
-    "publish": "gulp publish",
+    "pdf": "shower pdf",
+    "start": "shower serve",
+    "prepare": "shower prepare --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
+    "archive": "shower archive --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
+    "publish": "shower publish --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
     "test": "npm run prepare && ls prepared && npm run archive && path-exists archive.zip"
   }
 }
