@@ -29,11 +29,9 @@ By doing this you would get a GitHub repo linked with Netlify in a way any chang
 
 ## Advanced
 
-1. Сlone this repository `git clone --depth=1 git@github.com:shower/shower.git`, (`--depth=1` will make it way faster).
-2. [Create](https://github.com/new) a new blank repository and copy its cloning address `git@github.com:USER/REPO.git`.
-3. Change remote of your local clone to the one you’ve just copied `git remote set-url origin git@github.com:USER/REPO.git`.
-4. Push your local clone to GitHub `git push -u origin master`.
-6. Install dependencies `npm install` and start it `npm start`.
+### Get your own Shower
+1. Copy Shower in your account via [GitHub](#copy-via-github) or via [CLI](#copy-via-cli)
+2. Install dependencies `npm install` and start it `npm start`.
 
 Once you’re done you can build a clean copy of your slides:
 
@@ -44,6 +42,23 @@ And you’ll find your presentation in `prepared` folder with only needed files 
     npm run publish
 
 And you’ll have your slides published to `http://USER.github.io/REPO/`.
+
+#### Copy via GitHub
+
+1. Open [import page](https://github.com/new/import)
+2. Fill the fields:  
+   <img src="docs/images/easy-way-to-import.png" alt="easy-way-to-import">  
+   A. Add link to this repo - https://github.com/shower/shower  
+   B. Enter the name of your _new_repo_, where you'd like to copy it  
+   C. Push the button "Begin import"
+3. Clone your _new_repo_ to your computer
+
+#### Copy via CLI
+
+1. Сlone this repository `git clone --depth=1 git@github.com:shower/shower.git`, (`--depth=1` will make it way faster).
+2. [Create](https://github.com/new) a new blank repository and copy its cloning address `git@github.com:USER/REPO.git`.
+3. Change remote of your local clone to the one you’ve just copied `git remote set-url origin git@github.com:USER/REPO.git`.
+4. Push your local clone to GitHub `git push -u origin master`.
 
 ## Usage Examples
 
