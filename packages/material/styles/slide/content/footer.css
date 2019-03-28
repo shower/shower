@@ -9,7 +9,7 @@
     padding:
         48px var(--slide-right-side)
         24px var(--slide-left-side);
-    background-color: var(--color-yellow-light);
+    background-color: var(--color-yellow);
     transition: transform 0.3s;
 }
 
