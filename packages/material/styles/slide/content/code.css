@@ -60,19 +60,20 @@
 
 /* Marked Line */
 
-.slide pre code.mark:not(:only-child) {
-    background-color: var(--color-back);
+.slide pre code:not(:only-child).mark {
+    background-color: var(--color-yellow);
 }
 
 /* Next Line */
 
-.slide pre code.mark.next:not(:only-child) {
+.slide pre code:not(:only-child).mark.next {
     visibility: visible;
     background-color: transparent;
 }
 
-.slide pre code.mark.next.active:not(:only-child) {
-    background-color: var(--color-back);
+.slide pre code:not(:only-child).mark.next.active,
+.slide pre code:not(:only-child).mark.next.visited {
+    background-color: var(--color-yellow);
 }
 
 /* Full */
@@ -82,6 +83,7 @@
     background-color: transparent;
 }
 
-.shower.full .slide pre code:not(:only-child).mark.next.active {
-    background-color: var(--color-back);
+.shower.full .slide pre code:not(:only-child).mark.next.active,
+.shower.full .slide pre code:not(:only-child).mark.next.visited {
+    background-color: var(--color-yellow);
 }

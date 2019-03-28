@@ -72,6 +72,7 @@
     background-color: transparent;
 }
 
-.slide tr.mark.next.active {
+.slide tr.mark.next.active,
+.slide tr.mark.next.visited {
     background-color: var(--color-yellow);
 }
