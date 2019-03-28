@@ -11,9 +11,13 @@
 
 .slide pre code {
     display: block;
-    margin-left: -100px;
-    padding: 0 0 0 100px;
-    width: calc(100% + 100px + 100px);
+    margin-left: calc(
+        var(--slide-side) * -1
+    );
+    padding: 0 0 0 var(--slide-side);
+    width: calc(
+        100% + var(--slide-side) * 2
+    );
     border-radius: 0;
     background-color: transparent;
     line-height: 2;
