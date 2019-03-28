@@ -22,6 +22,7 @@
     background-color: transparent;
     line-height: 2;
     white-space: pre;
+    -moz-tab-size: 4;
     tab-size: 4;
 }
 
