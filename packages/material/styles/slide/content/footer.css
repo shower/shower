@@ -6,7 +6,9 @@
     bottom: 0;
     left: 0;
     z-index: 1;
-    padding: 48px 112px 24px 96px;
+    padding:
+        48px var(--slide-right-side)
+        24px var(--slide-left-side);
     background-color: var(--color-yellow-light);
     transition: transform 0.3s;
 }

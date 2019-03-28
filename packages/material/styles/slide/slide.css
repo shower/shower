@@ -35,7 +35,9 @@
     z-index: 0;
     overflow: hidden;
     box-sizing: border-box;
-    padding: 79px 112px 0 96px;
+    padding:
+        79px var(--slide-right-side)
+        0 var(--slide-left-side);
     width: var(--slide-width);
     height: var(--slide-height);
     background-color: white;

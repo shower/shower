@@ -1,9 +1,15 @@
 /* Table */
 
 .slide table {
-    margin-left: -96px;
+    margin-left: calc(
+        var(--slide-left-side) * -1
+    );
     margin-bottom: 1em;
-    width: calc(96px + 100% + 112px);
+    width: calc(
+        100% +
+        var(--slide-left-side) +
+        var(--slide-right-side)
+    );
     border-collapse: collapse;
     border-spacing: 0;
 }
@@ -23,12 +29,12 @@
 
 .slide th:first-child,
 .slide td:first-child {
-    padding-left: 96px;
+    padding-left: var(--slide-left-side);
 }
 
 .slide th:last-child,
 .slide td:last-child {
-    padding-right: 96px;
+    padding-right: var(--slide-left-side);
 }
 
 /* Lines */

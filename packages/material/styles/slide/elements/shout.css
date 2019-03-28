@@ -5,7 +5,7 @@
     top: 50%;
     left: 0;
     width: 100%;
-    padding-left: 96px;
+    padding-left: var(--slide-left-side);
     color: white;
     line-height: 1.1;
     font-size: 112px;
