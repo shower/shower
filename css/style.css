@@ -1,0 +1,35 @@
+.shower {
+  --slide-ratio: calc(16 / 9);
+}
+
+#cover h2 {
+  margin: 30px 0 0;
+  color: white;
+  text-align: center;
+  font-size: 70px;
+}
+
+#cover p {
+  margin: 10px 0 0;
+  text-align: center;
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+}
+
+#cover p a {
+  color: white;
+}
+
+#picture h2 {
+  color: white;
+}
+
+#see-more h2 {
+  font-size: 100px
+}
+
+#see-more img {
+  width: 0.72em;
+  height: 0.72em;
+}
