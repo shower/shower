@@ -1,8 +1,15 @@
 'use strict';
 
+const yn = require('yn');
 const { port } = require('./test/func-constants');
 
 const { env } = process;
+const chromeLocalArgs = [];
+const isHeadless = yn(env.CHROME_HEADLESS, { default: true });
+if (isHeadless) {
+    chromeLocalArgs.push('headless');
+}
+
 const makeSauceEnv = caps => ({
     selenium: {
         host: 'ondemand.saucelabs.com',
@@ -35,7 +42,7 @@ module.exports = {
             desiredCapabilities: {
                 browserName: 'Chrome',
                 chromeOptions: {
-                    args: ['headless'],
+                    args: chromeLocalArgs,
                 },
             },
         },

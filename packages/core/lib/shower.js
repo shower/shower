@@ -14,6 +14,7 @@ class Shower extends EventTarget {
         super();
 
         this._mode = 'list';
+        this._isStarted = false;
         this.options = Object.assign({}, defaultOptions, options);
     }
 
@@ -25,12 +26,15 @@ class Shower extends EventTarget {
     }
 
     start() {
+        if (this._isStarted) return;
+
         const { containerSelector } = this.options;
         this.container = document.querySelector(containerSelector);
         if (!this.container) {
             throw new Error(`Shower container with selector '${containerSelector}' not found.`);
         }
 
+        this._isStarted = true;
         this._initSlides();
 
         // maintains invariant: active slide always exists in `full` mode

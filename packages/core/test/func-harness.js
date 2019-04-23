@@ -1,6 +1,7 @@
 'use strict';
 
 /* eslint-disable no-console */
+const { parse } = require('url');
 const { EventEmitter } = require('events');
 const { Server } = require('http');
 const { execSync } = require('child_process');
@@ -10,11 +11,21 @@ const { port } = require('./func-constants');
 
 EventEmitter.defaultMaxListeners = 0;
 
-const server = new Server((request, response) => {
-    handler(request, response, {
-        public: 'dist',
-        directoryListing: false,
-    });
+const server = new Server(async (request, response) => {
+    const { echo } = parse(request.url, true).query;
+    if (echo) {
+        response.writeHead(200, {
+            'Content-Type': 'text/html',
+            'X-XSS-Protection': 0,
+        });
+
+        response.end(echo);
+    } else {
+        handler(request, response, {
+            public: 'dist',
+            directoryListing: false,
+        });
+    }
 });
 
 let sauceProcess;

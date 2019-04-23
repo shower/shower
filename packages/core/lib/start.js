@@ -1,3 +1,4 @@
+import { contentLoaded } from './utils';
 import Shower from './shower';
 
 const options = document.currentScript.dataset;
@@ -8,6 +9,6 @@ Object.defineProperty(window, 'shower', {
     configurable: true,
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+contentLoaded(() => {
     shower.start();
 });

@@ -11,3 +11,11 @@ export const freezeHistory = callback => {
         delete history.replaceState;
     }
 };
+
+export const contentLoaded = callback => {
+    if (document.currentScript.async) {
+        callback();
+    } else {
+        document.addEventListener('DOMContentLoaded', callback);
+    }
+};
