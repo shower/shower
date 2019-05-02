@@ -8,8 +8,8 @@ const pkg = require('../package.json')
 if (!semver.satisfies(process.version, pkg.engines.node)) {
   console.log(
     chalk.red(
-      `You are using Node ${chalk.bold(pkg.process.version)},` +
-      `but this version of @shower/cli requires Node ${chalk.bold(pkg.engines.node)}.\n` +
+      `You are using Node ${chalk.bold(process.version)}, ` +
+      `but this version of ${chalk.bold(pkg.name)} requires Node ${chalk.bold(pkg.engines.node)}.\n` +
       `Please upgrade your Node version.`
     )
   )
