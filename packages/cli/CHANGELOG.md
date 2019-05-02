@@ -1,6 +1,14 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.2.7
+* OSX and Windows support
+* Package migrated to `@shower/cli`
+* Update dependencies
+
+## 0.2.6
+* Update dependencies
+
 ## 0.2.5
 * Change paths for themes to org
 * Make publish command useful

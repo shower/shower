@@ -17,6 +17,7 @@
     "ui",
     "notifier",
     "dir",
-    "js"
+    "js",
+    "OSX"
   ]
 }
