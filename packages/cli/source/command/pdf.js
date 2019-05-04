@@ -1,52 +1,39 @@
 const chalk = require('chalk')
 const puppeteer = require('puppeteer')
 
-function evalCalcExpression (expression) {
+function evalCalcExpression (value) {
+  const expression = value
+    .replace(/calc/g, '')
+    .replace(/px/g, '')
+
   // eslint-disable-next-line no-eval
-  return eval(expression.replace(/calc/g, '').replace(/px/g, '')) + 'px'
+  return eval(expression) + 'px'
 }
 
-function pdf ({ cwd }, { output }) {
-  let browser, page
+async function pdf ({ cwd }, { output }) {
+  let browser = await puppeteer.launch()
+  let page = await browser.newPage()
 
-  return Promise.resolve()
-    .then(() => puppeteer.launch())
-    .then(b => {
-      browser = b
-    })
-    .then(() => browser.newPage())
-    .then(p => {
-      page = p
-    })
-    .then(() => page.goto(`file://${cwd}/index.html`))
-    .then(() => page.evaluate(() => new Promise((resolve) => {
-      const container = document.querySelector('.shower')
+  await page.goto(`file://${cwd}/index.html`)
 
-      const styles = window.getComputedStyle(container)
+  const [width, height] = await page.evaluate(async () => {
+    const container = document.querySelector('.shower')
 
-      resolve({
-        width: styles.getPropertyValue('--slide-width'),
-        height: styles.getPropertyValue('--slide-height')
-      })
-    })))
-    .then((size) => {
-      const width = evalCalcExpression(size.width)
-      const height = evalCalcExpression(size.height)
+    const styles = window.getComputedStyle(container)
 
-      return page.pdf({
-        path: output, width, height
-      })
-    })
-    .catch(error => {
-      if (browser) {
-        browser.close()
-      }
+    return [
+      styles.getPropertyValue('--slide-width'),
+      styles.getPropertyValue('--slide-height')
+    ]
+  })
 
-      throw error
-    })
-    .then(() => {
-      browser.close()
-    })
+  await page.pdf({
+    path: output,
+    width: evalCalcExpression(width),
+    height: evalCalcExpression(height)
+  })
+
+  browser.close()
 }
 
 pdf.messages = (_, { output }) => ({
