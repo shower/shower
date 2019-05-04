@@ -40,8 +40,8 @@ function publish (_, { files }) {
     })
 }
 
-publish.messages = {
+publish.messages = () => ({
   end: 'Project published'
-}
+})
 
 module.exports = publish

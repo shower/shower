@@ -14,11 +14,7 @@ async function applyCommand (name, env, options) {
   const s = Date.now()
 
   const task = require(`./command/${name}.js`)
-
-  let { messages = {} } = task
-  if (typeof task.messages === 'function') {
-    messages = typeof task.messages === 'function' ? task.messages(env, options) : task.messages
-  }
+  const messages = task.messages(env, options)
 
   if (messages.start) {
     await (new Listr([

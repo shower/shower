@@ -26,6 +26,6 @@ function serve ({ cwd }, { port, open, ui, notify }) {
   })
 }
 
-serve.messages = {}
+serve.messages = () => ({})
 
 module.exports = serve
