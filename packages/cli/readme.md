@@ -62,3 +62,6 @@ shower [--version] [--help] <command> [<args>]
 ### Publish presentation with [GitHub Pages](https://pages.github.com/)
 
 `$ shower publish` - Publish your project to GitHub Pages
+
+---
+Licensed under [MIT License](LICENSE.md).
