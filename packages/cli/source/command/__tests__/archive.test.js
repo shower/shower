@@ -1,11 +1,11 @@
-const pdf = require('../pdf')
+const archive = require('../archive')
 
 it('Must be function', () => {
-  expect(typeof pdf).toBe('function')
+  expect(typeof archive).toBe('function')
 })
 
 it('Messages must provided "start" and "end" messages', () => {
-  const { start, end } = pdf.messages({}, { file: '' })
+  const { start, end } = archive.messages({}, { output: '' })
 
   expect(typeof start).toBe('string')
   expect(typeof end).toBe('string')
