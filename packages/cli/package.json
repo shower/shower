@@ -30,21 +30,21 @@
     "shower": "source/index.js"
   },
   "devDependencies": {
-    "eslint": "^5.13.0",
+    "eslint": "^5.16.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-promise": "^4.1.1",
     "eslint-plugin-standard": "^4.0.0",
-    "jest": "^24.1.0",
-    "lint-staged": "^8.1.4",
+    "jest": "^24.7.1",
+    "lint-staged": "^8.1.6",
     "pdf-parse": "^1.1.1",
     "pre-commit": "^1.2.2",
     "yaspeller-ci": "^1.0.0"
   },
   "dependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.5",
     "chalk": "^2.4.2",
     "del": "^3.0.0",
     "execa": "^1.0.0",
@@ -53,15 +53,15 @@
     "gulp-replace": "^1.0.0",
     "gulp-template": "^5.0.0",
     "gulp-zip": "^4.2.0",
-    "inquirer": "^6.2.2",
+    "inquirer": "^6.3.1",
     "listr": "^0.14.3",
     "merge-stream": "^1.0.1",
-    "puppeteer": "^1.12.2",
-    "semver": "^5.6.0",
+    "puppeteer": "^1.15.0",
+    "semver": "^5.7.0",
     "tmp": "0.0.33",
     "update-notifier": "^2.5.0",
     "vinyl-fs": "^3.0.3",
-    "yargs": "^13.1.0"
+    "yargs": "^13.2.2"
   },
   "pre-commit": [
     "lint-staged"

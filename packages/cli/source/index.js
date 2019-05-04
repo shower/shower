@@ -33,11 +33,14 @@ async function setup () {
   app.usage(chalk`Usage: {bold $0 [--version] [--help] <command> [<args>]}`)
   app.epilog(chalk`See {bold $0 <command> --help} to read about a specific subcommand.`)
 
+  app.alias('h', 'help')
+  app.alias('v', 'version')
+
   const env = getEnv()
 
   for (const name in list) {
     if (!list.hasOwnProperty(name)) {
-      return
+      continue
     }
 
     let command = list[name]
@@ -46,7 +49,7 @@ async function setup () {
       command: command.meta ? `${name} ${command.meta}` : name,
       describe: chalk.yellow(command.describe),
       builder: command.builder,
-      handler: (options) => {
+      handler (options) {
         if (command.usesExistingPresentation && !env.project) {
           process.stdout.write(
             chalk`{red Shower presentation not found}\n\n` +
