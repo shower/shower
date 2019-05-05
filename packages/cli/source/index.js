@@ -26,63 +26,56 @@ updateNotifier({ pkg }).notify()
 const { getEnv } = require('./lib/env')
 const { list, apply } = require('./commands')
 
-async function setup () {
-  app.strict()
-  app.locale('en')
-  app.version(pkg.version)
-  app.usage(chalk`Usage: {bold $0 [--version] [--help] <command> [<args>]}`)
-  app.epilog(chalk`See {bold $0 <command> --help} to read about a specific subcommand.`)
+app.strict()
+app.locale('en')
+app.version(pkg.version)
+app.usage(chalk`Usage: {bold $0 [--version] [--help] <command> [<args>]}`)
+app.epilog(chalk`See {bold $0 <command> --help} to read about a specific subcommand.`)
 
-  app.alias('h', 'help')
-  app.alias('v', 'version')
+app.alias('h', 'help')
+app.alias('v', 'version')
 
-  const env = getEnv()
+const env = getEnv()
 
-  for (const name in list) {
-    if (!list.hasOwnProperty(name)) {
-      continue
-    }
+for (const name in list) {
+  if (!list.hasOwnProperty(name)) {
+    continue
+  }
 
-    let command = list[name]
+  let command = list[name]
 
-    app.command({
-      command: command.meta ? `${name} ${command.meta}` : name,
-      aliases: command.aliases,
-      describe: chalk.yellow(command.describe),
-      builder: command.builder,
-      handler (options) {
-        if (command.usesExistingPresentation && !env.project) {
-          process.stdout.write(
-            chalk`{red Shower presentation not found}\n\n` +
-            chalk`Use {yellow shower create} to create a presentation\n` +
-            chalk`Run {yellow shower create --help} to learn more\n`
-          )
+  app.command({
+    command: command.meta ? `${name} ${command.meta}` : name,
+    aliases: command.aliases,
+    describe: chalk.yellow(command.describe),
+    builder: command.builder,
+    handler (options) {
+      if (command.usesExistingPresentation && !env.project) {
+        process.stdout.write(
+          chalk`{red Shower presentation not found}\n\n` +
+          chalk`Use {yellow shower create} to create a presentation\n` +
+          chalk`Run {yellow shower create --help} to learn more\n`
+        )
 
-          return Promise.resolve()
-        }
-
-        return apply(name, env, options)
+        return Promise.resolve()
       }
-    })
-  }
 
-  app.argv // eslint-disable-line no-unused-expressions
-
-  if (!process.argv.slice(2).length) {
-    app.showHelp()
-  }
+      return apply(name, env, options)
+    }
+  })
 }
 
-// If the node version is supported, setup CLI
-setup()
-  .then(() => {
-    process.exitCode = 0
-  })
-  .catch(error => {
-    console.error(error)
+app.argv // eslint-disable-line no-unused-expressions
 
-    process.exitCode = 1
-  })
+if (!process.argv.slice(2).length) {
+  app.showHelp()
+}
+
+process.on('uncaughtException', (error) => {
+  console.error(error)
+
+  process.exit(1)
+})
 
 process.on('SIGINT', () => {
   console.log(chalk.red('\nAborted'))
