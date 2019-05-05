@@ -37,31 +37,33 @@ app.alias('v', 'version')
 
 const env = getEnv()
 
-for (const name in list) {
-  if (!list.hasOwnProperty(name)) {
-    continue
-  }
+const COMMANDS_REQUIRE_EXISTING_PRESENTATION = [
+  'pdf', 'serve', 'prepare', 'archive', 'publish'
+]
 
-  let command = list[name]
+app.middleware((argv, app) => {
+  const name = argv._[0]
+
+  if (COMMANDS_REQUIRE_EXISTING_PRESENTATION.includes(name) && !env.project) {
+    process.stdout.write(
+      chalk`{red Shower presentation not found}\n\n` +
+      chalk`Use {yellow shower create} to create a presentation\n` +
+      chalk`Run {yellow shower create --help} to learn more\n`
+    )
+
+    app.exit(1)
+  }
+})
+
+for (const command of list) {
+  const name = command.command.split(' ')[0]
 
   app.command({
-    command: command.meta ? `${name} ${command.meta}` : name,
+    command: command.command,
     aliases: command.aliases,
     describe: chalk.yellow(command.describe),
     builder: command.builder,
-    handler (options) {
-      if (command.usesExistingPresentation && !env.project) {
-        process.stdout.write(
-          chalk`{red Shower presentation not found}\n\n` +
-          chalk`Use {yellow shower create} to create a presentation\n` +
-          chalk`Run {yellow shower create --help} to learn more\n`
-        )
-
-        return Promise.resolve()
-      }
-
-      return apply(name, env, options)
-    }
+    handler: apply.bind(null, name, env)
   })
 }
 

@@ -34,10 +34,10 @@ async function applyCommand (name, env, options) {
   }
 }
 
-const list = {
-  create: {
+const list = [
+  {
+    command: 'create [<directory>]',
     aliases: ['new'],
-    meta: '[<directory>]',
     describe: 'Create a new project',
     builder: yargs => yargs
       .options({
@@ -48,13 +48,14 @@ const list = {
         }
       })
       .positional('directory', {
-        default: 'slides'
+        default: 'slides',
+        type: 'string'
       })
   },
 
-  pdf: {
+  {
+    command: 'pdf',
     describe: 'Converts the presentation to PDF',
-    usesExistingPresentation: true,
     builder: yargs => yargs
       .options({
         output: {
@@ -66,9 +67,9 @@ const list = {
       })
   },
 
-  serve: {
+  {
+    command: 'serve',
     describe: 'Serve the presentation in development mode',
-    usesExistingPresentation: true,
     builder: yargs => yargs
       .options({
         open: {
@@ -96,9 +97,9 @@ const list = {
       })
   },
 
-  prepare: {
+  {
+    command: 'prepare',
     describe: 'Gather the necessary files in a separate folder',
-    usesExistingPresentation: true,
     builder: yargs => yargs
       .options({
         output: {
@@ -116,9 +117,9 @@ const list = {
       })
   },
 
-  archive: {
+  {
+    command: 'archive',
     describe: 'Create an archive of the presentation',
-    usesExistingPresentation: true,
     builder: yargs => yargs
       .options({
         output: {
@@ -136,9 +137,9 @@ const list = {
       })
   },
 
-  publish: {
+  {
+    command: 'publish',
     describe: 'Publish your presentation to GitHub Pages',
-    usesExistingPresentation: true,
     builder: yargs => yargs
       .options({
         files: {
@@ -149,6 +150,6 @@ const list = {
         }
       })
   }
-}
+]
 
 module.exports = { list, apply: applyCommand }
