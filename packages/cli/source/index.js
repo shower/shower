@@ -29,6 +29,7 @@ const { list, apply } = require('./commands')
 app.strict()
 app.locale('en')
 app.version(pkg.version)
+app.scriptName('shower')
 app.usage(chalk`Usage: {bold $0 [--version] [--help] <command> [<args>]}`)
 app.epilog(chalk`See {bold $0 <command> --help} to read about a specific subcommand.`)
 
