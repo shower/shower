@@ -29,39 +29,67 @@ $ yarn global add @shower/cli
 The minimum supported Node version is `v8.0.0` by default.
 
 **Note:** For easy creation of slides for one command,
-          we recommend installing the `ShowerCLI` globally.
-          After the presentation is created, ShowerCLI
-          is added as dev-dependencies by default
+           we recommend installing the `@shower/cli` globally.
+           After the presentation is created, ShowerCLI
+           is added as dev-dependencies by default
 
 ## Usage:
 
 ```bash
-shower [--version] [--help] <command> [<args>]
+shower [--version] [--help] [<command> [<args>]]
 ```
 
-### Create presentation
+**`$ shower create [<directory>]` - Create a new project**
 
-`$ shower create [<directory>]` - Creating a new project
+```
+Positionals:
+  directory                                                  [default: "slides"]
 
-### Run development server
+Options:
+  --yes, -y                                           [boolean] [default: false]
+```
 
-`$ shower serve` - Serve a the presentation in development mode
+**`$ shower serve` - Serve the presentation in development mode**
 
-### Prepare presentation
+```
+Options:
+  --open, -o     Open browser                                   [default: false]
+  --port, -p     Listening Port                         [number] [default: 8080]
+  --ui           Whether to run BrowserSync UI                  [default: false]
+  --notify       Whether to show BrowserSync notifications      [default: false]
+```
 
-`$ shower prepare` - Gather the necessary files in a separate folder
 
-### Create an archive of the prepared presentation
+**`$ shower prepare` - Gather the necessary files in a separate folder**
 
-`$ shower archive` - To create an archive of the presentation
+```
+Options:
+  --output, -o   In which folder will the prepared presentation be written
+                                                  [string] [default: "prepared"]
+  --files, -f    List of files that will get the build                   [array]
+```
 
-### Convert presentation to PDF
+**`$ shower archive` - Create an archive of the prepared presentation**
 
-`$ shower pdf` - Converts the presentation to PDF
+```
+Options:
+  --output, -o   Archive name             [string] [default: "presentation.zip"]
+  --files, -f    List of files that will get the build                   [array]
+```
 
-### Publish presentation with [GitHub Pages](https://pages.github.com/)
+**`$ shower pdf` - Converts the presentation to PDF**
 
-`$ shower publish` - Publish your project to GitHub Pages
+```
+Options:
+  --output, -o   File name                       [string] [default: "index.pdf"]
+```
+
+**`$ shower publish` - Publish presentation with [GitHub Pages](https://pages.github.com/)**
+
+```
+Options:
+  --files, -f    List of files that will get the build                   [array]
+```
 
 ---
 Licensed under [MIT License](LICENSE.md).
