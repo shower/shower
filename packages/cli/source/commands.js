@@ -36,6 +36,7 @@ async function applyCommand (name, env, options) {
 
 const list = {
   create: {
+    aliases: ['new'],
     meta: '[<directory>]',
     describe: 'Create a new project',
     builder: yargs => yargs

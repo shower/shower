@@ -47,6 +47,7 @@ async function setup () {
 
     app.command({
       command: command.meta ? `${name} ${command.meta}` : name,
+      aliases: command.aliases,
       describe: chalk.yellow(command.describe),
       builder: command.builder,
       handler (options) {
