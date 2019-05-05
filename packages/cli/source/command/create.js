@@ -10,7 +10,7 @@ const template = require('gulp-template')
 
 const { installDependencies } = require('../lib/npm')
 
-async function create ({ cwd }, { directory: folderName = 'slides' }) {
+async function create ({ cwd }, { directory: folderName = 'slides', yes: isDefault }) {
   // Let's check if such folder exists
   const directory = path.isAbsolute(folderName) ? folderName : path.join(cwd, folderName)
 
@@ -36,6 +36,11 @@ async function create ({ cwd }, { directory: folderName = 'slides' }) {
     year: (new Date()).getFullYear()
   }
 
+  const defaultParams = {
+    theme: 'ribbon',
+    ratio: '16:9'
+  }
+
   const params = [{
     name: 'theme',
     type: 'list',
@@ -48,7 +53,11 @@ async function create ({ cwd }, { directory: folderName = 'slides' }) {
     choices: ['16:9', '4:3']
   }]
 
-  Object.assign(options, await inquirer.prompt(params))
+  if (isDefault) {
+    Object.assign(options, defaultParams)
+  } else {
+    Object.assign(options, await inquirer.prompt(params))
+  }
 
   options.ratio = options.ratio.replace(/:/, ' / ')
 

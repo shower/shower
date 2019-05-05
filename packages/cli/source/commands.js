@@ -43,6 +43,11 @@ const list = {
       .positional('directory', {
         default: 'slides'
       })
+      .option('yes', {
+        alias: ['y'],
+        default: false,
+        type: 'boolean'
+      })
   },
 
   pdf: {
