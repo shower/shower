@@ -5,6 +5,8 @@ const semver = require('semver')
 
 const pkg = require('../package.json')
 
+process.title = pkg.name
+
 if (!semver.satisfies(process.version, pkg.engines.node)) {
   console.log(
     chalk.red(
