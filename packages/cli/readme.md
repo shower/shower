@@ -1,5 +1,7 @@
 # Shower CLI
 
+<img align="right" width="95" height="95" title="Shower logo" src="/logo.png">
+
 **Command line interface for [Shower](http://shwr.me/)**
 
 [![npm](https://img.shields.io/npm/v/@shower/cli.svg)](https://www.npmjs.com/package/@shower/cli)
