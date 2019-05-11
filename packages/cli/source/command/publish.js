@@ -5,7 +5,7 @@ const { promisify } = require('util')
 
 const { loadPresentationFiles } = require('../lib/presentation')
 
-function publish (_, { files }) {
+function publish ({ files }) {
   let tempDirPath = null
   let cleanupCallback = null
 

@@ -38,16 +38,24 @@ app.epilog(chalk`See {bold $0 <command> --help} to read about a specific subcomm
 app.alias('h', 'help')
 app.alias('v', 'version')
 
-const env = getEnv()
+app.options({
+  cwd: {
+    default: process.cwd(),
+    describe: 'working directory to use',
+    type: 'string'
+  }
+})
 
 const COMMANDS_REQUIRE_EXISTING_PRESENTATION = [
   'pdf', 'serve', 'prepare', 'archive', 'publish'
 ]
 
 app.middleware((argv, app) => {
+  argv.project = getEnv(argv.cwd)
+
   const name = argv._[0]
 
-  if (COMMANDS_REQUIRE_EXISTING_PRESENTATION.includes(name) && !env.project) {
+  if (COMMANDS_REQUIRE_EXISTING_PRESENTATION.includes(name) && !argv.project) {
     process.stdout.write(
       chalk`{red Shower presentation not found}\n\n` +
       chalk`Use {yellow shower create} to create a presentation\n` +
@@ -66,7 +74,7 @@ for (const command of list) {
     aliases: command.aliases,
     describe: chalk.yellow(command.describe),
     builder: command.builder,
-    handler: apply.bind(null, name, env)
+    handler: apply.bind(null, name)
   })
 }
 

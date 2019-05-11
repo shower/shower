@@ -7,19 +7,13 @@ const { resolve } = require('path')
  */
 
 /**
- * @typedef {Object} AppConfig
- * @property {string} cwd – Path to the current project folder
- * @property {ProjectConfig|null} project – Existing project config
- */
-
-/**
  * Creates a application config
  *
- * @param {string=$PWD} cwd – The directory from which the script is run
+ * @param {string} cwd – The directory from which the script is run
  *
- * @returns {AppConfig} – application config
+ * @returns {ProjectConfig} – project config
  */
-function getEnv (cwd = process.cwd()) {
+function findProject (cwd) {
   let project = null
 
   for (let path = cwd; path !== (process.env.HOME || '/');) {
@@ -32,10 +26,7 @@ function getEnv (cwd = process.cwd()) {
     path = resolve(path, '..')
   }
 
-  return {
-    cwd,
-    project
-  }
+  return project
 }
 
-module.exports = { getEnv }
+module.exports = { getEnv: findProject }

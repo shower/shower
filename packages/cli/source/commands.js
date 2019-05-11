@@ -5,26 +5,25 @@ const chalk = require('chalk')
  * Apply CLI command
  *
  * @param {string} name
- * @param {ProjectConfig} env
  * @param {Object} options
  *
  * @return {Promise<void>}
  */
-async function applyCommand (name, env, options) {
+async function applyCommand (name, options) {
   const s = Date.now()
 
   const task = require(`./command/${name}.js`)
-  const messages = task.messages(env, options)
+  const messages = task.messages(options)
 
   if (messages.start) {
     await (new Listr([
       {
         title: messages.start,
-        task: () => task(env, options)
+        task: () => task(options)
       }
     ])).run()
   } else {
-    await task(env, options)
+    await task(options)
   }
 
   if (messages.end) {

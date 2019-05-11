@@ -10,7 +10,7 @@ const template = require('gulp-template')
 
 const { installDependencies } = require('../lib/npm')
 
-async function create ({ cwd }, { directory: folderName = 'slides', yes: isDefault }) {
+async function create ({ cwd, directory: folderName = 'slides', yes: isDefault }) {
   // Let's check if such folder exists
   const directory = path.isAbsolute(folderName) ? folderName : path.join(cwd, folderName)
 
@@ -97,7 +97,7 @@ async function create ({ cwd }, { directory: folderName = 'slides', yes: isDefau
   await tasks.run()
 }
 
-create.messages = (_, { directory: folderName = 'slides' }) => ({
+create.messages = ({ directory: folderName = 'slides' }) => ({
   end: `Project created in ${chalk.bold(folderName)} dir`
 })
 

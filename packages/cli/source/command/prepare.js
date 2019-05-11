@@ -5,7 +5,7 @@ const del = require('del')
 
 const { loadPresentationFiles } = require('../lib/presentation')
 
-function prepare ({ cwd }, { output, files }) {
+function prepare ({ cwd, output, files }) {
   if (!path.isAbsolute(output)) {
     output = path.join(cwd, output)
   }
@@ -22,7 +22,7 @@ function prepare ({ cwd }, { output, files }) {
   })
 }
 
-prepare.messages = (_, { output }) => ({
+prepare.messages = ({ output }) => ({
   start: 'Project preparation in progress',
   end: chalk`Project prepared in {bold ${output}} dir`
 })

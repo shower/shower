@@ -10,7 +10,7 @@ function evalCalcExpression (value) {
   return eval(expression) + 'px'
 }
 
-async function pdf ({ cwd }, { output }) {
+async function pdf ({ cwd, output }) {
   let browser = await puppeteer.launch()
   let page = await browser.newPage()
 
@@ -36,7 +36,7 @@ async function pdf ({ cwd }, { output }) {
   browser.close()
 }
 
-pdf.messages = (_, { output }) => ({
+pdf.messages = ({ output }) => ({
   start: 'Creating PDF in progress',
   end: chalk`PDF built in {bold ${output}}`
 })
