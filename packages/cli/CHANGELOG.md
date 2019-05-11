@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.2.8
+* Documentation for commands
+* `--yes` flag in `create` command
+* Alias `new` to `create` command
+* Short alias for `help` and `version` commands
+
 ## 0.2.7
 * OSX and Windows support
 * Package migrated to `@shower/cli`
