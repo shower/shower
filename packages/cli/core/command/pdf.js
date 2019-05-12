@@ -10,7 +10,7 @@ function evalCalcExpression (value) {
   return eval(expression) + 'px'
 }
 
-async function pdf ({ cwd, output }) {
+async function handler ({ cwd, output }) {
   let browser = await puppeteer.launch()
   let page = await browser.newPage()
 
@@ -36,9 +36,23 @@ async function pdf ({ cwd, output }) {
   browser.close()
 }
 
-pdf.messages = ({ output }) => ({
-  start: 'Creating PDF in progress',
-  end: chalk`PDF built in {bold ${output}}`
-})
+function builder (yargs) {
+  return yargs
+    .options({
+      output: {
+        alias: 'o',
+        type: 'string',
+        default: 'index.pdf',
+        describe: 'File name'
+      }
+    })
+}
 
-module.exports = pdf
+function messages ({ output }) {
+  return {
+    start: 'Creating PDF in progress',
+    end: chalk`PDF built in {bold ${output}}`
+  }
+}
+
+module.exports = { handler, builder, messages }

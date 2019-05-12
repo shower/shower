@@ -1,6 +1,6 @@
 const { create } = require('browser-sync')
 
-function serve ({ cwd, port, open, ui, notify }) {
+function handler ({ cwd, port, open, ui, notify }) {
   const bs = create()
 
   const options = {
@@ -26,6 +26,36 @@ function serve ({ cwd, port, open, ui, notify }) {
   })
 }
 
-serve.messages = () => ({})
+function builder (yargs) {
+  return yargs
+    .options({
+      open: {
+        alias: 'o',
+        type: 'bool',
+        default: false,
+        describe: 'Open browser'
+      },
+      port: {
+        alias: 'p',
+        type: 'number',
+        default: 8080,
+        describe: 'Listening Port'
+      },
+      ui: {
+        type: 'bool',
+        default: false,
+        describe: 'Whether to run BrowserSync UI'
+      },
+      notify: {
+        type: 'bool',
+        default: false,
+        describe: 'Whether to show BrowserSync notifications'
+      }
+    })
+}
 
-module.exports = serve
+function messages () {
+  return {}
+}
+
+module.exports = { handler, builder, messages }

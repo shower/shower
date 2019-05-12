@@ -5,7 +5,7 @@ const { promisify } = require('util')
 
 const { loadPresentationFiles } = require('../lib/presentation')
 
-function publish ({ files }) {
+function handler ({ files }) {
   let tempDirPath = null
   let cleanupCallback = null
 
@@ -40,8 +40,22 @@ function publish ({ files }) {
     })
 }
 
-publish.messages = () => ({
-  end: 'Project published'
-})
+function builder (yargs) {
+  return yargs
+    .options({
+      files: {
+        alias: 'f',
+        array: true,
+        type: 'string',
+        describe: 'List of files that will get the build'
+      }
+    })
+}
 
-module.exports = publish
+function messages () {
+  return {
+    end: 'Project published'
+  }
+}
+
+module.exports = { handler, builder, messages }

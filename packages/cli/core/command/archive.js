@@ -4,7 +4,7 @@ const chalk = require('chalk')
 
 const { loadPresentationFiles } = require('../lib/presentation')
 
-function archive ({ output, files }) {
+function handler ({ output, files }) {
   const stream = loadPresentationFiles(files)
     .pipe(zip(output))
     .pipe(vfs.dest('.'))
@@ -16,9 +16,29 @@ function archive ({ output, files }) {
   })
 }
 
-archive.messages = ({ output }) => ({
-  start: 'The project is being archived',
-  end: chalk`Created archive {bold ${output}} with presentation`
-})
+function builder (yargs) {
+  return yargs
+    .options({
+      output: {
+        alias: 'o',
+        type: 'string',
+        default: 'presentation.zip',
+        describe: 'Archive name'
+      },
+      files: {
+        alias: 'f',
+        array: true,
+        type: 'string',
+        describe: 'List of files that will get the build'
+      }
+    })
+}
 
-module.exports = archive
+function messages ({ output }) {
+  return {
+    start: 'The project is being archived',
+    end: chalk`Created archive {bold ${output}} with presentation`
+  }
+}
+
+module.exports = { handler, builder, messages }

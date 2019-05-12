@@ -20,13 +20,13 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
 }
 
 const app = require('yargs')
+const Listr = require('listr')
 const updateNotifier = require('update-notifier')
 
 // Warn the user about new versions
 updateNotifier({ pkg }).notify()
 
 const { getEnv } = require('./lib/env')
-const { list, apply } = require('./commands')
 
 app.strict()
 app.locale('en')
@@ -46,16 +46,50 @@ app.options({
   }
 })
 
-const COMMANDS_REQUIRE_EXISTING_PRESENTATION = [
-  'pdf', 'serve', 'prepare', 'archive', 'publish'
-]
+const commandsList = {
+  create: {
+    command: 'create [<directory>]',
+    aliases: ['new'],
+    describe: 'Create a new project'
+  },
+
+  pdf: {
+    command: 'pdf',
+    describe: 'Converts the presentation to PDF',
+    requireProject: true
+  },
+
+  serve: {
+    command: 'serve',
+    describe: 'Serve the presentation in development mode',
+    requireProject: true
+  },
+
+  prepare: {
+    command: 'prepare',
+    describe: 'Gather the necessary files in a separate folder',
+    requireProject: true
+  },
+
+  archive: {
+    command: 'archive',
+    describe: 'Create an archive of the presentation',
+    requireProject: true
+  },
+
+  publish: {
+    command: 'publish',
+    describe: 'Publish your presentation to GitHub Pages',
+    requireProject: true
+  }
+}
 
 app.middleware((argv, app) => {
   argv.project = getEnv(argv.cwd)
 
   const name = argv._[0]
 
-  if (COMMANDS_REQUIRE_EXISTING_PRESENTATION.includes(name) && !argv.project) {
+  if (commandsList[name].requireProject && !argv.project) {
     process.stdout.write(
       chalk`{red Shower presentation not found}\n\n` +
       chalk`Use {yellow shower create} to create a presentation\n` +
@@ -66,16 +100,44 @@ app.middleware((argv, app) => {
   }
 })
 
-for (const command of list) {
-  const name = command.command.split(' ')[0]
+function lazyLoadCommand (id) {
+  const command = commandsList[id]
 
-  app.command({
+  return {
     command: command.command,
     aliases: command.aliases,
     describe: chalk.yellow(command.describe),
-    builder: command.builder,
-    handler: apply.bind(null, name)
-  })
+
+    builder (...args) {
+      const { builder } = require(`./command/${id}.js`)
+
+      return builder.call(this, ...args)
+    },
+
+    async handler (options) {
+      const { handler, messages } = require(`./command/${id}.js`)
+      const { start, end } = messages(options)
+
+      if (start) {
+        await (new Listr([
+          {
+            title: start,
+            task: () => handler(options)
+          }
+        ])).run()
+      } else {
+        await handler(options)
+      }
+
+      if (end) {
+        process.stdout.write(chalk`${end} 🎉\n`)
+      }
+    }
+  }
+}
+
+for (const commandID in commandsList) {
+  app.command(lazyLoadCommand(commandID))
 }
 
 app.argv // eslint-disable-line no-unused-expressions
