@@ -89,7 +89,7 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
       title: 'Installing dependencies',
       task: () => Promise.all([
         installDependencies(directory, ['@shower/cli'], 'save-dev'),
-        installDependencies(directory, ['shower-core', `@shower/${options.theme}`])
+        installDependencies(directory, ['@shower/core', `@shower/${options.theme}`])
       ])
     }
   ])
