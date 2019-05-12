@@ -1,6 +1,8 @@
 # Shower CLI
 
-<img align="right" width="95" height="95" title="Shower logo" src="/logo.png">
+<a href="https://shwr.me" title="Shower website">
+  <img align="right" width="95" height="95" alt="Shower logo" src="https://shower.github.io/shower/pictures/logo.svg">
+</a>
 
 **Command line interface for [Shower](http://shwr.me/)**
 
