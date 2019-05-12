@@ -39,8 +39,13 @@ The minimum supported Node version is `v8.0.0` by default.
 
 ## Usage:
 
-```bash
+```
 shower [--version] [--help] [<command> [<args>]]
+
+Options:
+  --cwd          working directory to use               [string] [default: $PWD]
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
 ```
 
 **`$ shower create [<directory>]` - Create a new project**
