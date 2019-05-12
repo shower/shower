@@ -27,7 +27,7 @@
     "node": ">=8"
   },
   "bin": {
-    "shower": "source/index.js"
+    "shower": "bin/index.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
