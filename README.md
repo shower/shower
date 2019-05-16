@@ -30,6 +30,7 @@ By doing this you would get a GitHub repo linked with Netlify in a way any chang
 ## Advanced
 
 ### Get your own Shower
+
 1. Copy Shower in your account via [GitHub](#copy-via-github) or via [CLI](#copy-via-cli)
 2. Install dependencies `npm install` and start it `npm start`.
 
@@ -45,13 +46,10 @@ And you’ll have your slides published to `http://USER.github.io/REPO/`.
 
 #### Copy via GitHub
 
-1. Open [import page](https://github.com/new/import)
-2. Fill the fields:  
-   <img src="docs/images/easy-way-to-import.png" alt="easy-way-to-import">  
-   A. Add link to this repo - https://github.com/shower/shower  
-   B. Enter the name of your _new_repo_, where you'd like to copy it  
-   C. Push the button "Begin import"
-3. Clone your _new_repo_ to your computer
+1. Open [import page](https://github.com/new/import).
+2. For the repository URL use `https://github.com/shower/shower`.
+3. For the name use any name you want, your presentation name would be the best.
+4. Clone the resulted repository to your computer.
 
 #### Copy via CLI
 
