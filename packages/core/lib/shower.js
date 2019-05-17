@@ -63,8 +63,8 @@ class Shower extends EventTarget {
 
             slide.element.addEventListener('click', () => {
                 if (this.isListMode) {
-                    slide.activate();
                     this.enterFullMode();
+                    slide.activate();
                 }
             });
 
