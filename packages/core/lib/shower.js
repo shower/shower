@@ -58,7 +58,7 @@ class Shower extends EventTarget {
             const slide = new Slide(slideElement, this.options);
 
             slide.addEventListener('activate', () => {
-                this._toggleActiveSlide(slide);
+                this._changeActiveSlide(slide);
             });
 
             slide.element.addEventListener('click', () => {
@@ -72,9 +72,9 @@ class Shower extends EventTarget {
         });
     }
 
-    _toggleActiveSlide(target) {
+    _changeActiveSlide(next) {
         const prev = this.slides.find(slide => {
-            return slide.isActive && slide !== target;
+            return slide.isActive && slide !== next;
         });
 
         if (prev) {
