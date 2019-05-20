@@ -73,14 +73,19 @@ class Shower extends EventTarget {
     }
 
     _toggleActiveSlide(target) {
-        // at this point, there can be two active slides
-        this.slides.forEach(slide => {
-            if (slide !== target) {
-                slide.deactivate();
-            }
+        const prev = this.slides.find(slide => {
+            return slide.isActive && slide !== target;
         });
 
-        this.dispatchEvent(new Event('slidechange'));
+        if (prev) {
+            prev.deactivate();
+        }
+
+        const event = new CustomEvent('slidechange', {
+            detail: { prev },
+        });
+
+        this.dispatchEvent(event);
     }
 
     get isFullMode() {
