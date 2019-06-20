@@ -1,14 +1,12 @@
 'use strict';
 
 const yn = require('yn');
+const chromedriver = require('chromedriver');
+const puppeteer = require('puppeteer');
 const { port } = require('./test/func-constants');
 
 const { env } = process;
-const chromeLocalArgs = [];
 const isHeadless = yn(env.CHROME_HEADLESS, { default: true });
-if (isHeadless) {
-    chromeLocalArgs.push('headless');
-}
 
 const makeSauceEnv = caps => ({
     selenium: {
@@ -36,13 +34,14 @@ module.exports = {
         'chrome-local': {
             webdriver: {
                 start_process: true,
-                server_path: 'node_modules/.bin/chromedriver',
+                server_path: chromedriver.path,
                 port: 9515,
             },
             desiredCapabilities: {
                 browserName: 'Chrome',
                 chromeOptions: {
-                    args: chromeLocalArgs,
+                    binary: isHeadless ? puppeteer.executablePath() : undefined,
+                    args: isHeadless ? ['headless'] : [],
                 },
             },
         },
