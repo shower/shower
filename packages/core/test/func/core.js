@@ -28,7 +28,7 @@ module.exports = {
         browser.end();
     },
 
-    'adds IDs to all slides unless alredy set': browser => {
+    'adds IDs to all slides unless already set': browser => {
         browser.url(`${browser.launchUrl}/list-id`);
         browser.assert.elementPresent('[id="1"]');
         browser.assert.elementNotPresent('[id="2"]');
