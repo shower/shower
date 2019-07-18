@@ -302,7 +302,7 @@ If you want to add lines numbers use next construction:
         <code>function action() {</code>
         <code>    // TODO</code>
         <code>    return true;</code>
-        <code>}<code>
+        <code>}</code>
     </pre>
 
 When neccessary emphasize that code is commented, you need to use span element with `comment` class;
