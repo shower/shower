@@ -27,7 +27,7 @@
     "node": ">=8"
   },
   "bin": {
-    "shower": "bin/index.js"
+    "shower": "bin/cli.js"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
