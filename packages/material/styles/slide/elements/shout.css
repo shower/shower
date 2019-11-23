@@ -6,6 +6,7 @@
     left: 0;
     width: 100%;
     padding-left: var(--slide-left-side);
+    box-sizing: border-box;
     color: white;
     line-height: 1.1;
     font-size: 112px;
