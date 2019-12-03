@@ -88,6 +88,9 @@ Options:
 
 **`$ shower pdf` - Converts the presentation to PDF**
 
+The browser that [implements the Chrome Debugging Protocol](https://github.com/cyrus-and/chrome-remote-interface/#implementations) is required.
+If you installed Chrome / Chromium to the custom path or use another browser, set PUPPETEER_EXECUTABLE_PATH environment variable.
+
 ```
 Options:
   --output, -o   File name                       [string] [default: "index.pdf"]

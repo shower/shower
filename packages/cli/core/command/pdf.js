@@ -1,5 +1,7 @@
 const chalk = require('chalk')
-const puppeteer = require('puppeteer')
+const puppeteer = require('puppeteer-core')
+const { getPlatform } = require('chrome-launcher/dist/utils.js')
+const chromeFinder = require('chrome-launcher/dist/chrome-finder.js')
 
 function evalCalcExpression (value) {
   const expression = value
@@ -11,7 +13,11 @@ function evalCalcExpression (value) {
 }
 
 async function handler ({ cwd, output }) {
-  let browser = await puppeteer.launch()
+  const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || (await (chromeFinder)[getPlatform()]())[0]
+  if (!executablePath) {
+    throw new Error('Chrome / Chromium is not installed or environment variable PUPPETEER_EXECUTABLE_PATH is not set')
+  }
+  let browser = await puppeteer.launch({ executablePath })
   let page = await browser.newPage()
 
   await page.goto(`file://${cwd}/index.html`)

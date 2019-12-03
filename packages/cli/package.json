@@ -46,6 +46,7 @@
   "dependencies": {
     "browser-sync": "^2.26.5",
     "chalk": "^2.4.2",
+    "chrome-launcher": "^0.12.0",
     "del": "^3.0.0",
     "execa": "^1.0.0",
     "gh-pages": "^2.0.1",
@@ -56,7 +57,7 @@
     "inquirer": "^6.3.1",
     "listr": "^0.14.3",
     "merge-stream": "^1.0.1",
-    "puppeteer": "^1.15.0",
+    "puppeteer-core": "^2.0.0",
     "semver": "^5.7.0",
     "tmp": "0.0.33",
     "update-notifier": "^2.5.0",
