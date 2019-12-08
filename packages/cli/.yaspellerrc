@@ -18,6 +18,7 @@
     "notifier",
     "dir",
     "js",
-    "OSX"
+    "OSX",
+    "andriyor"
   ]
 }

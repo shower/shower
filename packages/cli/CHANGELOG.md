@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.2.9
+* Update dependencies
+* Use puppeteer-core with chrome-launcher instead of puppeteer (by @andriyor)
+* Replace `shower-core` to `@shower/core`
+
 ## 0.2.8
 * Documentation for commands
 * `--yes` flag in `create` command
