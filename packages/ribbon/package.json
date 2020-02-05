@@ -35,7 +35,7 @@
   "devDependencies": {
     "live-server": "^1.2.1",
     "shower-core": "^2.1.0",
-    "stylelint": "^12.0.0"
+    "stylelint": "^13.0.0"
   },
   "scripts": {
     "test": "stylelint 'styles/**/*.css'",
