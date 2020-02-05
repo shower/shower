@@ -1,4 +1,4 @@
-name: Node.js
+name: Test
 on: [push]
 
 jobs:
