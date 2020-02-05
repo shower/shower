@@ -1,4 +1,5 @@
-# Shower Presentation Template [![Build Status](https://travis-ci.org/shower/shower.svg?branch=master)](https://travis-ci.org/shower/shower)
+# Shower Presentation Template
+![](https://github.com/shower/shower/workflows/Test/badge.svg)
 
 <img src="pictures/logo.png" width="250" alt="Shower logo">
 
