@@ -21,6 +21,7 @@
   ],
   "main": "lib/shower.js",
   "files": [
+    "lib",
     "dist/shower.js"
   ],
   "devDependencies": {
