@@ -32,7 +32,7 @@
     "@shower/ribbon": "^3.3.0"
   },
   "devDependencies": {
-    "@shower/cli": "^0.2.9",
+    "@shower/cli": "^0.3.0",
     "path-exists-cli": "^1.0.0"
   },
   "scripts": {
@@ -41,6 +41,6 @@
     "prepare": "shower prepare --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
     "archive": "shower archive --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
     "publish": "shower publish --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
-    "test": "npm run prepare && ls prepared && npm run archive && path-exists archive.zip"
+    "test": "npm run prepare && ls prepared && npm run archive && path-exists presentation.zip"
   }
 }
