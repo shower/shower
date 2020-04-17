@@ -2,7 +2,7 @@
 
 See it on [shwr.me](http://shwr.me/).
 
-Includes [shower](https://github.com/shower/shower), [core](https://github.com/shower/shower), [Ribbon](https://github.com/shower/ribbon) and [Material](https://github.com/shower/material) themes.
+Includes [shower](https://github.com/shower/shower), [core](https://github.com/shower/shower), [ribbon](https://github.com/shower/ribbon) and [material](https://github.com/shower/material) themes.
 
 Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
 
