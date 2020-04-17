@@ -29,14 +29,14 @@ function loadPresentationFiles (files = defaultFiles) {
       '$1shower/themes/$3/$4', { skipBinary: true }
     ))
     .pipe(replace(
-      /(<script src=")(node_modules\/@shower\/core\/)(shower.min.js"><\/script>)/g,
+      /(<script src=")(node_modules\/@shower\/core\/dist\/)(shower.js"><\/script>)/g,
       '$1shower/$3', { skipBinary: true }
     ))
 
   const core = vfs.src([
-    'shower.min.js'
+    'shower.js'
   ], {
-    cwd: 'node_modules/@shower/core'
+    cwd: 'node_modules/@shower/core/dist'
   })
     .pipe(rename((path) => {
       path.dirname = 'shower/' + path.dirname
