@@ -33,9 +33,9 @@
     "README.md"
   ],
   "devDependencies": {
+    "@shower/core": "^3.0.0",
     "live-server": "^1.2.1",
-    "shower-core": "^2.1.0",
-    "stylelint": "^13.0.0"
+    "stylelint": "^13.3.2"
   },
   "scripts": {
     "test": "stylelint 'styles/**/*.css'",
