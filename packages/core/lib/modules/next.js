@@ -1,4 +1,4 @@
-export default shower => {
+export default (shower) => {
     const { stepSelector, activeSlideClass } = shower.options;
 
     let innerSteps;
@@ -10,7 +10,7 @@ export default shower => {
     };
 
     const getInnerAt = () => {
-        return innerSteps.filter(step => {
+        return innerSteps.filter((step) => {
             return step.classList.contains(activeSlideClass);
         }).length;
     };
@@ -29,7 +29,7 @@ export default shower => {
         slide.state.innerStepsCount = innerSteps.length;
     });
 
-    shower.addEventListener('next', event => {
+    shower.addEventListener('next', (event) => {
         if (event.defaultPrevented || !event.cancelable) return;
         if (shower.isListMode || innerAt === innerSteps.length) return;
 
@@ -38,7 +38,7 @@ export default shower => {
         toggleActive();
     });
 
-    shower.addEventListener('prev', event => {
+    shower.addEventListener('prev', (event) => {
         if (event.defaultPrevented || !event.cancelable) return;
         if (shower.isListMode || innerAt === innerSteps.length || !innerAt) return;
 

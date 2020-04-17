@@ -8,7 +8,7 @@ const createLiveRegion = () => {
     return liveRegion;
 };
 
-export default shower => {
+export default (shower) => {
     const { container } = shower;
     const liveRegion = createLiveRegion();
     container.appendChild(liveRegion);

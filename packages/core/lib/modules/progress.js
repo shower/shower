@@ -1,4 +1,4 @@
-export default shower => {
+export default (shower) => {
     const { progressSelector } = shower.options;
     const bar = shower.container.querySelector(progressSelector);
     if (!bar) return;

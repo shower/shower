@@ -1,4 +1,4 @@
-export default shower => {
+export default (shower) => {
     const { container } = shower;
     const getScale = () => {
         const maxRatio = Math.max(

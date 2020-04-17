@@ -15,7 +15,7 @@ class Shower extends EventTarget {
 
         this._mode = 'list';
         this._isStarted = false;
-        this.options = Object.assign({}, defaultOptions, options);
+        this.options = { ...defaultOptions, ...options };
     }
 
     /**
@@ -51,10 +51,10 @@ class Shower extends EventTarget {
     _initSlides() {
         const slideElements = [
             ...this.container.querySelectorAll(this.options.slideSelector),
-        ].filter(slideElement => !slideElement.hidden);
+        ].filter((slideElement) => !slideElement.hidden);
 
         slideElements.forEach(ensureSlideId);
-        this.slides = slideElements.map(slideElement => {
+        this.slides = slideElements.map((slideElement) => {
             const slide = new Slide(slideElement, this.options);
 
             slide.addEventListener('activate', () => {
@@ -73,7 +73,7 @@ class Shower extends EventTarget {
     }
 
     _changeActiveSlide(next) {
-        const prev = this.slides.find(slide => {
+        const prev = this.slides.find((slide) => {
             return slide.isActive && slide !== next;
         });
 
@@ -97,11 +97,11 @@ class Shower extends EventTarget {
     }
 
     get activeSlide() {
-        return this.slides.find(slide => slide.isActive);
+        return this.slides.find((slide) => slide.isActive);
     }
 
     get activeSlideIndex() {
-        return this.slides.findIndex(slide => slide.isActive);
+        return this.slides.findIndex((slide) => slide.isActive);
     }
 
     /**

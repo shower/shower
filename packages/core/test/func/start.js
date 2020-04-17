@@ -1,9 +1,7 @@
-'use strict';
-
 const { URL } = require('url');
 const { port } = require('../func-constants');
 
-const composeURL = opts => {
+const composeURL = (opts) => {
     const url = new URL(`http://localhost:${port}`);
     url.searchParams.set(
         'echo',
@@ -37,7 +35,7 @@ const containerClass = 'custom';
 module.exports = {
     '@tags': ['start'],
 
-    'sync shower in <head>': browser => {
+    'sync shower in <head>': (browser) => {
         browser.url(
             composeURL({
                 head: `
@@ -50,7 +48,7 @@ module.exports = {
         browser.end();
     },
 
-    'sync shower & data-* config in <head>': browser => {
+    'sync shower & data-* config in <head>': (browser) => {
         browser.url(
             composeURL({
                 containerClass,
@@ -65,7 +63,7 @@ module.exports = {
         browser.end();
     },
 
-    'sync shower, config <script>, and plugin in <head>': browser => {
+    'sync shower, config <script>, and plugin in <head>': (browser) => {
         browser.url(
             composeURL({
                 containerClass,
@@ -85,7 +83,7 @@ module.exports = {
         browser.end();
     },
 
-    'sync shower in <body>': browser => {
+    'sync shower in <body>': (browser) => {
         browser.url(
             composeURL({
                 body: `
@@ -98,7 +96,7 @@ module.exports = {
         browser.end();
     },
 
-    'sync shower & plugin in <body>': browser => {
+    'sync shower & plugin in <body>': (browser) => {
         browser.url(
             composeURL({
                 body: `
@@ -112,7 +110,7 @@ module.exports = {
         browser.end();
     },
 
-    'sync shower, config <script>, and plugin in <body>': browser => {
+    'sync shower, config <script>, and plugin in <body>': (browser) => {
         browser.url(
             composeURL({
                 containerClass,
@@ -132,7 +130,7 @@ module.exports = {
         browser.end();
     },
 
-    'deferred shower': browser => {
+    'deferred shower': (browser) => {
         browser.url(
             composeURL({
                 head: `
@@ -145,7 +143,7 @@ module.exports = {
         browser.end();
     },
 
-    'deferred shower & plugin': browser => {
+    'deferred shower & plugin': (browser) => {
         browser.url(
             composeURL({
                 head: `
@@ -159,7 +157,7 @@ module.exports = {
         browser.end();
     },
 
-    'deferred shower, data-* config, and plugin': browser => {
+    'deferred shower, data-* config, and plugin': (browser) => {
         browser.url(
             composeURL({
                 containerClass,
@@ -174,7 +172,7 @@ module.exports = {
         browser.end();
     },
 
-    'async shower': browser => {
+    'async shower': (browser) => {
         browser.url(
             composeURL({
                 head: `
@@ -187,7 +185,7 @@ module.exports = {
         browser.end();
     },
 
-    'async shower & data-* config': browser => {
+    'async shower & data-* config': (browser) => {
         browser.url(
             composeURL({
                 containerClass,

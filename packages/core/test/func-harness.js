@@ -1,5 +1,3 @@
-'use strict';
-
 /* eslint-disable no-console */
 const { parse } = require('url');
 const { EventEmitter } = require('events');

@@ -1,6 +1,6 @@
 const mdash = '\u2014';
 
-export default shower => {
+export default (shower) => {
     const { title } = document;
     const updateTitle = () => {
         if (shower.isFullMode) {

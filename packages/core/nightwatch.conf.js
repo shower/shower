@@ -1,5 +1,3 @@
-'use strict';
-
 const yn = require('yn');
 const chromedriver = require('chromedriver');
 const puppeteer = require('puppeteer');
@@ -8,7 +6,7 @@ const { port } = require('./test/func-constants');
 const { env } = process;
 const isHeadless = yn(env.CHROME_HEADLESS, { default: true });
 
-const makeSauceEnv = caps => ({
+const makeSauceEnv = (caps) => ({
     selenium: {
         host: 'ondemand.saucelabs.com',
         port: 80,

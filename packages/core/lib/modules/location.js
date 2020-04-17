@@ -1,6 +1,6 @@
 import { freezeHistory } from '../utils';
 
-export default shower => {
+export default (shower) => {
     const composeURL = () => {
         const search = shower.isFullMode ? '?full' : '';
         const slide = shower.activeSlide;
@@ -25,7 +25,7 @@ export default shower => {
         const id = location.hash.slice(1);
         if (!id) return;
 
-        const target = shower.slides.find(slide => slide.id === id);
+        const target = shower.slides.find((slide) => slide.id === id);
         if (target) {
             freezeHistory(() => {
                 target.activate();

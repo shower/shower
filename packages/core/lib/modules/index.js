@@ -8,7 +8,7 @@ import timer from './timer';
 import title from './title';
 import view from './view';
 
-export default shower => {
+export default (shower) => {
     a11y(shower);
     keys(shower); // should come before `timer`
     progress(shower);

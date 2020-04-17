@@ -1,4 +1,4 @@
-export default shower => {
+export default (shower) => {
     const { container } = shower;
     const { fullModeClass, listModeClass } = shower.options;
 

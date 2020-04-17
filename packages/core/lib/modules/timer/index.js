@@ -1,6 +1,6 @@
 import parseTiming from './parse-timing';
 
-export default shower => {
+export default (shower) => {
     let id;
 
     const setTimer = () => {
@@ -25,7 +25,7 @@ export default shower => {
     shower.addEventListener('modechange', setTimer);
     shower.addEventListener('slidechange', setTimer);
 
-    shower.container.addEventListener('keydown', event => {
+    shower.container.addEventListener('keydown', (event) => {
         if (!event.defaultPrevented) {
             clearTimeout(id);
         }

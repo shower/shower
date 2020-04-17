@@ -1,7 +1,7 @@
 import { isInteractiveElement } from '../utils';
 
-export default shower => {
-    const doSlideActions = event => {
+export default (shower) => {
+    const doSlideActions = (event) => {
         const isShowerAction = !(event.ctrlKey || event.altKey || event.metaKey);
 
         switch (event.key.toUpperCase()) {
@@ -70,7 +70,7 @@ export default shower => {
         }
     };
 
-    const doModeActions = event => {
+    const doModeActions = (event) => {
         switch (event.key.toUpperCase()) {
             case 'ESCAPE':
                 if (shower.isFullMode) {
@@ -102,7 +102,7 @@ export default shower => {
         }
     };
 
-    shower.container.addEventListener('keydown', event => {
+    shower.container.addEventListener('keydown', (event) => {
         if (event.defaultPrevented) return;
         if (isInteractiveElement(event.target)) return;
 
