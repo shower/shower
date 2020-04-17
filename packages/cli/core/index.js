@@ -10,7 +10,7 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
     chalk.red(
       `You are using Node ${chalk.bold(process.version)}, ` +
       `but this version of ${chalk.bold(pkg.name)} requires Node ${chalk.bold(pkg.engines.node)}.\n` +
-      `Please upgrade your Node version.`
+      'Please upgrade your Node version.'
     )
   )
 
