@@ -1,0 +1,20 @@
+/* Spotlight */
+
+.spotlight {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: var(--spotlight-top, 0);
+    margin-left: var(--spotlight-left, 0);
+    width: var(--spotlight-size, var(--spotlight-width, 256px));
+    height: var(--spotlight-size, var(--spotlight-height, 256px));
+    border-radius: var(--spotlight-radius, 50%);
+    box-shadow:
+        0 0 0 var(--slide-width)
+        rgba(
+            0, 0, 0,
+            var(--spotlight-opacity, 0.2)
+        );
+    pointer-events: none;
+}

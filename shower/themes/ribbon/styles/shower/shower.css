@@ -12,6 +12,7 @@
     --slide-height: calc(
         var(--slide-width) / var(--slide-ratio)
     );
+    --slide-side: 100px;
 
     --color-blue: #4b86c2;
     --color-blue-lighter: #6799cb;

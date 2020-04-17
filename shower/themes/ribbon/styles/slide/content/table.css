@@ -1,10 +1,10 @@
 /* Table */
 
 .slide table {
-    margin-left: -100px;
+    margin-left: calc(var(--slide-side) * -1);
     margin-bottom: 1em;
     width: calc(
-        100% + 100px + 100px
+        100% + var(--slide-side) * 2
     );
     border-collapse: collapse;
     border-spacing: 0;
@@ -67,6 +67,7 @@
     background-color: transparent;
 }
 
-.slide tr.mark.next.active {
+.slide tr.mark.next.active,
+.slide tr.mark.next.visited {
     background-color: var(--color-yellow);
 }

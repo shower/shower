@@ -11,13 +11,18 @@
 
 .slide pre code {
     display: block;
-    margin-left: -100px;
-    padding: 0 0 0 100px;
-    width: calc(100% + 100px + 100px);
+    margin-left: calc(
+        var(--slide-side) * -1
+    );
+    padding: 0 0 0 var(--slide-side);
+    width: calc(
+        100% + var(--slide-side) * 2
+    );
     border-radius: 0;
-    background: none;
+    background-color: transparent;
     line-height: 2;
     white-space: pre;
+    -moz-tab-size: 4;
     tab-size: 4;
 }
 
@@ -43,8 +48,8 @@
 /* Important */
 
 .slide pre mark.important {
-    background: var(--color-red);
-    color: #ffffff;
+    background-color: var(--color-red);
+    color: white;
 }
 
 /* Comment */
@@ -55,28 +60,30 @@
 
 /* Marked Line */
 
-.slide pre code.mark:not(:only-child) {
-    background: var(--color-fill);
+.slide pre code:not(:only-child).mark {
+    background-color: var(--color-yellow);
 }
 
 /* Next Line */
 
-.slide pre code.mark.next:not(:only-child) {
+.slide pre code:not(:only-child).mark.next {
     visibility: visible;
-    background: none;
+    background-color: transparent;
 }
 
-.slide pre code.mark.next.active:not(:only-child) {
-    background: var(--color-fill);
+.slide pre code:not(:only-child).mark.next.active,
+.slide pre code:not(:only-child).mark.next.visited {
+    background-color: var(--color-yellow);
 }
 
 /* Full */
 
 .shower.full .slide pre code:not(:only-child).mark.next {
     visibility: visible;
-    background: none;
+    background-color: transparent;
 }
 
-.shower.full .slide pre code:not(:only-child).mark.next.active {
-    background: var(--color-fill);
+.shower.full .slide pre code:not(:only-child).mark.next.active,
+.shower.full .slide pre code:not(:only-child).mark.next.visited {
+    background-color: var(--color-yellow);
 }

@@ -4,6 +4,7 @@
     visibility: hidden;
 }
 
-.shower.full .next.active {
+.shower.full .next.active,
+.shower.full .next.visited {
     visibility: visible;
 }

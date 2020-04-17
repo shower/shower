@@ -13,5 +13,5 @@
     );
     width: var(--slide-width);
     height: var(--slide-height);
-    background: black;
+    background-color: black;
 }

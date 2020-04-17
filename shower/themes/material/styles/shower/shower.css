@@ -12,6 +12,8 @@
     --slide-height: calc(
         var(--slide-width) / var(--slide-ratio)
     );
+    --slide-left-side: 96px;
+    --slide-right-side: 112px;
 
     --color-key: #4caf50;
     --color-black: #212121;
@@ -20,7 +22,6 @@
     --color-light: #bdbdbd;
     --color-back: #eeeeee;
     --color-yellow: #fff59d;
-    --color-yellow-light: #ffffcf;
 
     --progress-size: 8px;
 

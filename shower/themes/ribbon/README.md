@@ -2,17 +2,17 @@
 
 ![Ribbon screen shot](pictures/canvas.png)
 
-Default theme for the [Shower](https://github.com/shower/shower/) presentation engine. Doesn’t include engine itself. [See it in action](http://shwr.me/shower/themes/ribbon/). Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
+Default theme for the [Shower](https://github.com/shower/shower/) presentation engine. Doesn’t include engine itself. [See it in action](https://shwr.me/shower/themes/ribbon/). Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue](https://github.com/shower/shower/issues/new) if you have any.
 
 ## Usage
 
-Get the Shower template where Ribbon is already included. Download the [template archive](http://shwr.me/shower.zip) or install the package:
+Get the Shower template where Ribbon is already included. Download the [template archive](https://shwr.me/shower.zip) or install the package:
 
 	npm install shower
 
 If you want to install Ribbon separately you can install the package:
 
-	npm install shower-ribbon
+	npm install @shower/ribbon
 
 ## Features
 
