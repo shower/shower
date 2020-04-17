@@ -56,7 +56,7 @@
     "format": "npm run format:js && npm run format:etc",
     "format:js": "prettier '**/*.js' --write",
     "format:etc": "prettier '**/*.{json,md,yml}' --write",
-    "test": "npm run lint && npm run test:unit && npm run test:sauce",
+    "test": "npm run lint && npm run test:unit && npm run test:local",
     "test:unit": "mocha test/unit --require esm --require chai/register-should",
     "test:local": "nightwatch --env chrome-local",
     "test:sauce": "nightwatch --env chrome,firefox,safari,edge"
