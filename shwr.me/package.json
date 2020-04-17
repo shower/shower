@@ -4,16 +4,16 @@
     "build": "gulp build",
     "deploy": "gulp deploy",
     "pretest": "gulp build",
-    "test": "ls dest/shower/themes/ribbon && ls dest/shower/themes/material"
+    "test": "ls dist/shower/themes/ribbon && ls dist/shower/themes/material"
   },
   "dependencies": {
-    "del": "^3.0.0",
-    "gulp": "^4.0.0",
-    "gulp-rename": "^1.2.2",
+    "@shower/shower": "^3.0.0",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
     "gulp-rsync": "0.0.8",
-    "gulp-zip": "^4.0.0",
-    "merge-stream": "^1.0.0",
-    "shower": "^2.7.1"
+    "gulp-zip": "^5.0.1",
+    "merge-stream": "^2.0.0"
   }
 }

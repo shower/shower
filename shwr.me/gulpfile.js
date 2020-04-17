@@ -8,29 +8,30 @@ const rsync = require('gulp-rsync');
 const zip = require('gulp-zip');
 
 gulp.task('clean', () => {
-    return del('dest/**');
+    return del('dist/**');
 });
 
 gulp.task('build', () => {
     const shower = gulp.src([
             '**',
-            '!package.json'
+            '!package.json',
+            '!node_modules',
         ], {
-            cwd: 'node_modules/shower'
+            cwd: 'node_modules/@shower/shower'
         })
         .pipe(replace(
             /(<link rel="stylesheet" href=")(node_modules\/@shower\/ribbon\/)(styles\/styles.css">)/g,
             '$1shower/themes/ribbon/$3', { skipBinary: true }
         ))
         .pipe(replace(
-            /(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
+            /(<script src=")(node_modules\/@shower\/core\/dist\/)(shower.js"><\/script>)/g,
             '$1shower/$3', { skipBinary: true }
         ));
 
     const core = gulp.src([
-            'shower.min.js'
+            'shower.js'
         ], {
-            cwd: 'node_modules/shower-core'
+            cwd: 'node_modules/@shower/core/dist'
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/' + path.dirname;
@@ -38,7 +39,8 @@ gulp.task('build', () => {
 
     const material = gulp.src([
             '**',
-            '!package.json'
+            '!package.json',
+            '!node_modules',
         ], {
             cwd: 'node_modules/@shower/material'
         })
@@ -48,7 +50,8 @@ gulp.task('build', () => {
 
     const ribbon = gulp.src([
             '**',
-            '!package.json'
+            '!package.json',
+            '!node_modules',
         ], {
             cwd: 'node_modules/@shower/ribbon'
         })
@@ -58,41 +61,42 @@ gulp.task('build', () => {
 
     const themes = merge(material, ribbon)
         .pipe(replace(
-            /(<script src=")(node_modules\/shower-core\/)(shower.min.js"><\/script>)/g,
+            /(<script src=")(node_modules\/@shower\/core\/dist\/)(shower.js"><\/script>)/g,
             '$1../../$3', { skipBinary: true }
         ));
 
     return merge(shower, core, themes)
-        .pipe(gulp.dest('dest'))
+        .pipe(gulp.dest('dist'))
         .pipe(zip('shower.zip'))
-        .pipe(gulp.dest('dest'));
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('assets', () => {
     const files = gulp.src([
         'icons{,/**}',
-        '.webmanifest',
-        'favicon.ico'
+        'webmanifest.json',
     ]);
 
-    const html = gulp.src('dest/**/*.html')
+    const html = gulp.src('dist/**/*.html')
         .pipe(replace(
             /(<meta name="viewport" content="width=device-width, initial-scale=1">)/,
             `$1
-    <link rel="manifest" href="/.webmanifest">
-    <link rel="icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="228x228" href="/icons/228.png">
-    <link rel="apple-touch-icon" type="image/png" href="/icons/228.png">`, { skipBinary: true }
+    <link rel="manifest" href="/webmanifest.json">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/32.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="/icons/160.png">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/icons/any.svg">
+    <link rel="apple-touch-icon" href="/icons/228.png">`, { skipBinary: true }
         ));
 
     return merge(files, html)
-        .pipe(gulp.dest('dest'));
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('sync', () => {
-    return gulp.src('dest/**')
+    return gulp.src('dist/**')
         .pipe(rsync({
-            root: 'dest',
+            root: 'dist',
             hostname: 'shwr.me',
             destination: '/var/www/shwr.me/html',
             recursive: true,
