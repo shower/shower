@@ -1,5 +1,5 @@
 {
-  "name": "shower",
+  "name": "@shower/shower",
   "description": "Shower HTML presentation engine",
   "version": "2.7.0",
   "author": {
