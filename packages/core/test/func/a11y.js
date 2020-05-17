@@ -3,14 +3,14 @@ module.exports = {
 
     'initially doesn’t add `application` role in list mode': (browser) => {
         browser.url(`${browser.launchUrl}/list`);
-        browser.assert.elementNotPresent('.shower[role=application]');
+        browser.assert.attributeEquals('.shower', 'role', null);
         browser.end();
     },
 
     'removes `application` role when switched to `list` mode': (browser) => {
         browser.url(`${browser.launchUrl}/full`);
         browser.sendKeys('.send-keys', browser.Keys.ESCAPE);
-        browser.assert.elementNotPresent('.shower[role=application]');
+        browser.assert.attributeEquals('.shower', 'role', null);
         browser.end();
     },
 
