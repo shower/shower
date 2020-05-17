@@ -50,6 +50,7 @@
   },
   "scripts": {
     "build": "rollup --config",
+    "build:watch": "rollup --config --watch",
     "serve": "serve dist",
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
