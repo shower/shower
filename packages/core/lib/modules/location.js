@@ -40,6 +40,13 @@ export default (shower) => {
         applyURLSlide();
     };
 
+    applyURL();
+    window.addEventListener('popstate', applyURL);
+
+    shower.addEventListener('start', () => {
+        history.replaceState(null, document.title, composeURL());
+    });
+
     shower.addEventListener('modechange', () => {
         history.replaceState(null, document.title, composeURL());
     });
@@ -47,7 +54,4 @@ export default (shower) => {
     shower.addEventListener('slidechange', () => {
         history.pushState(null, document.title, composeURL());
     });
-
-    shower.addEventListener('start', applyURL);
-    window.addEventListener('popstate', applyURL);
 };

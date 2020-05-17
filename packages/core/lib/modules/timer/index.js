@@ -3,7 +3,7 @@ import parseTiming from './parse-timing';
 export default (shower) => {
     let id;
 
-    const setTimer = () => {
+    const resetTimer = () => {
         clearTimeout(id);
         if (shower.isListMode) return;
 
@@ -22,8 +22,9 @@ export default (shower) => {
         }
     };
 
-    shower.addEventListener('modechange', setTimer);
-    shower.addEventListener('slidechange', setTimer);
+    shower.addEventListener('start', resetTimer);
+    shower.addEventListener('modechange', resetTimer);
+    shower.addEventListener('slidechange', resetTimer);
 
     shower.container.addEventListener('keydown', (event) => {
         if (!event.defaultPrevented) {

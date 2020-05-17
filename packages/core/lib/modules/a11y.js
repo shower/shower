@@ -28,6 +28,11 @@ export default (shower) => {
         }
     };
 
+    shower.addEventListener('start', () => {
+        updateDocumentRole();
+        updateLiveRegion();
+    });
+
     shower.addEventListener('modechange', updateDocumentRole);
     shower.addEventListener('slidechange', updateLiveRegion);
 };

@@ -15,19 +15,27 @@ export default (shower) => {
         }).length;
     };
 
+    const setInnerStepsState = () => {
+        if (shower.isListMode) return;
+
+        innerSteps = getInnerSteps();
+        innerAt = getInnerAt();
+
+        const slide = shower.activeSlide;
+        if (slide) {
+            slide.state.innerStepsCount = innerSteps.length;
+        }
+    };
+
     const toggleActive = () => {
         innerSteps.forEach((step, index) => {
             step.classList.toggle(activeSlideClass, index < innerAt);
         });
     };
 
-    shower.addEventListener('slidechange', () => {
-        innerSteps = getInnerSteps();
-        innerAt = getInnerAt();
-
-        const slide = shower.activeSlide;
-        slide.state.innerStepsCount = innerSteps.length;
-    });
+    shower.addEventListener('start', setInnerStepsState);
+    shower.addEventListener('modechange', setInnerStepsState);
+    shower.addEventListener('slidechange', setInnerStepsState);
 
     shower.addEventListener('next', (event) => {
         if (event.defaultPrevented || !event.cancelable) return;

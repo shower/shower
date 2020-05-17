@@ -17,5 +17,6 @@ export default (shower) => {
         bar.setAttribute('aria-valuetext', `Slideshow progress: ${progress}%`);
     };
 
+    shower.addEventListener('start', updateProgress);
     shower.addEventListener('slidechange', updateProgress);
 };

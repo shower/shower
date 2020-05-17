@@ -15,6 +15,7 @@ export default (shower) => {
         document.title = title;
     };
 
+    shower.addEventListener('start', updateTitle);
     shower.addEventListener('modechange', updateTitle);
     shower.addEventListener('slidechange', updateTitle);
 };

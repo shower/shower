@@ -2,7 +2,13 @@ export default (shower) => {
     const { container } = shower;
     const { fullModeClass, listModeClass } = shower.options;
 
-    shower.addEventListener('modechange', () => {
+    if (container.classList.contains(fullModeClass)) {
+        shower.enterFullMode();
+    } else {
+        container.classList.add(listModeClass);
+    }
+
+    const updateModeView = () => {
         if (shower.isFullMode) {
             container.classList.remove(listModeClass);
             container.classList.add(fullModeClass);
@@ -16,18 +22,13 @@ export default (shower) => {
         if (slide) {
             slide.element.scrollIntoView({ block: 'center' });
         }
-    });
+    };
+
+    shower.addEventListener('start', updateModeView);
+    shower.addEventListener('modechange', updateModeView);
 
     shower.addEventListener('slidechange', () => {
         const slide = shower.activeSlide;
         slide.element.scrollIntoView({ block: 'nearest' });
-    });
-
-    shower.addEventListener('start', () => {
-        if (container.classList.contains(fullModeClass)) {
-            shower.enterFullMode();
-        } else {
-            container.classList.add(listModeClass);
-        }
     });
 };
