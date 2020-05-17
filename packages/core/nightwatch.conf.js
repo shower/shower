@@ -1,3 +1,5 @@
+require('child_process').execSync('pkill chromedriver || true');
+
 const yn = require('yn');
 const chromedriver = require('chromedriver');
 const puppeteer = require('puppeteer');
