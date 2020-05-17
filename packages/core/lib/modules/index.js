@@ -10,8 +10,8 @@ import view from './view';
 
 export default (shower) => {
     a11y(shower);
-    keys(shower);
     progress(shower);
+    keys(shower);
     next(shower);
     timer(shower); // should come after `keys` and `next`
     title(shower);
