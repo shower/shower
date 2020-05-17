@@ -3,7 +3,6 @@ import keys from './keys';
 import location from './location';
 import next from './next';
 import progress from './progress';
-import scale from './scale';
 import timer from './timer';
 import title from './title';
 import view from './view';
@@ -17,7 +16,6 @@ export default (shower) => {
     title(shower);
     location(shower); // should come after `title`
     view(shower);
-    scale(shower); // should come after `view`
 
     // maintains invariant: active slide always exists in `full` mode
     if (shower.isFullMode && !shower.activeSlide) {
