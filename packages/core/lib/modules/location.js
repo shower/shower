@@ -10,7 +10,7 @@ export default (shower) => {
     };
 
     const applyURLMode = () => {
-        const isFull = new URL(location).searchParams.has('full');
+        const isFull = new URLSearchParams(location.search).has('full');
 
         freezeHistory(() => {
             if (isFull) {
