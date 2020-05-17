@@ -1,5 +1,3 @@
-import { freezeHistory } from '../utils';
-
 export default (shower) => {
     const composeURL = () => {
         const search = shower.isFullMode ? '?full' : '';
@@ -11,14 +9,11 @@ export default (shower) => {
 
     const applyURLMode = () => {
         const isFull = new URLSearchParams(location.search).has('full');
-
-        freezeHistory(() => {
-            if (isFull) {
-                shower.enterFullMode();
-            } else {
-                shower.exitFullMode();
-            }
-        });
+        if (isFull) {
+            shower.enterFullMode();
+        } else {
+            shower.exitFullMode();
+        }
     };
 
     const applyURLSlide = () => {
@@ -27,9 +22,7 @@ export default (shower) => {
 
         const target = shower.slides.find((slide) => slide.id === id);
         if (target) {
-            freezeHistory(() => {
-                target.activate();
-            });
+            target.activate();
         } else if (!shower.activeSlide) {
             shower.first(); // invalid hash
         }
@@ -52,6 +45,9 @@ export default (shower) => {
     });
 
     shower.addEventListener('slidechange', () => {
-        history.pushState(null, document.title, composeURL());
+        const url = composeURL();
+        if (!location.href.endsWith(url)) {
+            history.pushState(null, document.title, url);
+        }
     });
 };
