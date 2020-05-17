@@ -72,6 +72,12 @@ class Shower extends EventTarget {
         });
     }
 
+    _changeMode(mode) {
+        if (mode === this._mode) return;
+
+        this._mode = mode;
+    }
+
     _changeActiveSlide(next) {
         const prev = this.slides.find((slide) => {
             return slide.isActive && slide !== next;
@@ -108,20 +114,14 @@ class Shower extends EventTarget {
      * Slide fills the maximum area.
      */
     enterFullMode() {
-        if (!this.isFullMode) {
-            this._mode = 'full';
-            this.dispatchEvent(new Event('modechange'));
-        }
+        this._changeMode('full');
     }
 
     /**
      * Shower returns into list mode.
      */
     exitFullMode() {
-        if (!this.isListMode) {
-            this._mode = 'list';
-            this.dispatchEvent(new Event('modechange'));
-        }
+        this._changeMode('list');
     }
 
     /**
