@@ -18,4 +18,9 @@ export default (shower) => {
     location(shower);
     view(shower);
     scale(shower);
+
+    // maintains invariant: active slide always exists in `full` mode
+    if (shower.isFullMode && !shower.activeSlide) {
+        shower.first();
+    }
 };

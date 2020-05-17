@@ -35,14 +35,6 @@ class Shower extends EventTarget {
         }
 
         this._initSlides();
-
-        // maintains invariant: active slide always exists in `full` mode
-        this.addEventListener('modechange', () => {
-            if (this.isFullMode && !this.activeSlide) {
-                this.first();
-            }
-        });
-
         installModules(this);
 
         this._isStarted = true;
