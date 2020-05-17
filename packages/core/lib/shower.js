@@ -135,7 +135,7 @@ class Shower extends EventTarget {
     /**
      * @param {number} delta
      */
-    go(delta) {
+    goBy(delta) {
         this.goTo(this.activeSlideIndex + delta);
     }
 
@@ -145,7 +145,7 @@ class Shower extends EventTarget {
     prev(isForce) {
         const prev = new Event('prev', { cancelable: !isForce });
         if (this.dispatchEvent(prev)) {
-            this.go(-1);
+            this.goBy(-1);
         }
     }
 
@@ -155,7 +155,7 @@ class Shower extends EventTarget {
     next(isForce) {
         const next = new Event('next', { cancelable: !isForce });
         if (this.dispatchEvent(next)) {
-            this.go(1);
+            this.goBy(1);
         }
     }
 
