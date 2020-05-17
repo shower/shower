@@ -11,6 +11,11 @@ class Slide extends EventTarget {
         this.element = element;
         this.options = options;
 
+        this.element.addEventListener('click', () => {
+            this.activate();
+            this.dispatchEvent(new Event('fullmoderequest'));
+        });
+
         this._isActive = false;
         this.state = {
             visitsCount: 0,
