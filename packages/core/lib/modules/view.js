@@ -50,5 +50,4 @@ export default (shower) => {
     });
 
     window.addEventListener('resize', updateScale);
-    window.addEventListener('load', updateScale);
 };
