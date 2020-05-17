@@ -29,7 +29,7 @@ module.exports = {
     'adds IDs to all slides unless already set': (browser) => {
         browser.url(`${browser.launchUrl}/list-id`);
         browser.assert.elementPresent('[id="1"]');
-        browser.assert.elementNotPresent('[id="2"]');
+        browser.assert.not.elementPresent('[id="2"]');
         browser.assert.elementPresent('#id');
         browser.assert.elementPresent('[id="3"]');
         browser.end();
@@ -39,14 +39,14 @@ module.exports = {
         browser.url(`${browser.launchUrl}/list-hidden`);
         browser.assert.elementPresent('[id="1"]');
         browser.assert.elementPresent('[id="2"]');
-        browser.assert.elementNotPresent('[id="3"]');
+        browser.assert.not.elementPresent('[id="3"]');
         browser.end();
     },
 
     'doesn’t set any slide states on init': (browser) => {
         browser.url(`${browser.launchUrl}/list`);
-        browser.assert.elementNotPresent('.active');
-        browser.assert.elementNotPresent('.visited');
+        browser.assert.not.elementPresent('.active');
+        browser.assert.not.elementPresent('.visited');
         browser.end();
     },
 
