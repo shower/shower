@@ -10,14 +10,14 @@ import view from './view';
 
 export default (shower) => {
     a11y(shower);
-    keys(shower); // should come before `timer`
+    keys(shower);
     progress(shower);
-    next(shower); // should come before `timer`
-    timer(shower);
-    title(shower); // should come before `location`
-    location(shower);
+    next(shower);
+    timer(shower); // should come after `keys` and `next`
+    title(shower);
+    location(shower); // should come after `title`
     view(shower);
-    scale(shower);
+    scale(shower); // should come after `view`
 
     // maintains invariant: active slide always exists in `full` mode
     if (shower.isFullMode && !shower.activeSlide) {
