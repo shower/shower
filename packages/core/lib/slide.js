@@ -43,20 +43,22 @@ class Slide extends EventTarget {
     activate() {
         if (this._isActive) return;
 
-        this._isActive = true;
         this.state.visitsCount++;
         this.element.classList.add(this.options.activeSlideClass);
+
+        this._isActive = true;
         this.dispatchEvent(new Event('activate'));
     }
 
     deactivate() {
         if (!this._isActive) return;
 
-        this._isActive = false;
         this.element.classList.replace(
             this.options.activeSlideClass,
             this.options.visitedSlideClass,
         );
+
+        this._isActive = false;
         this.dispatchEvent(new Event('deactivate'));
     }
 }
