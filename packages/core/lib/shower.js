@@ -34,7 +34,6 @@ class Shower extends EventTarget {
             throw new Error(`Shower container with selector '${containerSelector}' not found.`);
         }
 
-        this._isStarted = true;
         this._initSlides();
 
         // maintains invariant: active slide always exists in `full` mode
@@ -45,6 +44,8 @@ class Shower extends EventTarget {
         });
 
         installModules(this);
+
+        this._isStarted = true;
         this.dispatchEvent(new Event('start'));
     }
 
@@ -76,6 +77,9 @@ class Shower extends EventTarget {
         if (mode === this._mode) return;
 
         this._mode = mode;
+        if (this._isStarted) {
+            this.dispatchEvent(new Event('modechange'));
+        }
     }
 
     _changeActiveSlide(next) {
@@ -86,6 +90,8 @@ class Shower extends EventTarget {
         if (prev) {
             prev.deactivate();
         }
+
+        if (!this._isStarted) return;
 
         const event = new CustomEvent('slidechange', {
             detail: { prev },
