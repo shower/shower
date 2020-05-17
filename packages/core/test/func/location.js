@@ -59,13 +59,12 @@ module.exports = {
         browser.end();
     },
 
-    // TODO
-    // 'activates first slide if hash is invalid: `full` query': (browser) => {
-    //     browser.url(`${browser.launchUrl}/list-id?full#invalid`);
-    //     browser.assert.urlContains('#1');
-    //     browser.assert.cssClassPresent('[id="1"]', 'active');
-    //     browser.end();
-    // },
+    'activates first slide if hash is invalid: `full` query': (browser) => {
+        browser.url(`${browser.launchUrl}/list-id?full#invalid`);
+        browser.assert.urlContains('#1');
+        browser.assert.cssClassPresent('[id="1"]', 'active');
+        browser.end();
+    },
 
     'does not activate first slide if hash is missing in `list` mode': (browser) => {
         browser.url(`${browser.launchUrl}/list-id`);
