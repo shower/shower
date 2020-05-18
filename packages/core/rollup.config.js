@@ -5,15 +5,14 @@ const commonjs = require('rollup-plugin-commonjs');
 const pkg = require('./package.json');
 
 const ndash = '\u2013';
-const now = new Date().getFullYear();
-const banner = `
+const yearNow = new Date().getFullYear();
+const banner = `\
 /**
  * ${pkg.description}
  * ${pkg.name} v${pkg.version}, ${pkg.homepage}
- * @copyright 2010${ndash}${now} ${pkg.author.name}, ${pkg.author.url}
+ * @copyright 2010${ndash}${yearNow} ${pkg.author.name}, ${pkg.author.url}
  * @license ${pkg.license}
- */
-`.trim();
+ */`;
 
 module.exports = {
     input: 'lib/start.js',
