@@ -1,5 +1,5 @@
 export default (shower) => {
-    const { stepSelector, activeSlideClass } = shower.options;
+    const { stepSelector, activeSlideClass, visitedSlideClass } = shower.options;
 
     let innerSteps;
     let innerAt;
@@ -29,7 +29,8 @@ export default (shower) => {
 
     const toggleActive = () => {
         innerSteps.forEach((step, index) => {
-            step.classList.toggle(activeSlideClass, index < innerAt);
+            step.classList.toggle(visitedSlideClass, index < innerAt);
+            step.classList.toggle(activeSlideClass, index === innerAt - 1);
         });
     };
 
