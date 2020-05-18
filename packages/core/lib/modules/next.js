@@ -23,7 +23,7 @@ export default (shower) => {
 
         const slide = shower.activeSlide;
         if (slide) {
-            slide.state.innerStepsCount = innerSteps.length;
+            slide.state.innerStepCount = innerSteps.length;
         }
     };
 

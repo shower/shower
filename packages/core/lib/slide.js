@@ -18,8 +18,8 @@ class Slide extends EventTarget {
 
         this._isActive = false;
         this.state = {
-            visitsCount: 0,
-            innerStepsCount: 0,
+            visitCount: 0,
+            innerStepCount: 0,
         };
     }
 
@@ -28,7 +28,7 @@ class Slide extends EventTarget {
     }
 
     get isVisited() {
-        return this.state.visitsCount > 0;
+        return this.state.visitCount > 0;
     }
 
     get id() {
@@ -43,7 +43,7 @@ class Slide extends EventTarget {
     activate() {
         if (this._isActive) return;
 
-        this.state.visitsCount++;
+        this.state.visitCount++;
         this.element.classList.add(this.options.activeSlideClass);
 
         this._isActive = true;

@@ -8,14 +8,14 @@ export default (shower) => {
         if (shower.isListMode) return;
 
         const slide = shower.activeSlide;
-        const { visitsCount, innerStepsCount } = slide.state;
-        if (visitsCount > 1) return;
+        const { visitCount, innerStepCount } = slide.state;
+        if (visitCount > 1) return;
 
         const timing = parseTiming(slide.element.dataset.timing);
         if (!timing) return;
 
-        if (innerStepsCount) {
-            const stepTiming = timing / (innerStepsCount + 1);
+        if (innerStepCount) {
+            const stepTiming = timing / (innerStepCount + 1);
             id = setInterval(() => shower.next(), stepTiming);
         } else {
             id = setTimeout(() => shower.next(), timing);
