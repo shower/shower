@@ -1,6 +1,6 @@
 import defaultOptions from './default-options';
 import Slide from './slide';
-import { EventTarget } from './utils';
+import { EventTarget, defineReadOnly } from './utils';
 import installModules from './modules';
 
 const ensureSlideId = (slideElement, index) => {
@@ -13,9 +13,12 @@ class Shower extends EventTarget {
     constructor(options) {
         super();
 
+        defineReadOnly(this, {
+            options: { ...defaultOptions, ...options },
+        });
+
         this._mode = 'list';
         this._isStarted = false;
-        this.options = { ...defaultOptions, ...options };
     }
 
     /**
