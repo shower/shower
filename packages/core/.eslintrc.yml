@@ -7,13 +7,12 @@ env:
 parserOptions:
   sourceType: script
 rules:
-  no-underscore-dangle: off
-  no-plusplus: off
   no-param-reassign: off
-  no-restricted-syntax: off
+  no-plusplus: off
   no-restricted-globals: off
+  no-restricted-syntax: off
+  no-underscore-dangle: off
 
-  arrow-body-style: off
   default-case: off
   prefer-const:
     - error
