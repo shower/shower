@@ -1,3 +1,5 @@
+'use strict';
+
 const getHistoryLength = (browser) => {
     return new Promise((resolve) => {
         browser.execute(

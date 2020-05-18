@@ -1,3 +1,5 @@
+'use strict';
+
 const TIMING = 1100;
 
 function dispatchKeydown() {

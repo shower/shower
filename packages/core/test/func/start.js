@@ -1,3 +1,5 @@
+'use strict';
+
 const { URL } = require('url');
 const { port } = require('../func-constants');
 

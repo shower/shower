@@ -1,3 +1,5 @@
+'use strict';
+
 const mdash = '\u2014';
 
 module.exports = {

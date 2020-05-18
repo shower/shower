@@ -1,3 +1,5 @@
+'use strict';
+
 const VALUE_ATTR = 'aria-valuenow';
 
 module.exports = {

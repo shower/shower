@@ -1,3 +1,5 @@
+'use strict';
+
 require('child_process').execSync('pkill chromedriver || true');
 
 const yn = require('yn');
