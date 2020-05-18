@@ -1,4 +1,4 @@
-import { EventTarget } from './utils';
+import { EventTarget, defineReadOnly } from './utils';
 
 /**
  * @param {HTMLElement} element
@@ -8,19 +8,20 @@ class Slide extends EventTarget {
     constructor(element, options) {
         super();
 
-        this.element = element;
-        this.options = options;
+        defineReadOnly(this, {
+            element,
+            options,
+            state: {
+                visitCount: 0,
+                innerStepCount: 0,
+            },
+        });
 
+        this._isActive = false;
         this.element.addEventListener('click', () => {
             this.activate();
             this.dispatchEvent(new Event('fullmoderequest'));
         });
-
-        this._isActive = false;
-        this.state = {
-            visitCount: 0,
-            innerStepCount: 0,
-        };
     }
 
     get isActive() {
