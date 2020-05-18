@@ -19,6 +19,7 @@ class Shower extends EventTarget {
 
         this._mode = 'list';
         this._isStarted = false;
+        this._container = null;
     }
 
     /**
@@ -32,8 +33,8 @@ class Shower extends EventTarget {
         if (this._isStarted) return;
 
         const { containerSelector } = this.options;
-        this.container = document.querySelector(containerSelector);
-        if (!this.container) {
+        this._container = document.querySelector(containerSelector);
+        if (!this._container) {
             throw new Error(`Shower container with selector '${containerSelector}' not found.`);
         }
 
@@ -46,7 +47,7 @@ class Shower extends EventTarget {
 
     _initSlides() {
         const slideElements = [
-            ...this.container.querySelectorAll(this.options.slideSelector),
+            ...this._container.querySelectorAll(this.options.slideSelector),
         ].filter((slideElement) => !slideElement.hidden);
 
         slideElements.forEach(ensureSlideId);
@@ -90,6 +91,10 @@ class Shower extends EventTarget {
         });
 
         this.dispatchEvent(event);
+    }
+
+    get container() {
+        return this._container;
     }
 
     get isFullMode() {
