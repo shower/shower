@@ -8,3 +8,14 @@ export const contentLoaded = (callback) => {
         document.addEventListener('DOMContentLoaded', callback);
     }
 };
+
+export const defineReadOnly = (target, props) => {
+    for (const [key, value] of Object.entries(props)) {
+        Object.defineProperty(target, key, {
+            value,
+            writable: false,
+            enumerable: true,
+            configurable: true,
+        });
+    }
+};
