@@ -10,9 +10,11 @@ export default (shower) => {
     };
 
     const getInnerAt = () => {
-        return innerSteps.filter((step) => {
-            return step.classList.contains(activeSlideClass);
-        }).length;
+        return innerSteps.filter(
+            (step) =>
+                step.classList.contains(activeSlideClass) ||
+                step.classList.contains(visitedSlideClass),
+        ).length;
     };
 
     const setInnerStepsState = () => {
@@ -22,16 +24,7 @@ export default (shower) => {
         innerAt = getInnerAt();
 
         const slide = shower.activeSlide;
-        if (slide) {
-            slide.state.innerStepCount = innerSteps.length;
-        }
-    };
-
-    const toggleActive = () => {
-        innerSteps.forEach((step, index) => {
-            step.classList.toggle(visitedSlideClass, index < innerAt);
-            step.classList.toggle(activeSlideClass, index === innerAt - 1);
-        });
+        slide.state.innerStepCount = innerSteps.length;
     };
 
     shower.addEventListener('start', setInnerStepsState);
@@ -39,20 +32,34 @@ export default (shower) => {
     shower.addEventListener('slidechange', setInnerStepsState);
 
     shower.addEventListener('next', (event) => {
-        if (event.defaultPrevented || !event.cancelable) return;
-        if (shower.isListMode || innerAt === innerSteps.length) return;
+        if (shower.isListMode || event.defaultPrevented || !event.cancelable) return;
 
-        event.preventDefault();
         innerAt++;
-        toggleActive();
+        innerSteps.forEach((step, index) => {
+            step.classList.toggle(visitedSlideClass, index < innerAt - 1);
+            step.classList.toggle(activeSlideClass, index === innerAt - 1);
+        });
+
+        if (innerAt <= innerSteps.length) {
+            event.preventDefault();
+        }
     });
 
     shower.addEventListener('prev', (event) => {
-        if (event.defaultPrevented || !event.cancelable) return;
-        if (shower.isListMode || innerAt === innerSteps.length || !innerAt) return;
+        if (shower.isListMode || event.defaultPrevented || !event.cancelable || !innerAt) return;
+
+        if (innerAt === innerSteps.length) {
+            const lastStep = innerSteps[innerAt - 1];
+            lastStep.classList.replace(activeSlideClass, visitedSlideClass);
+            return;
+        }
+
+        innerAt--;
+        innerSteps.forEach((step, index) => {
+            step.classList.toggle(visitedSlideClass, index < innerAt);
+            step.classList.toggle(activeSlideClass, index === innerAt - 1);
+        });
 
         event.preventDefault();
-        innerAt--;
-        toggleActive();
     });
 };
