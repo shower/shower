@@ -91,7 +91,7 @@ module.exports = {
     },
 
     'does not step if once completed': (browser) => {
-        const assertAllStepsActive = () => {
+        const assertAllStepsVisited = () => {
             browser.assert.cssClassPresent('[id="2"]', 'active');
             browser.assert.cssClassPresent('.a.next', 'visited');
             browser.assert.cssClassPresent('.b.next', 'visited');
@@ -108,13 +108,13 @@ module.exports = {
 
         browser.assert.cssClassPresent('[id="3"]', 'active');
         browser.sendKeys('.send-keys', browser.Keys.ARROW_LEFT);
-        assertAllStepsActive();
+        assertAllStepsVisited();
 
         browser.sendKeys('.send-keys', browser.Keys.ARROW_LEFT);
         browser.assert.cssClassPresent('[id="1"]', 'active');
 
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
-        assertAllStepsActive();
+        assertAllStepsVisited();
 
         browser.sendKeys('.send-keys', browser.Keys.ARROW_RIGHT);
         browser.assert.cssClassPresent('[id="3"]', 'active');
