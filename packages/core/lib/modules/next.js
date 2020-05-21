@@ -1,29 +1,18 @@
 export default (shower) => {
     const { stepSelector, activeSlideClass, visitedSlideClass } = shower.options;
+    const activeOrVisitedStepSelector = `${stepSelector}.${activeSlideClass}, ${stepSelector}.${visitedSlideClass}`;
 
     let innerSteps;
     let innerAt;
 
-    const getInnerSteps = () => {
-        const { element } = shower.activeSlide;
-        return [...element.querySelectorAll(stepSelector)];
-    };
-
-    const getInnerAt = () => {
-        return innerSteps.filter(
-            (step) =>
-                step.classList.contains(activeSlideClass) ||
-                step.classList.contains(visitedSlideClass),
-        ).length;
-    };
-
     const setInnerStepsState = () => {
         if (shower.isListMode) return;
 
-        innerSteps = getInnerSteps();
-        innerAt = getInnerAt();
-
         const slide = shower.activeSlide;
+
+        innerAt = slide.element.querySelectorAll(activeOrVisitedStepSelector).length;
+        innerSteps = slide.element.querySelectorAll(stepSelector);
+
         slide.state.innerStepCount = innerSteps.length;
     };
 
