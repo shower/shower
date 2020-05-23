@@ -120,6 +120,13 @@ module.exports = {
         browser.end();
     },
 
+    'moves backward when Backspace key is pressed': (browser) => {
+        browser.url(`${browser.launchUrl}/list#2`);
+        browser.sendKeys('.send-keys', browser.Keys.BACK_SPACE);
+        browser.assert.cssClassPresent('[id="1"]', 'active');
+        browser.end();
+    },
+
     'moves backward when K key is pressed': (browser) => {
         browser.url(`${browser.launchUrl}/list#2`);
         browser.sendKeys('.send-keys', 'K');

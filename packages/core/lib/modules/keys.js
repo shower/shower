@@ -23,6 +23,7 @@ export default (shower) => {
                 }
                 break;
 
+            case 'BACKSPACE':
             case 'PAGEUP':
             case 'ARROWUP':
             case 'ARROWLEFT':
