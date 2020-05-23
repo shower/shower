@@ -62,10 +62,5 @@ module.exports = {
             browserName: 'Safari',
             platform: 'macOS 10.13',
         }),
-
-        edge: makeSauceEnv({
-            browserName: 'MicrosoftEdge',
-            platform: 'Windows 10',
-        }),
     },
 };
