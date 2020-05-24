@@ -1,4 +1,4 @@
-'*.js':
+'*.{js,mjs}':
   - prettier --write
   - eslint --fix
   - git add

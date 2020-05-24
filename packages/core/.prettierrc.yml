@@ -4,6 +4,6 @@ trailingComma: all
 endOfLine: lf
 
 overrides:
-  - files: '*.js'
+  - files: '*.{js,mjs}'
     options:
       tabWidth: 4
