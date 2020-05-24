@@ -3,11 +3,10 @@
 require('child_process').execSync('pkill chromedriver || true');
 
 const { env } = process;
-const yn = require('yn');
 const chromedriver = require('chromedriver');
 const puppeteer = require('puppeteer');
 
-const isHeadless = yn(env.CHROME_HEADLESS, { default: true });
+const isHeadless = [undefined, 'true', '1'].includes(env.CHROME_HEADLESS);
 
 const makeSauceEnv = (caps) => ({
     selenium: {

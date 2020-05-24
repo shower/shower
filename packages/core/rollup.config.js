@@ -1,8 +1,6 @@
-'use strict';
-
-const resolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
-const pkg = require('./package.json');
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import pkg from './package.json';
 
 const ndash = '\u2013';
 const yearNow = new Date().getFullYear();
@@ -14,7 +12,7 @@ const banner = `\
  * @license ${pkg.license}
  */`;
 
-module.exports = {
+export default {
     input: 'lib/start.js',
     output: {
         file: 'dist/shower.js',

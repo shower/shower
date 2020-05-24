@@ -23,3 +23,7 @@ rules:
 
   import/prefer-default-export: off
   import/no-extraneous-dependencies: off
+overrides:
+  - files: rollup.config.js
+    parserOptions:
+      sourceType: module
