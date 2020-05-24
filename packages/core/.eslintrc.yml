@@ -5,7 +5,7 @@ extends:
 env:
   browser: true
 parserOptions:
-  sourceType: script
+  sourceType: module
 rules:
   no-param-reassign: off
   no-plusplus: off
@@ -24,6 +24,10 @@ rules:
   import/prefer-default-export: off
   import/no-extraneous-dependencies: off
 overrides:
-  - files: rollup.config.js
+  - files:
+      - dist/plugin.js
+      - nightwatch.conf.js
+      - test/func/**/*.js
+      - test/func-harness.js
     parserOptions:
-      sourceType: module
+      sourceType: script
