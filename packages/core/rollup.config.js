@@ -1,5 +1,3 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import pkg from './package.json';
 
 const ndash = '\u2013';
@@ -20,5 +18,4 @@ export default {
         name: 'shower',
         banner,
     },
-    plugins: [resolve(), commonjs()],
 };

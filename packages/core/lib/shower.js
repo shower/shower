@@ -1,7 +1,7 @@
 import defaultOptions from './default-options';
 import Slide from './slide';
 import { EventTarget, defineReadOnly } from './utils';
-import installModules from './modules';
+import installModules from './modules/install';
 
 const ensureSlideId = (slideElement, index) => {
     if (!slideElement.id) {

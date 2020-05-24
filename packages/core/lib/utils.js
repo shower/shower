@@ -1,4 +1,4 @@
-export { default as EventTarget } from './event-target';
+export { default as EventTarget } from './utils-event-target';
 export const isInteractiveElement = (element) => element.tabIndex !== -1;
 
 export const contentLoaded = (callback) => {
