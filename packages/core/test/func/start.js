@@ -1,34 +1,28 @@
 'use strict';
 
-const { URL } = require('url');
-
 const composeURL = (opts) => {
-    const url = new URL(`http://localhost:${process.env.npm_package_config_test_port}`);
-    url.searchParams.set(
-        'echo',
-        `
-            <!DOCTYPE html>
-            <head>
-                <meta charset="utf-8">
-                <title>Shower start test</title>
-                ${opts.head || ''}
-            </head>
-            <body class="${opts.containerClass || 'shower'} full">
-                <section id="a" class="slide">
-                    <h2>1</h2>
-                </section>
-                <section id="b" class="slide">
-                    <h2>2</h2>
-                </section>
-                <section id="c" class="slide">
-                    <h2>3</h2>
-                </section>
-                ${opts.body || ''}
-            </body>
-        `,
-    );
+    const echo = encodeURIComponent(`
+        <!DOCTYPE html>
+        <head>
+            <meta charset="utf-8">
+            <title>Shower "start" test suite</title>
+            ${opts.head || ''}
+        </head>
+        <body class="${opts.containerClass || 'shower'} full">
+            <section id="a" class="slide">
+                <h2>1</h2>
+            </section>
+            <section id="b" class="slide">
+                <h2>2</h2>
+            </section>
+            <section id="c" class="slide">
+                <h2>3</h2>
+            </section>
+            ${opts.body || ''}
+        </body>
+    `);
 
-    return `${url}`;
+    return `http://localhost:${process.env.npm_package_config_test_port}?echo=${echo}`;
 };
 
 const containerClass = 'custom';
