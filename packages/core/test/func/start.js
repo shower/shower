@@ -1,10 +1,9 @@
 'use strict';
 
 const { URL } = require('url');
-const { port } = require('../func-constants');
 
 const composeURL = (opts) => {
-    const url = new URL(`http://localhost:${port}`);
+    const url = new URL(`http://localhost:${process.env.npm_package_config_test_port}`);
     url.searchParams.set(
         'echo',
         `

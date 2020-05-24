@@ -61,5 +61,8 @@
     "test:unit": "mocha test/unit --require esm --require chai/register-should",
     "test:local": "nightwatch --env chrome-local --timeout 500",
     "test:sauce": "nightwatch --env chrome,firefox,safari"
+  },
+  "config": {
+    "test_port": 8031
   }
 }
