@@ -2,3 +2,6 @@ env:
   mocha: true
 rules:
   no-unused-expressions: off
+  import/extensions:
+    - error
+    - always
