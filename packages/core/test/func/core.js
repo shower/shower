@@ -28,6 +28,14 @@ module.exports = {
         browser.end();
     },
 
+    'doesn’t go to `full` mode on slide click if default is prevented': (browser) => {
+        browser.url(`${browser.launchUrl}/list-default-prevented`);
+        browser.click('#default-prevented-button');
+        browser.assert.cssClassPresent('.shower', 'list');
+        browser.assert.not.cssClassPresent('#default-prevented-slide', 'active');
+        browser.end();
+    },
+
     'adds IDs to all slides unless already set': (browser) => {
         browser.url(`${browser.launchUrl}/list-id`);
         browser.assert.elementPresent('[id="1"]');

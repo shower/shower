@@ -18,7 +18,9 @@ class Slide extends EventTarget {
         });
 
         this._isActive = false;
-        this.element.addEventListener('click', () => {
+        this.element.addEventListener('click', (event) => {
+            if (event.defaultPrevented) return;
+
             this.activate();
             this.dispatchEvent(new Event('fullmoderequest'));
         });
