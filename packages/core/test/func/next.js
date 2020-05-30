@@ -57,7 +57,7 @@ module.exports = {
         browser.end();
     },
 
-    'completes slide when moving backwards': (browser) => {
+    'does not complete slide when moving backwards': (browser) => {
         browser.url(`${browser.launchUrl}/full-next#2`);
         browser.sendKeys('.send-keys', [
             browser.Keys.ARROW_RIGHT,
@@ -66,13 +66,12 @@ module.exports = {
             browser.Keys.ARROW_LEFT,
         ]);
 
-        browser.assert.cssClassPresent('[id="2"]', 'visited');
-        browser.assert.cssClassPresent('[id="1"]', 'active');
+        browser.assert.cssClassPresent('[id="2"]', 'active');
+        browser.assert.not.cssClassPresent('[id="1"]', 'active');
 
         browser.assert.cssClassPresent('.a.next', 'visited');
-        browser.assert.cssClassPresent('.b.next', 'visited');
-        browser.assert.cssClassPresent('.c.next', 'visited');
-        browser.assert.not.cssClassPresent('.c.next', 'active');
+        browser.assert.cssClassPresent('.b.next', ['visited', 'active']);
+        browser.assert.not.cssClassPresent('.c.next', ['visited', 'active']);
     },
 
     'remembers progress when switching slides': (browser) => {

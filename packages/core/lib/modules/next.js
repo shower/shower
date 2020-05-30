@@ -1,17 +1,22 @@
 export default (shower) => {
     const { stepSelector, activeSlideClass, visitedSlideClass } = shower.options;
-    const activeOrVisitedStepSelector = `${stepSelector}.${activeSlideClass}, ${stepSelector}.${visitedSlideClass}`;
 
     let innerSteps;
-    let innerAt;
+    let activeIndex;
+
+    const isActive = (step) => step.classList.contains(activeSlideClass);
+    const isVisited = (step) => step.classList.contains(visitedSlideClass);
 
     const setInnerStepsState = () => {
         if (shower.isListMode) return;
 
         const slide = shower.activeSlide;
 
-        innerAt = slide.element.querySelectorAll(activeOrVisitedStepSelector).length;
-        innerSteps = slide.element.querySelectorAll(stepSelector);
+        innerSteps = [...slide.element.querySelectorAll(stepSelector)];
+        activeIndex =
+            innerSteps.length && innerSteps.every(isVisited)
+                ? innerSteps.length
+                : innerSteps.filter(isActive).length - 1;
 
         slide.state.innerStepCount = innerSteps.length;
     };
@@ -23,30 +28,25 @@ export default (shower) => {
     shower.addEventListener('next', (event) => {
         if (shower.isListMode || event.defaultPrevented || !event.cancelable) return;
 
-        innerAt++;
+        activeIndex++;
         innerSteps.forEach((step, index) => {
-            step.classList.toggle(visitedSlideClass, index < innerAt - 1);
-            step.classList.toggle(activeSlideClass, index === innerAt - 1);
+            step.classList.toggle(visitedSlideClass, index < activeIndex);
+            step.classList.toggle(activeSlideClass, index === activeIndex);
         });
 
-        if (innerAt <= innerSteps.length) {
+        if (activeIndex < innerSteps.length) {
             event.preventDefault();
         }
     });
 
     shower.addEventListener('prev', (event) => {
-        if (shower.isListMode || event.defaultPrevented || !event.cancelable || !innerAt) return;
+        if (shower.isListMode || event.defaultPrevented || !event.cancelable) return;
+        if (activeIndex === -1 || activeIndex === innerSteps.length) return;
 
-        if (innerAt === innerSteps.length) {
-            const lastStep = innerSteps[innerAt - 1];
-            lastStep.classList.replace(activeSlideClass, visitedSlideClass);
-            return;
-        }
-
-        innerAt--;
+        activeIndex--;
         innerSteps.forEach((step, index) => {
-            step.classList.toggle(visitedSlideClass, index < innerAt);
-            step.classList.toggle(activeSlideClass, index === innerAt - 1);
+            step.classList.toggle(visitedSlideClass, index < activeIndex + 1);
+            step.classList.toggle(activeSlideClass, index === activeIndex);
         });
 
         event.preventDefault();
