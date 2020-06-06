@@ -3,12 +3,6 @@ import Slide from './slide';
 import { EventTarget, defineReadOnly } from './utils';
 import installModules from './modules/install';
 
-const ensureSlideId = (slideElement, index) => {
-    if (!slideElement.id) {
-        slideElement.id = index + 1;
-    }
-};
-
 class Shower extends EventTarget {
     constructor(options) {
         super();
@@ -46,23 +40,15 @@ class Shower extends EventTarget {
     }
 
     _initSlides() {
-        const slideElements = [
-            ...this._container.querySelectorAll(this.options.slideSelector),
-        ].filter((slideElement) => !slideElement.hidden);
+        const visibleSlideSelector = `${this.options.slideSelector}:not([hidden])`;
+        const visibleSlideElements = this._container.querySelectorAll(visibleSlideSelector);
 
-        slideElements.forEach(ensureSlideId);
-        this.slides = slideElements.map((slideElement) => {
-            const slide = new Slide(slideElement, this.options);
+        this.slides = Array.from(visibleSlideElements, (slideElement, index) => {
+            if (!slideElement.id) {
+                slideElement.id = index + 1;
+            }
 
-            slide.addEventListener('activate', () => {
-                this._changeActiveSlide(slide);
-            });
-
-            slide.addEventListener('fullmoderequest', () => {
-                this.enterFullMode();
-            });
-
-            return slide;
+            return new Slide(this, slideElement);
         });
     }
 
@@ -75,7 +61,7 @@ class Shower extends EventTarget {
         }
     }
 
-    _changeActiveSlide(next) {
+    setActiveSlide(next) {
         const prev = this.slides.find((slide) => {
             return slide.isActive && slide !== next;
         });

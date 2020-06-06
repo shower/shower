@@ -1,16 +1,16 @@
 import { EventTarget, defineReadOnly } from './utils';
 
 /**
+ * @param {Shower} shower
  * @param {HTMLElement} element
- * @param {object} options
  */
 class Slide extends EventTarget {
-    constructor(element, options) {
+    constructor(shower, element) {
         super();
 
         defineReadOnly(this, {
+            shower,
             element,
-            options,
             state: {
                 visitCount: 0,
                 innerStepCount: 0,
@@ -18,11 +18,13 @@ class Slide extends EventTarget {
         });
 
         this._isActive = false;
+        this._options = shower.options;
+
         this.element.addEventListener('click', (event) => {
             if (event.defaultPrevented) return;
 
             this.activate();
-            this.dispatchEvent(new Event('fullmoderequest'));
+            shower.enterFullMode();
         });
     }
 
@@ -39,7 +41,7 @@ class Slide extends EventTarget {
     }
 
     get title() {
-        const titleElement = this.element.querySelector(this.options.slideTitleSelector);
+        const titleElement = this.element.querySelector(this._options.slideTitleSelector);
         return titleElement ? titleElement.innerText : '';
     }
 
@@ -47,9 +49,10 @@ class Slide extends EventTarget {
         if (this._isActive) return;
 
         this.state.visitCount++;
-        this.element.classList.add(this.options.activeSlideClass);
+        this.element.classList.add(this._options.activeSlideClass);
 
         this._isActive = true;
+        this.shower.setActiveSlide(this);
         this.dispatchEvent(new Event('activate'));
     }
 
@@ -57,8 +60,8 @@ class Slide extends EventTarget {
         if (!this._isActive) return;
 
         this.element.classList.replace(
-            this.options.activeSlideClass,
-            this.options.visitedSlideClass,
+            this._options.activeSlideClass,
+            this._options.visitedSlideClass,
         );
 
         this._isActive = false;
