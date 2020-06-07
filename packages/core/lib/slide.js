@@ -18,13 +18,13 @@ class Slide extends EventTarget {
         });
 
         this._isActive = false;
-        this._options = shower.options;
+        this._options = this.shower.options;
 
         this.element.addEventListener('click', (event) => {
             if (event.defaultPrevented) return;
 
             this.activate();
-            shower.enterFullMode();
+            this.shower.enterFullMode();
         });
     }
 
@@ -67,7 +67,7 @@ class Slide extends EventTarget {
 
     deactivate() {
         if (this.shower.isFullMode) {
-            throw new ShowerError('In full mode, another slide should activated instead.');
+            throw new ShowerError('In full mode, another slide should be activated instead.');
         }
 
         if (this._isActive) {
