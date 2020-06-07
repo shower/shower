@@ -19,3 +19,5 @@ export const defineReadOnly = (target, props) => {
         });
     }
 };
+
+export class ShowerError extends Error {}

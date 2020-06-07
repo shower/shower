@@ -1,4 +1,4 @@
-import { EventTarget, defineReadOnly } from './utils';
+import { EventTarget, defineReadOnly, ShowerError } from './utils';
 
 /**
  * @param {Shower} shower
@@ -66,6 +66,10 @@ class Slide extends EventTarget {
     }
 
     deactivate() {
+        if (this.shower.isFullMode) {
+            throw new ShowerError('In full mode, another slide should activated instead.');
+        }
+
         if (this._isActive) {
             this._deactivate();
         }

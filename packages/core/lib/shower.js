@@ -1,6 +1,6 @@
 import defaultOptions from './default-options';
 import Slide from './slide';
-import { EventTarget, defineReadOnly } from './utils';
+import { EventTarget, defineReadOnly, ShowerError } from './utils';
 import installModules from './modules/install';
 
 class Shower extends EventTarget {
@@ -29,7 +29,9 @@ class Shower extends EventTarget {
         const { containerSelector } = this.options;
         this._container = document.querySelector(containerSelector);
         if (!this._container) {
-            throw new Error(`Shower container with selector '${containerSelector}' not found.`);
+            throw new ShowerError(
+                `Shower container with selector '${containerSelector}' was not found.`,
+            );
         }
 
         this._initSlides();
