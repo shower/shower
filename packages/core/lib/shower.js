@@ -54,7 +54,7 @@ class Shower extends EventTarget {
         });
     }
 
-    _changeMode(mode) {
+    _setMode(mode) {
         if (mode === this._mode) return;
 
         this._mode = mode;
@@ -93,14 +93,14 @@ class Shower extends EventTarget {
      * Slide fills the maximum area.
      */
     enterFullMode() {
-        this._changeMode('full');
+        this._setMode('full');
     }
 
     /**
      * Shower returns into list mode.
      */
     exitFullMode() {
-        this._changeMode('list');
+        this._setMode('list');
     }
 
     /**
