@@ -20,6 +20,10 @@ class Shower extends EventTarget {
      * @param {object} options
      */
     configure(options) {
+        if (this._isStarted) {
+            throw new ShowerError('Shower should be configured before it is started.');
+        }
+
         Object.assign(this.options, options);
     }
 
