@@ -1,10 +1,10 @@
 import { EventTarget, defineReadOnly, ShowerError } from './utils';
 
-/**
- * @param {Shower} shower
- * @param {HTMLElement} element
- */
 class Slide extends EventTarget {
+    /**
+     * @param {Shower} shower
+     * @param {HTMLElement} element
+     */
     constructor(shower, element) {
         super();
 
@@ -45,6 +45,12 @@ class Slide extends EventTarget {
         return titleElement ? titleElement.innerText : '';
     }
 
+    /**
+     * Deactivates currently active slide (if any) and activates itself.
+     * @emits Slide#deactivate
+     * @emits Slide#activate
+     * @emits Shower#slidechange
+     */
     activate() {
         if (this._isActive) return;
 
@@ -65,6 +71,10 @@ class Slide extends EventTarget {
         );
     }
 
+    /**
+     * @throws {ShowerError}
+     * @emits Slide#deactivate
+     */
     deactivate() {
         if (this.shower.isFullMode) {
             throw new ShowerError('In full mode, another slide should be activated instead.');

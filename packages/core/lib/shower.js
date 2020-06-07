@@ -4,6 +4,9 @@ import { EventTarget, defineReadOnly, ShowerError } from './utils';
 import installModules from './modules/install';
 
 class Shower extends EventTarget {
+    /**
+     * @param {object=} options
+     */
     constructor(options) {
         super();
 
@@ -17,7 +20,8 @@ class Shower extends EventTarget {
     }
 
     /**
-     * @param {object} options
+     * @param {object=} options
+     * @throws {ShowerError}
      */
     configure(options) {
         if (this._isStarted) {
@@ -27,6 +31,10 @@ class Shower extends EventTarget {
         Object.assign(this.options, options);
     }
 
+    /**
+     * @throws {ShowerError}
+     * @emits Shower#start
+     */
     start() {
         if (this._isStarted) return;
 
@@ -65,6 +73,9 @@ class Shower extends EventTarget {
         this.dispatchEvent(new Event('modechange'));
     }
 
+    /**
+     * @param {Event} event
+     */
     dispatchEvent(event) {
         if (this._isStarted || event.type === 'start') {
             return super.dispatchEvent(event);
@@ -95,6 +106,7 @@ class Shower extends EventTarget {
 
     /**
      * Slide fills the maximum area.
+     * @emits Shower#modechange
      */
     enterFullMode() {
         this._setMode('full');
@@ -102,6 +114,7 @@ class Shower extends EventTarget {
 
     /**
      * Shower returns into list mode.
+     * @emits Shower#modechange
      */
     exitFullMode() {
         this._setMode('list');
@@ -125,7 +138,7 @@ class Shower extends EventTarget {
     }
 
     /**
-     * @param {boolean=} isForce
+     * @param {boolean} [isForce=false]
      */
     prev(isForce) {
         const prev = new Event('prev', { cancelable: !isForce });
@@ -135,7 +148,7 @@ class Shower extends EventTarget {
     }
 
     /**
-     * @param {boolean=} isForce
+     * @param {boolean} [isForce=false]
      */
     next(isForce) {
         const next = new Event('next', { cancelable: !isForce });
