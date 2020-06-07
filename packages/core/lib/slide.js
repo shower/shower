@@ -48,17 +48,30 @@ class Slide extends EventTarget {
     activate() {
         if (this._isActive) return;
 
+        const prev = this.shower.activeSlide;
+        if (prev) {
+            prev._deactivate();
+        }
+
         this.state.visitCount++;
         this.element.classList.add(this._options.activeSlideClass);
 
         this._isActive = true;
-        this.shower.setActiveSlide(this);
         this.dispatchEvent(new Event('activate'));
+        this.shower.dispatchEvent(
+            new CustomEvent('slidechange', {
+                detail: { prev },
+            }),
+        );
     }
 
     deactivate() {
-        if (!this._isActive) return;
+        if (this._isActive) {
+            this._deactivate();
+        }
+    }
 
+    _deactivate() {
         this.element.classList.replace(
             this._options.activeSlideClass,
             this._options.visitedSlideClass,

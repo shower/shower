@@ -56,27 +56,15 @@ class Shower extends EventTarget {
         if (mode === this._mode) return;
 
         this._mode = mode;
-        if (this._isStarted) {
-            this.dispatchEvent(new Event('modechange'));
-        }
+        this.dispatchEvent(new Event('modechange'));
     }
 
-    setActiveSlide(next) {
-        const prev = this.slides.find((slide) => {
-            return slide.isActive && slide !== next;
-        });
-
-        if (prev) {
-            prev.deactivate();
+    dispatchEvent(event) {
+        if (this._isStarted || event.type === 'start') {
+            return super.dispatchEvent(event);
         }
 
-        if (!this._isStarted) return;
-
-        const event = new CustomEvent('slidechange', {
-            detail: { prev },
-        });
-
-        this.dispatchEvent(event);
+        return false;
     }
 
     get container() {
