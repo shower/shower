@@ -77,11 +77,9 @@ class Shower extends EventTarget {
      * @param {Event} event
      */
     dispatchEvent(event) {
-        if (this._isStarted || event.type === 'start') {
-            return super.dispatchEvent(event);
-        }
+        if (!this._isStarted) return false;
 
-        return false;
+        return super.dispatchEvent(event);
     }
 
     get container() {
@@ -139,6 +137,7 @@ class Shower extends EventTarget {
 
     /**
      * @param {boolean} [isForce=false]
+     * @emits Shower#prev
      */
     prev(isForce) {
         const prev = new Event('prev', { cancelable: !isForce });
@@ -149,6 +148,7 @@ class Shower extends EventTarget {
 
     /**
      * @param {boolean} [isForce=false]
+     * @emits Shower#next
      */
     next(isForce) {
         const next = new Event('next', { cancelable: !isForce });
