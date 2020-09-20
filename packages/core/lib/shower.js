@@ -1,6 +1,6 @@
 import defaultOptions from './default-options';
 import Slide from './slide';
-import { EventTarget, defineReadOnly, ShowerError } from './utils';
+import { defineReadOnly, ShowerError } from './utils';
 import installModules from './modules/install';
 
 class Shower extends EventTarget {

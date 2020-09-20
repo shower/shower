@@ -1,4 +1,4 @@
-import { EventTarget, defineReadOnly, ShowerError } from './utils';
+import { defineReadOnly, ShowerError } from './utils';
 
 class Slide extends EventTarget {
     /**
