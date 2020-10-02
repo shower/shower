@@ -1,4 +1,4 @@
-# Shower Presentation Template
+# Shower Presentation Template {An Amazing Project}
 ![](https://github.com/shower/shower/workflows/Test/badge.svg)
 
 <img src="pictures/logo.png" width="250" alt="Shower logo">
