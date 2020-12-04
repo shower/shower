@@ -9,6 +9,19 @@
         .shower {
             --slide-ratio: calc(16 / 9);
         }
+        .slide h2 {
+            color: #222;
+        }
+        .slide::after {
+            background-image: none;
+            background-color: var(--color-blue);
+            width: 55px;
+            height: 55px;
+            padding-top: 0;
+            line-height: 55px;
+            top: 20px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body class="shower list">
@@ -63,9 +76,8 @@
         <ul>
             <li>Верстаю в компании AISA</li>
             <li>Борец за вёрстку кнопок кнопками</li>
-            <li>Модерирую чат Веб-стандартов в&nbsp;Телеграме</li>
+            <li>Модерирую чат Веб-стандартов в&nbsp;Телеграме: <a href="https://t.me/webstandards_chat">@webstandards_chat</a></li>
             <li>Катаюсь на сноуборде и&nbsp;сёрф-скейте</li>
-            <li>Люблю музыку и обнимашки</li>
         </ul>
         </div>
         <img src="/pictures/me.jpg" alt="Lena Ryan">
@@ -112,21 +124,10 @@
 
     <section class="slide" id="slide-3">
         <img src="/pictures/no.jpg" alt="no god please no" class="cover">
-
-        <style>
-            #slide-3 .cover {
-                width: 100%;
-                height: 100%;
-            }
-
-            #slide-3:after {
-                opacity: 0;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-4">
-        <h2>Что такое "версия для слабовидящих"?</h2>
+        <h2>Что такое «версия для слабовидящих»?</h2>
         <img src="/pictures/blind.jpg" alt="blind-version">
 
         <style>
@@ -177,37 +178,18 @@
 
     <section class="slide" id="slide-5">
         <img src="/pictures/no.jpg" alt="no god please no" class="cover">
-
-        <style>
-            #slide-5 .cover {
-                width: 100%;
-                height: 100%;
-            }
-
-            #slide-5:after {
-                opacity: 0;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-6">
         <h2>ГОСТ Р 52872-2012</h2>
-        <p>Интернет-ресурсы. Требования доступности для инвалидов по&nbsp;зрению</p>
+        <p>Интернет-ресурсы. Требования доступности <mark>для инвалидов по&nbsp;зрению</mark></p>
         <p>Введён 01.01.2014</p>
     </section>
 
     <section class="slide" id="slide-6">
         <h2>Приказ Минкомсвязи России №483</h2>
-        <p>Об установлении Порядка обеспечения условий доступности для инвалидов по&nbsp;зрению официальных сайтов федеральных органов государственной власти, органов государственной власти субъектов Российской Федерации и&nbsp;органов местного самоуправления в&nbsp;сети «Интернет»</p>
+        <p>Об установлении Порядка обеспечения условий доступности <mark>для инвалидов по&nbsp;зрению</mark> официальных сайтов федеральных органов государственной власти, органов государственной власти субъектов Российской Федерации и&nbsp;органов местного самоуправления в&nbsp;сети «Интернет»</p>
         <p>От 30.11.2015</p>
-    </section>
-
-    <section class="slide" id="slide-8">
-        <h2>Причины создания отдельной версии</h2>
-        <ul>
-            <li>Потому что положено по закону</li>
-            <li class="next">Прилетела задача, надо внедрить</li>
-        </ul>
     </section>
 
     <section class="slide" id="slide-9">
@@ -227,7 +209,7 @@
     </section>
 
     <section class="slide" id="slide-10">
-        <h2>Только для слабовидящих?</h2>
+        <h2>Почему только для слабовидящих?</h2>
         <img src="/pictures/cyborg.jpg" alt="Konstantin Deblikov">
 
         <style>
@@ -248,17 +230,17 @@
 
     <section class="slide">
         <blockquote>
-            Органы государственной власти в технических заданиях на проектирование и разработку интерфейсов своих официальных сайтов предусматривают наличие альтернативных текстовых версий таких сайтов (далее – версия для инвалидов по зрению), переход к которым осуществляется с главной страницы официального сайта <b>в случае, если сам официальный сайт исходно не соответствует требованиям пункта 4 настоящего Порядка</b>
+            Органы государственной власти в технических заданиях на проектирование и разработку интерфейсов своих официальных сайтов предусматривают наличие альтернативных текстовых версий таких сайтов (далее – версия для инвалидов по зрению), переход к которым осуществляется с главной страницы официального сайта <mark>в случае, если сам официальный сайт исходно не соответствует требованиям пункта 4 настоящего Порядка</mark>
         </blockquote>
     </section>
 
     <section class="slide" id="slide-11">
-        <h2>Требования</h2>
+        <h2>Требования формальным языком</h2>
         <ul>
-            <li><b>нетекстовая информация и&nbsp;нетекстовые материалы</b>, представленные на&nbsp;официальных сайтах органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версии для инвалидов по&nbsp;зрению <b>в&nbsp;виде краткого описания такой нетекстовой информации</b>, за&nbsp;исключением нетекстовой информации и&nbsp;нетекстовых материалов, используемых только с&nbsp;целью украшения и&nbsp;визуального оформления официальных сайтов органов государственной власти;</li>
-            <li><b>графические файлы формата PDF</b>, содержащие документы в&nbsp;графическом виде, представленные в&nbsp;разделах официальных сайтов органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версиях для инвалидов по&nbsp;зрению <b>в&nbsp;текстовом формате</b>;</li>
-            <li>наличие возможности <b>изменения размеров текстовой информации до&nbsp;200%, шрифта, интервала между буквами (кернинг), а&nbsp;также цветовой схемы</b>;</li>
-            <li>информация, относящаяся к&nbsp;работам (услугам) для инвалидов по&nbsp;зрению, должна быть представлена <b>на&nbsp;уровне доступности специализированных интернет-ресурсов для инвалидов по&nbsp;зрению</b>.</li>
+            <li><mark>нетекстовая информация и&nbsp;нетекстовые материалы</mark>, представленные на&nbsp;официальных сайтах органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версии для инвалидов по&nbsp;зрению <mark>в&nbsp;виде краткого описания такой нетекстовой информации</mark>, за&nbsp;исключением нетекстовой информации и&nbsp;нетекстовых материалов, используемых только с&nbsp;целью украшения и&nbsp;визуального оформления официальных сайтов органов государственной власти;</li>
+            <li><mark>графические файлы формата PDF</mark>, содержащие документы в&nbsp;графическом виде, представленные в&nbsp;разделах официальных сайтов органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версиях для инвалидов по&nbsp;зрению <mark>в&nbsp;текстовом формате</mark>;</li>
+            <li>наличие возможности <mark>изменения размеров текстовой информации до&nbsp;200%, шрифта, интервала между буквами (кернинг), а&nbsp;также цветовой схемы</mark>;</li>
+            <li>информация, относящаяся к&nbsp;работам (услугам) для инвалидов по&nbsp;зрению, должна быть представлена <mark>на&nbsp;уровне доступности специализированных интернет-ресурсов для инвалидов по&nbsp;зрению</mark>.</li>
         </ul>
 
         <style>
@@ -271,23 +253,13 @@
     </section>
 
     <section class="slide">
-        <h2>Проще говоря</h2>
+        <h2>Перевод на человеческий язык</h2>
         <ul>
             <li>Подписанные контентные изображения</li>
             <li>Доступные PDF-вложения или их текстовые версии</li>
             <li>Увеличение размера шрифта до 200%</li>
             <li>Изменение расстояния между буквами</li>
             <li>Изменение цветовой схемы</li>
-        </ul>
-    </section>
-
-    <section class="slide">
-        <h2>Дополнительные затраты</h2>
-        <ul>
-            <li>Дизайн</li>
-            <li class="next">Разработка</li>
-            <li class="next">Тестирование</li>
-            <li class="next">Поддержка</li>
         </ul>
     </section>
 
@@ -316,16 +288,67 @@
             <li>Скрин-зум</li>
             <li>Экранная лупа</li>
             <li>Тёмная тема</li>
-            <li>Для незрячих - скринридер</li>
+            <li>Для незрячих — скринридер</li>
         </ul>
     </section>
 
+    <section class="slide">
+        <h2>Скрин-зум</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Экранная лупа</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Тёмная тема и режим высокой контрастности</h2>
+    </section>
+
+    <section class="slide" id="slide-23">
+        <div class="left-side">
+        <h2>Cкринридеры</h2>
+        <p>Windows:</p>
+        <ul>
+            <li>JAWS</li>
+            <li>NVDA</li>
+        </ul>
+
+        <p>MacOS:</p> 
+        <ul>
+            <li>VoiceOver</li>
+        </ul>
+        </div>
+
+        <img src="/pictures/advokat.jpg" alt="gogen solntsev">
+
+        <style>
+            #slide-23 {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+
+            #slide-23 img {
+                display: block;
+                width: 350px;
+                border: 2px solid var(--color-grey);
+                margin-top: 20px;
+            }
+
+            #slide-23 p {
+                margin-bottom: 0;
+            }
+        </style>
+    </section>
+
     <section class="slide" id="slide-13">
-        <video src="/pictures/dima.mp4" controls></video>
+        <video src="/pictures/dima.mp4" controls muted class="cover"></video>
 
         <style>
             #slide-13 video {
                 max-width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         </style>
     </section>
@@ -383,18 +406,6 @@
 
     <section class="slide" id="slide-16">
         <img class="cover" src="/pictures/chinese.jpg" alt="mem chinese looks at the piece of paper">
-
-        <style>
-            #slide-16 img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            #slide-16:after {
-                display: none;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-18">
@@ -437,39 +448,31 @@
         </style>
     </section>
 
-    <section class="slide" id="slide-uni">
-        <h2>ВДС - это не универсальное решение</h2>
-        <p>Существуют разные виды нарушений зрения</p>
-        <p>Вместо инклюзивности - дискриминация</p>
-        <p>За слабовидящего уже кто-то решил, что ему видеть, а что - нет</p>
+    <section class="slide" id="slide-discr">
+        <h2 class="shout">Вместо инклюзивности<span>—</span>дискриминация</h2>
 
         <style>
-            #slide-uni p {
-                margin-bottom: 15px;
+            #slide-discr h2 {
+                font-size: 120px;
+                max-width: 90%;
+                left: 5%;
+            }
+            #slide-discr span {
+                display: block;
+                line-height: 0.5;
+                margin-top: 10px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-veg">
         <img src="/pictures/vegan.jpg" alt="vegan cat" class="cover">
-
-        <style>
-            #slide-veg img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            #slide-veg:after {
-                display: none;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-20">
         <figure>
             <blockquote>
-                <p>Версиями для слабовидящих я&nbsp;не&nbsp;пользуюсь. Открываю - из&nbsp;любопытства и&nbsp;чтобы посмеяться. И&nbsp;переключаюсь обратно.</p>
+                <p>Версиями для слабовидящих я&nbsp;не&nbsp;пользуюсь. Открываю — из&nbsp;любопытства и&nbsp;чтобы посмеяться. И&nbsp;переключаюсь обратно.</p>
             </blockquote>
             <figcaption>Дмитрий Глюз</figcaption>
         </figure>
@@ -488,8 +491,25 @@
     </section>
 
     <section class="slide">
-        <h2>Цветовая слепота</h2>
+        <h2>Почему ВДС — это плохая идея?</h2>
+        <ul>
+            <li>Это не универсальное решение, т.к. существуют разные виды нарушений зрения</li>
+            <li>Вместо инклюзивности — дискриминация</li>
+            <li>За слабовидящего уже кто-то решил, что ему видеть, а что — нет</li>
+            <li>Дополнительные затраты на дизайн, разработку, тестирование, поддержку</li>
+            <li>По закону будет достаточно доступного основного сайта</li>
+            <li class="next">Слабовидящие всё равно не пользуются отдельными версиями</li>
+        </ul>
+    </section>
 
+    <section class="slide" id="slide-12">
+        <h2 class="shout shrink">И зачем тогда отдельная версия?</h2>
+
+        <style>
+            #slide-12 h2 {
+                font-size: 120px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-22">
@@ -517,43 +537,6 @@
         </style>
     </section>
 
-    <section class="slide" id="slide-23">
-        <div class="left-side">
-        <h2>Cкринридеры</h2>
-        <p>Windows:</p>
-        <ul>
-            <li>JAWS</li>
-            <li>NVDA</li>
-        </ul>
-
-        <p>MacOS:</p> 
-        <ul>
-            <li>VoiceOver</li>
-        </ul>
-        </div>
-
-        <img src="/pictures/advokat.jpg" alt="gogen solntsev">
-
-        <style>
-            #slide-23 {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-            }
-
-            #slide-23 img {
-                display: block;
-                width: 350px;
-                border: 2px solid var(--color-grey);
-                margin-top: 20px;
-            }
-
-            #slide-23 p {
-                margin-bottom: 0;
-            }
-        </style>
-    </section>
-
     <section class="slide">
         <h2>Не забываем про клавиатурный фокус</h2>
     </section>
@@ -564,7 +547,7 @@
             <li><a href="https://validator.w3.org/">Валидатор W3C</a></li>
             <li><a href="https://wave.webaim.org/">WAVE</a></li>
             <li>Вкладка Accessibility в панели разработчика</li>
-            <li>Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации - 
+            <li>Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации — 
                 <a href="http://gov.design/blog/2016/11/08/accessibility.html">статья на gov.design</a></li>
         </ul>
     </section>
@@ -574,9 +557,9 @@
             <h2>Я проникся, что дальше?</h2>
             <ul>
                 <li class="next">Пытаться вести диалог</li>
-                <li class="next">Делать доступно втихаря</li>
+                <li class="next">Самому делать доступно</li>
                 <li class="next">Терпеть</li>
-                <li class="next">Менять работу</li>
+                <li class="next">В крайнем случае — менять работу</li>
             </ul>
         </div>
         <img src="/pictures/tasks.jpg" alt="where are tasks">
@@ -590,8 +573,8 @@
 
             #slide-26 img {
                 display: block;
-                width: 300px;
-                margin-top: 20px;
+                width: 310px;
+                margin-top: 5px;
             }
         </style>
     </section>
@@ -604,7 +587,7 @@
             <a href="https://www.kurmak.info/">kurmak.info</a>
         </p>
 
-        <p>Ближайший поток - с 6 февраля по 6 марта 2021 года</p>
+        <p>Ближайший поток — с 6 февраля по 6 марта 2021 года</p>
     </section>
 
     <section class="slide" id="slide-27">
@@ -623,13 +606,14 @@
     </section>
 
     <section class="slide" id="slide-14">
+        <h3>Lena Ryan</h3>
+        <p>Twitter: <a href="https://twitter.com/metalwebdev">@metalwebdev</a></p>
+        <p>Telegram: <a href="https://t.me/russian_plazma_drink">@russian_plazma_drink</a></p>
+
         <h3>Telegram-канал Валерии Курмак</h3>
         <a href="https://t.me/neiskluchenie">Не исключение</a>
 
-        <p style="margin:25px 0;">Дмитрий Глюз в Instagram: <a href="https://www.instagram.com/dima_volzhsky/">@dima_volzhsky</a></p>
-        
-        <p>Я в Twitter: <a href="https://twitter.com/metalwebdev">@metalwebdev</a></p>
-        <p>Я в Telegram: <a href="https://t.me/russian_plazma_drink">@russian_plazma_drink</a></p>
+        <p style="margin-top:25px;">Дмитрий Глюз в Instagram: <a href="https://www.instagram.com/dima_volzhsky/">@dima_volzhsky</a></p>
 
         <style>
             #slide-14 h3 {
