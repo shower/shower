@@ -72,9 +72,10 @@
 
     <section class="slide" id="slide-about">
         <div class="left-side">
-        <h2>Кто я?</h2>
+        <h2>Lena Ryan</h2>
+        <a href="https://t.me/russian_plazma_drink" class="tg-link">@russian_plazma_drink</a>
         <ul>
-            <li>Верстаю в компании AISA</li>
+            <li>Фронтендер в компании AISA</li>
             <li>Борец за вёрстку кнопок кнопками</li>
             <li>Модерирую чат Веб-стандартов в&nbsp;Телеграме: <a href="https://t.me/webstandards_chat">@webstandards_chat</a></li>
             <li>Катаюсь на сноуборде и&nbsp;сёрф-скейте</li>
@@ -87,6 +88,16 @@
                 display: flex;
                 align-items: flex-start;
                 justify-content: space-between;
+            }
+
+            #slide-about h2 {
+                margin-bottom: 25px;
+            }
+
+            #slide-about .tg-link {
+                position: relative;
+                top: -30px;
+                font-size: 23px;
             }
 
             #slide-about li {
@@ -126,16 +137,41 @@
         <img src="pictures/no.jpg" alt="no god please no" class="cover">
     </section>
 
-    <section class="slide" id="slide-4">
+    <section class="slide" id="slide-blind">
         <h2>Что такое «версия для слабовидящих»?</h2>
-        <img src="pictures/blind.jpg" alt="blind-version">
+        <img src="pictures/blind.jpg" class="blind-version" alt="blind-version">
+        <div class="blind-switches next">
+            <img src="pictures/blind-switch-2.jpg" class="switch-2" alt="blind switch">
+            <img src="pictures/blind-switch-1.jpg" class="switch-1" alt="blind switch">
+        </div>
 
         <style>
-            #slide-4 img {
+            #slide-blind .blind-version {
                 max-width: 100%;
                 height: 360px;
-                border: 3px solid var(--color-grey);
+                border: 2px solid var(--color-grey);
             }
+
+            #slide-blind .blind-switches {
+                display: flex;
+                align-items: center;
+                top: 41%;
+                left: 61%;
+                position: absolute;
+            }
+
+            #slide-blind .switch-1 {
+                border: 1px solid var(--color-grey);
+                box-shadow: 0 0 7px var(--color-grey);
+                width: 200px;
+            } 
+
+            #slide-blind .switch-2 {
+                border: 1px solid var(--color-grey);
+                box-shadow: 0 0 7px var(--color-grey);
+                width: 70px;
+                margin-right: 20px;
+            } 
         </style>
     </section>
 
@@ -282,7 +318,7 @@
 
     <section class="slide" id="slide-6">
         <h2>ГОСТ Р 52872-2019</h2>
-        <p>Интернет-ресурсы и&nbsp;другая информация, представленная в&nbsp;электронно-цифровой форме. Приложения для стационарных и&nbsp;мобильных устройств, иные пользовательские интерфейсы. Требования доступности для людей с&nbsp;инвалидностью и&nbsp;других лиц с&nbsp;ограничениями жизнедеятельности</p>
+        <p>Интернет-ресурсы и&nbsp;другая информация, представленная в&nbsp;электронно-цифровой форме. Приложения для стационарных и&nbsp;мобильных устройств, иные пользовательские интерфейсы. <mark>Требования доступности для людей с&nbsp;инвалидностью и&nbsp;других лиц с&nbsp;ограничениями жизнедеятельности</mark></p>
         <p>Введён 01.04.2020. Разработан на основе WCAG 2.0.</p>
         <a href="http://docs.cntd.ru/document/1200167693" class="copyright">ГОСТ Р 52872-2019</a>
     </section>
@@ -358,7 +394,7 @@
             <li>Большой монитор</li>
             <li>Экранная лупа</li>
             <li>Тёмная тема / Высококонтрастный режим</li>
-            <li>Скринридер</li>
+            <li>Скринридер / Голосовой синтезатор</li>
         </ul>
     </section>
 
@@ -431,10 +467,11 @@
     <section class="slide" id="slide-23">
         <div class="left-side">
         <h2>Cкринридеры</h2>
-        <img src="pictures/nvda.jpg" alt="nvda">
+        <img src="pictures/nvda.jpg" class="nvda" alt="nvda">
+        <img src="pictures/nvda-logo.png" class="nvda-logo" alt="nvda logo">
         </div>
 
-        <img src="pictures/advokat.jpg" alt="gogen solntsev">
+        <img src="pictures/advokat.jpg" class="gogen" alt="gogen solntsev">
 
         <style>
             #slide-23 {
@@ -443,15 +480,51 @@
                 justify-content: space-between;
             }
 
-            #slide-23 img {
+            #slide-23 .gogen {
                 display: block;
                 width: 350px;
                 border: 2px solid var(--color-grey);
                 margin-top: 20px;
             }
 
+            #slide-23 .nvda {
+                width: 350px;
+            }
+
+            #slide-23 .nvda-logo {
+                box-shadow: 0 0 10px var(--color-grey);
+                position: absolute;
+                width: 65px;
+                left: 355px;
+                top: 350px;
+            }
+
             #slide-23 p {
                 margin-bottom: 0;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="slide-speech">
+        <h2>Скрин-зум <br>+ голосовые синтезаторы</h2>
+        <img src="pictures/zoomtext-logo.jpg" class="zt-logo" alt="zoomtext logo">
+        <img src="pictures/zoomtext.png" class="zt" alt="zoomtext">
+
+        <style>
+            #slide-speech img {
+                border: 2px solid var(--color-grey);
+            }
+
+            #slide-speech .zt-logo {
+                width: 330px;
+                margin-top: 15px;
+            }
+
+            #slide-speech .zt {
+                position: absolute;
+                left: 40%;
+                top: 55%;
+                width: 450px;
             }
         </style>
     </section>
@@ -623,7 +696,7 @@
             <li>За слабовидящего уже кто-то решил, что ему видеть, а что — нет</li>
             <li>Дополнительные затраты на дизайн, разработку, тестирование, поддержку</li>
             <li>По закону будет достаточно доступного основного сайта</li>
-            <li class="next">Слабовидящие всё равно не пользуются отдельными версиями</li>
+            <li class="next">Не все слабовидящие пользуются отдельными версиями</li>
         </ul>
     </section>
 
@@ -698,7 +771,7 @@
         <h2>Проверка с валидаторами и чеклистами</h2>
         <ul>
             <li><a href="https://validator.w3.org/">Валидатор W3C</a></li>
-            <li><a href="https://wave.webaim.org/">WAVE</a></li>
+            <li><a href="https://wave.webaim.org/">WAVE</a>, <a href="https://www.deque.com/axe/">AXE</a></li>
             <li>Вкладка Accessibility в панели разработчика</li>
             <li>Проверка контрастности в Chrome</li>
             <li>Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации — 
@@ -710,8 +783,9 @@
         <div class="left-side">
             <h2>Я проникся, что дальше?</h2>
             <ul>
+                <li class="next">Делать доступно</li>
                 <li class="next">Диалог с начальством</li>
-                <li class="next">Самому делать доступно</li>
+                <li class="next">Делать доступно втихаря</li>
                 <li class="next">Терпеть</li>
                 <li class="next">В крайнем случае — менять работу</li>
             </ul>
@@ -771,7 +845,7 @@
             <p style="margin-top:25px;">Дмитрий Глюз в Instagram: <a href="https://www.instagram.com/dima_volzhsky/">@dima_volzhsky</a></p>
         </div>
 
-        <img src="pictures/qr-code.png" alt="qr-code for slides">
+        <img src="pictures/qr-code.jpg" alt="qr-code for slides">
 
         <style>
             #slide-contacts h3 {
@@ -796,9 +870,10 @@
 
             #slide-contacts img {
                 display: block;
-                width: 250px;
+                width: 230px;
                 position: relative;
-                right: -30px;
+                right: -10px;
+                top: 20px;
             }
         </style>
     </section>
@@ -806,9 +881,19 @@
     <section class="slide" id="slide-thx">
         <img src="pictures/keanu.jpg" alt="keanu thank you" class="cover">
 
+        <img src="pictures/qr-code.jpg" class="qr" alt="qr-code for slides">
+
         <style>
             #slide-thx:after {
                 opacity: 0;
+            }
+
+            #slide-thx .qr {
+                position: absolute;
+                z-index: 2;
+                width: 160px;
+                left: 205px;
+                top: 190px;
             }
         </style>
     </section>
