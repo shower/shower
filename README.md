@@ -1,5 +1,5 @@
 # Shower Presentation Template
-![](https://github.com/shower/shower/workflows/Test/badge.svg)
+[![Actions Status](https://github.com/shower/shower/workflows/Test/badge.svg)](https://github.com/shower/shower/actions)
 
 <img src="pictures/logo.png" width="250" alt="Shower logo">
 
