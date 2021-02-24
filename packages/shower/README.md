@@ -18,7 +18,7 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 ## Quick Start
 
 1. Download and unzip [shower.zip](http://shwr.me/shower.zip) template archive.
-2. Open `index.html` in any test editor and start creating your presentation.
+2. Open `index.html` in any text editor and start creating your presentation.
 
 ## Quick Start via CLI
 
