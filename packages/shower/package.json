@@ -27,9 +27,9 @@
     "README.md"
   ],
   "dependencies": {
-    "@shower/core": "^3.0.0",
-    "@shower/material": "^2.3.0",
-    "@shower/ribbon": "^3.3.0"
+    "@shower/core": "^3.1.0",
+    "@shower/material": "^2.4.0",
+    "@shower/ribbon": "^3.4.0"
   },
   "devDependencies": {
     "@shower/cli": "^0.3.0",
