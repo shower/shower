@@ -1,49 +1,13 @@
 /**
  * Core for Shower HTML presentation engine
- * @shower/core v3.0.0-2, https://github.com/shower/core
- * @copyright 2010–2020 Vadim Makeev, https://pepelsbey.net
+ * @shower/core v3.0.0, https://github.com/shower/core
+ * @copyright 2010–2021 Vadim Makeev, https://pepelsbey.net
  * @license MIT
  */
 (function () {
     'use strict';
 
-    const EVENT_TARGET = Symbol('EventTarget');
-
-    class EventTarget {
-        constructor() {
-            this[EVENT_TARGET] = document.createElement('div');
-        }
-
-        addEventListener(...args) {
-            this[EVENT_TARGET].addEventListener(...args);
-        }
-
-        removeEventListener(...args) {
-            this[EVENT_TARGET].removeEventListener(...args);
-        }
-
-        dispatchEvent(event) {
-            Object.defineProperties(event, {
-                target: { value: this },
-                currentTarget: { value: this },
-            });
-
-            return this[EVENT_TARGET].dispatchEvent(event);
-        }
-    }
-
     const isInteractiveElement = (element) => element.tabIndex !== -1;
-    const freezeHistory = (callback) => {
-        history.pushState = () => {};
-        history.replaceState = () => {};
-
-        try {
-            callback();
-        } finally {
-            delete history.pushState;
-            delete history.replaceState;
-        }
-    };
 
     const contentLoaded = (callback) => {
         if (document.currentScript.async) {
@@ -52,6 +16,19 @@
             document.addEventListener('DOMContentLoaded', callback);
         }
     };
+
+    const defineReadOnly = (target, props) => {
+        for (const [key, value] of Object.entries(props)) {
+            Object.defineProperty(target, key, {
+                value,
+                writable: false,
+                enumerable: true,
+                configurable: true,
+            });
+        }
+    };
+
+    class ShowerError extends Error {}
 
     var defaultOptions = {
         containerSelector: '.shower',
@@ -66,22 +43,32 @@
         visitedSlideClass: 'visited',
     };
 
-    /**
-     * @param {HTMLElement} element
-     * @param {object} options
-     */
     class Slide extends EventTarget {
-        constructor(element, options) {
+        /**
+         * @param {Shower} shower
+         * @param {HTMLElement} element
+         */
+        constructor(shower, element) {
             super();
 
-            this.element = element;
-            this.options = options;
+            defineReadOnly(this, {
+                shower,
+                element,
+                state: {
+                    visitCount: 0,
+                    innerStepCount: 0,
+                },
+            });
 
             this._isActive = false;
-            this.state = {
-                visitsCount: 0,
-                innerStepsCount: 0,
-            };
+            this._options = this.shower.options;
+
+            this.element.addEventListener('click', (event) => {
+                if (event.defaultPrevented) return;
+
+                this.activate();
+                this.shower.enterFullMode();
+            });
         }
 
         get isActive() {
@@ -89,7 +76,7 @@
         }
 
         get isVisited() {
-            return this.state.visitsCount > 0;
+            return this.state.visitCount > 0;
         }
 
         get id() {
@@ -97,27 +84,57 @@
         }
 
         get title() {
-            const titleElement = this.element.querySelector(this.options.slideTitleSelector);
+            const titleElement = this.element.querySelector(this._options.slideTitleSelector);
             return titleElement ? titleElement.innerText : '';
         }
 
+        /**
+         * Deactivates currently active slide (if any) and activates itself.
+         * @emits Slide#deactivate
+         * @emits Slide#activate
+         * @emits Shower#slidechange
+         */
         activate() {
             if (this._isActive) return;
 
+            const prev = this.shower.activeSlide;
+            if (prev) {
+                prev._deactivate();
+            }
+
+            this.state.visitCount++;
+            this.element.classList.add(this._options.activeSlideClass);
+
             this._isActive = true;
-            this.state.visitsCount++;
-            this.element.classList.add(this.options.activeSlideClass);
             this.dispatchEvent(new Event('activate'));
+            this.shower.dispatchEvent(
+                new CustomEvent('slidechange', {
+                    detail: { prev },
+                }),
+            );
         }
 
+        /**
+         * @throws {ShowerError}
+         * @emits Slide#deactivate
+         */
         deactivate() {
-            if (!this._isActive) return;
+            if (this.shower.isFullMode) {
+                throw new ShowerError('In full mode, another slide should be activated instead.');
+            }
+
+            if (this._isActive) {
+                this._deactivate();
+            }
+        }
+
+        _deactivate() {
+            this.element.classList.replace(
+                this._options.activeSlideClass,
+                this._options.visitedSlideClass,
+            );
 
             this._isActive = false;
-            this.element.classList.replace(
-                this.options.activeSlideClass,
-                this.options.visitedSlideClass,
-            );
             this.dispatchEvent(new Event('deactivate'));
         }
     }
@@ -152,6 +169,11 @@
             }
         };
 
+        shower.addEventListener('start', () => {
+            updateDocumentRole();
+            updateLiveRegion();
+        });
+
         shower.addEventListener('modechange', updateDocumentRole);
         shower.addEventListener('slidechange', updateLiveRegion);
     };
@@ -179,6 +201,7 @@
                     }
                     break;
 
+                case 'BACKSPACE':
                 case 'PAGEUP':
                 case 'ARROWUP':
                 case 'ARROWLEFT':
@@ -277,15 +300,12 @@
         };
 
         const applyURLMode = () => {
-            const isFull = new URL(location).searchParams.has('full');
-
-            freezeHistory(() => {
-                if (isFull) {
-                    shower.enterFullMode();
-                } else {
-                    shower.exitFullMode();
-                }
-            });
+            const isFull = new URLSearchParams(location.search).has('full');
+            if (isFull) {
+                shower.enterFullMode();
+            } else {
+                shower.exitFullMode();
+            }
         };
 
         const applyURLSlide = () => {
@@ -294,9 +314,7 @@
 
             const target = shower.slides.find((slide) => slide.id === id);
             if (target) {
-                freezeHistory(() => {
-                    target.activate();
-                });
+                target.activate();
             } else if (!shower.activeSlide) {
                 shower.first(); // invalid hash
             }
@@ -307,65 +325,77 @@
             applyURLSlide();
         };
 
+        applyURL();
+        window.addEventListener('popstate', applyURL);
+
+        shower.addEventListener('start', () => {
+            history.replaceState(null, document.title, composeURL());
+        });
+
         shower.addEventListener('modechange', () => {
             history.replaceState(null, document.title, composeURL());
         });
 
         shower.addEventListener('slidechange', () => {
-            history.pushState(null, document.title, composeURL());
+            const url = composeURL();
+            if (!location.href.endsWith(url)) {
+                history.pushState(null, document.title, url);
+            }
         });
-
-        shower.addEventListener('start', applyURL);
-        window.addEventListener('popstate', applyURL);
     };
 
     var next = (shower) => {
-        const { stepSelector, activeSlideClass } = shower.options;
+        const { stepSelector, activeSlideClass, visitedSlideClass } = shower.options;
 
         let innerSteps;
-        let innerAt;
+        let activeIndex;
 
-        const getInnerSteps = () => {
-            const { element } = shower.activeSlide;
-            return [...element.querySelectorAll(stepSelector)];
-        };
+        const isActive = (step) => step.classList.contains(activeSlideClass);
+        const isVisited = (step) => step.classList.contains(visitedSlideClass);
 
-        const getInnerAt = () => {
-            return innerSteps.filter((step) => {
-                return step.classList.contains(activeSlideClass);
-            }).length;
-        };
-
-        const toggleActive = () => {
-            innerSteps.forEach((step, index) => {
-                step.classList.toggle(activeSlideClass, index < innerAt);
-            });
-        };
-
-        shower.addEventListener('slidechange', () => {
-            innerSteps = getInnerSteps();
-            innerAt = getInnerAt();
+        const setInnerStepsState = () => {
+            if (shower.isListMode) return;
 
             const slide = shower.activeSlide;
-            slide.state.innerStepsCount = innerSteps.length;
-        });
+
+            innerSteps = [...slide.element.querySelectorAll(stepSelector)];
+            activeIndex =
+                innerSteps.length && innerSteps.every(isVisited)
+                    ? innerSteps.length
+                    : innerSteps.filter(isActive).length - 1;
+
+            slide.state.innerStepCount = innerSteps.length;
+        };
+
+        shower.addEventListener('start', setInnerStepsState);
+        shower.addEventListener('modechange', setInnerStepsState);
+        shower.addEventListener('slidechange', setInnerStepsState);
 
         shower.addEventListener('next', (event) => {
-            if (event.defaultPrevented || !event.cancelable) return;
-            if (shower.isListMode || innerAt === innerSteps.length) return;
+            if (shower.isListMode || event.defaultPrevented || !event.cancelable) return;
 
-            event.preventDefault();
-            innerAt++;
-            toggleActive();
+            activeIndex++;
+            innerSteps.forEach((step, index) => {
+                step.classList.toggle(visitedSlideClass, index < activeIndex);
+                step.classList.toggle(activeSlideClass, index === activeIndex);
+            });
+
+            if (activeIndex < innerSteps.length) {
+                event.preventDefault();
+            }
         });
 
         shower.addEventListener('prev', (event) => {
-            if (event.defaultPrevented || !event.cancelable) return;
-            if (shower.isListMode || innerAt === innerSteps.length || !innerAt) return;
+            if (shower.isListMode || event.defaultPrevented || !event.cancelable) return;
+            if (activeIndex === -1 || activeIndex === innerSteps.length) return;
+
+            activeIndex--;
+            innerSteps.forEach((step, index) => {
+                step.classList.toggle(visitedSlideClass, index < activeIndex + 1);
+                step.classList.toggle(activeSlideClass, index === activeIndex);
+            });
 
             event.preventDefault();
-            innerAt--;
-            toggleActive();
         });
     };
 
@@ -388,27 +418,8 @@
             bar.setAttribute('aria-valuetext', `Slideshow progress: ${progress}%`);
         };
 
+        shower.addEventListener('start', updateProgress);
         shower.addEventListener('slidechange', updateProgress);
-    };
-
-    var scale = (shower) => {
-        const { container } = shower;
-        const getScale = () => {
-            const maxRatio = Math.max(
-                container.offsetWidth / window.innerWidth,
-                container.offsetHeight / window.innerHeight,
-            );
-
-            return `scale(${1 / maxRatio})`;
-        };
-
-        const updateStyle = () => {
-            container.style.transform = shower.isFullMode ? getScale() : '';
-        };
-
-        shower.addEventListener('modechange', updateStyle);
-        window.addEventListener('resize', updateStyle);
-        window.addEventListener('load', updateStyle);
     };
 
     const units = ['s', 'm', 'h'];
@@ -443,27 +454,28 @@
     var timer = (shower) => {
         let id;
 
-        const setTimer = () => {
+        const resetTimer = () => {
             clearTimeout(id);
             if (shower.isListMode) return;
 
             const slide = shower.activeSlide;
-            const { visitsCount, innerStepsCount } = slide.state;
-            if (visitsCount > 1) return;
+            const { visitCount, innerStepCount } = slide.state;
+            if (visitCount > 1) return;
 
             const timing = parseTiming(slide.element.dataset.timing);
             if (!timing) return;
 
-            if (innerStepsCount) {
-                const stepTiming = timing / (innerStepsCount + 1);
+            if (innerStepCount) {
+                const stepTiming = timing / (innerStepCount + 1);
                 id = setInterval(() => shower.next(), stepTiming);
             } else {
                 id = setTimeout(() => shower.next(), timing);
             }
         };
 
-        shower.addEventListener('modechange', setTimer);
-        shower.addEventListener('slidechange', setTimer);
+        shower.addEventListener('start', resetTimer);
+        shower.addEventListener('modechange', resetTimer);
+        shower.addEventListener('slidechange', resetTimer);
 
         shower.container.addEventListener('keydown', (event) => {
             if (!event.defaultPrevented) {
@@ -489,6 +501,7 @@
             document.title = title;
         };
 
+        shower.addEventListener('start', updateTitle);
         shower.addEventListener('modechange', updateTitle);
         shower.addEventListener('slidechange', updateTitle);
     };
@@ -497,131 +510,154 @@
         const { container } = shower;
         const { fullModeClass, listModeClass } = shower.options;
 
-        shower.addEventListener('modechange', () => {
+        if (container.classList.contains(fullModeClass)) {
+            shower.enterFullMode();
+        } else {
+            container.classList.add(listModeClass);
+        }
+
+        const updateScale = () => {
+            const firstSlide = shower.slides[0];
+            if (!firstSlide) return;
+
+            const { innerWidth, innerHeight } = window;
+            const { offsetWidth, offsetHeight } = firstSlide.element;
+
+            const listScale = 1 / (offsetWidth / innerWidth);
+            const fullScale = 1 / Math.max(offsetWidth / innerWidth, offsetHeight / innerHeight);
+
+            container.style.setProperty('--shower-list-scale', listScale);
+            container.style.setProperty('--shower-full-scale', fullScale);
+        };
+
+        const updateModeView = () => {
             if (shower.isFullMode) {
                 container.classList.remove(listModeClass);
                 container.classList.add(fullModeClass);
-                return;
+            } else {
+                container.classList.remove(fullModeClass);
+                container.classList.add(listModeClass);
             }
 
-            container.classList.remove(fullModeClass);
-            container.classList.add(listModeClass);
+            updateScale();
+
+            if (shower.isFullMode) return;
 
             const slide = shower.activeSlide;
             if (slide) {
                 slide.element.scrollIntoView({ block: 'center' });
             }
-        });
+        };
 
+        shower.addEventListener('start', updateModeView);
+        shower.addEventListener('modechange', updateModeView);
         shower.addEventListener('slidechange', () => {
+            if (shower.isFullMode) return;
+
             const slide = shower.activeSlide;
             slide.element.scrollIntoView({ block: 'nearest' });
         });
 
-        shower.addEventListener('start', () => {
-            if (container.classList.contains(fullModeClass)) {
-                shower.enterFullMode();
-            } else {
-                container.classList.add(listModeClass);
-            }
-        });
+        window.addEventListener('resize', updateScale);
     };
 
     var installModules = (shower) => {
         a11y(shower);
-        keys(shower); // should come before `timer`
         progress(shower);
-        next(shower); // should come before `timer`
-        timer(shower);
-        title(shower); // should come before `location`
-        location$1(shower);
+        keys(shower);
+        next(shower);
+        timer(shower); // should come after `keys` and `next`
+        title(shower);
+        location$1(shower); // should come after `title`
         view(shower);
-        scale(shower);
-    };
 
-    const ensureSlideId = (slideElement, index) => {
-        if (!slideElement.id) {
-            slideElement.id = index + 1;
+        // maintains invariant: active slide always exists in `full` mode
+        if (shower.isFullMode && !shower.activeSlide) {
+            shower.first();
         }
     };
 
     class Shower extends EventTarget {
+        /**
+         * @param {object=} options
+         */
         constructor(options) {
             super();
 
+            defineReadOnly(this, {
+                options: { ...defaultOptions, ...options },
+            });
+
             this._mode = 'list';
             this._isStarted = false;
-            this.options = { ...defaultOptions, ...options };
+            this._container = null;
         }
 
         /**
-         * @param {object} options
+         * @param {object=} options
+         * @throws {ShowerError}
          */
         configure(options) {
+            if (this._isStarted) {
+                throw new ShowerError('Shower should be configured before it is started.');
+            }
+
             Object.assign(this.options, options);
         }
 
+        /**
+         * @throws {ShowerError}
+         * @emits Shower#start
+         */
         start() {
             if (this._isStarted) return;
 
             const { containerSelector } = this.options;
-            this.container = document.querySelector(containerSelector);
-            if (!this.container) {
-                throw new Error(`Shower container with selector '${containerSelector}' not found.`);
+            this._container = document.querySelector(containerSelector);
+            if (!this._container) {
+                throw new ShowerError(
+                    `Shower container with selector '${containerSelector}' was not found.`,
+                );
             }
 
-            this._isStarted = true;
             this._initSlides();
-
-            // maintains invariant: active slide always exists in `full` mode
-            this.addEventListener('modechange', () => {
-                if (this.isFullMode && !this.activeSlide) {
-                    this.first();
-                }
-            });
-
             installModules(this);
+
+            this._isStarted = true;
             this.dispatchEvent(new Event('start'));
         }
 
         _initSlides() {
-            const slideElements = [
-                ...this.container.querySelectorAll(this.options.slideSelector),
-            ].filter((slideElement) => !slideElement.hidden);
+            const visibleSlideSelector = `${this.options.slideSelector}:not([hidden])`;
+            const visibleSlideElements = this._container.querySelectorAll(visibleSlideSelector);
 
-            slideElements.forEach(ensureSlideId);
-            this.slides = slideElements.map((slideElement) => {
-                const slide = new Slide(slideElement, this.options);
+            this.slides = Array.from(visibleSlideElements, (slideElement, index) => {
+                if (!slideElement.id) {
+                    slideElement.id = index + 1;
+                }
 
-                slide.addEventListener('activate', () => {
-                    this._changeActiveSlide(slide);
-                });
-
-                slide.element.addEventListener('click', () => {
-                    if (this.isListMode) {
-                        this.enterFullMode();
-                        slide.activate();
-                    }
-                });
-
-                return slide;
+                return new Slide(this, slideElement);
             });
         }
 
-        _changeActiveSlide(next) {
-            const prev = this.slides.find((slide) => {
-                return slide.isActive && slide !== next;
-            });
+        _setMode(mode) {
+            if (mode === this._mode) return;
 
-            if (prev) {
-                prev.deactivate();
-            }
+            this._mode = mode;
+            this.dispatchEvent(new Event('modechange'));
+        }
 
-            const event = new CustomEvent('slidechange', {
-                detail: { prev },
-            });
+        /**
+         * @param {Event} event
+         */
+        dispatchEvent(event) {
+            if (!this._isStarted) return false;
 
-            this.dispatchEvent(event);
+            return super.dispatchEvent(event);
+        }
+
+        get container() {
+            return this._container;
         }
 
         get isFullMode() {
@@ -642,22 +678,18 @@
 
         /**
          * Slide fills the maximum area.
+         * @emits Shower#modechange
          */
         enterFullMode() {
-            if (!this.isFullMode) {
-                this._mode = 'full';
-                this.dispatchEvent(new Event('modechange'));
-            }
+            this._setMode('full');
         }
 
         /**
          * Shower returns into list mode.
+         * @emits Shower#modechange
          */
         exitFullMode() {
-            if (!this.isListMode) {
-                this._mode = 'list';
-                this.dispatchEvent(new Event('modechange'));
-            }
+            this._setMode('list');
         }
 
         /**
@@ -673,27 +705,29 @@
         /**
          * @param {number} delta
          */
-        go(delta) {
+        goBy(delta) {
             this.goTo(this.activeSlideIndex + delta);
         }
 
         /**
-         * @param {boolean=} isForce
+         * @param {boolean} [isForce=false]
+         * @emits Shower#prev
          */
         prev(isForce) {
             const prev = new Event('prev', { cancelable: !isForce });
             if (this.dispatchEvent(prev)) {
-                this.go(-1);
+                this.goBy(-1);
             }
         }
 
         /**
-         * @param {boolean=} isForce
+         * @param {boolean} [isForce=false]
+         * @emits Shower#next
          */
         next(isForce) {
             const next = new Event('next', { cancelable: !isForce });
             if (this.dispatchEvent(next)) {
-                this.go(1);
+                this.goBy(1);
             }
         }
 

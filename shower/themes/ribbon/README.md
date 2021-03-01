@@ -8,7 +8,7 @@ Default theme for the [Shower](https://github.com/shower/shower/) presentation e
 
 Get the Shower template where Ribbon is already included. Download the [template archive](https://shwr.me/shower.zip) or install the package:
 
-	npm install shower
+	npm install @shower/shower
 
 If you want to install Ribbon separately you can install the package:
 

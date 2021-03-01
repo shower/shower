@@ -3,7 +3,7 @@
 .columns {
     display: grid;
     width: 100%;
-    grid-column-gap: 75px;
+    grid-column-gap: 48px;
 }
 
 .columns.two {
