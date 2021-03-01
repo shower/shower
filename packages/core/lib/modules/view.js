@@ -8,17 +8,18 @@ export default (shower) => {
         container.classList.add(listModeClass);
     }
 
-    const getScale = () => {
-        const maxRatio = Math.max(
-            container.offsetWidth / window.innerWidth,
-            container.offsetHeight / window.innerHeight,
-        );
-
-        return `scale(${1 / maxRatio})`;
-    };
-
     const updateScale = () => {
-        container.style.transform = shower.isFullMode ? getScale() : '';
+        const firstSlide = shower.slides[0];
+        if (!firstSlide) return;
+
+        const { innerWidth, innerHeight } = window;
+        const { offsetWidth, offsetHeight } = firstSlide.element;
+
+        const listScale = 1 / (offsetWidth / innerWidth);
+        const fullScale = 1 / Math.max(offsetWidth / innerWidth, offsetHeight / innerHeight);
+
+        container.style.setProperty('--shower-list-scale', listScale);
+        container.style.setProperty('--shower-full-scale', fullScale);
     };
 
     const updateModeView = () => {
