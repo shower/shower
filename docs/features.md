@@ -26,9 +26,10 @@ All theme’s features are demonstrated in the [index.html](index.html) file. Us
         - [Code](#code)
     - [Elements](#elements)
         - [Cover](#cover)
-        - [Shout](#shout)
-        - [Place](#place)
         - [Notes](#notes)
+        - [Place](#place)
+        - [Shout](#shout)
+        - [Spotlight](#spotlight)
 
 ## Anatomy
 
@@ -112,7 +113,7 @@ Slides are marked with `slide` class. Please don’t nest slides and don’t for
 
 There are two slide ratios supported: 16×10 and 4×3. To enable needed one include appropriate file `screen-4x3.css` or `screen-16x10.css`. Wide screen 16×10 format is included by default.
 
-Slide width is 1024 px for the both ratios, for 16×10 height is 640 px, for 4×3 it’s 768. Bare in mind these sizes while preparing presentation pictures. In list mode slides are scaled down 2 or 4 times and in full screen mode they are scaled dynamically based on window size.
+Slide width is 1024 px for the both ratios, for 16×10 height is 640 px, for 4×3 it’s 768. Bear in mind these sizes while preparing presentation pictures. In list mode slides are scaled down 2 or 4 times and in full screen mode they are scaled dynamically based on window size.
 
 ### Number
 
@@ -206,7 +207,7 @@ Quotes are marked with `<blockquote>` element which contains one or more paragra
         <p>Flannel bicycle rights locavore selfies.</p>
     </blockquote>
 
-To add quote’s author wrap a quote to a `<figure>` element and put a caption in the `<figcaption>` right after:
+To add a quote’s author wrap a quote to a `<figure>` element and put a caption in the `<figcaption>` right after:
 
     <figure>
         <blockquote>
@@ -305,7 +306,7 @@ If you want to add lines numbers use next construction:
         <code>}</code>
     </pre>
 
-When neccessary emphasize that code is commented, you need to use span element with `comment` class;
+When necessary emphasize that code is commented, you need to use span element with `comment` class;
 If you want to color part of code, wrap this part with `mark` to add yellow background and `mark` with `important` class to add red background;
 
     <pre><code>function <mark>action()</mark> {
@@ -347,24 +348,15 @@ To insert an image description, links to the author's site or other information 
         </figcaption>
     </figure>
 
-#### Shout
+#### Notes
 
-There are slides, which need to be described in only a few words. Usually they display a call for action, define common themes, link to project or something else. To stylize this text, use the `shout` class.
-
-    <section class="slide">
-        <h2 class="shout">Shout</h2>
-    </section>
-
-Add `grow` class to animate text from small to big size
+When necessary to add some notes for a slide, you may use `footer` class, that hide your notes at all time and show them when you hover to slide:
 
     <section class="slide">
-        <h2 class="shout grow">Growing Shout</h2>
-    </section>
-
-Or, on the contrary, for animate text size from big to small add `shrink` class.
-
-    <section class="slide">
-        <h2 class="shout shrink">Shrinking Shout</h2>
+        <p>Retro meh brunch aesthetic.</p>
+        <footer class="footer">
+            <p>Cosby sweater Shoreditch.</p>
+        </footer>
     </section>
 
 #### Place
@@ -389,13 +381,94 @@ You can also combine classes for location in corners:
     <img class="place bottom left" src="picture.png">
     <img class="place bottom right" src="picture.png">
 
-#### Notes
+#### Shout
 
-When neccessary to add some notes for slide, you may use `footer` class, that hide your notes at all time and show them when you hover to slide:
+There are slides, which need to be described in only a few words. Usually they display a call for action, define common themes, link to project or something else. To stylize this text, use the `shout` class.
 
     <section class="slide">
-        <p>Retro meh brunch aesthetic.</p>
-        <footer class="footer">
-            <p>Cosby sweater Shoreditch.</p>
-        </footer>
+        <h2 class="shout">Shout</h2>
     </section>
+
+Add `grow` class to animate text from small to big size
+
+    <section class="slide">
+        <h2 class="shout grow">Growing Shout</h2>
+    </section>
+
+Or, on the contrary, for animate text size from big to small add `shrink` class.
+
+    <section class="slide">
+        <h2 class="shout shrink">Shrinking Shout</h2>
+    </section>
+
+#### Spotlight
+
+When necessary, to spotlight some part of the slide, you may use the `spotlight` class:
+
+    <section class="slide">
+        <h2>Round spotlight</h2>
+        <div class="spotlight"></div>
+    </section>
+
+It can be combined with `place` class and `top` / `right` / `bottom` / `left` classes:
+
+    <section class="slide">
+        <h2>Round spotlight in the corner</h2>
+        <div class="spotlight place top right"></div>
+    </section>
+
+You can also use the `next` class for inner navigation:
+
+    <section class="slide">
+        <h2>Spotlight with inner naviagation</h2>
+        <ol>
+            <li>I'll be seen right away.</li>
+            <li>Just navigate to next slide and you'll see others.</li>
+            <li class="next">Hey! It's all okay ?</li>
+            <li class="next"> ... </li>
+        </ol>
+        <div class="spotlight next"></div>
+    </section>
+
+You can create custom `style` for the spotlight element, e.g., stripe spotlight:
+
+    <section class="slide">
+        <h2>Stripe spotlight</h2>
+        <style>
+            .stripe {
+                --spotlight-radius: 0;
+                --spotlight-opacity: 0.2;
+                --spotlight-width: 1024px;
+                --spotlight-height: 48px;
+            }
+            .stripe.line-4 {
+                --spotlight-top: 37px;
+            }
+        </style>
+        <div class="spotlight stripe line-4"></div>
+    </section>
+
+You can also create CSS animation:
+
+    <section class="slide">
+        <h2>Spotlight with animation</h2>
+        <style>
+            @keyframes one-line {
+                0%   {height:100%}
+                100% {height:50px}
+            }
+            .one-line {
+                animation-name: one-line;
+                animation-duration: 3s;
+                animation-delay: 2s;
+                --spotlight-radius: 0;
+                --spotlight-opacity: 0.2;
+                --spotlight-width: 1024px;
+                --spotlight-height: 48px;
+                --spotlight-top: 37px;
+            }
+        </style>
+        <div class="spotlight next one-line"></div>
+    </section>
+
+> Please remember that you should duplicate slides with and without a spotlight for the PDF version because PDF format doesn't support animation.
