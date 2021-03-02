@@ -1,4 +1,5 @@
-# Ribbon theme for Shower [![Build Status](https://travis-ci.org/shower/ribbon.svg?branch=master)](https://travis-ci.org/shower/ribbon)
+# Ribbon theme for Shower
+[![Test status](https://github.com/shower/ribbon/workflows/Test/badge.svg)](https://github.com/shower/ribbon/actions/workflows/test.yml)
 
 ![Ribbon screen shot](pictures/canvas.png)
 
