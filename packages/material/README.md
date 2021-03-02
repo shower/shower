@@ -7,13 +7,11 @@ Default theme for the [Shower](https://github.com/shower/shower/) presentation e
 
 ## Usage
 
-Get the Shower template where Material is already included. Download the [template archive](https://shwr.me/shower.zip) or install the package:
+Get the Shower template where Ribbon is already included. Download the [template archive](https://shwr.me/shower.zip) or create a slide deck via [CLI tool](https://github.com/shower/cli). It requires [Node.js](https://nodejs.org/) installed.
 
-	npm install @shower/shower
+	npx @shower/cli create
 
-If you want to install Material separately you can install the package:
-
-	npm install @shower/material
+Wait for the installation and choose the **material** option in the wizard and you’re all set.
 
 ## Features
 
@@ -29,7 +27,7 @@ By default Material theme is green, but you can easily change the key color by a
 
 ## PDF
 
-Ribbon could be exported to PDF by printing it from the list mode in Chrome or Opera browsers. See [printing documentation](https://github.com/shower/shower/blob/master/docs/pdf.md) for more options.
+You can export slides to PDF by printing it via built-in dialog in Chromium-based browsers or via CLI tool. See [printing documentation](https://github.com/shower/shower/blob/master/docs/pdf.md) for more options.
 
 ## Development
 
