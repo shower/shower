@@ -1,4 +1,5 @@
 {
+  "private": true,
   "scripts": {
     "pdf": "shower pdf",
     "serve": "shower serve",
