@@ -4,23 +4,43 @@
     <title>Shower Presentation Engine</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css">
     <style>
         .shower {
             --slide-ratio: calc(16 / 9);
+            font-family: Ubuntu, sans-serif;
+        }
+        .slide h1 {
+            font-family: Ubuntu, sans-serif;
         }
         .slide h2 {
             color: #222;
+            font-family: Ubuntu, sans-serif;
+        }
+        .slide {
+            background-color: rgb(198, 176, 119);
+        }
+        .slide a,
+        .slide blockquote::before {
+            color: #965120;
+        }
+        .slide li::before {
+            opacity: 1;
         }
         .slide::after {
             background-image: none;
-            background-color: var(--color-blue);
+            background-color: #965120;
             width: 55px;
             height: 55px;
             padding-top: 0;
             line-height: 55px;
             top: 20px;
             border-radius: 50%;
+        }
+        .progress::before {
+            background-color: #965120;
         }
     </style>
 </head>
@@ -164,14 +184,14 @@
                 border: 1px solid var(--color-grey);
                 box-shadow: 0 0 7px var(--color-grey);
                 width: 200px;
-            } 
+            }
 
             #slide-blind .switch-2 {
                 border: 1px solid var(--color-grey);
                 box-shadow: 0 0 7px var(--color-grey);
                 width: 70px;
                 margin-right: 20px;
-            } 
+            }
         </style>
     </section>
 
@@ -439,10 +459,10 @@
         <h2>Тёмная тема / <br>режим высокой контрастности</h2>
         <img src="pictures/high-contrast.jpg" class="pic-1" alt="high contract">
         <img src="pictures/dark-theme.jpg" class="pic-2" alt="dark theme">
-        
+
         <style>
             #slide-dark {
-                background-color: #000;
+                background-color: #111;
             }
 
             #slide-dark h2 {
@@ -774,7 +794,7 @@
             <li><a href="https://wave.webaim.org/">WAVE</a>, <a href="https://www.deque.com/axe/">AXE</a></li>
             <li>Вкладка Accessibility в панели разработчика</li>
             <li>Проверка контрастности в Chrome</li>
-            <li>Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации — 
+            <li>Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации —
                 <a href="http://gov.design/blog/2016/11/08/accessibility.html">статья на gov.design</a></li>
         </ul>
     </section>
