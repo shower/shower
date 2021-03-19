@@ -22,11 +22,20 @@
         }
         .slide {
             background-color: rgb(198, 176, 119);
+            padding-top: 60px;
         }
-        .slide a,
-        .slide blockquote::before {
+        .slide a {
             color: #965120;
         }
+        .slide blockquote::before {
+            font-size: 7em;
+            margin-left: -110px;
+            color: #965120;
+        }
+        .slide li {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }d
         .slide li::before {
             opacity: 1;
         }
@@ -68,7 +77,7 @@
             #cover h2 {
                 color: #222;
                 text-align: center;
-                margin-top: -20px;
+                margin-top: -5px;
             }
 
             #cover h2.top {
@@ -183,15 +192,15 @@
         <style>
             #slide-blind .blind-version {
                 max-width: 100%;
-                height: 360px;
+                height: 330px;
                 box-shadow: 0 0 3px 1px var(--color-grey);
             }
 
             #slide-blind .blind-switches {
                 display: flex;
                 align-items: center;
-                top: 41%;
-                left: 61%;
+                top: 45%;
+                left: 53%;
                 position: absolute;
             }
 
@@ -215,7 +224,7 @@
 
         <style>
             #slide-abbr h2 {
-                font-size: 120px;
+                font-size: 100px;
             }
             #slide-abbr span {
                 display: block;
@@ -246,25 +255,80 @@
                 display: block;
                 width: 400px;
                 position: relative;
-                top: -25px;
+                top: -10px;
             }
         </style>
     </section>
 
-    <section class="slide">
-        <h2>Предполагаемая польза от&nbsp;ВДС</h2>
+    <section class="slide" id="slide-profit">
+        <h2>Предполагаемая польза</h2>
         <ul>
-            <li>Настройка отображения под себя
-                <ul style="font-size:21px;line-height: 1.9;">
-                    <li>Слабовидящие: увеличение размера шрифта</li>
-                    <li>Дальтоники: изменение цветовой схемы</li>
-                    <li>Дислексики: увеличение кернинга</li>
-                    <li>Незрячие: текстовые описания графического контента</li>
-                </ul>
+            <li class="next">Настройка отображения под себя
+                <img src="pictures/profit.jpg" class="blind" alt="blind version">
+                <div class="spotlight spotlight-1 next"></div>
+                <div class="spotlight spotlight-2 next"></div>
+                <div class="spotlight spotlight-3 next"></div>
+                <div class="spotlight spotlight-4 next"></div>
             </li>
-            <li>Беспрепятственный доступ к информации</li>
-            <li>Расширение аудитории сайта</li>
+            <li class="next">Беспрепятственный доступ к информации</li>
+            <li class="next">Расширение аудитории сайта</li>
         </ul>
+
+        <style>
+            #slide-profit .blind {
+                box-shadow: 0 0 3px 1px var(--color-grey);
+                max-width: 100%;
+                height: 190px;
+                margin-top: 15px;
+            }
+
+            #slide-profit .spotlight {
+                --spotlight-radius: 0;
+                --spotlight-opacity: 0.7;
+            }
+
+            @keyframes hide {
+                0%, 90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+
+            #slide-profit .spotlight-1 {
+                animation: hide 10s ease-in-out 10s forwards;
+                --spotlight-top: -62px;
+                --spotlight-left: -294px;
+                --spotlight-width: 280px;
+                --spotlight-height: 55px;
+            }
+
+            #slide-profit .spotlight-2 {
+                animation: hide 10s ease-in-out 20s forwards;
+                --spotlight-top: -62px;
+                --spotlight-left: -78px;
+                --spotlight-width: 163px;
+                --spotlight-height: 55px;
+            }
+
+            #slide-profit .spotlight-3 {
+                animation: hide 10s ease-in-out 30s forwards;
+                --spotlight-top: -2px;
+                --spotlight-left: -8px;
+                --spotlight-width: 864px;
+                --spotlight-height: 75px;
+            }
+
+            #slide-profit .spotlight-4 {
+                animation: hide 10s ease-in-out 40s forwards;
+                --spotlight-top: -62px;
+                --spotlight-left: 195px;
+                --spotlight-width: 130px;
+                --spotlight-height: 55px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-5">
@@ -283,11 +347,11 @@
     </section>
 
     <section class="slide" id="slide-why">
-        <h2 class="shout">Почему нужна версия для&nbsp;слабовидящих?</h2>
+        <h2 class="shout">Почему нужна версия для слабовидящих?</h2>
 
         <style>
             #slide-why h2 {
-                font-size: 120px;
+                font-size: 100px;
             }
         </style>
     </section>
@@ -301,7 +365,7 @@
 
     <section class="slide" id="slide-6">
         <h2>Приказ Минкомсвязи России №483</h2>
-        <p>Об установлении Порядка обеспечения условий доступности <mark>для инвалидов по&nbsp;зрению</mark> официальных сайтов федеральных органов государственной власти, органов государственной власти субъектов Российской Федерации и&nbsp;органов местного самоуправления в&nbsp;сети «Интернет»</p>
+        <p>Об установлении Порядка обеспечения условий доступности <mark>для&nbsp;инвалидов по&nbsp;зрению</mark> официальных сайтов федеральных органов государственной власти, органов государственной власти субъектов Российской Федерации и&nbsp;органов местного самоуправления в&nbsp;сети «Интернет»</p>
         <p>От 30.11.2015</p>
         <a href="https://digital.gov.ru/ru/documents/4985/" class="copyright">Приказ Минкомсвязи России №483</a>
     </section>
@@ -338,9 +402,9 @@
         <style>
             #slide-10 img {
                 width: 100%;
-                height: 360px;
+                height: 345px;
                 object-fit: cover;
-                object-position: 0 -120px;
+                object-position: 0 -145px;
                 box-shadow: 0 0 3px 1px var(--color-grey);
             }
         </style>
@@ -353,7 +417,7 @@
 
         <style>
             #slide-gosts h2 {
-                font-size: 120px;
+                font-size: 100px;
             }
             #slide-gosts span {
                 display: block;
@@ -368,10 +432,18 @@
         <a href="http://docs.cntd.ru/document/1200167693" class="copyright">ГОСТ Р 52872-2019</a>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="slide-twist">
         <blockquote>
             Органы государственной власти в технических заданиях на проектирование и разработку интерфейсов своих официальных сайтов предусматривают <mark>наличие альтернативных текстовых версий</mark> таких сайтов (далее – версия для инвалидов по зрению), переход к которым осуществляется с главной страницы официального сайта <mark>в случае, если сам официальный сайт исходно не соответствует требованиям пункта 4 настоящего Порядка</mark>
         </blockquote>
+
+        <style>
+            #slide-twist blockquote {
+                margin-top: 40px;
+                width: 93%;
+                margin-left: 40px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-11">
@@ -418,7 +490,7 @@
 
         <style>
             #slide-12 h2 {
-                font-size: 120px;
+                font-size: 100px;
             }
         </style>
     </section>
@@ -492,21 +564,24 @@
                 background-color: #111;
             }
 
+            #slide-dark img {
+                display: block;
+                box-shadow: 0 0 3px 1px white;
+            }
+
             #slide-dark h2 {
                 color: white;
             }
 
             #slide-dark .pic-1 {
                 height: 325px;
-                border: 2px solid white;
             }
 
             #slide-dark .pic-2 {
                 position: absolute;
-                border: 2px solid white;
                 height: 250px;
-                left: 55%;
-                top: 42%;
+                left: 54%;
+                top: 41%;
             }
         </style>
     </section>
@@ -543,8 +618,8 @@
                 box-shadow: 0 0 3px 1px var(--color-grey);
                 position: absolute;
                 width: 65px;
-                left: 355px;
-                top: 350px;
+                left: 325px;
+                top: 325px;
             }
 
             #slide-23 p {
@@ -570,8 +645,8 @@
 
             #slide-speech .zt {
                 position: absolute;
-                left: 40%;
-                top: 55%;
+                left: 38%;
+                top: 54%;
                 width: 450px;
             }
         </style>
@@ -582,7 +657,7 @@
 
         <style>
             #slide-how h2 {
-                font-size: 120px;
+                font-size: 100px;
             }
         </style>
     </section>
@@ -630,7 +705,7 @@
 
         <style>
             #slide-rzd video {
-                height: 380px;
+                height: 350px;
             }
         </style>
     </section>
@@ -667,7 +742,7 @@
 
         <style>
             #slide-cut h2 {
-                font-size: 120px;
+                font-size: 100px;
             }
 
             #slide-cut span {
@@ -682,7 +757,7 @@
 
         <style>
             #slide-discr h2 {
-                font-size: 120px;
+                font-size: 100px;
                 max-width: 90%;
                 left: 5%;
             }
@@ -741,26 +816,36 @@
         <style>
             #slide-20 figure {
                 width: 85%;
-                margin: 80px auto 0;
+                margin: 80px 0 0 80px;
             }
 
             #slide-20 blockquote {
                 font-size: 35px;
                 line-height: 1.7;
             }
+
+            #slide-20 blockquote::before {
+                margin-left: -150px;
+            }
         </style>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="slide-bad">
         <h2>Почему ВДС — это плохая идея?</h2>
         <ul>
             <li class="next">Это не универсальное решение, т.к. существуют разные виды нарушений зрения</li>
             <li class="next">Вместо инклюзивности — дискриминация</li>
             <li class="next">За слабовидящего уже кто-то решил, что ему видеть, а что — нет</li>
             <li class="next">Дополнительные затраты на дизайн, разработку, тестирование, поддержку</li>
-            <li class="next">По закону будет достаточно доступного основного сайта</li>
+            <li class="next">По закону хватит доступного основного сайта</li>
             <li class="next">Не все слабовидящие пользуются отдельными версиями</li>
         </ul>
+
+        <style>
+            #slide-bad li {
+                margin-bottom: 8px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-12">
@@ -768,7 +853,7 @@
 
         <style>
             #slide-12 h2 {
-                font-size: 120px;
+                font-size: 100px;
             }
         </style>
     </section>
@@ -778,7 +863,7 @@
 
         <style>
             #slide-test h2 {
-                font-size: 120px;
+                font-size: 95px;
             }
         </style>
     </section>
@@ -797,6 +882,11 @@
         </div>
 
         <style>
+            #slide-22 .columns {
+                align-items: end;
+                margin-top: 50px;
+            }
+
             #slide-22 img {
                 max-width: 100%;
                 box-shadow: 0 0 3px 1px var(--color-grey);
@@ -820,9 +910,10 @@
     </section>
 
     <section class="slide" id="slide-focus">
-        <h2>Не забываем про клавиатурный фокус</h2>
+        <h2>Клавиатурный фокус!</h2>
 
         <video src="pictures/focus.mp4" controls muted></video>
+        <a href="https://web-standards.ru/articles/focus-and-inert/" class="copyright">Управление фокусом и атрибут inert</a>
 
         <style>
             #slide-focus video {
@@ -865,8 +956,8 @@
 
             #slide-26 img {
                 display: block;
-                width: 330px;
-                margin-top: -25px;
+                width: 335px;
+                margin-top: -20px;
                 box-shadow: 0 0 3px 1px var(--color-grey);
             }
         </style>
