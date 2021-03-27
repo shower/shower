@@ -1,7 +1,7 @@
-const { handler: prepare, messages } = require('../prepare')
+const { handler: bundle, messages } = require('../bundle')
 
 it('Must be function', () => {
-  expect(typeof prepare).toBe('function')
+  expect(typeof bundle).toBe('function')
 })
 
 it('Messages must provided "start" and "end" messages', () => {

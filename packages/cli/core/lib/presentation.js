@@ -6,7 +6,7 @@ const replace = require('gulp-replace')
 const defaultFiles = [
   '**',
   '!node_modules{,/**}',
-  '!prepared{,/**}',
+  '!bundled{,/**}',
   '!package.json',
   '!package-lock.json'
 ]

@@ -66,8 +66,8 @@ Files specified in files are considered to be part of the presentation
 
 ## 0.2.0-0
 * Added a check on the existence of the presentation
-* Add the prepare and archive tasks to readme
-* Created the prepared and archive tasks
+* Add the bundle and archive tasks to readme
+* Created the bundled and archive tasks
 * Wrote a new mechanism for creating a presentation
 * Added exit codes
 * Upgrade error handling in pdf

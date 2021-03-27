@@ -69,16 +69,16 @@ Options:
 ```
 
 
-**`$ shower prepare` - Gather the necessary files in a separate folder**
+**`$ shower bundle` - Gather the necessary files in a separate folder**
 
 ```
 Options:
-  --output, -o   In which folder will the prepared presentation be written
-                                                  [string] [default: "prepared"]
+  --output, -o   In which folder will the bundled presentation be written
+                                                  [string] [default: "bundled"]
   --files, -f    List of files that will get the build                   [array]
 ```
 
-**`$ shower archive` - Create an archive of the prepared presentation**
+**`$ shower archive` - Create an archive of the bundled presentation**
 
 ```
 Options:

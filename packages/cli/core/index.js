@@ -63,8 +63,8 @@ const commandsList = {
     requireProject: true
   },
 
-  prepare: {
-    command: 'prepare',
+  bundle: {
+    command: 'bundle',
     describe: 'Gather the necessary files in a separate folder',
     requireProject: true
   },

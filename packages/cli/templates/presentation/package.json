@@ -4,7 +4,7 @@
     "pdf": "shower pdf",
     "serve": "shower serve",
     "archive": "shower archive",
-    "prepare": "shower prepare",
+    "bundle": "shower bundle",
     "publish": "shower publish"
   }
 }
