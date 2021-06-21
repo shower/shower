@@ -1,6 +1,6 @@
 # Export to PDF
 
-Though publising your HTML slides as they are is always a better idea, you can export your presentation to PDF to upload it to a service like [SlideShare](https://www.slideshare.net/) or [Notist](https://noti.st/).
+Though publishing your HTML slides as they are is always a better idea, you can export your presentation to PDF to upload it to a service like [SlideShare](https://www.slideshare.net/) or [Notist](https://noti.st/).
 
 There are two ways of doing this: via browser print dialog or via console. Exporting via browser seems like the most convenient option, but in some cases it might take too much time or even freeze your browser if your slides are too heavy or there are too many of them.
 
