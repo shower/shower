@@ -133,7 +133,7 @@ Slide type `clear` could also hide slide number.
 
 ### Types
 
-Types are changing slide’s look. You can set type by adding class to the main `slide`. There are few built-in types available in the theme, you could also describe custom types for each presention or add it to your theme.
+Types are changing slide’s look. You can set type by adding class to the main `slide`. There are few built-in types available in the theme, you could also describe custom types for each presentation or add it to your theme.
 
 #### White
 
@@ -420,7 +420,7 @@ It can be combined with `place` class and `top` / `right` / `bottom` / `left` cl
 You can also use the `next` class for inner navigation:
 
     <section class="slide">
-        <h2>Spotlight with inner naviagation</h2>
+        <h2>Spotlight with inner navigation</h2>
         <ol>
             <li>I'll be seen right away.</li>
             <li>Just navigate to next slide and you'll see others.</li>
