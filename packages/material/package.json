@@ -1,7 +1,7 @@
 {
   "name": "@shower/material",
   "description": "Material theme for Shower HTML presentation engine",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "publishConfig": {
     "access": "public"
   },
