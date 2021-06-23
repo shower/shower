@@ -33,12 +33,12 @@
     "README.md"
   ],
   "devDependencies": {
-    "@shower/core": "^3.1.0",
-    "live-server": "^1.2.1",
-    "stylelint": "^13.11.0"
+    "@shower/core": "^3.2.0",
+    "browser-sync": "^2.26.14",
+    "stylelint": "^13.13.1"
   },
   "scripts": {
     "test": "stylelint 'styles/**/*.css'",
-    "start": "live-server . --watch='fonts/*,pictures/*,styles/**,index.html'"
+    "start": "browser-sync start --server --no-notify --no-ui --no-ghost-mode --files 'fonts/*,pictures/*,styles/**,index.html'"
   }
 }
