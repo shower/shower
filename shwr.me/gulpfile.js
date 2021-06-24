@@ -74,14 +74,14 @@ gulp.task('build', () => {
 gulp.task('assets', () => {
     const files = gulp.src([
         'icons{,/**}',
-        'webmanifest.json',
+        'manifest.json',
     ]);
 
     const html = gulp.src('dist/**/*.html')
         .pipe(replace(
             /(<meta name="viewport" content="width=device-width, initial-scale=1">)/,
             `$1
-    <link rel="manifest" href="/webmanifest.json">
+    <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/32.png">
     <link rel="icon" type="image/png" sizes="160x160" href="/icons/160.png">
