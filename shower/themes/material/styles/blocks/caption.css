@@ -3,15 +3,22 @@
 .caption {
     grid-column: 1 / -1;
     margin-top: calc(
-        -1 * var(--slide-gap) * var(--slide-scale)
+        -1 *
+        var(--slide-gap) *
+        var(--slide-scale)
     );
     margin-left: calc(
-        -1 * var(--slide-gap) * var(--slide-scale)
+        -1 *
+        var(--slide-gap) *
+        var(--slide-scale) -
+        env(safe-area-inset-left)
     );
     padding-top: 0.8em;
     padding-bottom: 0.9em;
     padding-left: calc(
-        var(--slide-gap) * var(--slide-scale)
+        var(--slide-gap) *
+        var(--slide-scale) +
+        env(safe-area-inset-left)
     );
     box-sizing: border-box;
     width: 100vw;
