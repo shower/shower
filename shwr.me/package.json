@@ -7,7 +7,7 @@
     "test": "ls dist/shower/themes/ribbon && ls dist/shower/themes/material"
   },
   "dependencies": {
-    "@shower/shower": "^3.2.0"
+    "@shower/shower": "^3.2.1"
   },
   "devDependencies": {
     "del": "^5.1.0",
