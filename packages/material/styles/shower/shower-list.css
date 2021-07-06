@@ -1,9 +1,20 @@
 /* Shower List */
 
 .shower.list {
-    padding: calc(
-        var(--slide-gap) * var(--slide-scale)
+    --shower-list-block: calc(
+        var(--slide-gap) *
+        var(--slide-scale)
     );
+    --shower-list-inline: calc(
+        var(--slide-gap) *
+        var(--slide-scale) +
+        env(safe-area-inset-left)
+    );
+
+    padding:
+        var(--shower-list-block)
+        var(--shower-list-inline);
+
     box-sizing: border-box;
     width: 100%;
     display: grid;
