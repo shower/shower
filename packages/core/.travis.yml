@@ -3,7 +3,7 @@ node_js:
   - node
 branches:
   only:
-    - master
+    - main
 notifications:
   email: false
 addons:

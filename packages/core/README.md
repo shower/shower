@@ -1,4 +1,4 @@
-# Core of Shower [![Build Status](https://travis-ci.org/shower/core.svg?branch=master)](https://travis-ci.org/shower/core)
+# Core of Shower [![Build Status](https://travis-ci.org/shower/core.svg?branch=main)](https://travis-ci.org/shower/core)
 
 Core of the [Shower](https://github.com/shower/shower) presentation engine. Doesn’t include themes. [See it in action](https://shwr.me). Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [file an issue] if you have any.
 
