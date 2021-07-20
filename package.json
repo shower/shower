@@ -28,7 +28,7 @@
   ],
   "dependencies": {
     "@shower/core": "^3.2.0",
-    "@shower/material": "^2.4.3",
+    "@shower/material": "^2.4.4",
     "@shower/ribbon": "^3.4.3"
   },
   "devDependencies": {
