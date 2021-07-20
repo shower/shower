@@ -15,6 +15,7 @@
         var(--shower-list-block)
         var(--shower-list-inline);
 
+    overflow-x: hidden;
     box-sizing: border-box;
     width: 100%;
     display: grid;
