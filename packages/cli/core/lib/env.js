@@ -6,6 +6,9 @@ const { resolve } = require('path')
  * @property {string} project.path – Found an project
  */
 
+// '/' for unix, 'C:\' for windows
+const ROOT_DIR = resolve('/')
+
 /**
  * Creates a application config
  *
@@ -16,7 +19,7 @@ const { resolve } = require('path')
 function findProject (cwd) {
   let project = null
 
-  for (let path = cwd; path !== (process.env.HOME || '/');) {
+  for (let path = cwd; path !== ROOT_DIR;) {
     if (fs.existsSync(resolve(path, 'index.html'))) {
       project = { path }
 
