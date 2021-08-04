@@ -1,6 +1,6 @@
 # Features
 
-All theme’s features are demonstrated in the [index.html](index.html) file. Use it as a reference while building your presentation. More detailed features overview follows below.
+All theme’s features are demonstrated in the [index.html](../index.html) file. Use it as a reference while building your presentation. More detailed features overview follows below.
 
 - [Anatomy](#anatomy)
 - [Common](#common)
