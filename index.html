@@ -59,13 +59,13 @@
 <body class="shower list">
 
     <header class="caption">
-        <h1>Версия для слабовидящих? А можно не надо?</h1>
+        <h1>Тебе не нужна версия для слабовидящих</h1>
         <p>by Lena Ryan</p>
     </header>
 
     <section class="slide" id="cover">
-        <h2 class="top">Версия для слабовидящих?</h2>
-        <h2 class="bottom">А можно не надо?</h2>
+        <h2 class="top">Тебе не нужна</h2>
+        <h2 class="bottom">версия для слабовидящих</h2>
         <img class="cover" src="pictures/ne-nado.jpg" alt="meme cat who says please dont">
         <style>
             #cover {
@@ -102,14 +102,64 @@
         </style>
     </section>
 
+    <section class="slide" id="slide-veg">
+        <img src="pictures/vegan.jpg" alt="vegan cat" class="cover">
+        <img src="pictures/pasta.jpg" alt="pasta" class="next pic-1">
+        <img src="pictures/girl.jpg" alt="girl" class="next pic-2">
+        <img src="pictures/why.jpg" alt="cat why" class="next pic-3">
+
+        <style>
+            #slide-veg img {
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #slide-veg .pic-1 {
+                position: absolute;
+                width: 350px;
+                top: 40px;
+                left: 50px;
+            }
+
+            #slide-veg .pic-2 {
+                position: absolute;
+                width: 300px;
+                right: 50px;
+                bottom: 40px;
+            }
+
+            #slide-veg .pic-3 {
+                position: absolute;
+                z-index: 3;
+                height: 90%;
+                top: 5%;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        </style>
+    </section>
+
+
+    <section class="slide">
+        <h2>Опыт внедрения ВДС</h2>
+    </section>
+
+    <section class="slide">
+        <ul>
+            <li>Доклады</li>
+            <li>Информация</li>
+            <li>Курсы по цифровой доступности</li>
+        </ul>
+    </section>
+
     <section class="slide" id="slide-about">
         <div class="left-side">
         <h2>Lena Ryan</h2>
         <a href="https://t.me/russian_plazma_drink" class="tg-link">@russian_plazma_drink</a>
         <ul>
-            <li>Фронтендер в компании AISA</li>
+            <li>Фронтенд-разработчик</li>
             <li>Борец за вёрстку кнопок кнопками</li>
-            <li>Модерирую чат Веб-стандартов в&nbsp;Телеграме: <a href="https://t.me/webstandards_chat">@webstandards_chat</a></li>
+            <li>Амбассадор WTM</li>
+            <li>Приношу новости в <a href="https://t.me/webstandards_chat">"Веб-стандарты"</a></li>
             <li>Катаюсь на сноуборде и&nbsp;сёрф-скейте</li>
         </ul>
         </div>
@@ -147,38 +197,36 @@
         </style>
     </section>
 
-    <section class="slide" id="slide-2">
-        <blockquote>
-            <p>- А вы поддерживаете доступность на&nbsp;своём сайте?</p>
-            <p>- Да, у нас есть версия для слабовидящих!</p>
-        </blockquote>
-
-        <style>
-            #slide-2 p {
-                font-size: 42px;
-                line-height: 1.4;
-            }
-
-            #slide-2 blockquote {
-                width: 85%;
-                margin: 50px auto 0;
-            }
-        </style>
+    <section class="slide">
+        <h2>Отдельный слайд с кратким обзором, про что доклад???</h2>
+        <ul>
+            <li>Законы</li>
+            <li>Опыт слабовидящего человека</li>
+            <li>Что такое хорошо и что такое плохо</li>
+        </ul>
     </section>
 
-    <section class="slide" id="slide-3">
-        <img src="pictures/no.jpg" alt="no god please no" class="cover">
+    <section class="slide">
+        <h2>Интерактив</h2>
+    </section>
 
-        <style>
-            #slide-3 img {
-                height: 100%;
-                width: 100%;
-            }
+    <section class="slide">
+        <h2>Основные заблуждения</h2>
+        <ul>
+            <li>Доступность == ВДС</li>
+            <li>Положено по закону</li>
+            <li>Используем tabindex везде</li>
+            <li>У нас нет таких клиентов (+ примеры)</li>
+        </ul>
+    </section>
 
-            #slide-3:after {
-                opacity: 0;
-            }
-        </style>
+    <section class="slide">
+        <h2>Ограничения - либо есть, либо нет?</h2>
+        <p>Картинка с частичной доступностью</p>
+    </section>
+
+    <section class="slide">
+        <p>Отдельный слайд, чтобы обозначить, что в этом докладе делаю упор на ВДС?</p>
     </section>
 
     <section class="slide" id="slide-blind">
@@ -213,21 +261,6 @@
                 box-shadow: 0 0 3px 1px var(--color-grey);
                 width: 70px;
                 margin-right: 20px;
-            }
-        </style>
-    </section>
-
-    <section class="slide" id="slide-abbr">
-        <h2 class="shout">
-            Версия для слабовидящих <span>🠛</span> ВДС
-        </h2>
-
-        <style>
-            #slide-abbr h2 {
-                font-size: 100px;
-            }
-            #slide-abbr span {
-                display: block;
             }
         </style>
     </section>
@@ -737,6 +770,10 @@
         </style>
     </section>
 
+    <section class="slide">
+        <h2>Что такое "плохо"</h2>
+    </section>
+
     <section class="slide" id="slide-rzd">
         <h2>Сайт РЖД и версия для&nbsp;слабовидящих</h2>
         <video src="pictures/rzd.mp4" controls muted></video>
@@ -766,7 +803,7 @@
     </section>
 
     <section class="slide" id="slide-sport">
-        <h2>Сайт спортивной школы</h2>
+        <h2>Сайт спортивной школы ???</h2>
         <video src="pictures/sport-school.mp4" controls muted></video>
         <a href="http://xn----8sba6avgjnjeb2ifx.xn--p1ai/" class="copyright">Спортивная школа "Юность"</a>
 
@@ -784,66 +821,6 @@
 
         <style>
             #slide-mts video {
-                height: 380px;
-            }
-        </style>
-    </section>
-
-    <section class="slide" id="slide-story">
-        <img src="pictures/cool-story.jpg" alt="cat and lamp" class="cover">
-
-        <style>
-            #slide-story img {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-
-            #slide-story:after {
-                opacity: 0;
-            }
-        </style>
-    </section>
-
-    <section class="slide" id="slide-mirror">
-        <img src="pictures/mirror.jpg" alt="pointing mirror guy" class="cover">
-
-        <style>
-            #slide-mirror img {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-
-            #slide-mirror:after {
-                opacity: 0;
-            }
-        </style>
-    </section>
-
-    <section class="slide" id="slide-unaccess">
-        <img src="pictures/unaccessible.jpg" alt="unaccessible" class="cover">
-
-        <style>
-            #slide-unaccess img {
-                height: 100%;
-                width: 100%;
-                object-fit: cover;
-            }
-
-            #slide-unaccess:after {
-                opacity: 0;
-            }
-        </style>
-    </section>
-
-    <section class="slide" id="slide-avia">
-        <h2>Сайт Aviasales и тёмная тема</h2>
-        <video src="pictures/aviasales.mp4" controls muted></video>
-        <a href="https://www.aviasales.ru/" class="copyright">Aviasales</a>
-
-        <style>
-            #slide-avia video {
                 height: 380px;
             }
         </style>
@@ -881,71 +858,31 @@
         </style>
     </section>
 
-    <section class="slide" id="slide-veg">
-        <img src="pictures/vegan.jpg" alt="vegan cat" class="cover">
-        <img src="pictures/pasta.jpg" alt="pasta" class="next pic-1">
-        <img src="pictures/girl.jpg" alt="girl" class="next pic-2">
-        <img src="pictures/why.jpg" alt="cat why" class="next pic-3">
+    <section class="slide" id="slide-story">
+        <img src="pictures/cool-story.jpg" alt="cat and lamp" class="cover">
 
         <style>
-            #slide-veg img {
-                box-shadow: 0 0 3px 1px var(--color-grey);
+            #slide-story img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
             }
 
-            #slide-veg .pic-1 {
-                position: absolute;
-                width: 350px;
-                top: 40px;
-                left: 50px;
-            }
-
-            #slide-veg .pic-2 {
-                position: absolute;
-                width: 300px;
-                right: 50px;
-                bottom: 40px;
-            }
-
-            #slide-veg .pic-3 {
-                position: absolute;
-                z-index: 3;
-                height: 90%;
-                top: 5%;
-                left: 50%;
-                transform: translateX(-50%);
+            #slide-story:after {
+                opacity: 0;
             }
         </style>
     </section>
 
-    <section class="slide" id="slide-20">
-        <figure>
-            <blockquote>
-                <p>Версиями для слабовидящих я&nbsp;не&nbsp;пользуюсь. Открываю — из&nbsp;любопытства и&nbsp;чтобы посмеяться. И&nbsp;переключаюсь обратно.</p>
-            </blockquote>
-            <figcaption>Дима Волжский</figcaption>
-        </figure>
-
-        <style>
-            #slide-20 figure {
-                width: 85%;
-                margin: 80px 0 0 80px;
-            }
-
-            #slide-20 blockquote {
-                font-size: 35px;
-                line-height: 1.7;
-            }
-
-            #slide-20 blockquote::before {
-                margin-left: -150px;
-            }
-        </style>
+    <section class="slide">
+        <h2>Про плашки для настройки отображения?</h2>
+        <a href="https://www.bershka.com/ru/%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B-c1010193132.html">Bershka</a>
     </section>
 
     <section class="slide" id="slide-bad">
         <h2>Почему ВДС — это плохая идея?</h2>
         <ul>
-            <li class="next">Это не универсальное решение, т.к. существуют разные виды нарушений зрения</li>
+            <li class="next">Это не универсальное решение</li>
             <li class="next">Вместо инклюзивности — дискриминация</li>
             <li class="next">За слабовидящего уже кто-то решил, что ему видеть, а что — нет</li>
             <li class="next">Дополнительные затраты на дизайн, разработку, тестирование, поддержку</li>
@@ -968,6 +905,31 @@
                 font-size: 100px;
             }
         </style>
+    </section>
+
+    <section class="slide">
+        <h2>Что такое "хорошо"</h2>
+    </section>
+
+    <section class="slide" id="slide-avia">
+        <h2>Сайт Aviasales и тёмная тема</h2>
+        <video src="pictures/aviasales.mp4" controls muted></video>
+        <a href="https://www.aviasales.ru/" class="copyright">Aviasales</a>
+
+        <style>
+            #slide-avia video {
+                height: 380px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>Ещё примеры</h2>
+        <ul>
+            <li>яркие блоки</li>
+            <li>семантичная вёрстка</li>
+            <li>доступность с клавиатуры</li>
+        </ul>
     </section>
 
     <section class="slide" id="slide-test">
@@ -1042,6 +1004,16 @@
             <li class="next"><a href="https://habr.com/ru/post/530404/">A11y-инструменты в панели разработчика</a></li>
             <li class="next">Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации —
                 <a href="http://gov.design/blog/2016/11/08/accessibility.html">статья на gov.design</a></li>
+            <li></li>
+        </ul>
+    </section>
+
+    <section class="slide">
+        <h2>Нужно больше знаний?</h2>
+        <ul>
+            <li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a></li>
+            <li>Статьи про доступность на <a href="https://www.smashingmagazine.com/category/accessibility/">Smashing Magazine</a></li>
+            <li>Доклады, обучающие видео, курсы</li>
         </ul>
     </section>
 
@@ -1049,11 +1021,11 @@
         <div class="left-side">
             <h2>Я проникся, что&nbsp;дальше?</h2>
             <ul>
-                <li class="next">Делать доступно</li>
-                <li class="next">Диалог с начальством</li>
-                <li class="next">Делать доступно втихаря</li>
+                <li class="next">Менять работу</li>
                 <li class="next">Терпеть</li>
-                <li class="next">В крайнем случае — менять работу</li>
+                <li class="next">Делать доступно втихаря</li>
+                <li class="next">Диалог с начальством</li>
+                <li class="next">Делать доступно</li>
             </ul>
         </div>
         <img src="pictures/tasks.jpg" alt="where are tasks">
@@ -1074,15 +1046,13 @@
         </style>
     </section>
 
-    <section class="slide" id="slide-24">
-        <h2>Где научиться?</h2>
-
-        <p>
-            Курс Валерии Курмак про цифровую доступность<br>
-            <a href="https://www.kurmak.info/">kurmak.info</a>
-        </p>
-
-        <p>Ближайший поток — с 22 мая по 27 июня 2021 года</p>
+    <section class="slide">
+        <h2>Выводы</h2>
+        <ul>
+            <li>Думаем о пользователе</li>
+            <li>Потратив минимум усилий и использовав простые инструменты, можно уже сейчас облегчить кому-то жизнь</li>
+            <li>Доступная среда 2025???</li>
+        </ul>
     </section>
 
     <section class="slide" id="slide-27">
@@ -1171,6 +1141,10 @@
                 object-fit: cover;
             }
         </style>
+    </section>
+
+    <section class="slide">
+        <h2>Call To Action</h2>
     </section>
 
     <div class="progress"></div>
