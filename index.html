@@ -160,10 +160,11 @@
             <li>Борец за вёрстку кнопок кнопками</li>
             <li>Амбассадор WTM</li>
             <li>Приношу новости в <a href="https://t.me/webstandards_chat">"Веб-стандарты"</a></li>
+            <li>Помогаю с активностями в <a href="https://t.me/jun_mid_front">джунском чате</a></li>
             <li>Катаюсь на сноуборде и&nbsp;сёрф-скейте</li>
         </ul>
         </div>
-        <img src="pictures/me.jpg" alt="Lena Ryan">
+        <img src="pictures/me-v4.jpg" alt="Lena Ryan">
 
         <style>
             #slide-about {
@@ -189,9 +190,12 @@
 
             #slide-about img {
                 display: block;
-                width: 355px;
-                position: relative;
-                top: -10px;
+                width: auto;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                height: 100%;
                 box-shadow: 0 0 3px 1px var(--color-grey);
             }
         </style>
@@ -206,23 +210,48 @@
         </ul>
     </section>
 
-    <section class="slide">
-        <h2>Интерактив</h2>
+    <section class="slide" id="inter">
+        <img class="cover" src="pictures/dud.jpg" alt="Yury Dud">
+
+        <style>
+            #inter .cover {
+                max-height: unset;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            #inter:after {
+                opacity: 0;
+            }
+        </style>
     </section>
 
     <section class="slide">
         <h2>Основные заблуждения</h2>
-        <ul>
-            <li>Доступность == ВДС</li>
-            <li>Положено по закону</li>
-            <li>Используем tabindex везде</li>
-            <li>У нас нет таких клиентов (+ примеры)</li>
+        <ul class="columns two">
+            <li class="next">Доступность == ВДС</li>
+            <li class="next">ВДС положены по закону</li>
+            <li class="next">Только для инвалидов по зрению</li>
+            <li class="next">Долго и дорого</li>
+            <li class="next">Легко внедрить после релиза</li>
+            <li class="next">Специально обученный человек</li>
+            <li class="next">Используем tabindex везде</li>
+            <li class="next">Нет таких клиентов</li>
+            <li class="next">Человек либо полностью здоров, либо с ограничениями</li>
         </ul>
     </section>
 
-    <section class="slide">
-        <h2>Ограничения - либо есть, либо нет?</h2>
-        <p>Картинка с частичной доступностью</p>
+    <section class="slide" id="disab">
+        <img src="pictures/disabilities.svg" alt="disabilities">
+
+        <style>
+            #disab img {
+                display: block;
+                margin: 0 auto;
+                max-width: 100%;
+                height: 460px;
+            }
+        </style>
     </section>
 
     <section class="slide">
@@ -380,7 +409,7 @@
     </section>
 
     <section class="slide" id="slide-why">
-        <h2 class="shout">Почему нужна версия для слабовидящих?</h2>
+        <h2 class="shout">Почему внедряют версии для слабовидящих?</h2>
 
         <style>
             #slide-why h2 {
@@ -587,7 +616,7 @@
     </section>
 
     <section class="slide" id="slide-zoom">
-        <h2>Скрин-зум и большие мониторы</h2>
+        <h2>Масштабирование и&nbsp;большие&nbsp;мониторы</h2>
         <div class="images">
             <img src="pictures/monitor.jpg" class="pic-1" alt="monitor">
             <img src="pictures/zoom.jpg" class="pic-2" alt="screen zoom">
@@ -734,7 +763,7 @@
     </section>
 
     <section class="slide" id="slide-dima">
-        <video class="cover" src="pictures/dima.mp4" controls muted></video>
+        <video class="cover next" src="pictures/dima.mp4" muted autoplay></video>
 
         <style>
             #slide-dima video {
@@ -770,8 +799,14 @@
         </style>
     </section>
 
-    <section class="slide">
-        <h2>Что такое "плохо"</h2>
+    <section class="slide" id="bad">
+        <h2 class="shout">Что такое "плохо"</h2>
+
+        <style>
+            #bad h2 {
+                font-size: 100px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-rzd">
@@ -884,8 +919,8 @@
         <ul>
             <li class="next">Это не универсальное решение</li>
             <li class="next">Вместо инклюзивности — дискриминация</li>
-            <li class="next">За слабовидящего уже кто-то решил, что ему видеть, а что — нет</li>
-            <li class="next">Дополнительные затраты на дизайн, разработку, тестирование, поддержку</li>
+            <li class="next">За слабовидящего уже принято решение</li>
+            <li class="next">Дополнительные затраты</li>
             <li class="next">По закону хватит доступного основного сайта</li>
             <li class="next">Не все слабовидящие пользуются отдельными версиями</li>
         </ul>
@@ -895,6 +930,10 @@
                 margin-bottom: 8px;
             }
         </style>
+    </section>
+
+    <section class="slide">
+        <img class="cover" src="pictures/pandus.jpg" alt="ramp">
     </section>
 
     <section class="slide" id="slide-12">
@@ -907,8 +946,14 @@
         </style>
     </section>
 
-    <section class="slide">
-        <h2>Что такое "хорошо"</h2>
+    <section class="slide" id="good">
+        <h2 class="shout">Что такое "хорошо"</h2>
+
+        <style>
+            #good h2 {
+                font-size: 100px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-avia">
@@ -930,6 +975,60 @@
             <li>семантичная вёрстка</li>
             <li>доступность с клавиатуры</li>
         </ul>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">А как у них?</h2>
+    </section>
+
+    <section class="slide" id="rus">
+        <h2>Российские компании</h2>
+        <div class="columns three">
+            <div>
+                <h3>ВК</h3>
+                <ul>
+                    <li class="next">Доступная мобильная версия</li>
+                    <li class="next">Тёмная тема в&nbsp;приложении</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Сбер</h3>
+                <ul>
+                    <li class="next">С 2016 года</li>
+                    <li class="next">Доступный дизайн</li>
+                    <li class="next">Незрячие тестировщики</li>
+                    <li class="next">Доступное приложение</li>
+                    <li class="next"><a href="https://www.sberbank.ru/common/img/uploaded/redirected/person/digital_guideline2/assets/index.html">Свой гайд</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Яндекс</h3>
+                <ul>
+                    <li class="next">С 2009 года</li>
+                    <li class="next">Незрячие тестировщики</li>
+                    <li class="next">Доступные сервисы</li>
+                </ul>
+            </div>
+        </div>
+
+        <style>
+            #rus h3 {
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+
+            #rus li {
+                line-height: 1.4;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2>А не в России?</h2>
+        <a href="https://medium.com/web-standards/a11y-and-law-a81dd9dd5fc8">https://medium.com/web-standards/a11y-and-law-a81dd9dd5fc8</a>
+        <a href="https://medium.com/web-standards/pragmatic-a11y-rules-b16dd2f77685">https://medium.com/web-standards/pragmatic-a11y-rules-b16dd2f77685</a>
+        <a href="https://turumburum.ua/blog/proverka-dostupnosti-sayta-dlya-lyudey-s-ogranichennymi-vozmozhnostyami-w3c-standarty/">https://turumburum.ua/blog/proverka-dostupnosti-sayta-dlya-lyudey-s-ogranichennymi-vozmozhnostyami-w3c-standarty/</a>
+        <a href="https://telegraf.design/accessability-is-a-new-black-5-printsipov-dostupnogo-veb-dizajna/">https://telegraf.design/accessability-is-a-new-black-5-printsipov-dostupnogo-veb-dizajna/</a>
     </section>
 
     <section class="slide" id="slide-test">
@@ -1004,7 +1103,6 @@
             <li class="next"><a href="https://habr.com/ru/post/530404/">A11y-инструменты в панели разработчика</a></li>
             <li class="next">Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации —
                 <a href="http://gov.design/blog/2016/11/08/accessibility.html">статья на gov.design</a></li>
-            <li></li>
         </ul>
     </section>
 
@@ -1050,7 +1148,7 @@
         <h2>Выводы</h2>
         <ul>
             <li>Думаем о пользователе</li>
-            <li>Потратив минимум усилий и использовав простые инструменты, можно уже сейчас облегчить кому-то жизнь</li>
+            <li>Минимум усилий 🠦 Заметная польза</li>
             <li>Доступная среда 2025???</li>
         </ul>
     </section>
@@ -1079,7 +1177,9 @@
             <h3>Telegram-канал Валерии Курмак</h3>
             <a href="https://t.me/neiskluchenie">Не исключение</a>
 
-            <p style="margin-top:25px;">Дима Волжский в Twitter: <a href="https://twitter.com/DimaVolzhsky">@DimaVolzhsky</a></p>
+            <p style="margin-top:20px;">Дима Волжский в Twitter: <a href="https://twitter.com/DimaVolzhsky">@DimaVolzhsky</a></p>
+
+            <p>Дизайн слайдов: <a href="https://t.me/eirelavfilatova">Валерия Филатова</a></p>
         </div>
 
         <img src="pictures/qr-code.jpg" alt="qr-code for slides">
@@ -1144,7 +1244,7 @@
     </section>
 
     <section class="slide">
-        <h2>Call To Action</h2>
+        <h2>Делая сайты доступными, вы делаете вклад в своё будущее</h2>
     </section>
 
     <div class="progress"></div>
