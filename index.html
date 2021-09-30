@@ -365,7 +365,7 @@
             }
 
             #slide-profit.active .spotlight-1 {
-                animation: hide 10s ease-in-out 10s forwards;
+                animation: hide 5s ease-in-out 7s forwards;
                 --spotlight-top: -62px;
                 --spotlight-left: -294px;
                 --spotlight-width: 280px;
@@ -373,7 +373,7 @@
             }
 
             #slide-profit.active .spotlight-2 {
-                animation: hide 10s ease-in-out 20s forwards;
+                animation: hide 5s ease-in-out 15s forwards;
                 --spotlight-top: -62px;
                 --spotlight-left: -78px;
                 --spotlight-width: 163px;
@@ -381,7 +381,7 @@
             }
 
             #slide-profit.active .spotlight-3 {
-                animation: hide 10s ease-in-out 30s forwards;
+                animation: hide 5s ease-in-out 22s forwards;
                 --spotlight-top: -2px;
                 --spotlight-left: -8px;
                 --spotlight-width: 864px;
@@ -389,7 +389,7 @@
             }
 
             #slide-profit.active .spotlight-4 {
-                animation: hide 10s ease-in-out 40s forwards;
+                animation: hide 5s ease-in-out 30s forwards;
                 --spotlight-top: -62px;
                 --spotlight-left: 195px;
                 --spotlight-width: 130px;
@@ -815,13 +815,55 @@
     </section>
 
     <section class="slide" id="slide-rzd">
-        <h2>Сайт РЖД и версия для&nbsp;слабовидящих</h2>
-        <video src="pictures/rzd.mp4" controls muted></video>
+        <h2>Сайт РЖД</h2>
+
+        <img src="pictures/rzd-1.jpg" alt="rzd" class="next rzd-1">
+        <img src="pictures/rzd-2.jpg" alt="rzd" class="next rzd-2">
+
         <a href="https://www.rzd.ru/" class="copyright">Сайт РЖД</a>
 
         <style>
-            #slide-rzd video {
-                height: 350px;
+            #slide-rzd img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #slide-rzd .rzd-2 {
+                right: 60px;
+                bottom: 7%;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="rzd-b">
+        <h2>Сайт РЖД и ВДС</h2>
+
+        <img src="pictures/rzd-b-1.jpg" alt="rzd" class="next rzd-b-1">
+        <img src="pictures/rzd-b-2.jpg" alt="rzd" class="next rzd-b-2">
+        <img src="pictures/rzd-b-3.jpg" alt="rzd" class="next rzd-b-3">
+
+        <a href="https://www.rzd.ru/" class="copyright">Сайт РЖД</a>
+
+        <style>
+            #rzd-b img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #rzd-b .rzd-b-2 {
+                right: 60px;
+                bottom: 7%;
+            }
+
+            #rzd-b .rzd-b-3 {
+                left: 50%;
+                transform: translateX(-50%);
             }
         </style>
     </section>
@@ -856,12 +898,48 @@
 
     <section class="slide" id="slide-mts">
         <h2>Сайт Мончегорской теплосети</h2>
-        <video src="pictures/mts.mp4" controls muted></video>
+
+        <img src="pictures/mts-1.jpg" alt="rzd" class="next mts-1">
+        <img src="pictures/mts-2.jpg" alt="rzd" class="next mts-2">
+
         <a href="https://mtseti.ru/" class="copyright">Мончегорские теплосети</a>
 
         <style>
-            #slide-mts video {
-                height: 380px;
+            #slide-mts img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #slide-mts .mts-2 {
+                right: 60px;
+                bottom: 7%;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="mts-b">
+        <h2>Мончегорская теплосеть и ВДС</h2>
+
+        <img src="pictures/mts-b-1.jpg" alt="rzd" class="next mts-b-1">
+        <img src="pictures/mts-b-2.jpg" alt="rzd" class="next mts-b-2">
+
+        <a href="https://mtseti.ru/" class="copyright">Мончегорские теплосети</a>
+
+        <style>
+            #mts-b img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #mts-b .mts-b-2 {
+                right: 60px;
+                bottom: 4%;
             }
         </style>
     </section>
@@ -962,24 +1040,131 @@
     </section>
 
     <section class="slide" id="slide-avia">
-        <h2>Сайт Aviasales и тёмная тема</h2>
-        <video src="pictures/aviasales.mp4" controls muted></video>
+        <h2>Aviasales</h2>
+        <img src="pictures/avia-2.jpg" class="avia-2 next" alt="aviasales">
+        <img src="pictures/avia-3.jpg" class="avia-3 next" alt="aviasales">
+
         <a href="https://www.aviasales.ru/" class="copyright">Aviasales</a>
 
         <style>
-            #slide-avia video {
-                height: 380px;
+            #slide-avia img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #slide-avia .avia-3 {
+                right: 60px;
+                bottom: 7%;
             }
         </style>
     </section>
 
-    <section class="slide">
-        <h2>Ещё примеры</h2>
-        <ul>
-            <li>яркие блоки</li>
-            <li>семантичная вёрстка</li>
-            <li>доступность с клавиатуры</li>
-        </ul>
+    <section class="slide" id="gov">
+        <h2>GOV.UK</h2>
+        <img src="pictures/gov-1.jpg" class="gov-1 next" alt="gov.uk">
+        <img src="pictures/gov-2.jpg" class="gov-2 next" alt="gov.uk">
+
+        <a href="https://www.gov.uk/" class="copyright">GOV.UK</a>
+
+        <style>
+            #gov img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #gov .gov-2 {
+                right: 60px;
+                bottom: 7%;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="gov-code">
+        <pre>
+            <code>&lt;li&gt;</code>
+                <code>&lt;button</code>
+                <code>  <mark>aria-controls</mark>="super-navigation-menu"</code>
+                <code>  <mark>aria-expanded</mark>="false"</code>
+                <code>  <mark>aria-label</mark>="Show Government activity menu"</code>
+                <code>  <mark>data-text-for-hide</mark>="Hide Government activity menu"</code>
+                <code>  <mark>data-text-for-show</mark>="Show Government activity menu"</code>
+                <code>  type="button"&gt;</code>
+                <code>  Government activity</code>
+                <code>&lt;/button&gt;</code>
+            <code>&lt;/li&gt;</code>
+        </pre>
+
+        <a href="https://www.gov.uk/" class="copyright">GOV.UK</a>
+
+        <style>
+            #gov-code pre code {
+                line-height: 1.6;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="kur">
+        <h2>accessibilityunity.com</h2>
+
+        <img src="pictures/kur-1.jpg" class="kur-1 next" alt="kurmak info">
+        <img src="pictures/kur-2.jpg" class="kur-2 next" alt="kurmak info">
+        <img src="pictures/kur-3.jpg" class="kur-3 next" alt="kurmak info">
+
+        <a href="https://accessibilityunity.com/" class="copyright">accessibilityunity.com</a>
+
+        <style>
+            #kur img {
+                display: block;
+                width: 50%;
+                max-width: 620px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #kur .kur-2 {
+                right: 60px;
+                top: 20%;
+                max-width: 300px;
+            }
+
+            #kur .kur-3 {
+                left: 30%;
+                bottom: 7%;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="kur-code">
+        <pre>
+            <code>&lt;form method="POST" target="feedback"&gt;</code>
+            <code>  &lt;label&gt;</code>
+            <code>      <mark>&lt;span&gt;Электронная почта&lt;/span&gt;</mark></code>
+            <code>      &lt;input type="email" name="email"&gt;</code>
+            <code>      <mark>&lt;span aria-live="assertive"&gt;Укажите почту&lt;/span&gt;</mark></code>
+            <code>  &lt;/label&gt;</code>
+            <code>  &lt;label&gt;</code>
+            <code>      <mark>&lt;span&gt;Что интересует&lt;/span&gt;</mark></code>
+            <code>      &lt;textarea name="message" placeholder="Вопрос..."&gt;&lt;/textarea&gt;</code>
+            <code>  &lt;/label&gt;</code>
+            <code>  &lt;button <mark>type="submit"</mark>&gt;Отправить&lt;/button&gt;</code>
+            <code>  <mark>&lt;span&gt;Спасибо! Ответим в почте)&lt;/span&gt;</mark></code>
+            <code>&lt;/form&gt;</code>
+        </pre>
+
+        <a href="https://accessibilityunity.com/" class="copyright">accessibilityunity.com</a>
+
+        <style>
+            #kur-code pre code {
+                line-height: 1.6;
+                font-size: 22px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="them">
@@ -1117,7 +1302,7 @@
     </section>
 
     <section class="slide" id="slide-color">
-        <video class="cover" src="pictures/color-blind.mp4" controls muted></video>
+        <video class="cover next" src="pictures/color-blind.mp4" autoplay muted></video>
 
         <style>
             #slide-color video {
