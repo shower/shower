@@ -66,7 +66,6 @@
     <section class="slide" id="cover">
         <h2 class="top">Тебе не нужна</h2>
         <h2 class="bottom">версия для слабовидящих</h2>
-        <img class="cover" src="pictures/ne-nado.jpg" alt="meme cat who says please dont">
         <style>
             #cover {
                 display: flex;
@@ -87,13 +86,6 @@
             #cover h2.bottom {
                 font-size: 60px;
                 margin-bottom: 70px;
-            }
-
-            #cover .cover {
-                max-height: unset;
-                width: 100%;
-                object-fit: cover;
-                opacity: 0.6;
             }
 
             #cover:after {
@@ -202,11 +194,12 @@
     </section>
 
     <section class="slide">
-        <h2>Отдельный слайд с кратким обзором, про что доклад???</h2>
+        <h2>Поговорим про:</h2>
         <ul>
-            <li>Законы</li>
-            <li>Опыт слабовидящего человека</li>
-            <li>Что такое хорошо и что такое плохо</li>
+            <li class="next">популярные заблуждения;</li>
+            <li class="next">законы;</li>
+            <li class="next">опыт слабовидящего человека;</li>
+            <li class="next">что такое хорошо и что такое плохо.</li>
         </ul>
     </section>
 
@@ -229,15 +222,15 @@
     <section class="slide">
         <h2>Основные заблуждения</h2>
         <ul class="columns two">
-            <li class="next">Доступность == ВДС</li>
-            <li class="next">ВДС положены по закону</li>
-            <li class="next">Только для инвалидов по зрению</li>
+            <li class="next">Доступность == Версия для&nbsp;слабовидящих (ВДС)</li>
+            <li class="next">ВДС положены по&nbsp;закону</li>
+            <li class="next">Только для инвалидов по&nbsp;зрению</li>
             <li class="next">Долго и дорого</li>
             <li class="next">Легко внедрить после релиза</li>
             <li class="next">Специально обученный человек</li>
             <li class="next">Используем tabindex везде</li>
             <li class="next">Нет таких клиентов</li>
-            <li class="next">Человек либо полностью здоров, либо с ограничениями</li>
+            <li class="next">Человек либо полностью здоров, либо с&nbsp;ограничениями</li>
         </ul>
     </section>
 
@@ -254,8 +247,20 @@
         </style>
     </section>
 
-    <section class="slide">
-        <p>Отдельный слайд, чтобы обозначить, что в этом докладе делаю упор на ВДС?</p>
+    <section class="slide" id="not-eq">
+        <h2 class="shout shrink">Доступность<span class="not-equal">≠</span>ВДС</h2>
+
+        <style>
+            #not-eq h2 {
+                font-size: 100px;
+            }
+
+            #not-eq .not-equal {
+                display: block;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-blind">
@@ -977,8 +982,14 @@
         </ul>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="them">
         <h2 class="shout">А как у них?</h2>
+
+        <style>
+            #them h2 {
+                font-size: 100px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="rus">
@@ -1023,12 +1034,46 @@
         </style>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="not-rus">
         <h2>А не в России?</h2>
-        <a href="https://medium.com/web-standards/a11y-and-law-a81dd9dd5fc8">https://medium.com/web-standards/a11y-and-law-a81dd9dd5fc8</a>
-        <a href="https://medium.com/web-standards/pragmatic-a11y-rules-b16dd2f77685">https://medium.com/web-standards/pragmatic-a11y-rules-b16dd2f77685</a>
-        <a href="https://turumburum.ua/blog/proverka-dostupnosti-sayta-dlya-lyudey-s-ogranichennymi-vozmozhnostyami-w3c-standarty/">https://turumburum.ua/blog/proverka-dostupnosti-sayta-dlya-lyudey-s-ogranichennymi-vozmozhnostyami-w3c-standarty/</a>
-        <a href="https://telegraf.design/accessability-is-a-new-black-5-printsipov-dostupnogo-veb-dizajna/">https://telegraf.design/accessability-is-a-new-black-5-printsipov-dostupnogo-veb-dizajna/</a>
+        <div class="columns three">
+            <div>
+                <h3>США</h3>
+                <ul>
+                    <li class="next"><a href="https://beta.ada.gov/">ADA</a></li>
+                    <li class="next"><a href="https://www.access-board.gov/law/ra.html">Section 508</a></li>
+                    <li class="next">Прецедентная система</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Европа</h3>
+                <ul>
+                    <li class="next"><a href="http://nda.ie/Publications/Communications/EU-Web-Accessibility-Directive/">EU Web Accessibility Directive</a></li>
+                    <li class="next"><a href="https://ec.europa.eu/social/main.jsp?catId=1202">European Accessibility Act</a></li>
+                    <li class="next"><a href="https://www.essentialaccessibility.com/blog/en-301-549/">Standard EN 301 549</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Австралия</h3>
+                <ul>
+                    <li class="next"><a href="https://humanrights.gov.au/our-work/disability-rights/world-wide-web-access-disability-discrimination-act-advisory-notes-ver">Закон о&nbsp;дискриминации инвалидов</a></li>
+                </ul>
+            </div>
+        </div>
+        <a class="copyright" href="https://medium.com/web-standards/a11y-and-law-a81dd9dd5fc8">Доступность и закон</a>
+
+        <style>
+            #not-rus h3 {
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+
+            #not-rus li {
+                line-height: 1.4;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-test">
