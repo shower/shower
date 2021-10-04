@@ -1,58 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <title>Shower Presentation Engine</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&family=Ubuntu:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="node_modules/@shower/ribbon/styles/styles.css">
     <style>
+        @font-face {
+            font-family: 'TT Travels';
+            src: url('fonts/TTTravels-Regular.woff') format('woff'),
+            url('fonts/TTTravels-Regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'TT Travels';
+            src: url('fonts/TTTravels-DemiBold.woff') format('woff'),
+            url('fonts/TTTravels-DemiBold.ttf') format('truetype');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
         .shower {
             --slide-ratio: calc(16 / 9);
             --slide-side: 80px;
-            font-family: Ubuntu, sans-serif;
+            --color-yellow: #ffee00;
+            --color-red: #ff4141;
+            --ribbon-size: 60px;
+            --progress-size: 7px;
+            font-family: 'TT Travels', sans-serif;
+            color: white;
         }
         .slide h1 {
-            font-family: Ubuntu, sans-serif;
+            font-family: 'TT Travels', sans-serif;
+            letter-spacing: -1px;
         }
         .slide h2 {
-            color: #222;
-            font-family: Ubuntu, sans-serif;
+            color: black;
+            font-family: 'TT Travels', sans-serif;
+            background-color: var(--color-yellow);
+            padding: 15px 25px 15px 10px;
+            width: fit-content;
+            position: relative;
+            font-size: 44px;
+            letter-spacing: -1px;
+        }
+        .slide h2:before {
+            content: '';
+            position: absolute;
+            background-color: var(--color-yellow);
+            top: 0;
+            bottom: 0;
+            right: 99%;
+            left: -50%;
+        }
+        .slide h2.shout {
+            font-size: 70px;
+            color: white;
+            background-color: transparent;
+        }
+        .slide h2.shout:before {
+            display: none;
         }
         .slide {
-            background-color: rgb(198, 176, 119);
+            background-color: black;
+            /* background-color: grey; */
             padding-top: 60px;
         }
         .slide a {
-            color: #79421a;
+            color: var(--color-red);
         }
         .slide blockquote::before {
             font-size: 7em;
             margin-left: -110px;
             color: #965120;
         }
-        .slide li {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }d
-        .slide li::before {
-            opacity: 1;
+        .slide p {
+            line-height: 1.2;
         }
+        .slide li {
+            line-height: 1.2;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide ul > li:lang(ru)::before {
+            content:'';
+            display: block;
+            background-color: var(--color-red);
+            width: 32px;
+            height: 15px;
+            opacity: 1;
+            position: relative;
+            transform: none;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
         .slide::after {
-            background-image: none;
-            background-color: #965120;
-            width: 50px;
-            height: 50px;
+            background-image: url(pictures/yellow-rect.svg);
+            height: 60px;
             padding-top: 0;
-            line-height: 50px;
-            top: 20px;
-            border-radius: 50%;
+            font-size: 25px;
+            font-weight: 600;
+            line-height: 1;
+            top: 30px;
             left: unset;
-            right: 25px;
+            right: 30px;
+            display: grid;
+            place-items: center;
+            color: black;
         }
         .progress::before {
-            background-color: #965120;
+            background-image: linear-gradient(270deg, var(--color-red) 0%, var(--color-yellow) 114%);;
+            transform: none;
+        }
+        .slide mark {
+            background-color: transparent;
+            padding: 0;
+            color: var(--color-yellow);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -64,8 +135,10 @@
     </header>
 
     <section class="slide" id="cover">
-        <h2 class="top">Тебе не нужна</h2>
-        <h2 class="bottom">версия для слабовидящих</h2>
+        <h1>Тебе не нужна
+        <span>версия для слабовидящих</span></h1>
+        <p>Лена Райан</p>
+        <img src="pictures/logo_fc.svg" alt="" role="presentation">
         <style>
             #cover {
                 display: flex;
@@ -73,23 +146,31 @@
                 justify-content: space-between;
             }
 
-            #cover h2 {
-                color: #222;
-                text-align: center;
-                margin-top: -5px;
-            }
-
-            #cover h2.top {
-                font-size: 80px;
-            }
-
-            #cover h2.bottom {
-                font-size: 60px;
-                margin-bottom: 70px;
+            #cover h1 {
+               line-height: 1;
+               margin-top: 20px;
+                margin-bottom: 25px;
+                font-size: 55px;
             }
 
             #cover:after {
                 opacity: 0;
+            }
+
+            #cover img {
+                display: block;
+                width: 260px;
+                margin-bottom: 80px;
+            }
+
+            #cover span {
+                display: block;
+                color: var(--color-yellow);
+            }
+
+            #cover p {
+                margin-bottom: auto;
+                font-size: 32px;
             }
         </style>
     </section>
@@ -101,10 +182,6 @@
         <img src="pictures/why.jpg" alt="cat why" class="next pic-3">
 
         <style>
-            #slide-veg img {
-                box-shadow: 0 0 3px 1px var(--color-grey);
-            }
-
             #slide-veg .pic-1 {
                 position: absolute;
                 width: 350px;
@@ -131,8 +208,19 @@
     </section>
 
 
-    <section class="slide">
-        <h2>Опыт внедрения ВДС</h2>
+    <section class="slide" id="expert">
+        <img src="pictures/expert.jpg" alt="expert" class="cover">
+
+        <style>
+            #expert .cover {
+                height: 100%;
+                object-fit: cover;
+            }
+
+            #expert:after {
+                opacity: 0;
+            }
+        </style>
     </section>
 
     <section class="slide">
@@ -152,7 +240,7 @@
             <li>Борец за вёрстку кнопок кнопками</li>
             <li>Амбассадор WTM</li>
             <li>Приношу новости в <a href="https://t.me/webstandards_chat">"Веб-стандарты"</a></li>
-            <li>Помогаю с активностями в <a href="https://t.me/jun_mid_front">джунском чате</a></li>
+            <li>Помогаю с активностями в <a href="https://t.me/jun_mid_front">джун-чате</a></li>
             <li>Катаюсь на сноуборде и&nbsp;сёрф-скейте</li>
         </ul>
         </div>
@@ -166,13 +254,20 @@
             }
 
             #slide-about h2 {
-                margin-bottom: 25px;
+                margin-bottom: 85px;
+                width: 100%;
+                text-align: right;
+                text-transform: uppercase;
+                font-weight: 400;
+                box-sizing: border-box;
             }
 
             #slide-about .tg-link {
-                position: relative;
-                top: -30px;
-                font-size: 23px;
+                position: absolute;
+                font-size: 17px;
+                right: 0;
+                top: 90px;
+                text-transform: uppercase;
             }
 
             #slide-about li {
@@ -180,20 +275,28 @@
                 margin-bottom: 10px;
             }
 
+            #slide-about li a {
+                margin-left: 10px;
+            }
+
             #slide-about img {
                 display: block;
-                width: auto;
                 position: absolute;
                 top: 0;
                 bottom: 0;
-                right: 0;
+                right: 60px;
+                width: 30%;
                 height: 100%;
-                box-shadow: 0 0 3px 1px var(--color-grey);
+                object-fit: cover;
+            }
+
+            #slide-about .left-side {
+                position: relative;
             }
         </style>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="talk">
         <h2>Поговорим про:</h2>
         <ul>
             <li class="next">популярные заблуждения;</li>
@@ -201,6 +304,12 @@
             <li class="next">опыт слабовидящего человека;</li>
             <li class="next">что такое хорошо и что такое плохо.</li>
         </ul>
+
+        <style>
+            #talk ul {
+                margin-top: 60px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="inter">
@@ -221,17 +330,21 @@
 
     <section class="slide">
         <h2>Основные заблуждения</h2>
-        <ul class="columns two">
-            <li class="next">Доступность == Версия для&nbsp;слабовидящих (ВДС)</li>
-            <li class="next">ВДС положены по&nbsp;закону</li>
-            <li class="next">Только для инвалидов по&nbsp;зрению</li>
-            <li class="next">Долго и дорого</li>
-            <li class="next">Легко внедрить после релиза</li>
-            <li class="next">Специально обученный человек</li>
-            <li class="next">Используем tabindex везде</li>
-            <li class="next">Нет таких клиентов</li>
-            <li class="next">Человек либо полностью здоров, либо с&nbsp;ограничениями</li>
-        </ul>
+        <div class="columns two">
+            <ul>
+                <li class="next">Доступность == Версия для&nbsp;слабовидящих (ВДС)</li>
+                <li class="next">ВДС положены по&nbsp;закону</li>
+                <li class="next">Только для инвалидов по&nbsp;зрению</li>
+                <li class="next">Долго и дорого</li>
+                <li class="next">Легко внедрить после релиза</li>
+            </ul>
+            <ul>
+                <li class="next">Специально обученный человек</li>
+                <li class="next">Используем tabindex везде</li>
+                <li class="next">Нет таких клиентов</li>
+                <li class="next">Человек либо полностью здоров, либо с&nbsp;ограничениями</li>
+            </ul>
+        </div>
     </section>
 
     <section class="slide" id="disab">
@@ -248,23 +361,19 @@
     </section>
 
     <section class="slide" id="not-eq">
-        <h2 class="shout shrink">Доступность<span class="not-equal">≠</span>ВДС</h2>
+        <h2 class="shout shrink">Доступность<img src="pictures/not-equal.svg" alt="not equal" class="not-equal">ВДС</h2>
 
         <style>
-            #not-eq h2 {
-                font-size: 100px;
-            }
-
             #not-eq .not-equal {
                 display: block;
-                margin-top: 20px;
-                margin-bottom: 10px;
+                margin: 60px auto;
+                width: 80px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-blind">
-        <h2>Что такое «версия для&nbsp;слабовидящих»?</h2>
+        <h2>Что такое ВДС?</h2>
         <img src="pictures/blind.jpg" class="blind-version" alt="blind-version">
         <div class="blind-switches next">
             <img src="pictures/blind-switch-2.jpg" class="switch-2" alt="blind switch">
@@ -281,7 +390,7 @@
             #slide-blind .blind-switches {
                 display: flex;
                 align-items: center;
-                top: 45%;
+                top: 41%;
                 left: 53%;
                 position: absolute;
             }
@@ -301,7 +410,7 @@
 
     <section class="slide" id="slide-7">
         <div class="left-side">
-            <h2>Для кого делается ВДС?</h2>
+            <h2>Для кого <br>делается ВДС?</h2>
             <ul>
                 <li class="next">Слабовидящие</li>
                 <li class="next">Дальтоники</li>
@@ -330,7 +439,7 @@
     <section class="slide" id="slide-profit">
         <h2>Предполагаемая польза</h2>
         <ul>
-            <li class="next">Настройка отображения под себя
+            <li class="next wrap">Настройка отображения под себя
                 <img src="pictures/profit.jpg" class="blind" alt="blind version">
                 <div class="spotlight spotlight-1 next"></div>
                 <div class="spotlight spotlight-2 next"></div>
@@ -349,6 +458,10 @@
                 margin-top: 15px;
             }
 
+            #slide-profit .wrap {
+                flex-wrap: wrap;
+            }
+
             #slide-profit .spotlight {
                 --spotlight-radius: 0;
                 --spotlight-opacity: 0.7;
@@ -364,17 +477,21 @@
                 }
             }
 
+            .spotlight {
+                z-index: 10;
+            }
+
             #slide-profit.active .spotlight-1 {
                 animation: hide 5s ease-in-out 7s forwards;
-                --spotlight-top: -62px;
-                --spotlight-left: -294px;
+                --spotlight-top: -49px;
+                --spotlight-left: -292px;
                 --spotlight-width: 280px;
                 --spotlight-height: 55px;
             }
 
             #slide-profit.active .spotlight-2 {
                 animation: hide 5s ease-in-out 15s forwards;
-                --spotlight-top: -62px;
+                --spotlight-top: -49px;
                 --spotlight-left: -78px;
                 --spotlight-width: 163px;
                 --spotlight-height: 55px;
@@ -382,15 +499,15 @@
 
             #slide-profit.active .spotlight-3 {
                 animation: hide 5s ease-in-out 22s forwards;
-                --spotlight-top: -2px;
-                --spotlight-left: -8px;
+                --spotlight-top: 14px;
+                --spotlight-left: -9px;
                 --spotlight-width: 864px;
                 --spotlight-height: 75px;
             }
 
             #slide-profit.active .spotlight-4 {
                 animation: hide 5s ease-in-out 30s forwards;
-                --spotlight-top: -62px;
+                --spotlight-top: -49px;
                 --spotlight-left: 195px;
                 --spotlight-width: 130px;
                 --spotlight-height: 55px;
@@ -414,56 +531,54 @@
     </section>
 
     <section class="slide" id="slide-why">
-        <h2 class="shout">Почему внедряют версии для слабовидящих?</h2>
-
-        <style>
-            #slide-why h2 {
-                font-size: 100px;
-            }
-        </style>
+        <h2 class="shout"><span style="color: var(--color-red)">Почему внедряют</span> версии для слабовидящих?</h2>
     </section>
 
     <section class="slide" id="slide-2012">
         <h2>ГОСТ Р 52872-2012</h2>
-        <p>Интернет-ресурсы. Требования доступности <mark>для инвалидов по&nbsp;зрению</mark></p>
+        <p class="title-2012">Интернет-ресурсы. Требования доступности <mark>для инвалидов по&nbsp;зрению</mark></p>
         <p>Введён 01.01.2014</p>
         <a href="http://docs.cntd.ru/document/1200103663" class="copyright">ГОСТ Р 52872-2012</a>
-        <img src="pictures/docs.jpg" alt="" role="presentation" class="cover">
 
         <style>
-            #slide-2012 .cover {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.2;
+            #slide-2012 {
+                font-size: 35px;
+            }
+
+            #slide-2012 .title-2012 {
+                margin-top: 100px;
+                margin-bottom: 60px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-483">
         <h2>Приказ Минкомсвязи России №483</h2>
-        <p>Об установлении Порядка обеспечения условий доступности <mark>для&nbsp;инвалидов по&nbsp;зрению</mark> официальных сайтов федеральных органов государственной власти, органов государственной власти субъектов Российской Федерации и&nbsp;органов местного самоуправления в&nbsp;сети «Интернет»</p>
+        <p class="text-483">Об установлении Порядка обеспечения условий доступности <mark>для&nbsp;инвалидов по&nbsp;зрению</mark> официальных сайтов федеральных органов государственной власти, органов государственной власти субъектов Российской Федерации и&nbsp;органов местного самоуправления в&nbsp;сети «Интернет»</p>
         <p>От 30.11.2015</p>
         <a href="https://digital.gov.ru/ru/documents/4985/" class="copyright">Приказ Минкомсвязи России №483</a>
-        <img src="pictures/docs.jpg" alt="" role="presentation" class="cover">
 
         <style>
-            #slide-483 .cover {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.2;
+            #slide-483 .text-483 {
+                margin-top: 80px;
+                margin-bottom: 60px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-summ">
         <h2>Подытог</h2>
-        <ol>
+        <ul>
             <li class="next">Помощь слабовидящим в получении информации</li>
             <li class="next">Для нескольких категорий людей с нарушениями зрения</li>
             <li class="next">Требуется по закону</li>
-        </ol>
+        </ul>
+
+        <style>
+            #slide-summ ul {
+                margin-top: 50px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-9">
@@ -492,7 +607,6 @@
                 height: 345px;
                 object-fit: cover;
                 object-position: 0 -145px;
-                box-shadow: 0 0 3px 1px var(--color-grey);
             }
         </style>
     </section>
@@ -503,9 +617,6 @@
         </h2>
 
         <style>
-            #slide-gosts h2 {
-                font-size: 100px;
-            }
             #slide-gosts span {
                 display: block;
             }
@@ -517,32 +628,14 @@
         <p>Интернет-ресурсы и&nbsp;другая информация, представленная в&nbsp;электронно-цифровой форме. Приложения для стационарных и&nbsp;мобильных устройств, иные пользовательские интерфейсы. <mark>Требования доступности для людей с&nbsp;инвалидностью и&nbsp;других лиц с&nbsp;ограничениями жизнедеятельности</mark></p>
         <p>Введён 01.04.2020. Разработан на основе WCAG 2.0.</p>
         <a href="http://docs.cntd.ru/document/1200167693" class="copyright">ГОСТ Р 52872-2019</a>
-        <img src="pictures/docs.jpg" alt="" role="presentation" class="cover">
-
-        <style>
-            #slide-2019 .cover {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.2;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-twist">
         <blockquote>
             Органы государственной власти в технических заданиях на проектирование и разработку интерфейсов своих официальных сайтов предусматривают <mark>наличие альтернативных текстовых версий</mark> таких сайтов (далее – версия для инвалидов по зрению), переход к которым осуществляется с главной страницы официального сайта <mark>в случае, если сам официальный сайт исходно не соответствует требованиям пункта 4 настоящего Порядка</mark>
         </blockquote>
-        <img src="pictures/docs.jpg" alt="" role="presentation" class="cover">
 
         <style>
-            #slide-twist .cover {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.2;
-            }
-
             #slide-twist blockquote {
                 margin-top: 40px;
                 width: 93%;
@@ -592,12 +685,6 @@
 
     <section class="slide" id="slide-12">
         <h2 class="shout shrink">И зачем тогда отдельная версия?</h2>
-
-        <style>
-            #slide-12 h2 {
-                font-size: 100px;
-            }
-        </style>
     </section>
 
     <section class="slide">
@@ -654,7 +741,6 @@
         <style>
             #slide-magnifier img {
                 height: 370px;
-                box-shadow: 0 0 3px 1px var(--color-grey);
             }
         </style>
     </section>
@@ -665,17 +751,9 @@
         <img src="pictures/dark-theme.jpg" class="pic-2" alt="dark theme">
 
         <style>
-            #slide-dark {
-                background-color: #111;
-            }
-
             #slide-dark img {
                 display: block;
                 box-shadow: 0 0 3px 1px white;
-            }
-
-            #slide-dark h2 {
-                color: white;
             }
 
             #slide-dark .pic-1 {
@@ -710,13 +788,11 @@
             #slide-23 .gogen {
                 display: block;
                 width: 350px;
-                box-shadow: 0 0 3px 1px var(--color-grey);
                 margin-top: 20px;
             }
 
             #slide-23 .nvda {
                 width: 350px;
-                box-shadow: 0 0 3px 1px var(--color-grey);
             }
 
             #slide-23 .nvda-logo {
@@ -759,12 +835,6 @@
 
     <section class="slide" id="slide-how">
         <h2 class="shout">Как слабовидящие просматривают сайты?</h2>
-
-        <style>
-            #slide-how h2 {
-                font-size: 100px;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-dima">
@@ -794,7 +864,6 @@
         <style>
             #slide-15 img {
                 max-width: 100%;
-                box-shadow: 0 0 3px 1px var(--color-grey);
             }
 
             #slide-15 figcaption {
@@ -806,12 +875,6 @@
 
     <section class="slide" id="bad">
         <h2 class="shout">Что такое "плохо"</h2>
-
-        <style>
-            #bad h2 {
-                font-size: 100px;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-rzd">
@@ -948,10 +1011,6 @@
         <h2 class="shout shrink">Нет оформления<span>=</span>Нет информации</h2>
 
         <style>
-            #slide-cut h2 {
-                font-size: 100px;
-            }
-
             #slide-cut span {
                 display: block;
                 margin-top: 20px;
@@ -964,7 +1023,6 @@
 
         <style>
             #slide-discr h2 {
-                font-size: 100px;
                 max-width: 90%;
                 left: 5%;
             }
@@ -1007,12 +1065,6 @@
             <li class="next">По закону хватит доступного основного сайта</li>
             <li class="next">Не все слабовидящие пользуются отдельными версиями</li>
         </ul>
-
-        <style>
-            #slide-bad li {
-                margin-bottom: 8px;
-            }
-        </style>
     </section>
 
     <section class="slide">
@@ -1021,22 +1073,10 @@
 
     <section class="slide" id="slide-12">
         <h2 class="shout shrink">И зачем тогда отдельная версия?</h2>
-
-        <style>
-            #slide-12 h2 {
-                font-size: 100px;
-            }
-        </style>
     </section>
 
     <section class="slide" id="good">
         <h2 class="shout">Что такое "хорошо"</h2>
-
-        <style>
-            #good h2 {
-                font-size: 100px;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-avia">
@@ -1169,12 +1209,6 @@
 
     <section class="slide" id="them">
         <h2 class="shout">А как у них?</h2>
-
-        <style>
-            #them h2 {
-                font-size: 100px;
-            }
-        </style>
     </section>
 
     <section class="slide" id="rus">
@@ -1215,6 +1249,8 @@
 
             #rus li {
                 line-height: 1.4;
+                margin-bottom: 10px;
+                font-size: 23px;
             }
         </style>
     </section>
@@ -1257,18 +1293,14 @@
 
             #not-rus li {
                 line-height: 1.4;
+                margin-bottom: 10px;
+                font-size: 23px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-test">
         <h2 class="shout">Как проверить сайт</h2>
-
-        <style>
-            #slide-test h2 {
-                font-size: 95px;
-            }
-        </style>
     </section>
 
     <section class="slide" id="slide-22">
@@ -1369,7 +1401,6 @@
                 display: block;
                 width: 335px;
                 margin-top: -20px;
-                box-shadow: 0 0 3px 1px var(--color-grey);
             }
         </style>
     </section>
@@ -1441,7 +1472,6 @@
                 position: relative;
                 right: -10px;
                 top: 20px;
-                box-shadow: 0 0 3px 1px var(--color-grey);
             }
         </style>
     </section>
@@ -1462,7 +1492,6 @@
                 width: 160px;
                 left: 190px;
                 top: 170px;
-                box-shadow: 0 0 3px 1px var(--color-grey);
             }
 
             #slide-thx .cover {
