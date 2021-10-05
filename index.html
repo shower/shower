@@ -73,11 +73,6 @@
         .slide a {
             color: var(--color-red);
         }
-        .slide blockquote::before {
-            font-size: 7em;
-            margin-left: -110px;
-            color: #965120;
-        }
         .slide p {
             line-height: 1.2;
         }
@@ -600,25 +595,37 @@
     <section class="slide" id="slide-10">
         <h2>Почему только для&nbsp;слабовидящих?</h2>
         <img src="pictures/cyborg.jpg" alt="Konstantin Deblikov">
+        <a href="https://www.instagram.com/bionic_russia/" class="copyright">@bionic_russia</a>
 
         <style>
             #slide-10 img {
                 width: 100%;
-                height: 345px;
                 object-fit: cover;
-                object-position: 0 -145px;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                object-position: 0 -165px;
+                height: 400px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-gosts">
         <h2 class="shout">
-            <strike>ГОСТ Р 52872-2012</strike><span>🠛</span>ГОСТ Р 52872-2019
+            <strike>ГОСТ Р 52872-2012</strike>
+            <svg viewBox="0 0 113 58" class="arrow" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56.292 57.75 0 0h112.583L56.292 57.75Z" fill="#fff"/></svg>
+            <span class="red">ГОСТ Р 52872-2019</span>
         </h2>
 
         <style>
-            #slide-gosts span {
+            #slide-gosts .arrow {
                 display: block;
+                width: 80px;
+                margin: 25px auto;
+            }
+
+            #slide-gosts .red {
+                color: var(--color-red)
             }
         </style>
     </section>
@@ -632,14 +639,21 @@
 
     <section class="slide" id="slide-twist">
         <blockquote>
-            Органы государственной власти в технических заданиях на проектирование и разработку интерфейсов своих официальных сайтов предусматривают <mark>наличие альтернативных текстовых версий</mark> таких сайтов (далее – версия для инвалидов по зрению), переход к которым осуществляется с главной страницы официального сайта <mark>в случае, если сам официальный сайт исходно не соответствует требованиям пункта 4 настоящего Порядка</mark>
+            Органы государственной власти в&nbsp;технических заданиях на&nbsp;проектирование и&nbsp;разработку интерфейсов своих официальных сайтов предусматривают <mark>наличие альтернативных текстовых версий</mark> таких сайтов (далее – версия для инвалидов по&nbsp;зрению), переход к&nbsp;которым осуществляется с&nbsp;главной страницы официального сайта <mark>в&nbsp;случае, если сам официальный сайт исходно не&nbsp;соответствует требованиям пункта&nbsp;4 настоящего Порядка</mark>
         </blockquote>
 
         <style>
             #slide-twist blockquote {
-                margin-top: 40px;
+                margin-top: 30px;
                 width: 93%;
                 margin-left: 40px;
+                line-height: 1.8;
+            }
+
+            #slide-twist blockquote::before {
+                font-size: 8em;
+                margin-left: -110px;
+                color: var(--color-yellow);
             }
         </style>
     </section>
@@ -647,17 +661,17 @@
     <section class="slide" id="slide-11">
         <h2>Требования формальным языком</h2>
         <ul>
-            <li><mark>нетекстовая информация и&nbsp;нетекстовые материалы</mark>, представленные на&nbsp;официальных сайтах органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версии для инвалидов по&nbsp;зрению <mark>в&nbsp;виде краткого описания такой нетекстовой информации</mark>, за&nbsp;исключением нетекстовой информации и&nbsp;нетекстовых материалов, используемых только с&nbsp;целью украшения и&nbsp;визуального оформления официальных сайтов органов государственной власти;</li>
-            <li><mark>графические файлы формата PDF</mark>, содержащие документы в&nbsp;графическом виде, представленные в&nbsp;разделах официальных сайтов органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версиях для инвалидов по&nbsp;зрению <mark>в&nbsp;текстовом формате</mark>;</li>
-            <li>наличие возможности <mark>изменения размеров текстовой информации до&nbsp;200%, шрифта, интервала между буквами (кернинг), а&nbsp;также цветовой схемы</mark>;</li>
-            <li>информация, относящаяся к&nbsp;работам (услугам) для инвалидов по&nbsp;зрению, должна быть представлена <mark>на&nbsp;уровне доступности специализированных интернет-ресурсов для инвалидов по&nbsp;зрению</mark>.</li>
+            <li><span><mark>нетекстовая информация и&nbsp;нетекстовые материалы</mark>, представленные на&nbsp;официальных сайтах органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версии для инвалидов по&nbsp;зрению <mark>в&nbsp;виде краткого описания такой нетекстовой информации</mark>, за&nbsp;исключением нетекстовой информации и&nbsp;нетекстовых материалов, используемых только с&nbsp;целью украшения и&nbsp;визуального оформления официальных сайтов органов государственной власти;</span></li>
+            <li><span><mark>графические файлы формата PDF</mark>, содержащие документы в&nbsp;графическом виде, представленные в&nbsp;разделах официальных сайтов органов государственной власти, должны присутствовать также и&nbsp;в&nbsp;версиях для инвалидов по&nbsp;зрению <mark>в&nbsp;текстовом формате</mark>;</span></li>
+            <li><span>наличие возможности <mark>изменения размеров текстовой информации до&nbsp;200%, шрифта, интервала между буквами (кернинг), а&nbsp;также цветовой схемы</mark>;</span></li>
+            <li><span>информация, относящаяся к&nbsp;работам (услугам) для инвалидов по&nbsp;зрению, должна быть представлена <mark>на&nbsp;уровне доступности специализированных интернет-ресурсов для инвалидов по&nbsp;зрению</mark>.</span></li>
         </ul>
 
         <style>
             #slide-11 li {
                 font-size: 16px;
-                line-height: 1.6;
-                margin-bottom: 10px;
+                line-height: 1.4;
+                margin-bottom: 15px;
             }
         </style>
     </section>
@@ -684,20 +698,26 @@
     </section>
 
     <section class="slide" id="slide-12">
-        <h2 class="shout shrink">И зачем тогда отдельная версия?</h2>
+        <h2 class="shout shrink"><span style="color: var(--color-red)">И зачем тогда</span> отдельная&nbsp;версия?</h2>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="att">
         <h2>На что обратить внимание</h2>
-        <ol>
+        <ul>
             <li class="next">Какими инструментами пользуются слабовидящие?</li>
-            <li class="next">Каким образом они просматривают сайты?</li>
+            <li class="next">Каким образом просматривают сайты?</li>
             <li class="next">Нужна ли слабовидящим отдельная версия?</li>
-        </ol>
+        </ul>
+
+        <style>
+            #att ul {
+                margin-top: 50px;
+            }
+        </style>
     </section>
 
     <section class="slide">
-        <h2>Какие инструменты нужны слабовидящему</h2>
+        <h2>Какие инструменты нужны <br>слабовидящему</h2>
         <ul>
             <li class="next">Скрин-зум</li>
             <li class="next">Большой монитор</li>
@@ -708,7 +728,7 @@
     </section>
 
     <section class="slide" id="slide-zoom">
-        <h2>Масштабирование и&nbsp;большие&nbsp;мониторы</h2>
+        <h2>Масштабирование <br>и&nbsp;большие&nbsp;мониторы</h2>
         <div class="images">
             <img src="pictures/monitor.jpg" class="pic-1" alt="monitor">
             <img src="pictures/zoom.jpg" class="pic-2" alt="screen zoom">
@@ -800,7 +820,7 @@
                 position: absolute;
                 width: 65px;
                 left: 325px;
-                top: 325px;
+                top: 345px;
             }
 
             #slide-23 p {
@@ -834,7 +854,7 @@
     </section>
 
     <section class="slide" id="slide-how">
-        <h2 class="shout">Как слабовидящие просматривают сайты?</h2>
+        <h2 class="shout"><span style="color: var(--color-red)">Как слабовидящие</span> просматривают сайты?</h2>
     </section>
 
     <section class="slide" id="slide-dima">
@@ -867,14 +887,14 @@
             }
 
             #slide-15 figcaption {
-                text-align: center;
-                line-height: 1.4;
+                line-height: 1.2;
+                font-size: 20px;
             }
         </style>
     </section>
 
     <section class="slide" id="bad">
-        <h2 class="shout">Что такое "плохо"</h2>
+        <h2 class="shout"><span style="color: var(--color-red)">Что такое</span> "плохо"</h2>
     </section>
 
     <section class="slide" id="slide-rzd">
@@ -1008,28 +1028,35 @@
     </section>
 
     <section class="slide" id="slide-cut">
-        <h2 class="shout shrink">Нет оформления<span>=</span>Нет информации</h2>
+        <h2 class="shout shrink">Нет оформления<span class="eq">=</span>
+            <span style="color: var(--color-red)">Нет информации</span>
+        </h2>
 
         <style>
-            #slide-cut span {
+            #slide-cut .eq {
                 display: block;
                 margin-top: 20px;
+                margin-bottom: 10px;
+                font-size: 90px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-discr">
-        <h2 class="shout">Вместо инклюзивности<span>—</span>дискриминация</h2>
+        <h2 class="shout">Вместо инклюзивности<span class="def">—</span>
+            <span style="color: var(--color-red)">дискриминация</span></h2>
 
         <style>
             #slide-discr h2 {
                 max-width: 90%;
                 left: 5%;
             }
-            #slide-discr span {
+            #slide-discr .def {
                 display: block;
                 line-height: 0.5;
-                margin-top: 10px;
+                margin-top: 20px;
+                margin-bottom: 15px;
+                font-size: 90px;
             }
         </style>
     </section>
@@ -1058,12 +1085,12 @@
     <section class="slide" id="slide-bad">
         <h2>Почему ВДС — это плохая идея?</h2>
         <ul>
-            <li class="next">Это не универсальное решение</li>
+            <li class="next">Не универсальное решение</li>
             <li class="next">Вместо инклюзивности — дискриминация</li>
             <li class="next">За слабовидящего уже принято решение</li>
             <li class="next">Дополнительные затраты</li>
             <li class="next">По закону хватит доступного основного сайта</li>
-            <li class="next">Не все слабовидящие пользуются отдельными версиями</li>
+            <li class="next">Нужны далеко не всем</li>
         </ul>
     </section>
 
@@ -1072,11 +1099,11 @@
     </section>
 
     <section class="slide" id="slide-12">
-        <h2 class="shout shrink">И зачем тогда отдельная версия?</h2>
+        <h2 class="shout shrink"><span style="color: var(--color-red)">И зачем тогда</span> отдельная&nbsp;версия?</h2>
     </section>
 
     <section class="slide" id="good">
-        <h2 class="shout">Что такое "хорошо"</h2>
+        <h2 class="shout"><span style="color: var(--color-red)">Что такое</span> "хорошо"</h2>
     </section>
 
     <section class="slide" id="slide-avia">
@@ -1143,8 +1170,16 @@
         <a href="https://www.gov.uk/" class="copyright">GOV.UK</a>
 
         <style>
+            #gov-code pre code:before {
+                color: black;
+            }
+
             #gov-code pre code {
                 line-height: 1.6;
+            }
+
+            #gov-code mark {
+                margin: 0;
             }
         </style>
     </section>
@@ -1204,11 +1239,15 @@
                 line-height: 1.6;
                 font-size: 22px;
             }
+
+            #kur-code pre code:before {
+                color: black;
+            }
         </style>
     </section>
 
     <section class="slide" id="them">
-        <h2 class="shout">А как у них?</h2>
+        <h2 class="shout"><span style="color: var(--color-red)">А как</span> у них?</h2>
     </section>
 
     <section class="slide" id="rus">
@@ -1250,7 +1289,7 @@
             #rus li {
                 line-height: 1.4;
                 margin-bottom: 10px;
-                font-size: 23px;
+                font-size: 22px;
             }
         </style>
     </section>
@@ -1294,13 +1333,13 @@
             #not-rus li {
                 line-height: 1.4;
                 margin-bottom: 10px;
-                font-size: 23px;
+                font-size: 22px;
             }
         </style>
     </section>
 
     <section class="slide" id="slide-test">
-        <h2 class="shout">Как проверить сайт</h2>
+        <h2 class="shout"><span style="color: var(--color-red)">Как проверить</span> сайт</h2>
     </section>
 
     <section class="slide" id="slide-22">
@@ -1328,7 +1367,8 @@
             }
 
             #slide-22 figcaption {
-                text-align: center;
+                line-height: 1.2;
+                font-size: 20px;
             }
         </style>
     </section>
@@ -1345,41 +1385,57 @@
     </section>
 
     <section class="slide" id="slide-focus">
-        <h2>Клавиатурный фокус!</h2>
+        <h2>Навигация с клавиатуры</h2>
 
-        <video src="pictures/focus.mp4" controls muted></video>
+        <ul>
+            <li class="next">outline!</li>
+            <li class="next">Или стили</li>
+            <li class="next">Забываем про положительный tabindex</li>
+        </ul>
+
         <a href="https://web-standards.ru/articles/focus-and-inert/" class="copyright">Управление фокусом и атрибут inert</a>
 
         <style>
-            #slide-focus video {
-                height: 380px;
+            #slide-focus ul {
+                margin-top: 50px;
             }
         </style>
     </section>
 
     <section class="slide">
-        <h2>Проверка с валидаторами и&nbsp;чеклистами</h2>
-        <ul>
-            <li class="next"><a href="https://validator.w3.org/">Валидатор W3C</a></li>
-            <li class="next"><a href="https://wave.webaim.org/">WAVE</a>, <a href="https://www.deque.com/axe/">AXE</a></li>
-            <li class="next"><a href="https://habr.com/ru/post/530404/">A11y-инструменты в панели разработчика</a></li>
-            <li class="next">Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации —
-                <a href="http://gov.design/blog/2016/11/08/accessibility.html">статья на gov.design</a></li>
-        </ul>
+        <video class="cover next" src="pictures/focus.mp4" autoplay muted></video>
     </section>
 
     <section class="slide">
+        <h2>Валидаторы и&nbsp;чеклисты</h2>
+        <ul>
+            <li class="next"><a href="https://validator.w3.org/">Валидатор W3C</a></li>
+            <li class="next"><span><a href="https://wave.webaim.org/">WAVE</a>, <a href="https://www.deque.com/axe/">AXE</a></span></li>
+            <li class="next"><a href="https://habr.com/ru/post/530404/">A11y-инструменты в панели разработчика</a></li>
+            <li class="next"><span>Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации —
+                <a href="http://gov.design/blog/2016/11/08/accessibility.html">статья на gov.design</a></span></li>
+        </ul>
+    </section>
+
+    <section class="slide" id="more">
         <h2>Нужно больше знаний?</h2>
         <ul>
             <li><a href="https://www.w3.org/TR/WCAG21/">WCAG 2.1</a></li>
-            <li>Статьи про доступность на <a href="https://www.smashingmagazine.com/category/accessibility/">Smashing Magazine</a></li>
+            <li><span>Подборка на <a href="https://web-standards.ru/articles/a11y-links/">Веб-стандартах</a></span></li>
+            <li><span>Статьи про доступность на <a href="https://www.smashingmagazine.com/category/accessibility/">Smashing Magazine</a></span></li>
             <li>Доклады, обучающие видео, курсы</li>
         </ul>
+
+        <style>
+            #more ul {
+                margin-top: 50px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-26">
         <div class="left-side">
-            <h2>Я проникся, что&nbsp;дальше?</h2>
+            <h2>Что&nbsp;дальше?</h2>
             <ul>
                 <li class="next">Менять работу</li>
                 <li class="next">Терпеть</li>
@@ -1405,13 +1461,18 @@
         </style>
     </section>
 
-    <section class="slide">
+    <section class="slide" id="outro">
         <h2>Выводы</h2>
         <ul>
-            <li>Думаем о пользователе</li>
-            <li>Минимум усилий 🠦 Заметная польза</li>
-            <li>Доступная среда 2025???</li>
+            <li class="next">Думаем о пользователе</li>
+            <li class="next">Минимум усилий 🠦 Заметная польза</li>
         </ul>
+
+        <style>
+            #outro ul {
+                margin-top: 70px;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-27">
@@ -1430,26 +1491,52 @@
     </section>
 
     <section class="slide" id="slide-contacts">
-        <div class="left-side">
-            <h3 style="margin-top:5px;">Lena Ryan</h3>
-            <p>Twitter: <a href="https://twitter.com/metalwebdev">@metalwebdev</a></p>
-            <p>Telegram: <a href="https://t.me/russian_plazma_drink">@russian_plazma_drink</a></p>
+        <div class="grid">
+            <div class="me">
+                <h3>Lena Ryan</h3>
+                <p class="link"><img class="soc-icon" src="pictures/twitter-icon.svg" alt="twitter link"> <a href="https://twitter.com/metalwebdev">@metalwebdev</a></p>
+                <p class="link"><img class="soc-icon" src="pictures/tg-icon.svg" alt="telegram link"> <a href="https://t.me/russian_plazma_drink">@russian_plazma_drink</a></p>
+            </div>
 
-            <h3>Telegram-канал Валерии Курмак</h3>
-            <a href="https://t.me/neiskluchenie">Не исключение</a>
+            <div class="kurmak">
+                <p class="name">Канал Валерии Курмак</p>
+                <p class="link"><img class="soc-icon" src="pictures/tg-icon.svg" alt="telegram link"> <a href="https://t.me/neiskluchenie">@neiskluchenie</a></p>
+            </div>
 
-            <p style="margin-top:20px;">Дима Волжский в Twitter: <a href="https://twitter.com/DimaVolzhsky">@DimaVolzhsky</a></p>
+            <div class="dima">
+                <p class="name">Дима Волжский</p>
+                <p class="link"><img class="soc-icon" src="pictures/twitter-icon.svg" alt="twitter link"> <a href="https://twitter.com/DimaVolzhsky">@DimaVolzhsky</a></p>
+            </div>
 
-            <p>Дизайн слайдов: <a href="https://t.me/eirelavfilatova">Валерия Филатова</a></p>
+            <img class="qr" src="pictures/qr-code.jpg" alt="qr-code for slides">
+
+            <div class="design">
+                <p class="name">Дизайн слайдов</p>
+                <p class="link"><img class="soc-icon" src="pictures/tg-icon.svg" alt="telegram link"> <a href="https://t.me/eirelavfilatova">@eirelavfilatova</a></p>
+            </div>
         </div>
 
-        <img src="pictures/qr-code.jpg" alt="qr-code for slides">
-
         <style>
+            #slide-contacts .grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px 30px;
+            }
+            #slide-contacts .me {
+                grid-row: 1/3;
+            }
+
+            #slide-contacts .kurmak {
+                grid-column: 1/3;
+            }
+
             #slide-contacts h3 {
-                margin-bottom: 0;
-                color: #333;
-                font-size: 30px;
+                margin-top: 0;
+                color: var(--color-yellow);
+                font-size: 40px;
+                text-transform: uppercase;
+                line-height: 1;
+                margin-bottom: 20px;
             }
 
             #slide-contacts p {
@@ -1457,21 +1544,32 @@
             }
 
             #slide-contacts a {
-                font-size: 27px;
+                font-size: 25px;
+                background-image: none;
+                color: white;
             }
 
-            #slide-contacts {
-                display: flex;
-                align-items: flex-start;
-                justify-content: space-between;
-            }
-
-            #slide-contacts img {
-                display: block;
+            #slide-contacts .qr {
                 width: 230px;
-                position: relative;
-                right: -10px;
-                top: 20px;
+                grid-column: 2;
+                grid-row: 1/3;
+            }
+
+            #slide-contacts .soc-icon {
+                width: 44px;
+                margin-right: 20px;
+            }
+
+            #slide-contacts .link {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+
+            #slide-contacts .name {
+                font-weight: 600;
+                font-size: 33px;
+                margin-bottom: 15px;
             }
         </style>
     </section>
@@ -1503,7 +1601,7 @@
     </section>
 
     <section class="slide">
-        <h2>Делая сайты доступными, вы делаете вклад в своё будущее</h2>
+        <h2 class="shout"><span style="color: var(--color-red)">Делая сайты доступными,</span> вы делаете вклад в&nbsp;своё будущее</h2>
     </section>
 
     <div class="progress"></div>
