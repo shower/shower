@@ -66,8 +66,7 @@
             display: none;
         }
         .slide {
-            background-color: black;
-            /* background-color: grey; */
+            background-color: #131313;
             padding-top: 60px;
         }
         .slide a {
@@ -218,12 +217,53 @@
         </style>
     </section>
 
-    <section class="slide">
-        <ul>
-            <li>Доклады</li>
-            <li>Информация</li>
-            <li>Курсы по цифровой доступности</li>
-        </ul>
+    <section class="slide" id="learn">
+        <img src="pictures/glasha.jpg" alt="glasha talk" class="learn-1">
+        <img src="pictures/vadim.jpg" alt="vadim talk" class="learn-2 next">
+        <img src="pictures/zahar.jpg" alt="zahar talk" class="learn-3 next">
+        <img src="pictures/info.jpg" alt="ally info" class="learn-4 next">
+        <img src="pictures/info-1.jpg" alt="ally info" class="learn-5 next">
+        <img src="pictures/course.jpg" alt="course" class="learn-6 next">
+
+        <style>
+            #learn img {
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #learn .learn-1 {
+                width: 350px;
+            }
+
+            #learn .learn-2 {
+                width: 350px;
+                right: 40px;
+                top: 20%;
+            }
+
+            #learn .learn-3 {
+                width: 350px;
+                top: 55%;
+                left: 20%;
+            }
+
+            #learn .learn-4 {
+                width: 700px;
+                top: 15%;
+                left: 30px;
+            }
+
+            #learn .learn-5 {
+                width: 700px;
+                bottom: 10%;
+            }
+
+            #learn .learn-6 {
+                width: 420px;
+                right: 110px;
+                top: 35%;
+            }
+        </style>
     </section>
 
     <section class="slide" id="slide-about">
@@ -337,9 +377,19 @@
                 <li class="next">Специально обученный человек</li>
                 <li class="next">Используем tabindex везде</li>
                 <li class="next">Нет таких клиентов</li>
-                <li class="next">Человек либо полностью здоров, либо с&nbsp;ограничениями</li>
+                <li class="next">Либо полностью здоров, либо с&nbsp;ограничениями</li>
             </ul>
         </div>
+    </section>
+
+    <section class="slide" id="facts-0">
+        <img src="pictures/facts-0.jpg" alt="oxxxymiron" class="cover">
+
+        <style>
+            #facts-0:after {
+                opacity: 0;
+            }
+        </style>
     </section>
 
     <section class="slide" id="disab">
@@ -351,6 +401,104 @@
                 margin: 0 auto;
                 max-width: 100%;
                 height: 460px;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="no-clients">
+        <h2>Нет таких клиентов? Точно?</h2>
+        <img src="pictures/blind-act-1.jpg" class="blind-1" alt="blind activities">
+        <img src="pictures/blind-act-2.webp" class="blind-2 next" alt="blind activities">
+        <img src="pictures/blind-act-3.jpg" class="blind-3" alt="blind activities">
+
+        <style>
+            #no-clients img {
+                position: absolute;
+                width: 400px;
+            }
+
+            #no-clients .blind-2 {
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+                bottom: 50px;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #no-clients .blind-3 {
+                right: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout"><span style="color: var(--color-red)">tabindex</span> зло</h2>
+    </section>
+
+    <section class="slide" id="rick">
+        <h2>Легко внедрить после релиза</h2>
+        <img class="rick" src="pictures/rick.jpg" alt="rick and morty">
+        <img class="rick1 next" src="pictures/rick1.jpg" alt="rick and morty">
+
+        <style>
+            #rick .rick {
+                height: 360px;
+            }
+
+            #rick .rick1 {
+                position: absolute;
+                top: 30px;
+                left: 5%;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+                width: 90%;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="long">
+        <h2>Долго и дорого?</h2>
+
+        <ul>
+            <li class="next">10-15 дней на изучение</li>
+            <li class="next">Время задачи + 5-7%</li>
+            <li class="next">Все счастливы</li>
+        </ul>
+
+        <style>
+            #long ul {
+                margin-top: 50px;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="spec">
+        <h2>Специально обученный человек</h2>
+
+        <p class="spec next">Тогда это будет долго и дорого :)</p>
+
+        <style>
+            #spec .spec {
+                text-align: center;
+                font-size: 40px;
+                margin-top: 140px;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="slide-10">
+        <h2>Почему только слабовидящие?</h2>
+        <img src="pictures/cyborg.jpg" alt="Konstantin Deblikov">
+        <a href="https://www.instagram.com/bionic_russia/" class="copyright">@bionic_russia</a>
+
+        <style>
+            #slide-10 img {
+                width: 100%;
+                object-fit: cover;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                object-position: 0 -165px;
+                height: 400px;
             }
         </style>
     </section>
@@ -592,24 +740,6 @@
         </style>
     </section>
 
-    <section class="slide" id="slide-10">
-        <h2>Почему только для&nbsp;слабовидящих?</h2>
-        <img src="pictures/cyborg.jpg" alt="Konstantin Deblikov">
-        <a href="https://www.instagram.com/bionic_russia/" class="copyright">@bionic_russia</a>
-
-        <style>
-            #slide-10 img {
-                width: 100%;
-                object-fit: cover;
-                position: absolute;
-                left: 0;
-                bottom: 0;
-                object-position: 0 -165px;
-                height: 400px;
-            }
-        </style>
-    </section>
-
     <section class="slide" id="slide-gosts">
         <h2 class="shout">
             <strike>ГОСТ Р 52872-2012</strike>
@@ -729,26 +859,14 @@
 
     <section class="slide" id="slide-zoom">
         <h2>Масштабирование <br>и&nbsp;большие&nbsp;мониторы</h2>
-        <div class="images">
-            <img src="pictures/monitor.jpg" class="pic-1" alt="monitor">
-            <img src="pictures/zoom.jpg" class="pic-2" alt="screen zoom">
-        </div>
+        <img src="pictures/monitor-1.jpg" class="pic-1" alt="monitor">
 
         <style>
-            #slide-zoom .images {
-                display: flex;
-                align-items: center;
-            }
-
             #slide-zoom .pic-1 {
-                margin-right: 30px;
-                width: 60%;
+                height: 310px;
+                margin: 0 auto;
                 box-shadow: 0 0 3px 1px var(--color-grey);
-            }
-
-            #slide-zoom .pic-2 {
-                width: 35%;
-                box-shadow: 0 0 3px 1px var(--color-grey);
+                display: block;
             }
         </style>
     </section>
@@ -968,13 +1086,49 @@
     </section>
 
     <section class="slide" id="slide-sport">
-        <h2>Сайт спортивной школы ???</h2>
-        <video src="pictures/sport-school.mp4" controls muted></video>
+        <h2>Спортшкола</h2>
+
+        <img src="pictures/school-1.jpg" alt="school" class="next school-1">
+        <img src="pictures/school-2.jpg" alt="school" class="next school-2">
+
         <a href="http://xn----8sba6avgjnjeb2ifx.xn--p1ai/" class="copyright">Спортивная школа "Юность"</a>
 
         <style>
-            #slide-sport video {
-                height: 380px;
+            #slide-sport img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #slide-sport .school-2 {
+                right: 60px;
+                bottom: 7%;
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="slide-b">
+        <h2>Спортшкола и ВДС</h2>
+
+        <img src="pictures/school-b-1.jpg" alt="school" class="next school-b-1">
+        <img src="pictures/school-b-2.jpg" alt="school" class="next school-b-2">
+
+        <a href="http://xn----8sba6avgjnjeb2ifx.xn--p1ai/" class="copyright">Спортивная школа "Юность"</a>
+
+        <style>
+            #slide-b img {
+                display: block;
+                width: 50%;
+                max-width: 650px;
+                position: absolute;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+
+            #slide-b .school-b-2 {
+                right: 60px;
+                bottom: 4%;
             }
         </style>
     </section>
@@ -1077,9 +1231,73 @@
         </style>
     </section>
 
+    <section class="slide" id="ber-1">
+        <h2>Bershka</h2>
+        <img src="pictures/bershka-1.jpg" alt="bershka site">
+
+        <a class="copyright" href="https://www.bershka.com/ru/%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B-c1010193132.html">Bershka</a>
+
+        <style>
+            #ber-1 img {
+                height: 370px;
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="ber-2">
+        <div class="columns two">
+            <img src="pictures/bershka-2.jpg" alt="ally panel">
+            <img src="pictures/bershka-3.jpg" alt="ally panel">
+        </div>
+
+        <img src="pictures/bershka-4.jpg" alt="ally panel" class="hover next">
+
+        <style>
+            #ber-2 .columns img {
+                width: 280px;
+                justify-self: center;
+            }
+
+            #ber-2 .hover {
+                position: absolute;
+                top: 30%;
+                width: 470px;
+                left: 50%;
+                transform: translateX(-50%);
+                box-shadow: 0 0 3px 1px var(--color-grey);
+            }
+        </style>
+    </section>
+
+    <section class="slide" id="ber-3">
+        <img src="pictures/skip-1.jpg" class="skip-1" alt="skip link">
+        <svg viewBox="0 0 113 58" class="arrow next" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56.292 57.75 0 0h112.583L56.292 57.75Z" fill="#fff"></path></svg>
+        <img src="pictures/skip-2.jpg" class="skip-2 next" alt="skip link menu">
+        <svg viewBox="0 0 113 58" class="arrow next" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56.292 57.75 0 0h112.583L56.292 57.75Z" fill="#fff"></path></svg>
+        <img src="pictures/skip-4.jpg" class="skip-3 next" alt="skip link info">
+
+        <style>
+            #ber-3 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #ber-3 img {
+                box-shadow: 0 0 3px 1px var(--color-grey);
+                width: 550px;
+            }
+
+            #ber-3 .arrow {
+                width: 60px;
+                margin: 30px auto;
+            }
+        </style>
+    </section>
+
     <section class="slide">
-        <h2>Про плашки для настройки отображения?</h2>
-        <a href="https://www.bershka.com/ru/%D0%B6%D0%B5%D0%BD%D1%89%D0%B8%D0%BD%D1%8B-c1010193132.html">Bershka</a>
+        <img class="cover" src="pictures/pandus.jpg" alt="ramp">
     </section>
 
     <section class="slide" id="slide-bad">
@@ -1092,10 +1310,6 @@
             <li class="next">По закону хватит доступного основного сайта</li>
             <li class="next">Нужны далеко не всем</li>
         </ul>
-    </section>
-
-    <section class="slide">
-        <img class="cover" src="pictures/pandus.jpg" alt="ramp">
     </section>
 
     <section class="slide" id="slide-12">
@@ -1171,7 +1385,7 @@
 
         <style>
             #gov-code pre code:before {
-                color: black;
+                color: white;
             }
 
             #gov-code pre code {
@@ -1241,7 +1455,7 @@
             }
 
             #kur-code pre code:before {
-                color: black;
+                color: white;
             }
         </style>
     </section>
