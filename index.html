@@ -432,7 +432,7 @@
     </section>
 
     <section class="slide">
-        <h2 class="shout"><span style="color: var(--color-red)">tabindex</span> зло</h2>
+        <h2 class="shout"><span style="color: var(--color-red)">tabindex</span> — зло</h2>
     </section>
 
     <section class="slide" id="rick">
@@ -584,10 +584,6 @@
         <ul>
             <li class="next wrap">Настройка отображения под себя
                 <img src="pictures/profit.jpg" class="blind" alt="blind version">
-                <div class="spotlight spotlight-1 next"></div>
-                <div class="spotlight spotlight-2 next"></div>
-                <div class="spotlight spotlight-3 next"></div>
-                <div class="spotlight spotlight-4 next"></div>
             </li>
             <li class="next">Беспрепятственный доступ к информации</li>
             <li class="next">Расширение аудитории сайта</li>
@@ -603,57 +599,6 @@
 
             #slide-profit .wrap {
                 flex-wrap: wrap;
-            }
-
-            #slide-profit .spotlight {
-                --spotlight-radius: 0;
-                --spotlight-opacity: 0.7;
-            }
-
-            @keyframes hide {
-                0%, 90% {
-                    opacity: 1;
-                }
-
-                100% {
-                    opacity: 0;
-                }
-            }
-
-            .spotlight {
-                z-index: 10;
-            }
-
-            #slide-profit.active .spotlight-1 {
-                animation: hide 5s ease-in-out 7s forwards;
-                --spotlight-top: -49px;
-                --spotlight-left: -292px;
-                --spotlight-width: 280px;
-                --spotlight-height: 55px;
-            }
-
-            #slide-profit.active .spotlight-2 {
-                animation: hide 5s ease-in-out 15s forwards;
-                --spotlight-top: -49px;
-                --spotlight-left: -78px;
-                --spotlight-width: 163px;
-                --spotlight-height: 55px;
-            }
-
-            #slide-profit.active .spotlight-3 {
-                animation: hide 5s ease-in-out 22s forwards;
-                --spotlight-top: 14px;
-                --spotlight-left: -9px;
-                --spotlight-width: 864px;
-                --spotlight-height: 75px;
-            }
-
-            #slide-profit.active .spotlight-4 {
-                animation: hide 5s ease-in-out 30s forwards;
-                --spotlight-top: -49px;
-                --spotlight-left: 195px;
-                --spotlight-width: 130px;
-                --spotlight-height: 55px;
             }
         </style>
     </section>
@@ -1303,7 +1248,7 @@
     <section class="slide" id="slide-bad">
         <h2>Почему ВДС — это плохая идея?</h2>
         <ul>
-            <li class="next">Не универсальное решение</li>
+            <li class="next">Неуниверсальное решение</li>
             <li class="next">Вместо инклюзивности — дискриминация</li>
             <li class="next">За слабовидящего уже принято решение</li>
             <li class="next">Дополнительные затраты</li>
@@ -1621,12 +1566,12 @@
     </section>
 
     <section class="slide">
-        <h2>Валидаторы и&nbsp;чеклисты</h2>
+        <h2>Валидаторы и&nbsp;чек-листы</h2>
         <ul>
             <li class="next"><a href="https://validator.w3.org/">Валидатор W3C</a></li>
             <li class="next"><span><a href="https://wave.webaim.org/">WAVE</a>, <a href="https://www.deque.com/axe/">AXE</a></span></li>
             <li class="next"><a href="https://habr.com/ru/post/530404/">A11y-инструменты в панели разработчика</a></li>
-            <li class="next"><span>Чеклисты, шпаргалки по скринридерам, ссылки на примеры реализации —
+            <li class="next"><span>Чек-листы, шпаргалки по скринридерам, ссылки на примеры реализации —
                 <a href="http://gov.design/blog/2016/11/08/accessibility.html">статья на gov.design</a></span></li>
         </ul>
     </section>
