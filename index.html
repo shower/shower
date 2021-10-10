@@ -70,7 +70,7 @@
             padding-top: 60px;
         }
         .slide a {
-            color: var(--color-red);
+            color: inherit;
         }
         .slide p {
             line-height: 1.2;
@@ -1484,6 +1484,31 @@
         </style>
     </section>
 
+    <section class="slide" id="contrast">
+        <h2>Контрастный текст</h2>
+        <div class="flex">
+            <img src="pictures/devtools.jpg" alt="devtools contrast" class="next">
+            <img src="pictures/devtools-contrast.jpg" alt="devtools contrast" class="next">
+        </div>
+
+        <a href="https://webaim.org/articles/contrast/devtools" class="copyright">Contrast and Color Accessibility</a>
+
+        <style>
+            #contrast .flex {
+                display: flex;
+                align-items: flex-start;
+            }
+
+            #contrast img {
+                height: 370px;
+            }
+
+            #contrast img:first-of-type {
+                margin-right: 120px;
+            }
+        </style>
+    </section>
+
     <section class="slide" id="slide-focus">
         <h2>Навигация с клавиатуры</h2>
 
@@ -1646,7 +1671,6 @@
             #slide-contacts a {
                 font-size: 25px;
                 background-image: none;
-                color: white;
             }
 
             #slide-contacts .qr {
