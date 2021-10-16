@@ -1,6 +1,6 @@
 /**
  * Core for Shower HTML presentation engine
- * @shower/core v3.1.0, https://github.com/shower/core
+ * @shower/core v3.2.0, https://github.com/shower/core
  * @copyright 2010–2021 Vadim Makeev, https://pepelsbey.net
  * @license MIT
  */
@@ -36,6 +36,8 @@
         stepSelector: '.next',
         fullModeClass: 'full',
         listModeClass: 'list',
+        mouseHiddenClass: 'pointless',
+        mouseInactivityTimeout: 5000,
 
         slideSelector: '.slide',
         slideTitleSelector: 'h2',
@@ -596,6 +598,48 @@
         });
     };
 
+    var mouse = (shower) => {
+        const { mouseHiddenClass, mouseInactivityTimeout } = shower.options;
+
+        let hideMouseTimeoutId = null;
+
+        const cleanUp = () => {
+            shower.container.classList.remove(mouseHiddenClass);
+            clearTimeout(hideMouseTimeoutId);
+            hideMouseTimeoutId = null;
+        };
+
+        const hideMouseIfInactive = () => {
+            if (hideMouseTimeoutId !== null) {
+                cleanUp();
+            }
+
+            hideMouseTimeoutId = setTimeout(() => {
+                shower.container.classList.add(mouseHiddenClass);
+            }, mouseInactivityTimeout);
+        };
+
+        const initHideMouseIfInactiveModule = () => {
+            shower.container.addEventListener('mousemove', hideMouseIfInactive);
+        };
+
+        const destroyHideMouseIfInactiveModule = () => {
+            shower.container.removeEventListener('mousemove', hideMouseIfInactive);
+            cleanUp();
+        };
+
+        const handleModeChange = () => {
+            if (shower.isFullMode) {
+                initHideMouseIfInactiveModule();
+            } else {
+                destroyHideMouseIfInactiveModule();
+            }
+        };
+
+        shower.addEventListener('start', handleModeChange);
+        shower.addEventListener('modechange', handleModeChange);
+    };
+
     var installModules = (shower) => {
         a11y(shower);
         progress(shower);
@@ -606,6 +650,7 @@
         location$1(shower); // should come after `title`
         view(shower);
         touch(shower);
+        mouse(shower);
 
         // maintains invariant: active slide always exists in `full` mode
         if (shower.isFullMode && !shower.activeSlide) {
@@ -788,4 +833,4 @@
         shower.start();
     });
 
-}());
+})();
