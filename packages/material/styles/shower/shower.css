@@ -2,6 +2,7 @@
 
 @import 'shower-list.css' screen;
 @import 'shower-full.css' screen;
+@import 'shower-pointless.css' screen;
 @import 'shower-grid.css' screen;
 @import 'shower-print.css' print;
 
