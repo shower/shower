@@ -7,6 +7,7 @@ import timer from './timer';
 import title from './title';
 import view from './view';
 import touch from './touch';
+import mouse from './mouse';
 
 export default (shower) => {
     a11y(shower);
@@ -18,6 +19,7 @@ export default (shower) => {
     location(shower); // should come after `title`
     view(shower);
     touch(shower);
+    mouse(shower);
 
     // maintains invariant: active slide always exists in `full` mode
     if (shower.isFullMode && !shower.activeSlide) {

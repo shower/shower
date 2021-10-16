@@ -4,6 +4,8 @@ export default {
     stepSelector: '.next',
     fullModeClass: 'full',
     listModeClass: 'list',
+    mouseHiddenClass: 'pointless',
+    mouseInactivityTimeout: 5000,
 
     slideSelector: '.slide',
     slideTitleSelector: 'h2',
