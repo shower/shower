@@ -33,14 +33,14 @@
   },
   "devDependencies": {
     "@shower/cli": "^0.3.1",
-    "path-exists-cli": "^1.0.0"
+    "path-exists-cli": "^2.0.0"
   },
   "scripts": {
     "pdf": "shower pdf",
     "start": "shower serve",
-    "prepare": "shower prepare --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
-    "archive": "shower archive --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
-    "publish": "shower publish --files '**' --files '!{docs,node_modules,prepared}{,/**}' --files '!*.{md,toml,json}'",
-    "test": "npm run prepare && ls prepared && npm run archive && path-exists presentation.zip"
+    "bundle": "shower bundle --files '**' --files '!{docs,node_modules,bundled}{,/**}' --files '!*.{md,toml,json}'",
+    "archive": "shower archive --files '**' --files '!{docs,node_modules,bundled}{,/**}' --files '!*.{md,toml,json}'",
+    "publish": "shower publish --files '**' --files '!{docs,node_modules,bundled}{,/**}' --files '!*.{md,toml,json}'",
+    "test": "npm run bundle && ls bundled && npm run archive && path-exists presentation.zip"
   }
 }

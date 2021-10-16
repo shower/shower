@@ -43,9 +43,9 @@ You’ll need [Node.js](https://nodejs.org/) installed on your computer.
 
 Once you’re done you can build a clean copy of your slides:
 
-    npm run prepare
+    npm run bundle
 
-You’ll find your presentation in `prepared` folder. You can also run `npm run archive` to get the same files in `presentation.zip`.
+You’ll find your presentation in `bundled` folder. You can also run `npm run archive` to get the same files in `presentation.zip`.
 
 Publish your presentation online by running:
 
