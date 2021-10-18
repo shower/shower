@@ -1,5 +1,5 @@
 # Shower Presentation Template
-![](https://github.com/shower/shower/workflows/Test/badge.svg)
+[![Test status](https://github.com/shower/shower/workflows/Test/badge.svg)](https://github.com/shower/shower/actions/workflows/test.yml)
 
 <img src="pictures/logo.png" width="250" alt="Shower logo">
 
@@ -18,7 +18,7 @@ Follow [@shower_me](https://twitter.com/shower_me) for support and updates, [fil
 ## Quick Start
 
 1. Download and unzip [shower.zip](http://shwr.me/shower.zip) template archive.
-2. Open `index.html` in any test editor and start creating your presentation.
+2. Open `index.html` in any text editor and start creating your presentation.
 
 ## Quick Start via CLI
 
@@ -43,9 +43,9 @@ You’ll need [Node.js](https://nodejs.org/) installed on your computer.
 
 Once you’re done you can build a clean copy of your slides:
 
-    npm run prepare
+    npm run bundle
 
-You’ll find your presentation in `prepared` folder. You can also run `npm run archive` to get the same files in `presentation.zip`.
+You’ll find your presentation in `bundled` folder. You can also run `npm run archive` to get the same files in `presentation.zip`.
 
 Publish your presentation online by running:
 
