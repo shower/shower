@@ -310,7 +310,7 @@ When necessary emphasize that code is commented, you need to use span element wi
 If you want to color part of code, wrap this part with `mark` to add yellow background and `mark` with `important` class to add red background;
 
     <pre><code>function <mark>action()</mark> {
-        <span class="comment">// TODO<span>
+        <span class="comment">// TODO</span>
         return <mark class="important">true</mark>;
     }</code></pre>
 
