@@ -25,7 +25,7 @@ function getThemeFiles (theme) {
 function loadPresentationFiles (files = defaultFiles) {
   const presentations = vfs.src(files)
     .pipe(replace(
-      /(<link rel="stylesheet" href=")(node_modules\/@shower\/)([^/]*)\/(.*\.css">)/g,
+      /(<link rel="stylesheet" href=")(node_modules\/@shower\/)([^/]*)\/(.*\.css"\s*\/?>)/g,
       '$1shower/themes/$3/$4', { skipBinary: true }
     ))
     .pipe(replace(
