@@ -12,9 +12,9 @@
     border-radius: var(--spotlight-radius, 50%);
     box-shadow:
         0 0 0 var(--slide-width)
-        rgba(
-            0, 0, 0,
-            var(--spotlight-opacity, 0.2)
+        rgb(
+            0 0 0 /
+            var(--spotlight-opacity, 20%)
         );
     pointer-events: none;
 }

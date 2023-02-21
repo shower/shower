@@ -34,11 +34,11 @@
   ],
   "devDependencies": {
     "@shower/core": "^3.2.0",
-    "browser-sync": "^2.27.5",
-    "stylelint": "^13.13.1"
+    "browser-sync": "^2.27.11",
+    "stylelint": "^15.2.0"
   },
   "scripts": {
-    "test": "stylelint 'styles/**/*.css'",
+    "test": "stylelint \"styles/**/*.css\"",
     "start": "browser-sync start --server --no-notify --no-ui --no-ghost-mode --files 'fonts/*,pictures/*,styles/**,index.html'"
   }
 }
