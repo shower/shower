@@ -2,7 +2,7 @@
 
 .shower.list .slide {
     border-radius: 2px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 50px rgb(0 0 0 / 30%);
     transform-origin: 0 0;
     transform: scale(
         var(--slide-scale)
@@ -17,8 +17,8 @@
 
 .shower.list .slide:hover {
     box-shadow:
-        0 0 0 20px rgba(0, 0, 0, 0.1),
-        0 20px 50px rgba(0, 0, 0, 0.3);
+        0 0 0 20px rgb(0 0 0 / 10%),
+        0 20px 50px rgb(0 0 0 / 30%);
 }
 
 /* Active */
@@ -27,5 +27,5 @@
     box-shadow:
         0 0 0 1px #376da3,
         0 0 0 20px #4b86c2,
-        0 20px 50px rgba(0, 0, 0, 0.3);
+        0 20px 50px rgb(0 0 0 / 30%);
 }
