@@ -1,17 +1,11 @@
-const del = require('del');
-const fs = require('fs');
+const fs = require('node:fs');
 const gulp = require('gulp');
 const merge = require('merge-stream');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
-const rsync = require('gulp-rsync');
 const zip = require('gulp-zip');
 
-gulp.task('clean', () => {
-    return del('dist/**');
-});
-
-gulp.task('build', () => {
+gulp.task('themes', () => {
     const shower = gulp.src([
             '**',
             '!package.json',
@@ -87,28 +81,17 @@ gulp.task('assets', () => {
     <link rel="icon" type="image/png" sizes="160x160" href="/icons/160.png">
     <link rel="icon" type="image/svg+xml" sizes="any" href="/icons/any.svg">
     <link rel="apple-touch-icon" href="/icons/228.png">`, { skipBinary: true }
+        ))
+        .pipe(replace(
+            /(<\/head>)/,
+            `\t${fs.readFileSync('counter.html', 'utf8')}$1`, { skipBinary: true }
         ));
 
     return merge(files, html)
         .pipe(gulp.dest('dist'));
 });
 
-gulp.task('sync', () => {
-    return gulp.src('dist/**')
-        .pipe(rsync({
-            root: 'dist',
-            hostname: 'shwr.me',
-            destination: '/var/www/shwr.me/html',
-            recursive: true,
-            clean: true,
-            incremental: true,
-            silent: true
-        }));
-});
-
-gulp.task('deploy', gulp.series(
-    'clean',
-    'build',
+gulp.task('build', gulp.series(
+    'themes',
     'assets',
-    'sync'
 ));
