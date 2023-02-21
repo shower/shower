@@ -73,7 +73,7 @@ gulp.task('assets', () => {
 
     const html = gulp.src('dist/**/*.html')
         .pipe(replace(
-            /(<meta name="viewport" content="width=device-width, initial-scale=1">)/,
+            /(<meta name="viewport" content=".*">)/,
             `$1
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/16.png">
