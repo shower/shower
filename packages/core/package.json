@@ -53,7 +53,7 @@
     "format:js": "prettier '**/*.{js,mjs}' --write",
     "format:etc": "prettier '**/*.{json,md,yml}' --write",
     "test": "npm run lint && npm run test:unit && npm run test:local",
-    "test:unit": "mocha test/unit --require chai/register-should",
+    "test:unit": "mocha test/unit --require chai/register-should.js",
     "test:local": "nightwatch --env chrome-local --timeout 500",
     "test:sauce": "nightwatch --env chrome,firefox,safari"
   },

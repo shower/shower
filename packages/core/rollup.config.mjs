@@ -1,4 +1,8 @@
-import pkg from './package.json';
+import fs from 'node:fs';
+
+const pkg = JSON.parse(fs.readFileSync('package.json'));
+
+// import pkg from './package.json';
 
 const ndash = '\u2013';
 const yearNow = new Date().getFullYear();
