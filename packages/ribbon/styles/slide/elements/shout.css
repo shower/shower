@@ -8,6 +8,7 @@
     text-align: center;
     line-height: 1;
     font-size: 150px;
+    text-wrap: balance;
     transform: translateY(-50%);
 }
 
