@@ -81,10 +81,6 @@ gulp.task('assets', () => {
     <link rel="icon" type="image/png" sizes="160x160" href="/icons/160.png">
     <link rel="icon" type="image/svg+xml" sizes="any" href="/icons/any.svg">
     <link rel="apple-touch-icon" href="/icons/228.png">`, { skipBinary: true }
-        ))
-        .pipe(replace(
-            /(<\/head>)/,
-            `\t${fs.readFileSync('counter.html', 'utf8')}$1`, { skipBinary: true }
         ));
 
     return merge(files, html)
