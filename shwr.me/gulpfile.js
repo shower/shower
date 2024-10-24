@@ -11,7 +11,8 @@ gulp.task('themes', () => {
             '!package.json',
             '!node_modules',
         ], {
-            cwd: 'node_modules/@shower/shower'
+            cwd: 'node_modules/@shower/shower',
+            encoding: false
         })
         .pipe(replace(
             /(<link rel="stylesheet" href=")(node_modules\/@shower\/ribbon\/)(styles\/styles.css">)/g,
@@ -25,7 +26,8 @@ gulp.task('themes', () => {
     const core = gulp.src([
             'shower.js'
         ], {
-            cwd: 'node_modules/@shower/core/dist'
+            cwd: 'node_modules/@shower/core/dist',
+            encoding: false
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/' + path.dirname;
@@ -36,7 +38,8 @@ gulp.task('themes', () => {
             '!package.json',
             '!node_modules',
         ], {
-            cwd: 'node_modules/@shower/material'
+            cwd: 'node_modules/@shower/material',
+            encoding: false
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/themes/material/' + path.dirname;
@@ -47,7 +50,8 @@ gulp.task('themes', () => {
             '!package.json',
             '!node_modules',
         ], {
-            cwd: 'node_modules/@shower/ribbon'
+            cwd: 'node_modules/@shower/ribbon',
+            encoding: false
         })
         .pipe(rename( (path) => {
             path.dirname = 'shower/themes/ribbon/' + path.dirname;
@@ -69,7 +73,9 @@ gulp.task('assets', () => {
     const files = gulp.src([
         'icons{,/**}',
         'manifest.json',
-    ]);
+    ], {
+        encoding: false
+    });
 
     const html = gulp.src('dist/**/*.html')
         .pipe(replace(
