@@ -4,13 +4,13 @@
     "build": "gulp build"
   },
   "dependencies": {
-    "@shower/shower": "^3.3.0"
+    "@shower/shower": "^3.3.1"
   },
   "devDependencies": {
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.1.3",
-    "gulp-zip": "^5.1.0",
+    "gulp-zip": "^6.0.0",
     "merge-stream": "^2.0.0"
   }
 }
