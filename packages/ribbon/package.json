@@ -34,8 +34,8 @@
   ],
   "devDependencies": {
     "@shower/core": "^3.2.0",
-    "browser-sync": "^2.27.11",
-    "stylelint": "^15.2.0"
+    "browser-sync": "^3.0.3",
+    "stylelint": "^16.10.0"
   },
   "scripts": {
     "test": "stylelint \"styles/**/*.css\"",
