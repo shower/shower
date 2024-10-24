@@ -28,7 +28,7 @@
 
     --diagonal: linear-gradient(
         135deg, var(--color-key) 50%,
-        rgba(0, 0, 0, 0.1) 50%
+        rgb(0 0 0 / 10%) 50%
     );
 
     -webkit-text-size-adjust: none;

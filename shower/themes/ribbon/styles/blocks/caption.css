@@ -6,7 +6,7 @@
     grid-column: 1 / -1;
     width: 100%;
     color: #bfbfbf;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 5px rgb(0 0 0 / 30%);
     font-size: calc(
         var(--slide-gap) * var(--slide-scale)
     );

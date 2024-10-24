@@ -3,7 +3,7 @@
 .slide a {
     background-image: linear-gradient(
         to top,
-        currentColor 0.09em,
+        currentcolor 0.09em,
         transparent 0.09em
     );
     background-repeat: repeat-x;
