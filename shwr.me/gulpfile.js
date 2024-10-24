@@ -1,9 +1,9 @@
-const fs = require('node:fs');
-const gulp = require('gulp');
-const merge = require('merge-stream');
-const rename = require('gulp-rename');
-const replace = require('gulp-replace');
-const zip = require('gulp-zip');
+import fs from 'node:fs';
+import gulp from 'gulp';
+import merge from 'merge-stream';
+import rename from 'gulp-rename';
+import replace from 'gulp-replace';
+import zip from 'gulp-zip';
 
 gulp.task('themes', () => {
     const shower = gulp.src([
