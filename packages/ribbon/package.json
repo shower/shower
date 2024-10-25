@@ -1,44 +1,44 @@
 {
-  "name": "@shower/ribbon",
-  "description": "Ribbon theme for Shower HTML presentation engine",
-  "version": "3.5.2",
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": {
-    "name": "Vadim Makeev",
-    "url": "https://pepelsbey.dev/"
-  },
-  "homepage": "https://github.com/shower/ribbon",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/shower/ribbon.git"
-  },
-  "bugs": {
-    "url": "https://github.com/shower/shower/issues"
-  },
-  "license": "MIT",
-  "keywords": [
-    "shower",
-    "presentation",
-    "ribbon",
-    "theme"
-  ],
-  "files": [
-    "fonts/**",
-    "pictures/**",
-    "styles/**",
-    "index.html",
-    "LICENSE.md",
-    "README.md"
-  ],
-  "devDependencies": {
-    "@shower/core": "^3.2.0",
-    "browser-sync": "^3.0.3",
-    "stylelint": "^16.10.0"
-  },
-  "scripts": {
-    "test": "stylelint \"styles/**/*.css\"",
-    "start": "browser-sync start --server --no-notify --no-ui --no-ghost-mode --files 'fonts/*,pictures/*,styles/**,index.html'"
-  }
+	"name": "@shower/ribbon",
+	"description": "Ribbon theme for Shower HTML presentation engine",
+	"version": "3.5.2",
+	"publishConfig": {
+		"access": "public"
+	},
+	"author": {
+		"name": "Vadim Makeev",
+		"url": "https://pepelsbey.dev/"
+	},
+	"homepage": "https://github.com/shower/ribbon",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/shower/ribbon.git"
+	},
+	"bugs": {
+		"url": "https://github.com/shower/shower/issues"
+	},
+	"license": "MIT",
+	"keywords": [
+		"shower",
+		"presentation",
+		"ribbon",
+		"theme"
+	],
+	"files": [
+		"fonts/**",
+		"pictures/**",
+		"styles/**",
+		"index.html",
+		"LICENSE.md",
+		"README.md"
+	],
+	"devDependencies": {
+		"@shower/core": "^3.2.0",
+		"browser-sync": "^3.0.3",
+		"stylelint": "^16.10.0"
+	},
+	"scripts": {
+		"test": "stylelint \"styles/**/*.css\"",
+		"start": "browser-sync start --server --no-notify --no-ui --no-ghost-mode --files 'fonts/*,pictures/*,styles/**,index.html'"
+	}
 }

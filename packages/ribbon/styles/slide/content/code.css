@@ -1,89 +1,89 @@
 /* Code */
 
 .slide pre {
-    margin-top: 0;
-    margin-bottom: 1em;
-    counter-reset: code;
-    white-space: normal;
+	margin-top: 0;
+	margin-bottom: 1em;
+	counter-reset: code;
+	white-space: normal;
 }
 
 /* Inner */
 
 .slide pre code {
-    display: block;
-    margin-left: calc(
-        var(--slide-side) * -1
-    );
-    padding: 0 0 0 var(--slide-side);
-    width: calc(
-        100% + var(--slide-side) * 2
-    );
-    border-radius: 0;
-    background-color: transparent;
-    line-height: 2;
-    white-space: pre;
-    -moz-tab-size: 4;
-    tab-size: 4;
+	display: block;
+	margin-left: calc(
+		var(--slide-side) * -1
+	);
+	padding: 0 0 0 var(--slide-side);
+	width: calc(
+		100% + var(--slide-side) * 2
+	);
+	border-radius: 0;
+	background-color: transparent;
+	line-height: 2;
+	white-space: pre;
+	-moz-tab-size: 4;
+	tab-size: 4;
 }
 
 /* Line Numbers */
 
 .slide pre code:not(:only-child)::before {
-    position: absolute;
-    margin-left: -2em;
-    color: var(--color-grey);
-    opacity: 0.75;
-    counter-increment: code;
-    content: counter(code, decimal-leading-zero) '.';
+	position: absolute;
+	margin-left: -2em;
+	color: var(--color-grey);
+	opacity: 0.75;
+	counter-increment: code;
+	content: counter(code, decimal-leading-zero) '.';
 }
 
 /* Marked */
 
 .slide pre mark {
-    position: relative;
-    z-index: -1;
-    margin: 0 -0.3em;
+	position: relative;
+	z-index: -1;
+	margin: 0 -0.3em;
 }
 
 /* Important */
 
 .slide pre mark.important {
-    background-color: var(--color-red);
-    color: white;
+	background-color: var(--color-red);
+	color: white;
 }
 
 /* Comment */
 
 .slide pre .comment {
-    color: #999999;
+	color: #999999;
 }
 
 /* Marked Line */
 
 .slide pre code:not(:only-child).mark {
-    background-color: var(--color-yellow);
+	background-color: var(--color-yellow);
 }
 
 /* Next Line */
 
 .slide pre code:not(:only-child).mark.next {
-    visibility: visible;
-    background-color: transparent;
+	visibility: visible;
+	background-color: transparent;
 }
 
 .slide pre code:not(:only-child).mark.next.active,
 .slide pre code:not(:only-child).mark.next.visited {
-    background-color: var(--color-yellow);
+	background-color: var(--color-yellow);
 }
 
 /* Full */
 
 .shower.full .slide pre code:not(:only-child).mark.next {
-    visibility: visible;
-    background-color: transparent;
+	visibility: visible;
+	background-color: transparent;
 }
 
 .shower.full .slide pre code:not(:only-child).mark.next.active,
 .shower.full .slide pre code:not(:only-child).mark.next.visited {
-    background-color: var(--color-yellow);
+	background-color: var(--color-yellow);
 }

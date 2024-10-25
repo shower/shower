@@ -3,18 +3,18 @@
 		<style>
 			.square {
 				stroke: red;
-                stroke-opacity: 0.1;
+				stroke-opacity: 0.1;
 				stroke-width: 1;
 				fill: transparent;
 			}
 
-            .grid {
-                fill: url(#grid);
-            }
+			.grid {
+				fill: url(#grid);
+			}
 
-            .line {
-                stroke: #8af8f9;
-            }
+			.line {
+				stroke: #8af8f9;
+			}
 		</style>
 		<pattern x="0" y="0" width="25" height="25" viewBox="0 0 25 25" patternUnits="userSpaceOnUse" id="grid">
 			<rect x="0" y="0" width="25" height="25" class="square"/>

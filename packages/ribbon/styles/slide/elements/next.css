@@ -1,10 +1,10 @@
 /* Next */
 
 .shower.full .next {
-    visibility: hidden;
+	visibility: hidden;
 }
 
 .shower.full .next.active,
 .shower.full .next.visited {
-    visibility: visible;
+	visibility: visible;
 }

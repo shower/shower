@@ -1,53 +1,53 @@
 /* Badge */
 
 .badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    overflow: hidden;
-    visibility: hidden;
-    width: 9em;
-    height: 9em;
-    font-size: calc(
-        40px * var(--slide-scale)
-    );
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 1;
+	overflow: hidden;
+	visibility: hidden;
+	width: 9em;
+	height: 9em;
+	font-size: calc(
+		40px * var(--slide-scale)
+	);
 }
 
 /* Link */
 
 .badge a {
-    position: absolute;
-    right: -50%;
-    bottom: 50%;
-    left: -50%;
-    visibility: visible;
-    background-color: var(--color-blue);
-    color: white;
-    text-decoration: none;
-    text-align: center;
-    line-height: 2;
-    transform-origin: 50% 100%;
-    transform: rotate(45deg);
+	position: absolute;
+	right: -50%;
+	bottom: 50%;
+	left: -50%;
+	visibility: visible;
+	background-color: var(--color-blue);
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	line-height: 2;
+	transform-origin: 50% 100%;
+	transform: rotate(45deg);
 }
 
 /* Badge List */
 
 .shower.list .badge {
-    display: block;
+	display: block;
 }
 
 /* Badge Full */
 
 .shower.full .badge {
-    display: none;
+	display: none;
 }
 
 /* Badge Print */
 
 @media print {
-    .shower.list .badge,
-    .shower.full .badge {
-        display: none;
-    }
+	.shower.list .badge,
+	.shower.full .badge {
+		display: none;
+	}
 }

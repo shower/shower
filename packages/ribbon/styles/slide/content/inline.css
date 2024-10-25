@@ -1,48 +1,48 @@
 /* Inline */
 
 .slide a {
-    background-image: linear-gradient(
-        to top,
-        currentcolor 0.09em,
-        transparent 0.09em
-    );
-    background-repeat: repeat-x;
-    color: var(--color-blue);
-    text-decoration: none;
+	background-image: linear-gradient(
+		to top,
+		currentcolor 0.09em,
+		transparent 0.09em
+	);
+	background-repeat: repeat-x;
+	color: var(--color-blue);
+	text-decoration: none;
 }
 
 .slide code,
 .slide kbd,
 .slide mark,
 .slide samp {
-    padding: 0.1em 0.3em;
-    border-radius: 0.2em;
+	padding: 0.1em 0.3em;
+	border-radius: 0.2em;
 }
 
 .slide code,
 .slide kbd,
 .slide samp {
-    background-color: var(--color-fill);
-    line-height: 1;
-    font-family: 'PT Mono', monospace;
+	background-color: var(--color-fill);
+	line-height: 1;
+	font-family: 'PT Mono', monospace;
 }
 
 .slide mark {
-    background-color: var(--color-yellow);
+	background-color: var(--color-yellow);
 }
 
 .slide sub,
 .slide sup {
-    position: relative;
-    vertical-align: baseline;
-    line-height: 0;
-    font-size: 75%;
+	position: relative;
+	vertical-align: baseline;
+	line-height: 0;
+	font-size: 75%;
 }
 
 .slide sub {
-    bottom: -0.25em;
+	bottom: -0.25em;
 }
 
 .slide sup {
-    top: -0.5em;
+	top: -0.5em;
 }

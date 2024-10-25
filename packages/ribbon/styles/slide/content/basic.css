@@ -1,26 +1,26 @@
 /* Basic */
 
 .slide h2 {
-    margin-top: 9px;
-    margin-bottom: 33px;
-    color: var(--color-grey);
-    font: bold 50px/1 'PT Sans Narrow', sans-serif;
-    text-wrap: balance;
+	margin-top: 9px;
+	margin-bottom: 33px;
+	color: var(--color-grey);
+	font: bold 50px/1 'PT Sans Narrow', sans-serif;
+	text-wrap: balance;
 }
 
 .slide * + h2 {
-    margin-top: 41px;
+	margin-top: 41px;
 }
 
 .slide p {
-    margin-top: 0;
-    margin-bottom: 1em;
+	margin-top: 0;
+	margin-bottom: 1em;
 }
 
 .slide p.note {
-    color: var(--color-grey);
+	color: var(--color-grey);
 }
 
 .slide figure {
-    margin: 0;
+	margin: 0;
 }

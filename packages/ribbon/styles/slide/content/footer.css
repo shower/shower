@@ -1,29 +1,29 @@
 /* Footer */
 
 .slide > footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-    padding: 50px var(--slide-side) 25px;
-    background-color: var(--color-yellow);
-    transition: transform 0.3s linear;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	padding: 50px var(--slide-side) 25px;
+	background-color: var(--color-yellow);
+	transition: transform 0.3s linear;
 }
 
 /* List */
 
 .shower.list .slide > footer {
-    transform: translateY(100%);
+	transform: translateY(100%);
 }
 
 .shower.list .slide.active > footer,
 .shower.list .slide:hover > footer {
-    transform: translateY(0);
+	transform: translateY(0);
 }
 
 /* Full */
 
 .shower.full .slide > footer {
-    display: none;
+	display: none;
 }
