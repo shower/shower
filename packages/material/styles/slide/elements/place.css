@@ -1,10 +1,10 @@
 /* Place */
 
 .place {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .place.t.l,
@@ -15,21 +15,21 @@
 .place.bottom.right,
 .place.b.l,
 .place.bottom.left {
-    transform: none;
+	transform: none;
 }
 
 .place.t,
 .place.top,
 .place.b,
 .place.bottom {
-    transform: translate(-50%, 0);
+	transform: translate(-50%, 0);
 }
 
 .place.l,
 .place.left,
 .place.r,
 .place.right {
-    transform: translate(0, -50%);
+	transform: translate(0, -50%);
 }
 
 .place.t,
@@ -38,13 +38,13 @@
 .place.top.left,
 .place.t.r,
 .place.top.right {
-    top: 0;
+	top: 0;
 }
 
 .place.r,
 .place.right {
-    right: 0;
-    left: auto;
+	right: 0;
+	left: auto;
 }
 
 .place.b,
@@ -53,11 +53,11 @@
 .place.bottom.right,
 .place.b.l,
 .place.bottom.left {
-    top: auto;
-    bottom: 0;
+	top: auto;
+	bottom: 0;
 }
 
 .place.l,
 .place.left {
-    left: 0;
+	left: 0;
 }

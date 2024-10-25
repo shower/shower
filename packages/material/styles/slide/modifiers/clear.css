@@ -1,11 +1,11 @@
 /* Progress Off */
 
 .slide.clear.active ~ .progress {
-    display: none;
+	display: none;
 }
 
 /* Number Off */
 
 .slide.clear::after {
-    visibility: hidden;
+	visibility: hidden;
 }

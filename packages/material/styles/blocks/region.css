@@ -1,29 +1,29 @@
 /* Region */
 
 .region {
-    position: absolute;
-    top: 0;
-    left: 0;
-    clip: rect(0 0 0 0);
+	position: absolute;
+	top: 0;
+	left: 0;
+	clip: rect(0 0 0 0);
 }
 
 /* List */
 
 .shower.list .region {
-    display: none;
+	display: none;
 }
 
 /* Full */
 
 .shower.full .region {
-    display: block;
+	display: block;
 }
 
 /* Print */
 
 @media print {
-    .shower.list .region,
-    .shower.full .region {
-        display: none;
-    }
+	.shower.list .region,
+	.shower.full .region {
+		display: none;
+	}
 }
