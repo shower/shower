@@ -1,63 +1,42 @@
 {
-  "name": "@shower/core",
-  "description": "Core for Shower HTML presentation engine",
-  "version": "3.3.0",
-  "publishConfig": {
-    "access": "public"
-  },
-  "author": {
-    "name": "Vadim Makeev",
-    "email": "pepelsbey@gmail.com",
-    "url": "https://pepelsbey.net"
-  },
-  "homepage": "https://github.com/shower/core",
-  "repository": "shower/core",
-  "bugs": "https://github.com/shower/shower/issues",
-  "license": "MIT",
-  "keywords": [
-    "shower",
-    "presentation",
-    "core"
-  ],
-  "main": "lib/shower.js",
-  "files": [
-    "lib",
-    "dist/shower.js"
-  ],
-  "devDependencies": {
-    "chai": "^4.3.4",
-    "chromedriver": "^83.0.1",
-    "eslint": "^7.29.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-prettier": "^3.4.1",
-    "husky": "^4.3.8",
-    "lint-staged": "^10.5.4",
-    "mocha": "^7.2.0",
-    "nightwatch": "^1.7.6",
-    "prettier": "^2.3.1",
-    "puppeteer": "^3.3.0",
-    "rollup": "^2.58.0",
-    "sauce-connect-launcher": "^1.3.2",
-    "serve": "^11.3.2",
-    "serve-handler": "^6.1.3"
-  },
-  "scripts": {
-    "build": "rollup --config",
-    "build:watch": "rollup --config --watch",
-    "serve": "serve dist",
-    "lint": "eslint '**/*.{js,mjs}'",
-    "lint:fix": "eslint '**/*.{js,mjs}' --fix",
-    "format": "npm run format:js && npm run format:etc",
-    "format:js": "prettier '**/*.{js,mjs}' --write",
-    "format:etc": "prettier '**/*.{json,md,yml}' --write",
-    "test": "npm run lint && npm run test:unit && npm run test:local",
-    "test:unit": "mocha test/unit --require chai/register-should.js",
-    "test:local": "nightwatch --env chrome-local --timeout 500",
-    "test:sauce": "nightwatch --env chrome,firefox,safari"
-  },
-  "config": {
-    "test_port": 8031
-  }
+	"type": "module",
+	"name": "@shower/core",
+	"description": "Core for Shower HTML presentation engine",
+	"version": "3.3.0",
+	"publishConfig": {
+		"access": "public"
+	},
+	"author": {
+		"name": "Vadim Makeev",
+		"email": "hi@pepelsbey.dev",
+		"url": "https://pepelsbey.dev"
+	},
+	"homepage": "https://github.com/shower/core",
+	"repository": "shower/core",
+	"bugs": "https://github.com/shower/shower/issues",
+	"license": "MIT",
+	"keywords": [
+		"shower",
+		"presentation",
+		"core"
+	],
+	"main": "lib/shower.js",
+	"files": [
+		"lib",
+		"dist/shower.js"
+	],
+	"devDependencies": {
+		"@eslint/js": "^9.13.0",
+		"eslint": "^9.13.0",
+		"globals": "^15.11.0",
+		"rollup": "^4.24.0",
+		"serve": "^14.2.4",
+		"serve-handler": "^6.1.3"
+	},
+	"scripts": {
+		"build": "rollup --config",
+		"build:watch": "rollup --config --watch",
+		"serve": "serve dist",
+		"eslint": "eslint --ignore-pattern dist"
+	}
 }

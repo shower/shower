@@ -1,6 +1,2 @@
-logs
-chromedriver.log
 node_modules
-npm-debug.log*
-/dist/shower.js
-/test/output
+dist

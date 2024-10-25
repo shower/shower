@@ -2,7 +2,7 @@ import fs from 'node:fs';
 
 const pkg = JSON.parse(fs.readFileSync('package.json'));
 
-// import pkg from './package.json';
+// import pkg from './package.json' assert { type: 'json' };
 
 const ndash = '\u2013';
 const yearNow = new Date().getFullYear();
@@ -15,11 +15,11 @@ const banner = `\
  */`;
 
 export default {
-    input: 'lib/start.js',
-    output: {
-        file: 'dist/shower.js',
-        format: 'iife',
-        name: 'shower',
-        banner,
-    },
+	input: 'lib/start.js',
+	output: {
+		file: 'dist/shower.js',
+		format: 'iife',
+		name: 'shower',
+		banner,
+	},
 };
