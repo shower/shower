@@ -5,6 +5,12 @@ export default [
 	js.configs.recommended,
 
 	{
+		ignores: [
+			'dist/*.js',
+		],
+	},
+
+	{
 		ignores: ['lib/**/*.js'],
 		languageOptions: {
 			globals: {

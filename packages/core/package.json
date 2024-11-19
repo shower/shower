@@ -37,6 +37,6 @@
 		"build": "rollup --config",
 		"build:watch": "rollup --config --watch",
 		"serve": "serve dist",
-		"eslint": "eslint --ignore-pattern dist"
+		"test": "eslint"
 	}
 }
