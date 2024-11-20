@@ -43,13 +43,17 @@ You’ll need [Node.js](https://nodejs.org/) installed on your computer.
 
 Once you’re done you can build a clean copy of your slides:
 
-    npm run bundle
+```sh
+npm run bundle
+```
 
 You’ll find your presentation in `bundled` folder. You can also run `npm run archive` to get the same files in `presentation.zip`.
 
 Publish your presentation online by running:
 
-    npm run publish
+```sh
+npm run publish
+```
 
 You’ll have your slides published to `https://USER.github.io/REPO/`.
 
@@ -69,7 +73,7 @@ Latest stable versions of Chrome, Edge, Firefox, and Safari are supported.
 
 You’re always welcome to contribute. Fork project, make changes and send it as pull request. But it’s better to file an [issue](https://github.com/shower/shower/issues) with your idea first. Read [contributing rules](CONTRIBUTING.md) for more details.
 
-Main contributors in historical order: [pepelsbey](https://github.com/pepelsbey), [jahson](https://github.com/jahson), [miripiruni](https://github.com/miripiruni), [kizu](https://github.com/kizu), [artpolikarpov](https://github.com/artpolikarpov), [tonyganch](https://github.com/tonyganch), [zloylos](https://github.com/zloylos), [zloylos](https://github.com/zloylos), [shvaikalesh](https://github.com/shvaikalesh).
+Main contributors in historical order: [pepelsbey](https://github.com/pepelsbey), [jahson](https://github.com/jahson), [miripiruni](https://github.com/miripiruni), [kizu](https://github.com/kizu), [artpolikarpov](https://github.com/artpolikarpov), [tonyganch](https://github.com/tonyganch), [zloylos](https://github.com/zloylos), [shvaikalesh](https://github.com/shvaikalesh).
 
 ---
 Licensed under [MIT License](LICENSE.md).
