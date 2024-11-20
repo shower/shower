@@ -4,15 +4,11 @@ You’re always welcome to contribute! Before contributing to Shower, please rea
 
 ## Process
 
-Fork needed repository, create a branch for each feature or issue you’re dealing with and start making changes. Make sure you code doesn’t break tests if there are any. Once you’re finished, send pull request back to original repository: one feature or bug fix — one pull request, please don’t combine non-relevant changes into one pull request. Supply clear description of your changes and a link to existing issue.
+Fork needed repository, create a brach for each feature or issue you’re dealing with and start making changes. Make sure you code doesn’t break tests if there are any. Once you’re finished, send pull request back to original repository: one feature or bug fix — one pull request, please don’t combine non-relevant changes into one pull request. Supply clear description of your changes and a link to existing issue.
 
 ## Code style
 
-Please preserve existing code style while contributing to Shower and be ready for code review by Shower maintainers. It’s strongly recommended to install [EditorConfig](http://editorconfig.org) extension to your editor and validate your JavaScript changes using [JSHint](http://jshint.com/).
-
-## Language
-
-English is the main language for Shower project. All discussions and commit messages should be in English, no matter if it’s good or bad. The second language of Shower is Russian. Official Shower themes are always compatible with Cyrillic and Russian typography. All documentation to Shower is always localized to Russian.
+Please preserve existing code style while contributing to Shower and be ready for code review by Shower maintainers. It’s strongly recommended to install [EditorConfig](http://editorconfig.org) extension to your editor and validate your CSS changes using [Stylelint](https://stylelint.io/) and JavaScript changes using [ESLint](http://eslint.org/).
 
 ---
 Licensed under [MIT License](LICENSE.md).
