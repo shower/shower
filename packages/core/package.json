@@ -23,10 +23,10 @@
 		"presentation",
 		"core"
 	],
-	"main": "lib/shower.js",
+	"main": "lib/index.js",
 	"files": [
 		"lib",
-		"dist/shower.js",
+		"dist/index.js",
 		"LICENSE.md",
 		"README.md"
 	],

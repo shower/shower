@@ -15,9 +15,9 @@ const banner = `\
  */`;
 
 export default {
-	input: 'lib/start.js',
+	input: 'lib/index.js',
 	output: {
-		file: 'dist/shower.js',
+		file: 'dist/index.js',
 		format: 'iife',
 		name: 'shower',
 		banner,
