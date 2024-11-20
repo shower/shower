@@ -7,7 +7,8 @@
 	},
 	"author": {
 		"name": "Vadim Makeev",
-		"url": "https://pepelsbey.dev/"
+		"email": "hi@pepelsbey.dev",
+		"url": "https://pepelsbey.dev"
 	},
 	"homepage": "https://github.com/shower/ribbon",
 	"repository": {
