@@ -1,72 +1,77 @@
-import fs from 'node:fs';
 import gulp from 'gulp';
 import merge from 'merge-stream';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
 import zip from 'gulp-zip';
 
+const paths = {
+	core: 'node_modules/@shower/core/dist',
+	ribbon: 'node_modules/@shower/ribbon',
+	material: 'node_modules/@shower/material',
+	shower: 'node_modules/@shower/shower',
+	dist: 'dist'
+};
+
+function processShower() {
+	return gulp.src([
+		'**',
+		'!package.json',
+		'!node_modules',
+	], {
+		cwd: paths.shower,
+		encoding: false
+	})
+	.pipe(replace(
+		paths.ribbon, 'shower/themes/ribbon/', { skipBinary: true }
+	))
+	.pipe(replace(
+		paths.core, 'shower/', { skipBinary: true }
+	));
+}
+
+function processCore() {
+	return gulp.src(['shower.js'], {
+		cwd: paths.core,
+		encoding: false
+	})
+	.pipe(rename((path) => {
+		path.dirname = 'shower/' + path.dirname;
+	}));
+}
+
+function processTheme(themePath, themeName) {
+	return gulp.src([
+		'**',
+		'!package.json',
+		'!node_modules',
+	], {
+		cwd: themePath,
+		encoding: false
+	})
+	.pipe(rename((path) => {
+		path.dirname = `shower/themes/${themeName}/` + path.dirname;
+	}));
+}
+
+function processThemes() {
+	const material = processTheme(paths.material, 'material');
+	const ribbon = processTheme(paths.ribbon, 'ribbon');
+
+	return merge(material, ribbon)
+	.pipe(replace(
+		paths.core, '../../', { skipBinary: true }
+	));
+}
+
 gulp.task('themes', () => {
-	const shower = gulp.src([
-			'**',
-			'!package.json',
-			'!node_modules',
-		], {
-			cwd: 'node_modules/@shower/shower',
-			encoding: false
-		})
-		.pipe(replace(
-			/(<link rel="stylesheet" href=")(node_modules\/@shower\/ribbon\/)(styles\/styles.css">)/g,
-			'$1shower/themes/ribbon/$3', { skipBinary: true }
-		))
-		.pipe(replace(
-			/(<script src=")(node_modules\/@shower\/core\/dist\/)(shower.js"><\/script>)/g,
-			'$1shower/$3', { skipBinary: true }
-		));
-
-	const core = gulp.src([
-			'shower.js'
-		], {
-			cwd: 'node_modules/@shower/core/dist',
-			encoding: false
-		})
-		.pipe(rename( (path) => {
-			path.dirname = 'shower/' + path.dirname;
-		}));
-
-	const material = gulp.src([
-			'**',
-			'!package.json',
-			'!node_modules',
-		], {
-			cwd: 'node_modules/@shower/material',
-			encoding: false
-		})
-		.pipe(rename( (path) => {
-			path.dirname = 'shower/themes/material/' + path.dirname;
-		}))
-
-	const ribbon = gulp.src([
-			'**',
-			'!package.json',
-			'!node_modules',
-		], {
-			cwd: 'node_modules/@shower/ribbon',
-			encoding: false
-		})
-		.pipe(rename( (path) => {
-			path.dirname = 'shower/themes/ribbon/' + path.dirname;
-		}));
-
-	const themes = merge(material, ribbon)
-		.pipe(replace(
-			/(<script src=")(node_modules\/@shower\/core\/dist\/)(shower.js"><\/script>)/g,
-			'$1../../$3', { skipBinary: true }
-		));
+	const shower = processShower();
+	const core = processCore();
+	const themes = processThemes();
 
 	return merge(shower, core, themes)
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest(paths.dist))
 		.pipe(zip('shower.zip'))
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('assets', () => {
@@ -90,7 +95,7 @@ gulp.task('assets', () => {
 		));
 
 	return merge(files, html)
-		.pipe(gulp.dest('dist'));
+	.pipe(gulp.dest(paths.dist));
 });
 
 gulp.task('build', gulp.series(
