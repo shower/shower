@@ -27,6 +27,9 @@
 		"LICENSE.md",
 		"README.md"
 	],
+	"engines": {
+		"node": "20"
+	},
 	"dependencies": {
 		"@shower/core": "^3.3.0",
 		"@shower/material": "^2.5.1",
