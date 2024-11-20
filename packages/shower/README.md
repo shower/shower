@@ -34,10 +34,10 @@ Read more on [shower/cli](https://github.com/shower/cli/) page.
 You’ll need [Node.js](https://nodejs.org/) installed on your computer.
 
 1. Copy this repository to your account via GitHub.
-    1. Open [import page](https://github.com/new/import).
-    2. Use `https://github.com/shower/shower` for the repository URL
-    3. Use your presentation name.
-    4. Clone the resulted repository to your computer.
+	1. Open [import page](https://github.com/new/import).
+	2. Use `https://github.com/shower/shower` for the repository URL
+	3. Use your presentation name.
+	4. Clone the resulted repository to your computer.
 2. Install dependencies `npm install` and start a local server `npm start`.
 3. Start editing your slides with live-reload.
 
