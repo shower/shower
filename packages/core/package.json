@@ -12,7 +12,10 @@
 		"url": "https://pepelsbey.dev"
 	},
 	"homepage": "https://github.com/shower/core",
-	"repository": "shower/core",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/shower/core.git"
+	},
 	"bugs": "https://github.com/shower/shower/issues",
 	"license": "MIT",
 	"keywords": [
@@ -23,7 +26,9 @@
 	"main": "lib/shower.js",
 	"files": [
 		"lib",
-		"dist/shower.js"
+		"dist/shower.js",
+		"LICENSE.md",
+		"README.md"
 	],
 	"devDependencies": {
 		"@eslint/js": "^9.13.0",

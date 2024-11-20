@@ -6,11 +6,15 @@ Core of the [Shower](https://github.com/shower/shower) presentation engine. Does
 
 Get the [Shower template](https://github.com/shower/shower) with core already included. Download the template [archive](http://shwr.me/shower.zip) or install the package:
 
-	npm install @shower/shower
+```sh
+npm install @shower/shower
+```
 
 You can also install core as a separate package:
 
-	npm install @shower/core
+```sh
+npm install @shower/core
+```
 
 ## Development
 
