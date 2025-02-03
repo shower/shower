@@ -1,7 +1,6 @@
 .editorconfig
 .eslintrc.json
 .lintstagedrc
-.yaspellerrc
 
 node_modules/
 npm-debug.log

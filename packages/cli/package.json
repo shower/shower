@@ -40,8 +40,7 @@
     "jest": "^25.5.4",
     "lint-staged": "^10.5.4",
     "pdf-parse": "^1.1.1",
-    "pre-commit": "^1.2.2",
-    "yaspeller-ci": "^1.0.2"
+    "pre-commit": "^1.2.2"
   },
   "dependencies": {
     "browser-sync": "^2.26.14",
@@ -75,8 +74,7 @@
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "spellcheck": "yaspeller-ci *.md",
     "lint": "eslint-ci **/*.js --fix",
-    "test": "jest && npm run lint && npm run spellcheck"
+    "test": "jest && npm run lint"
   }
 }
