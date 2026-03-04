@@ -34,9 +34,9 @@
 		"README.md"
 	],
 	"devDependencies": {
-		"@shower/core": "^3.2.0",
-		"browser-sync": "^3.0.3",
-		"stylelint": "^16.10.0"
+		"@shower/core": "^3.3.0",
+		"browser-sync": "^3.0.4",
+		"stylelint": "^17.4.0"
 	},
 	"scripts": {
 		"test": "stylelint \"styles/**/*.css\"",
