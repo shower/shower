@@ -1,14 +1,19 @@
-const fs = require('fs')
-const del = require('del')
-const path = require('path')
-const chalk = require('chalk')
-const Listr = require('listr')
-const vfs = require('vinyl-fs')
-const inquirer = require('inquirer')
-const { promisify } = require('util')
-const template = require('gulp-template')
+import fs from 'node:fs'
+import path from 'node:path'
+import { promisify } from 'node:util'
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const { installDependencies } = require('../lib/npm')
+import { deleteAsync } from 'del'
+import chalk from 'chalk'
+import Listr from 'listr'
+import vfs from 'vinyl-fs'
+import inquirer from 'inquirer'
+import template from 'gulp-template'
+
+import { installDependencies } from '../lib/npm.js'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault }) {
   // Let's check if such folder exists
@@ -23,7 +28,7 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
     })
 
     if (isForce) {
-      await del([directory])
+      await deleteAsync([directory])
     } else {
       process.stdout.write(chalk.red(`\n Creating aborted\n`))
 
@@ -118,4 +123,4 @@ function messages ({ directory: folderName = 'slides' }) {
   }
 }
 
-module.exports = { handler, builder, messages }
+export { handler, builder, messages }

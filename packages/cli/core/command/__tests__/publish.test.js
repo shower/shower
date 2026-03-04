@@ -1,4 +1,4 @@
-const { handler: publish, messages } = require('../publish')
+import { handler as publish, messages } from '../publish.js'
 
 it('Must be function', () => {
   expect(typeof publish).toBe('function')

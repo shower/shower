@@ -1,8 +1,8 @@
-const vfs = require('vinyl-fs')
-const zip = require('gulp-zip')
-const chalk = require('chalk')
+import vfs from 'vinyl-fs'
+import zip from 'gulp-zip'
+import chalk from 'chalk'
 
-const { loadPresentationFiles } = require('../lib/presentation')
+import { loadPresentationFiles } from '../lib/presentation.js'
 
 function handler ({ output, files }) {
   const stream = loadPresentationFiles(files)
@@ -41,4 +41,4 @@ function messages ({ output }) {
   }
 }
 
-module.exports = { handler, builder, messages }
+export { handler, builder, messages }

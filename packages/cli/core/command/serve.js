@@ -1,4 +1,4 @@
-const { create } = require('browser-sync')
+import { create } from 'browser-sync'
 
 function handler ({ cwd, port, open, ui, notify }) {
   const bs = create()
@@ -58,4 +58,4 @@ function messages () {
   return {}
 }
 
-module.exports = { handler, builder, messages }
+export { handler, builder, messages }

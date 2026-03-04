@@ -1,14 +1,13 @@
-const chalk = require('chalk')
-const puppeteer = require('puppeteer-core')
-const { getPlatform } = require('chrome-launcher/dist/utils.js')
-const chromeFinder = require('chrome-launcher/dist/chrome-finder.js')
+import chalk from 'chalk'
+import puppeteer from 'puppeteer-core'
+import { getPlatform } from 'chrome-launcher/dist/utils.js'
+import * as chromeFinder from 'chrome-launcher/dist/chrome-finder.js'
 
 function evalCalcExpression (value) {
   const expression = value
     .replace(/calc/g, '')
     .replace(/px/g, '')
 
-  // eslint-disable-next-line no-eval
   return eval(expression) + 'px'
 }
 
@@ -23,9 +22,9 @@ async function handler ({ cwd, output }) {
   await page.goto(`file://${cwd}/index.html`)
 
   const [width, height] = await page.evaluate(async () => {
-    const container = document.querySelector('.shower')
+    const container = document.querySelector('.shower') // eslint-disable-line no-undef
 
-    const styles = window.getComputedStyle(container)
+    const styles = window.getComputedStyle(container) // eslint-disable-line no-undef
 
     return [
       styles.getPropertyValue('--slide-width'),
@@ -61,4 +60,4 @@ function messages ({ output }) {
   }
 }
 
-module.exports = { handler, builder, messages }
+export { handler, builder, messages }

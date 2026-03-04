@@ -1,5 +1,5 @@
-const fs = require('fs')
-const { resolve } = require('path')
+import fs from 'node:fs'
+import { resolve } from 'node:path'
 
 /**
  * @typedef {Object} ProjectConfig
@@ -32,4 +32,4 @@ function findProject (cwd) {
   return project
 }
 
-module.exports = { getEnv: findProject }
+export { findProject as getEnv }

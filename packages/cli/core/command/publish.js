@@ -1,9 +1,9 @@
-const tmp = require('tmp')
-const vfs = require('vinyl-fs')
-const pages = require('gh-pages')
-const { promisify } = require('util')
+import tmp from 'tmp'
+import vfs from 'vinyl-fs'
+import pages from 'gh-pages'
+import { promisify } from 'node:util'
 
-const { loadPresentationFiles } = require('../lib/presentation')
+import { loadPresentationFiles } from '../lib/presentation.js'
 
 function handler ({ files }) {
   let tempDirPath = null
@@ -58,4 +58,4 @@ function messages () {
   }
 }
 
-module.exports = { handler, builder, messages }
+export { handler, builder, messages }

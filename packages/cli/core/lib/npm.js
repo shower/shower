@@ -1,4 +1,4 @@
-const execa = require('execa')
+import { execa } from 'execa'
 
 /**
  * Install node modules synchronously and save to dependencies in package.json
@@ -7,7 +7,7 @@ const execa = require('execa')
  * @param {string} mode Type package installing
  * @returns {void}
  */
-module.exports.installDependencies = async function installDevDependencies (cwd, packages, mode = 'save') {
+export async function installDependencies (cwd, packages, mode = 'save') {
   packages = Array.isArray(packages) ? packages : [packages]
 
   try {

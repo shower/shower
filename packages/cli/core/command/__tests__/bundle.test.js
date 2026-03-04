@@ -1,4 +1,4 @@
-const { handler: bundle, messages } = require('../bundle')
+import { handler as bundle, messages } from '../bundle.js'
 
 it('Must be function', () => {
   expect(typeof bundle).toBe('function')

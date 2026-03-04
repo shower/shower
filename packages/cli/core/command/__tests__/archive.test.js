@@ -1,4 +1,4 @@
-const { handler: archive, messages } = require('../archive')
+import { handler as archive, messages } from '../archive.js'
 
 it('Must be function', () => {
   expect(typeof archive).toBe('function')

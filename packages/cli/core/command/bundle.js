@@ -1,16 +1,16 @@
-const vfs = require('vinyl-fs')
-const chalk = require('chalk')
-const path = require('path')
-const del = require('del')
+import vfs from 'vinyl-fs'
+import chalk from 'chalk'
+import path from 'node:path'
+import { deleteSync } from 'del'
 
-const { loadPresentationFiles } = require('../lib/presentation')
+import { loadPresentationFiles } from '../lib/presentation.js'
 
 function handler ({ cwd, output, files }) {
   if (!path.isAbsolute(output)) {
     output = path.join(cwd, output)
   }
 
-  del.sync([output])
+  deleteSync([output])
 
   const stream = loadPresentationFiles(files)
     .pipe(vfs.dest(output))
@@ -47,4 +47,4 @@ function messages ({ output }) {
   }
 }
 
-module.exports = { handler, builder, messages }
+export { handler, builder, messages }

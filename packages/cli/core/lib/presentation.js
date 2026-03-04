@@ -1,7 +1,7 @@
-const vfs = require('vinyl-fs')
-const merge = require('merge-stream')
-const rename = require('gulp-rename')
-const replace = require('gulp-replace')
+import vfs from 'vinyl-fs'
+import merge from 'merge-stream'
+import rename from 'gulp-rename'
+import replace from 'gulp-replace'
 
 const defaultFiles = [
   '**',
@@ -45,4 +45,4 @@ function loadPresentationFiles (files = defaultFiles) {
   return merge(presentations, core, getThemeFiles('material'), getThemeFiles('ribbon'))
 }
 
-module.exports = { loadPresentationFiles }
+export { loadPresentationFiles }

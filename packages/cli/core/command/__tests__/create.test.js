@@ -1,4 +1,4 @@
-const { handler: create, messages } = require('../create')
+import { handler as create, messages } from '../create.js'
 
 it('Must be function', () => {
   expect(typeof create).toBe('function')

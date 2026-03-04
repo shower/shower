@@ -1,7 +1,12 @@
-const chalk = require('chalk')
-const semver = require('semver')
+import { readFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
-const pkg = require('../package.json')
+import chalk from 'chalk'
+import semver from 'semver'
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
+const pkg = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf-8'))
 
 process.title = pkg.name
 
@@ -17,14 +22,17 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
   process.exit(1)
 }
 
-const app = require('yargs')
-const Listr = require('listr')
-const updateNotifier = require('update-notifier')
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
+import Listr from 'listr'
+import updateNotifier from 'update-notifier'
+
+import { getEnv } from './lib/env.js'
 
 // Warn the user about new versions
 updateNotifier({ pkg }).notify()
 
-const { getEnv } = require('./lib/env')
+const app = yargs(hideBin(process.argv))
 
 app.strict()
 app.locale('en')
@@ -106,14 +114,14 @@ function lazyLoadCommand (id) {
     aliases: command.aliases,
     describe: chalk.yellow(command.describe),
 
-    builder (...args) {
-      const { builder } = require(`./command/${id}.js`)
+    async builder (...args) {
+      const { builder } = await import(`./command/${id}.js`)
 
       return builder.call(this, ...args)
     },
 
     async handler (options) {
-      const { handler, messages } = require(`./command/${id}.js`)
+      const { handler, messages } = await import(`./command/${id}.js`)
       const { start, end } = messages(options)
 
       if (start) {
@@ -138,7 +146,7 @@ for (const commandID in commandsList) {
   app.command(lazyLoadCommand(commandID))
 }
 
-app.argv // eslint-disable-line no-unused-expressions
+app.parse()
 
 if (!process.argv.slice(2).length) {
   app.showHelp()

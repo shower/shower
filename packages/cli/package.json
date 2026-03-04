@@ -23,58 +23,56 @@
     "presentation",
     "cli"
   ],
+  "type": "module",
   "engines": {
-    "node": ">=8"
+    "node": ">=18"
   },
   "bin": {
     "shower": "bin/cli.js"
   },
   "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-ci": "^1.0.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "eslint-plugin-standard": "^4.1.0",
-    "jest": "^25.5.4",
-    "lint-staged": "^10.5.4",
-    "pdf-parse": "^1.1.1",
-    "pre-commit": "^1.2.2"
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.0.2",
+    "globals": "^16.0.0",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.3.2",
+    "pdf-parse": "^2.4.5",
+    "pre-commit": "^1.0.10"
   },
   "dependencies": {
-    "browser-sync": "^2.26.14",
-    "chalk": "^4.1.0",
-    "chrome-launcher": "^0.13.4",
-    "del": "^5.1.0",
-    "execa": "^4.1.0",
-    "gh-pages": "^2.2.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-template": "^5.0.0",
-    "gulp-zip": "^5.0.2",
-    "inquirer": "^7.3.3",
+    "browser-sync": "^3.0.4",
+    "chalk": "^5.6.2",
+    "chrome-launcher": "^1.2.1",
+    "del": "^8.0.1",
+    "execa": "^9.6.1",
+    "gh-pages": "^6.3.0",
+    "gulp-rename": "^2.1.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-template": "^6.1.0",
+    "gulp-zip": "^6.1.0",
+    "inquirer": "^13.3.0",
     "listr": "^0.14.3",
     "merge-stream": "^2.0.0",
-    "puppeteer-core": "^3.3.0",
-    "semver": "^7.3.4",
-    "tmp": "^0.1.0",
-    "update-notifier": "^4.1.3",
-    "vinyl-fs": "^3.0.3",
-    "yargs": "^15.4.1"
+    "puppeteer-core": "^24.38.0",
+    "semver": "^7.7.4",
+    "tmp": "^0.2.5",
+    "update-notifier": "^7.3.1",
+    "vinyl-fs": "^4.0.2",
+    "yargs": "^18.0.0"
   },
   "pre-commit": [
     "lint-staged"
   ],
   "jest": {
     "testEnvironment": "node",
+    "transform": {},
     "testMatch": [
       "<rootDir>/**/__tests__/*.test.js"
     ]
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "lint": "eslint-ci **/*.js --fix",
-    "test": "jest && npm run lint"
+    "lint": "eslint **/*.js --fix",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest && npm run lint"
   }
 }

@@ -1,4 +1,4 @@
-const { handler: pdf, messages } = require('../pdf')
+import { handler as pdf, messages } from '../pdf.js'
 
 it('Must be function', () => {
   expect(typeof pdf).toBe('function')
