@@ -31,11 +31,11 @@
 		"README.md"
 	],
 	"devDependencies": {
-		"@eslint/js": "^9.13.0",
-		"eslint": "^9.13.0",
-		"globals": "^15.11.0",
-		"rollup": "^4.24.0",
-		"serve": "^14.2.4"
+		"@eslint/js": "^10.0.1",
+		"eslint": "^10.0.2",
+		"globals": "^17.4.0",
+		"rollup": "^4.59.0",
+		"serve": "^14.2.6"
 	},
 	"scripts": {
 		"build": "rollup --config",
