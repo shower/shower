@@ -30,7 +30,7 @@ function processShower() {
 }
 
 function processCore() {
-	return gulp.src(['shower.js'], {
+	return gulp.src(['index.js'], {
 		cwd: paths.core,
 		encoding: false
 	})
