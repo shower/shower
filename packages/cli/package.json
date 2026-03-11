@@ -1,0 +1,78 @@
+{
+  "name": "@shower/cli",
+  "description": "Command line interface for Shower",
+  "version": "0.4.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Nikolay Govorov",
+    "email": "nikolay_govorov@bk.ru"
+  },
+  "homepage": "https://github.com/shower/cli",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/shower/cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shower/cli/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "shower",
+    "presentation",
+    "cli"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "shower": "bin/cli.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.0.2",
+    "globals": "^16.0.0",
+    "jest": "^30.2.0",
+    "lint-staged": "^16.3.2",
+    "pdf-parse": "^2.4.5",
+    "pre-commit": "^1.0.10"
+  },
+  "dependencies": {
+    "browser-sync": "^3.0.4",
+    "chalk": "^5.6.2",
+    "chrome-launcher": "^1.2.1",
+    "del": "^8.0.1",
+    "execa": "^9.6.1",
+    "gh-pages": "^6.3.0",
+    "gulp-rename": "^2.1.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-template": "^6.1.0",
+    "gulp-zip": "^6.1.0",
+    "inquirer": "^13.3.0",
+    "listr": "^0.14.3",
+    "merge-stream": "^2.0.0",
+    "puppeteer-core": "^24.38.0",
+    "semver": "^7.7.4",
+    "tmp": "^0.2.5",
+    "update-notifier": "^7.3.1",
+    "vinyl-fs": "^4.0.2",
+    "yargs": "^18.0.0"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ],
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "testMatch": [
+      "<rootDir>/**/__tests__/*.test.js"
+    ]
+  },
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "lint": "eslint **/*.js --fix",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest && npm run lint"
+  }
+}

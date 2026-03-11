@@ -1,0 +1,50 @@
+{
+	"type": "module",
+	"name": "@shower/core",
+	"description": "Core for Shower HTML presentation engine",
+	"version": "3.3.0",
+	"publishConfig": {
+		"access": "public"
+	},
+	"author": {
+		"name": "Vadim Makeev",
+		"email": "hi@pepelsbey.dev",
+		"url": "https://pepelsbey.dev"
+	},
+	"homepage": "https://github.com/shower/core",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/shower/core.git"
+	},
+	"bugs": "https://github.com/shower/shower/issues",
+	"license": "MIT",
+	"keywords": [
+		"shower",
+		"presentation",
+		"core"
+	],
+	"main": "lib/index.js",
+	"files": [
+		"lib",
+		"dist/index.js",
+		"LICENSE.md",
+		"README.md"
+	],
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@playwright/test": "^1.58.2",
+		"editorconfig-checker": "^6.1.1",
+		"eslint": "^10.0.2",
+		"globals": "^17.4.0",
+		"rollup": "^4.59.0",
+		"serve": "^14.2.6"
+	},
+	"scripts": {
+		"build": "rollup --config",
+		"build:watch": "rollup --config --watch",
+		"serve": "serve dist",
+		"test": "npm run test:lint && npm run test:e2e",
+		"test:lint": "editorconfig-checker && eslint",
+		"test:e2e": "playwright test"
+	}
+}

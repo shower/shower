@@ -1,0 +1,10 @@
+.editorconfig
+.eslintrc.json
+.lintstagedrc
+
+node_modules/
+npm-debug.log
+
+test/
+.travis.yml
+appveyor.yml
