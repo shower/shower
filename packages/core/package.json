@@ -11,10 +11,11 @@
 		"email": "hi@pepelsbey.dev",
 		"url": "https://pepelsbey.dev"
 	},
-	"homepage": "https://github.com/shower/core",
+	"homepage": "https://github.com/shower/shower/tree/main/packages/core",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/shower/core.git"
+		"url": "git://github.com/shower/shower.git",
+		"directory": "packages/core"
 	},
 	"bugs": "https://github.com/shower/shower/issues",
 	"license": "MIT",
@@ -31,20 +32,13 @@
 		"README.md"
 	],
 	"devDependencies": {
-		"@eslint/js": "^10.0.1",
-		"@playwright/test": "^1.58.2",
-		"editorconfig-checker": "^6.1.1",
-		"eslint": "^10.0.2",
-		"globals": "^17.4.0",
-		"rollup": "^4.59.0",
 		"serve": "^14.2.6"
 	},
 	"scripts": {
 		"build": "rollup --config",
 		"build:watch": "rollup --config --watch",
 		"serve": "serve dist",
-		"test": "npm run test:lint && npm run test:e2e",
-		"test:lint": "editorconfig-checker && eslint",
+		"test": "npm run test:e2e",
 		"test:e2e": "playwright test"
 	}
 }

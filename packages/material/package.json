@@ -1,4 +1,5 @@
 {
+	"type": "module",
 	"name": "@shower/material",
 	"description": "Material theme for Shower HTML presentation engine",
 	"version": "2.5.1",
@@ -10,13 +11,14 @@
 		"email": "hi@pepelsbey.dev",
 		"url": "https://pepelsbey.dev"
 	},
-	"homepage": "https://github.com/shower/material",
+	"homepage": "https://github.com/shower/shower/tree/main/packages/material",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/shower/material.git"
+		"url": "git://github.com/shower/shower.git",
+		"directory": "packages/material"
 	},
 	"bugs": {
-		"url": "https://github.com/shower/material/issues"
+		"url": "https://github.com/shower/shower/issues"
 	},
 	"license": "MIT",
 	"keywords": [
@@ -34,12 +36,9 @@
 		"README.md"
 	],
 	"devDependencies": {
-		"@shower/core": "^3.3.0",
-		"browser-sync": "^3.0.4",
-		"stylelint": "^17.4.0"
+		"@shower/core": "^3.3.0"
 	},
 	"scripts": {
-		"test": "stylelint \"styles/**/*.css\"",
 		"start": "browser-sync start --server --no-notify --no-ui --no-ghost-mode --files 'fonts/*,pictures/*,styles/**,index.html'"
 	}
 }

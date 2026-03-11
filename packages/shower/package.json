@@ -1,7 +1,11 @@
 {
+	"type": "module",
 	"name": "@shower/shower",
 	"description": "Shower HTML presentation engine",
 	"version": "3.3.1",
+	"publishConfig": {
+		"access": "public"
+	},
 	"author": {
 		"name": "Vadim Makeev",
 		"email": "hi@pepelsbey.dev",
@@ -10,7 +14,8 @@
 	"homepage": "https://github.com/shower/shower",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/shower/shower.git"
+		"url": "git://github.com/shower/shower.git",
+		"directory": "packages/shower"
 	},
 	"bugs": {
 		"url": "https://github.com/shower/shower/issues"

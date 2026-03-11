@@ -1,4 +1,5 @@
 {
+	"type": "module",
 	"name": "@shower/ribbon",
 	"description": "Ribbon theme for Shower HTML presentation engine",
 	"version": "3.5.2",
@@ -10,10 +11,11 @@
 		"email": "hi@pepelsbey.dev",
 		"url": "https://pepelsbey.dev"
 	},
-	"homepage": "https://github.com/shower/ribbon",
+	"homepage": "https://github.com/shower/shower/tree/main/packages/ribbon",
 	"repository": {
 		"type": "git",
-		"url": "git://github.com/shower/ribbon.git"
+		"url": "git://github.com/shower/shower.git",
+		"directory": "packages/ribbon"
 	},
 	"bugs": {
 		"url": "https://github.com/shower/shower/issues"
@@ -34,12 +36,9 @@
 		"README.md"
 	],
 	"devDependencies": {
-		"@shower/core": "^3.3.0",
-		"browser-sync": "^3.0.4",
-		"stylelint": "^17.4.0"
+		"@shower/core": "^3.3.0"
 	},
 	"scripts": {
-		"test": "stylelint \"styles/**/*.css\"",
 		"start": "browser-sync start --server --no-notify --no-ui --no-ghost-mode --files 'fonts/*,pictures/*,styles/**,index.html'"
 	}
 }
