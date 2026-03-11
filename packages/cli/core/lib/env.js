@@ -1,5 +1,5 @@
-import fs from 'node:fs'
-import { resolve } from 'node:path'
+import fs from 'node:fs';
+import { resolve } from 'node:path';
 
 /**
  * @typedef {Object} ProjectConfig
@@ -7,7 +7,7 @@ import { resolve } from 'node:path'
  */
 
 // '/' for unix, 'C:\' for windows
-const ROOT_DIR = resolve('/')
+const ROOT_DIR = resolve('/');
 
 /**
  * Creates a application config
@@ -17,19 +17,19 @@ const ROOT_DIR = resolve('/')
  * @returns {ProjectConfig} – project config
  */
 function findProject (cwd) {
-  let project = null
+	let project = null;
 
-  for (let path = cwd; path !== ROOT_DIR;) {
-    if (fs.existsSync(resolve(path, 'index.html'))) {
-      project = { path }
+	for (let path = cwd; path !== ROOT_DIR;) {
+		if (fs.existsSync(resolve(path, 'index.html'))) {
+			project = { path };
 
-      break
-    }
+			break;
+		}
 
-    path = resolve(path, '..')
-  }
+		path = resolve(path, '..');
+	}
 
-  return project
+	return project;
 }
 
-export { findProject as getEnv }
+export { findProject as getEnv };

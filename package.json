@@ -14,5 +14,15 @@
 		"test:lint": "editorconfig-checker && eslint && stylelint 'packages/{material,ribbon}/styles/**/*.css'",
 		"test:packages": "npm test --workspaces --if-present",
 		"test:e2e": "npm run test:e2e --workspace=packages/core"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@playwright/test": "^1.58.2",
+		"browser-sync": "^3.0.4",
+		"editorconfig-checker": "^6.1.1",
+		"eslint": "^10.0.3",
+		"globals": "^17.4.0",
+		"rollup": "^4.59.0",
+		"stylelint": "^17.4.0"
 	}
 }

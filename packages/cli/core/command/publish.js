@@ -1,61 +1,61 @@
-import tmp from 'tmp'
-import vfs from 'vinyl-fs'
-import pages from 'gh-pages'
-import { promisify } from 'node:util'
+import tmp from 'tmp';
+import vfs from 'vinyl-fs';
+import pages from 'gh-pages';
+import { promisify } from 'node:util';
 
-import { loadPresentationFiles } from '../lib/presentation.js'
+import { loadPresentationFiles } from '../lib/presentation.js';
 
 function handler ({ files }) {
-  let tempDirPath = null
-  let cleanupCallback = null
+	let tempDirPath = null;
+	let cleanupCallback = null;
 
-  return new Promise((resolve, reject) => {
-    tmp.dir({ unsafeCleanup: true }, (error, p, c) => {
-      if (error) {
-        reject(error)
-      }
+	return new Promise((resolve, reject) => {
+		tmp.dir({ unsafeCleanup: true }, (error, p, c) => {
+			if (error) {
+				reject(error);
+			}
 
-      tempDirPath = p
-      cleanupCallback = c
+			tempDirPath = p;
+			cleanupCallback = c;
 
-      resolve()
-    })
-  })
-    .then(() => {
-      const stream = loadPresentationFiles(files)
-        .pipe(vfs.dest(tempDirPath))
+			resolve();
+		});
+	})
+		.then(() => {
+			const stream = loadPresentationFiles(files)
+				.pipe(vfs.dest(tempDirPath));
 
-      return new Promise((resolve, reject) => {
-        stream
-          .on('end', resolve)
-          .on('error', reject)
-      })
-    })
-    .then(() => promisify(pages.publish)(tempDirPath))
-    .then(() => cleanupCallback())
-    .catch((error) => {
-      tmp.setGracefulCleanup()
+			return new Promise((resolve, reject) => {
+				stream
+					.on('end', resolve)
+					.on('error', reject);
+			});
+		})
+		.then(() => promisify(pages.publish)(tempDirPath))
+		.then(() => cleanupCallback())
+		.catch((error) => {
+			tmp.setGracefulCleanup();
 
-      throw error
-    })
+			throw error;
+		});
 }
 
 function builder (yargs) {
-  return yargs
-    .options({
-      files: {
-        alias: 'f',
-        array: true,
-        type: 'string',
-        describe: 'List of files that will get the build'
-      }
-    })
+	return yargs
+		.options({
+			files: {
+				alias: 'f',
+				array: true,
+				type: 'string',
+				describe: 'List of files that will get the build'
+			}
+		});
 }
 
 function messages () {
-  return {
-    end: 'Project published'
-  }
+	return {
+		end: 'Project published'
+	};
 }
 
-export { handler, builder, messages }
+export { handler, builder, messages };

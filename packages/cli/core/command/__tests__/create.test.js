@@ -1,11 +1,11 @@
-import { handler as create, messages } from '../create.js'
+import { handler as create, messages } from '../create.js';
 
 it('Must be function', () => {
-  expect(typeof create).toBe('function')
-})
+	expect(typeof create).toBe('function');
+});
 
 it('Messages must provided "end" message', () => {
-  const { end } = messages({ directory: '' })
+	const { end } = messages({ directory: '' });
 
-  expect(typeof end).toBe('string')
-})
+	expect(typeof end).toBe('string');
+});

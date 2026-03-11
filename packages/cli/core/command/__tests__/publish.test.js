@@ -1,11 +1,11 @@
-import { handler as publish, messages } from '../publish.js'
+import { handler as publish, messages } from '../publish.js';
 
 it('Must be function', () => {
-  expect(typeof publish).toBe('function')
-})
+	expect(typeof publish).toBe('function');
+});
 
 it('Messages must provided "end" message', () => {
-  const { end } = messages({})
+	const { end } = messages({});
 
-  expect(typeof end).toBe('string')
-})
+	expect(typeof end).toBe('string');
+});

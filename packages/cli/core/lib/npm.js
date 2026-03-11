@@ -1,4 +1,4 @@
-import { execa } from 'execa'
+import { execa } from 'execa';
 
 /**
  * Install node modules synchronously and save to dependencies in package.json
@@ -8,17 +8,17 @@ import { execa } from 'execa'
  * @returns {void}
  */
 export async function installDependencies (cwd, packages, mode = 'save') {
-  packages = Array.isArray(packages) ? packages : [packages]
+	packages = Array.isArray(packages) ? packages : [packages];
 
-  try {
-    return await execa('npm', ['i', '--package-lock', `--${mode}`].concat(packages), { cwd })
-  } catch (error) {
-    if (error.code === 'ENOENT') {
-      const pluralS = packages.length > 1 ? 's' : ''
+	try {
+		return await execa('npm', ['i', '--package-lock', `--${mode}`].concat(packages), { cwd });
+	} catch (error) {
+		if (error.code === 'ENOENT') {
+			const pluralS = packages.length > 1 ? 's' : '';
 
-      console.error(`Could not execute npm. Please install the following package${pluralS} with a package manager of your choice: ${packages.join(', ')}`)
-    } else {
-      throw error
-    }
-  }
+			console.error(`Could not execute npm. Please install the following package${pluralS} with a package manager of your choice: ${packages.join(', ')}`);
+		} else {
+			throw error;
+		}
+	}
 }
