@@ -1,0 +1,18 @@
+{
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": ">=20"
+	},
+	"workspaces": [
+		"packages/*",
+		"shwr.me"
+	],
+	"scripts": {
+		"build": "npm run build --workspace=packages/core",
+		"test": "npm run test:lint && npm run test:packages",
+		"test:lint": "editorconfig-checker && eslint && stylelint 'packages/{material,ribbon}/styles/**/*.css'",
+		"test:packages": "npm test --workspaces --if-present",
+		"test:e2e": "npm run test:e2e --workspace=packages/core"
+	}
+}

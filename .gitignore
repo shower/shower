@@ -1,7 +1,14 @@
 node_modules
 dist
+bundled
+presentation.zip
+index.pdf
 
 # Playwright
 test-results
 playwright-report
 blob-report
+
+# Logs
+*-debug.log
+*-error.log
