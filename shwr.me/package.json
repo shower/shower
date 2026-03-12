@@ -2,16 +2,6 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"build": "gulp build"
-	},
-	"dependencies": {
-		"@shower/shower": "^3.3.1"
-	},
-	"devDependencies": {
-		"gulp": "^5.0.1",
-		"gulp-rename": "^2.1.0",
-		"gulp-replace": "^1.1.4",
-		"gulp-zip": "^6.1.0",
-		"merge-stream": "^2.0.0"
+		"build": "node build.js"
 	}
 }
