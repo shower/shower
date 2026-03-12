@@ -36,12 +36,12 @@
 		"node": "20"
 	},
 	"dependencies": {
-		"@shower/core": "^3.3.0",
-		"@shower/material": "^2.5.1",
-		"@shower/ribbon": "^3.5.2"
+		"@shower/core": "*",
+		"@shower/material": "*",
+		"@shower/ribbon": "*"
 	},
 	"devDependencies": {
-		"@shower/cli": "^0.3.1",
+		"@shower/cli": "*",
 		"path-exists-cli": "^2.0.0"
 	},
 	"scripts": {

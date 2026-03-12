@@ -1,7 +1,15 @@
+import { createRequire } from 'node:module';
+import { dirname } from 'node:path';
 import vfs from 'vinyl-fs';
 import merge from 'merge-stream';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
+
+const require = createRequire(import.meta.url);
+
+function resolvePackageDir (pkg) {
+	return dirname(require.resolve(`${pkg}/package.json`));
+}
 
 const defaultFiles = [
 	'**',
@@ -12,10 +20,11 @@ const defaultFiles = [
 ];
 
 function getThemeFiles (theme) {
+	const themeDir = resolvePackageDir(`@shower/${theme}`);
 	return vfs.src([
 		'**', '!package.json'
 	], {
-		cwd: `node_modules/@shower/${theme}`
+		cwd: themeDir
 	})
 		.pipe(rename((path) => {
 			path.dirname = `shower/themes/${theme}/${path.dirname}`;
@@ -33,10 +42,11 @@ function loadPresentationFiles (files = defaultFiles) {
 			'$1shower/$3', { skipBinary: true }
 		));
 
+	const coreDir = resolvePackageDir('@shower/core');
 	const core = vfs.src([
 		'index.js'
 	], {
-		cwd: 'node_modules/@shower/core/dist'
+		cwd: `${coreDir}/dist`
 	})
 		.pipe(rename((path) => {
 			path.dirname = 'shower/' + path.dirname;

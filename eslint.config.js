@@ -7,6 +7,7 @@ export default [
 	{
 		ignores: [
 			'**/dist/**',
+			'**/bundled/**',
 			'**/node_modules/**',
 			'packages/cli/core/command/__tests__/**/fixtures/**',
 		],
