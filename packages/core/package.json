@@ -31,13 +31,9 @@
 		"LICENSE.md",
 		"README.md"
 	],
-	"devDependencies": {
-		"serve": "^14.2.6"
-	},
 	"scripts": {
 		"build": "rollup --config",
 		"build:watch": "rollup --config --watch",
-		"serve": "serve dist",
 		"test": "npm run test:e2e",
 		"test:e2e": "playwright test"
 	}

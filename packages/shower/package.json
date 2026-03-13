@@ -33,7 +33,7 @@
 		"README.md"
 	],
 	"engines": {
-		"node": "20"
+		"node": ">=20"
 	},
 	"dependencies": {
 		"@shower/core": "*",

@@ -9,6 +9,8 @@
 		"shwr.me"
 	],
 	"scripts": {
+		"start:ribbon": "npm start --workspace=packages/ribbon",
+		"start:material": "npm start --workspace=packages/material",
 		"build": "npm run build --workspace=packages/core",
 		"test": "npm run test:lint && npm run test:packages",
 		"test:lint": "editorconfig-checker && eslint && stylelint 'packages/{material,ribbon}/styles/**/*.css'",
@@ -18,11 +20,11 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@playwright/test": "^1.58.2",
-		"browser-sync": "^3.0.4",
 		"editorconfig-checker": "^6.1.1",
 		"eslint": "^10.0.3",
 		"globals": "^17.4.0",
 		"rollup": "^4.59.0",
-		"stylelint": "^17.4.0"
+		"stylelint": "^17.4.0",
+		"vite": "^6.0.0"
 	}
 }

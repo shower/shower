@@ -35,10 +35,7 @@
 		"LICENSE.md",
 		"README.md"
 	],
-	"devDependencies": {
-		"@shower/core": "^3.3.0"
-	},
 	"scripts": {
-		"start": "browser-sync start --server --no-notify --no-ui --no-ghost-mode --files 'fonts/*,pictures/*,styles/**,index.html'"
+		"start": "vite"
 	}
 }
