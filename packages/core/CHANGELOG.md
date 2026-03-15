@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.3.1
+
+- Strip `<style>` elements from live region to prevent stale styles from overriding edits in `<style contenteditable>` elements ([691a9a42](https://github.com/shower/shower/commit/691a9a42))
+- Treat `contenteditable` elements as interactive to prevent keyboard shortcuts from firing while typing ([691a9a42](https://github.com/shower/shower/commit/691a9a42))
+
 ## 3.3.0
 
 - Update some deps ([b36a8fc9](https://github.com/shower/shower/commit/b36a8fc9))
