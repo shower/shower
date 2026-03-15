@@ -1,4 +1,4 @@
-export const isInteractiveElement = (element) => element.tabIndex !== -1;
+export const isInteractiveElement = (element) => element.tabIndex !== -1 || element.isContentEditable;
 
 export const contentLoaded = (callback) => {
 	if (document.currentScript.async) {

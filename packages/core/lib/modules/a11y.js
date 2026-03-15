@@ -24,7 +24,9 @@ export default (shower) => {
 	const updateLiveRegion = () => {
 		const slide = shower.activeSlide;
 		if (slide) {
-			liveRegion.innerHTML = slide.element.innerHTML;
+			const clone = slide.element.cloneNode(true);
+			clone.querySelectorAll('style').forEach((style) => style.remove());
+			liveRegion.innerHTML = clone.innerHTML;
 		}
 	};
 
