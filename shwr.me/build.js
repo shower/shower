@@ -86,6 +86,8 @@ await copyFile(join(root, 'manifest.json'), join(dist, 'manifest.json'));
 
 // Inject PWA meta tags into HTML
 const metaTags = [
+	'<link rel="canonical" href="https://shwr.me/">',
+	'<link rel="me" href="https://mastodon.social/@shower_me">',
 	'<link rel="manifest" href="/manifest.json">',
 	'<link rel="icon" type="image/png" sizes="16x16" href="/icons/16.png">',
 	'<link rel="icon" type="image/png" sizes="32x32" href="/icons/32.png">',
