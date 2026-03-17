@@ -9,8 +9,9 @@
 		"shwr.me"
 	],
 	"scripts": {
-		"start:ribbon": "npm start --workspace=packages/ribbon",
-		"start:material": "npm start --workspace=packages/material",
+		"dev:shower": "npm run dev --workspace=packages/shower",
+		"dev:ribbon": "npm run dev --workspace=packages/ribbon",
+		"dev:material": "npm run dev --workspace=packages/material",
 		"build": "npm run build --workspace=packages/core",
 		"test": "npm run test:lint && npm run test:packages",
 		"test:lint": "editorconfig-checker && eslint && stylelint 'packages/{material,ribbon}/styles/**/*.css'",
