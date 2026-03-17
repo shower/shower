@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.0
+
+- Bump minimum Node.js version to 22 to match @shower/cli ([c6b26677](https://github.com/shower/shower/commit/c6b26677))
+
 ## 3.3.1
 
 - Update deps ([1e9ffeb4](https://github.com/shower/shower/commit/1e9ffeb4))
