@@ -34,6 +34,17 @@ export default [
 		},
 	},
 
+	// CLI commands: Node.js + browser (for Puppeteer page.evaluate)
+	{
+		files: ['packages/cli/core/command/*.js'],
+		languageOptions: {
+			globals: {
+				...globals.node,
+				...globals.browser,
+			},
+		},
+	},
+
 	// Everything else: Node.js (CLI source, build configs, test servers, gulpfile)
 	{
 		ignores: ['packages/core/lib/**/*.js'],

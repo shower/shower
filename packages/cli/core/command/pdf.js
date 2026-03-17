@@ -1,44 +1,39 @@
 import { styleText } from 'node:util';
 import puppeteer from 'puppeteer-core';
-import { getPlatform } from 'chrome-launcher/dist/utils.js';
-import * as chromeFinder from 'chrome-launcher/dist/chrome-finder.js';
-
-function evalCalcExpression (value) {
-	const expression = value
-		.replace(/calc/g, '')
-		.replace(/px/g, '');
-
-	return eval(expression) + 'px';
-}
+import { ensureBrowser } from '../lib/browser.js';
+import { runTask } from '../lib/task.js';
 
 async function handler ({ cwd, output }) {
-	const executablePath = process.env.PUPPETEER_EXECUTABLE_PATH || (await (chromeFinder)[getPlatform()]())[0];
-	if (!executablePath) {
-		throw new Error('Chrome / Chromium is not installed or environment variable PUPPETEER_EXECUTABLE_PATH is not set');
-	}
-	let browser = await puppeteer.launch({ executablePath });
-	let page = await browser.newPage();
+	const executablePath = await ensureBrowser();
 
-	await page.goto(`file://${cwd}/index.html`);
+	await runTask('Creating PDF', async () => {
+		const browser = await puppeteer.launch({ executablePath });
 
-	const [width, height] = await page.evaluate(async () => {
-		const container = document.querySelector('.shower'); // eslint-disable-line no-undef
+		try {
+			const page = await browser.newPage();
 
-		const styles = window.getComputedStyle(container); // eslint-disable-line no-undef
+			await page.goto(`file://${cwd}/index.html`, {
+				waitUntil: 'networkidle0',
+			});
 
-		return [
-			styles.getPropertyValue('--slide-width'),
-			styles.getPropertyValue('--slide-height')
-		];
+			const { width, height } = await page.evaluate(() => {
+				const slide = document.querySelector('.slide');
+
+				return {
+					width: slide.offsetWidth,
+					height: slide.offsetHeight,
+				};
+			});
+
+			await page.pdf({
+				path: output,
+				width: `${width}px`,
+				height: `${height}px`,
+			});
+		} finally {
+			await browser.close();
+		}
 	});
-
-	await page.pdf({
-		path: output,
-		width: evalCalcExpression(width),
-		height: evalCalcExpression(height)
-	});
-
-	browser.close();
 }
 
 function builder (yargs) {
@@ -55,7 +50,6 @@ function builder (yargs) {
 
 function messages ({ output }) {
 	return {
-		start: 'Creating PDF in progress',
 		end: `PDF built in ${styleText('bold', output)}`
 	};
 }

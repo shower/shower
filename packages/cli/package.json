@@ -38,7 +38,7 @@
 	],
 	"dependencies": {
 		"archiver": "^7.0.1",
-		"chrome-launcher": "^1.2.1",
+		"@puppeteer/browsers": "^2.13.0",
 		"gh-pages": "^6.3.0",
 		"inquirer": "^13.3.0",
 		"puppeteer-core": "^24.38.0",

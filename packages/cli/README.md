@@ -66,7 +66,7 @@ Create a ZIP archive of the presentation.
 
 ### `shower pdf`
 
-Convert the presentation to PDF. Chrome or Chromium is required. If installed to a custom path, set the `PUPPETEER_EXECUTABLE_PATH` environment variable.
+Convert the presentation to PDF. On first run, a PDF engine (~200 MB) will be downloaded to a local cache (`~/.cache/shower` on macOS/Linux, `%LOCALAPPDATA%\shower` on Windows).
 
 | Option           | Description | Type   | Default     |
 | ---------------- | ----------- | ------ | ----------- |

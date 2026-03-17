@@ -128,7 +128,7 @@ function lazyLoadCommand (id) {
 			}
 
 			if (end) {
-				process.stdout.write(`${end} 🎉\n`);
+				process.stdout.write(`${end}\n`);
 			}
 		}
 	};
