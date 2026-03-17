@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.0
+
+- Toggle native browser fullscreen on F key press ([423c5f0d](https://github.com/shower/shower/commit/423c5f0d))
+
 ## 3.3.1
 
 - Strip `<style>` elements from live region to prevent stale styles from overriding edits in `<style contenteditable>` elements ([691a9a42](https://github.com/shower/shower/commit/691a9a42))
