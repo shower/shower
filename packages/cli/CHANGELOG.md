@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1
+
+- Fix crash when running CLI without a subcommand ([f766400e](https://github.com/shower/shower/commit/f766400e))
+
 ## 0.5.0
 
 - **Breaking:** Minimum Node.js version bumped to v22 ([8b6dd477](https://github.com/shower/shower/commit/8b6dd477))

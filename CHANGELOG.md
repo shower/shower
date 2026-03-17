@@ -5,5 +5,5 @@
 - [@shower/core](packages/core/CHANGELOG.md) — 3.3.1
 - [@shower/material](packages/material/CHANGELOG.md) — 2.5.1
 - [@shower/ribbon](packages/ribbon/CHANGELOG.md) — 3.5.2
-- [@shower/cli](packages/cli/CHANGELOG.md) — 0.5.0
+- [@shower/cli](packages/cli/CHANGELOG.md) — 0.5.1
 - [@shower/shower](packages/shower/CHANGELOG.md) — 3.3.1
