@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.0.0
+
+- Make list mode flexible using `--shower-list-scale` ([7df7c918](https://github.com/shower/shower/commit/7df7c918))
+- Make `--slide-gap`, `--slide-width`, `--slide-height` unitless, add `-px` variants ([7df7c918](https://github.com/shower/shower/commit/7df7c918))
+- Use modern media query range syntax ([ad0fcfb2](https://github.com/shower/shower/commit/ad0fcfb2))
+- Update column breakpoints ([1487f377](https://github.com/shower/shower/commit/1487f377))
+
 ## 2.5.1
 
 - Update VM's url ([dd9b1bc](https://github.com/shower/shower/commit/dd9b1bc))
