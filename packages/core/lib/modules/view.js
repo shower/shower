@@ -31,14 +31,16 @@ export default (shower) => {
 			container.classList.add(listModeClass);
 		}
 
-		updateScale();
+		requestAnimationFrame(() => {
+			updateScale();
 
-		if (shower.isFullMode) return;
+			if (shower.isFullMode) return;
 
-		const slide = shower.activeSlide;
-		if (slide) {
-			slide.element.scrollIntoView({ block: 'center' });
-		}
+			const slide = shower.activeSlide;
+			if (slide) {
+				slide.element.scrollIntoView({ block: 'center' });
+			}
+		});
 	};
 
 	shower.addEventListener('start', updateModeView);
