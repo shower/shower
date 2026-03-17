@@ -48,9 +48,9 @@
 		"pdf": "shower pdf",
 		"start": "shower serve",
 		"dev": "vite",
-		"bundle": "shower bundle --files '**' --files '!{docs,node_modules,bundled}{,/**}' --files '!*.{md,toml,json}'",
-		"archive": "shower archive --files '**' --files '!{docs,node_modules,bundled}{,/**}' --files '!*.{md,toml,json}'",
-		"publish": "shower publish --files '**' --files '!{docs,node_modules,bundled}{,/**}' --files '!*.{md,toml,json}'",
-		"test": "npm run bundle && ls bundled && npm run archive && path-exists presentation.zip"
+		"bundle": "shower bundle --files '**' --files '!{docs,node_modules,slides}{,/**}' --files '!*.{md,toml,json}'",
+		"archive": "shower archive --files '**' --files '!{docs,node_modules,slides}{,/**}' --files '!*.{md,toml,json}'",
+		"publish": "shower publish --files '**' --files '!{docs,node_modules,slides}{,/**}' --files '!*.{md,toml,json}'",
+		"test": "npm run bundle && ls slides && npm run archive && path-exists slides.zip"
 	}
 }

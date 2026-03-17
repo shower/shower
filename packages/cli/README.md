@@ -1,6 +1,6 @@
 # Shower CLI
 
-Command line interface for [Shower](https://shwr.me/) HTML presentation engine.
+Command line interface for [Shower](https://shwr.me/) HTML slides engine.
 
 ## Quick start
 
@@ -18,7 +18,15 @@ npm install --global @shower/cli
 
 The minimum supported Node version is v22.0.0.
 
-After the presentation is created, `@shower/cli` is added as a dev dependency by default, so global installation is only needed for the initial setup.
+After the slides are created, `@shower/cli` is added as a dev dependency by default. Inside the project, you can run commands via npm scripts:
+
+```sh
+npm run serve
+npm run bundle
+npm run archive
+npm run publish
+npm run pdf
+```
 
 ## Commands
 
@@ -39,7 +47,7 @@ Create a new project. Also available as `shower create`.
 
 ### `shower serve`
 
-Serve the presentation in development mode.
+Serve the slides in development mode.
 
 | Option         | Description    | Type    | Default |
 | -------------- | -------------- | ------- | ------- |
@@ -48,9 +56,9 @@ Serve the presentation in development mode.
 
 ### `shower bundle`
 
-Gather the necessary files in a separate folder. The bundled folder is self-contained and ready to deploy to a static host.
+Gather the necessary files in a separate folder. The `slides` folder is self-contained and ready to deploy to a static host.
 
-The Shower engine (`@shower/core`) and themes listed in `dependencies` are bundled automatically. Presentation files are configured via the `"files"` field in `package.json`. By default, a new project includes:
+The Shower engine (`@shower/core`) and themes listed in `dependencies` are bundled automatically. Slides files are configured via the `"files"` field in `package.json`. By default, a new project includes:
 
 ```json
 "files": [
@@ -59,7 +67,7 @@ The Shower engine (`@shower/core`) and themes listed in `dependencies` are bundl
 ]
 ```
 
-Add any custom directories or files your presentation needs:
+Add any custom directories or files your slides need:
 
 ```diff
 "files": [
@@ -71,33 +79,33 @@ Add any custom directories or files your presentation needs:
 
 | Option           | Description                            | Type   | Default   |
 | ---------------- | -------------------------------------- | ------ | --------- |
-| `-o`, `--output` | Output folder                          | string | `bundled` |
+| `-o`, `--output` | Output folder                          | string | `slides`  |
 | `-f`, `--files`  | Override `"files"` from `package.json` | array  |           |
 
 ### `shower archive`
 
-Create a ZIP archive of the presentation.
+Create a ZIP archive of the slides. Uses `bundle` under the hood to prepare the files before archiving.
 
 | Option           | Description              | Type   | Default            |
 | ---------------- | ------------------------ | ------ | ------------------ |
-| `-o`, `--output` | Archive name             | string | `presentation.zip` |
+| `-o`, `--output` | Archive name             | string | `slides.zip`       |
 | `-f`, `--files`  | List of files to include | array  |                    |
-
-### `shower pdf`
-
-Convert the presentation to PDF. On first run, a PDF engine (~200 MB) will be downloaded to a local cache (`~/.cache/shower` on macOS/Linux, `%LOCALAPPDATA%\shower` on Windows).
-
-| Option           | Description | Type   | Default     |
-| ---------------- | ----------- | ------ | ----------- |
-| `-o`, `--output` | File name   | string | `index.pdf` |
 
 ### `shower publish`
 
-Publish the presentation to [GitHub Pages](https://pages.github.com/).
+Publish the slides to [GitHub Pages](https://pages.github.com/). Uses `bundle` under the hood to prepare the files before publishing.
 
 | Option          | Description              | Type  | Default |
 | --------------- | ------------------------ | ----- | ------- |
 | `-f`, `--files` | List of files to include | array |         |
+
+### `shower pdf`
+
+Convert the slides to PDF. On first run, a PDF engine (~200 MB) will be downloaded to a local cache (`~/.cache/shower` on macOS/Linux, `%LOCALAPPDATA%\shower` on Windows).
+
+| Option           | Description | Type   | Default     |
+| ---------------- | ----------- | ------ | ----------- |
+| `-o`, `--output` | File name   | string | `slides.pdf` |
 
 ---
 Licensed under [MIT License](LICENSE.md).

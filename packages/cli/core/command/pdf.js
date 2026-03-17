@@ -1,12 +1,17 @@
+import path from 'node:path';
 import { styleText } from 'node:util';
 import puppeteer from 'puppeteer-core';
 import { ensureBrowser } from '../lib/browser.js';
 import { runTask } from '../lib/task.js';
 
 async function handler ({ cwd, output }) {
+	if (!path.isAbsolute(output)) {
+		output = path.join(cwd, output);
+	}
+
 	const executablePath = await ensureBrowser();
 
-	await runTask('Creating PDF', async () => {
+	await runTask('Printing slides', async () => {
 		const browser = await puppeteer.launch({ executablePath });
 
 		try {
@@ -42,7 +47,7 @@ function builder (yargs) {
 			output: {
 				alias: 'o',
 				type: 'string',
-				default: 'index.pdf',
+				default: 'slides.pdf',
 				describe: 'File name'
 			}
 		});
@@ -50,7 +55,7 @@ function builder (yargs) {
 
 function messages ({ output }) {
 	return {
-		end: `PDF built in ${styleText('bold', output)}`
+		end: `Slides are printed to ${styleText('bold', output)}`
 	};
 }
 

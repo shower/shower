@@ -49,7 +49,7 @@ await mkdir(dist, { recursive: true });
 await copyTree(join(packages, 'shower'), dist, {
 	exclude: [
 		'package.json', 'node_modules',
-		'bundled', 'presentation.zip', 'CHANGELOG.md',
+		'slides', 'slides.zip', 'CHANGELOG.md',
 	],
 	replacements: [
 		['node_modules/@shower/ribbon', 'shower/themes/ribbon'],

@@ -37,4 +37,4 @@ npm install
 npm run pdf
 ```
 
-You’ll find `index.pdf` next to your slides.
+You'll find `slides.pdf` next to your slides.

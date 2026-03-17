@@ -1,6 +1,6 @@
 import { cpSync, globSync, mkdirSync, readFileSync, writeFileSync, readdirSync, lstatSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, join, resolve, sep } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
@@ -21,7 +21,7 @@ function copyWithGlobs(srcDir, destDir, patterns) {
 		if (lstatSync(srcPath).isDirectory()) continue;
 
 		// Skip if source is inside the destination (or is the destination itself)
-		if (srcPath === resolvedDest || srcPath.startsWith(resolvedDest + '/')) continue;
+		if (srcPath === resolvedDest || srcPath.startsWith(resolvedDest + sep)) continue;
 
 		mkdirSync(dirname(destPath), { recursive: true });
 		cpSync(srcPath, destPath);
@@ -75,7 +75,7 @@ function getThemes(pkg) {
 		.map((name) => name.replace('@shower/', ''));
 }
 
-async function copyPresentationFiles(srcDir, destDir, files) {
+async function copySlidesFiles(srcDir, destDir, files) {
 	mkdirSync(destDir, { recursive: true });
 
 	const pkgPath = join(srcDir, 'package.json');
@@ -105,4 +105,4 @@ async function copyPresentationFiles(srcDir, destDir, files) {
 	}
 }
 
-export { copyPresentationFiles };
+export { copySlidesFiles };

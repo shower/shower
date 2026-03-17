@@ -33,7 +33,7 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 	}
 
 	const options = {
-		template: 'presentation',
+		template: 'slides',
 		year: (new Date()).getFullYear()
 	};
 
@@ -50,7 +50,7 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 	}, {
 		name: 'ratio',
 		type: 'select',
-		message: 'Select presentation ratio',
+		message: 'Select slides ratio',
 		choices: ['16:9', '4:3']
 	}];
 
@@ -64,7 +64,7 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 
 	process.stdout.write('\n');
 
-	await runTask(`Creating project structure in "${folderName}" dir`, async () => {
+	await runTask('Creating slides', async () => {
 		const templateDir = path.join(__dirname, '..', '..', 'templates', options.template);
 
 		await cp(templateDir, directory, { recursive: true });
@@ -101,7 +101,7 @@ function builder (yargs) {
 
 function messages ({ directory: folderName = 'slides' }) {
 	return {
-		end: `Project created in ${styleText('bold', folderName)} dir`
+		end: `Slides are created in ${styleText('bold', folderName)}`
 	};
 }
 

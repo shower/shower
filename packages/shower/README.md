@@ -30,7 +30,7 @@ Once you're done you can build a clean copy of your slides:
 npm run bundle
 ```
 
-You'll find your presentation in `bundled` folder. You can also run `npm run archive` to get the same files in `presentation.zip`.
+You'll find your slides in `slides` folder. You can also run `npm run archive` to get the same files in `slides.zip`.
 
 Publish your presentation online by running:
 

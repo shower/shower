@@ -2,7 +2,7 @@ import { rm } from 'node:fs/promises';
 import { styleText } from 'node:util';
 import path from 'node:path';
 
-import { copyPresentationFiles } from '../lib/presentation.js';
+import { copySlidesFiles } from '../lib/slides.js';
 
 async function handler ({ cwd, output, files }) {
 	if (!path.isAbsolute(output)) {
@@ -10,7 +10,7 @@ async function handler ({ cwd, output, files }) {
 	}
 
 	await rm(output, { recursive: true, force: true });
-	await copyPresentationFiles(cwd, output, files);
+	await copySlidesFiles(cwd, output, files);
 }
 
 function builder (yargs) {
@@ -19,8 +19,8 @@ function builder (yargs) {
 			output: {
 				alias: 'o',
 				type: 'string',
-				default: 'bundled',
-				describe: 'In which folder will the bundled presentation be written'
+				default: 'slides',
+				describe: 'In which folder will the bundled slides be written'
 			},
 			files: {
 				alias: 'f',
@@ -33,7 +33,8 @@ function builder (yargs) {
 
 function messages ({ output }) {
 	return {
-		end: `Project bundled in ${styleText('bold', output)} dir`
+		start: 'Bundling slides',
+		end: `Slides are bundled to ${styleText('bold', output)}`
 	};
 }
 

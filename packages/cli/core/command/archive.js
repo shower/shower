@@ -5,27 +5,28 @@ import { tmpdir } from 'node:os';
 import { styleText } from 'node:util';
 import archiver from 'archiver';
 
-import { copyPresentationFiles } from '../lib/presentation.js';
+import { handler as bundle } from './bundle.js';
 
 async function handler ({ cwd, output, files }) {
-	const tempDirPath = await mkdtemp(join(tmpdir(), 'shower-archive-'));
+	const bundlePath = await mkdtemp(join(tmpdir(), 'shower-'));
 
 	try {
-		await copyPresentationFiles(cwd, tempDirPath, files);
+		await bundle({ cwd, output: bundlePath, files });
 
 		await new Promise((resolve, reject) => {
 			const archive = archiver('zip', { zlib: { level: 9 } });
 			const stream = createWriteStream(join(cwd, output));
 
 			stream.on('close', resolve);
+			stream.on('error', reject);
 			archive.on('error', reject);
 
 			archive.pipe(stream);
-			archive.directory(tempDirPath, false);
+			archive.directory(bundlePath, false);
 			archive.finalize();
 		});
 	} finally {
-		await rm(tempDirPath, { recursive: true, force: true });
+		await rm(bundlePath, { recursive: true, force: true });
 	}
 }
 
@@ -35,7 +36,7 @@ function builder (yargs) {
 			output: {
 				alias: 'o',
 				type: 'string',
-				default: 'presentation.zip',
+				default: 'slides.zip',
 				describe: 'Archive name'
 			},
 			files: {
@@ -49,7 +50,8 @@ function builder (yargs) {
 
 function messages ({ output }) {
 	return {
-		end: `Created archive ${styleText('bold', output)} with presentation`
+		start: 'Archiving slides',
+		end: `Slides are archived to ${styleText('bold', output)}`
 	};
 }
 

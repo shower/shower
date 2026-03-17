@@ -35,7 +35,7 @@ function builder (yargs) {
 		.options({
 			open: {
 				alias: 'o',
-				type: 'bool',
+				type: 'boolean',
 				default: false,
 				describe: 'Open browser'
 			},

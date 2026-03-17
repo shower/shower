@@ -56,15 +56,9 @@ const commandsList = {
 		describe: 'Create a new project'
 	},
 
-	pdf: {
-		command: 'pdf',
-		describe: 'Converts the presentation to PDF',
-		requireProject: true
-	},
-
 	serve: {
 		command: 'serve',
-		describe: 'Serve the presentation in development mode',
+		describe: 'Serve the slides in development mode',
 		requireProject: true
 	},
 
@@ -76,13 +70,19 @@ const commandsList = {
 
 	archive: {
 		command: 'archive',
-		describe: 'Create an archive of the presentation',
+		describe: 'Create an archive of the slides',
 		requireProject: true
 	},
 
 	publish: {
 		command: 'publish',
-		describe: 'Publish your presentation to GitHub Pages',
+		describe: 'Publish your slides to GitHub Pages',
+		requireProject: true
+	},
+
+	pdf: {
+		command: 'pdf',
+		describe: 'Converts the slides to PDF',
 		requireProject: true
 	}
 };
@@ -94,9 +94,9 @@ app.middleware((argv, app) => {
 
 	if (commandsList[name]?.requireProject && !argv.project) {
 		process.stdout.write(
-			styleText('red', 'Shower presentation not found') + '\n\n' +
-			`Use ${styleText('yellow', 'shower create')} to create a presentation\n` +
-			`Run ${styleText('yellow', 'shower create --help')} to learn more\n`
+			styleText('red', 'Shower slides not found') + '\n\n' +
+			`Use ${styleText('yellow', 'shower new')} to create slides\n` +
+			`Run ${styleText('yellow', 'shower new --help')} to learn more\n`
 		);
 
 		app.exit(1);
@@ -119,16 +119,19 @@ function lazyLoadCommand (id) {
 
 		async handler (options) {
 			const { handler, messages } = await import(`./command/${id}.js`);
-			const { start, end } = messages(options);
+			const { start } = messages(options);
 
+			let result;
 			if (start) {
-				await runTask(start, () => handler(options));
+				await runTask(start, async () => { result = await handler(options); });
 			} else {
-				await handler(options);
+				result = await handler(options);
 			}
 
+			const { end } = messages(options, result);
+
 			if (end) {
-				process.stdout.write(`${end}\n`);
+				process.stdout.write(styleText('green', '✔') + ` ${end}\n`);
 			}
 		}
 	};

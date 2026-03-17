@@ -44,7 +44,7 @@ async function downloadChrome() {
 	const buildId = await resolveBuildId(Browser.CHROME, platform, BrowserTag.STABLE);
 
 	process.stdout.write(
-		styleText('yellow', `‣ Downloading PDF engine…\n`)
+		styleText('yellow', `◌ Downloading PDF engine…\n`)
 	);
 
 	const installed = await install({
@@ -71,7 +71,7 @@ function makeProgressCallback() {
 			lastPercent = percent;
 			process.stdout.write(`\x1b[1A\x1b[2K`);
 			process.stdout.write(
-				styleText('yellow', `‣ Downloading PDF engine… ${percent}%\n`)
+				styleText('yellow', `◌ Downloading PDF engine… ${percent}%\n`)
 			);
 		}
 	};

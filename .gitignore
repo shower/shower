@@ -1,8 +1,9 @@
 node_modules
 dist
-bundled
-presentation.zip
-index.pdf
+**/slides
+!packages/cli/templates/slides
+slides.zip
+slides.pdf
 
 # Playwright
 test-results
