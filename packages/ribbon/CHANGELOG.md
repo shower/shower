@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.0.0
+
+- Make list mode flexible using `--shower-list-scale` ([7df7c918](https://github.com/shower/shower/commit/7df7c918))
+- Change `--slide-gap`, `--slide-width`, `--slide-height` to unitless values ([7df7c918](https://github.com/shower/shower/commit/7df7c918))
+- Add `--slide-gap-px`, `--slide-width-px`, `--slide-height-px` derived properties ([7df7c918](https://github.com/shower/shower/commit/7df7c918))
+- Add `--shower-list-columns` custom property for responsive column count ([7df7c918](https://github.com/shower/shower/commit/7df7c918))
+- Use modern media query range syntax ([ad0fcfb2](https://github.com/shower/shower/commit/ad0fcfb2))
+- Update responsive breakpoints ([1487f377](https://github.com/shower/shower/commit/1487f377))
+
 ## 3.5.2
 
 - Update deps ([531bab82](https://github.com/shower/shower/commit/531bab82))
