@@ -45,11 +45,7 @@
 		"vite": "^8.0.0",
 		"yargs": "^18.0.0"
 	},
-	"devDependencies": {
-		"jest": "^30.2.0",
-		"pdf-parse": "^2.4.5"
-	},
 	"scripts": {
-		"test": "NODE_OPTIONS=--experimental-vm-modules jest"
+		"test": "node --test core/command/__tests__/*.test.js"
 	}
 }

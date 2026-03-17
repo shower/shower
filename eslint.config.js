@@ -23,22 +23,13 @@ export default [
 		},
 	},
 
-	// Test files: core (Playwright) + cli (Jest)
+	// Test files: core (Playwright)
 	{
 		files: ['packages/core/tests/**/*.js'],
 		languageOptions: {
 			globals: {
 				...globals.node,
 				...globals.browser,
-			},
-		},
-	},
-	{
-		files: ['packages/cli/**/__tests__/**/*.js'],
-		languageOptions: {
-			globals: {
-				...globals.node,
-				...globals.jest,
 			},
 		},
 	},

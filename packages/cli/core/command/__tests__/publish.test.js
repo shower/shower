@@ -1,11 +1,15 @@
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
 import { handler as publish, messages } from '../publish.js';
 
-it('Must be function', () => {
-	expect(typeof publish).toBe('function');
-});
+describe('publish', () => {
+	it('Must be function', () => {
+		assert.equal(typeof publish, 'function');
+	});
 
-it('Messages must provided "end" message', () => {
-	const { end } = messages({});
+	it('Messages must provided "end" message', () => {
+		const { end } = messages({});
 
-	expect(typeof end).toBe('string');
+		assert.equal(typeof end, 'string');
+	});
 });
