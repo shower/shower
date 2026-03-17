@@ -4,7 +4,7 @@
 	--shower-list-columns: 1;
 
 	--slide-scale: calc(
-		var(--shower-list-scale) /
+		var(--shower-list-scale, 1) /
 		(
 			var(--shower-list-columns) +
 			(var(--shower-list-columns) + 1) *
@@ -26,6 +26,7 @@
 		var(--shower-list-block)
 		var(--shower-list-inline);
 
+	overflow-x: hidden;
 	box-sizing: border-box;
 	width: 100%;
 	display: grid;

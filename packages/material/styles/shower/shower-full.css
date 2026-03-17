@@ -10,5 +10,5 @@
 	width: var(--slide-width-px);
 	height: var(--slide-height-px);
 	background-color: black;
-	transform: scale(var(--shower-full-scale));
+	transform: scale(var(--shower-full-scale, 1));
 }

@@ -3,18 +3,8 @@
 .shower.list {
 	--shower-list-columns: 1;
 
-	/*
-	 * Flexible slide scale derived from viewport-to-slide ratio
-	 * and desired column count, accounting for gaps.
-	 *
-	 * scale = shower-list-scale /
-	 *         (columns + (columns + 1) * gap / slide-width)
-	 *
-	 * Uses unitless --slide-gap and --slide-width to avoid
-	 * px / px division which is not supported in Firefox.
-	 */
 	--slide-scale: calc(
-		var(--shower-list-scale) /
+		var(--shower-list-scale, 1) /
 		(
 			var(--shower-list-columns) +
 			(var(--shower-list-columns) + 1) *
