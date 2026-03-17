@@ -4,11 +4,10 @@
 	<img align="right" width="95" height="95" alt="Shower logo" src="https://shower.github.io/shower/pictures/logo.svg">
 </a>
 
-**Command line interface for [Shower](http://shwr.me/)**
+**Command line interface for [Shower](https://shwr.me/)**
 
 [![npm](https://img.shields.io/npm/v/@shower/cli.svg)](https://www.npmjs.com/package/@shower/cli)
-[![Build Status](https://travis-ci.org/shower/cli.svg?branch=master)](https://travis-ci.org/shower/cli)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/shower/cli/blob/master/LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/shower/shower/blob/main/packages/cli/LICENSE.md)
 
 ## Quick Creating Slides
 
@@ -16,21 +15,14 @@
 npx @shower/cli create my-slides
 ```
 
-*([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and higher)*
-
 ## Installation
 
 Install ShowerCLI using `npm`:
 ```bash
-$ npm install --global @shower/cli
+npm install --global @shower/cli
 ```
 
-or via `yarn`:
-```bash
-$ yarn global add @shower/cli
-```
-
-The minimum supported Node version is `v8.0.0` by default.
+The minimum supported Node version is `v22.0.0`.
 
 **Note:** For easy creation of slides for one command, we recommend installing the `@shower/cli` globally. After the presentation is created, ShowerCLI is added as dev-dependencies by default.
 

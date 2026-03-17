@@ -3,14 +3,16 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import chalk from 'chalk';
-import semver from 'semver';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf-8'));
 
 process.title = pkg.name;
 
-if (!semver.satisfies(process.version, pkg.engines.node)) {
+const requiredMajor = parseInt(pkg.engines.node.replace(/[^\d]/g, ''));
+const currentMajor = parseInt(process.versions.node);
+
+if (currentMajor < requiredMajor) {
 	console.log(
 		chalk.red(
 			`You are using Node ${chalk.bold(process.version)}, ` +
@@ -25,12 +27,8 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import Listr from 'listr';
-import updateNotifier from 'update-notifier';
 
 import { getEnv } from './lib/env.js';
-
-// Warn the user about new versions
-updateNotifier({ pkg }).notify();
 
 const app = yargs(hideBin(process.argv));
 

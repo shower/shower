@@ -26,7 +26,7 @@
 	],
 	"type": "module",
 	"engines": {
-		"node": ">=20"
+		"node": ">=22"
 	},
 	"bin": {
 		"shower": "bin/cli.js"
@@ -51,9 +51,6 @@
 		"listr": "^0.14.3",
 		"merge-stream": "^2.0.0",
 		"puppeteer-core": "^24.38.0",
-		"semver": "^7.7.4",
-		"tmp": "^0.2.5",
-		"update-notifier": "^7.3.1",
 		"vinyl-fs": "^4.0.2",
 		"yargs": "^18.0.0"
 	},
