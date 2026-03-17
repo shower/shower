@@ -1,5 +1,5 @@
 import vfs from 'vinyl-fs';
-import chalk from 'chalk';
+import { styleText } from 'node:util';
 import path from 'node:path';
 import { deleteSync } from 'del';
 
@@ -43,7 +43,7 @@ function builder (yargs) {
 function messages ({ output }) {
 	return {
 		start: 'Project bundling in progress',
-		end: chalk`Project bundled in {bold ${output}} dir`
+		end: `Project bundled in ${styleText('bold', output)} dir`
 	};
 }
 

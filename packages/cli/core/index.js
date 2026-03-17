@@ -1,8 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-
-import chalk from 'chalk';
+import { styleText } from 'node:util';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(readFileSync(join(__dirname, '..', 'package.json'), 'utf-8'));
@@ -14,9 +13,9 @@ const currentMajor = parseInt(process.versions.node);
 
 if (currentMajor < requiredMajor) {
 	console.log(
-		chalk.red(
-			`You are using Node ${chalk.bold(process.version)}, ` +
-			`but this version of ${chalk.bold(pkg.name)} requires Node ${chalk.bold(pkg.engines.node)}.\n` +
+		styleText('red',
+			`You are using Node ${styleText('bold', process.version)}, ` +
+			`but this version of ${styleText('bold', pkg.name)} requires Node ${styleText('bold', pkg.engines.node)}.\n` +
 			'Please upgrade your Node version.'
 		)
 	);
@@ -26,8 +25,8 @@ if (currentMajor < requiredMajor) {
 
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
-import Listr from 'listr';
 
+import { runTask } from './lib/task.js';
 import { getEnv } from './lib/env.js';
 
 const app = yargs(hideBin(process.argv));
@@ -36,8 +35,8 @@ app.strict();
 app.locale('en');
 app.version(pkg.version);
 app.scriptName('shower');
-app.usage(chalk`Usage: {bold $0 [--version] [--help] <command> [<args>]}`);
-app.epilog(chalk`See {bold $0 <command> --help} to read about a specific subcommand.`);
+app.usage(`Usage: ${styleText('bold', '$0 [--version] [--help] <command> [<args>]')}`);
+app.epilog(`See ${styleText('bold', '$0 <command> --help')} to read about a specific subcommand.`);
 
 app.alias('h', 'help');
 app.alias('v', 'version');
@@ -95,9 +94,9 @@ app.middleware((argv, app) => {
 
 	if (commandsList[name].requireProject && !argv.project) {
 		process.stdout.write(
-			chalk`{red Shower presentation not found}\n\n` +
-			chalk`Use {yellow shower create} to create a presentation\n` +
-			chalk`Run {yellow shower create --help} to learn more\n`
+			styleText('red', 'Shower presentation not found') + '\n\n' +
+			`Use ${styleText('yellow', 'shower create')} to create a presentation\n` +
+			`Run ${styleText('yellow', 'shower create --help')} to learn more\n`
 		);
 
 		app.exit(1);
@@ -110,7 +109,7 @@ function lazyLoadCommand (id) {
 	return {
 		command: command.command,
 		aliases: command.aliases,
-		describe: chalk.yellow(command.describe),
+		describe: styleText('yellow', command.describe),
 
 		async builder (...args) {
 			const { builder } = await import(`./command/${id}.js`);
@@ -123,18 +122,13 @@ function lazyLoadCommand (id) {
 			const { start, end } = messages(options);
 
 			if (start) {
-				await (new Listr([
-					{
-						title: start,
-						task: () => handler(options)
-					}
-				])).run();
+				await runTask(start, () => handler(options));
 			} else {
 				await handler(options);
 			}
 
 			if (end) {
-				process.stdout.write(chalk`${end} 🎉\n`);
+				process.stdout.write(`${end} 🎉\n`);
 			}
 		}
 	};
@@ -157,7 +151,7 @@ process.on('uncaughtException', (error) => {
 });
 
 process.on('SIGINT', () => {
-	console.log(chalk.red('\nAborted'));
+	console.log(styleText('red', '\nAborted'));
 
 	process.exit(0);
 });

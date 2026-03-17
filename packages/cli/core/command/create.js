@@ -1,17 +1,15 @@
 import fs from 'node:fs';
-import path from 'node:path';
-import { promisify } from 'node:util';
-import { dirname } from 'node:path';
+import path, { dirname } from 'node:path';
+import { promisify, styleText } from 'node:util';
 import { fileURLToPath } from 'node:url';
 
 import { deleteAsync } from 'del';
-import chalk from 'chalk';
-import Listr from 'listr';
 import vfs from 'vinyl-fs';
 import inquirer from 'inquirer';
 import template from 'gulp-template';
 
 import { installDependencies } from '../lib/npm.js';
+import { runTask } from '../lib/task.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -24,13 +22,13 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 			name: 'isForce',
 			type: 'confirm',
 			default: false,
-			message: `The ${chalk.yellow(folderName)} dir already exists. Do you want to overwrite it?`
+			message: `The ${styleText('yellow', folderName)} dir already exists. Do you want to overwrite it?`
 		});
 
 		if (isForce) {
 			await deleteAsync([directory]);
 		} else {
-			process.stdout.write(chalk.red(`\n Creating aborted\n`));
+			process.stdout.write(styleText('red', `\n Creating aborted\n`));
 
 			return;
 		}
@@ -68,38 +66,26 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 
 	process.stdout.write('\n');
 
-	const tasks = new Listr([
-		// 1. Create project structure
-		{
-			title: `Creating project structure in "${folderName}" dir`,
-			async task () {
-				await promisify(fs.mkdir)(directory);
+	await runTask(`Creating project structure in "${folderName}" dir`, async () => {
+		await promisify(fs.mkdir)(directory);
 
-				await new Promise((resolve, reject) => {
-					const files = ['**', '**/.*'];
+		await new Promise((resolve, reject) => {
+			const files = ['**', '**/.*'];
 
-					vfs.src(files, {
-						cwd: path.join(__dirname, '..', '..', 'templates', options.template)
-					})
-						.pipe(template(options))
-						.pipe(vfs.dest(directory))
-						.on('end', resolve)
-						.on('error', reject);
-				});
-			}
-		},
+			vfs.src(files, {
+				cwd: path.join(__dirname, '..', '..', 'templates', options.template)
+			})
+				.pipe(template(options))
+				.pipe(vfs.dest(directory))
+				.on('end', resolve)
+				.on('error', reject);
+		});
+	});
 
-		// 2. Install dependencies
-		{
-			title: 'Installing dependencies',
-			task: () => Promise.all([
-				installDependencies(directory, ['@shower/cli'], 'save-dev'),
-				installDependencies(directory, ['@shower/core', `@shower/${options.theme}`])
-			])
-		}
-	]);
-
-	await tasks.run();
+	await runTask('Installing dependencies', () => Promise.all([
+		installDependencies(directory, ['@shower/cli'], 'save-dev'),
+		installDependencies(directory, ['@shower/core', `@shower/${options.theme}`])
+	]));
 }
 
 function builder (yargs) {
@@ -119,7 +105,7 @@ function builder (yargs) {
 
 function messages ({ directory: folderName = 'slides' }) {
 	return {
-		end: `Project created in ${chalk.bold(folderName)} dir`
+		end: `Project created in ${styleText('bold', folderName)} dir`
 	};
 }
 

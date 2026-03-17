@@ -1,6 +1,6 @@
+import { styleText } from 'node:util';
 import vfs from 'vinyl-fs';
 import zip from 'gulp-zip';
-import chalk from 'chalk';
 
 import { loadPresentationFiles } from '../lib/presentation.js';
 
@@ -37,7 +37,7 @@ function builder (yargs) {
 function messages ({ output }) {
 	return {
 		start: 'The project is being archived',
-		end: chalk`Created archive {bold ${output}} with presentation`
+		end: `Created archive ${styleText('bold', output)} with presentation`
 	};
 }
 

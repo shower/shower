@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import { styleText } from 'node:util';
 import puppeteer from 'puppeteer-core';
 import { getPlatform } from 'chrome-launcher/dist/utils.js';
 import * as chromeFinder from 'chrome-launcher/dist/chrome-finder.js';
@@ -56,7 +56,7 @@ function builder (yargs) {
 function messages ({ output }) {
 	return {
 		start: 'Creating PDF in progress',
-		end: chalk`PDF built in {bold ${output}}`
+		end: `PDF built in ${styleText('bold', output)}`
 	};
 }
 

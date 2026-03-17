@@ -38,7 +38,6 @@
 	],
 	"dependencies": {
 		"browser-sync": "^3.0.4",
-		"chalk": "^5.6.2",
 		"chrome-launcher": "^1.2.1",
 		"del": "^8.0.1",
 		"execa": "^9.6.1",
@@ -48,7 +47,6 @@
 		"gulp-template": "^6.1.0",
 		"gulp-zip": "^6.1.0",
 		"inquirer": "^13.3.0",
-		"listr": "^0.14.3",
 		"merge-stream": "^2.0.0",
 		"puppeteer-core": "^24.38.0",
 		"vinyl-fs": "^4.0.2",
