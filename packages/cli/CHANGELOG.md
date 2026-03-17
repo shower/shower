@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.0
+
+- `archive` and `publish` now reuse `bundle` under the hood ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- `publish` shows GitHub Pages URL after publishing ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- `publish` no longer pushes dotfiles to `gh-pages` branch ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Add progress indicators to `bundle`, `archive`, and `publish` ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Rename default outputs: `slides.pdf`, `slides.zip` ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Fix Node.js deprecation warning in `publish` ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Fix `pdf` output path not resolved relative to `--cwd` ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Fix `--open` flag type in `serve` ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Fix missing error handling for zip write stream in `archive` ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Fix Windows path separator in bundle file copying ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
+- Bundle only the selected theme and files listed in `package.json` ([b3c196e0](https://github.com/shower/shower/commit/b3c196e0))
+- Rename `shower create` to `shower new`, keep `create` as alias ([0f377b76](https://github.com/shower/shower/commit/0f377b76))
+- New PDF engine: auto-downloads on first run, no system Chrome required ([6596ada3](https://github.com/shower/shower/commit/6596ada3))
+
 ## 0.5.2
 
 - Fix inquirer list prompts not showing choices in v13 ([8fa28791](https://github.com/shower/shower/commit/8fa28791))
