@@ -1,15 +1,1 @@
 node_modules
-dist
-**/slides
-!packages/cli/templates/slides
-slides.zip
-slides.pdf
-
-# Playwright
-test-results
-playwright-report
-blob-report
-
-# Logs
-*-debug.log
-*-error.log
