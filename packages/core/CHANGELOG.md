@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.1
+
+- Fix initial scale calculation in Safari ([406f6f69](https://github.com/shower/shower/commit/406f6f69))
+
 ## 3.4.0
 
 - Toggle native browser fullscreen on F key press ([423c5f0d](https://github.com/shower/shower/commit/423c5f0d))
