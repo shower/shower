@@ -78,10 +78,10 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 		await writeFile(indexPath, html);
 	});
 
-	await runTask('Installing dependencies', () => Promise.all([
-		installDependencies(directory, ['@shower/cli'], 'save-dev'),
-		installDependencies(directory, ['@shower/core', `@shower/${options.theme}`])
-	]));
+	await runTask('Installing dependencies', async () => {
+		await installDependencies(directory, ['@shower/core', `@shower/${options.theme}`]);
+		await installDependencies(directory, ['@shower/cli'], 'save-dev');
+	});
 }
 
 function builder (yargs) {

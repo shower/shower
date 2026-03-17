@@ -49,7 +49,6 @@ function builder (yargs) {
 
 function messages ({ output }) {
 	return {
-		start: 'The project is being archived',
 		end: `Created archive ${styleText('bold', output)} with presentation`
 	};
 }

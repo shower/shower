@@ -1,6 +1,7 @@
 import { cpSync, globSync, mkdirSync, readFileSync, writeFileSync, readdirSync, lstatSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join, resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const require = createRequire(import.meta.url);
 
@@ -8,68 +9,11 @@ function resolvePackageDir(pkg) {
 	return dirname(require.resolve(`${pkg}/package.json`));
 }
 
-const defaultExcludes = ['node_modules', 'bundled', 'package.json', 'package-lock.json'];
-
-function copyFiltered(srcDir, destDir, excludes) {
-	const entries = readdirSync(srcDir, { withFileTypes: true });
-
-	for (const entry of entries) {
-		if (excludes.includes(entry.name)) continue;
-
-		const srcPath = join(srcDir, entry.name);
-		const destPath = join(destDir, entry.name);
-
-		if (entry.isDirectory()) {
-			mkdirSync(destPath, { recursive: true });
-			cpSync(srcPath, destPath, { recursive: true });
-		} else {
-			cpSync(srcPath, destPath);
-		}
-	}
-}
-
-function matchGlob(filePath, pattern) {
-	let regex = pattern
-		.replace(/[.+^$|\\]/g, '\\$&')
-		.replace(/\{([^}]+)\}/g, (_, group) => `(${group.split(',').join('|')})`)
-		.replace(/\*\*/g, '\0')
-		.replace(/\*/g, '[^/]*')
-		.replace(/\0/g, '.*');
-
-	return new RegExp(`^${regex}$`).test(filePath);
-}
-
 function copyWithGlobs(srcDir, destDir, patterns) {
-	const includes = [];
-	const excludes = [];
 	const resolvedDest = resolve(destDir);
 	const resolvedSrc = resolve(srcDir);
 
-	for (const pattern of patterns) {
-		if (pattern.startsWith('!')) {
-			excludes.push(pattern.slice(1));
-		} else {
-			includes.push(pattern);
-		}
-	}
-
-	const matched = new Set();
-
-	for (const pattern of includes) {
-		for (const file of globSync(pattern, { cwd: srcDir })) {
-			matched.add(file);
-		}
-	}
-
-	for (const file of [...matched]) {
-		for (const exc of excludes) {
-			if (matchGlob(file, exc)) {
-				matched.delete(file);
-			}
-		}
-	}
-
-	for (const file of matched) {
+	for (const file of globSync(patterns, { cwd: srcDir })) {
 		const srcPath = join(resolvedSrc, file);
 		const destPath = join(resolvedDest, file);
 
@@ -88,15 +32,10 @@ function rewriteHtmlPaths(dir) {
 	const entries = readdirSync(dir, { withFileTypes: true });
 
 	for (const entry of entries) {
-		const fullPath = join(dir, entry.name);
-
-		if (entry.isDirectory()) {
-			rewriteHtmlPaths(fullPath);
-			continue;
-		}
-
+		if (entry.isDirectory()) continue;
 		if (!entry.name.endsWith('.html')) continue;
 
+		const fullPath = join(dir, entry.name);
 		let content = readFileSync(fullPath, 'utf-8');
 
 		content = content.replace(
@@ -113,24 +52,44 @@ function rewriteHtmlPaths(dir) {
 	}
 }
 
-function copyThemeFiles(theme, destDir) {
+async function copyThemeFiles(theme, destDir) {
 	const themeDir = resolvePackageDir(`@shower/${theme}`);
 	const themeDest = join(destDir, 'shower', 'themes', theme);
-	mkdirSync(themeDest, { recursive: true });
-	cpSync(themeDir, themeDest, {
-		recursive: true,
-		filter: (src) => !src.endsWith('package.json'),
-	});
+	const { default: { files: patterns = [] } } = await import(`@shower/${theme}/package.json`, { with: { type: 'json' } });
+
+	for (const file of globSync(patterns, { cwd: themeDir })) {
+		const src = join(themeDir, file);
+		if (lstatSync(src).isDirectory()) continue;
+
+		const dest = join(themeDest, file);
+		mkdirSync(dirname(dest), { recursive: true });
+		cpSync(src, dest);
+	}
 }
 
-function copyPresentationFiles(srcDir, destDir, files) {
+function getThemes(pkg) {
+	const deps = { ...pkg.dependencies, ...pkg.devDependencies };
+
+	return Object.keys(deps)
+		.filter((name) => name.startsWith('@shower/') && name !== '@shower/core' && name !== '@shower/cli')
+		.map((name) => name.replace('@shower/', ''));
+}
+
+async function copyPresentationFiles(srcDir, destDir, files) {
 	mkdirSync(destDir, { recursive: true });
 
-	if (files) {
-		copyWithGlobs(srcDir, destDir, files);
-	} else {
-		copyFiltered(srcDir, destDir, defaultExcludes);
+	const pkgPath = join(srcDir, 'package.json');
+	const { default: pkg } = await import(pathToFileURL(pkgPath), { with: { type: 'json' } });
+
+	if (!files) {
+		files = pkg.files;
 	}
+
+	if (!files) {
+		throw new Error('No "files" field in package.json. List the files to bundle.');
+	}
+
+	copyWithGlobs(srcDir, destDir, files);
 
 	rewriteHtmlPaths(destDir);
 
@@ -141,8 +100,9 @@ function copyPresentationFiles(srcDir, destDir, files) {
 	cpSync(join(coreDir, 'dist', 'index.js'), join(coreDest, 'index.js'));
 
 	// Copy theme files
-	copyThemeFiles('material', destDir);
-	copyThemeFiles('ribbon', destDir);
+	for (const theme of getThemes(pkg)) {
+		await copyThemeFiles(theme, destDir);
+	}
 }
 
 export { copyPresentationFiles };

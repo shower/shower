@@ -1,5 +1,9 @@
 {
 	"private": true,
+	"files": [
+		"pictures/**",
+		"index.html"
+	],
 	"scripts": {
 		"pdf": "shower pdf",
 		"serve": "shower serve",

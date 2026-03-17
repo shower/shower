@@ -7,10 +7,9 @@ describe('bundle', () => {
 		assert.equal(typeof bundle, 'function');
 	});
 
-	it('Messages must provided "start" and "end" messages', () => {
-		const { start, end } = messages({ output: '' });
+	it('Messages must provided "end" message', () => {
+		const { end } = messages({ output: '' });
 
-		assert.equal(typeof start, 'string');
 		assert.equal(typeof end, 'string');
 	});
 });

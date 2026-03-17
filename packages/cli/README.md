@@ -48,12 +48,31 @@ Serve the presentation in development mode.
 
 ### `shower bundle`
 
-Gather the necessary files in a separate folder.
+Gather the necessary files in a separate folder. The bundled folder is self-contained and ready to deploy to a static host.
 
-| Option           | Description              | Type   | Default   |
-| ---------------- | ------------------------ | ------ | --------- |
-| `-o`, `--output` | Output folder            | string | `bundled` |
-| `-f`, `--files`  | List of files to include | array  |           |
+The Shower engine (`@shower/core`) and themes listed in `dependencies` are bundled automatically. Presentation files are configured via the `"files"` field in `package.json`. By default, a new project includes:
+
+```json
+"files": [
+	"pictures/**",
+	"index.html"
+]
+```
+
+Add any custom directories or files your presentation needs:
+
+```diff
+"files": [
+	"pictures/**",
++    "demos/**",
+	"index.html"
+]
+```
+
+| Option           | Description                            | Type   | Default   |
+| ---------------- | -------------------------------------- | ------ | --------- |
+| `-o`, `--output` | Output folder                          | string | `bundled` |
+| `-f`, `--files`  | Override `"files"` from `package.json` | array  |           |
 
 ### `shower archive`
 

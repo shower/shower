@@ -33,7 +33,6 @@ function builder (yargs) {
 
 function messages ({ output }) {
 	return {
-		start: 'Project bundling in progress',
 		end: `Project bundled in ${styleText('bold', output)} dir`
 	};
 }
