@@ -53,8 +53,6 @@ Options:
 Options:
 	--open, -o     Open browser                                   [default: false]
 	--port, -p     Listening Port                         [number] [default: 8080]
-	--ui           Whether to run BrowserSync UI                  [default: false]
-	--notify       Whether to show BrowserSync notifications      [default: false]
 ```
 
 

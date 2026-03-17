@@ -1,29 +1,33 @@
-import { create } from 'browser-sync';
+import { createServer } from 'vite';
+import { resolve } from 'node:path';
 
-function handler ({ cwd, port, open, ui, notify }) {
-	const bs = create();
-
-	const options = {
-		cwd,
-		port,
-		open,
-		notify,
-		ui: ui ? { port } : false,
-		server: '.'
-	};
-
-	return new Promise((resolve, reject) => {
-		bs.init(options, err => {
-			if (err) {
-				reject(err);
-			} else {
-				resolve();
-			}
-		});
-
-		bs.watch('**/*.*', { cwd })
-			.on('change', bs.reload);
+async function handler ({ cwd, port, open }) {
+	const server = await createServer({
+		root: cwd,
+		server: {
+			port,
+			open,
+			fs: {
+				allow: ['..'],
+			},
+		},
+		plugins: [
+			{
+				name: 'serve-shower-packages',
+				configureServer(server) {
+					server.middlewares.use((req, res, next) => {
+						if (req.url?.startsWith('/core/')) {
+							req.url = '/@fs/' + resolve(cwd, 'node_modules/@shower', req.url.slice(1));
+						}
+						next();
+					});
+				},
+			},
+		],
 	});
+
+	await server.listen();
+	server.printUrls();
 }
 
 function builder (yargs) {
@@ -40,16 +44,6 @@ function builder (yargs) {
 				type: 'number',
 				default: 8080,
 				describe: 'Listening Port'
-			},
-			ui: {
-				type: 'bool',
-				default: false,
-				describe: 'Whether to run BrowserSync UI'
-			},
-			notify: {
-				type: 'bool',
-				default: false,
-				describe: 'Whether to show BrowserSync notifications'
 			}
 		});
 }
