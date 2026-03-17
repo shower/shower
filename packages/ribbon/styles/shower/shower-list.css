@@ -45,19 +45,19 @@
 
 /* Responsive */
 
-@media (min-width: 1168px) {
+@media (width >= 640px) {
 	.shower.list {
 		--shower-list-columns: 2;
 	}
 }
 
-@media (min-width: 1752px) {
+@media (width >= 1024px) {
 	.shower.list {
 		--shower-list-columns: 3;
 	}
 }
 
-@media (min-width: 2336px) {
+@media (width >= 1600px) {
 	.shower.list {
 		--shower-list-columns: 4;
 	}
