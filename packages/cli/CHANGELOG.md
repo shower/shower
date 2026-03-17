@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.2
+
+- Fix inquirer list prompts not showing choices in v13 ([8fa28791](https://github.com/shower/shower/commit/8fa28791))
+
 ## 0.5.1
 
 - Fix crash when running CLI without a subcommand ([f766400e](https://github.com/shower/shower/commit/f766400e))
