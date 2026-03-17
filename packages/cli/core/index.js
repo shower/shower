@@ -92,7 +92,7 @@ app.middleware((argv, app) => {
 
 	const name = argv._[0];
 
-	if (commandsList[name].requireProject && !argv.project) {
+	if (commandsList[name]?.requireProject && !argv.project) {
 		process.stdout.write(
 			styleText('red', 'Shower presentation not found') + '\n\n' +
 			`Use ${styleText('yellow', 'shower create')} to create a presentation\n` +
