@@ -37,8 +37,8 @@
 	overflow: hidden;
 	box-sizing: border-box;
 	padding: 75px var(--slide-side) 0;
-	width: var(--slide-width);
-	height: var(--slide-height);
+	width: var(--slide-width-px);
+	height: var(--slide-height-px);
 	background-color: white;
 }
 

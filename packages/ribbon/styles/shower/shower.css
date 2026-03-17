@@ -7,12 +7,15 @@
 @import 'shower-print.css' print;
 
 .shower {
-	--slide-gap: 100px;
+	--slide-gap: 100;
+	--slide-gap-px: calc(var(--slide-gap) * 1px);
 	--slide-ratio: calc(16 / 9);
-	--slide-width: 1024px;
+	--slide-width: 1024;
+	--slide-width-px: calc(var(--slide-width) * 1px);
 	--slide-height: calc(
 		var(--slide-width) / var(--slide-ratio)
 	);
+	--slide-height-px: calc(var(--slide-height) * 1px);
 	--slide-side: 100px;
 
 	--color-blue: #4b86c2;

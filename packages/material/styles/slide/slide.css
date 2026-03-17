@@ -39,8 +39,8 @@
 	padding:
 		79px var(--slide-right-side)
 		0 var(--slide-left-side);
-	width: var(--slide-width);
-	height: var(--slide-height);
+	width: var(--slide-width-px);
+	height: var(--slide-height-px);
 	background-color: white;
 }
 

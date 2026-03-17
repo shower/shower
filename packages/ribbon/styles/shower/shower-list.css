@@ -1,12 +1,23 @@
 /* Shower List */
 
 .shower.list {
+	--shower-list-columns: 1;
+
+	--slide-scale: calc(
+		var(--shower-list-scale) /
+		(
+			var(--shower-list-columns) +
+			(var(--shower-list-columns) + 1) *
+			var(--slide-gap) / var(--slide-width)
+		)
+	);
+
 	--shower-list-block: calc(
-		var(--slide-gap) *
+		var(--slide-gap-px) *
 		var(--slide-scale)
 	);
 	--shower-list-inline: calc(
-		var(--slide-gap) *
+		var(--slide-gap-px) *
 		var(--slide-scale) +
 		env(safe-area-inset-left)
 	);
@@ -19,15 +30,15 @@
 	width: 100%;
 	display: grid;
 	grid-gap: calc(
-		var(--slide-gap) * var(--slide-scale)
+		var(--slide-gap-px) * var(--slide-scale)
 	);
 	grid-auto-rows: calc(
-		var(--slide-height) * var(--slide-scale)
+		var(--slide-height-px) * var(--slide-scale)
 	);
 	grid-template-rows: min-content;
 	grid-template-columns: repeat(
-		auto-fill,
-		calc(var(--slide-width) * var(--slide-scale))
+		var(--shower-list-columns),
+		calc(var(--slide-width-px) * var(--slide-scale))
 	);
 	background-color: var(--color-grey);
 }
@@ -41,18 +52,20 @@
 
 /* Responsive */
 
-.shower.list {
-	--slide-scale: 0.25;
-}
-
-@media (min-width: 1174px) {
+@media (min-width: 1168px) {
 	.shower.list {
-		--slide-scale: 0.5;
+		--shower-list-columns: 2;
 	}
 }
 
-@media (min-width: 2348px) {
+@media (min-width: 1752px) {
 	.shower.list {
-		--slide-scale: 1;
+		--shower-list-columns: 3;
+	}
+}
+
+@media (min-width: 2336px) {
+	.shower.list {
+		--shower-list-columns: 4;
 	}
 }

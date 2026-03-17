@@ -5,10 +5,10 @@
 	top: 50%;
 	left: 50%;
 	overflow: hidden;
-	margin-top: calc(var(--slide-height) / 2 * -1);
-	margin-left: calc(var(--slide-width) / 2 * -1);
-	width: var(--slide-width);
-	height: var(--slide-height);
+	margin-top: calc(var(--slide-height-px) / 2 * -1);
+	margin-left: calc(var(--slide-width-px) / 2 * -1);
+	width: var(--slide-width-px);
+	height: var(--slide-height-px);
 	background-color: black;
 	transform: scale(var(--shower-full-scale));
 }

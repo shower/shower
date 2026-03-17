@@ -45,7 +45,7 @@
 /* Full */
 
 .shower.full .slide .shout::after {
-	background-position: var(--slide-width) 0;
+	background-position: var(--slide-width-px) 0;
 	transition: background-position 0.4s ease-out;
 }
 
