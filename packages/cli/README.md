@@ -5,7 +5,7 @@ Command line interface for [Shower](https://shwr.me/) HTML presentation engine.
 ## Quick start
 
 ```sh
-npx @shower/cli create my-slides
+npx @shower/cli new my-slides
 ```
 
 ## Installation
@@ -28,9 +28,9 @@ After the presentation is created, `@shower/cli` is added as a dev dependency by
 | `-h`, `--help`    | Show help                | boolean |                |
 | `-v`, `--version` | Show version number      | boolean |                |
 
-### `shower create [<directory>]`
+### `shower new [<directory>]`
 
-Create a new project.
+Create a new project. Also available as `shower create`.
 
 | Option          | Description                   | Type    | Default  |
 | --------------- | ----------------------------- | ------- | -------- |

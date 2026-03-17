@@ -50,9 +50,9 @@ app.options({
 });
 
 const commandsList = {
-	create: {
-		command: 'create [<directory>]',
-		aliases: ['new'],
+	new: {
+		command: 'new [<directory>]',
+		aliases: ['create'],
 		describe: 'Create a new project'
 	},
 

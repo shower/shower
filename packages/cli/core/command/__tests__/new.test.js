@@ -1,8 +1,8 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { handler as create, messages } from '../create.js';
+import { handler as create, messages } from '../new.js';
 
-describe('create', () => {
+describe('new', () => {
 	it('Must be function', () => {
 		assert.equal(typeof create, 'function');
 	});
