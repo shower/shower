@@ -43,13 +43,6 @@
 	background-color: var(--color-grey);
 }
 
-/* IE & Edge Fix */
-
-.shower.list {
-	position: absolute;
-	clip: rect(0, auto, auto, 0);
-}
-
 /* Responsive */
 
 @media (min-width: 1168px) {
