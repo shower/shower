@@ -1,19 +1,32 @@
+import { createWriteStream } from 'node:fs';
+import { mkdtemp, rm } from 'node:fs/promises';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import { styleText } from 'node:util';
-import vfs from 'vinyl-fs';
-import zip from 'gulp-zip';
+import archiver from 'archiver';
 
-import { loadPresentationFiles } from '../lib/presentation.js';
+import { copyPresentationFiles } from '../lib/presentation.js';
 
-function handler ({ output, files }) {
-	const stream = loadPresentationFiles(files)
-		.pipe(zip(output))
-		.pipe(vfs.dest('.'));
+async function handler ({ cwd, output, files }) {
+	const tempDirPath = await mkdtemp(join(tmpdir(), 'shower-archive-'));
 
-	return new Promise((resolve, reject) => {
-		stream
-			.on('end', resolve)
-			.on('error', reject);
-	});
+	try {
+		await copyPresentationFiles(cwd, tempDirPath, files);
+
+		await new Promise((resolve, reject) => {
+			const archive = archiver('zip', { zlib: { level: 9 } });
+			const stream = createWriteStream(join(cwd, output));
+
+			stream.on('close', resolve);
+			archive.on('error', reject);
+
+			archive.pipe(stream);
+			archive.directory(tempDirPath, false);
+			archive.finalize();
+		});
+	} finally {
+		await rm(tempDirPath, { recursive: true, force: true });
+	}
 }
 
 function builder (yargs) {

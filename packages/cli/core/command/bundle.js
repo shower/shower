@@ -1,25 +1,16 @@
-import vfs from 'vinyl-fs';
+import { rm } from 'node:fs/promises';
 import { styleText } from 'node:util';
 import path from 'node:path';
-import { deleteSync } from 'del';
 
-import { loadPresentationFiles } from '../lib/presentation.js';
+import { copyPresentationFiles } from '../lib/presentation.js';
 
-function handler ({ cwd, output, files }) {
+async function handler ({ cwd, output, files }) {
 	if (!path.isAbsolute(output)) {
 		output = path.join(cwd, output);
 	}
 
-	deleteSync([output]);
-
-	const stream = loadPresentationFiles(files)
-		.pipe(vfs.dest(output));
-
-	return new Promise((resolve, reject) => {
-		stream
-			.on('end', resolve)
-			.on('error', reject);
-	});
+	await rm(output, { recursive: true, force: true });
+	await copyPresentationFiles(cwd, output, files);
 }
 
 function builder (yargs) {

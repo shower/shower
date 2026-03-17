@@ -1,12 +1,10 @@
-import fs from 'node:fs';
+import { existsSync } from 'node:fs';
+import { readFile, writeFile, rm, cp } from 'node:fs/promises';
 import path, { dirname } from 'node:path';
-import { promisify, styleText } from 'node:util';
+import { styleText } from 'node:util';
 import { fileURLToPath } from 'node:url';
 
-import { deleteAsync } from 'del';
-import vfs from 'vinyl-fs';
 import inquirer from 'inquirer';
-import template from 'gulp-template';
 
 import { installDependencies } from '../lib/npm.js';
 import { runTask } from '../lib/task.js';
@@ -17,7 +15,7 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 	// Let's check if such folder exists
 	const directory = path.isAbsolute(folderName) ? folderName : path.join(cwd, folderName);
 
-	if (fs.existsSync(directory)) {
+	if (existsSync(directory)) {
 		const { isForce } = await inquirer.prompt({
 			name: 'isForce',
 			type: 'confirm',
@@ -26,7 +24,7 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 		});
 
 		if (isForce) {
-			await deleteAsync([directory]);
+			await rm(directory, { recursive: true, force: true });
 		} else {
 			process.stdout.write(styleText('red', `\n Creating aborted\n`));
 
@@ -67,19 +65,17 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 	process.stdout.write('\n');
 
 	await runTask(`Creating project structure in "${folderName}" dir`, async () => {
-		await promisify(fs.mkdir)(directory);
+		const templateDir = path.join(__dirname, '..', '..', 'templates', options.template);
 
-		await new Promise((resolve, reject) => {
-			const files = ['**', '**/.*'];
+		await cp(templateDir, directory, { recursive: true });
 
-			vfs.src(files, {
-				cwd: path.join(__dirname, '..', '..', 'templates', options.template)
-			})
-				.pipe(template(options))
-				.pipe(vfs.dest(directory))
-				.on('end', resolve)
-				.on('error', reject);
-		});
+		// Apply template variables to index.html
+		const indexPath = path.join(directory, 'index.html');
+		let html = await readFile(indexPath, 'utf-8');
+		html = html.replaceAll('<%= theme %>', options.theme);
+		html = html.replaceAll('<%= ratio %>', options.ratio);
+		html = html.replaceAll('<%= year %>', String(options.year));
+		await writeFile(indexPath, html);
 	});
 
 	await runTask('Installing dependencies', () => Promise.all([

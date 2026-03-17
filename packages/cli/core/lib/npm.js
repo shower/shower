@@ -1,7 +1,10 @@
-import { execa } from 'execa';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+
+const execFileAsync = promisify(execFile);
 
 /**
- * Install node modules synchronously and save to dependencies in package.json
+ * Install node modules and save to dependencies in package.json
  * @param {string} cwd cwd dir
  * @param {string|string[]} packages Node module or modules to install
  * @param {string} mode Type package installing
@@ -11,7 +14,7 @@ export async function installDependencies (cwd, packages, mode = 'save') {
 	packages = Array.isArray(packages) ? packages : [packages];
 
 	try {
-		return await execa('npm', ['i', '--package-lock', `--${mode}`].concat(packages), { cwd });
+		return await execFileAsync('npm', ['i', '--package-lock', `--${mode}`].concat(packages), { cwd });
 	} catch (error) {
 		if (error.code === 'ENOENT') {
 			const pluralS = packages.length > 1 ? 's' : '';

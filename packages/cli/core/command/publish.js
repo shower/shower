@@ -2,24 +2,15 @@ import { mkdtemp, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { promisify } from 'node:util';
-import vfs from 'vinyl-fs';
 import pages from 'gh-pages';
 
-import { loadPresentationFiles } from '../lib/presentation.js';
+import { copyPresentationFiles } from '../lib/presentation.js';
 
-async function handler ({ files }) {
+async function handler ({ cwd, files }) {
 	const tempDirPath = await mkdtemp(join(tmpdir(), 'shower-'));
 
 	try {
-		await new Promise((resolve, reject) => {
-			const stream = loadPresentationFiles(files)
-				.pipe(vfs.dest(tempDirPath));
-
-			stream
-				.on('end', resolve)
-				.on('error', reject);
-		});
-
+		await copyPresentationFiles(cwd, tempDirPath, files);
 		await promisify(pages.publish)(tempDirPath);
 	} finally {
 		await rm(tempDirPath, { recursive: true, force: true });
