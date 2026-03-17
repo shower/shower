@@ -44,12 +44,12 @@ async function handler ({ cwd, directory: folderName = 'slides', yes: isDefault 
 
 	const params = [{
 		name: 'theme',
-		type: 'list',
+		type: 'select',
 		message: 'Select theme',
 		choices: ['ribbon', 'material']
 	}, {
 		name: 'ratio',
-		type: 'list',
+		type: 'select',
 		message: 'Select presentation ratio',
 		choices: ['16:9', '4:3']
 	}];
