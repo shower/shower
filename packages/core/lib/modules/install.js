@@ -1,4 +1,5 @@
 import a11y from './a11y.js';
+import fullscreen from './fullscreen.js';
 import keys from './keys.js';
 import location from './location.js';
 import next from './next.js';
@@ -11,6 +12,7 @@ import mouse from './mouse.js';
 
 export default (shower) => {
 	a11y(shower);
+	fullscreen(shower);
 	progress(shower);
 	keys(shower);
 	next(shower);
