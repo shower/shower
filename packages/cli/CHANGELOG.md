@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.5.0
+
+- **Breaking:** Minimum Node.js version bumped to v22 ([8b6dd477](https://github.com/shower/shower/commit/8b6dd477))
+- **Breaking:** Remove `--ui` and `--notify` flags from `shower serve` ([9661d276](https://github.com/shower/shower/commit/9661d276))
+- Replace browser-sync with Vite dev server ([9661d276](https://github.com/shower/shower/commit/9661d276))
+- Replace Gulp streaming pipeline with native `node:fs` APIs ([59db3b1d](https://github.com/shower/shower/commit/59db3b1d))
+- Replace `chalk` with native `util.styleText()` ([738e92d5](https://github.com/shower/shower/commit/738e92d5))
+- Replace `listr` with a custom task runner using `util.styleText()` ([738e92d5](https://github.com/shower/shower/commit/738e92d5))
+- Replace `jest` with Node.js built-in test runner ([dd4d936d](https://github.com/shower/shower/commit/dd4d936d))
+- Replace `execa` with native `child_process.execFile()` ([59db3b1d](https://github.com/shower/shower/commit/59db3b1d))
+- Replace `tmp` with native `fs.mkdtemp()` ([8b6dd477](https://github.com/shower/shower/commit/8b6dd477))
+- Replace `semver` with simple version comparison ([8b6dd477](https://github.com/shower/shower/commit/8b6dd477))
+- Replace `gulp-zip` with `archiver` ([59db3b1d](https://github.com/shower/shower/commit/59db3b1d))
+- Remove `update-notifier` ([8b6dd477](https://github.com/shower/shower/commit/8b6dd477))
+- Remove unused `pdf-parse` dev dependency ([dd4d936d](https://github.com/shower/shower/commit/dd4d936d))
+- Fix bug in `pdf` test passing wrong option name ([738e92d5](https://github.com/shower/shower/commit/738e92d5))
+- Clean up README ([e4225fea](https://github.com/shower/shower/commit/e4225fea))
+
 ## 0.4.0
 
 - Update deps, convert to ESM ([6f9b6bdc](https://github.com/shower/shower/commit/6f9b6bdc))
