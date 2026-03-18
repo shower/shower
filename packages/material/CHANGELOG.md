@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.2.0
+
+- **Breaking:** Rename `styles/styles.css` to `styles/index.css` ([0349dceb](https://github.com/shower/shower/commit/0349dceb))
+- Update Roboto font family to use variable fonts ([a728ed27](https://github.com/shower/shower/commit/a728ed27))
+- Change heading and caption font weight from 100 to 300 ([a728ed27](https://github.com/shower/shower/commit/a728ed27))
+- Add Roboto Mono italic variable font ([a728ed27](https://github.com/shower/shower/commit/a728ed27))
+- Stop looking for local fonts ([e2b6efda](https://github.com/shower/shower/commit/e2b6efda))
+- Lint and sort CSS ([65fbd3da](https://github.com/shower/shower/commit/65fbd3da))
+
 ## 3.1.0
 
 - Replace JS-based scaling with CSS-only solution using `tan(atan2())` ([61b66fbd](https://github.com/shower/shower/commit/61b66fbd))
