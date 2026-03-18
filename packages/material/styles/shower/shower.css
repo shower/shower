@@ -6,16 +6,28 @@
 @import 'shower-grid.css' screen;
 @import 'shower-print.css' print;
 
+@property --viewport-width {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 100vw;
+}
+
+@property --viewport-height {
+	syntax: "<length>";
+	inherits: true;
+	initial-value: 100vh;
+}
+
 .shower {
-	--slide-gap: 96;
-	--slide-gap-px: calc(var(--slide-gap) * 1px);
+	--viewport-width: 100vw;
+	--viewport-height: 100vh;
+
+	--slide-gap: 96px;
 	--slide-ratio: calc(16 / 9);
-	--slide-width: 1024;
-	--slide-width-px: calc(var(--slide-width) * 1px);
+	--slide-width: 1024px;
 	--slide-height: calc(
 		var(--slide-width) / var(--slide-ratio)
 	);
-	--slide-height-px: calc(var(--slide-height) * 1px);
 	--slide-left-side: 96px;
 	--slide-right-side: 112px;
 

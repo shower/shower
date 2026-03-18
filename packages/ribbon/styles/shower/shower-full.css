@@ -6,13 +6,18 @@
 	left: 50%;
 	overflow: hidden;
 	margin-top: calc(
-		var(--slide-height-px) / 2 * -1
+		var(--slide-height) / 2 * -1
 	);
 	margin-left: calc(
-		var(--slide-width-px) / 2 * -1
+		var(--slide-width) / 2 * -1
 	);
-	width: var(--slide-width-px);
-	height: var(--slide-height-px);
+	width: var(--slide-width);
+	height: var(--slide-height);
 	background-color: black;
-	transform: scale(var(--shower-full-scale, 1));
+	transform: scale(
+		min(
+			tan(atan2(var(--viewport-width), var(--slide-width))),
+			tan(atan2(var(--viewport-height), var(--slide-height)))
+		)
+	);
 }

@@ -8,7 +8,7 @@
 	color: #bfbfbf;
 	text-shadow: 0 2px 5px rgb(0 0 0 / 30%);
 	font-size: calc(
-		var(--slide-gap-px) * var(--slide-scale)
+		var(--slide-gap) * var(--slide-scale)
 	);
 }
 

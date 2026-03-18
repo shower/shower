@@ -9,10 +9,10 @@
 	background-color: var(--color-key);
 	transition: width 0.2s linear;
 	box-shadow:
-		calc(var(--slide-width-px) / 2) 0 0
-		calc(var(--slide-width-px) / 2)
+		calc(var(--slide-width) / 2) 0 0
+		calc(var(--slide-width) / 2)
 		var(--color-light);
-	clip: rect(0 var(--slide-width-px) var(--progress-size) 0);
+	clip: rect(0 var(--slide-width) var(--progress-size) 0);
 }
 
 /* List */

@@ -4,20 +4,20 @@
 	--shower-list-columns: 1;
 
 	--slide-scale: calc(
-		var(--shower-list-scale, 1) /
+		tan(atan2(var(--viewport-width), var(--slide-width))) /
 		(
 			var(--shower-list-columns) +
 			(var(--shower-list-columns) + 1) *
-			var(--slide-gap) / var(--slide-width)
+			tan(atan2(var(--slide-gap), var(--slide-width)))
 		)
 	);
 
 	--shower-list-block: calc(
-		var(--slide-gap-px) *
+		var(--slide-gap) *
 		var(--slide-scale)
 	);
 	--shower-list-inline: calc(
-		var(--slide-gap-px) *
+		var(--slide-gap) *
 		var(--slide-scale) +
 		env(safe-area-inset-left)
 	);
@@ -31,15 +31,15 @@
 	width: 100%;
 	display: grid;
 	grid-gap: calc(
-		var(--slide-gap-px) * var(--slide-scale)
+		var(--slide-gap) * var(--slide-scale)
 	);
 	grid-auto-rows: calc(
-		var(--slide-height-px) * var(--slide-scale)
+		var(--slide-height) * var(--slide-scale)
 	);
 	grid-template-rows: min-content;
 	grid-template-columns: repeat(
 		var(--shower-list-columns),
-		calc(var(--slide-width-px) * var(--slide-scale))
+		calc(var(--slide-width) * var(--slide-scale))
 	);
 	background-color: var(--color-grey);
 }

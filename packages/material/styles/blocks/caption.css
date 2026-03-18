@@ -4,19 +4,19 @@
 	grid-column: 1 / -1;
 	margin-top: calc(
 		-1 *
-		var(--slide-gap-px) *
+		var(--slide-gap) *
 		var(--slide-scale)
 	);
 	margin-left: calc(
 		-1 *
-		var(--slide-gap-px) *
+		var(--slide-gap) *
 		var(--slide-scale) -
 		env(safe-area-inset-left)
 	);
 	padding-top: 0.8em;
 	padding-bottom: 0.9em;
 	padding-left: calc(
-		var(--slide-gap-px) *
+		var(--slide-gap) *
 		var(--slide-scale) +
 		env(safe-area-inset-left)
 	);
