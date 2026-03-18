@@ -1,8 +1,8 @@
 /* Basic */
 
 .slide h2 {
-	margin-top: 9px;
-	margin-bottom: 33px;
+	margin-top: 6px;
+	margin-bottom: 34px;
 	color: var(--color-grey);
 	text-wrap: balance;
 	font: bold 50px/1 'PT Sans Narrow', sans-serif;

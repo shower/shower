@@ -28,7 +28,13 @@
 	src: url('../fonts/pt-sans-bold-italic.woff2') format('woff2');
 }
 
-/* PT Narrow */
+/* PT Sans Narrow */
+
+@font-face {
+	font-family: 'PT Sans Narrow';
+	font-display: swap;
+	src: url('../fonts/pt-sans-narrow-regular.woff2') format('woff2');
+}
 
 @font-face {
 	font-weight: bold;
@@ -37,10 +43,32 @@
 	src: url('../fonts/pt-sans-narrow-bold.woff2') format('woff2');
 }
 
+/* PT Sans Caption */
+
+@font-face {
+	font-family: 'PT Sans Caption';
+	font-display: swap;
+	src: url('../fonts/pt-sans-caption-regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-weight: bold;
+	font-family: 'PT Sans Caption';
+	font-display: swap;
+	src: url('../fonts/pt-sans-caption-bold.woff2') format('woff2');
+}
+
 /* PT Mono */
 
 @font-face {
 	font-family: 'PT Mono';
 	font-display: swap;
 	src: url('../fonts/pt-mono-regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-weight: bold;
+	font-family: 'PT Mono';
+	font-display: swap;
+	src: url('../fonts/pt-mono-bold.woff2') format('woff2');
 }
