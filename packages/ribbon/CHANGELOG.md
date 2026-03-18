@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.0
+
+- Replace JS-based scaling with CSS-only solution using `tan(atan2())` ([61b66fbd](https://github.com/shower/shower/commit/61b66fbd))
+
 ## 4.0.0
 
 - Make list mode flexible using `--shower-list-scale` ([7df7c918](https://github.com/shower/shower/commit/7df7c918))
