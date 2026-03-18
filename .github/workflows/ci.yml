@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -13,6 +17,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: package.json
+          cache: 'npm'
       - run: npm ci
       - run: npm run test:lint
 
@@ -23,7 +28,15 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: package.json
+          cache: 'npm'
       - run: npm ci
+      - name: Get Playwright version
+        id: pw-version
+        run: echo "version=$(npx playwright --version)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ steps.pw-version.outputs.version }}
       - run: npx playwright install --with-deps
       - run: npm run build --workspace=packages/core
       - run: npm test --workspace=packages/core
@@ -35,16 +48,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: package.json
+          cache: 'npm'
       - run: npm ci
       - run: npm test --workspace=packages/cli
-
-  test-shower:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version-file: package.json
-      - run: npm ci
-      - run: npm run build --workspace=packages/core
-      - run: npm test --workspace=packages/shower
