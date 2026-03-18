@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- Update template to reference `index.css` instead of `styles.css` ([0349dceb](https://github.com/shower/shower/commit/0349dceb))
+
 ## 1.0.0
 
 - `archive` and `publish` now reuse `bundle` under the hood ([31f13b98](https://github.com/shower/shower/commit/31f13b98))
