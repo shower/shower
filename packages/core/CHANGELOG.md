@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.5.0
+
+- Remove scale calculation from view module ([c52c9ba6](https://github.com/shower/shower/commit/c52c9ba6))
+
 ## 3.4.1
 
 - Fix initial scale calculation in Safari ([406f6f69](https://github.com/shower/shower/commit/406f6f69))
