@@ -7,7 +7,7 @@
 	bottom: 0;
 	left: 0;
 	z-index: 1;
+	background-image: url('grid.svg');
 	content: '';
 	pointer-events: none;
-	background-image: url('grid.svg');
 }

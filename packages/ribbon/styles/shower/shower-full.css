@@ -4,7 +4,6 @@
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	overflow: hidden;
 	margin-top: calc(
 		var(--slide-height) / 2 * -1
 	);
@@ -13,6 +12,7 @@
 	);
 	width: var(--slide-width);
 	height: var(--slide-height);
+	overflow: hidden;
 	background-color: black;
 	transform: scale(
 		min(

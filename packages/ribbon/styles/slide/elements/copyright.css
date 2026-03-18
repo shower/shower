@@ -2,13 +2,13 @@
 
 .copyright {
 	position: absolute;
-	bottom: 20px;
 	right: 10px;
+	bottom: 20px;
 	margin: 0;
 	font-size: 12px;
-	opacity: 0.7;
-	transform-origin: 0 100%;
 	transform: translateX(100%) rotate(-90deg);
+	transform-origin: 0 100%;
+	opacity: 0.7;
 }
 
 /* Sides */

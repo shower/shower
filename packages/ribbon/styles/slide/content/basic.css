@@ -4,8 +4,8 @@
 	margin-top: 9px;
 	margin-bottom: 33px;
 	color: var(--color-grey);
-	font: bold 50px/1 'PT Sans Narrow', sans-serif;
 	text-wrap: balance;
+	font: bold 50px/1 'PT Sans Narrow', sans-serif;
 }
 
 .slide * + h2 {

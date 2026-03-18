@@ -3,8 +3,8 @@
 .slide pre {
 	margin-top: 0;
 	margin-bottom: 1em;
-	counter-reset: code;
 	white-space: normal;
+	counter-reset: code;
 }
 
 /* Inner */
@@ -21,10 +21,9 @@
 		var(--slide-right-side)
 	);
 	background-color: transparent;
-	line-height: 2;
 	white-space: pre;
-	-moz-tab-size: 4;
 	tab-size: 4;
+	line-height: 2;
 }
 
 /* Line Numbers */
@@ -67,8 +66,8 @@
 /* Next Line */
 
 .slide pre code:not(:only-child).mark.next {
-	visibility: visible;
 	background-color: transparent;
+	visibility: visible;
 }
 
 .slide pre code:not(:only-child).mark.next.active,
@@ -79,8 +78,8 @@
 /* Full */
 
 .shower.full .slide pre code:not(:only-child).mark.next {
-	visibility: visible;
 	background-color: transparent;
+	visibility: visible;
 }
 
 .shower.full .slide pre code:not(:only-child).mark.next.active,

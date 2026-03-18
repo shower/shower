@@ -1,8 +1,8 @@
 /* Roboto */
 
 @font-face {
-	font-family: 'Roboto';
 	font-weight: 100;
+	font-family: 'Roboto';
 	font-display: swap;
 	src:
 		local('Roboto Light'),
@@ -11,8 +11,8 @@
 }
 
 @font-face {
-	font-family: 'Roboto';
 	font-weight: 400;
+	font-family: 'Roboto';
 	font-display: swap;
 	src:
 		local('Roboto'),
@@ -21,8 +21,8 @@
 }
 
 @font-face {
-	font-family: 'Roboto';
 	font-weight: 400;
+	font-family: 'Roboto';
 	font-style: italic;
 	font-display: swap;
 	src:
@@ -32,8 +32,8 @@
 }
 
 @font-face {
-	font-family: 'Roboto';
 	font-weight: 700;
+	font-family: 'Roboto';
 	font-display: swap;
 	src:
 		local('Roboto Bold'),
@@ -42,8 +42,8 @@
 }
 
 @font-face {
-	font-family: 'Roboto';
 	font-weight: 700;
+	font-family: 'Roboto';
 	font-style: italic;
 	font-display: swap;
 	src:

@@ -2,9 +2,9 @@
 
 .slide ol,
 .slide ul {
-	padding-left: 0;
 	margin-top: 0;
 	margin-bottom: 1em;
+	padding-left: 0;
 	list-style: none;
 	counter-reset: list;
 }
@@ -16,10 +16,10 @@
 	width: 3em;
 	color: var(--color-grey);
 	text-align: right;
-	opacity: 0.75;
 	transform: translateX(
 		calc(-100% - 0.5em)
 	);
+	opacity: 0.75;
 }
 
 .slide li ol,

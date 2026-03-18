@@ -1,9 +1,9 @@
 /* Caption */
 
 .caption {
+	grid-column: 1 / -1;
 	margin-top: -0.2em;
 	margin-bottom: -0.07em;
-	grid-column: 1 / -1;
 	width: 100%;
 	color: #bfbfbf;
 	text-shadow: 0 2px 5px rgb(0 0 0 / 30%);
@@ -27,8 +27,8 @@
 }
 
 .caption a {
-	text-decoration: none;
 	color: var(--color-blue-lighter);
+	text-decoration: none;
 }
 
 /* List */

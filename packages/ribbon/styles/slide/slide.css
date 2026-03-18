@@ -34,11 +34,11 @@
 .slide {
 	position: relative;
 	z-index: 0;
-	overflow: hidden;
-	box-sizing: border-box;
 	padding: 75px var(--slide-side) 0;
+	box-sizing: border-box;
 	width: var(--slide-width);
 	height: var(--slide-height);
+	overflow: hidden;
 	background-color: white;
 }
 
@@ -48,14 +48,14 @@
 	position: absolute;
 	top: 0;
 	left: 875px;
-	box-sizing: border-box;
 	padding-top: 15px;
+	box-sizing: border-box;
 	width: var(--ribbon-size);
 	height: calc(var(--ribbon-size) * 2);
 	background-image: url('ribbon.svg');
 	background-size: cover;
 	color: white;
+	text-align: center;
 	counter-increment: slide;
 	content: counter(slide);
-	text-align: center;
 }

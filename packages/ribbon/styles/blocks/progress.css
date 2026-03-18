@@ -2,8 +2,8 @@
 
 .progress {
 	position: absolute;
-	left: 0;
 	bottom: 0;
+	left: 0;
 	width: 0;
 	height: var(--progress-size);
 	overflow: hidden;
@@ -15,9 +15,9 @@
 	width: 100%;
 	height: var(--progress-size);
 	background-color: var(--color-blue);
-	content: '';
-	transform-origin: 0 100%;
 	transform: skewX(45deg);
+	transform-origin: 0 100%;
+	content: '';
 }
 
 .progress[style*='100%']::before {

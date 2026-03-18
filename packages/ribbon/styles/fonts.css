@@ -10,8 +10,8 @@
 }
 
 @font-face {
-	font-family: 'PT Sans';
 	font-weight: bold;
+	font-family: 'PT Sans';
 	font-display: swap;
 	src:
 		local('PT Sans Bold'),
@@ -30,9 +30,9 @@
 }
 
 @font-face {
+	font-weight: bold;
 	font-family: 'PT Sans';
 	font-style: italic;
-	font-weight: bold;
 	font-display: swap;
 	src:
 		local('PT Sans Bold Italic'),
@@ -43,8 +43,8 @@
 /* PT Narrow */
 
 @font-face {
-	font-family: 'PT Sans Narrow';
 	font-weight: bold;
+	font-family: 'PT Sans Narrow';
 	font-display: swap;
 	src:
 		local('PT Sans Narrow Bold'),

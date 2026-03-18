@@ -18,6 +18,6 @@
 
 .slide blockquote + figcaption {
 	margin: -1em 0 1em;
-	font-style: italic;
 	font-weight: bold;
+	font-style: italic;
 }

@@ -34,13 +34,13 @@
 .slide {
 	position: relative;
 	z-index: 0;
-	overflow: hidden;
-	box-sizing: border-box;
 	padding:
 		79px var(--slide-right-side)
 		0 var(--slide-left-side);
+	box-sizing: border-box;
 	width: var(--slide-width);
 	height: var(--slide-height);
+	overflow: hidden;
 	background-color: white;
 }
 
@@ -52,8 +52,8 @@
 	bottom: 38px;
 	left: 0;
 	color: var(--color-light);
-	line-height: 18px;
 	text-align: center;
+	line-height: 18px;
 	counter-increment: slide;
 	content: counter(slide);
 }

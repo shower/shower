@@ -1,12 +1,12 @@
 /* Slide List */
 
 .shower.list .slide {
-	border-radius: 2px;
 	box-shadow: 0 20px 50px rgb(0 0 0 / 30%);
-	transform-origin: 0 0;
+	border-radius: 2px;
 	transform: scale(
 		var(--slide-scale)
 	);
+	transform-origin: 0 0;
 }
 
 .shower.list .slide * {

@@ -1,10 +1,10 @@
 /* Table */
 
 .slide table {
+	margin-bottom: 1em;
 	margin-left: calc(
 		var(--slide-left-side) * -1
 	);
-	margin-bottom: 1em;
 	width: calc(
 		100% +
 		var(--slide-left-side) +
@@ -68,8 +68,8 @@
 /* Next Marked Row */
 
 .slide tr.mark.next {
-	visibility: visible;
 	background-color: transparent;
+	visibility: visible;
 }
 
 .slide tr.mark.next.active,
