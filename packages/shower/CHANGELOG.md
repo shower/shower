@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.4.1
+
+- Update stylesheet reference from `styles.css` to `index.css` ([0349dceb](https://github.com/shower/shower/commit/0349dceb))
+
 ## 3.4.0
 
 - Bump minimum Node.js version to 22 to match @shower/cli ([c6b26677](https://github.com/shower/shower/commit/c6b26677))
