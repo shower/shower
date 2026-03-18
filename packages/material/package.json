@@ -2,7 +2,7 @@
 	"type": "module",
 	"name": "@shower/material",
 	"description": "Material theme for Shower HTML presentation engine",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"publishConfig": {
 		"access": "public"
 	},
