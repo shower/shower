@@ -1,5 +1,14 @@
 # Changelog
 
+## 4.2.0
+
+- **Breaking:** Rename `styles/styles.css` to `styles/index.css` ([0349dceb](https://github.com/shower/shower/commit/0349dceb))
+- Update PT Sans and Mono fonts, add PT Sans Caption and PT Mono Bold ([7869a77d](https://github.com/shower/shower/commit/7869a77d))
+- Add PT Sans Narrow Regular weight ([7869a77d](https://github.com/shower/shower/commit/7869a77d))
+- Stop looking for local fonts, use bundled files only ([e2b6efda](https://github.com/shower/shower/commit/e2b6efda))
+- Remove outdated source files ([96eb89b3](https://github.com/shower/shower/commit/96eb89b3))
+- Lint and sort CSS ([65fbd3da](https://github.com/shower/shower/commit/65fbd3da))
+
 ## 4.1.0
 
 - Replace JS-based scaling with CSS-only solution using `tan(atan2())` ([61b66fbd](https://github.com/shower/shower/commit/61b66fbd))
