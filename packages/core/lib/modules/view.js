@@ -8,20 +8,6 @@ export default (shower) => {
 		container.classList.add(listModeClass);
 	}
 
-	const updateScale = () => {
-		const firstSlide = shower.slides[0];
-		if (!firstSlide) return;
-
-		const { innerWidth, innerHeight } = window;
-		const { offsetWidth, offsetHeight } = firstSlide.element;
-
-		const listScale = 1 / (offsetWidth / innerWidth);
-		const fullScale = 1 / Math.max(offsetWidth / innerWidth, offsetHeight / innerHeight);
-
-		container.style.setProperty('--shower-list-scale', listScale);
-		container.style.setProperty('--shower-full-scale', fullScale);
-	};
-
 	const updateModeView = () => {
 		if (shower.isFullMode) {
 			container.classList.remove(listModeClass);
@@ -31,11 +17,9 @@ export default (shower) => {
 			container.classList.add(listModeClass);
 		}
 
+		if (shower.isFullMode) return;
+
 		requestAnimationFrame(() => {
-			updateScale();
-
-			if (shower.isFullMode) return;
-
 			const slide = shower.activeSlide;
 			if (slide) {
 				slide.element.scrollIntoView({ block: 'center' });
@@ -51,6 +35,4 @@ export default (shower) => {
 		const slide = shower.activeSlide;
 		slide.element.scrollIntoView({ block: 'nearest' });
 	});
-
-	window.addEventListener('resize', updateScale);
 };
