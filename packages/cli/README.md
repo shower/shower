@@ -24,7 +24,7 @@ After the slides are created, `@shower/cli` is added as a dev dependency by defa
 npm run serve
 npm run bundle
 npm run archive
-npm run publish
+npm run pages
 npm run pdf
 ```
 
@@ -91,7 +91,7 @@ Create a ZIP archive of the slides. Uses `bundle` under the hood to prepare the 
 | `-o`, `--output` | Archive name             | string | `slides.zip`       |
 | `-f`, `--files`  | List of files to include | array  |                    |
 
-### `shower publish`
+### `shower pages`
 
 Publish the slides to [GitHub Pages](https://pages.github.com/). Uses `bundle` under the hood to prepare the files before publishing.
 

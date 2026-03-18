@@ -74,8 +74,9 @@ const commandsList = {
 		requireProject: true
 	},
 
-	publish: {
-		command: 'publish',
+	pages: {
+		command: 'pages',
+		aliases: ['publish'],
 		describe: 'Publish your slides to GitHub Pages',
 		requireProject: true
 	},
@@ -90,7 +91,10 @@ const commandsList = {
 app.middleware((argv, app) => {
 	argv.project = getEnv(argv.cwd);
 
-	const name = argv._[0];
+	const input = argv._[0];
+	const name = commandsList[input]
+		? input
+		: Object.keys(commandsList).find((id) => commandsList[id].aliases?.includes(input));
 
 	if (commandsList[name]?.requireProject && !argv.project) {
 		process.stdout.write(

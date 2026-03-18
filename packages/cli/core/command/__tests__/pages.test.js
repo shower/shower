@@ -1,10 +1,10 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { handler as publish, messages } from '../publish.js';
+import { handler as pages, messages } from '../pages.js';
 
-describe('publish', () => {
+describe('pages', () => {
 	it('Must be function', () => {
-		assert.equal(typeof publish, 'function');
+		assert.equal(typeof pages, 'function');
 	});
 
 	it('Messages must provided "end" message', () => {
