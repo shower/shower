@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Rename `shower publish` to `shower pages`, keep `publish` as an alias ([2a15114d](https://github.com/shower/shower/commit/2a15114d))
+
 ## 1.0.1
 
 - Update template to reference `index.css` instead of `styles.css` ([0349dceb](https://github.com/shower/shower/commit/0349dceb))
