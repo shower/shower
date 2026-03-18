@@ -1,1 +1,2 @@
-Copyright 2011 Google Inc. All Rights Reserved.
+Copyright 2011 The Roboto Project Authors (https://github.com/googlefonts/roboto-classic)
+Copyright 2015 The Roboto Mono Project Authors (https://github.com/googlefonts/robotomono)
