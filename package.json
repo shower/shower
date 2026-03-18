@@ -9,6 +9,7 @@
 		"shwr.me"
 	],
 	"scripts": {
+		"prepare": "git config core.hooksPath .githooks",
 		"dev:shower": "npm run dev --workspace=packages/shower",
 		"dev:ribbon": "npm run dev --workspace=packages/ribbon",
 		"dev:material": "npm run dev --workspace=packages/material",
@@ -26,6 +27,8 @@
 		"globals": "^17.4.0",
 		"rollup": "^4.59.0",
 		"stylelint": "^17.4.0",
+		"stylelint-config-pepelsbey": "^1.2.0",
+		"stylelint-order": "^8.1.1",
 		"vite": "^8.0.0"
 	}
 }

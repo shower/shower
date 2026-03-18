@@ -1,0 +1,11 @@
+#!/bin/sh
+
+STAGED_CSS=$(git diff --cached --name-only --diff-filter=ACM | grep '\.css$')
+
+if [ -z "$STAGED_CSS" ]; then
+	exit 0
+fi
+
+echo "$STAGED_CSS" | xargs npx stylelint --fix
+
+echo "$STAGED_CSS" | xargs git add

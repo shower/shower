@@ -1,41 +1,71 @@
+import config from 'stylelint-config-pepelsbey';
+
 export default {
+	...config,
+	plugins: [
+		...config.plugins,
+	],
 	rules: {
-		'at-rule-empty-line-before': ['always', { except: ['blockless-after-blockless'] }],
-		'at-rule-no-unknown': true,
-		'block-no-empty': true,
-		'color-function-notation': 'modern',
+		...config.rules,
+
+		/* Colors */
+
 		'color-hex-length': 'long',
+		'color-named': null,
 		'color-no-invalid-hex': true,
-		'comment-empty-line-before': ['always', { except: ['first-nested'] }],
-		'comment-no-empty': true,
-		'comment-whitespace-inside': 'always',
-		'comment-word-disallowed-list': ['todo'],
+
+		/* Functions */
+
+		'function-url-quotes': 'always',
+		'function-name-case': 'lower',
+		'function-calc-no-unspaced-operator': true,
+
+		/* Units */
+
+		'unit-no-unknown': true,
+
+		/* Values */
+
+		'value-keyword-case': 'lower',
+		'value-no-vendor-prefix': true,
+
+		/* Properties */
+
+		'property-no-vendor-prefix': [true, {
+			ignoreProperties: [
+				'-webkit-text-size-adjust',
+			],
+		}],
+
+		/* Declarations */
+
+		'declaration-no-important': true,
+		'declaration-block-no-duplicate-properties': true,
 		'declaration-block-no-shorthand-property-overrides': true,
 		'declaration-block-single-line-max-declarations': 1,
-		'declaration-no-important': true,
-		'font-family-name-quotes': 'always-unless-keyword',
-		'font-family-no-duplicate-names': true,
-		'function-calc-no-unspaced-operator': true,
-		'function-linear-gradient-no-nonstandard-direction': true,
-		'function-name-case': 'lower',
-		'function-url-no-scheme-relative': true,
-		'function-url-quotes': 'always',
-		'length-zero-no-unit': true,
-		'media-feature-name-no-unknown': true,
-		'no-empty-source': true,
-		'no-invalid-double-slash-comments': true,
-		'no-unknown-animations': true,
-		'number-max-precision': 2,
-		'property-no-unknown': true,
-		'rule-empty-line-before': ['always-multi-line', { except: ['first-nested'] }],
-		'selector-attribute-quotes': 'always',
-		'selector-pseudo-class-no-unknown': true,
+
+		/* Blocks */
+
+		'block-no-empty': true,
+
+		/* Selectors */
+
+		'selector-max-id': 0,
 		'selector-pseudo-element-colon-notation': 'double',
-		'selector-pseudo-element-no-unknown': true,
 		'selector-type-case': 'lower',
-		'selector-type-no-unknown': true,
-		'string-no-newline': true,
-		'unit-no-unknown': true,
-		'value-keyword-case': 'lower',
+		'selector-attribute-quotes': 'always',
+
+		/* Media */
+
+		'media-feature-name-no-vendor-prefix': true,
+
+		/* At-rules */
+
+		'at-rule-no-vendor-prefix': true,
+
+		/* General */
+
+		'no-duplicate-selectors': true,
+		'no-descending-specificity': null,
 	},
 };
