@@ -72,7 +72,7 @@ for (const theme of ['material', 'ribbon']) {
 			'CHANGELOG.md', 'source',
 		],
 		replacements: [
-			['node_modules/@shower/core/dist', '../..'],
+			['../core/dist', '../..'],
 		],
 	});
 }
