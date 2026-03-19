@@ -30,12 +30,15 @@
 	color: var(--color-key);
 }
 
-.badge svg {
+.badge a::before {
 	position: absolute;
 	margin: -1.1em 0 0 -4.5em;
 	width: 4em;
 	height: 4em;
-	fill: currentcolor;
+	background-color: currentcolor;
+	mask-image: url('github.svg');
+	mask-size: contain;
+	content: '';
 }
 
 /* List */
