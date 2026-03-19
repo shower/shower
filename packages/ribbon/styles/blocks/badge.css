@@ -12,6 +12,15 @@
 		40px * var(--slide-scale)
 	);
 	visibility: hidden;
+
+	@media (width < 640px) {
+		width: 5.5em;
+		height: 5.5em;
+
+		span {
+			display: none;
+		}
+	}
 }
 
 /* Link */
