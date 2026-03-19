@@ -52,8 +52,8 @@
 	box-sizing: border-box;
 	width: var(--ribbon-size);
 	height: calc(var(--ribbon-size) * 2);
-	background-image: url('ribbon.svg');
-	background-size: cover;
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+	background-color: var(--color-red);
 	color: white;
 	text-align: center;
 	counter-increment: slide;
