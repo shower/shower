@@ -28,6 +28,8 @@ export default (shower) => {
 	shower.addEventListener('next', (event) => {
 		if (shower.isListMode || event.defaultPrevented || !event.cancelable) return;
 
+		if (activeIndex >= innerSteps.length) return;
+
 		activeIndex++;
 		innerSteps.forEach((step, index) => {
 			step.classList.toggle(visitedSlideClass, index < activeIndex);

@@ -179,6 +179,39 @@ test.describe('keys', () => {
 		await expect(page.locator('[id="1"]')).toHaveClass(/active/);
 	});
 
+	test('goes back to previous slide with one press after multiple forward presses past the last slide', async ({ page, fixture }) => {
+		await fixture('full', '#3');
+		await page.keyboard.press('ArrowRight');
+		await page.keyboard.press('ArrowRight');
+		await page.keyboard.press('ArrowRight');
+		await expect(page.locator('[id="3"]')).toHaveClass(/active/);
+
+		await page.keyboard.press('ArrowLeft');
+		await expect(page.locator('[id="2"]')).toHaveClass(/active/);
+	});
+
+	test('goes back to previous slide with one press after multiple forward presses past the last slide in `list` mode', async ({ page, fixture }) => {
+		await fixture('list', '#3');
+		await page.keyboard.press('ArrowRight');
+		await page.keyboard.press('ArrowRight');
+		await page.keyboard.press('ArrowRight');
+		await expect(page.locator('[id="3"]')).toHaveClass(/active/);
+
+		await page.keyboard.press('ArrowLeft');
+		await expect(page.locator('[id="2"]')).toHaveClass(/active/);
+	});
+
+	test('goes back to previous slide with one press after multiple forward presses past the last slide with inner steps', async ({ page, fixture }) => {
+		await fixture('full-next', '#3');
+		await page.keyboard.press('ArrowRight');
+		await page.keyboard.press('ArrowRight');
+		await page.keyboard.press('ArrowRight');
+		await expect(page.locator('[id="3"]')).toHaveClass(/active/);
+
+		await page.keyboard.press('ArrowLeft');
+		await expect(page.locator('[id="2"]')).toHaveClass(/active/);
+	});
+
 	// --- State classes ---
 
 	test('changes slides states when moving forward and backward', async ({ page, fixture }) => {
