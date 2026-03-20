@@ -13,11 +13,12 @@
 		"dev:shower": "npm run dev --workspace=packages/shower",
 		"dev:ribbon": "npm run dev --workspace=packages/ribbon",
 		"dev:material": "npm run dev --workspace=packages/material",
-		"build": "npm run build --workspace=packages/core",
-		"test": "npm run test:lint && npm run test:packages",
-		"test:lint": "editorconfig-checker && eslint && stylelint 'packages/{material,ribbon}/styles/**/*.css'",
-		"test:packages": "npm test --workspaces --if-present",
-		"test:e2e": "npm run test:e2e --workspace=packages/core"
+		"build:core": "npm run build --workspace=packages/core",
+		"build:shwr.me": "npm run build --workspace=shwr.me",
+		"lint": "editorconfig-checker && eslint && stylelint 'packages/{material,ribbon}/styles/**/*.css'",
+		"test": "npm run lint && npm run test:cli && npm run test:core",
+		"test:cli": "npm test --workspace=packages/cli",
+		"test:core": "npm test --workspace=packages/core"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
