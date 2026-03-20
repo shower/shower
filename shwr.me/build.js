@@ -13,11 +13,15 @@ async function listFiles(dir) {
 		.map((entry) => join(entry.parentPath, entry.name));
 }
 
-async function copyTree(srcDir, destDir, { exclude = [], replacements = [] } = {}) {
+async function copyTree(srcDir, destDir, { include, exclude = [], replacements = [] } = {}) {
 	const files = await listFiles(srcDir);
 
 	for (const srcPath of files) {
 		const relPath = srcPath.slice(srcDir.length + 1);
+
+		if (include && !include.some((inc) => relPath === inc || relPath.startsWith(inc + '/'))) {
+			continue;
+		}
 
 		if (exclude.some((ex) => relPath === ex || relPath.startsWith(ex + '/'))) {
 			continue;
@@ -47,10 +51,7 @@ await mkdir(dist, { recursive: true });
 
 // Shower presentation files with rewritten paths
 await copyTree(join(packages, 'shower'), dist, {
-	exclude: [
-		'package.json', 'node_modules',
-		'slides', 'slides.zip', 'CHANGELOG.md',
-	],
+	include: ['index.html', 'pictures'],
 	replacements: [
 		['node_modules/@shower/ribbon', 'shower/themes/ribbon'],
 		['node_modules/@shower/core/dist', 'shower'],
