@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.5.1
+
+- Fix forward key presses past last slide blocking backward navigation ([eab77b8e](https://github.com/shower/shower/commit/eab77b8e))
+
 ## 3.5.0
 
 - Remove scale calculation from view module ([c52c9ba6](https://github.com/shower/shower/commit/c52c9ba6))
