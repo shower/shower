@@ -26,10 +26,10 @@
 		"editorconfig-checker": "^6.1.1",
 		"eslint": "^10.1.0",
 		"globals": "^17.4.0",
-		"rollup": "^4.59.0",
+		"rollup": "^4.60.0",
 		"stylelint": "^17.5.0",
 		"stylelint-config-pepelsbey": "^1.2.0",
 		"stylelint-order": "^8.1.1",
-		"vite": "^8.0.1"
+		"vite": "^8.0.2"
 	}
 }
