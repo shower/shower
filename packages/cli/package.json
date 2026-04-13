@@ -40,9 +40,9 @@
 		"archiver": "^7.0.1",
 		"@puppeteer/browsers": "^2.13.0",
 		"gh-pages": "^6.3.0",
-		"inquirer": "^13.3.0",
+		"inquirer": "^13.4.1",
 		"puppeteer-core": "^24.38.0",
-		"vite": "^8.0.5",
+		"vite": "^8.0.8",
 		"yargs": "^18.0.0"
 	},
 	"scripts": {
