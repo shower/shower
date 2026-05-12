@@ -18,7 +18,7 @@ jobs:
         with:
           node-version-file: package.json
           cache: 'npm'
-      - run: npm ci
+      - run: npm ci --prefer-offline --no-audit --no-fund
       - run: npm run lint
 
   test-core:
@@ -29,15 +29,19 @@ jobs:
         with:
           node-version-file: package.json
           cache: 'npm'
-      - run: npm ci
+      - run: npm ci --prefer-offline --no-audit --no-fund
       - name: Get Playwright version
         id: pw-version
         run: echo "version=$(npx playwright --version)" >> "$GITHUB_OUTPUT"
       - uses: actions/cache@v5
+        id: pw-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ steps.pw-version.outputs.version }}
-      - run: npx playwright install --with-deps
+          key: ${{ runner.os }}-playwright-${{ steps.pw-version.outputs.version }}
+      - if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps
+      - if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps
       - run: npm run build --workspace=packages/core
       - run: npm run test:core
 
@@ -49,5 +53,5 @@ jobs:
         with:
           node-version-file: package.json
           cache: 'npm'
-      - run: npm ci
+      - run: npm ci --prefer-offline --no-audit --no-fund
       - run: npm run test:cli
