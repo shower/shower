@@ -3,7 +3,7 @@ import { mkdtemp, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { styleText } from 'node:util';
-import archiver from 'archiver';
+import { ZipArchive } from 'archiver';
 
 import { handler as bundle } from './bundle.js';
 
@@ -14,7 +14,7 @@ async function handler ({ cwd, output, files }) {
 		await bundle({ cwd, output: bundlePath, files });
 
 		await new Promise((resolve, reject) => {
-			const archive = archiver('zip', { zlib: { level: 9 } });
+			const archive = new ZipArchive({ zlib: { level: 9 } });
 			const stream = createWriteStream(join(cwd, output));
 
 			stream.on('close', resolve);
