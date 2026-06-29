@@ -22,14 +22,14 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@playwright/test": "^1.61.0",
+		"@playwright/test": "^1.61.1",
 		"editorconfig-checker": "^6.1.1",
-		"eslint": "^10.5.0",
+		"eslint": "^10.6.0",
 		"globals": "^17.7.0",
 		"rollup": "^4.62.2",
-		"stylelint": "^17.13.0",
+		"stylelint": "^17.14.0",
 		"stylelint-config-pepelsbey": "^1.4.0",
 		"stylelint-order": "^8.1.1",
-		"vite": "^8.0.16"
+		"vite": "^8.1.0"
 	}
 }
