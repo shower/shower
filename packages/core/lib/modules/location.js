@@ -33,7 +33,10 @@ export default (shower) => {
 		applyURLSlide();
 	};
 
-	applyURL();
+	// slide before mode, so full mode finds it instead of defaulting to first
+	applyURLSlide();
+	applyURLMode();
+
 	window.addEventListener('popstate', applyURL);
 
 	shower.addEventListener('start', () => {

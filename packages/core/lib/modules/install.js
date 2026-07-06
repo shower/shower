@@ -22,9 +22,4 @@ export default (shower) => {
 	view(shower);
 	touch(shower);
 	mouse(shower);
-
-	// maintains invariant: active slide always exists in `full` mode
-	if (shower.isFullMode && !shower.activeSlide) {
-		shower.first();
-	}
 };

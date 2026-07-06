@@ -107,6 +107,10 @@ class Shower extends EventTarget {
 	 * @emits Shower#modechange
 	 */
 	enterFullMode() {
+		if (!this.activeSlide) {
+			this.first();
+		}
+
 		this._setMode('full');
 	}
 

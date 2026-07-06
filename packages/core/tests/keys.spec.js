@@ -265,6 +265,21 @@ test.describe('keys', () => {
 		await expect(page.locator('.shower')).toHaveClass(/full/);
 	});
 
+	test('starts presentation from the first slide when Meta+Enter keys are pressed without an active slide', async ({ page, fixture }) => {
+		await fixture('list');
+		await page.evaluate(() => {
+			document.body.dispatchEvent(
+				new KeyboardEvent('keydown', {
+					bubbles: true,
+					key: 'Enter',
+					metaKey: true,
+				}),
+			);
+		});
+		await expect(page.locator('[id="1"]')).toHaveClass(/active/);
+		await expect(page.locator('.shower')).toHaveClass(/full/);
+	});
+
 	test('starts presentation from the current slide when Meta+Enter keys are pressed', async ({ page, fixture }) => {
 		await fixture('list', '#2');
 		await page.evaluate(() => {
