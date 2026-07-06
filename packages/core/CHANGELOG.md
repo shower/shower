@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.5.2
+
+- Fix black screen entering full mode with no active slide ([26673de7](https://github.com/shower/shower/commit/26673de7))
+
 ## 3.5.1
 
 - Fix forward key presses past last slide blocking backward navigation ([eab77b8e](https://github.com/shower/shower/commit/eab77b8e))
