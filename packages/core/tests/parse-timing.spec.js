@@ -76,5 +76,10 @@ test.describe('parse-timing', () => {
 			expect(p('1.2h 2m 3s')).toBe(4443e3);
 			expect(p('-2.m 3s -1h')).toBe(0);
 		});
+
+		test('no space separator', () => {
+			expect(p('2m30s')).toBe(150e3);
+			expect(p('1h15m45s')).toBe(4545e3);
+		});
 	});
 });
