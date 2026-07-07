@@ -4,7 +4,7 @@ const hasUnits = (timing) => {
 };
 
 const parseUnits = (timing) => {
-	return units.map((unit) => timing.match(`(\\S+)${unit}`)).map((match) => match && match[1]);
+	return units.map((unit) => timing.match(`([\\d.+-]+)${unit}`)).map((match) => match && match[1]);
 };
 
 const parseColons = (timing) => {
