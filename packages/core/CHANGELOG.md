@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.6.0
+
+- Use Cmd+Enter to enter and exit full mode ([e6e052df](https://github.com/shower/shower/commit/e6e052df))
+
 ## 3.5.2
 
 - Fix black screen entering full mode with no active slide ([26673de7](https://github.com/shower/shower/commit/26673de7))
