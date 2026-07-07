@@ -19,6 +19,10 @@ async function copyTree(srcDir, destDir, { include, exclude = [], replacements =
 	for (const srcPath of files) {
 		const relPath = srcPath.slice(srcDir.length + 1);
 
+		if (relPath.split('/').includes('.DS_Store')) {
+			continue;
+		}
+
 		if (include && !include.some((inc) => relPath === inc || relPath.startsWith(inc + '/'))) {
 			continue;
 		}
@@ -68,9 +72,9 @@ await copyFile(
 // Themes
 for (const theme of ['material', 'ribbon']) {
 	await copyTree(join(packages, theme), join(dist, 'shower/themes', theme), {
-		exclude: [
-			'package.json', 'node_modules',
-			'CHANGELOG.md', 'source',
+		include: [
+			'fonts', 'pictures', 'styles',
+			'index.html', 'LICENSE.md', 'README.md',
 		],
 		replacements: [
 			['../core/dist', '../..'],
