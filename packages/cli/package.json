@@ -34,7 +34,8 @@
 	"files": [
 		"bin",
 		"core",
-		"templates"
+		"templates",
+		"!core/command/__tests__"
 	],
 	"dependencies": {
 		"archiver": "^8.0.0",
