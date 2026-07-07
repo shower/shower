@@ -317,6 +317,24 @@ test.describe('keys', () => {
 		await expect(page.locator('.shower')).toHaveClass(/list/);
 	});
 
+	test('stops presentation at the current slide when Meta+Enter keys are pressed in `full` mode', async ({
+		page,
+		fixture,
+	}) => {
+		await fixture('full', '#2');
+		await page.evaluate(() => {
+			document.body.dispatchEvent(
+				new KeyboardEvent('keydown', {
+					bubbles: true,
+					key: 'Enter',
+					metaKey: true,
+				}),
+			);
+		});
+		await expect(page.locator('.shower')).toHaveClass(/list/);
+		await expect(page.locator('[id="2"]')).toHaveClass(/active/);
+	});
+
 	// --- Shift force-navigation (skips .next steps) ---
 
 	test('Shift+ArrowRight skips all inner steps and moves to next slide', async ({ page, fixture }) => {

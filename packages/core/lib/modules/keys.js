@@ -6,8 +6,8 @@ export default (shower) => {
 
 		switch (event.key.toUpperCase()) {
 			case 'ENTER':
-				if (event.metaKey && shower.isListMode) {
-					if (event.shiftKey) {
+				if (event.metaKey) {
+					if (event.shiftKey && shower.isListMode) {
 						event.preventDefault();
 						shower.first();
 					}
@@ -81,9 +81,13 @@ export default (shower) => {
 				break;
 
 			case 'ENTER':
-				if (event.metaKey && shower.isListMode) {
+				if (event.metaKey) {
 					event.preventDefault();
-					shower.enterFullMode();
+					if (shower.isListMode) {
+						shower.enterFullMode();
+					} else if (shower.isFullMode) {
+						shower.exitFullMode();
+					}
 				}
 				break;
 
