@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1
+
+- Exclude test files from the published package ([5035772d](https://github.com/shower/shower/commit/5035772d))
+- Update dependencies ([0ad2e63a](https://github.com/shower/shower/commit/0ad2e63a))
+
 ## 1.1.0
 
 - Rename `shower publish` to `shower pages`, keep `publish` as an alias ([2a15114d](https://github.com/shower/shower/commit/2a15114d))
