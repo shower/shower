@@ -27,9 +27,9 @@
 		"eslint": "^10.7.0",
 		"globals": "^17.7.0",
 		"rollup": "^4.62.2",
-		"stylelint": "^17.14.0",
+		"stylelint": "^17.14.1",
 		"stylelint-config-pepelsbey": "^1.5.0",
 		"stylelint-order": "^8.1.1",
-		"vite": "^8.1.4"
+		"vite": "^8.1.5"
 	}
 }
