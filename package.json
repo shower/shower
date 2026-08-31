@@ -23,10 +23,10 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@playwright/test": "^1.62.1",
-		"editorconfig-checker": "^6.1.1",
-		"eslint": "^10.9.0",
+		"editorconfig-checker": "^7.0.0",
+		"eslint": "^10.9.1",
 		"globals": "^17.11.0",
-		"rollup": "^4.62.5",
+		"rollup": "^4.63.1",
 		"stylelint": "^17.14.1",
 		"stylelint-config-pepelsbey": "^1.5.0",
 		"stylelint-order": "^8.1.1",
