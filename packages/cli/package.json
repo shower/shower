@@ -41,8 +41,8 @@
 		"archiver": "^8.0.0",
 		"@puppeteer/browsers": "^3.2.1",
 		"gh-pages": "^6.3.0",
-		"inquirer": "^14.1.0",
-		"puppeteer-core": "^25.8.0",
+		"inquirer": "^14.2.0",
+		"puppeteer-core": "^25.9.0",
 		"vite": "^8.2.2",
 		"yargs": "^18.1.0"
 	},
