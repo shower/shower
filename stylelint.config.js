@@ -42,7 +42,6 @@ export default {
 		'declaration-no-important': true,
 		'declaration-block-no-duplicate-properties': true,
 		'declaration-block-no-shorthand-property-overrides': true,
-		'declaration-block-single-line-max-declarations': 1,
 
 		/* Blocks */
 
