@@ -20,6 +20,8 @@ jobs:
           cache: 'npm'
       - run: npm ci --prefer-offline --no-audit --no-fund
       - run: npm run lint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   test-core:
     runs-on: ubuntu-latest
